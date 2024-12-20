@@ -90,6 +90,7 @@ class RocketData:
         self.reentry_per_alu      = fg.variables['Percent_Aluminium'][:]
         self.reentry_other_mass   = fg.variables['Other_Mass'][:]
         self.reentry_smc          = fg.variables['Megaconstellation_Flag'][:]
+        self.reentry_location     = fg.variables['Location_Constraint'][:]
         
         self.reentry_year, self.reentry_month, self.reentry_day = [], [], []
         for datestring in self.reentry_datestr:
@@ -199,7 +200,6 @@ class OutputEmis:
         self.nox_launch_total, self.bc_total, self.h2o_total = 0.0, 0.0, 0.0
         self.co_total,self.al2o3_launch_total, self.cl_total, self.co2_total = 0.0, 0.0, 0.0, 0.0
         self.hcl_total, self.cl2_total, self.nox_reentry_total, self.al2o3_reentry_total = 0.0, 0.0, 0.0, 0.0
-        self.mass_survive = 0
         self.missing_emis = np.zeros(9)
         self.booster_prop_consumed, self.stage1_prop_consumed, self.stage2_prop_consumed = np.zeros(len(self.launch_id)), np.zeros(len(self.launch_id)), np.zeros(len(self.launch_id))
         self.total_prop_consumed = np.zeros((len(rocket_data.h2o_pei),3))
@@ -303,6 +303,7 @@ class OutputEmis:
                                    rocket_data.launch_smc[l_ind],
                                    '',
                                    rocket_data.launch_time[l_ind],
+                                   '',
                                    )
 
                 ########################################################################
@@ -320,6 +321,7 @@ class OutputEmis:
                                    rocket_data.reentry_smc[r_ind],
                                    rocket_data.reentry_category[r_ind],
                                    rocket_data.reentry_time[r_ind],
+                                   rocket_data.reentry_location[r_ind]
                                    )
                 
                 daily_events_data = {"launches": daily_launches,
@@ -611,11 +613,10 @@ class OutputEmis:
         
         return total_vertical_propellant        
                   
-    def grid_emis(self,index,lon,lat,hour,emis_type,event_id,name,smc,category,time):
+    def grid_emis(self,index,lon,lat,hour,emis_type,event_id,name,smc,category,time,location):
         """Grid the data onto the GEOS-Chem horizontal and vertical grid"""
         
-        daily_info = []
-                
+        daily_info = []                
         #Loop over each launch/reentry.
         for w in range(len(lon)):
             
@@ -989,7 +990,6 @@ class OutputEmis:
             #########################################################
             
             if emis_type=='reentry':
-                
                 reentry_details = {
                     "date": f"{self.year}-{self.strmon}-{self.strday}",
                     "id": event_id[w],
@@ -1000,6 +1000,7 @@ class OutputEmis:
                     "lat": lat[w],
                     "lon": lon[w],
                     "smc": bool(smc[w]),
+                    "location": int(location[w])
                 }
                 
                 if event_id[w][:8] in ["2021-F09","2022-065"] and category[w] == "S1":
@@ -1025,23 +1026,24 @@ class OutputEmis:
                         
                     # Calculate the total mass surviving re-entry in kg
                     if rocket_data.reentry_abl_deg[index[w]] != 0:
-                        self.mass_survive += ((rocket_data.reentry_abl_mass[index[w]] + rocket_data.reentry_other_mass[index[w]]) * (1-rocket_data.reentry_abl_deg[index[w]]))
+                        self.mass_survive = ((rocket_data.reentry_abl_mass[index[w]]* (1-rocket_data.reentry_abl_deg[index[w]])) + rocket_data.reentry_other_mass[index[w]]) * 1e-6
                      
                     # For consistency with launch emissions, the totals are kept in g units. 
                                
                     t_nox_reentry = (rocket_data.reentry_abl_mass[index[w]] + rocket_data.reentry_other_mass[index[w]]) * reentry_ei_nox * 1000
                     self.nox_reentry_total += t_nox_reentry
-                    self.rocket_reentry_nox[time_index,self.bot_reenter:self.top_reenter+1,q,p] += t_nox_reentry / self.n_reenter_levs * 1e-3 / kg_to_kgm2s
+                    self.rocket_reentry_nox[time_index,self.bot_reenter:self.top_reenter+1,q,p] += t_nox_reentry / self.n_reenter_levs * 1e-9 
                     
                     t_al2o3_reentry = rocket_data.reentry_abl_mass[index[w]] * reentry_ei_al2o3 * 1000
                     self.al2o3_reentry_total += t_al2o3_reentry
-                    self.rocket_reentry_al[time_index,self.bot_reenter:self.top_reenter+1,q,p] += t_al2o3_reentry / self.n_reenter_levs * 1e-3 / kg_to_kgm2s
+                    self.rocket_reentry_al[time_index,self.bot_reenter:self.top_reenter+1,q,p] += t_al2o3_reentry / self.n_reenter_levs * 1e-9
                 
                     total_vertical_propellant[self.bot_reenter:self.top_reenter+1,3]   += np.full((self.n_reenter_levs),t_nox_reentry/self.n_reenter_levs)
                     total_vertical_propellant[self.bot_reenter:self.top_reenter+1,5]   += np.full((self.n_reenter_levs),t_al2o3_reentry/self.n_reenter_levs)
                 
                 reentry_details["emissions"] = {"NOx": np.sum(self.rocket_reentry_nox),
                                                 "Al2O3": np.sum(self.rocket_reentry_al),
+                                                "Unablated_Mass": np.sum(self.mass_survive),
                              }   
                 
                 daily_info.append(reentry_details) 
