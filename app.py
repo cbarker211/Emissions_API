@@ -8,37 +8,8 @@ CORS(app)  # Allow all origins to access this API
 
 with open('./out_files/data.json', 'r') as json_file:
    events_data = json.load(json_file)
-            
-#events_data = {
-#    "2024-12-01": {
-#        "launches": [
-#            {"id": "2020-001", "site": "Site1", "rocket": "Falcon 9", "lat": 34.0522, "lon": -118.2437, "emissions": {"CO2": 100, "BC": 10}, "smc": "True"},
-#            {"id": "2020-002", "site": "Site2", "rocket": "Delta IV", "lat": 51.5074, "lon": -0.1278, "emissions": {"CO2": 120, "BC": 12}, "smc": "False"}
-#        ],
-#        "reentries": [
-#            {"id": "2020-001", "site": "Site1", "reusability": "Reusable", "lat": 24.0522, "lon": 30.2437,"emissions": {"Al2O3": 100, "NOx": 10, "Mass": 40},
-#             "smc": "True", "name": "Starlink 0001", "category": "Payload"},
-#             {"id": "2020-003", "site": "Site2", "reusability": "Discarded (known)", "lat": -50.0522, "lon": 60.2437,"emissions": {"Al2O3": 40, "NOx": 20, "Mass": 60},
-#             "smc": "False", "name": "Soyuz S1", "category": "S1"},
-#        ]
-#    },
-#    "2024-12-02": {
-#        "launches": [
-#            {"id": "2020-003", "site": "Site3", "rocket": "Soyuz", "lat": 64.0522, "lon": -15.2437, "emissions": {"CO2": 100, "BC": 10}, "smc": "False"},
-#            {"id": "2020-004", "site": "Site4", "rocket": "Electron", "lat": 11.5074, "lon": 30.1278, "emissions": {"CO2": 120, "BC": 12}, "smc": "True"}
-#        ],
-#        "reentries": []
-#    },
-#    "2024-12-03": {
-#        "launches": [
-#            {"id": "2020-005", "site": "Site5", "rocket": "Kuaizhou-1", "lat": 34.0522, "lon": -40.2437, "emissions": {"CO2": 100, "BC": 10}, "smc": "False"},
-#        ],
-#        "reentries": [
-#            {"id": "2020-007", "site": "Site3", "reusability": "Discarded (approx.)", "lat": 10.0522, "lon": 20.2437,"emissions": {"Al2O3": 50, "NOx": 80, "Mass": 10},
-#             "smc": "True", "name": "Starlink Deployment Rail", "category": "Component"},
-#        ]
-#    }
-#}
+
+print(events_data.items())
 
 @app.route('/api/launches', methods=['GET'])
 def get_launches():
