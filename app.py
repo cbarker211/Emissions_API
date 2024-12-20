@@ -1,14 +1,4 @@
 import json
-
-with open('./out_files/data_2020.json', 'r') as json_file:
-   events_data = json.load(json_file)
-with open('./out_files/data_2021.json', 'r') as json_file:
-   events_data = events_data | json.load(json_file)
-with open('./out_files/data_2022.json', 'r') as json_file:
-   events_data = events_data | json.load(json_file)
-
-print(events_data.items())
-
 from flask import Flask, jsonify, request
 from flask_cors import CORS
 from datetime import datetime
@@ -16,7 +6,12 @@ from datetime import datetime
 app = Flask(__name__)
 CORS(app)  # Allow all origins to access this API
 
-
+with open('./out_files/data_2020.json', 'r') as json_file:
+   events_data = json.load(json_file)
+with open('./out_files/data_2021.json', 'r') as json_file:
+   events_data = events_data | json.load(json_file)
+with open('./out_files/data_2022.json', 'r') as json_file:
+   events_data = events_data | json.load(json_file)
 
 @app.route('/api/launches', methods=['GET'])
 def get_launches():

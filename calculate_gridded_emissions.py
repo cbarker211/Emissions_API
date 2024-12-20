@@ -248,7 +248,10 @@ class OutputEmis:
             elif m in [3,5,8,10]:
                 ndays = 30
             elif m == 1:
-                ndays = 29
+                if self.year == 2020:
+                    ndays = 29
+                else:
+                    ndays = 28    
             else:
                 sys.exit("Invalid month selected.")
 
