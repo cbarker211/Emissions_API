@@ -1,0 +1,413 @@
+#######################
+# Failed Launches
+#######################                                        
+
+2020
+
+    F01 - 09/02/2020 Simorgh (Iran)
+        First stage operated for 475s correctly, but second stage failed to deploy payload succesfully...
+        Satellite reached 540 km apogee but only reached 6,400 m/s, just short of 7,400 m/s orbital velocity...
+        Including first and second stage emissions as normal.
+        Including S3 in missing emissions.
+        F01. Simorgh payload didn't reach orbit, failed during second or third flight.
+        Adding reentries from payload and all stages (dry mass).
+        Zafar 1 mass
+            https://iranpress.com/content/18407/isa-head-satellite-imagery-from-orbit-530km-primary-mission-zafar-satellite
+            https://space.skyrocket.de/doc_sdat/zafar.htm
+            https://spaceflightnow.com/2020/02/10/iran-fails-in-satellite-launch-attempt/
+            https://www.rferl.org/a/iran-says-satellite-launch-imminent-in-next-few-hours-/30424791.html
+
+    F02 - 16/03/2020 Long March 7A (China) - 3 stages, 4 boosters
+        https://web.archive.org/web/20220411235209/http://www.spacelaunchreport.com/cz5.html
+            A video posted online later showed a possible failure during the early moments of the second stage burn...
+        https://en.wikipedia.org/wiki/List_of_Long_March_launches_(2020%E2%80%932029)#2020
+            Vehicle disintegrated at first stage separation due to booster LOX pressurization failure leading to engine shutdown and loss of control...
+        https://www.nasaspaceflight.com/2020/03/long-march-7a-fails-xinjishu-yanzheng-6/ 
+            The problem seems to have surfaced when the 3rd stage was to operate...
+        Including booster and first stage emissions as normal.
+        Not including S2 or S3 in missing emissions.
+        Payload is secretive, so likely military with no official mass information. Some info available online, taking average:
+            https://everydayastronaut.com/xjy-6-02-long-march-7a-2/ 6300 kg
+            https://nextspaceflight.com/launches/details/2895       6800 kg
+        F02. Long March 7A (4 boosters plus first, second, third stage) failed near to start of second stage burn.
+        Adding payload reentries, dry mass reentry for first stage and boosters, and wet mass reentry for second and third stage.
+
+    F03 - 09/04/2020 Long March 3B/E (China) - 8 launches in 2020, this is the only failure.
+        https://www.nasaspaceflight.com/2020/04/long-march-3b-launches-indonesian-satellite/
+            Reportedly failed during third stage flight ... Reports from China noting an issue with the Long March’s third stage... 
+        https://web.archive.org/web/20220411235210/http://www.spacelaunchreport.com/log2020.html
+            Failure during first Stage 3 burn.           
+        https://en.wikipedia.org/wiki/List_of_Long_March_launches_(2020%E2%80%932029)#2020
+            Third stage engine failed to ignite.
+        Including booster, first and second stage emissions as normal.
+        Not including S3 in missing emissions.
+        F03. Long March 3B/E (4 boosters plus first, second, third stage) failed at third stage.
+        Adding payload reentries, dry mass reentry for first and second stage and boosters, and wet mass reentry for third stage.
+        Palapa-N1 mass
+            https://space.skyrocket.de/doc_sdat/palapa-n1.htm
+            https://www.nasaspaceflight.com/2020/04/long-march-3b-launches-indonesian-satellite/
+
+    F04 - 25/05/2020 LauncherOne
+        https://en.wikipedia.org/wiki/LauncherOne#Launch_outcomes
+            Launch failure after successful release and ignition of the NewtonThree engines on the first stage. A high-pressure propellant line broke causing liquid oxygen to stop flowing into the engine.
+        https://spacenews.com/virgin-orbit-identifies-cause-of-engine-shutdown-on-first-launcherone-flight/
+            Went well until several seconds after the ignition of the NewtonThree engine that powers the rocket’s first stage...
+        https://spaceflightnow.com/2020/07/25/virgin-orbit-traces-cause-of-launcherone-test-flight-mishap-to-propellant-line/
+        https://web.archive.org/web/20220411235210/http://www.spacelaunchreport.com/log2020.html
+            Failed shortly after Stg 1 ignition after drop from Cosmic Girl SW of Long Beach, CA. Launch Demo planned to LEO including two Stg 2 burns.
+        So stage 1 only worked for several seconds. Ignoring.
+        F04. LauncherOne (2 stages, air launched) failed after a few seconds of 1st stage burn. This occured at ~ 10.7km (https://web.archive.org/web/20220406013823/http://www.spacelaunchreport.com/launcherone.html)
+        Therefore we can safely ignore as it did not reach an altitude where reentry is possible.
+
+    F05 - 04/07/2020 Electron (Curie)
+        https://web.archive.org/web/20220411235210/http://www.spacelaunchreport.com/log2020.html
+            Second stage failure.     
+        https://www.rocketlabusa.com/updates/rocket-lab-mission-fails-to-reach-orbit/
+            Following a successful lift-off, first stage burn, and stage separation, Rocket Lab experienced an anomaly...
+        Including first stage emissions as normal.
+        Not including S2 or S3 in missing emissions.
+        F05. Electron (Curie) (3 stages) failed at second stage.
+        Adding payload reentries, dry mass reentry for first stage and wet mass reentry for second and third stage.
+        Payload masses:
+                https://spacenews.com/rocket-lab-electron-launch-fails/                                         67  / N/A / N/A kg
+                https://spaceflightnow.com/2020/07/04/rocket-lab-satellite-launch-fails-before-reaching-orbit/  67  / N/A / N/A kg
+                https://pubs.usgs.gov/of/2021/1030/f/ofr20211030f.pdf                                           N/A / 5.8 /     kg
+                GCAT lists the re-flight of the same satellite (which hosts other payloads itself) as 10 kg.     N/A / N/A / 10  kg
+
+    F06 - 10/07/2020 Kuaizhou-11
+        https://web.archive.org/web/20220411235210/http://www.spacelaunchreport.com/log2020.html
+            Inaugural launch failure, sometime after Stg 2 separation. 
+        https://spaceflightnow.com/2020/07/10/new-chinese-satellite-launcher-fails-on-first-flight/
+            The Kuaizhou 11 appeared to fly normally through the burn of its first stage motor.
+        https://web.archive.org/web/20220406013817/http://www.spacelaunchreport.com/kz11.html
+            The first minutes of flight look nominal through second stage separation, but an unknown failure occurred before orbit could be attained.
+        https://space.skyrocket.de/doc_lau/kuaizhou-11.htm
+            stage 3 failed to ignite
+        Including first and second stage emissions as normal.
+        Not including S3 in missing emissions.
+        F06. Kuaizhou-11 (3 stages) failed at third stage.
+        Adding payload reentries, dry mass reentry for first and second stage and wet mass reentry for third stage.
+        Payloads:
+            https://spaceflightnow.com/2020/07/10/new-chinese-satellite-launcher-fails-on-first-flight/ 172 / ~100 kg
+            https://web.archive.org/web/20220406013817/http://www.spacelaunchreport.com/kz11.html       230 / 97   kg
+            https://space.skyrocket.de/doc_sdat/centispace-1.htm                                        N/A / 97   kg
+
+    F07 - 12/09/2020 Astra Rocket 3
+        https://web.archive.org/web/20220411235210/http://www.spacelaunchreport.com/log2020.html
+            Oscillations caused abort cutoff after about 22 seconds. Fell to Earth not far from launch site.
+        https://web.archive.org/web/20220411235206/http://www.spacelaunchreport.com/astra.html
+            The rocket rose for slightly more than 20 seconds before, "a commanded shutdown of the engines by the flight safety system".
+        https://en.wikipedia.org/wiki/List_of_Astra_rocket_launches
+            30 seconds after lift off engines were shut down by the range safety officer.
+        Propellant for Astra is already approximated using Electron (Curie). For Electron, altitude is ~ 0.9 km at 22s (https://www.youtube.com/watch?v=af-PplDIkbc, https://www.youtube.com/watch?v=VRfm6RGVHf8)
+        So will only output emissions up to 0.9 km.
+        Not including S1 or S2 in missing emissions.
+        F07. Astra Rocket 3 (2 stages) shut off after 20s, fell to Earth near landing site. Ignoring.
+
+    F08 - 12/09/2020 Kuaizhou-1A
+        https://web.archive.org/web/20220411235210/http://www.spacelaunchreport.com/log2020.html
+            Possible upper stage failure.
+        https://web.archive.org/web/20220406013827/http://www.spacelaunchreport.com/kz.html
+            Possible liquid upper stage failure.
+        https://spaceflightnow.com/2020/09/12/chinese-smallsat-launcher-fails/
+            Xinhua said the launch vehicle “failed to enter the preset orbit” after “abnormal performance was identified during the rocket’s flight.”
+        https://space.skyrocket.de/doc_lau/kuaizhou-1.htm
+            Stage 4 failure
+        Failure occured in upper stage, so can include the emissions as normal.
+        Not including S4 emissions in missing emissions.
+        F08. Kuaizhou-1A (4 stages) failed at upper stage.
+        Adding payload reentries, dry mass reentry for first, second and third stage and wet mass reentry for fourth stage.
+        Jilin-1 Gaofen-02C Mass:
+            https://web.archive.org/web/20220406013741/http://www.spacelaunchreport.com/kz.html  230 kg
+            https://www.nasaspaceflight.com/2019/11/kuaizhou-1a-launches-jilin-1-gaofen-2a/ (2A) 230 kg
+            https://space.skyrocket.de/doc_sdat/jilin-1-kuanfu-02.htm                       (2A) 230 kg 
+
+    F09 - 17/11/2020 Vega
+        https://web.archive.org/web/20220411235210/http://www.spacelaunchreport.com/log2020.html
+            AVUM fourth stage tumbled out of control at first ignition.  Two TVC cables inverted.
+        https://en.wikipedia.org/wiki/List_of_Vega_launches
+            After ignition of the AVUM upper stage, a trajectory deviation caused failure.
+        https://space.skyrocket.de/doc_lau_fam/vega.htm
+            AVUM stage TVC cabeling error
+        Failure occured in upper stage, so can include the emissions as normal.
+        Not including S4 emissions in missing emissions.
+        U01 in GCAT.
+        F09. Vega (4 stages) failed at upper stage.
+        Adding payload reentries, dry mass reentry for first, second and third stage and wet mass reentry for fourth stage.
+        https://www.arianespace.com/wp-content/uploads/2020/11/VV17-launchkit-EN2.pdf 
+        https://spaceflightnow.com/2020/11/17/arianespace-traces-cause-of-vega-launch-failure-to-human-error/ 
+        https://spaceflightnow.com/2020/11/17/european-vega-rocket-suffers-second-failure-in-three-launches/ 
+        https://web.archive.org/web/20220406013740/http://www.spacelaunchreport.com/vega.html
+        
+    F10 - 15/12/2020 Astra Rocket 3
+        https://en.wikipedia.org/wiki/List_of_Astra_rocket_launches
+            First Astra rocket to pass the Kármán Line and reach its target orbital altitude of 390 kilometers. 
+            Narrowly failed to reach stable orbit due to issues with the upper stage propellant mixture ratio.
+        https://web.archive.org/web/20220411235210/http://www.spacelaunchreport.com/log2020.html
+            Second stage cutoff 15-20 seconds short of orbit.
+        https://web.archive.org/web/20220411235206/http://www.spacelaunchreport.com/astra.html
+            First stage, staging and second stage ignition succeeded.  Stage 2 depleted propellant 15-20 seconds early, falling short of orbit.
+        In this case, the early SECO would have likely been well above GC, so can treat as normal.
+        Including all stages in missing emissions.
+        F10. Astra Rocket 3 (2 stages), stage 2 depleted propellant 15-20 seconds early, falling short of orbit. No payloads.
+        Adding dry mass reentry for first and second stage.
+        
+    F11 - 03/12/2020 Chang'e 5 SSQ (Ascent Stage)
+        Moon launch, don't need to include.
+
+2021
+
+    F01 - 01/02/2021 Shuang Quxian-1 (4S solid rocket)
+		GSP - Failed to reach orbit.
+		SLR - Foam insulation, designed to fall away after liftoff, struck and retarded one of 
+			the four steering grid fins located at the base of the first stage. The foam 
+			piece later fell away, causing the grid fin to move suddenly, which caused the 
+			rocket to veer away from its desired angle of attack.
+		Wiki- Rocket disintegrated shortly after passing max q. 
+		Max q is 11km for Proton-M (https://www.ilslaunch.com/wp-content/uploads/pdf/Proton-Mission-Planners-Guide-Revision-7-LKEB-9812-1990.pdf)
+				10.4km for Minotaur-IV (https://www.mach5lowdown.com/wp-content/uploads/PUG/minotaurIV_VUsersGuide.pdf)
+		So only adding S1 emissions up to 11km.
+		Not including any missing emissions.
+		Not including any reentries.
+
+    F02 - 15/05/2021 Electron (Curie)
+		Wiki -Second ocean splashdown recovery mission for the first stage. 
+			  An anomaly occurred at second stage ignition, causing the vehicle to spin out of control. 
+			  The first stage successfully splashed down using parachutes in the Pacific Ocean. 
+			  Second stage engine shut down early causing the mission to be lost, ...
+			  The investigation revealed that the second stage igniter fault induced an interference with the engine controller 
+			  that caused the data signal corruption for the thrust vector control (TVC) system, straying the vehicle off course.
+		SLR - The second stage tumbled and its 5,800 lbf Rutherford Vacuum engine shut down moments after it separated from the first stage, ...
+		So ignoring second stage emissions, not adding to missing emissions.
+		Adding payload reentries, dry mass reentry for first stage and wet mass reentry for second and third stages.
+		Payload Mass:
+			50 - GCAT
+			55 - https://spaceflightnow.com/2021/05/15/two-blacksky-satellites-lost-on-rocket-lab-launch-failure/
+			60 - https://web.archive.org/web/20220406013827/http://www.spacelaunchreport.com/electron.html
+			60 - Electron Media Press Kit
+
+    F03 - 12/06/2021 Simorgh
+		Launch existance is disputed with no details.
+		https://www.seradata.com/irans-simorgh-has-apparent-unsuccessful-launch-with-three-small-satellite-payloads-not-quite-put-into-orbit/
+		https://www.nasaspaceflight.com/2021/12/iran-simorgh-three-payloads/#:~:text=In%20June%20this%20year%2C%20a,from%20Iran%20on%2012%20June.
+		"However, Western analysts noted that the velocity was about 0.25 km/s 
+		less than required to achieve orbit, suggesting an underperformance of the third stage"
+		No specific details, but we can assume that the first two stages performed normally and the third 'underperformed'.
+		Treating normally for launch emissions.
+		Adding payload reentries, dry mass reentry for all three stages.
+		Payload Mass:
+			90 - GCAT
+            "assumed to be small satellites" - https://www.seradata.com/irans-simorgh-has-apparent-unsuccessful-launch-with-three-small-satellite-payloads-not-quite-put-into-orbit/
+
+    F04 - 23/06/2021 Simorgh.
+        Launch existance also disputed or cancelled?? Ignoring.
+
+    F05 - 03/08/21 Shuang Quxian-1
+        GSP - Failed to reach orbit.               
+        Wiki- the launch was unsuccessful due to off-nominal performance of the rocket which resulted in a failure to achieve orbit.
+                An official statement released by the company itself the following day clarified that the failure was caused by a 
+                malfunctioning in the fairing separation process, that precluded the payload from reaching the target orbit.
+                Rocket failed to achieve correct orbit insertion after a malfunctioning in fairing separation
+        SLR - Although all four solid motor stages and liquid attitude control systems fired correctly, 
+                the payload fairing failed to separate normally, preventing the achievement of orbital velocity.
+                The rocket's payload was not identified.
+        Treating as normal.
+        Adding payload reentries, dry mass reentry for all four stages.
+        Payload mass:
+            "The rocket's payload was not identified." - https://web.archive.org/web/20220406013821/http://www.spacelaunchreport.com/sqx.html
+            18 - GCAT
+            18 - https://new.qq.com/rain/a/20210529A03LLU00
+
+    
+    F06 12/08/21 GSLV Mk II
+        ISRO - Performance of first and second stages was normal. However, Cryogenic Upper Stage ignition did not happen due to technical anomaly.
+        Wiki - Launch failed due to third stage ignition failure.
+                The third stage failed to ignite, leading to the loss of the mission. 
+                The cause of failure was found to be a 50 millibar drop in pressure in the Liquid Hydrogen tank of the Cryogenic Upper Stage (CUS)
+        SLR -  CUS-15 upper stage failed to ignite for first burn, failed to orbit.
+        Adding Booster, S1 and S2 as normal. Not including S3 in missing emissions.
+        Adding payload reentries, dry mass reentry for boosters and first and second stages. Wet mass reentry for third stage.
+        Payload Mass:
+            1000 - GCAT
+            2286 - https://www.nasaspaceflight.com/2021/08/eos-03-launch/
+
+    
+    F07 28/08/2021 Astra Rocket 3
+        Wiki - Terminated at an altitude of approximately 50 km (31 mi) due to an engine failure at liftoff, which precluded the possibility of reaching orbit.
+                Following an "unexpected sideways ascent off the pad" due to a single engine failure on the first stage less than one second after liftoff, 
+                the rocket's engines were commanded to shut off by range safety at 2 minutes and 28 seconds into the flight. 
+                The flight was subsequently terminated, but reached an altitude of 50 km (31 mi) before crashing into the ocean downrange.
+                A fueling system propellant leak was determined as the root cause of the engine outage.
+        SLR  - One first stage engine shut down at liftoff.  Possible launcher hang-up.  
+                Vehicle flew for 2.5 minutes until flight terminated by commanded MECO.
+        Media- LV0006 temporarily recovered and reached approximately 50 km altitude before the range commanded the remaining engines to shut down, ending the mission.
+                (https://www.nasaspaceflight.com/2021/08/astra-third-orbital-attempt-lv0006/)
+        Video (https://astra.com/missions/lv0006/) shows 1st stage shutdown at 31 km.
+        Adding S1 emissions up to 31km, not including S2 or adding S1/2 emissions to missing emissions.
+        GCAT lists apogee for fairings/S1 as 100km, and payload/S2 as 47km, but surely they should all be the same? 
+        If MECO was at 31km, assume no reentry as altitude not > 50km.
+            
+    F08 03/09/2021 Firefly Alpha
+        Wiki - Failure occurred about two minutes after liftoff.
+                ... one of the first stage engines failed during ascent.
+                Due to an engine failure caused by a sensor cable disconnect approximately 15 seconds after the launch,
+                the rocket lost control at transonic speeds approximately two and a half minutes after launch that 
+                resulted in manual activation of the flight termination system and loss of the vehicle.
+        NSF  - ... blowing up during first stage flight. (https://www.nasaspaceflight.com/2021/09/firefly-maiden-flight-alpha/)
+        SN   - ... until 2 minutes and 20 seconds after liftoff, about 10 seconds before the vehicle exploded. (https://spacenews.com/firefly-alpha-explodes-during-first-launch/)
+        Firefly - During the two minutes and twenty-five seconds of flight, ...
+        According to manual, MECO occurs at 2:37, so only 12 seconds after the explosion.
+        As there was an explosion, lets include S1 as normal, and ignore S2.
+        GCAT lists apogee as 15km for all items, but MECO for Alpha is 69km. Lets stick with GCAT and ignore all re-entries.
+
+    F09 21/10/2021 Nuri
+        Wiki - The third stage shut down 46 seconds prematurely, resulting in the vehicle falling short of orbital velocity. 
+        SLR -  Stage 3, powered by a single 7 tonne thrust engine, then ignited for its planned 521 second burn. 
+                For reasons yet to be determined, the stage only fired for 475 seconds according to some reports.
+        NSF -  the third stage did not fire for its complete burn time, resulting in both the stage and mass simulator falling short of orbit.
+                (https://www.nasaspaceflight.com/2021/10/kslv-nuri-maiden-launch/)
+        So S3 fired for 91.17% of its planned burn.
+        Including S1 and S2 as normal, and including 92% of S3 in missing emissions.
+        Adding payload reentries, dry mass reentry for first and second stages. Wet mass reentry for third stage (8% prop).
+        Payload Mass:
+            1500 - GCAT
+            1500 - https://www.nasaspaceflight.com/2021/10/kslv-nuri-maiden-launch/
+            1500 - https://spacenews.com/south-koreas-1st-homegrown-space-rocket-reaches-space-but-fails-to-orbit-dummy-payload/
+            1500 - https://web.archive.org/web/20220406013830/http://www.spacelaunchreport.com/kslv2.html
+
+    F10 15/12/2021 Kuaizhou-1
+        Media - failed during the third-stage burn (https://www.seradata.com/chinese-small-kuaizhou-1a-has-launch-failure-losing-two-geesat-comsats/)
+        No futher details.
+        Including S1 and S2 as normal, not including S3 in missing emissions.
+        Adding payload reentries, dry mass reentry for first and second stages. Wet mass reentry for third and fourth stage.
+        Payload Mass:
+            130  - GCAT
+            <300 - https://everydayastronaut.com/geesat-x2-kuaizhou-1a/
+            130  - https://space.skyrocket.de/doc_sdat/geesat-1.htm
+
+    F11 30/12/2021 Simorgh
+        Wiki - Iranian state media reported a successful flight, but no objects were detected in orbit following this launch.
+                Simorgh operated for about 600 seconds (500 seconds for the second stage). 
+                Devices didn't enter orbit; reached an altitude of 470 km and a speed of 7,350 m/s, out of the 7,600 m/s required.
+        SLR  - Reached 470 km and 7,350 meters per second, about 300 meters per second short of orbital velocity.  
+                Iran claimed all objectives achieved, but outside analysts believe it was a failed orbital try.
+        Media- For a payload to enter orbit, it needs to reach speeds above 7,600 (metres per second). We reached 7,350. 
+                (https://www.reuters.com/lifestyle/science/iran-space-launch-fails-put-payloads-into-orbit-official-says-2021-12-31/)
+        Including as normal.
+        Adding payload reentries, dry mass reentry for all three stages.
+        Payload Mass:
+            90 - GCAT
+             
+2022
+
+    F01 10/02/2022 Astra Rocket 3
+        Wiki - An anomaly occurred around second stage ignition, resulting in a loss of mission; the failure was later found to have 
+                been caused by a wiring error in the separation mechanism and a software flaw in the thrust vector system.
+                ... experienced an in-flight anomaly on the ELaNA-41 mission for NASA, during stage separation. 
+                After two previous scrubbed launch attempts, ignition and launch of LV0008 occurred nominally. 
+                Shortly after main engine cutoff (MECO), an electrical issue caused a failed separation of the payload fairing, 
+                with 2 of the 5 separation mechanisms firing incorrectly. Another error spotted in an investigation carried out 
+                by Astra was that the thrust vector control (TVC) system on the upper stage engine failed, which caused an uncontrolled spin.
+        SLR  - PLF failed to separate.  Stg 2 started and entered spin after impacting PLF.  FTO.   
+        NSF  - An anomaly occurred near the time of stage separation which prevented the payload from being successfully deployed. (https://www.nasaspaceflight.com/2022/02/astra-cape-canaveral-elana-41/) 
+        Astra- (https://astra.com/news/post-launch-investigation-what-we-found-and-next-steps/)
+        It sounds like the fairing didn't separate, so when S2 ignited it started tumbling. Not clear whether S2 still continued to burn or not.
+        Going to include S1 as normal, and ignore S2 emissions and not include S2 in missing emissions.
+        Adding payload reentries, dry mass reentry for first stage and wet mass reentry for second stage.
+        Payload Mass:
+            30 (Total) - https://spacenews.com/three-companies-win-nasa-small-launch-contracts/
+            3.8 (INCA) - https://www.nasaspaceflight.com/2022/02/astra-cape-canaveral-elana-41/
+            3.8 (INCA) - https://space.skyrocket.de/doc_sdat/inca.htm
+            4,4,4,1 (BAMA-1,INCA,QubeSat,R5-S1) - GCAT
+            No additional info so using GCAT.
+
+    F02 13/05/2022 Shuang Quxian-1   
+        SLR - While official reports as of publication do not mention a reason for the failure, 
+        it is understood that shortly after stage separation, the second stage failed to ignite.
+        Including S1 as normal, ignoring S2 emissions and not including S2/S3/S4 in missing emissions.
+        Adding payload reentries, dry mass reentry for first stage and wet mass reentry for second, third and fourth stages.
+        Payload Mass:
+            18 - GCAT
+            18 - https://space.skyrocket.de/doc_sdat/jilin-1-mofang-01a.htm
+            18 - https://new.qq.com/rain/a/20210529A03LLU00
+            18 - https://everydayastronaut.com/hyperbola-1-jilin-1-mofang-01ar-2/
+
+    F03 12/06/2022 Astra Rocket 3
+        Wiki - LV0010 suffered an early second-stage engine cutoff and failed to deliver the payload to orbit.
+        SN   - The upper stage engine ignited for a burn intended to last 5 minutes and 15 seconds, ... 
+                however, about four minutes into that burn... the vehicle appeared to tumble
+                (https://spacenews.com/astra-launch-of-nasa-tropics-cubesats-fails/)
+        So S2 fired for 76% of its planned burn.
+        Including S1 and S2 as normal in GC, and only including 76%-prop already consumed of S2 in missing emissions.
+        Adding payload reentries, dry mass reentry for first stage and wet mass rentry for second stage (24% prop).
+        Payload Mass:
+            4    (Each) - GCAT
+            5.34 (Each) - https://tropics.ll.mit.edu/CMS/tropics/The-MicroMAS-2-Cubesat
+
+    F04 08/08/2022 SSLV
+        SFN - The rocket appeared to function as designed for the first 10 minutes of the mission. The SSLV’s three main solid-fueled stages fired one after the other...
+                (https://spaceflightnow.com/2022/08/07/indias-new-small-satellite-launcher-fails-to-put-satellites-into-correct-orbit/)
+                the VTM was supposed to fire for about 20 seconds on the SSLV test flight, known as the SSLV-D1 mission, ...
+                data displayed on a screen in the Indian launch control center indicated the VTM only fired for one-tenth of a second. 
+        Including as normal in GC, not including S4 in missing emissions.
+        Adding payload reentries, dry mass reentry for first three stages and wet mass reentry for fourth stage.
+        Payload Mass:
+            130,8    (EOS-02,AzaadiSAT) - GCAT
+            135,7.3  (EOS-02,AzaadiSAT) - https://spaceflightnow.com/2022/08/07/indias-new-small-satellite-launcher-fails-to-put-satellites-into-correct-orbit/
+            145,8    (EOS-02,AzaadiSAT) - https://web.archive.org/web/20220803133923/https://www.isro.gov.in/sites/default/files/sslvd1-eos2_-_mission_brochure.pdf
+            135,8    (EOS-02,AzaadiSAT) - https://space.skyrocket.de/doc_lau/sslv.htm  
+        Using official ISRO mass.         
+
+    F05 12/10/2022 Epsilon-2 CLPS
+        Wiki - Vehicle was destroyed by flight termination system shortly after second stage cutoff due to an attitude control fault.
+        NSF  - Live coverage by JAXA of the launch showed what appeared to be a stage 3 ignition failure. (https://www.nasaspaceflight.com/2022/10/epsilon-raise-3/)
+        Including S1 and S2 emissions as normal, not including S3 or S4 in missing emissions.
+        Adding payload reentries, dry mass reentry for first two stages and wet mass reentry for third and fourth stage.
+        Payload Masses:
+            ESMS:
+                200 - GCAT Guess for the mass of the ESMS structure, component not payload.
+            RAISE-3
+                110 - GCAT
+                110 - https://www.kenkai.jaxa.jp/kakushin/kakushin03.html#about
+                110 - https://www.nasaspaceflight.com/2022/10/epsilon-raise-3/
+            MAGNARO/MITSUBA/KOSEN-2/WASEDA_SAT_ZERO/FSI-SAT
+                4.4(two)/1.7/2.7/1.2/1.4 - https://www.kenkai.jaxa.jp/library/pamphlets/pdf/kakushin_presskit_3.pdf
+                3 or 1.5/1.7/2.7/1.2/1.4 - GCAT
+            Amateru
+                150 (Each) - GCAT
+                170 (Each) - https://spaceflightnow.com/2022/10/18/failure-of-japans-epsilon-rocket-blamed-on-attitude-control-system/
+                ~100       - https://space.skyrocket.de/doc_sdat/qps-sar-3.htm 
+                170 (Each) - https://prtimes.jp/main/html/rd/p/000000024.000049970.html
+            E-SSOD
+                10 (Each) - GCAT We have no other info so have to use GCAT.
+            KOYOH/PETREL/STARS-X launched later.
+
+
+    F06 14/12/2022 Zhuque-2
+        Wiki - Launch failure caused by an earlier-than-intended shutdown of the vernier engines of the second stage, preventing it from reaching orbital velocity.
+        NSF  - In images that spread from the mission control, it was observable that the rocket performed until about five minutes into the flight. 
+                At 5 km/s the second stage most likely suffered an issue during a shutdown and failed to accelerate the mission to orbital velocity. 
+                At this point in flight, the main engine of the second stage should have shut down, while the four vernier engines would have continued for the final part of the burn.
+                it appeared that the vernier engines did perform nominal until the second stage cutoff, one of these shared parts might have failed at SECO, causing an early shutdown of the verniers.
+                (https://www.nasaspaceflight.com/2022/12/zhuque2-debut/)
+        Can definitely include as normal in GC, but clearly there was an early S2 shutdown of the 'vernier' engines. However, as 'SECO' was achieved, lets just include the emissions as normal.
+        Adding payload reentries, dry mass reentry for first two stages.
+        Payload Mass:
+           50/10 (Zhixing/Unknown) - GCAT 
+           No info elsewhere so using GCAT.
+
+    F07 21/12/2022 Vega C
+        Wiki - The Zefiro 40 second stage deviated from its intended trajectory following a loss of pressure, resulting in reentry about 917 km (570 mi) north of the launch site over the Atlantic.
+        Space- "Approximately 2 minutes and 27 seconds after liftoff an anomaly occurred on the Zefiro 40, thus ending the Vega C mission," (https://www.space.com/arianespace-vega-c-launch-failure-december-2022)
+        SFN  - The chamber pressure suddenly dropped at about T+plus 3 minutes, 28 seconds, about two-thirds of the way through the Zefiro 40’s planned burn.
+                Tissier said Wednesday that range safety officials at the Guiana Space Center sent a destruct command to the rocket when it veered off its planned course.
+                (https://spaceflightnow.com/2022/12/21/two-pleiades-neo-earth-imaging-satellites-lost-in-failure-of-europes-vega-c-rocket/)
+        Issue with second stage not providing enough thrust, not clear when engines were shut down. From livestream, seemed to go through whole S2 burn. 
+        Including S1 and S2 as normal in GC, going to ignore S3/S4 in missing emissions. 
+        Adding payload reentries, dry mass reentry for first two stages and wet mass reentry for third and fourth stages.
+        Payload Mass:
+            895  (One)      - GCAT
+            920  (One)      - GCAT
+            1977 (Combined) - https://www.space.com/arianespace-vega-c-launch-failure-december-2022
+            920  (One)      - https://earth.esa.int/eogateway/missions/pleiades-neo/description
+            

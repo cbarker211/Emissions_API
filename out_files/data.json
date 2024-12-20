@@ -1,0 +1,968 @@
+{
+    "2020-01-01": {
+        "launches": [],
+        "reentries": []
+    },
+    "2020-01-02": {
+        "launches": [],
+        "reentries": []
+    },
+    "2020-01-03": {
+        "launches": [],
+        "reentries": []
+    },
+    "2020-01-04": {
+        "launches": [],
+        "reentries": []
+    },
+    "2020-01-05": {
+        "launches": [],
+        "reentries": []
+    },
+    "2020-01-06": {
+        "launches": [],
+        "reentries": [
+            {
+                "date": "2020-01-06",
+                "id": "1977-010A",
+                "time": 0.0,
+                "reusability": "",
+                "name": "Molniya-2",
+                "category": "P",
+                "lat": 57.48,
+                "lon": 54.74,
+                "smc": false,
+                "emissions": {
+                    "NOx": 0.17999999999999997,
+                    "Al2O3": 0.14400000000000002
+                }
+            }
+        ]
+    },
+    "2020-01-07": {
+        "launches": [
+            {
+                "date": "2020-01-07",
+                "id": "2020-001",
+                "time": 2.4,
+                "site": "",
+                "rocket": "Falcon 9 v1.2",
+                "lat": 28.5,
+                "lon": -81.0,
+                "smc": true,
+                "emissions": {
+                    "BC": 3511.4825558886937,
+                    "CO": 17830.504591396297,
+                    "CO2": 448074.03492658713,
+                    "NOx": 2333.693019013942,
+                    "H2O": 179841.13338266453,
+                    "Cly": 0.0,
+                    "Al2O3": 0.0
+                }
+            },
+            {
+                "date": "2020-01-07",
+                "id": "2020-002",
+                "time": 15.36,
+                "site": "",
+                "rocket": "Long March (CZ) 3B",
+                "lat": 28.2,
+                "lon": 102.0,
+                "smc": false,
+                "emissions": {
+                    "BC": 1768.6352446185517,
+                    "CO": 3363.5369485085653,
+                    "CO2": 111548.05433389095,
+                    "NOx": 5700.044621749385,
+                    "H2O": 152169.96006302172,
+                    "Cly": 0.0,
+                    "Al2O3": 0.0
+                }
+            }
+        ],
+        "reentries": [
+            {
+                "date": "2020-01-07",
+                "id": "2019-083",
+                "time": 15.416666666666666,
+                "reusability": "",
+                "name": "Dragon Trunk",
+                "category": "C",
+                "lat": 27.82,
+                "lon": 2.37,
+                "smc": false,
+                "emissions": {
+                    "NOx": 0.22388888888888886,
+                    "Al2O3": 0.1791111111111112
+                }
+            },
+            {
+                "date": "2020-01-07",
+                "id": "2020-001",
+                "time": 4.8,
+                "reusability": "",
+                "name": "Falcon 9-079 Stage 2",
+                "category": "S2",
+                "lat": -53.0,
+                "lon": -126.0,
+                "smc": true,
+                "emissions": {
+                    "NOx": 0.47222222222222227,
+                    "Al2O3": 0.5371527777777777
+                }
+            },
+            {
+                "date": "2020-01-07",
+                "id": "2020-001",
+                "time": 2.4,
+                "reusability": "",
+                "name": "Falcon 9 Stage 1 B1049",
+                "category": "S1",
+                "lat": 32.54722222222222,
+                "lon": -75.92305555555555,
+                "smc": true,
+                "emissions": {
+                    "NOx": 1.2006944444444445,
+                    "Al2O3": 0.0
+                }
+            },
+            {
+                "date": "2020-01-07",
+                "id": "2020-001",
+                "time": 2.4,
+                "reusability": "",
+                "name": "Falcon 9 Fairing F9-079",
+                "category": "C",
+                "lat": 33.1057,
+                "lon": -74.9103,
+                "smc": true,
+                "emissions": {
+                    "NOx": 0.04557291666666667,
+                    "Al2O3": 0.0
+                }
+            },
+            {
+                "date": "2020-01-07",
+                "id": "2020-001",
+                "time": 2.4,
+                "reusability": "",
+                "name": "Falcon 9 Fairing F9-079",
+                "category": "C",
+                "lat": 33.1057,
+                "lon": -74.9103,
+                "smc": true,
+                "emissions": {
+                    "NOx": 0.04557291666666667,
+                    "Al2O3": 0.0
+                }
+            },
+            {
+                "date": "2020-01-07",
+                "id": "2020-002",
+                "time": 15.36,
+                "reusability": "",
+                "name": "CZ Booster",
+                "category": "B1",
+                "lat": -10.58,
+                "lon": 124.44,
+                "smc": false,
+                "emissions": {
+                    "NOx": 0.39444444444444443,
+                    "Al2O3": 0.2070833333333333
+                }
+            },
+            {
+                "date": "2020-01-07",
+                "id": "2020-002",
+                "time": 15.36,
+                "reusability": "",
+                "name": "CZ Booster",
+                "category": "B2",
+                "lat": 1.02,
+                "lon": -125.83,
+                "smc": false,
+                "emissions": {
+                    "NOx": 0.39444444444444443,
+                    "Al2O3": 0.2070833333333333
+                }
+            },
+            {
+                "date": "2020-01-07",
+                "id": "2020-002",
+                "time": 15.36,
+                "reusability": "",
+                "name": "CZ Booster",
+                "category": "B3",
+                "lat": 20.73,
+                "lon": -41.57,
+                "smc": false,
+                "emissions": {
+                    "NOx": 0.39444444444444443,
+                    "Al2O3": 0.2070833333333333
+                }
+            },
+            {
+                "date": "2020-01-07",
+                "id": "2020-002",
+                "time": 15.36,
+                "reusability": "",
+                "name": "CZ Booster",
+                "category": "B4",
+                "lat": -25.84,
+                "lon": -41.01,
+                "smc": false,
+                "emissions": {
+                    "NOx": 0.39444444444444443,
+                    "Al2O3": 0.2070833333333333
+                }
+            },
+            {
+                "date": "2020-01-07",
+                "id": "2020-002",
+                "time": 15.36,
+                "reusability": "",
+                "name": "CZ-3B Stage 1",
+                "category": "S1",
+                "lat": 2.75,
+                "lon": 99.66,
+                "smc": false,
+                "emissions": {
+                    "NOx": 1.2444444444444445,
+                    "Al2O3": 0.6533333333333333
+                }
+            },
+            {
+                "date": "2020-01-07",
+                "id": "2020-002",
+                "time": 15.36,
+                "reusability": "",
+                "name": "CZ-3B Stage 2",
+                "category": "S2",
+                "lat": 0.31,
+                "lon": 100.73,
+                "smc": false,
+                "emissions": {
+                    "NOx": 0.43600000000000005,
+                    "Al2O3": 0.49595
+                }
+            },
+            {
+                "date": "2020-01-07",
+                "id": "2020-002",
+                "time": 15.36,
+                "reusability": "",
+                "name": "CZ-3B Fairing",
+                "category": "C",
+                "lat": -4.99,
+                "lon": -78.61,
+                "smc": false,
+                "emissions": {
+                    "NOx": 0.08333333333333333,
+                    "Al2O3": 0.043750000000000004
+                }
+            },
+            {
+                "date": "2020-01-07",
+                "id": "2020-002",
+                "time": 15.36,
+                "reusability": "",
+                "name": "CZ-3B Fairing",
+                "category": "C",
+                "lat": -4.99,
+                "lon": -78.61,
+                "smc": false,
+                "emissions": {
+                    "NOx": 0.08333333333333333,
+                    "Al2O3": 0.043750000000000004
+                }
+            },
+            {
+                "date": "2020-01-07",
+                "id": "2019-083A",
+                "time": 15.7,
+                "reusability": "",
+                "name": "Dragon CRS-19",
+                "category": "P",
+                "lat": 31.2,
+                "lon": -121.0,
+                "smc": false,
+                "emissions": {
+                    "NOx": 0.3099444444444444,
+                    "Al2O3": 0.0
+                }
+            }
+        ]
+    },
+    "2020-01-08": {
+        "launches": [],
+        "reentries": [
+            {
+                "date": "2020-01-08",
+                "id": "2019-074BR",
+                "time": 0.0,
+                "reusability": "",
+                "name": "Starlink deployment rail",
+                "category": "C",
+                "lat": 49.3,
+                "lon": -58.4,
+                "smc": true,
+                "emissions": {
+                    "NOx": 0.011111111111111112,
+                    "Al2O3": 0.011111111111111112
+                }
+            }
+        ]
+    },
+    "2020-01-09": {
+        "launches": [],
+        "reentries": []
+    },
+    "2020-01-10": {
+        "launches": [],
+        "reentries": [
+            {
+                "date": "2020-01-10",
+                "id": "2018-021D",
+                "time": 0.0,
+                "reusability": "",
+                "name": "H-2A F38 adapter?",
+                "category": "C",
+                "lat": 41.65,
+                "lon": 169.94,
+                "smc": false,
+                "emissions": {
+                    "NOx": 0.0,
+                    "Al2O3": 0.0
+                }
+            }
+        ]
+    },
+    "2020-01-11": {
+        "launches": [],
+        "reentries": []
+    },
+    "2020-01-12": {
+        "launches": [],
+        "reentries": [
+            {
+                "date": "2020-01-12",
+                "id": "2018-056J",
+                "time": 0.0,
+                "reusability": "",
+                "name": "PRSS/PakTES debris",
+                "category": "C",
+                "lat": 65.52,
+                "lon": 162.25,
+                "smc": false,
+                "emissions": {
+                    "NOx": 0.0,
+                    "Al2O3": 0.0
+                }
+            },
+            {
+                "date": "2020-01-12",
+                "id": "2019-074BQ",
+                "time": 0.0,
+                "reusability": "",
+                "name": "Starlink deployment rail",
+                "category": "C",
+                "lat": -18.43,
+                "lon": 158.83,
+                "smc": true,
+                "emissions": {
+                    "NOx": 0.011111111111111112,
+                    "Al2O3": 0.011111111111111112
+                }
+            }
+        ]
+    },
+    "2020-01-13": {
+        "launches": [],
+        "reentries": []
+    },
+    "2020-01-14": {
+        "launches": [],
+        "reentries": [
+            {
+                "date": "2020-01-14",
+                "id": "2009-054D",
+                "time": 4.6,
+                "reusability": "",
+                "name": "Sylda 5A",
+                "category": "C",
+                "lat": -1.78,
+                "lon": 24.69,
+                "smc": false,
+                "emissions": {
+                    "NOx": 0.048888888888888885,
+                    "Al2O3": 0.039111111111111124
+                }
+            }
+        ]
+    },
+    "2020-01-15": {
+        "launches": [
+            {
+                "date": "2020-01-15",
+                "id": "2020-003",
+                "time": 2.88,
+                "site": "",
+                "rocket": "Long March (CZ) 2D",
+                "lat": 37.8,
+                "lon": 111.5,
+                "smc": false,
+                "emissions": {
+                    "BC": 1123.7418788316345,
+                    "CO": 2771.172500160083,
+                    "CO2": 51864.930121153695,
+                    "NOx": 2593.898592473024,
+                    "H2O": 73222.96090309859,
+                    "Cly": 0.0,
+                    "Al2O3": 0.0
+                }
+            }
+        ],
+        "reentries": [
+            {
+                "date": "2020-01-15",
+                "id": "2020-003E",
+                "time": 3.8333333333333335,
+                "reusability": "",
+                "name": "CZ-2D Y58 Stage 2",
+                "category": "S2",
+                "lat": -1.2935377011594298,
+                "lon": -107.89863854638692,
+                "smc": false,
+                "emissions": {
+                    "NOx": 0.44444444444444453,
+                    "Al2O3": 0.5055555555555555
+                }
+            },
+            {
+                "date": "2020-01-15",
+                "id": "2020-003",
+                "time": 2.88,
+                "reusability": "",
+                "name": "CZ-2D Stage 1",
+                "category": "S1",
+                "lat": -82.01,
+                "lon": 16.47,
+                "smc": false,
+                "emissions": {
+                    "NOx": 1.0555555555555556,
+                    "Al2O3": 0.5541666666666667
+                }
+            },
+            {
+                "date": "2020-01-15",
+                "id": "2020-003",
+                "time": 2.88,
+                "reusability": "",
+                "name": "Fairing",
+                "category": "C",
+                "lat": -44.11,
+                "lon": -61.05,
+                "smc": false,
+                "emissions": {
+                    "NOx": 0.041666666666666664,
+                    "Al2O3": 0.021875000000000002
+                }
+            },
+            {
+                "date": "2020-01-15",
+                "id": "2020-003",
+                "time": 2.88,
+                "reusability": "",
+                "name": "Fairing",
+                "category": "C",
+                "lat": -44.11,
+                "lon": -61.05,
+                "smc": false,
+                "emissions": {
+                    "NOx": 0.041666666666666664,
+                    "Al2O3": 0.021875000000000002
+                }
+            }
+        ]
+    },
+    "2020-01-16": {
+        "launches": [
+            {
+                "date": "2020-01-16",
+                "id": "2020-004",
+                "time": 3.12,
+                "site": "",
+                "rocket": "Kuaizhou-1",
+                "lat": 41.3,
+                "lon": 100.3,
+                "smc": true,
+                "emissions": {
+                    "BC": 92.40854703665563,
+                    "CO": 304.1220190912675,
+                    "CO2": 8157.1563063592175,
+                    "NOx": 110.52339950533354,
+                    "H2O": 9680.496726143754,
+                    "Cly": 3998.127007937438,
+                    "Al2O3": 6043.255017946117
+                }
+            },
+            {
+                "date": "2020-01-16",
+                "id": "2020-005",
+                "time": 21.12,
+                "site": "",
+                "rocket": "Ariane 5ECA",
+                "lat": 5.2,
+                "lon": -52.8,
+                "smc": false,
+                "emissions": {
+                    "BC": 2765.1198992247373,
+                    "CO": 6632.288583160738,
+                    "CO2": 214539.8136185324,
+                    "NOx": 3301.5010807012577,
+                    "H2O": 416457.848038095,
+                    "Cly": 104159.92985869385,
+                    "Al2O3": 157439.99999999997
+                }
+            }
+        ],
+        "reentries": [
+            {
+                "date": "2020-01-16",
+                "id": "2020-005",
+                "time": 21.45,
+                "reusability": "",
+                "name": "Ariane 5 L5110 EPC",
+                "category": "S1",
+                "lat": 0.0,
+                "lon": -5.0,
+                "smc": false,
+                "emissions": {
+                    "NOx": 1.633333333333333,
+                    "Al2O3": 0.8575
+                }
+            },
+            {
+                "date": "2020-01-16",
+                "id": "2020-004",
+                "time": 3.12,
+                "reusability": "",
+                "name": "KZ-1 St1?",
+                "category": "S1",
+                "lat": 41.3,
+                "lon": 100.3,
+                "smc": true,
+                "emissions": {
+                    "NOx": 0.069,
+                    "Al2O3": 0.036225
+                }
+            },
+            {
+                "date": "2020-01-16",
+                "id": "2020-005",
+                "time": 21.12,
+                "reusability": "",
+                "name": "Ariane EAP P240",
+                "category": "B1",
+                "lat": 5.2,
+                "lon": -52.8,
+                "smc": false,
+                "emissions": {
+                    "NOx": 1.7222222222222219,
+                    "Al2O3": 0.9041666666666667
+                }
+            },
+            {
+                "date": "2020-01-16",
+                "id": "2020-005",
+                "time": 21.12,
+                "reusability": "",
+                "name": "Ariane EAP P240",
+                "category": "B2",
+                "lat": 5.2,
+                "lon": -52.8,
+                "smc": false,
+                "emissions": {
+                    "NOx": 1.7222222222222219,
+                    "Al2O3": 0.9041666666666667
+                }
+            },
+            {
+                "date": "2020-01-16",
+                "id": "2020-004",
+                "time": 3.12,
+                "reusability": "",
+                "name": "KZ-1 St2?",
+                "category": "S2",
+                "lat": 21.72,
+                "lon": -178.53,
+                "smc": true,
+                "emissions": {
+                    "NOx": 0.07622222222222225,
+                    "Al2O3": 0.08670277777777778
+                }
+            },
+            {
+                "date": "2020-01-16",
+                "id": "2020-004",
+                "time": 3.12,
+                "reusability": "",
+                "name": "KZ-1 St3?",
+                "category": "S3",
+                "lat": -49.82,
+                "lon": 0.32,
+                "smc": true,
+                "emissions": {
+                    "NOx": 0.02033333333333334,
+                    "Al2O3": 0.023129166666666666
+                }
+            },
+            {
+                "date": "2020-01-16",
+                "id": "2020-004",
+                "time": 3.12,
+                "reusability": "",
+                "name": "KZ-1 Fairing",
+                "category": "C",
+                "lat": 6.35,
+                "lon": 143.13,
+                "smc": true,
+                "emissions": {
+                    "NOx": 0.09755555555555556,
+                    "Al2O3": 0.051216666666666674
+                }
+            },
+            {
+                "date": "2020-01-16",
+                "id": "2020-004",
+                "time": 3.12,
+                "reusability": "",
+                "name": "KZ-1 Fairing",
+                "category": "C",
+                "lat": 6.35,
+                "lon": 143.13,
+                "smc": true,
+                "emissions": {
+                    "NOx": 0.09755555555555556,
+                    "Al2O3": 0.051216666666666674
+                }
+            },
+            {
+                "date": "2020-01-16",
+                "id": "2020-005",
+                "time": 21.12,
+                "reusability": "",
+                "name": "Ariane 5 Fairing",
+                "category": "C",
+                "lat": -0.92,
+                "lon": -91.73,
+                "smc": false,
+                "emissions": {
+                    "NOx": 0.1486111111111111,
+                    "Al2O3": 0.07802083333333333
+                }
+            },
+            {
+                "date": "2020-01-16",
+                "id": "2020-005",
+                "time": 21.12,
+                "reusability": "",
+                "name": "Ariane 5 Fairing",
+                "category": "C",
+                "lat": -0.92,
+                "lon": -91.73,
+                "smc": false,
+                "emissions": {
+                    "NOx": 0.1486111111111111,
+                    "Al2O3": 0.07802083333333333
+                }
+            }
+        ]
+    },
+    "2020-01-17": {
+        "launches": [],
+        "reentries": []
+    },
+    "2020-01-18": {
+        "launches": [],
+        "reentries": [
+            {
+                "date": "2020-01-18",
+                "id": "2019-074BP",
+                "time": 0.0,
+                "reusability": "",
+                "name": "Starlink deployment rail",
+                "category": "C",
+                "lat": -44.38,
+                "lon": -88.22,
+                "smc": true,
+                "emissions": {
+                    "NOx": 0.011111111111111112,
+                    "Al2O3": 0.011111111111111112
+                }
+            },
+            {
+                "date": "2020-01-18",
+                "id": "2020-004B",
+                "time": 0.0,
+                "reusability": "",
+                "name": "KZ-1A Y9  Stage 4",
+                "category": "S4",
+                "lat": 4.69,
+                "lon": 177.01,
+                "smc": true,
+                "emissions": {
+                    "NOx": 0.022222222222222223,
+                    "Al2O3": 0.02527777777777778
+                }
+            }
+        ]
+    },
+    "2020-01-19": {
+        "launches": [],
+        "reentries": []
+    },
+    "2020-01-20": {
+        "launches": [],
+        "reentries": []
+    },
+    "2020-01-21": {
+        "launches": [],
+        "reentries": [
+            {
+                "date": "2020-01-21",
+                "id": "2017-001B",
+                "time": 10.483333333333333,
+                "reusability": "",
+                "name": "CZ-3B Y39 Stage 3",
+                "category": "S3",
+                "lat": 18.0,
+                "lon": -72.0,
+                "smc": false,
+                "emissions": {
+                    "NOx": 0.3111111111111111,
+                    "Al2O3": 0.3538888888888888
+                }
+            }
+        ]
+    },
+    "2020-01-22": {
+        "launches": [],
+        "reentries": [
+            {
+                "date": "2020-01-22",
+                "id": "2019-074BN",
+                "time": 0.0,
+                "reusability": "",
+                "name": "Starlink deployment rail",
+                "category": "C",
+                "lat": -38.89,
+                "lon": 169.86,
+                "smc": true,
+                "emissions": {
+                    "NOx": 0.011111111111111112,
+                    "Al2O3": 0.011111111111111112
+                }
+            }
+        ]
+    },
+    "2020-01-23": {
+        "launches": [],
+        "reentries": [
+            {
+                "date": "2020-01-23",
+                "id": "2008-002B",
+                "time": 8.083333333333334,
+                "reusability": "",
+                "name": "PSLV-C10 PS4",
+                "category": "S4",
+                "lat": 2.0,
+                "lon": -101.0,
+                "smc": false,
+                "emissions": {
+                    "NOx": 0.10222222222222223,
+                    "Al2O3": 0.11627777777777779
+                }
+            }
+        ]
+    },
+    "2020-01-24": {
+        "launches": [],
+        "reentries": []
+    },
+    "2020-01-25": {
+        "launches": [],
+        "reentries": []
+    },
+    "2020-01-26": {
+        "launches": [],
+        "reentries": []
+    },
+    "2020-01-27": {
+        "launches": [],
+        "reentries": []
+    },
+    "2020-01-28": {
+        "launches": [],
+        "reentries": []
+    },
+    "2020-01-29": {
+        "launches": [
+            {
+                "date": "2020-01-29",
+                "id": "2020-006",
+                "time": 14.16,
+                "site": "",
+                "rocket": "Falcon 9 v1.2",
+                "lat": 28.5,
+                "lon": -81.0,
+                "smc": true,
+                "emissions": {
+                    "BC": 3511.4825558886937,
+                    "CO": 17830.504591396297,
+                    "CO2": 448074.03492658713,
+                    "NOx": 2333.693019013942,
+                    "H2O": 179841.13338266447,
+                    "Cly": 0.0,
+                    "Al2O3": 0.0
+                }
+            }
+        ],
+        "reentries": [
+            {
+                "date": "2020-01-29",
+                "id": "2020-006",
+                "time": 16.6,
+                "reusability": "",
+                "name": "Falcon 9-081 Stage 2",
+                "category": "S2",
+                "lat": -53.0,
+                "lon": -33.74,
+                "smc": true,
+                "emissions": {
+                    "NOx": 0.47222222222222227,
+                    "Al2O3": 0.5371527777777777
+                }
+            },
+            {
+                "date": "2020-01-29",
+                "id": "2020-006",
+                "time": 14.16,
+                "reusability": "",
+                "name": "Falcon 9 Stage 1 B1051",
+                "category": "S1",
+                "lat": 32.54722222222222,
+                "lon": -75.92305555555555,
+                "smc": true,
+                "emissions": {
+                    "NOx": 1.2006944444444445,
+                    "Al2O3": 0.0
+                }
+            },
+            {
+                "date": "2020-01-29",
+                "id": "2020-006",
+                "time": 14.16,
+                "reusability": "",
+                "name": "Falcon 9 Fairing F9-081",
+                "category": "C",
+                "lat": 33.1182043,
+                "lon": -74.8355012,
+                "smc": true,
+                "emissions": {
+                    "NOx": 0.04557291666666667,
+                    "Al2O3": 0.0
+                }
+            },
+            {
+                "date": "2020-01-29",
+                "id": "2020-006",
+                "time": 14.16,
+                "reusability": "",
+                "name": "Falcon 9 Fairing F9-081",
+                "category": "C",
+                "lat": 33.1182043,
+                "lon": -74.8355012,
+                "smc": true,
+                "emissions": {
+                    "NOx": 0.04557291666666667,
+                    "Al2O3": 0.0
+                }
+            }
+        ]
+    },
+    "2020-01-30": {
+        "launches": [],
+        "reentries": []
+    },
+    "2020-01-31": {
+        "launches": [
+            {
+                "date": "2020-01-31",
+                "id": "2020-007",
+                "time": 2.88,
+                "site": "",
+                "rocket": "Electron (Curie)",
+                "lat": -39.2609,
+                "lon": 177.8655,
+                "smc": false,
+                "emissions": {
+                    "BC": 78.3660003305643,
+                    "CO": 454.83575110003187,
+                    "CO2": 9799.357946950648,
+                    "NOx": 49.69926861669317,
+                    "H2O": 3971.6269841269836,
+                    "Cly": 0.0,
+                    "Al2O3": 0.0
+                }
+            }
+        ],
+        "reentries": [
+            {
+                "date": "2020-01-31",
+                "id": "2020-007",
+                "time": 2.88,
+                "reusability": "",
+                "name": "Electron Stage 1",
+                "category": "S1",
+                "lat": -39.2609,
+                "lon": 177.8655,
+                "smc": false,
+                "emissions": {
+                    "NOx": 0.04618055555555556,
+                    "Al2O3": 0.0
+                }
+            },
+            {
+                "date": "2020-01-31",
+                "id": "2020-007",
+                "time": 2.88,
+                "reusability": "",
+                "name": "Electron Fairing",
+                "category": "C",
+                "lat": -20.47,
+                "lon": -103.75,
+                "smc": false,
+                "emissions": {
+                    "NOx": 0.002444444444444445,
+                    "Al2O3": 0.0012833333333333334
+                }
+            },
+            {
+                "date": "2020-01-31",
+                "id": "2020-007",
+                "time": 2.88,
+                "reusability": "",
+                "name": "Electron Fairing",
+                "category": "C",
+                "lat": -20.47,
+                "lon": -103.75,
+                "smc": false,
+                "emissions": {
+                    "NOx": 0.002444444444444445,
+                    "Al2O3": 0.0012833333333333334
+                }
+            }
+        ]
+    }
+}
