@@ -571,16 +571,16 @@ class OutputEmis:
             selected_alts.extend(np.arange(bot_ind,top_ind))
             
             # Sum the emissions in this range for each species and place in an array.
-            self.rocket_bc[time_index,i,q,p]         += (np.sum(emis_full[bot_ind:top_ind,0]) * 1e-3)
-            self.rocket_co[time_index,i,q,p]         += (np.sum(emis_full[bot_ind:top_ind,1]) * 1e-3)
-            self.rocket_co2[time_index,i,q,p]        += (np.sum(emis_full[bot_ind:top_ind,2]) * 1e-3)
-            self.rocket_launch_nox[time_index,i,q,p] += (np.sum(emis_full[bot_ind:top_ind,3]) * 1e-3)
-            self.rocket_fuel_nox[time_index,i,q,p]   += (np.sum(emis_full[bot_ind:top_ind,4]) * 1e-3)
-            self.rocket_h2o[time_index,i,q,p]        += (np.sum(emis_full[bot_ind:top_ind,5]) * 1e-3)
-            self.rocket_launch_al[time_index,i,q,p]  += (np.sum(emis_full[bot_ind:top_ind,6]) * 1e-3)
-            self.rocket_cl[time_index,i,q,p]         += (np.sum(emis_full[bot_ind:top_ind,7]) * 1e-3)
-            self.rocket_hcl[time_index,i,q,p]        += (np.sum(emis_full[bot_ind:top_ind,8]) * 1e-3)
-            self.rocket_cl2[time_index,i,q,p]        += (np.sum(emis_full[bot_ind:top_ind,9]) * 1e-3)
+            self.rocket_bc[time_index,i,q,p]         += (np.sum(emis_full[bot_ind:top_ind,0]) * 1e-9)
+            self.rocket_co[time_index,i,q,p]         += (np.sum(emis_full[bot_ind:top_ind,1]) * 1e-9)
+            self.rocket_co2[time_index,i,q,p]        += (np.sum(emis_full[bot_ind:top_ind,2]) * 1e-9)
+            self.rocket_launch_nox[time_index,i,q,p] += (np.sum(emis_full[bot_ind:top_ind,3]) * 1e-9)
+            self.rocket_fuel_nox[time_index,i,q,p]   += (np.sum(emis_full[bot_ind:top_ind,4]) * 1e-9)
+            self.rocket_h2o[time_index,i,q,p]        += (np.sum(emis_full[bot_ind:top_ind,5]) * 1e-9)
+            self.rocket_launch_al[time_index,i,q,p]  += (np.sum(emis_full[bot_ind:top_ind,6]) * 1e-9)
+            self.rocket_cl[time_index,i,q,p]         += (np.sum(emis_full[bot_ind:top_ind,7]) * 1e-9)
+            self.rocket_hcl[time_index,i,q,p]        += (np.sum(emis_full[bot_ind:top_ind,8]) * 1e-9)
+            self.rocket_cl2[time_index,i,q,p]        += (np.sum(emis_full[bot_ind:top_ind,9]) * 1e-9)
             total_vertical_propellant[i,0]           += np.sum(emis_full[bot_ind:top_ind,10]) * prop_mass
             total_vertical_propellant[i,1]           += np.sum(emis_full[bot_ind:top_ind,0]) 
             total_vertical_propellant[i,2]           += np.sum(emis_full[bot_ind:top_ind,1]) 
@@ -702,6 +702,16 @@ class OutputEmis:
                     "lon": lon[w],
                     "smc": bool(smc[w]),
                 }
+                
+                if event_id[w] in ["2021-F09","2022-065"]:
+                    launch_details["lat"] = 34.43194444
+                    launch_details["lon"] = 127.535
+                elif event_id[w] in ["2020-065","2022-167","2022-046","2022-126"]:
+                    launch_details["lat"] = 34.9
+                    launch_details["lon"] = 121.2
+                else:
+                    launch_details["lat"] = lat[w]
+                    launch_details["lon"] = lon[w]
                     
                 ############################################################################
                 # Start processing the launch event altitudes and deal with failed launches.
@@ -988,6 +998,16 @@ class OutputEmis:
                     "lon": lon[w],
                     "smc": bool(smc[w]),
                 }
+                
+                if event_id[w][:8] in ["2021-F09","2022-065"] and category[w] == "S1":
+                    reentry_details["lat"] = 34.43194444
+                    reentry_details["lon"] = 127.535
+                elif event_id[w][:8] in ["2020-065","2022-167","2022-046","2022-126"] and category[w] == "S1":
+                    reentry_details["lat"] = 34.9
+                    reentry_details["lon"] = 121.2
+                else:
+                    reentry_details["lat"] = lat[w]
+                    reentry_details["lon"] = lon[w]
                 
                 total_vertical_propellant = np.zeros((len(self.mid_alt[:,q,p]),10))
                 if np.ma.is_masked(rocket_data.reentry_abl_mass[index[w]]) or np.ma.is_masked(rocket_data.reentry_other_mass[index[w]]):
