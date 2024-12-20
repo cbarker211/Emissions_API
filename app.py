@@ -7,7 +7,7 @@ app = Flask(__name__)
 CORS(app)  # Allow all origins to access this API
 
 with open('./out_files/data.json', 'r') as json_file:
-   events_data = json_file.read()
+   events_data = json.load(json_file)
             
 #events_data = {
 #    "2024-12-01": {
