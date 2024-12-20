@@ -343,7 +343,7 @@ class OutputEmis:
                 if np.abs(diff_out[i_emis]-final_emis[i_emis])/final_emis[i_emis]*100 > 0.1:
                     print(f"Error with {spec_names[i_emis]} emissions - {np.abs(diff_out[i_emis]-final_emis[i_emis])/final_emis[i_emis]*100:.2f}%.") 
                     
-        with open('./out_files/data.json', 'w') as json_file:
+        with open(f'./out_files/data_{self.year}.json', 'w') as json_file:
             json.dump(events_data, json_file, indent=4)
              
     def process_launch_event_altitudes(self, valid_index, p, q, launch_rocket,launch_id):
