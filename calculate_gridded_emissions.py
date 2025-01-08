@@ -57,6 +57,7 @@ class RocketData:
         self.launch_id      = fh.variables['COSPAR_ID'][:].astype(str)
         self.launch_rocket  = fh.variables['Rocket_Name'][:]
         self.launch_smc     = fh.variables['Megaconstellation_Flag'][:]
+        self.launch_site    = fh.variables['Site'][:]
         
         self.launch_year, self.launch_month, self.launch_day = [], [], []
         for datestring in self.launch_datestr:
@@ -91,6 +92,7 @@ class RocketData:
         self.reentry_other_mass   = fg.variables['Other_Mass'][:]
         self.reentry_smc          = fg.variables['Megaconstellation_Flag'][:]
         self.reentry_location     = fg.variables['Location_Constraint'][:]
+        self.reentry_burnup       = fg.variables['Burnup'][:]
         
         self.reentry_year, self.reentry_month, self.reentry_day = [], [], []
         for datestring in self.reentry_datestr:
@@ -303,6 +305,7 @@ class OutputEmis:
                                    rocket_data.launch_smc[l_ind],
                                    '',
                                    rocket_data.launch_time[l_ind],
+                                   rocket_data.launch_site[l_ind],
                                    '',
                                    )
 
@@ -321,7 +324,8 @@ class OutputEmis:
                                    rocket_data.reentry_smc[r_ind],
                                    rocket_data.reentry_category[r_ind],
                                    rocket_data.reentry_time[r_ind],
-                                   rocket_data.reentry_location[r_ind]
+                                   rocket_data.reentry_location[r_ind],
+                                   rocket_data.reentry_burnup[r_ind],
                                    )
                 
                 daily_events_data = {"launches": daily_launches,
@@ -576,16 +580,16 @@ class OutputEmis:
             selected_alts.extend(np.arange(bot_ind,top_ind))
             
             # Sum the emissions in this range for each species and place in an array.
-            self.rocket_bc[time_index,i,q,p]         += (np.sum(emis_full[bot_ind:top_ind,0]) * 1e-9)
-            self.rocket_co[time_index,i,q,p]         += (np.sum(emis_full[bot_ind:top_ind,1]) * 1e-9)
-            self.rocket_co2[time_index,i,q,p]        += (np.sum(emis_full[bot_ind:top_ind,2]) * 1e-9)
-            self.rocket_launch_nox[time_index,i,q,p] += (np.sum(emis_full[bot_ind:top_ind,3]) * 1e-9)
-            self.rocket_fuel_nox[time_index,i,q,p]   += (np.sum(emis_full[bot_ind:top_ind,4]) * 1e-9)
-            self.rocket_h2o[time_index,i,q,p]        += (np.sum(emis_full[bot_ind:top_ind,5]) * 1e-9)
-            self.rocket_launch_al[time_index,i,q,p]  += (np.sum(emis_full[bot_ind:top_ind,6]) * 1e-9)
-            self.rocket_cl[time_index,i,q,p]         += (np.sum(emis_full[bot_ind:top_ind,7]) * 1e-9)
-            self.rocket_hcl[time_index,i,q,p]        += (np.sum(emis_full[bot_ind:top_ind,8]) * 1e-9)
-            self.rocket_cl2[time_index,i,q,p]        += (np.sum(emis_full[bot_ind:top_ind,9]) * 1e-9)
+            self.rocket_bc[time_index,i,q,p]         += (np.sum(emis_full[bot_ind:top_ind,0]) * 1e-6)
+            self.rocket_co[time_index,i,q,p]         += (np.sum(emis_full[bot_ind:top_ind,1]) * 1e-6)
+            self.rocket_co2[time_index,i,q,p]        += (np.sum(emis_full[bot_ind:top_ind,2]) * 1e-6)
+            self.rocket_launch_nox[time_index,i,q,p] += (np.sum(emis_full[bot_ind:top_ind,3]) * 1e-6)
+            self.rocket_fuel_nox[time_index,i,q,p]   += (np.sum(emis_full[bot_ind:top_ind,4]) * 1e-6)
+            self.rocket_h2o[time_index,i,q,p]        += (np.sum(emis_full[bot_ind:top_ind,5]) * 1e-6)
+            self.rocket_launch_al[time_index,i,q,p]  += (np.sum(emis_full[bot_ind:top_ind,6]) * 1e-6)
+            self.rocket_cl[time_index,i,q,p]         += (np.sum(emis_full[bot_ind:top_ind,7]) * 1e-6)
+            self.rocket_hcl[time_index,i,q,p]        += (np.sum(emis_full[bot_ind:top_ind,8]) * 1e-6)
+            self.rocket_cl2[time_index,i,q,p]        += (np.sum(emis_full[bot_ind:top_ind,9]) * 1e-6)
             total_vertical_propellant[i,0]           += np.sum(emis_full[bot_ind:top_ind,10]) * prop_mass
             total_vertical_propellant[i,1]           += np.sum(emis_full[bot_ind:top_ind,0]) 
             total_vertical_propellant[i,2]           += np.sum(emis_full[bot_ind:top_ind,1]) 
@@ -613,7 +617,7 @@ class OutputEmis:
         
         return total_vertical_propellant        
                   
-    def grid_emis(self,index,lon,lat,hour,emis_type,event_id,name,smc,category,time,location):
+    def grid_emis(self,index,lon,lat,hour,emis_type,event_id,name,smc,category,time,location, burnup):
         """Grid the data onto the GEOS-Chem horizontal and vertical grid"""
         
         daily_info = []                
@@ -705,6 +709,7 @@ class OutputEmis:
                     "lat": lat[w],
                     "lon": lon[w],
                     "smc": bool(smc[w]),
+                    "location": location[w],
                 }
                 
                 if event_id[w] in ["2021-F09","2022-065"]:
@@ -990,6 +995,14 @@ class OutputEmis:
             #########################################################
             
             if emis_type=='reentry':
+                if category[w] == "C":
+                    category_label = "Category"
+                elif category[w] == "P":
+                    category_label = "Payload"
+                elif "B" in category[w]:
+                    category_label = "Booster"
+                elif "S" in category[w]:
+                    category_label = category[w].replace("S","Stage ")
                 reentry_details = {
                     "date": f"{self.year}-{self.strmon}-{self.strday}",
                     "id": event_id[w],
@@ -1000,7 +1013,8 @@ class OutputEmis:
                     "lat": lat[w],
                     "lon": lon[w],
                     "smc": bool(smc[w]),
-                    "location": int(location[w])
+                    "location": int(location[w]),
+                    "burnup": burnup[w], 
                 }
                 
                 if event_id[w][:8] in ["2021-F09","2022-065"] and category[w] == "S1":
@@ -1026,17 +1040,17 @@ class OutputEmis:
                         
                     # Calculate the total mass surviving re-entry in kg
                     if rocket_data.reentry_abl_deg[index[w]] != 0:
-                        self.mass_survive = ((rocket_data.reentry_abl_mass[index[w]]* (1-rocket_data.reentry_abl_deg[index[w]])) + rocket_data.reentry_other_mass[index[w]]) * 1e-6
+                        self.mass_survive = ((rocket_data.reentry_abl_mass[index[w]]* (1-rocket_data.reentry_abl_deg[index[w]])) + rocket_data.reentry_other_mass[index[w]]) * 1e-3
                      
                     # For consistency with launch emissions, the totals are kept in g units. 
                                
                     t_nox_reentry = (rocket_data.reentry_abl_mass[index[w]] + rocket_data.reentry_other_mass[index[w]]) * reentry_ei_nox * 1000
                     self.nox_reentry_total += t_nox_reentry
-                    self.rocket_reentry_nox[time_index,self.bot_reenter:self.top_reenter+1,q,p] += t_nox_reentry / self.n_reenter_levs * 1e-9 
+                    self.rocket_reentry_nox[time_index,self.bot_reenter:self.top_reenter+1,q,p] += t_nox_reentry / self.n_reenter_levs * 1e-6 
                     
                     t_al2o3_reentry = rocket_data.reentry_abl_mass[index[w]] * reentry_ei_al2o3 * 1000
                     self.al2o3_reentry_total += t_al2o3_reentry
-                    self.rocket_reentry_al[time_index,self.bot_reenter:self.top_reenter+1,q,p] += t_al2o3_reentry / self.n_reenter_levs * 1e-9
+                    self.rocket_reentry_al[time_index,self.bot_reenter:self.top_reenter+1,q,p] += t_al2o3_reentry / self.n_reenter_levs * 1e-6
                 
                     total_vertical_propellant[self.bot_reenter:self.top_reenter+1,3]   += np.full((self.n_reenter_levs),t_nox_reentry/self.n_reenter_levs)
                     total_vertical_propellant[self.bot_reenter:self.top_reenter+1,5]   += np.full((self.n_reenter_levs),t_al2o3_reentry/self.n_reenter_levs)
@@ -1150,7 +1164,7 @@ if __name__ == "__main__":
     raul_data = gpd.read_file('./databases/reentry/General_SpaceX_Map_Raul.kml', driver='KML', layer =2) # Falcon landing data.   
     launch_path       = './databases/launch_activity_data_2020-2022.nc'
     rocket_info_path  = './databases/rocket_attributes_2020-2022.nc'
-    reentry_path      = './databases/reentry_activity_data_2020-2022.nc'
+    reentry_path      = './databases/reentry_activity_data_2020-2022_moredatacorrectlocations.nc'
     pei_path          = './input_files/primary_emission_indices.csv'  
     rocket_data       = RocketData(launch_path, reentry_path, rocket_info_path, pei_path)
     print("Successfully loaded input databases.")

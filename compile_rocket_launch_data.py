@@ -110,6 +110,7 @@ class import_launches_from_discos:
         self.Cospar_Id = []
         self.launch_time = []
         self.launch_datestr = []
+        self.site_name = []
         self.latitude = []
         self.longitude = []
         self.rocket_name = []
@@ -165,6 +166,7 @@ class import_launches_from_discos:
                 response = server_request({},f'/launches/{launch["id"]}/site')
                 if response.ok:
                     doc = response.json()
+                    self.site_name.append(doc['data']["attributes"]["name"])
                     self.latitude.append(np.float64(doc['data']["attributes"]["latitude"]))
                     self.longitude.append(np.float64(doc['data']["attributes"]["longitude"]))
                     break
@@ -199,7 +201,7 @@ class import_launches_from_discos:
                     response_error_handler(response,"")
                 break
                     
-        return [self.Cospar_Id, self.launch_time, self.launch_datestr, self.latitude, self.longitude, self.rocket_name, self.mcs_check]
+        return [self.Cospar_Id, self.launch_time, self.launch_datestr, self.site_name, self.latitude, self.longitude, self.rocket_name, self.mcs_check]
             
     def launch_info_to_netcdf(self):
         """This saves the launch information as a NetCDF file for later processing for GEOS-Chem.
@@ -230,6 +232,11 @@ class import_launches_from_discos:
                        short_name="Longitude",
                        units="Degrees"))
         
+        data_da_site = xr.DataArray(self.site_name, dims=dims,
+            attrs=dict(long_name="Site Name",
+                       short_name="Site Name",
+                       ))
+        
         data_da_lat = xr.DataArray(self.latitude, dims=dims,
             attrs=dict(long_name="Latitude",
                        short_name="Latitude",
@@ -255,13 +262,14 @@ class import_launches_from_discos:
         ds['COSPAR_ID'] = data_da_cospar_id
         ds['Time(UTC)'] = data_da_time
         ds['Date'] = data_da_date
+        ds['Site'] = data_da_site
         ds['Longitude'] = data_da_lon
         ds['Latitude'] = data_da_lat
         ds['Rocket_Name'] = data_da_rocket_name
         ds['DISCOSweb_Rocket_ID'] = data_da_vehicle_id
         ds['Megaconstellation_Flag'] = data_da_launch_MCS
              
-        #Save to file and close the DataSet     
+        #Save to file and close the datset     
         ds.to_netcdf(f'./databases/launch_activity_data_{self.start_year}-{self.final_year}.nc')
         ds.close()
         

@@ -1654,7 +1654,7 @@ class build_reentry_list:
         id_list, name_list, category_list, time_list = [], [], [], []
         datestr_list, lat_list, lon_list  = [], [], []
         abl_mass_list, abl_deg_list, abl_per_list, other_mass_list = [], [], [], []
-        smc_list, location_list, apogee_list  = [], [], []
+        smc_list, location_list, apogee_list, burnup_list  = [], [], [], []
         
         for reentry in self.unique_reentry_list:
             id_list.append(reentry["id"])
@@ -1671,6 +1671,7 @@ class build_reentry_list:
             smc_list.append(reentry["smc"])
             location_list.append(reentry["location"]) 
             apogee_list.append(reentry["apogee"])   
+            burnup_list.append(reentry["burnup"])   
             
         #Create the DataArrays.
         data_da_id           = xr.DataArray(id_list,          dims=dims, attrs=dict(long_name="COSPAR_ID"))
@@ -1687,6 +1688,7 @@ class build_reentry_list:
         data_da_smc          = xr.DataArray(smc_list,         dims=dims, attrs=dict(long_name="Megaconstellation_Flag"))
         data_da_location     = xr.DataArray(location_list,    dims=dims, attrs=dict(long_name="Location Constraint"))
         data_da_apogee       = xr.DataArray(apogee_list,      dims=dims, attrs=dict(long_name="Apogee", units="km"))
+        data_da_burnup       = xr.DataArray(burnup_list,      dims=dims, attrs=dict(long_name="Burnup"))
     
         # Create an xarray Dataset from the DataArrays.
         ds = xr.Dataset()
@@ -1704,6 +1706,7 @@ class build_reentry_list:
         ds['Megaconstellation_Flag']  = data_da_smc
         ds['Location_Constraint']     = data_da_location
         ds['Apogee']                  = data_da_apogee
+        ds['Burnup']                  = data_da_burnup
              
         #Save to file and close the DataSet  
         ds.to_netcdf(f'./databases/reentry_activity_data_{self.start_year}-{self.final_year}.nc')
