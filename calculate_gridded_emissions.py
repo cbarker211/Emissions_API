@@ -22,7 +22,6 @@ pd.set_option('display.max_colwidth', None)
 import matplotlib.pyplot as plt
 import geopandas as gpd
 import fiona
-import pprint
 import json
 
 import sys
@@ -199,9 +198,10 @@ class OutputEmis:
                                                                          self.ross_alt_edge, self.ross_cumulative_mass)
 
         # Create variables for totals for a future sanity check:
-        self.nox_launch_total, self.bc_total, self.h2o_total = 0.0, 0.0, 0.0
-        self.co_total,self.al2o3_launch_total, self.cl_total, self.co2_total = 0.0, 0.0, 0.0, 0.0
-        self.hcl_total, self.cl2_total, self.nox_reentry_total, self.al2o3_reentry_total = 0.0, 0.0, 0.0, 0.0
+        self.nox_launch_total, self.bc_launch_total, self.h2o_total = 0.0, 0.0, 0.0
+        self.co_total,self.al2o3_launch_total, self.cl_launch_total, self.co2_total = 0.0, 0.0, 0.0, 0.0
+        self.hcl_launch_total, self.cl2_total, self.nox_reentry_total, self.al2o3_reentry_total = 0.0, 0.0, 0.0, 0.0
+        self.bc_reentry_total, self.hcl_reentry_total, self.cl_reentry_total = 0.0, 0.0, 0.0
         self.missing_emis = np.zeros(9)
         self.booster_prop_consumed, self.stage1_prop_consumed, self.stage2_prop_consumed = np.zeros(len(self.launch_id)), np.zeros(len(self.launch_id)), np.zeros(len(self.launch_id))
         self.total_prop_consumed = np.zeros((len(rocket_data.h2o_pei),3))
@@ -269,6 +269,7 @@ class OutputEmis:
                 
                 # Get day string:
                 self.strday = str(d+1).zfill(2)
+                #print(self.strday)
 
                 layer_data = np.loadtxt("./input_files/" + vert_filepath ,delimiter=",")
                 self.top_alt = np.zeros((self.nlev,self.nlat,self.nlon))
@@ -338,8 +339,9 @@ class OutputEmis:
         
         # At the end of the year, check that the emissions going out to the netcdf files are the same as those from the fine grid.
         # This is done by comparing the emis_distribution output (equivalent to netcdf without the conversion to kgm-2s-1) and the totals.
-        final_emis = np.asarray([self.bc_total, self.co_total, self.nox_reentry_total+self.nox_launch_total, self.h2o_total, 
-                                 self.al2o3_launch_total+self.al2o3_reentry_total, self.cl_total, self.hcl_total, self.cl2_total, self.co2_total])
+        final_emis = np.asarray([self.bc_launch_total+self.bc_reentry_total, self.co_total, self.nox_reentry_total+self.nox_launch_total, self.h2o_total, 
+                                 self.al2o3_launch_total+self.al2o3_reentry_total, self.cl_launch_total+self.cl_reentry_total,
+                                 self.hcl_launch_total+self.hcl_reentry_total, self.cl2_total, self.co2_total])
         
         spec_names = ["BC", "CO", "NOx", "H2O", "Al2O3", "Cl", "HCl", "Cl2", "CO2"]
         diff_out = np.zeros(9)
@@ -580,15 +582,15 @@ class OutputEmis:
             selected_alts.extend(np.arange(bot_ind,top_ind))
             
             # Sum the emissions in this range for each species and place in an array.
-            self.rocket_bc[time_index,i,q,p]         += (np.sum(emis_full[bot_ind:top_ind,0]) * 1e-6)
+            self.rocket_launch_bc[time_index,i,q,p]  += (np.sum(emis_full[bot_ind:top_ind,0]) * 1e-6)
             self.rocket_co[time_index,i,q,p]         += (np.sum(emis_full[bot_ind:top_ind,1]) * 1e-6)
             self.rocket_co2[time_index,i,q,p]        += (np.sum(emis_full[bot_ind:top_ind,2]) * 1e-6)
             self.rocket_launch_nox[time_index,i,q,p] += (np.sum(emis_full[bot_ind:top_ind,3]) * 1e-6)
             self.rocket_fuel_nox[time_index,i,q,p]   += (np.sum(emis_full[bot_ind:top_ind,4]) * 1e-6)
             self.rocket_h2o[time_index,i,q,p]        += (np.sum(emis_full[bot_ind:top_ind,5]) * 1e-6)
             self.rocket_launch_al[time_index,i,q,p]  += (np.sum(emis_full[bot_ind:top_ind,6]) * 1e-6)
-            self.rocket_cl[time_index,i,q,p]         += (np.sum(emis_full[bot_ind:top_ind,7]) * 1e-6)
-            self.rocket_hcl[time_index,i,q,p]        += (np.sum(emis_full[bot_ind:top_ind,8]) * 1e-6)
+            self.rocket_launch_cl[time_index,i,q,p]  += (np.sum(emis_full[bot_ind:top_ind,7]) * 1e-6)
+            self.rocket_launch_hcl[time_index,i,q,p] += (np.sum(emis_full[bot_ind:top_ind,8]) * 1e-6)
             self.rocket_cl2[time_index,i,q,p]        += (np.sum(emis_full[bot_ind:top_ind,9]) * 1e-6)
             total_vertical_propellant[i,0]           += np.sum(emis_full[bot_ind:top_ind,10]) * prop_mass
             total_vertical_propellant[i,1]           += np.sum(emis_full[bot_ind:top_ind,0]) 
@@ -604,14 +606,14 @@ class OutputEmis:
         if len(list(set(selected_alts))) != len(selected_alts):
             sys.exit("Error in fine grid indexing.")
             
-        self.bc_total           += np.sum(emis_full[selected_alts[0]:selected_alts[-1]+1,0])       
+        self.bc_launch_total    += np.sum(emis_full[selected_alts[0]:selected_alts[-1]+1,0])       
         self.co_total           += np.sum(emis_full[selected_alts[0]:selected_alts[-1]+1,1])         
         self.co2_total          += np.sum(emis_full[selected_alts[0]:selected_alts[-1]+1,2])   
         self.nox_launch_total   += np.sum(emis_full[selected_alts[0]:selected_alts[-1]+1,3:5])     
         self.h2o_total          += np.sum(emis_full[selected_alts[0]:selected_alts[-1]+1,5])   
         self.al2o3_launch_total += np.sum(emis_full[selected_alts[0]:selected_alts[-1]+1,6])   
-        self.cl_total           += np.sum(emis_full[selected_alts[0]:selected_alts[-1]+1,7])   
-        self.hcl_total          += np.sum(emis_full[selected_alts[0]:selected_alts[-1]+1,8])   
+        self.cl_launch_total    += np.sum(emis_full[selected_alts[0]:selected_alts[-1]+1,7])   
+        self.hcl_launch_total   += np.sum(emis_full[selected_alts[0]:selected_alts[-1]+1,8])   
         self.cl2_total          += np.sum(emis_full[selected_alts[0]:selected_alts[-1]+1,9])   
         self.included_prop      += (np.sum(emis_full[selected_alts[0]:selected_alts[-1]+1,10]) * prop_mass * 1e-2)
         
@@ -627,16 +629,19 @@ class OutputEmis:
             # Set up the data arrays which will be saved to file.
             self.rocket_launch_nox  = np.zeros((self.nhours,self.nlev,self.nlat,self.nlon))
             self.rocket_fuel_nox    = np.zeros((self.nhours,self.nlev,self.nlat,self.nlon))
-            self.rocket_reentry_nox = np.zeros((self.nhours,self.nlev,self.nlat,self.nlon))
             self.rocket_h2o         = np.zeros((self.nhours,self.nlev,self.nlat,self.nlon))
-            self.rocket_bc          = np.zeros((self.nhours,self.nlev,self.nlat,self.nlon))
+            self.rocket_launch_bc   = np.zeros((self.nhours,self.nlev,self.nlat,self.nlon))
             self.rocket_co          = np.zeros((self.nhours,self.nlev,self.nlat,self.nlon))
             self.rocket_co2         = np.zeros((self.nhours,self.nlev,self.nlat,self.nlon))
             self.rocket_launch_al   = np.zeros((self.nhours,self.nlev,self.nlat,self.nlon))
-            self.rocket_reentry_al  = np.zeros((self.nhours,self.nlev,self.nlat,self.nlon))
-            self.rocket_hcl         = np.zeros((self.nhours,self.nlev,self.nlat,self.nlon))
-            self.rocket_cl          = np.zeros((self.nhours,self.nlev,self.nlat,self.nlon))
+            self.rocket_launch_hcl  = np.zeros((self.nhours,self.nlev,self.nlat,self.nlon))
+            self.rocket_launch_cl   = np.zeros((self.nhours,self.nlev,self.nlat,self.nlon))
             self.rocket_cl2         = np.zeros((self.nhours,self.nlev,self.nlat,self.nlon))
+            self.rocket_reentry_nox = np.zeros((self.nhours,self.nlev,self.nlat,self.nlon))
+            self.rocket_reentry_al  = np.zeros((self.nhours,self.nlev,self.nlat,self.nlon))
+            self.rocket_reentry_bc  = np.zeros((self.nhours,self.nlev,self.nlat,self.nlon))
+            self.rocket_reentry_hcl = np.zeros((self.nhours,self.nlev,self.nlat,self.nlon))
+            self.rocket_reentry_cl  = np.zeros((self.nhours,self.nlev,self.nlat,self.nlon))
             
             ################
             # Setup grid.
@@ -956,12 +961,12 @@ class OutputEmis:
                                 total_vertical_propellant,
                                 5)
                     
-                launch_details["emissions"] = {"BC":  np.sum(self.rocket_bc),
+                launch_details["emissions"] = {"BC":  np.sum(self.rocket_launch_bc),
                              "CO":  np.sum(self.rocket_co),
                              "CO2": np.sum(self.rocket_co2),
                              "NOx": np.sum(self.rocket_launch_nox) + np.sum(self.rocket_fuel_nox),
                              "H2O": np.sum(self.rocket_h2o),
-                             "Cly": np.sum(self.rocket_cl) + np.sum(self.rocket_cl2) + np.sum(self.rocket_hcl),
+                             "Cly": np.sum(self.rocket_launch_cl) + np.sum(self.rocket_cl2) + np.sum(self.rocket_launch_hcl),
                              "Al2O3": np.sum(self.rocket_launch_al),
                              }   
                 
@@ -1042,6 +1047,20 @@ class OutputEmis:
                     if rocket_data.reentry_abl_deg[index[w]] != 0:
                         self.mass_survive = ((rocket_data.reentry_abl_mass[index[w]]* (1-rocket_data.reentry_abl_deg[index[w]])) + rocket_data.reentry_other_mass[index[w]]) * 1e-3
                      
+                    # Add chlorine and bc reentry emissions from ATISPADE Report. Don't add for lower stages, only upper (>S2).
+                    if rocket_data.reentry_category[index[w]] in ["P","C"]:
+                        reentry_ei_bc  = 0.041 # Worst Case
+                        reentry_ei_hcl = 0.008 # Worst Case
+                        reentry_ei_cl  = 0.015 # Worst Case
+                    elif rocket_data.reentry_category[index[w]] in ["S2","S3","S4"]:
+                        reentry_ei_bc  = 0.029 # Worst Case
+                        reentry_ei_hcl = 0.005 # Worst Case
+                        reentry_ei_cl  = 0.011 # Worst Case
+                    else:
+                        reentry_ei_bc  = 0
+                        reentry_ei_hcl = 0
+                        reentry_ei_cl  = 0
+                     
                     # For consistency with launch emissions, the totals are kept in g units. 
                                
                     t_nox_reentry = (rocket_data.reentry_abl_mass[index[w]] + rocket_data.reentry_other_mass[index[w]]) * reentry_ei_nox * 1000
@@ -1051,12 +1070,33 @@ class OutputEmis:
                     t_al2o3_reentry = rocket_data.reentry_abl_mass[index[w]] * reentry_ei_al2o3 * 1000
                     self.al2o3_reentry_total += t_al2o3_reentry
                     self.rocket_reentry_al[time_index,self.bot_reenter:self.top_reenter+1,q,p] += t_al2o3_reentry / self.n_reenter_levs * 1e-6
-                
+                    
+                    if rocket_data.reentry_category[index[w]] in ["P","C","S2","S3","S4"]:
+                        
+                        t_bc_reentry = (rocket_data.reentry_abl_mass[index[w]] + rocket_data.reentry_other_mass[index[w]]) * reentry_ei_bc * 1000
+                        self.bc_reentry_total += t_bc_reentry
+                        self.rocket_reentry_bc[time_index,self.bot_reenter:self.top_reenter+1,q,p] += t_bc_reentry / self.n_reenter_levs * 1e-6
+                        
+                        t_hcl_reentry = (rocket_data.reentry_abl_mass[index[w]] + rocket_data.reentry_other_mass[index[w]]) * reentry_ei_hcl * 1000
+                        self.hcl_reentry_total += t_hcl_reentry
+                        self.rocket_reentry_hcl[time_index,self.bot_reenter:self.top_reenter+1,q,p] += t_hcl_reentry / self.n_reenter_levs * 1e-6 
+                        
+                        t_cl_reentry = (rocket_data.reentry_abl_mass[index[w]] + rocket_data.reentry_other_mass[index[w]]) * reentry_ei_cl * 1000
+                        self.cl_reentry_total += t_cl_reentry
+                        self.rocket_reentry_cl[time_index,self.bot_reenter:self.top_reenter+1,q,p] += t_cl_reentry / self.n_reenter_levs * 1e-6
+                        
+                        total_vertical_propellant[self.bot_reenter:self.top_reenter+1,1]   += np.full((self.n_reenter_levs),t_bc_reentry/self.n_reenter_levs)
+                        total_vertical_propellant[self.bot_reenter:self.top_reenter+1,7]   += np.full((self.n_reenter_levs),t_hcl_reentry/self.n_reenter_levs)
+                        total_vertical_propellant[self.bot_reenter:self.top_reenter+1,6]   += np.full((self.n_reenter_levs),t_cl_reentry/self.n_reenter_levs)
+                    
                     total_vertical_propellant[self.bot_reenter:self.top_reenter+1,3]   += np.full((self.n_reenter_levs),t_nox_reentry/self.n_reenter_levs)
                     total_vertical_propellant[self.bot_reenter:self.top_reenter+1,5]   += np.full((self.n_reenter_levs),t_al2o3_reentry/self.n_reenter_levs)
-                
+                    
                 reentry_details["emissions"] = {"NOx": np.sum(self.rocket_reentry_nox),
                                                 "Al2O3": np.sum(self.rocket_reentry_al),
+                                                "BC": np.sum(self.rocket_reentry_bc),
+                                                "HCl": np.sum(self.rocket_reentry_hcl),
+                                                "Cl": np.sum(self.rocket_reentry_cl),
                                                 "Unablated_Mass": np.sum(self.mass_survive),
                              }   
                 
