@@ -2,12 +2,14 @@ import numpy as np
 import argparse
 import xarray as xr
 import pandas as pd
-from datetime import datetime
+from datetime import datetime, timedelta
 import sys
 import random
 import geopandas as gpd
 from shapely.geometry import Point, Polygon
 import fiona
+import requests
+from io import StringIO
 
 class build_reentry_list:
     
@@ -22,18 +24,18 @@ class build_reentry_list:
         self.final_year = final_year
         
         # Import the shapefiles and create unions for the main oceans.
-        ocean_shapefile     = gpd.read_file("./databases/reentry/GOaS_v1_20211214/goas_v01.shp")
-        pacific             = ocean_shapefile[ocean_shapefile.name.isin(['North Pacific Ocean','South Pacific Ocean'])]
-        pacific_union       = gpd.GeoDataFrame(geometry=[pacific.unary_union]) 
-        atlantic            = ocean_shapefile[ocean_shapefile.name.isin(['North Atlantic Ocean','South Atlantic Ocean'])]
-        atlantic_union      = gpd.GeoDataFrame(geometry=[atlantic.unary_union])
-        country_shapefile   = gpd.read_file("./databases/reentry/ne_110m_admin_0_countries/ne_110m_admin_0_countries.shp") 
-        states_shapefile    = gpd.read_file("./databases/reentry/ne_10m_admin_1_states_provinces/ne_10m_admin_1_states_provinces.shp")
-        self.ocean_shapefile   = ocean_shapefile
-        self.pacific_union     = pacific_union
-        self.atlantic_union    = atlantic_union
-        self.country_shapefile = country_shapefile
-        self.states_shapefile  = states_shapefile
+        #ocean_shapefile     = gpd.read_file("./databases/reentry/GOaS_v1_20211214/goas_v01.shp")
+        #pacific             = ocean_shapefile[ocean_shapefile.name.isin(['North Pacific Ocean','South Pacific Ocean'])]
+        #pacific_union       = gpd.GeoDataFrame(geometry=[pacific.unary_union]) 
+        #atlantic            = ocean_shapefile[ocean_shapefile.name.isin(['North Atlantic Ocean','South Atlantic Ocean'])]
+        #atlantic_union      = gpd.GeoDataFrame(geometry=[atlantic.unary_union])
+        #country_shapefile   = gpd.read_file("./databases/reentry/ne_110m_admin_0_countries/ne_110m_admin_0_countries.shp") 
+        #states_shapefile    = gpd.read_file("./databases/reentry/ne_10m_admin_1_states_provinces/ne_10m_admin_1_states_provinces.shp")
+        #self.ocean_shapefile   = ocean_shapefile
+        #self.pacific_union     = pacific_union
+        #self.atlantic_union    = atlantic_union
+        #self.country_shapefile = country_shapefile
+        #self.states_shapefile  = states_shapefile
             
     def print_stats(self):
         """Print out statistics about the database at the end of the program.
@@ -122,7 +124,7 @@ class build_reentry_list:
             lat = 38.833
             lon = 105.95
             location = 2
-        elif latlonstr == "Jiuquan":
+        elif latlonstr in ["Jiuquan","Dongfeng"]:
             # This refers to the Chinese launch center, sources say it landed 'in the desert near Jiuquan', and 'in China’s Inner Mongolia autonomous region'.
             # Using lat/lon for Jiuquan launch site.
             # https://discosweb.esoc.esa.int/launch-sites/21
@@ -132,7 +134,7 @@ class build_reentry_list:
             lat = 41.3
             lon = 100.3               
             location = 2              
-        elif latlonstr == "LOPNOR RW05":
+        elif latlonstr in ["LOPNOR RW05","Lop Nor"]:
             # Reported test flight of a Chinese reusable experimental spacecraft.
             # Runway 05/22 at Lop Nor air base in Xinjiang (https://planet4589.org/space/gcat/data/tables/lp.html).
             # https://www.seradata.com/china-launches-own-mini-spaceplane-reusable-spacecraft-using-long-march-2f 
@@ -172,11 +174,15 @@ class build_reentry_list:
             # Therefore we will just set the lat to the inclination.
             lat = -inc
             lon = round(random.uniform(-180, 180),2)
-        #elif latlonstr in ["Pacific","Pacific?","PO","AO","E Pacific","E Pacific?","S Pacific",
-        #                   "S POR","Indian O?","SE IOR?","SE IOR","Atlantic","POR","Kazakhstan",
-        #                   "Mexico","S Africa","Gujarat"]:
-        #    lat = 0
-        #    lon = 0
+        elif latlonstr == "STB OLP1":
+            lat = 25.996198
+            lon = -97.154394
+        #elif latlonstr # TODO: Sort out Gulf of Mexico
+        elif latlonstr in ["Pacific","Pacific?","PO","AO","E Pacific","E Pacific?","S Pacific",
+                           "S POR","Indian O?","SE IOR?","SE IOR","Atlantic","POR","Kazakhstan",
+                           "Mexico","S Africa","Gujarat"]:
+            lat = 0
+            lon = 0
         elif latlonstr == "WSSH":
             location = 2
             # This is the White Sands Missile Range in New Mexico.
@@ -235,30 +241,11 @@ class build_reentry_list:
                 coordinate = Point(lon,lat)
                 if s_africa.geometry.contains(coordinate).any():
                     break
-        elif latlonstr == "100 03E 41 39N":
+        elif latlonstr == "32W 1E":
+            # TODO: Check with Jonathan about this.
             location = 1
-            lon = 100.05
-            lat = 41.65
-        elif latlonstr == "47 20N 69 34E":     
-            location = 1     
-            lon = 69.57
-            lat = 47.33
-        elif latlonstr == "41 39N 100 09E":     
-            location = 1     
-            lon = 100.15
-            lat = 41.65            
-        elif latlonstr == "47 20N 69 35E?":     
-            location = 1     
-            lon = 69.58
-            lat = 47.33      
-        elif latlonstr == "100 04E 41 37N":
-            location = 1
-            lon = 100.07
-            lat = 41.62
-        elif latlonstr == "69 37E 47 21N":
-            location = 1
-            lon = 69.62
-            lat = 47.35
+            lon = -32
+            lat = 1
         elif latlonstr in ["Pacific", "Pacific?", "PO", "POR"]:
             location = 4
             while True:
@@ -320,24 +307,52 @@ class build_reentry_list:
                 lon = round(random.uniform(77, 180),2)
                 coordinate = Point(lon,lat)
                 if indian_ocean.geometry.contains(coordinate).any():
-                    break 
-        elif latlonstr.replace("?","").split()[0][-1] in ["E","W","S","N"]:
+                    break
+        elif len(latlonstr.replace("?","").split()) == 4: # Coordinates in degrees-minutes
+            geolocation = latlonstr.replace("?","").split()
+            if geolocation[3][-1] in ["E","W","S","N"]: # Check its actually coordinates and not some long name.
+                location = 1
+
+                if geolocation[1][-1] in ["E","W"]: # If the longitude comes first.
+                    lon_data = geolocation[:2]
+                    lat_data = geolocation[2:]
+                elif geolocation[3][-1] in ["E","W"]: # If the longitude comes last.
+                    lon_data = geolocation[2:]
+                    lat_data = geolocation[:2]  
+                
+                if "W" in lon_data[-1]:
+                    lon = (np.float64(lon_data[0]) + np.float64(lon_data[1].replace("W",""))/60)*-1
+                elif "E" in lon_data[-1]:
+                    lon = (np.float64(lon_data[0]) + np.float64(lon_data[1].replace("E",""))/60)
+                    
+                if "N" in lat_data[-1]:
+                    lat = (np.float64(lat_data[0]) + np.float64(lat_data[1].replace("N",""))/60)
+                elif "S" in lat_data[-1]:
+                    lat = (np.float64(lat_data[0]) + np.float64(lat_data[1].replace("S",""))/60)*-1
+            
+        elif latlonstr.replace("?","").split()[0][-1] in ["E","W","S","N"]: # Coordinates in degrees
             location = 1
             geolocation = latlonstr.replace("?","").split()
+
             if geolocation[0][-1] in ["E","W"]: # If the longitude comes first.
                 lon_data = geolocation[0]
                 lat_data = geolocation[1]
             elif geolocation[1][-1] in ["E","W"]: # If the longitude comes last.
                 lon_data = geolocation[1]
                 lat_data = geolocation[0]  
+                
             if lon_data[-1] == "W":
                 lon = np.float64(lon_data.replace("W",""))*-1
             elif lon_data[-1] == "E":
                 lon = np.float64(lon_data.replace("E",""))
+                
             if lat_data[-1] == "N":
                 lat = np.float64(lat_data.replace("N",""))
             elif lat_data[-1] == "S":
-                lat = np.float64(lat_data.replace("S",""))*-1   
+                lat = np.float64(lat_data.replace("S",""))*-1  
+            else:
+                lat = np.float64(lat_data) 
+                # TODO: Going to assume that a missing value means N.
         else:
             lat = 0
             lon = 0
@@ -348,36 +363,65 @@ class build_reentry_list:
             
         return lat, lon, location
     
-    def falcon_stage_lat_lon(self,datestr,jsr_id):
+    def falcon_stage_lat_lon(self,datestr,jsr_id,jsr_dest):
         
         """Set the geolocation for all Falcon 9 1st stages.
 
         Returns:
             lat(np.float64) : The latitude of the object.
             lon(np.float64) : The longitude of the object..
-        """        
+        """  
         
-        matching = self.ocean_landings[self.ocean_landings["Date"].isin([f"{datestr[:4]}-{datestr[4:6]}-{datestr[6:]}"])].reset_index(drop=True)
-        if (matching.shape[0] == 1) or (f"{datestr[:4]}-{datestr[4:6]}-{datestr[6:]}" == "2022-04-27"):
-            # This is 27th April - typo in Raul's Space Map where second should be 2023. 
-            lat = np.array(matching["geometry"].y)[0]
-            lon = np.array(matching["geometry"].x)[0]
-        # These next two are where there are two launches on the same day.
-        elif jsr_id == "2022-124":
-            lat = np.array(matching["geometry"].y)[0]
-            lon = np.array(matching["geometry"].x)[0]
-        elif jsr_id == "2022-125":
-            lat = np.array(matching["geometry"].y)[1]
-            lon = np.array(matching["geometry"].x)[1]
-        elif matching.shape[0] == 0:
+        falcon_heavy_list = ["2022-144","2023-008","2023-108"]
+        # Launches "2023-157","2023-210","2024-119" are also falcon heavy, but not in Raul's SpaceX map.
+        
+        # Find the ground landings in Raul's SpaceX Map
+        if "LZ" in jsr_dest:
             matching = self.ground_landings[self.ground_landings["Date"].isin([f"{datestr[:4]}-{datestr[4:6]}-{datestr[6:]}"])].reset_index(drop=True)
-            if matching.shape[0] == 1:
+            if matching.shape[0] == 1: # If its in the list of ground landings, then we can geolocate it.
+                lat = np.array(matching["geometry"].y)[0]
+                lon = np.array(matching["geometry"].x)[0]    
+            elif jsr_id in falcon_heavy_list: # This is for Falcon Heavy where two boosters land on the ground.
                 lat = np.array(matching["geometry"].y)[0]
                 lon = np.array(matching["geometry"].x)[0]
-            elif jsr_id == "2022-144":
-                # This is 1st Nov - Falcon Heavy where two boosters land. 
+            # If its not in the list, then as its a ground landing, we can set it to the launch site.
+            elif matching.shape[0] == 0:
+                found_launch = False
+                for i in range(len(self.dsl["COSPAR_ID"])):
+                    if self.dsl["COSPAR_ID"].values[i] == jsr_id:
+                        found_launch = True
+                        lat = self.dsl["Latitude"].values[i]
+                        lon = self.dsl["Longitude"].values[i]
+                if found_launch == False:
+                    sys.exit(f"Problem geolocating Falcon Stage 1 recovery - {jsr_id}.")
+            elif matching.shape[0] > 1:
+                print(matching)
+                sys.exit(f"Multiple ground entries for Falcon Stage 1 landing- {jsr_id}.")
+            else:
+                sys.exit(f"Problem geolocating Falcon Stage 1 landing- {jsr_id}.")
+        else:
+            # Find the ocean landings in Raul's SpaceX Map.
+            matching = self.ocean_landings[self.ocean_landings["Date"].isin([f"{datestr[:4]}-{datestr[4:6]}-{datestr[6:]}"])].reset_index(drop=True)
+            if (matching.shape[0] == 1) or (f"{datestr[:4]}-{datestr[4:6]}-{datestr[6:]}" == "2022-04-27"):
+                # This is 27th April - typo in Raul's Space Map where second should be 2023. 
                 lat = np.array(matching["geometry"].y)[0]
                 lon = np.array(matching["geometry"].x)[0]
+            # These next two are where there are two launches on the same day.
+            elif jsr_id == "2022-124":
+                lat = np.array(matching["geometry"].y)[0]
+                lon = np.array(matching["geometry"].x)[0]
+            elif jsr_id == "2022-125":
+                lat = np.array(matching["geometry"].y)[1]
+                lon = np.array(matching["geometry"].x)[1]
+            # Again these are two on the same day.
+            elif jsr_id == "2023-037":
+                lat = np.array(matching["geometry"].y)[0]
+                lon = np.array(matching["geometry"].x)[0]
+            elif jsr_id == "2023-038":
+                lat = np.array(matching["geometry"].y)[1]
+                lon = np.array(matching["geometry"].x)[1]
+            # If its not in the list, then set it to the ocean near the launch site. 
+            # These coordinates are the most common grid box for reentries in 2020-2022.
             elif matching.shape[0] == 0:
                 found_launch = False
                 for i in range(len(self.dsl["COSPAR_ID"])):
@@ -393,16 +437,11 @@ class build_reentry_list:
                             lon = -120 
                         else:
                             sys.exit("Falcon launch site not found.")
-                if found_launch == False:
-                    sys.exit(f"Problem geolocating Falcon Stage 1 recovery - {jsr_id}.")
             elif matching.shape[0] > 1:
-                sys.exit(f"Multiple ground entries for Falcon Stage 1 landing- {jsr_id}.")
+                print(matching)
+                sys.exit(f"Multiple ocean entries for Falcon Stage 1 landing- {jsr_id}.")
             else:
-                sys.exit(f"Problem geolocating Falcon Stage 1 landing- {jsr_id}.")
-        elif matching.shape[0] > 1:
-            sys.exit(f"Multiple ocean entries for Falcon Stage 1 landing- {jsr_id}.")
-        else:
-            sys.exit(f"Problem geolocating Falcon Stage 1 landing- {jsr_id}.") 
+                sys.exit(f"Problem geolocating Falcon Stage 1 landing- {jsr_id}.") 
             
         return lat, lon 
     
@@ -419,6 +458,15 @@ class build_reentry_list:
         if matching.shape[0] == 1:
             lat = np.array(matching["geometry"].y)[0]
             lon = np.array(matching["geometry"].x)[0]
+        # These are two on the same day
+        elif jsr_id == "2023-037":
+            lat = np.array(matching["geometry"].y)[0]
+            lon = np.array(matching["geometry"].x)[0]
+        elif jsr_id == "2023-038":
+            lat = np.array(matching["geometry"].y)[1]
+            lon = np.array(matching["geometry"].x)[1]
+        # If its not in the list, then set it to the ocean near the launch site. 
+        # These coordinates are the most common grid box for reentries in 2020-2022.
         elif matching.shape[0] == 0:
             found_launch = False
             for i in range(len(self.dsl["COSPAR_ID"])):
@@ -437,6 +485,7 @@ class build_reentry_list:
             if found_launch == False:
                 sys.exit(f"Problem geolocating Falcon fairing recovery - {jsr_id}.")
         elif matching.shape[0] > 1:
+            print(matching)
             sys.exit(f"Multiple entries for Falcon fairing recovery - {jsr_id}.")
         else:
             sys.exit(f"Problem geolocating Falcon fairing recovery - {jsr_id}.")
@@ -451,31 +500,29 @@ class build_reentry_list:
             datestr(str):  The date in YYYYMMDD format.
             time_utc(str): The decimal time in hours.
         """   
-        yearstr=str(date[0])     
-        date[1] = date[1].replace("?","")
-        mon = datetime.strptime(date[1], '%b').month  
-        if mon in np.arange(10):
-            monstr = "0" + str(mon)
-        else:
-            monstr = str(mon)
-        if len(date) > 2: 
-            day = date[2].replace("?","")
-            if int(day) in np.arange(10):
-                daystr = "0" + day
+        yearstr=str(date[0]) 
+        if len(date) == 1:
+            monstr = "01"   
+            daystr = "01"  
+        else:   
+            date[1] = date[1].replace("?","")
+            monstr = str(datetime.strptime(date[1], '%b').month).zfill(2)  
+            if len(date) > 2: 
+                daystr = str(date[2].replace("?","")).zfill(2)
+            # TODO: Check the day of reentries when missing in GCAT.
+            elif date == ['2022', 'Apr']:
+                # DISCOSweb puts reentry on Mar 31st. Setting as March 31st.
+                daystr = "31"
+                monstr = "03"
+            elif date == ['2022', 'Dec']:
+                # DISCOSweb puts reentry on Nov 30th. Setting as Nov 30th.
+                daystr = "30"
+                monstr = "11"
             else:
-                daystr = day
-        elif date == ['2022', 'Apr']:
-            # DISCOSweb puts reentry on Mar 31st. Setting as March 31st.
-            daystr = "31"
-            monstr = "03"
-        elif date == ['2022', 'Dec']:
-            # DISCOSweb puts reentry on Nov 30th. Setting as Nov 30th.
-            daystr = "30"
-            monstr = "11"
-        else:
-            print(date)
-            daystr = "01"
+                daystr = "01"
+        
         datestr = yearstr+monstr+daystr
+            
         if len(date) >= 4:    
             time_utc = np.float64(int(date[3].replace("?","")[0:2]) + int(date[3].replace("?","")[2:4]) / 60)
         else:
@@ -642,9 +689,9 @@ class build_reentry_list:
         """        
         
         # Try to find an entry from satcat/auxcat that is already loaded.
-        # NOTE: Occasionally, the inclinations are slightly different for each object
+        # NOTE: Occasionally, the inclinations are slightly different for each object.
         # The difference is usually <1 degree, but can be higher. As we don't know which inclination is 'correct',
-        # we use the larger one to bound the geolocation.
+        # we use the larger one to bound the geolocation.   
         count = 0
         for reentry in (self.unique_reentry_list):
             if reentry["id"][:8] == jsr_id[:8] and reentry["inc"] != 0:
@@ -652,19 +699,21 @@ class build_reentry_list:
                     jsr_inc = reentry["inc"] 
                 elif count > 0:
                     if reentry["inc"] > jsr_inc:
-                        #if (reentry["inc"] - jsr_inc) > 2:
-                            #print(f"Inclination difference of {reentry['inc'] - jsr_inc}, {reentry['inc']}, {jsr_inc}, {jsr_id}")
                         jsr_inc == reentry["inc"]
                 count += 1
             
         # Sometimes, there is no entry in the reentry list because it didn't meet the criteria before.
         # In this case we need to reload the satcat to look for any matching entries.
         if jsr_inc == 0:
-            for filename in ["./databases/reentry/GCAT/satcat_2ndNov.tsv","./databases/reentry/GCAT/ftocat_2ndNov.tsv"]:
-                jsr_data = pd.read_csv(filename, delimiter='\t', dtype=object)
+            for file in ["satcat","ftocat"]:
+                
+                jsr_data = self.jsr_data_dict[file]
+                jsr_data = jsr_data[jsr_data["Piece"].str[:3] == jsr_id[:3]].reset_index(drop=True)
+                jsr_data = jsr_data[jsr_data["Inc"].astype(np.float64) != 0].reset_index(drop=True)
+
                 satcat_list = []
-                for reentry_count in range(1,len(jsr_data)):
-            
+                for reentry_count in range(len(jsr_data)):
+                    
                     if jsr_data["Piece"][reentry_count][:8] == "2020-F09":
                         new_id = "2020-F10"
                     elif jsr_data["Piece"][reentry_count][:8] == "2020-U01":
@@ -677,15 +726,29 @@ class build_reentry_list:
                         new_id = "2022-F06"
                     elif jsr_data["Piece"][reentry_count][:8] == "2022-F06":
                         new_id = "2022-F07"
+                    elif jsr_data["Piece"][reentry_count][:8] == "2023-F10":
+                        new_id = "2023-F03"
+                    elif jsr_data["Piece"][reentry_count][:8] == "2023-F03":
+                        new_id = "2023-F04"
+                    elif jsr_data["Piece"][reentry_count][:8] == "2023-F04":
+                        new_id = "2023-F05"
+                    elif jsr_data["Piece"][reentry_count][:8] == "2023-F05":
+                        new_id = "2023-F06"
+                    elif jsr_data["Piece"][reentry_count][:8] == "2023-F06":
+                        new_id = "2023-F07"
+                    elif jsr_data["Piece"][reentry_count][:8] == "2023-F07":
+                        new_id = "2023-F08"
+                    elif jsr_data["Piece"][reentry_count][:8] == "2023-F08":
+                        new_id = "2023-F09"
+                    elif jsr_data["Piece"][reentry_count][:8] == "2023-F09":
+                        new_id = "2023-F10"   
                     else:
                         new_id = jsr_data["Piece"][reentry_count][:8]
-                    
-                    if (
-                        jsr_data["Primary"][reentry_count] == "Earth" 
-                        and new_id == jsr_id[:8]
-                        and np.float64(jsr_data["Inc"][reentry_count]) != 0
-                    ):
+
+                    if new_id == jsr_id[:8]:
                         satcat_list.append(jsr_data.iloc[[reentry_count]])
+                        break
+                    
                 if len(satcat_list) > 0:
                     satcat = pd.concat(satcat_list, ignore_index=True)
                     count = 0
@@ -695,59 +758,63 @@ class build_reentry_list:
                                 jsr_inc = np.float64(satcat["Inc"][i])
                             elif count > 0:
                                 if np.float64(satcat["Inc"][i]) > jsr_inc:
-                                    #if (np.float64(satcat["Inc"][i]) - jsr_inc) > 2:
-                                        #print(f"Inclination difference of {np.float64(satcat['Inc'][i]) - jsr_inc}, {np.float64(satcat['Inc'][i])}, {jsr_inc}, {jsr_id}")
                                     jsr_inc == np.float64(satcat["Inc"][i])
                             count += 1
-                        else:
-                            print(f'Extra item loaded for inclination, {jsr_id},{satcat["Status"][i]}')
                 
         if jsr_inc == 0:
+            pass
             print(f"inc still empty for {jsr_id}")
             
         return jsr_inc 
          
-    def extract_jsr_info(self, filepath):
-        
+    def extract_jsr_info(self, jsr_data):
         """For each GCAT database, extract all the relevant information and output to the dictionary of all reentry objects.
         """        
         
-        # Load in the database.
-        jsr_data = pd.read_csv(filepath, delimiter='\t', dtype=object)
         # Only include specific statuses (see https://planet4589.org/space/gcat/web/intro/phases.html)
         jsr_data_stripped = jsr_data[jsr_data["Status"].isin(["R","R?","D","L","L?","S","F","AF","AS"])].reset_index(drop=True)
+        
+        # Ignore Z, this is a spurious entry according to JSR, and ignore D, this is debris objects. 
+        jsr_data_stripped = jsr_data_stripped[~jsr_data_stripped["Type"].str[0].isin(["Z","D"])].reset_index(drop=True)
+        
+        # Only objects whose primary body is Earth.
+        jsr_data_stripped = jsr_data_stripped[jsr_data_stripped["Primary"] == "Earth"].reset_index(drop=True) 
+        
+        # No suborbital launches (mainly military rockets).
+        jsr_data_stripped = jsr_data_stripped[jsr_data_stripped["Piece"].str[5:6] != "S"].reset_index(drop=True) 
+        
+        # Skipping military tests (mostly North Korea).
+        jsr_data_stripped = jsr_data_stripped[~jsr_data_stripped["Piece"].isin(["2021-U01","2022-U01","2022-U03","2023-U01",
+                                                              "2023-U02","2023-U03","2023-U04","2024-U05"])].reset_index(drop=True)
         
         jsr_data_stripped_list = []
         for reentry_count in range(len(jsr_data_stripped)):
             
-            # For some reason, there are 4 CZ-8 boosters listed in JSR rcat for 2020-102 (R80052-54), when there should be two (Jonathan has since updated his database to correct this).
-            if jsr_data_stripped["DDate"][reentry_count][0:4] != "-" and jsr_data_stripped["#JCAT"][reentry_count] not in ["R80054","R80055", # 2020-102 boosters.
-                                                                                                                           "L80508","L80509","L80510"  # Skipping 2021-F07
-                                                                                                                           ]:
+            if jsr_data_stripped["DDate"][reentry_count][0:4] != "-" and jsr_data_stripped["#JCAT"][reentry_count] not in ["L80508","L80509","L80510"]: # Skipping 2021-F07
+                
                 # Note: A negative apogee means that the object was in a hyperbolic orbit (velocity above escape velocity), so passes by Earth.
-                # However, Hayabusa2 (apogee=-54771) did reenter on 5th Dec, so including this.
+                # However, Hayabusa2 (apogee=-54771) did reenter on 5th Dec 2020, so including this.
 
                 if (jsr_data_stripped["Apogee"][reentry_count] == "-") or ("Inf" in jsr_data_stripped["Apogee"][reentry_count]):
                     jsr_data_stripped["Apogee"][reentry_count] = 0
                 
                 if (
                     self.start_year <= int(jsr_data_stripped["DDate"][reentry_count][0:4]) <= self.final_year     # This year only
-                    and (int(jsr_data_stripped["Apogee"][reentry_count]) >= 50 or int(jsr_data_stripped["Apogee"][reentry_count]) == -54771) # Apogee above 50 km.           
-                    and jsr_data_stripped["Piece"][reentry_count][5:6] != "S"                                     # No suborbital launches (mainly military rockets.)
-                    and jsr_data_stripped["Piece"][reentry_count][:8] not in ["2021-U01","2022-U01","2022-U03"]   # Skipping 2021-U01, 2022-U01 and 2022-U03, all military tests.
-                    and jsr_data_stripped["Primary"][reentry_count] == "Earth"                                    # Only objects whose primary body is Earth.
-                    and jsr_data_stripped["Type"][reentry_count][0] not in ["Z", "D"]                             # Ignore Z, this is a spurious entry according to JSR, and ignore D, this is debris objects. 
+                    and (int(jsr_data_stripped["Apogee"][reentry_count]) >= 50 or int(jsr_data_stripped["Apogee"][reentry_count]) == -54771) # Apogee above 50 km.
+                    # TODO: Check for more negative apogees that should be included.     
                 ): 
                     if jsr_data_stripped["Status"][reentry_count] == "AS":
                         if jsr_data_stripped["Piece"][reentry_count][5:6] in ["F","U"]: 
                             jsr_data_stripped_list.append(jsr_data_stripped.iloc[[reentry_count]])
                     else:
                         jsr_data_stripped_list.append(jsr_data_stripped.iloc[[reentry_count]])
+                        
         # Rebuild the database.
         if len(jsr_data_stripped_list) > 0:          
             jsr_data_stripped_range = pd.concat(jsr_data_stripped_list, ignore_index=True)
         else:
             jsr_data_stripped_range = []
+            
         # Now loop over the list and format into a dictionary.
         for reentry_count in range(len(jsr_data_stripped_range)):
             
@@ -765,6 +832,7 @@ class build_reentry_list:
                 jsr_id = "2020-F10"
             elif jsr_id == "2020-U01":
                 jsr_id = "2020-F09"
+
             elif jsr_id == "2022-U02":
                 jsr_id = "2022-F04"
             elif jsr_id == "2022-F04":
@@ -774,21 +842,30 @@ class build_reentry_list:
             elif jsr_id == "2022-F06":
                 jsr_id = "2022-F07"
             
-            # Set the burnup as partial for all re-entering capsules.
-            if jsr_name in ["Soyuz MS-13","Soyuz MS-15","Soyuz MS-16","Soyuz MS-17",
-                            "Soyuz MS-18","Soyuz MS-19","Soyuz MS-20","Soyuz MS-21",
-                            "Shenzhou 12", "Shenzhou 13", "Shenzhou 14",
-                            "Endeavour","Endurance","Freedom","Resilience",
-                            "Axiom Ax-1","Inspiration4","XZF-SC","X-37B OTV-6",
-                            "Dragon CRS-18","Dragon CRS-19", "Dragon CRS-20",
-                            "Dragon CRS-21","Dragon CRS-22", "Dragon CRS-23",
-                            "Dragon CRS-24","Dragon CRS-25", "Dragon CRS-20",
-                            "Starliner OFT-2","Artemis I","Chonfu Shiyong Shiyan HQ",
-                            "Bernard Kutter LOFTID","Hayabusa 2 Return Capsule","Chang'e-5 Fanhui Qi",
-                            ]:
+            elif jsr_id == "2023-F10":
+                jsr_id == "2023-F03"
+            elif jsr_id == "2023-F03":
+                jsr_id == "2023-F04"
+            elif jsr_id == "2023-F04":
+                jsr_id == "2023-F05"
+            elif jsr_id == "2023-F05":
+                jsr_id == "2023-F06"
+            elif jsr_id == "2023-F06":
+                jsr_id == "2023-F07"
+            elif jsr_id == "2023-F07":
+                jsr_id == "2023-F08"
+            elif jsr_id == "2023-F08":
+                jsr_id == "2023-F09"
+            elif jsr_id == "2023-F09":
+                jsr_id == "2023-F10"   
+            
+            # Set the burnup as partial for all objects landing or splashing down at the surface.
+            if jsr_data_stripped_range["Status"][reentry_count] == "L":
                 burnup = "Partial"
+            # NOTE: Need to manually check for Electron booster recoveries.
             elif jsr_name == "Electron Stage 1":
-                if jsr_id in ["2020-007","2020-085","2021-F02","2021-106","2022-047","2022-147"]:
+                if jsr_id in ["2020-007","2020-085","2021-F02","2021-106","2022-047","2022-147",
+                              "2023-041","2023-041","2023-100","2023-126","	2024-022",""]:
                     burnup = "Partial"
                 else:
                     burnup = "Complete"   
@@ -802,9 +879,7 @@ class build_reentry_list:
             if jsr_data_stripped_range["Name"][reentry_count] == "TEPCE 2":
                 jsr_id = "2019-036IA" 
             elif jsr_data_stripped_range["Name"][reentry_count] == "XZF Service Module":
-                jsr_id = "2020-027D"  
-            elif jsr_data_stripped_range["Piece"][reentry_count] == "2020-078B": # This is just a mistake in JSR.
-                jsr_name = "Falcon 9-098 Stage 2"
+                jsr_id = "2020-027D"
                 
             # Sort out the reentry time/date.
             datestr, time_utc = self.convert_time(jsr_data_stripped_range["DDate"][reentry_count].split()) 
@@ -835,12 +910,18 @@ class build_reentry_list:
             # Sort the inc.
             if jsr_inc == 0:
                 jsr_inc = self.sort_inclination(jsr_inc,jsr_id)
-                
+
             # Sort out the reentry lat/lon.
-            if ("Falcon 9 Stage 1" in jsr_name) and (jsr_data_stripped_range["#JCAT"][reentry_count] != "R81716"):
-                lat, lon = self.falcon_stage_lat_lon(datestr,jsr_id)
-                burnup = "Partial"
-                location = 5
+            if ("Falcon 9 Stage 1" in jsr_name):
+                if jsr_data_stripped_range["Status"][reentry_count] == "L":
+                    lat, lon = self.falcon_stage_lat_lon(datestr,jsr_id,jsr_dest) 
+                    location = 5
+                elif jsr_data_stripped_range["Status"][reentry_count] in ["S","D"]: # Sometimes the 1st stage is expended to suit the mission.
+                    if jsr_data_stripped_range["Status"][reentry_count] == "D":
+                        print(f"Warning: Assuming missing landing of {jsr_data_stripped_range['#JCAT'][reentry_count]}")
+                    lat, lon, location = self.convert_lat_lon(jsr_dest, jsr_inc, reentry_category, jsr_apogee, jsr_id)
+                else:
+                    sys.exit(f"Unexpected Falcon Stage 1 Status {jsr_data_stripped_range['Status'][reentry_count]} {jsr_data_stripped_range['#JCAT'][reentry_count]}")
             elif ("Falcon 9 Fairing" in jsr_name) or ("Falcon Heavy Fairing" in jsr_name):    
                 lat, lon = self.falcon_fairing_lat_lon(datestr,jsr_id)
                 burnup = "Partial"
@@ -850,7 +931,10 @@ class build_reentry_list:
             
             # Sort the mass.      
             if jsr_id[5:6] in ["F","U"]:
-                abl_mass, other_mass = self.failed_launch_mass(jsr_id, jsr_name, reentry_category)
+                pass
+                # TODO: Sort failed mass for post-2022.
+                #abl_mass, other_mass = self.failed_launch_mass(jsr_id, jsr_name, reentry_category)
+                abl_mass, other_mass = 0, 0
             else:
                 abl_mass = np.float64(jsr_data_stripped_range["DryMass"][reentry_count])
                 other_mass = 0
@@ -880,14 +964,15 @@ class build_reentry_list:
             
             self.unique_reentry_list.append(temp_reentry_dict)   
     
-    def add_cargo(self,filepath):
+    def add_cargo(self,jsr_data):
         
-        """Short function to add the cargo mass to its parent object.
+        """Short function to add the cargo mass to its parent object. jsr_data is ecat.
         """        
         
-        jsr_data = pd.read_csv(filepath, delimiter='\t', dtype=object)        
+        jsr_data = jsr_data[jsr_data["Status"].isin(["AL IN","AR IN"])].reset_index(drop=True)
+        
         for reentry_count in range(len(jsr_data)):           
-            if jsr_data["Status"][reentry_count] in ["AL IN","AR IN"] and (self.start_year <= int(jsr_data["DDate"][reentry_count][0:4]) <= self.final_year):
+            if (self.start_year <= int(jsr_data["DDate"][reentry_count][0:4]) <= self.final_year):
                 cargo_found = False 
                 for reentry in self.unique_reentry_list:
                     if reentry["jcat"] == jsr_data["Parent"][reentry_count]:
@@ -895,6 +980,8 @@ class build_reentry_list:
                         cargo_found = True    
                         if jsr_data["Piece"][reentry_count][5:6] in ["F","U","S"]:
                             sys.exit(f'Cargo in failed/suborbital object {jsr_data["Piece"][reentry_count]}.')
+                    # These are where the parent object is also attached, so its not in the database.
+                    # As these only happen very occasionally, just set it to the grandparent manually.
                     if reentry["jcat"] == "S51660" and jsr_data["#JCAT"][reentry_count] == "A09988":
                         reentry["other_mass"] += np.float64(jsr_data["DryMass"][reentry_count])
                         cargo_found = True
@@ -902,107 +989,81 @@ class build_reentry_list:
                         reentry["other_mass"] += np.float64(jsr_data["DryMass"][reentry_count])
                         cargo_found = True    
                 if cargo_found == False:
-                    print(f'Cargo missing for {jsr_data["Piece"][reentry_count]}')                    
+                    print(f'Cargo missing for {jsr_data["#JCAT"][reentry_count]}')                    
      
     def add_attached(self):
         
-        for filepath in ["./databases/reentry/GCAT/satcat_2ndNov.tsv","./databases/reentry/GCAT/auxcat_2ndNov.tsv",
-                            "./databases/reentry/GCAT/lcat_2ndNov.tsv",  "./databases/reentry/GCAT/rcat_2ndNov.tsv",
-                            "./databases/reentry/GCAT/lprcat_2ndNov.tsv","./databases/reentry/GCAT/deepcat_7thNov.tsv",
-                            "./databases/reentry/GCAT/ecat_8thNov.tsv"]:
-            attached_data = pd.read_csv(filepath, delimiter='\t', dtype=object)
-            attached_data_stripped = attached_data[attached_data["Status"].isin(["AR","AS","AL"])].reset_index(drop=True)   
+        for file in ["satcat","auxcat","lcat","rcat","lprcat","deepcat","ecat"]:
+            attached_data = self.jsr_data_dict[file]
+            attached_data_stripped = attached_data[attached_data["Status"].isin(["AR","AS","AL"])].reset_index(drop=True) # Attached objects only.
+            attached_data_stripped = attached_data_stripped[~attached_data_stripped["Piece"].str[5:6].isin(["S","F","U"])].reset_index(drop=True) # Skip suborbital and failed launches (treated separately).
+            attached_data_stripped = attached_data_stripped[
+                (attached_data_stripped["DDate"].str[:4].astype(int) >= self.start_year) & 
+                (attached_data_stripped["DDate"].str[:4].astype(int) <= self.final_year)
+            ].reset_index(drop=True)
+            attached_data_stripped = attached_data_stripped[attached_data_stripped["Primary"] == "Earth"].reset_index(drop=True)  
+            
+            # This should be listed as re-entering on the Moon, so ignore.
+            attached_data_stripped = attached_data_stripped[attached_data_stripped["PLName"] != "Manfred Mem. Moon Mission"].reset_index(drop=True)  
+            
             missing_list = []
             added = 0
-            # First see if the parent is already in the reentry list. Add the mass to the parent object if it is, or add the details to a list if missing.
             
+            # First see if the parent is already in the reentry list. Add the mass to the parent object if it is, or add the details to a list if missing.
             for reentry_count in range(len(attached_data_stripped)): 
-                if ((self.start_year <= int(attached_data_stripped["DDate"][reentry_count][0:4]) <= self.final_year) and 
-                    attached_data_stripped["Piece"][reentry_count][5:6] not in ["S","F","U"]):
-                    
-                    found_parent = False
-                    for reentry in self.unique_reentry_list:
-                        if reentry["jcat"][:6] == attached_data_stripped["Parent"][reentry_count][:6]:
-                            found_parent = True
-                            added += 1
-                            if reentry["id"][:8] != attached_data_stripped["Piece"][reentry_count][:8]:
-                                pass
-                                #print(f'Found missing item in original list. {reentry["id"]},{attached_data_stripped["Piece"][reentry_count]},{filepath}.')
-                            reentry["attached_abl_mass"] += np.float64(attached_data_stripped["DryMass"][reentry_count]) 
-                            
-
-                    if found_parent == False and filepath not in ["./databases/reentry/GCAT/lprcat_2ndNov.tsv"]:
-                        missing_list.append([attached_data_stripped['Piece'][reentry_count],
-                                             attached_data_stripped['Parent'][reentry_count][:6],
-                                             attached_data_stripped["DryMass"][reentry_count],
-                                             filepath])          
-            # Loopover all items where the parent couldn't be found. The parent is always starts with A, but is usually in the ecat.
-            for i in range(len(missing_list)):
+                
                 found_parent = False
-                if missing_list[i][1][0] != "A":
-                    sys.exit("Item has a missing parent from another database than auxcat.")
-                ecat_data = pd.read_csv("./databases/reentry/GCAT/ecat_8thNov.tsv", delimiter='\t', dtype=object)  
-                # Now loop over the ecat and look for the parent.
-                for reentry_count in range(len(ecat_data)): 
-                    if (missing_list[i][1] == ecat_data['#JCAT'][reentry_count][:6]
-                    and ecat_data['Status'][reentry_count] in ["AR","AL"]):
-                        for reentry_count_2 in range(len(ecat_data)): 
-                            if (ecat_data['Parent'][reentry_count][:6] == ecat_data['#JCAT'][reentry_count_2][:6]
-                            and ecat_data['Status'][reentry_count_2] in ["D","L"]):
-                                # If we find the grandparent, then hopefully the object is already in the reentry list.
-                                for reentry in self.unique_reentry_list:
-                                    if ecat_data['#JCAT'][reentry_count_2][:6] == reentry["jcat"][:6]:
-                                        if reentry["id"][:8] != missing_list[i][0][:8]:
-                                            pass
-                                            #print(f'Found missing item in ecat. {reentry["id"]},{missing_list[i][0]},{filepath}.')
-                                        reentry["attached_abl_mass"] += np.float64(missing_list[i][2])
-                                        added += 1
-                                        found_parent = True
-                        
-                if found_parent == False:
-                    aux_data = pd.read_csv("./databases/reentry/GCAT/auxcat_2ndNov.tsv", delimiter='\t', dtype=object)
-                    for reentry_count in range(len(aux_data)): 
-                        if (missing_list[i][1] == aux_data['#JCAT'][reentry_count][:6]
-                        and aux_data['Status'][reentry_count] in ["AR","AL"]):    
-                               
-                            # If the grandparent is also in the auxcat, then look for the grandparent.
-                            if aux_data['Parent'][reentry_count][0] == "A":             
-                                for reentry_count_2 in range(len(aux_data)): 
-                                    if (aux_data['Parent'][reentry_count][:6] == aux_data['#JCAT'][reentry_count_2][:6]
-                                        and aux_data['Status'][reentry_count_2] in ["D","L"]):
-                                        # If we find the grandparent, then hopefully the object is already in the reentry list.
-                                        for reentry in self.unique_reentry_list:
-                                            if aux_data['#JCAT'][reentry_count_2][:6] == reentry["jcat"][:6]:
-                                                if reentry["id"][:8] != missing_list[i][0][:8]:
-                                                    pass
-                                                    print(f'Found missing item in existing reentries. {reentry["id"]},{missing_list[i][0]},{filepath}.')
-                                                reentry["attached_abl_mass"] += np.float64(missing_list[i][2])
-                                                added += 1
-                                                found_parent = True
-                            # If the grandparent starts with S, its either in the satcat or ecat, and has probably already been added to the list.
-                            elif aux_data['Parent'][reentry_count][0] == "S":
-                                for reentry in self.unique_reentry_list:
-                                    if aux_data['Parent'][reentry_count][:6] == reentry["jcat"][:6]:
-                                        if reentry["id"][:8] != missing_list[i][0][:8]:
-                                            pass
-                                            print(f'Found missing item in existing reentries. {reentry["id"]},{missing_list[i][0]},{filepath}.')
-                                        reentry["attached_abl_mass"] += np.float64(missing_list[i][2])
-                                        added += 1
-                                        found_parent = True
-                            else:
-                                print("Grandparent does not start with S or A.")
-                # For 2022-002, for A10426/7/8, the parent chain is A09939/42 > 38 > 37. So just hard setting to avoid a huge indented block.            
-                if missing_list[i][1] in ["A09942","A09939"]:
+                for reentry in self.unique_reentry_list:
+                    if reentry["jcat"][:6] == attached_data_stripped["Parent"][reentry_count][:6]:
+                        found_parent = True
+                        added += 1
+                        reentry["attached_abl_mass"] += np.float64(attached_data_stripped["DryMass"][reentry_count]) 
+
+                # For A10426/7/8, the parent chain is A09939/42 > 38 > 37. So need to hard set if we don't want to search for great-grandparents.
+                if attached_data_stripped['Parent'][reentry_count][:6] in ["A09942","A09939"]:
                     for reentry in self.unique_reentry_list:
                         if reentry["jcat"][:6] == "A09937":
-                            reentry["attached_abl_mass"] += np.float64(missing_list[i][2])
+                            reentry["attached_abl_mass"] += np.float64(attached_data_stripped["DryMass"][reentry_count]) 
                             added += 1
                             found_parent = True
-                                        
-                if found_parent == False:
-                    print(missing_list[i])
-                    
-            #print(added)
+                
+                if found_parent == False and file not in ["lprcat.tsv"]:
+                    missing_list.append([attached_data_stripped['Piece'][reentry_count],
+                                            attached_data_stripped['Parent'][reentry_count][:6],
+                                            attached_data_stripped["DryMass"][reentry_count],
+                                            file,
+                                            attached_data_stripped["#JCAT"][reentry_count]])
+                            
+            # Loopover all items where the parent couldn't be found (ie this means the parent is probably also attached.)
+            for i in range(len(missing_list)):
+                
+                found_parent = False
+                found_grandparent = False
+                #print(f"Looking for parents of object {missing_list[i][0]} from {file}.")
+                        
+                # Look in all the files to find the parent object.
+                for file_2 in ["satcat","auxcat","lcat","rcat","lprcat","deepcat","ecat"]:
+                    file_data = self.jsr_data_dict[file_2]
+                    file_data = file_data[file_data['#JCAT'] == missing_list[i][1]].reset_index(drop=True)
+                    file_data = file_data[file_data['Status'].isin(["AR","AL"])].reset_index(drop=True)
+                    if len(file_data) == 1:
+                        found_parent = True
+                        grandparent = file_data["Parent"][0] # Now we know what the grandparent is, its probably already in the reentry list.
+                        break
+                    elif len(file_data) > 1:
+                        sys.exit("Multiple parents found.")
+                if found_parent == True:
+                    for reentry in self.unique_reentry_list:
+                        if grandparent == reentry["jcat"][:6]:
+                            #print(f'Found grandparent for {missing_list[i][0]} in {file}. {reentry["id"]}.')
+                            reentry["attached_abl_mass"] += np.float64(missing_list[i][2])
+                            added += 1
+                            found_grandparent = True
+                            break
+                else:
+                    sys.exit(f"Couldn't find parent {missing_list[i]}.")
+                if found_grandparent == False:
+                    sys.exit(f"Couldn't find grandparent {missing_list[i]}")
         
     def extract_aerospace_info(self, filepath):
         
@@ -1451,30 +1512,35 @@ class build_reentry_list:
              
         self.unique_reentry_list = []
         
-        print("Adding JSR re-entries.") # (see https://planet4589.org/space/gcat/web/cat/cats.html)
-        print("satcat")
-        self.extract_jsr_info("./databases/reentry/GCAT/satcat_2ndNov.tsv")  # Load in the JSR satcat database (main database).
-        print("auxcat") 
-        self.extract_jsr_info("./databases/reentry/GCAT/auxcat_2ndNov.tsv")  # Load in the JSR auxcat database (should be in main but isn't).
-        print("lcat") 
-        self.extract_jsr_info("./databases/reentry/GCAT/lcat_2ndNov.tsv")    # Load in the JSR lcat database (suborbital stages/objects).
-        print("rcat") 
-        self.extract_jsr_info("./databases/reentry/GCAT/rcat_2ndNov.tsv")    # Load in the JSR rcat database (lower stages and fairings).
-        print("lprcat") 
-        self.extract_jsr_info("./databases/reentry/GCAT/lprcat_2ndNov.tsv")  # Load in the JSR lprcat database (several objects returning from space).
-        print("deepcat")
-        self.extract_jsr_info("./databases/reentry/GCAT/deepcat_7thNov.tsv") # Load in the JSR deepcat database (several objects returning from space).
-        print("ecat")
-        self.extract_jsr_info("./databases/reentry/GCAT/ecat_8thNov.tsv")    # Load in the JSR ecat database (capsules from ISS / crewed missions).
+        print("Loading JSR re-entries.") # (see https://planet4589.org/space/gcat/web/cat/cats.html)
+        files = ["satcat","auxcat","lcat","rcat","lprcat","deepcat","ecat","ftocat"]
+        # satcat (main database), auxcat (should be in main but isn't), lcat (suborbital stages/objects). 
+        # rcat (lower stages and fairings), lprcat (several objects returning from space).
+        # deepcat (several objects returning from space), ecat (capsules from ISS / crewed missions). 
+        # ftocat (failed launches).
+        self.jsr_data_dict = {}
+        for file in files:
+            url = "https://planet4589.org/space/gcat/tsv/cat/" + file + ".tsv"
+            response = requests.get(url)
+            if response.status_code == 200:
+                # Convert the content to a file-like object for pandas
+                tsv_data = StringIO(response.text)
+                # Load the data into a pandas DataFrame
+                self.jsr_data_dict[file] = pd.read_csv(tsv_data, delimiter="\t", dtype=object)
+            else:
+                sys.exit(f"Failed to fetch {catfile} from JSR", response.status_code)
+            
+        # Add each file sequentially. There is nothing relevant for this inventory in hcocat, tmpcat and csocat.
+        for file in ["satcat","auxcat","lcat","rcat","lprcat","deepcat","ecat"]:
+            print(file)
+            self.extract_jsr_info(self.jsr_data_dict[file])
         print("ecat cargo")
-        self.add_cargo("./databases/reentry/GCAT/ecat_8thNov.tsv")           # Load in the JSR ecat database.
+        self.add_cargo(self.jsr_data_dict["ecat"])          
         print("ftocat")
-        self.extract_jsr_info("./databases/reentry/GCAT/ftocat_2ndNov.tsv")  # Load in the JSR ftocat database.
+        self.extract_jsr_info(self.jsr_data_dict["ftocat"])  
         print("attached")
         self.add_attached()
 
-        # There is nothing relevant for this inventory in hcocat, tmpcat and csocat.   
-        
         # Check for duplicate reentries with the same jcat id.         
         self.jsr_jcat_list = []
         for reentry in self.unique_reentry_list:
@@ -1717,8 +1783,8 @@ if __name__ == "__main__":
     # Set up the arguments for each function.
     parser = argparse.ArgumentParser()
     parser.add_argument('-sv', "--save_reentry_info", action='store_true', help='Save reentry info.')
-    parser.add_argument('-sy', "--start_year", default = "2020", choices=str(np.arange(1957,2023)), help='Start Year.')
-    parser.add_argument('-fy', "--final_year", default = "2022", choices=str(np.arange(1957,2023)), help='Final Year.')
+    parser.add_argument('-sy', "--start_year", default = "2020", choices=str(np.arange(1957,2025)), help='Start Year.')
+    parser.add_argument('-fy', "--final_year", default = "2022", choices=str(np.arange(1957,2025)), help='Final Year.')
     args = parser.parse_args()
     
     # Sort out the year range.
@@ -1729,7 +1795,9 @@ if __name__ == "__main__":
     print(f"Processing from year {start_year} to {final_year}.")
     
     # Compile the reentry data
-    Data = build_reentry_list(start_year, final_year,)
+    Data = build_reentry_list(start_year, final_year)
     Data.get_reentry_info()
     if args.save_reentry_info == True:
         Data.reentry_info_to_netcdf()
+        
+    # TODO: Check what Jonathan lists as the YYYY-UXX launches. These seem to be missing in DISCOSweb but include Starship launches above 50 km.

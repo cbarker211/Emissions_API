@@ -133,11 +133,12 @@ class import_launches_from_discos:
             # Mark as MCS any launches containing payloads with the name:
             #   - Starlink
             #   - Oneweb
-            #   - Yinhe
+            #   - Yinhe (and Lingxi)
             #   - Lynk
-            #   - E-Space
+            #   - E-Space (and Protosat-1)
+            #   - Tranche (covers all 2023-050, 1 2023-133, all 2024-028). 2023-133 also contains Wildfire 1-10 and BB 4 and BB 4. But this launch is already tagged.
             params={
-                    'filter' : "(eq(objectClass,Payload))&(contains(name,Starlink)|contains(name,OneWeb)|contains(name,Oneweb)|contains(name,Yinhe)|contains(name,Lynk)|contains(name,E-Space))",
+                    'filter' : "(eq(objectClass,Payload))&(contains(name,Starlink)|contains(name,OneWeb)|contains(name,Oneweb)|contains(name,Yinhe)|contains(name,Lynk)|contains(name,E-Space)|contains(name,Lingxi)|contains(name,Protosat-1)|contains(name,Kuiper)|contains(name,Tranche))",
                     'sort' : 'id'         
                 }
             while True:
@@ -269,7 +270,7 @@ class import_launches_from_discos:
         ds['DISCOSweb_Rocket_ID'] = data_da_vehicle_id
         ds['Megaconstellation_Flag'] = data_da_launch_MCS
              
-        #Save to file and close the datset     
+        #Save to file and close the dataset     
         ds.to_netcdf(f'./databases/launch_activity_data_{self.start_year}-{self.final_year}.nc')
         ds.close()
         
@@ -699,8 +700,8 @@ if __name__ == "__main__":
     parser.add_argument('-ri', "--rocket_info", action='store_true', help='Get rocket info.')
     parser.add_argument('-sri', "--save_rocket_info", action='store_true', help='Save launch info.')
     parser.add_argument('-sdwr', "--save_discosweb_reentries", action='store_true', help='Save launch info.')
-    parser.add_argument('-sy', "--start_year", default = "2020", choices=str(np.arange(1957,2024)), help='Start Year.')
-    parser.add_argument('-fy', "--final_year", default = "2022", choices=str(np.arange(1957,2024)), help='Final Year.')
+    parser.add_argument('-sy', "--start_year", default = "2020", choices=str(np.arange(1957,2025)), help='Start Year.')
+    parser.add_argument('-fy', "--final_year", default = "2022", choices=str(np.arange(1957,2025)), help='Final Year.')
     args = parser.parse_args()
     
     # Sort out the year range.
