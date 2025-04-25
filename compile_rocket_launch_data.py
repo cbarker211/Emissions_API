@@ -3,8 +3,6 @@ from time import sleep
 import numpy as np
 import xarray as xr
 import argparse
-
-
 import sys
 sys.path.append('./python_modules/')
 from discosweb_api_func import server_request, wait_function, response_error_handler
@@ -14,7 +12,7 @@ from update_rocket_launch_data import update_mass_info
 NB: Each request is limited to 30 results, and there is a maximum limit of requests in a certain timeframe (20 requests per 60s).
 To solve this, the script makes multiple requests over different filters, and automatically calculates the time required to wait."""
 
-class import_launches_from_discos:
+class import_launches:
     
     def __init__(self,start_year,final_year):
         """This function sets up the class.
@@ -191,6 +189,11 @@ class import_launches_from_discos:
                             self.rocket_name.append(doc['data']['attributes']["name"] + " v2021")
                         else:
                             self.rocket_name.append(doc['data']['attributes']["name"] + " v2020")
+                    elif doc['data']["attributes"]["name"][:5] == "Zhuque-2":
+                        if datetime(int(self.launch_datestr[-1][:4]),int(self.launch_datestr[-1][4:6]),int(self.launch_datestr[-1][6:8])) > datetime(2024,1,1):
+                            self.rocket_name.append(doc['data']['attributes']["name"] + "E")
+                        else:
+                            self.rocket_name.append(doc['data']['attributes']["name"])
                     else:
                         self.rocket_name.append(doc['data']["attributes"]["name"])
                     self.vehicle_id.append(int(doc["data"]["id"]))
@@ -281,40 +284,45 @@ class import_launches_from_discos:
         ##########################
         
         # Sometimes the stages are not in the right order on DISCOSweb, so we need to manually rearrange.
-        if unique_vehicle_name_list[i] in ["Angara A5", "Angara A5 Persei", "Ariane 5ECA", 
+        if unique_vehicle_name_list[i] in ["Angara A5", "Angara A5 Persei", "Angara A5 Orion", "Ariane 5ECA", 
                                            "Atlas V N22 v2020", "Atlas V 401 v2020", "Atlas V 411", "Atlas V 421 v2021",
                                            "Atlas V 511 v2020", "Atlas V 531 v2020", 
                                            "Atlas V 541", "Atlas V 541 v2020", "Atlas V 551", "Atlas V 551 v2020",
                                            "Delta 4H", "Epsilon-2 CLPS", "H-IIA 202", "H-IIA 204", "H-IIB", "GSLV Mk II ", "GSLV Mk III",
-                                           "Jielong-3", "PSLV-DL", "PSLV-XL", "PSLV-CA", "Space Launch System - Block 1 Crew", "Falcon Heavy",
-                                           "Long March (CZ) 11", "Long March (CZ) 2F", "Long March (CZ) 3B", "Long March (CZ) 3C", "Long March (CZ) 5", 
-                                           "Long March (CZ) 5B", "Long March (CZ) 6", "Long March (CZ) 6A", "Long March (CZ) 7", "Long March (CZ) 7A", 
+                                           "PSLV", "PSLV-DL", "PSLV-XL", "PSLV-CA", "Space Launch System - Block 1 Crew", "Falcon Heavy",
+                                           "Long March (CZ) 11", "Long March (CZ) 2F", "Long March (CZ) 3B", "Long March (CZ) 3B/YZ-1", "Long March (CZ) 3C", "Long March (CZ) 5", 
+                                           "Long March (CZ) 5B", "Long March (CZ) 5/YZ-2", "Long March (CZ) 6", "Long March (CZ) 6A", "Long March (CZ) 7", "Long March (CZ) 7A", 
                                            "Long March (CZ) 8", "Minotaur 1", "Pegasus XL", "Vega C",
                                            "Soyuz-2-1A", "Soyuz-2-1A Fregat-M", "Soyuz-2-1B Fregat", "Soyuz-2-1B Fregat-M", "Soyuz-ST-A Fregat-M",
-                                           "Soyuz-2-1A Fregat","Soyuz-2-1B","Soyuz-2-1V Volga","Soyuz-ST-B Fregat-MT"]:
+                                           "Soyuz-2-1A Fregat","Soyuz-2-1B","Soyuz-2-1V Volga","Soyuz-ST-B Fregat-MT",
+                                           
+                                           "NK Kerolox LV","Qaem-100", "Shavit 2"]:
             
             stage_name = stage["attributes"]["name"]
 
-            if "booster" in stage_name.lower() or stage_name in ["EPS P241", "Soyuz-FG Blok-B,V,G,D","K2-1","GSLV-SOM","Falcon 9 Merlin-1D+","S-200"]:
+            if "booster" in stage_name.lower() or stage_name in ["EPS P241","Soyuz-FG Blok-B,V,G,D","K2-1","GSLV-SOM","Falcon 9 Merlin-1D+","S-200"]:
                 stage_number = "Booster"
                 
             # For stage ids 773 and 775, this is stages with the same name for the Delta 4H rocket.  
-            # Same for 112791 and 112794 for Jielong-3.
+            # NK Kerolox LV has second and third stage literally just called "Stage 2" and "Stage 3", so to avoid complicating other rockets we hard code this. Same for third stage of Qaem-100.
+            # For stage ids 114183 and 114190, this is stages with the same name for the Shavit 2 rocket.  
             elif (stage_name in ["URM-1","EPC H173", "Atlas V CCB", "H-II LE-7A", "H-II widebody LE-7A", "PS1", "Soyuz-FG Blok-A", 	"Soyuz-2.1V Blok-A",
-                                 "Long March (CZ) 11 Stage 1", "L-186 (YF21B)", "L-172 (YF21C)", "CZ-5-500", "L-165 (H5-1)", "L-76 (YF100)",
-                                 "GSLV-1", "Minuteman 1", "ORION 50SXL","SLS-B1 First Stage","P120C","Falcon Heavy Centre Core","L-110","JIE-3 first stage"]) or stage["id"] == "775":
+                                 "Long March (CZ) 11 Stage 1", "L-186 (YF21B)", "L-172 (YF21C)", "L-186 (YF21C)", "CZ-5-500", "L-165 (H5-1)", "L-76 (YF100)",
+                                 "GSLV-1", "Minuteman 1", "ORION 50SXL","SLS-B1 First Stage","P120C","Falcon Heavy Centre Core","L-110","JIE-3 first stage",
+                                 "NK Kerolox LV","Rafe"]) or stage["id"] in ["775","114183"]:
                 stage_number = "Stage1"
                 
             elif (stage_name in ["URM-2","ESC-A","Centaur-5 SEC","Centaur-5 DEC", "H-II LE-5B", "PS2", "Blok-I", "Long March (CZ) 11 Stage 2", 
-                                 "L-84 (YF26)", "L-45 (YF-24E)", "CZ-5-HO", "L-15 (YF115)", "L-15 (YF-115)", "K3-2 short",
-                                 "M-35","GSLV-2","SR19","SLS  iCPS","Zefiro 40C","Falcon Heavy second stage","JIE-3 second stage","C-25"]) or stage["id"] == "773":
+                                 "L-84 (YF26)", "L-45 (YF-24E)", "CZ-5-HO", "L-15 (YF115)", "L-15 (YF-115) (7)", "K3-2 short",
+                                 "M-35","GSLV-2","SR19","SLS  iCPS","Zefiro 40C","Falcon Heavy second stage","JIE-3 second stage","C-25",
+                                 "Salman","L-15 (YF-115) (6A)"]) or stage["id"] in ["773","116151","114190"]:
                 stage_number = "Stage2"
                 
             elif (stage_name in ["Briz-M", "PS3", "Fregat-M", "Fregat", "Fregat-MT", "Long March (CZ) 11 Stage 3", "PBV",
-                                "Blok-DM-3","KM-V2c","GS3 (GSLV Mk II)","Zefiro 9","Volga (Soyuz-2-1V Volga)"]) or stage["id"] == "112791":
+                                "Blok-DM-3","KM-V2c","GS3 (GSLV Mk II)","Zefiro 9","Volga (Soyuz-2-1V Volga)","RSA-3-3","YZ-2"]) or stage["id"] in ["112791","116154","116721"]:
                 stage_number = "Stage3"
                 
-            elif (stage_name in ["PSLV fourth stage (PS4)", "Long March (CZ) 11 Stage 4","CLPS","AVUM+"]) or stage["id"] == "112794":
+            elif (stage_name in ["PSLV fourth stage (PS4)", "Long March (CZ) 11 Stage 4","CLPS","AVUM+","YZ-1"]) or stage["id"] == "112794":
                 stage_number = "Stage4"
                 
             # The Pegasus, Antares, Minotaur and Taurus rockets all use similar stages 
@@ -336,13 +344,13 @@ class import_launches_from_discos:
             
             # Long March often uses the same stage for different rockets, but not always at the same position.    
             elif stage_name == "H-18 (Long March (CZ) YF)":
-                if unique_vehicle_name_list[i] in ["Long March (CZ) 3B", "Long March (CZ) 3C", "Long March (CZ) 7A"]:
+                if unique_vehicle_name_list[i] in ["Long March (CZ) 3B", "Long March (CZ) 3B/YZ-1", "Long March (CZ) 3C", "Long March (CZ) 7A"]:
                     stage_number = "Stage3"
                 elif unique_vehicle_name_list[i] == "Long March (CZ) 8":
                     stage_number = "Stage2"
 
             elif stage_name == "K3-1":
-                if unique_vehicle_name_list[i] in ["Long March (CZ) 5", "Long March (CZ) 5B"]:
+                if unique_vehicle_name_list[i] in ["Long March (CZ) 5", "Long March (CZ) 5B", "Long March (CZ) 5/YZ-2"]:
                     stage_number = "Booster"
                 elif unique_vehicle_name_list[i] in ["Long March (CZ) 8", "Long March (CZ) 7", "Long March (CZ) 7A"]:
                     stage_number = "Stage1"
@@ -383,17 +391,32 @@ class import_launches_from_discos:
             response = server_request({},f'/launch-vehicles/stages/{stage["id"]}/propellant')
             if response.ok:
                 doc = response.json()
+                
+                # TODO: We could probably look up this information from JSR if we wanted to and it would be much simpler as its a more complete database.
                 if doc['data'] != None:
                     propellant_info = doc['data']["attributes"]
                     
+                    # Check for solid/liquid hybrid fuel for a single stage.
                     if (propellant_info["fuel"] != None) and (propellant_info["oxidiser"] != None) and (propellant_info["solidPropellant"] != None):
                         print("HYBRID ROCKET DETECTED")
-                    #First get the name.
+            
+                    # Now check if its liquid or solid fuel.
                     if (propellant_info["fuel"] != None) and (propellant_info["oxidiser"] != None):
                         temp_dict[f"{stage_number} Propellant Name"] = propellant_info["fuel"] + "/" + propellant_info["oxidiser"]
                     elif propellant_info["solidPropellant"] != None:
                         temp_dict[f"{stage_number} Propellant Name"] = propellant_info["solidPropellant"]
-                        #The else case is handled below in the next else block.
+                        
+                    # Sort out rockets where the propellant type is missing but is still not equal to None.
+                    elif unique_vehicle_name_list[i] == "GSLV Mk II":
+                        if stage_number in ['Booster']:
+                            temp_dict[f"{stage_number} Fuel Type"] = "Solid"
+                        elif stage_number in ['Stage1','Stage2']:
+                            temp_dict[f"{stage_number} Fuel Type"] = "Hypergolic"
+                        else:
+                            temp_dict[f"{stage_number} Fuel Type"] = "Hydrogen"
+                    else:
+                        print(f"Warning: Missing propellant <{temp_dict[f'{stage_number} Propellant Name']}> for {stage_number} of {unique_vehicle_name_list[i]}.")
+                        
                         
                     # Fix minor spelling errors from database.
                     if stage["attributes"]["name"] == "Antares-200 first stage (RD-181)":
@@ -407,18 +430,39 @@ class import_launches_from_discos:
                         temp_dict[f"{stage_number} Fuel Type"] = "Solid"  
                     elif temp_dict[f"{stage_number} Propellant Name"] in ['RP1 (Rocket Propellant 1)/LOX','Kerosene/LOX']:
                         temp_dict[f"{stage_number} Fuel Type"] = "Kerosene" 
-                    elif "Hydrazine" in temp_dict[f"{stage_number} Propellant Name"] or temp_dict[f"{stage_number} Propellant Name"] == "UH25 (75%UDMH+25%N2H4)/N2O4":
+                    elif "Hydrazine" in temp_dict[f"{stage_number} Propellant Name"] or temp_dict[f"{stage_number} Propellant Name"] in ["UH25 (75%UDMH+25%N2H4)/N2O4","Liquid bi-propellant"] :
                         temp_dict[f"{stage_number} Fuel Type"] = "Hypergolic"  
                     elif temp_dict[f"{stage_number} Propellant Name"] in ['LH2 (Liquid Hydrogen)/LOX']:
                         temp_dict[f"{stage_number} Fuel Type"] = "Hydrogen"  
                     elif temp_dict[f"{stage_number} Propellant Name"] in ['LNG (Liquid Natural Gas)/LOX']:
-                        temp_dict[f"{stage_number} Fuel Type"] = "Methane"  
+                        temp_dict[f"{stage_number} Fuel Type"] = "Methane"
+                        
+                # Sort out rockets where the propellant type is missing.  
+                elif unique_vehicle_name_list[i] == "Ceres-1":
+                    if stage_number in ['Stage1','Stage2','Stage3']:
+                        temp_dict[f"{stage_number} Fuel Type"] = "Solid"
                     else:
-                        pass
-                        print(f"Warning: Couldn't assign propellant <{temp_dict[f'{stage_number} Propellant Name']}> for {stage_number} of {unique_vehicle_name_list[i]}.")     
+                        temp_dict[f"{stage_number} Fuel Type"] = "Hypergolic"
+                elif unique_vehicle_name_list[i] == "Electron (Curie)":
+                    if stage_number in ['Stage2']:
+                        temp_dict[f"{stage_number} Propellant Name"] = 'Kerosene/LOX'
+                        temp_dict[f"{stage_number} Fuel Type"]       = 'Kerosene'
+                    elif stage_number in ['Stage3']:
+                        temp_dict[f"{stage_number} Propellant Name"] = "Liquid bi-propellant"
+                        temp_dict[f"{stage_number} Fuel Type"]       = 'Kerosene'
+                elif unique_vehicle_name_list[i] == "Goche Yeollyo Uju Balsache (GYUB) - TV2":
+                    if stage_number in ['Stage1','Stage2']:
+                        temp_dict[f"{stage_number} Fuel Type"] = "Solid"
+                    elif stage_number in ['Stage3']:
+                        temp_dict[f"{stage_number} Propellant Name"] = "N2O4/MMH" # From JSR https://planet4589.org/space/gcat/data/tables/engines.html GYUB4
+                        temp_dict[f"{stage_number} Fuel Type"] = "Hypergolic"
+                elif unique_vehicle_name_list[i] == "Jielong-3":
+                    temp_dict[f"{stage_number} Fuel Type"] = "Solid"
+                elif unique_vehicle_name_list[i] == "KAIROS" and stage_number == "Stage4":
+                    temp_dict[f"{stage_number} Propellant Name"] = "Monopropellant hydrazine" # From JSR https://planet4589.org/space/gcat/data/tables/engines.html Kairos PBS
+                    temp_dict[f"{stage_number} Fuel Type"] = "Hypergolic"
                 else:
-                    pass
-                    print(f"Warning: Couldn't find any propellant for {stage_number} of {unique_vehicle_name_list[i]}.")
+                    print(f"Warning: Missing propellant <<{temp_dict[f'{stage_number} Propellant Name']}>> for {stage_number} of {unique_vehicle_name_list[i]}.")
                     
             elif response.status_code == 429:
                 message = f"On rocket {i+1} of {len(unique_vehicle_name_list)}."
@@ -443,7 +487,7 @@ class import_launches_from_discos:
         #Open file and get a list of unique vehicles.
         vehicle_name_list, vehicle_id_list = [], []
         
-        ds = xr.open_dataset(f'./databases/launch_activity_data_{self.start_year}_{self.final_year}.nc', decode_times=False)
+        ds = xr.open_dataset(f'./databases/launch_activity_data_{self.start_year}-{self.final_year}.nc', decode_times=False)
         vehicle_name_list = np.concatenate([vehicle_name_list,ds['Rocket_Name'].values])
         vehicle_id_list = np.concatenate([vehicle_id_list,ds['DISCOSweb_Rocket_ID'].values]).astype(int)
         ds.close()
@@ -687,9 +731,9 @@ class import_launches_from_discos:
                          
 if __name__ == "__main__":
     """The main running of the program goes here. 
-    All of the functions are inside the import_launches_from_discos class.
-    Call each of the functions using import_launches_from_discos._function_
-    e.g. import_launches_from_discos.launches_per_year(start_year,end_year)
+    All of the functions are inside the import_launches class.
+    Call each of the functions using import_launches._function_
+    e.g. import_launches.launches_per_year(start_year,end_year)
     """         
     
     # Set up the arguments for each function.
@@ -712,7 +756,7 @@ if __name__ == "__main__":
     print(f"Processing from year {start_year} to {final_year}.")  
     
     #Loop over all years and run functions depending on input arguments.
-    LaunchData = import_launches_from_discos(start_year,final_year)    
+    LaunchData = import_launches(start_year,final_year)    
     if args.yearly_launches == True:
         LaunchData.get_launch_list()
     if args.launch_info == True:

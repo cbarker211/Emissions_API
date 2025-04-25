@@ -11,6 +11,43 @@ import fiona
 import requests
 from io import StringIO
 
+def convert_time(date):
+    
+    """Converts the "DDate" listing from GCAT to day, month, and time strings.
+
+    Returns:
+        datestr(str):  The date in YYYYMMDD format.
+        time_utc(str): The decimal time in hours.
+    """   
+    yearstr=str(date[0])
+    if len(date) == 1:
+        monstr = "01"   
+        daystr = "01"  
+    else:   
+        date[1] = date[1].replace("?","")
+        monstr = str(datetime.strptime(date[1], '%b').month).zfill(2)  
+        if len(date) > 2: 
+            daystr = str(date[2].replace("?","")).zfill(2)
+        # TODO: Check the day of reentries when missing in GCAT.
+        elif date == ['2022', 'Apr']:
+            # DISCOSweb puts reentry on Mar 31st. Setting as March 31st.
+            daystr = "31"
+            monstr = "03"
+        elif date == ['2022', 'Dec']:
+            # DISCOSweb puts reentry on Nov 30th. Setting as Nov 30th.
+            daystr = "30"
+            monstr = "11"
+        else:
+            daystr = "01"
+    
+    datestr = yearstr+monstr+daystr
+        
+    if len(date) >= 4:    
+        time_utc = np.float64(int(date[3].replace("?","")[0:2]) + int(date[3].replace("?","")[2:4]) / 60)
+    else:
+        time_utc = -1  
+    return datestr, time_utc
+    
 class build_reentry_list:
     
     def __init__(self, start_year, final_year):
@@ -491,43 +528,6 @@ class build_reentry_list:
             sys.exit(f"Problem geolocating Falcon fairing recovery - {jsr_id}.")
               
         return lat, lon
-        
-    def convert_time(self,date):
-        
-        """Converts the "DDate" listing from GCAT to day, month, and time strings.
-
-        Returns:
-            datestr(str):  The date in YYYYMMDD format.
-            time_utc(str): The decimal time in hours.
-        """   
-        yearstr=str(date[0]) 
-        if len(date) == 1:
-            monstr = "01"   
-            daystr = "01"  
-        else:   
-            date[1] = date[1].replace("?","")
-            monstr = str(datetime.strptime(date[1], '%b').month).zfill(2)  
-            if len(date) > 2: 
-                daystr = str(date[2].replace("?","")).zfill(2)
-            # TODO: Check the day of reentries when missing in GCAT.
-            elif date == ['2022', 'Apr']:
-                # DISCOSweb puts reentry on Mar 31st. Setting as March 31st.
-                daystr = "31"
-                monstr = "03"
-            elif date == ['2022', 'Dec']:
-                # DISCOSweb puts reentry on Nov 30th. Setting as Nov 30th.
-                daystr = "30"
-                monstr = "11"
-            else:
-                daystr = "01"
-        
-        datestr = yearstr+monstr+daystr
-            
-        if len(date) >= 4:    
-            time_utc = np.float64(int(date[3].replace("?","")[0:2]) + int(date[3].replace("?","")[2:4]) / 60)
-        else:
-            time_utc = -1  
-        return datestr, time_utc 
     
     def failed_launch_mass(self, jsr_id, jsr_name, reentry_category):
         
@@ -882,7 +882,7 @@ class build_reentry_list:
                 jsr_id = "2020-027D"
                 
             # Sort out the reentry time/date.
-            datestr, time_utc = self.convert_time(jsr_data_stripped_range["DDate"][reentry_count].split()) 
+            datestr, time_utc = convert_time(jsr_data_stripped_range["DDate"][reentry_count].split()) 
             
             # Handle categories.
             if jsr_data_stripped_range["Type"][reentry_count][0] == "R":
@@ -1318,7 +1318,7 @@ class build_reentry_list:
         
         missing_boosters_count, missing_first_count = 0,0
         missing_boosters_mass, missing_first_mass = 0,0
-        # Loop over each launch in 2020, locate the rocket and then filter for rocket configuration.
+        # Loop over each launch, locate the rocket and then filter for rocket configuration.
         for i in range(len(self.dsl["COSPAR_ID"])):
             for count, rocket_name in enumerate(self.dsr["Rocket_Name"].values):
                 if rocket_name == self.dsl["Rocket_Name"].values[i] and self.dsl["COSPAR_ID"].values[i][5] != "F":
@@ -1344,7 +1344,7 @@ class build_reentry_list:
                                 # Now add the boosters.        
                                 print(f"Adding {int(self.dsr['Booster_No'].values[count])-booster_count} boosters for {self.dsl['COSPAR_ID'].values[i]}")
                                 for j in range(int(self.dsr["Booster_No"].values[count])-booster_count):
-                                    abl_mass = self.dsr["Booster_StageMass"].values[count] / int(self.dsr["Booster_No"].values[count])
+                                    abl_mass = float(self.dsr["Booster_StageMass"].values[count]) / int(self.dsr["Booster_No"].values[count])
                                     if np.isnan(abl_mass):
                                         abl_mass = 0
                                     missing_boosters_count += 1
@@ -1554,12 +1554,12 @@ class build_reentry_list:
             print(f"Duplicates: {duplicate_jcat_list}")
         
         # Add missing stages and check the Aerospace Corp and DISCOSweb databases.
-        print("Looking for missing rocket stages.")
-        self.add_missing_stages()
-        print("Searching for Aerospace Corp re-entries.")
-        self.extract_aerospace_info("./databases/reentry/AerospaceCorp/AerospaceCorp_Reentries_14thDec23.csv")
-        print("Searching for DISCOSweb re-entries.")
-        self.extract_discosweb_info()
+        #print("Looking for missing rocket stages.")
+        #self.add_missing_stages()
+        #print("Searching for Aerospace Corp re-entries.")
+        #self.extract_aerospace_info("./databases/reentry/AerospaceCorp/AerospaceCorp_Reentries_14thDec23.csv")
+        #print("Searching for DISCOSweb re-entries.")
+        #self.extract_discosweb_info()
         
         #######################
         ## Final adjustments.
@@ -1605,65 +1605,66 @@ class build_reentry_list:
                 elif reentry["category"] in ["S2","S3","S4"]:
                     reentry["abl_deg"] = 0.65     # https://doi.org/10.1016/j.asr.2020.10.036 (35% survivability)
                 else:
-                    print(f"Couldn't assign ablation information for complete burnup of {reentry['id']}")
+                    reentry["abl_deg"] = 0
+                    print(f"Couldn't assign ablation information for complete burnup of {reentry['id']} with category {reentry['category']}")
             elif reentry["burnup"] == "Partial":
                 reentry["abl_deg"] = 0
             else:
                 print(f"Couldn't understand burnup information for {reentry['id']}")
         
-        fairing_count_list = []
-        for i in range(len(self.dsl["COSPAR_ID"])): 
-             
-            # Loop over all the fairings to check the number (should be two as it splits in half).
-            # Also look for any difference in the inclination (should be zero).
-            # Then set the geolocation to the location of the first fairing.  
-            fairing_count = 0  
-            fairing_inc = np.zeros((2))
-            for count, reentry in enumerate(self.unique_reentry_list):  
-                if (self.dsl["COSPAR_ID"].values[i][:8] == reentry["id"][:8] 
-                and self.dsl["COSPAR_ID"].values[i][5] != "F"
-                and "fairing" in reentry["name"].lower()):
-                    fairing_count += 1
-                    fairing_inc[fairing_count-1] = reentry["inc"]
-                    if fairing_count == 1:
-                        lat = reentry["lat"]
-                        lon = reentry["lon"]
-                    elif fairing_count == 2 and "Falcon 9" not in reentry["name"]:
-                        reentry["lat"] = lat
-                        reentry["lon"] = lon
-            if fairing_inc[1]-fairing_inc[0] > 0:
-                print(f"Warning: fairing inclinations differ for {self.dsl['COSPAR_ID'].values[i]} by {fairing_inc[1]-fairing_inc[0]}")      
-            if fairing_count not in [0,2]:
-                # NOTE: Apogee adjusted for 2022-150 fairing. One was 200km, one was 0km. Adjusted to make both 200km.
-                sys.exit(f"Incorrect number of fairings ({fairing_count}) found for ID: {self.dsl['COSPAR_ID'].values[i]}")
-            if fairing_count == 0 and self.dsl["COSPAR_ID"].values[i][5] != "F":
-                pass # NOTE: If we want to manually add fairings, need to enable this to see which are missing.
-                #print(f"No fairings found for {self.dsl['COSPAR_ID'].values[i]}")
-            fairing_count_list.append(fairing_count)
-            
-            
-        ################################################
-        # Update mass info using rocket_info databases. 
-        ################################################ 
-                    
-        for reentry in self.unique_reentry_list:                
-            for i in range(len(self.dsl["COSPAR_ID"])):
-                if self.dsl["COSPAR_ID"].values[i][:8] == reentry["id"][:8]:
-                    
-                    # Update mass info for all rocket stages.
-                    if reentry["category"] in ["B1","B2","B3","B4","B5","B6","S1","S2","S3","S4"] and self.dsl["COSPAR_ID"].values[i][5] != "F":
-                        for count, rocket_name in enumerate(self.dsr["Rocket_Name"].values):
-                            if rocket_name == self.dsl["Rocket_Name"].values[i]:
-                                if reentry["category"] in ["B1","B2","B3","B4","B5","B6"]:  
-                                    reentry["abl_mass"] = self.dsr["Booster_StageMass"].values[count] / int(self.dsr["Booster_No"].values[count])
-                                elif reentry["category"] in ["S1","S2","S3","S4"]:
-                                    reentry["abl_mass"] = self.dsr[f"Stage{reentry['category'][1]}_StageMass"].values[count]
-                    
-                    # Update mass info for all fairings.
-                    elif "fairing" in reentry["name"].lower() and self.dsl["COSPAR_ID"].values[i][5] != "F":
-                        for count, rocket_name in enumerate(self.dsr["Rocket_Name"].values):
-                            if rocket_name == self.dsl["Rocket_Name"].values[i]:
-                                reentry["abl_mass"] = self.dsr["Fairing_Mass"].values[count] / fairing_count_list[i]
+        #fairing_count_list = []
+        #for i in range(len(self.dsl["COSPAR_ID"])): 
+        #     
+        #    # Loop over all the fairings to check the number (should be two as it splits in half).
+        #    # Also look for any difference in the inclination (should be zero).
+        #    # Then set the geolocation to the location of the first fairing.  
+        #    fairing_count = 0  
+        #    fairing_inc = np.zeros((2))
+        #    for count, reentry in enumerate(self.unique_reentry_list):  
+        #        if (self.dsl["COSPAR_ID"].values[i][:8] == reentry["id"][:8] 
+        #        and self.dsl["COSPAR_ID"].values[i][5] != "F"
+        #        and "fairing" in reentry["name"].lower()):
+        #            fairing_count += 1
+        #            fairing_inc[fairing_count-1] = reentry["inc"]
+        #            if fairing_count == 1:
+        #                lat = reentry["lat"]
+        #                lon = reentry["lon"]
+        #            elif fairing_count == 2 and "Falcon 9" not in reentry["name"]:
+        #                reentry["lat"] = lat
+        #                reentry["lon"] = lon
+        #    if fairing_inc[1]-fairing_inc[0] > 0:
+        #        print(f"Warning: fairing inclinations differ for {self.dsl['COSPAR_ID'].values[i]} by {fairing_inc[1]-fairing_inc[0]}")      
+        #    if fairing_count not in [0,2]:
+        #        # NOTE: Apogee adjusted for 2022-150 fairing. One was 200km, one was 0km. Adjusted to make both 200km.
+        #        sys.exit(f"Incorrect number of fairings ({fairing_count}) found for ID: {self.dsl['COSPAR_ID'].values[i]}")
+        #    if fairing_count == 0 and self.dsl["COSPAR_ID"].values[i][5] != "F":
+        #        pass # NOTE: If we want to manually add fairings, need to enable this to see which are missing.
+        #        #print(f"No fairings found for {self.dsl['COSPAR_ID'].values[i]}")
+        #    fairing_count_list.append(fairing_count)
+        #    
+        #    
+        #################################################
+        ## Update mass info using rocket_info databases. 
+        ################################################# 
+        #            
+        #for reentry in self.unique_reentry_list:                
+        #    for i in range(len(self.dsl["COSPAR_ID"])):
+        #        if self.dsl["COSPAR_ID"].values[i][:8] == reentry["id"][:8]:
+        #            
+        #            # Update mass info for all rocket stages.
+        #            if reentry["category"] in ["B1","B2","B3","B4","B5","B6","S1","S2","S3","S4"] and self.dsl["COSPAR_ID"].values[i][5] != "F":
+        #                for count, rocket_name in enumerate(self.dsr["Rocket_Name"].values):
+        #                    if rocket_name == self.dsl["Rocket_Name"].values[i]:
+        #                        if reentry["category"] in ["B1","B2","B3","B4","B5","B6"]:  
+        #                            reentry["abl_mass"] = self.dsr["Booster_StageMass"].values[count] / int(self.dsr["Booster_No"].values[count])
+        #                        elif reentry["category"] in ["S1","S2","S3","S4"]:
+        #                            reentry["abl_mass"] = self.dsr[f"Stage{reentry['category'][1]}_StageMass"].values[count]
+        #            
+        #            # Update mass info for all fairings.
+        #            elif "fairing" in reentry["name"].lower() and self.dsl["COSPAR_ID"].values[i][5] != "F":
+        #                for count, rocket_name in enumerate(self.dsr["Rocket_Name"].values):
+        #                    if rocket_name == self.dsl["Rocket_Name"].values[i]:
+        #                        reentry["abl_mass"] = self.dsr["Fairing_Mass"].values[count] / fairing_count_list[i]
             
         time_update_mass_1, time_update_count_1 = 0,0     
         time_update_mass_2, time_update_count_2 = 0,0  
