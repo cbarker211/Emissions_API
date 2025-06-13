@@ -1701,8 +1701,8 @@ class build_reentry_list:
                 time_update_mass_2 += (reentry["abl_mass"] +reentry["other_mass"])
                 time_update_count_2 += 1
         
-        print(f"Time set to launch:   {time_update_mass_1},{time_update_count_1}")
-        print(f"Time set to midnight: {time_update_mass_2},{time_update_count_2}")
+        print(f"Time set to launch:   {int(time_update_mass_1)},{int(time_update_count_1)}")
+        print(f"Time set to midnight: {int(time_update_mass_2)},{int(time_update_count_2)}")
         print(f"Time missing:         {missing_time_count}")
         
         self.dsl.close()
@@ -1776,7 +1776,7 @@ class build_reentry_list:
         ds['Burnup']                  = data_da_burnup
              
         #Save to file and close the DataSet  
-        ds.to_netcdf(f'./databases/reentry_activity_data_{self.start_year}-{self.final_year}.nc')
+        ds.to_netcdf(f'./databases/reentry_activity_data_{self.start_year}-{self.final_year}_extraSMCs.nc')
         ds.close()
         
 if __name__ == "__main__":  
