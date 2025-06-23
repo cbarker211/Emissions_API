@@ -4,6 +4,9 @@ import numpy as np
 import xarray as xr
 import argparse
 import sys
+import requests
+from io import StringIO
+import pandas as pd
 sys.path.append('./python_modules/')
 from discosweb_api_func import server_request, wait_function, response_error_handler
 from update_rocket_launch_data import update_mass_info
@@ -236,7 +239,102 @@ class import_launches:
                 break
                     
         return [self.cospar_id, self.launch_time, self.launch_datestr, self.site_name, self.latitude, self.longitude, self.rocket_name, self.mcs_check]
+    
+    def get_launch_info_jsr(self):
+        
+        # Get the launch list.
+        url = "https://planet4589.org/space/gcat/tsv/launch/launch.tsv"
+        response = requests.get(url)
+        if response.status_code == 200:
+            # Convert the content to a file-like object for pandas
+            tsv_data = StringIO(response.text)
+            # Load the data into a pandas DataFrame
+            df = pd.read_csv(tsv_data, delimiter="\t", dtype=object)
+
+        # Filter the launches to remove unwanted entries.
+        df.drop(0, inplace=True)
+        df = df[df["#Launch_Tag"].str[:4].astype(int).between(self.start_year, self.final_year)]
+        df = df[~df["#Launch_Tag"].str.contains("A")] # No endoatmospheric
+        df = df[~df["#Launch_Tag"].str.contains("E")] # No pad explosions
+        df = df[~df["#Launch_Tag"].str.contains("S")] # No suborbital
+        df = df[~df["#Launch_Tag"].str.contains("M")] # No mesosphere
+        df = df[~df["LaunchCode"].str.startswith("X")] # No launches from another planetary body or satellite.   
+        df = df[~df["LaunchCode"].str.startswith("M")] # No military launches.    
+        
+        # Filter for apogees above 50 km.
+        #df.loc[df["Apogee"].str.strip() == "-", "Apogee"] = 0
+        #df = df[df["Apogee"].astype(int) >= 50] # No pad explosions
             
+        # Get the launch site list.
+        url = "https://planet4589.org/space/gcat/tsv/tables/sites.tsv"
+        response = requests.get(url)
+        if response.status_code == 200:
+            # Convert the content to a file-like object for pandas
+            tsv_data = StringIO(response.text)
+            # Load the data into a pandas DataFrame
+            df_sites = pd.read_csv(tsv_data, delimiter="\t", dtype=object)   
+            
+        # Load in the payload data so we can tell which launches contained megaconstellation payloads.   
+        files = ["satcat","auxcat","lcat","rcat","ecat","ftocat"]
+        # satcat (main database), auxcat (should be in main but isn't), lcat (suborbital stages/objects). 
+        # rcat (lower stages and fairings), ecat (capsules from ISS / crewed missions), ftocat (failed launches).
+        jsr_data_dict = {}
+        for file in files:
+            url = "https://planet4589.org/space/gcat/tsv/cat/" + file + ".tsv"
+            response = requests.get(url)
+            if response.status_code == 200:
+                # Convert the content to a file-like object for pandas
+                tsv_data = StringIO(response.text)
+                # Load the data into a pandas DataFrame
+                jsr_data_dict[file] = pd.read_csv(tsv_data, delimiter="\t", dtype=object)
+            else:
+                sys.exit(f"Failed to fetch {file} from JSR", response.status_code) 
+        
+        print("Found",len(df),"launches from JSR for the years",self.start_year,"to",self.final_year)
+        
+        self.cospar_id = []
+        self.launch_time = []
+        self.launch_datestr = []
+        self.site_name = []
+        self.latitude = []
+        self.longitude = []
+        self.rocket_name = []
+        self.mcs_check = []
+        
+        row_count = 0
+        for index, row in df.iterrows():
+            row_count += 1
+            self.cospar_id.append(row["#Launch_Tag"])
+            datestr, time_utc = self.convert_time(row["Launch_Date"].split()) 
+            self.launch_time.append(time_utc)
+            self.launch_datestr.append(datestr)
+            df_site = df_sites[df_sites["#Site"] == row["Launch_Site"]]
+
+            try:
+                self.site_name.append(df_site["Name"].values[0])
+            except:
+                print(row["#Launch_Tag"],row["Launch_Site"])
+            
+            self.longitude.append(df_site["Longitude"].values[0])
+            self.latitude.append(df_site["Latitude"].values[0])
+            self.rocket_name.append(row["LV_Type"])
+            
+            # I guess you need to look in the payload catalogs to find which launches contain megaconstellations.
+            mcs_flag = False
+            for file in files:
+                catalog = jsr_data_dict[file]
+                #print(catalog[catalog["Launch_Tag"].str.contains("2020-001", na=False)])
+                matching = catalog[catalog["Launch_Tag"].str.contains(row["#Launch_Tag"].strip(), na=False)]
+                matching = matching[matching["Type"].str[0].isin(["P","C","S","X","Z"])] # P = Payload, C = Component, S = Suborbital payload, X = Catalog entry that has been deleted, Z = Spurious catalog entry.
+                matching = matching[matching["Name"].str.lower().str.contains("starlink|oneweb|yinhe|lynk|e-space|protosat-1|kuiper|tranche|ronghe|digui|hulianwang|qianfan", na=False)]
+                if len(matching) > 0:
+                    mcs_flag = True
+                    break
+
+            self.mcs_check.append(mcs_flag) 
+
+            print(row_count)
+      
     def launch_info_to_netcdf(self):
         """This saves the launch information as a NetCDF file for later processing for GEOS-Chem.
         This is only needed if using GEOS-Chem. Recommended to ignore if you don't need this.
@@ -770,6 +868,7 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument('-yl', "--yearly_launches", action='store_true', help="Get yearly launches.")
     parser.add_argument('-li', "--launch_info", action='store_true', help='Get launch info.')
+    parser.add_argument('-lijsr', "--launch_info_jsr", action='store_true', help="Get launch info from jsr.")
     parser.add_argument('-sli', "--save_launch_info", action='store_true', help='Save launch info.')
     parser.add_argument('-ri', "--rocket_info", action='store_true', help='Get rocket info.')
     parser.add_argument('-sri', "--save_rocket_info", action='store_true', help='Save launch info.')
@@ -786,7 +885,9 @@ if __name__ == "__main__":
     print(f"Processing from year {start_year} to {final_year}.")  
     
     #Loop over all years and run functions depending on input arguments.
-    LaunchData = import_launches(start_year,final_year)    
+    LaunchData = import_launches(start_year,final_year)   
+    if args.launch_info_jsr == True:
+	    LaunchData.get_launch_info_jsr() 
     if args.yearly_launches == True:
         LaunchData.get_launch_list()
     if args.launch_info == True:
