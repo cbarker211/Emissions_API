@@ -250,7 +250,7 @@ class OutputEmis:
             elif m in [3,5,8,10]:
                 ndays = 30
             elif m == 1:
-                if self.year == 2020:
+                if self.year == 2020 or 2024:
                     ndays = 29
                 else:
                     ndays = 28    
@@ -717,10 +717,10 @@ class OutputEmis:
                     "location": location[w],
                 }
                 
-                if event_id[w] in ["2021-F09","2022-065"]:
+                if event_id[w] in ["2021-F09","2022-065","2023-72"]:
                     launch_details["lat"] = 34.43194444
                     launch_details["lon"] = 127.535
-                elif event_id[w] in ["2020-065","2022-167","2022-046","2022-126"]:
+                elif event_id[w] in ["2020-065","2022-167","2022-046","2022-126","2023-135","2024-102","2024-153","2024-173","2024-245"]:
                     launch_details["lat"] = 34.9
                     launch_details["lon"] = 121.2
                 else:
