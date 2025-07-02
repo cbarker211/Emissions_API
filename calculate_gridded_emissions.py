@@ -332,6 +332,19 @@ class OutputEmis:
                 daily_events_data = {"launches": daily_launches,
                                      "reentries": daily_reentries}
                 events_data[f"{self.year}-{self.strmon}-{self.strday}"] = daily_events_data 
+
+        for date in events_data:
+            for value in events_data[date]:
+                if len(events_data[date][value]) > 0:
+                    for event in events_data[date][value]:
+                        for key in event:
+                            if type(event[key]) not in [str, np.float64, bool, int, np.str_]:
+                                if type(event[key]) == dict:
+                                    for species in event[key]:
+                                        if type(event[key][species]) != np.float64:
+                                            print(type(event[key][species]))
+                                else:
+                                    print(type(event[key]))
                   
         ####################################
         # Conservation of mass check
