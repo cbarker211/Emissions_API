@@ -12,6 +12,10 @@ with open('./out_files/data_2021.json', 'r') as json_file:
    events_data = events_data | json.load(json_file)
 with open('./out_files/data_2022.json', 'r') as json_file:
    events_data = events_data | json.load(json_file)
+with open('./out_files/data_2023.json', 'r') as json_file:
+   events_data = events_data | json.load(json_file)
+with open('./out_files/data_2024.json', 'r') as json_file:
+   events_data = events_data | json.load(json_file)
 
 @app.route('/api/launches', methods=['GET'])
 def get_launches():
