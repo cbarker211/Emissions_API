@@ -19,7 +19,7 @@ def convert_time(date):
         datestr(str):  The date in YYYYMMDD format.
         time_utc(str): The decimal time in hours.
     """   
-    yearstr=str(date[0])
+    yearstr=str(date[0]).replace("?","")
     if len(date) == 1:
         monstr = "01"   
         daystr = "01"  
@@ -1690,6 +1690,8 @@ class build_reentry_list:
                     if reentry["id"][:8] == launch_id:
                         if reentry["datestr"] == self.dsl["Date"].values[count]:
                             reentry["time"] = self.dsl["Time(UTC)"].values[count]
+                            if np.isnan(reentry["abl_mass"]):
+                                print(f"Warning: Ablatable mass is NaN for {reentry['id']}, setting to 0.")
                             time_update_mass_1 += (reentry["abl_mass"] +reentry["other_mass"])
                             time_update_count_1 += 1
                         else:    
