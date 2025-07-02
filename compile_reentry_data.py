@@ -19,7 +19,7 @@ def convert_time(date):
         datestr(str):  The date in YYYYMMDD format.
         time_utc(str): The decimal time in hours.
     """   
-    yearstr=str(date[0])
+    yearstr=str(date[0]).replace("?","")
     if len(date) == 1:
         monstr = "01"   
         daystr = "01"  
@@ -1303,6 +1303,7 @@ class build_reentry_list:
         stage_alt_rockets = np.genfromtxt("./input_files/launch_event_altitudes.csv",dtype=str,skip_header=1,usecols=[0],delimiter=",")
         stage_alt_data = np.genfromtxt("./input_files/launch_event_altitudes.csv",dtype=np.float64,skip_header=1,usecols=[1,2,3,4],delimiter=",")
         for i in range(len(stage_alt_data)):
+           
             if stage_alt_data[i][0] == '':
                 stage_alt_dict[f"{stage_alt_rockets[i]} BECO"] = None
             else:
@@ -1379,8 +1380,9 @@ class build_reentry_list:
                     for stage in stage_count:
                         if stage > 1:
                             print(f"Multiple stages for {self.dsl['COSPAR_ID'].values[i]}")
-                    
+                
                     meco = stage_alt_dict[f"{rocket_name} MECO"]
+                    
                     add_first_stage = False
                     if (50 < meco <= 100):                 
                         add_first_stage = True
@@ -1398,7 +1400,7 @@ class build_reentry_list:
                         if ((self.dsr["Booster_PropMass"].values[count] != 0) and (self.dsr["Stage4_PropMass"].values[count] != 0)):    
                             add_first_stage = True
                             meco = 64
-                     
+                    
                     if add_first_stage == True:    
                         # Check if there is a first stage, and add if not.
                         found_stage = False
@@ -1431,7 +1433,9 @@ class build_reentry_list:
                             }
         
                             self.unique_reentry_list.append(temp_reentry_dict)
-        
+
+                
+            
         print(f"Missing Boosters:    {missing_boosters_mass},{missing_boosters_count}")
         print(f"Missing First Stage: {missing_first_mass},{missing_first_count}")
     
@@ -1553,13 +1557,13 @@ class build_reentry_list:
         if len(duplicate_jcat_list) > 0:
             print(f"Duplicates: {duplicate_jcat_list}")
         
-        # Add missing stages and check the Aerospace Corp and DISCOSweb databases.
-        #print("Looking for missing rocket stages.")
-        #self.add_missing_stages()
-        #print("Searching for Aerospace Corp re-entries.")
-        #self.extract_aerospace_info("./databases/reentry/AerospaceCorp/AerospaceCorp_Reentries_14thDec23.csv")
-        #print("Searching for DISCOSweb re-entries.")
-        #self.extract_discosweb_info()
+        #Add missing stages and check the Aerospace Corp and DISCOSweb databases.
+        print("Looking for missing rocket stages.")
+        self.add_missing_stages()
+        print("Searching for Aerospace Corp re-entries.")
+        self.extract_aerospace_info("./databases/reentry/AerospaceCorp/AerospaceCorp_Reentries_14thDec23.csv")
+        print("Searching for DISCOSweb re-entries.")
+        self.extract_discosweb_info()
         
         #######################
         ## Final adjustments.
@@ -1684,6 +1688,7 @@ class build_reentry_list:
             # Set time to midnight whenever the reentry is occurs on a different day than the launch and no time info is available.
             # Also set to midnight if the reentry is from a launch in a previous year.
             # When the reentry is on the same day, set it to the launch time.
+            
             if reentry["time"] == -1:  
                 missing_time_count +=1                
                 for count, launch_id in enumerate(self.dsl["COSPAR_ID"].values):
@@ -1696,15 +1701,23 @@ class build_reentry_list:
                             reentry["time"] = 0
                             time_update_mass_2 += (reentry["abl_mass"] +reentry["other_mass"])
                             time_update_count_2 += 1
+                            
             if reentry["time"] == -1:
                 reentry["time"] = 0
                 time_update_mass_2 += (reentry["abl_mass"] +reentry["other_mass"])
                 time_update_count_2 += 1
+    
         
-        print(f"Time set to launch:   {int(time_update_mass_1)},{int(time_update_count_1)}")
-        print(f"Time set to midnight: {int(time_update_mass_2)},{int(time_update_count_2)}")
-        print(f"Time missing:         {missing_time_count}")
-        
+                
+            if np.isnan(reentry["abl_mass"]):
+                reentry["time"] = 0
+                time_update_mass_2 += (reentry["abl_mass"] +reentry["other_mass"])
+                time_update_count_2 += 1
+
+            print(f"Time set to launch:   {int(time_update_mass_1)},{int(time_update_count_1)}")
+            print(f"Time set to midnight: {int(time_update_mass_2)},{int(time_update_count_2)}")
+            print(f"Time missing:         {missing_time_count}")
+
         self.dsl.close()
         self.dsr.close()
         self.ds_dw.close()
@@ -1776,7 +1789,7 @@ class build_reentry_list:
         ds['Burnup']                  = data_da_burnup
              
         #Save to file and close the DataSet  
-        ds.to_netcdf(f'./databases/reentry_activity_data_{self.start_year}-{self.final_year}_extraSMCs.nc')
+        ds.to_netcdf(f'./databases/reentry_activity_data_{self.start_year}-{self.final_year}_v2.nc')
         ds.close()
         
 if __name__ == "__main__":  
