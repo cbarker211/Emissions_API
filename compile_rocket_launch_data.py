@@ -206,6 +206,8 @@ class import_launches_from_discos:
                 else:
                     response_error_handler(response,"")
                 break
+        
+
                     
         return [self.Cospar_Id, self.launch_time, self.launch_datestr, self.site_name, self.latitude, self.longitude, self.rocket_name, self.mcs_check]
             
@@ -264,7 +266,7 @@ class import_launches_from_discos:
                        ))
         
         # Create an xarray Dataset from the DataArrays.
-        ds = xr.Dataset()
+        xr.Dataset()
         ds['COSPAR_ID'] = data_da_cospar_id
         ds['Time(UTC)'] = data_da_time
         ds['Date'] = data_da_date
@@ -342,7 +344,7 @@ class import_launches_from_discos:
                 if unique_vehicle_name_list[i] == "Epsilon-2 CLPS":
                     stage_number = "Stage1"
                 else:
-                    stage_number = "Booster"
+                 ds =    stage_number = "Booster"
             
             # Long March often uses the same stage for different rockets, but not always at the same position.    
             elif stage_name == "H-18 (Long March (CZ) YF)":

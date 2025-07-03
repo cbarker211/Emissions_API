@@ -181,7 +181,7 @@ class OutputEmis:
         self.included_prop = 0
         self.model_alt = model_alt
 
-        
+
         # Define Molecular Weights:
         self.mw_h   = 1.008
         self.mw_h2  = self.mw_h * 2
@@ -392,10 +392,23 @@ class OutputEmis:
       #     sys.exit(f"This is the problem 14 {stage_alt_data}, Year: {year}, Month {months}, Launch ID {rocket_data.launch_id}")
       # if np.ma.is_masked(model_alt):
       #      sys.exit(f"This is the problem 15 {model_alt}, Year: {year}, Month {months}, Launch ID {rocket_data.launch_id}")
-        if np.ma.is_masked(events_data):
-            sys.exit(f"This is the problem 15 {events_data}")
+      # if np.ma.is_masked(events_data):
+      #     sys.exit(f"This is the problem {events_data}")
         
+        for date in events_data:
+            for value in events_data[date]:
+                if len(events_data[date][value]) > 0:
+                    for event in events_data[date][value]:
+                        for key in event:
+                            if type(event[key]) not in [str, np.float64, bool, int, np.str_]:
+                                if type(event[key]) == dict:
+                                    for species in event[key]:
+                                        if type(event[key][species]) not in [np.float64, float]:
+                                            print(type(event[key][species]))
+                                else:
+                                    print(type(event[key]), event)
 
+                                    
         with open(f'./out_files/data_{self.year}.json', 'w') as json_file:
             json.dump(events_data, json_file, indent=4)
 
@@ -455,7 +468,7 @@ class OutputEmis:
         # NOTE: This section needs to be tweaked if wanting to run for different vertical heights above 80km.
         
         if rocket_data.booster_prop_type[valid_index] != '':
-            
+           
             # If BECO occurs above the fine grid, then we only use some of the booster emissions.
             if stage_alt_beco * 1e3 > self.fine_grid_top_alt[-1]:
                 self.fine_grid_mass_booster = np.asarray(self.fine_grid_mass)
@@ -465,7 +478,7 @@ class OutputEmis:
                 # Find out which layer BECO occurs in.
                 self.booster_alt_index = np.argmax(self.fine_grid_top_alt > stage_alt_beco*1e3) + 1
                 if not (int(self.fine_grid_bot_alt[self.booster_alt_index-1]) <= stage_alt_beco*1e3 <= self.fine_grid_top_alt[self.booster_alt_index-1]):
-                    sys.exit(f"Booster indexing error: {self.fine_grid_bot_alt[self.booster_alt_index-1]} {stage_alt_beco*1e3} {self.fine_grid_top_alt[self.booster_alt_index-1]}")
+                    sys.exit(f"ID:{launch_rocket} Booster indexing error: {self.fine_grid_bot_alt[self.booster_alt_index-1]} {stage_alt_beco*1e3} {self.fine_grid_top_alt[self.booster_alt_index-1]}")
                 fine_grid_mass_booster = np.asarray(self.fine_grid_mass[:self.booster_alt_index])
                 
                 # Normalize the vertical emission profile for the booster emissions.
@@ -676,7 +689,7 @@ class OutputEmis:
                   
     def grid_emis(self,index,lon,lat,hour,emis_type,event_id,name,smc,category,time,location, burnup):
         """Grid the data onto the GEOS-Chem horizontal and vertical grid"""
-        
+       
         daily_info = []                
         #Loop over each launch/reentry.
         for w in range(len(lon)):
@@ -791,6 +804,10 @@ class OutputEmis:
                     self.csv_count += 3
                     self.csv_count_2 += 10
                     continue
+                
+                if pd.isna(event_id[w]) or pd.isna(lon[w]) or pd.isna(lat[w]):
+                    print(f"Event ID: {event_id[w]}")
+                    print(f"Latitude: {lat[w]}, Longitude: {lon[w]}, Site: {location[w]}")
                                                     
                 # Next find index of fuel type in primary emissions index data:
                 pei_booster_index = np.where( rocket_data.pei_fuel_type == rocket_data.booster_prop_type[valid_index])[0]
@@ -996,9 +1013,12 @@ class OutputEmis:
                             elif lon[w] == -120.6 and lat[w] == 34.7:
                                 falcon_p = np.argmin(abs(-122.5-self.lon))
                                 falcon_q = np.argmin(abs(30-self.lat))
+                            elif lon[w] == 100.3 and lat[w] == 41.3:
+                                falcon_p = np.argmin(abs(100.3-self.lon))
+                                falcon_q = np.argmin(abs(41.3-self.lat))
                             else:
                                 sys.exit("Launch not from assigned site.")
-                            print(f"Warning: Allocating Falcon Stage 1 landing to lonxlat {self.lon[falcon_p]}x{self.lat[falcon_q]} for {event_id[w]}.") 
+                            
                         elif matching.shape[0] > 1: 
                             print(f"Multiple ocean entries for Falcon Stage 1 landing for {event_id[w]}.")
                         else:

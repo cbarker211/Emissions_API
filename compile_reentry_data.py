@@ -1789,7 +1789,7 @@ class build_reentry_list:
         ds['Burnup']                  = data_da_burnup
              
         #Save to file and close the DataSet  
-        ds.to_netcdf(f'./databases/reentry_activity_data_{self.start_year}-{self.final_year}_v2.nc')
+        ds.to_netcdf(f'./databases/reentry_activity_data_{self.start_year}-{self.final_year}.nc')
         ds.close()
         
 if __name__ == "__main__":  
