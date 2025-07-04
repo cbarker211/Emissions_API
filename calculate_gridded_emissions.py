@@ -1005,6 +1005,17 @@ class OutputEmis:
                             falcon_lon = np.array(matching["geometry"].x)[1]
                             falcon_p, falcon_q = np.argmin(abs(falcon_lon-self.lon)), np.argmin(abs(falcon_lat-self.lat))
                             
+                        # There are two launches on the same day.
+                        elif event_id[w] == "2023-037":
+                            falcon_lat = np.array(matching["geometry"].y)[0]
+                            falcon_lon = np.array(matching["geometry"].x)[0]
+                            falcon_p, falcon_q = np.argmin(abs(falcon_lon-self.lon)), np.argmin(abs(falcon_lat-self.lat))
+                            
+                        elif event_id[w] == "2023-038":
+                            falcon_lat = np.array(matching["geometry"].y)[1]
+                            falcon_lon = np.array(matching["geometry"].x)[1]
+                            falcon_p, falcon_q = np.argmin(abs(falcon_lon-self.lon)), np.argmin(abs(falcon_lat-self.lat))
+                            
                         elif matching.shape[0] == 0:
                             # The database hasn't been well updated for 2022, so lets just fill in based on most common geolocation for all other 2020-2022 launches.
                             if lon[w] == -81.0 and lat[w] == 28.5:
@@ -1226,8 +1237,8 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument('-sm', "--start_month", default = "1", choices=str(np.arange(1,13)), help='Start Month (will override final month if greater than final month).')
     parser.add_argument('-fm', "--final_month", default = "12", choices=str(np.arange(1,13)), help='Final Month.')
-    parser.add_argument('-sy', "--start_year", default = "2023", choices=str(np.arange(2020,2023)), help='Start Year.')
-    parser.add_argument('-fy', "--final_year", default = "2024", choices=str(np.arange(2020,2023)), help='Final Year.')
+    parser.add_argument('-sy', "--start_year", default = "2023", choices=str(np.arange(2020,2025)), help='Start Year.')
+    parser.add_argument('-fy', "--final_year", default = "2024", choices=str(np.arange(2020,2025)), help='Final Year.')
     args = parser.parse_args()
 
     # Sort out the year range.
@@ -1277,9 +1288,14 @@ if __name__ == "__main__":
     MECO_alts           = [220,120,64,90,56,52]
     SEI_alts            = [229,120,64,103,61,59]
     SECO_alts           = [356,232,216,312,176,149]
-        
-    ground_landing_list = ["2020-016","2020-059","2020-086","2020-101", "2021-059", "2022-002","2022-008","2022-009",
-                           "2022-040","2022-057","2022-063","2022-144","2022-166","2022-168","2022-173","2022-179","2023-037"]
+    # TODO: Check for Falcon Heavy expendable/reusable lower stages.
+    ground_landing_list = ["2020-016","2020-059","2020-086","2020-101","2021-059","2022-002","2022-008","2022-009",
+                           "2022-040","2022-057","2022-063","2022-144","2022-166","2022-168","2022-173","2022-179",
+                           "2023-001","2023-004","2023-008","2023-029","2023-050","2023-054","2023-070","2023-084",
+                           "2023-108","2023-128","2023-133","2023-157","2023-173","2023-174","2023-185","2023-204",
+                           "2023-210","2024-003","2024-014","2024-021","2024-025","2024-028","2024-030","2024-042",
+                           "2024-043","2024-054","2024-066","2024-070","2024-081","2024-101","2024-119","2024-139",
+                           "2024-146","2024-149","2024-163","2024-178","2024-188","2024-200","2024-206","2024-247"]
     
     ######################################   
     # Define resolutions and set timings.
