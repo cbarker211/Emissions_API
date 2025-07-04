@@ -65,9 +65,9 @@ def update_mass_info(i,temp_dict,unique_vehicle_name_list):
         temp_dict[f"Stage3 Propellant Name"]  = 'UDMH (Unsymmetrical Dimethyl Hydrazine)/N2O4'
         temp_dict[f"Stage3 Fuel Type"]        = 'Hypergolic'
         temp_dict[f"Fairing Mass"] = (500+810)/2 # Two options on Sp101.
-            
+        
     if unique_vehicle_name_list[i] == "Ariane 5ECA":
-      
+        
         # Manaul is for ESC-A upper stage, whereas launches since 2019 have used ESC-D, and improved version.
         # However due to lack of information, we will use ESC-A details.
         # https://www.arianespace.com/wp-content/uploads/2016/10/Ariane5-users-manual-Jun2020.pdf
@@ -178,10 +178,6 @@ def update_mass_info(i,temp_dict,unique_vehicle_name_list):
         # Was originally represented by Kuaizhou-1, but comparing based on LEO payload and rocket length has shown Shavit is more similar.
 
         # For fairing mass, approximating using Kuaizhou-1 (which approximates using Shavit). All similar LEO payload mass and size.
-        temp_dict[f"Stage1 Fuel Type"] = "Solid"
-        temp_dict[f"Stage2 Fuel Type"] = "Solid"
-        temp_dict[f"Stage3 Fuel Type"] = "Solid"
-        temp_dict[f"Stage4 Fuel Type"] = "Hypergolic"
         
         temp_dict[f"Stage1 Propellant Mass"] = 12750 # SLR Shavit
         temp_dict[f"Stage2 Propellant Mass"] = 12750 # SLR Shavit
@@ -241,9 +237,6 @@ def update_mass_info(i,temp_dict,unique_vehicle_name_list):
         temp_dict[f"Stage1 Propellant Name"] = 'Kerosene/LOX'
         temp_dict[f"Stage2 Propellant Name"] = 'Kerosene/LOX'
         temp_dict[f"Stage3 Propellant Name"] = 'Liquid bi-propellant'
-        temp_dict[f"Stage1 Fuel Type"] = "Kerosene"
-        temp_dict[f"Stage2 Fuel Type"] = "Kerosene"
-        temp_dict[f"Stage3 Fuel Type"] = "Hypergolic"
         temp_dict[f"Stage1 Propellant Mass"] = 9250             # Using value from SLR/DISCOSweb(wet/dry)/Sp101
         temp_dict[f"Stage2 Propellant Mass"] = (2050+2150) / 2  # SLR/Sp101
         temp_dict[f"Stage3 Propellant Mass"] = 245              # Using value from DISCOSweb(wet/dry)
@@ -360,10 +353,6 @@ def update_mass_info(i,temp_dict,unique_vehicle_name_list):
         temp_dict[f"Stage1 Propellant Name"]  = "UDMH (Unsymmetrical Dimethyl Hydrazine)/N2O4"
         temp_dict[f"Stage2 Propellant Name"]  = "UDMH (Unsymmetrical Dimethyl Hydrazine)/N2O4"
         temp_dict[f"Stage3 Propellant Name"]  = "LH2 (Liquid Hydrogen)/LOX"
-        temp_dict[f"Booster Fuel Type"]       = "Solid"
-        temp_dict[f"Stage1 Fuel Type"]        = "Hypergolic"
-        temp_dict[f"Stage2 Fuel Type"]        = "Hypergolic"
-        temp_dict[f"Stage3 Fuel Type"]        = "Hydrogen"
         
     if unique_vehicle_name_list[i] == "GSLV Mk III":        
         # Prop masses:
@@ -427,11 +416,6 @@ def update_mass_info(i,temp_dict,unique_vehicle_name_list):
         temp_dict[f"Stage3 Stage Mass"]      = 800   # Epsilon-2 CPLS.
         temp_dict[f"Stage4 Stage Mass"]      = 155   # Epsilon-2 CPLS.
         temp_dict[f"Fairing Mass"]           = 1000  # Epsilon-2 CPLS.
-         
-        temp_dict[f"Stage1 Fuel Type"]       = "Solid"        
-        temp_dict[f"Stage2 Fuel Type"]       = "Solid"
-        temp_dict[f"Stage3 Fuel Type"]       = "Solid"
-        temp_dict[f"Stage4 Fuel Type"]       = "Solid"
      
     if unique_vehicle_name_list[i] == "Kuaizhou-1":
         # No data on SLR or Sp101 or CSR. Have to use wet-dry from DISCOSweb. Dry mass already loaded from DW.
@@ -1120,7 +1104,7 @@ def update_mass_info(i,temp_dict,unique_vehicle_name_list):
         temp_dict[f"Stage2 Propellant Mass"] = 24924               # Antares 230
         temp_dict[f"Stage2 Stage Mass"]      = 1392                # Antares 230
         temp_dict[f"Fairing Mass"]           = 971                 # Antares 230
-
+        
         # https://spacenews.com/landspace-puts-2-satellites-in-orbit-with-enhanced-zhuque-2-rocket/
         # "vernier thrusters replaced by a vector control system, saving 400 kilograms in mass."
         # So we will just use the same masses as Antares 230 but with a smaller stage 2 mass.
@@ -1289,6 +1273,7 @@ def update_mass_info(i,temp_dict,unique_vehicle_name_list):
     if unique_vehicle_name_list[i] == "Gravity-1":
             #No other information available for this vehicle.
             #Used Information Similar to Kuaizhou-11
+            temp_dict["Booster Number"] = 4
             temp_dict[f"Stage1 Fuel Type"] = 'Solid'
             temp_dict[f"Stage2 Fuel Type"] = 'Solid'
             temp_dict[f"Stage3 Fuel Type"] = 'Solid'
