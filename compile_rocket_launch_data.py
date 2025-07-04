@@ -3,8 +3,6 @@ from time import sleep
 import numpy as np
 import xarray as xr
 import argparse
-
-
 import sys
 sys.path.append('./python_modules/')
 from discosweb_api_func import server_request, wait_function, response_error_handler
@@ -14,7 +12,7 @@ from update_rocket_launch_data import update_mass_info
 NB: Each request is limited to 30 results, and there is a maximum limit of requests in a certain timeframe (20 requests per 60s).
 To solve this, the script makes multiple requests over different filters, and automatically calculates the time required to wait."""
 
-class import_launches_from_discos:
+class import_launches:
     
     def __init__(self,start_year,final_year):
         """This function sets up the class.
@@ -107,7 +105,7 @@ class import_launches_from_discos:
         """        
         self.get_launch_list()
                 
-        self.Cospar_Id = []
+        self.cospar_id = []
         self.launch_time = []
         self.launch_datestr = []
         self.site_name = []
@@ -119,7 +117,7 @@ class import_launches_from_discos:
         
         for count, launch in enumerate(self.full_launch_list):
             
-            self.Cospar_Id.append(launch["attributes"]["cosparLaunchNo"])
+            self.cospar_id.append(launch["attributes"]["cosparLaunchNo"])
             temp_launch_epoch = launch["attributes"]["epoch"]
             self.launch_datestr.append(temp_launch_epoch[:10].replace("-",""))
             
@@ -133,12 +131,15 @@ class import_launches_from_discos:
             # Mark as MCS any launches containing payloads with the name:
             #   - Starlink
             #   - Oneweb
-            #   - Yinhe
+            #   - Yinhe (and Lingxi)
             #   - Lynk
-            #   - E-Space
+            #   - E-Space (and Protosat-1)
+            #   - Tranche (covers all 2023-050, 1 2023-133, all 2024-028). 2023-133 also contains Wildfire 1-10 and BB 4 and BB 4. But this launch is already tagged.
+            #   - Chinese National Constellation (Guowang/Xingwang/Guangwang/Hulianwang) - Ronghe, Digui, Hulianwang.
+            #   - Qianfan
             params={
                     'filter' : "(eq(objectClass,Payload))&(contains(name,Starlink)|contains(name,OneWeb)|contains(name,Oneweb)|contains(name,Yinhe)|contains(name,Lynk)|contains(name,E-Space)|contains(name,Lingxi)|contains(name,Protosat-1)|contains(name,Kuiper)|contains(name,Tranche)|contains(name,Ronghe)|contains(name,Digui)|contains(name,Hulianwang)|contains(name,Qianfan))",
-                    'sort' : 'id'        
+                    'sort' : 'id'         
                 }
             while True:
                 response = server_request(params,f'/launches/{launch["id"]}/objects')
@@ -147,14 +148,14 @@ class import_launches_from_discos:
                     doc = response.json()
                     temp_object_list = doc['data']
                     # The Lynk 04 satellite is misassigned to 2020-011 instead of 2020-016 (confirmed used JSR). Fixed here.
-                    if len(temp_object_list) > 0 and self.Cospar_Id[-1] != "2020-011":
+                    if len(temp_object_list) > 0 and self.cospar_id[-1] != "2020-011":
                         self.mcs_check.append(True)
-                    elif self.Cospar_Id[-1] == "2020-016": 
+                    elif self.cospar_id[-1] == "2020-016": 
                         self.mcs_check.append(True)  
                     else:
                         self.mcs_check.append(False)   
                 elif response.status_code == 429:
-                    message = f"On launch {count} of {len(self.full_launch_list)} in {self.Cospar_Id[-1][:4]}."
+                    message = f"On launch {count} of {len(self.full_launch_list)} in {self.cospar_id[-1][:4]}."
                     response_error_handler(response,message)
                     continue
                 else:
@@ -171,7 +172,7 @@ class import_launches_from_discos:
                     self.longitude.append(np.float64(doc['data']["attributes"]["longitude"]))
                     break
                 elif response.status_code == 429:
-                    message = f"On launch {count} of {len(self.full_launch_list)} in {self.Cospar_Id[-1][:4]}."
+                    message = f"On launch {count} of {len(self.full_launch_list)} in {self.cospar_id[-1][:4]}."
                     response_error_handler(response,message)
                     continue
                 else:
@@ -186,11 +187,10 @@ class import_launches_from_discos:
                     if doc['data']["attributes"]["name"][:5] == "Atlas":
                         if datetime(int(self.launch_datestr[-1][:4]),int(self.launch_datestr[-1][4:6]),int(self.launch_datestr[-1][6:8])) < datetime(2020,11,13):
                             self.rocket_name.append(doc['data']["attributes"]["name"])
-                        elif self.Cospar_Id[-1] in ["2021-042","2022-092"]:
+                        elif self.cospar_id[-1] in ["2021-042","2022-092"]:
                             self.rocket_name.append(doc['data']['attributes']["name"] + " v2021")
                         else:
                             self.rocket_name.append(doc['data']['attributes']["name"] + " v2020")
-
                     elif doc['data']["attributes"]["name"][:5] == "Zhuque-2":
                         if datetime(int(self.launch_datestr[-1][:4]),int(self.launch_datestr[-1][4:6]),int(self.launch_datestr[-1][6:8])) > datetime(2024,1,1):
                             self.rocket_name.append(doc['data']['attributes']["name"] + "E")
@@ -200,28 +200,26 @@ class import_launches_from_discos:
                         self.rocket_name.append(doc['data']["attributes"]["name"])
                     self.vehicle_id.append(int(doc["data"]["id"]))
                 elif response.status_code == 429:
-                    message = f"On launch {count} of {len(self.full_launch_list)} in {self.Cospar_Id[-1][:4]}."
+                    message = f"On launch {count} of {len(self.full_launch_list)} in {self.cospar_id[-1][:4]}."
                     response_error_handler(response,message)
                     continue
                 else:
                     response_error_handler(response,"")
                 break
-        
-
                     
-        return [self.Cospar_Id, self.launch_time, self.launch_datestr, self.site_name, self.latitude, self.longitude, self.rocket_name, self.mcs_check]
-            
+        return [self.cospar_id, self.launch_time, self.launch_datestr, self.site_name, self.latitude, self.longitude, self.rocket_name, self.mcs_check]
+      
     def launch_info_to_netcdf(self):
         """This saves the launch information as a NetCDF file for later processing for GEOS-Chem.
         This is only needed if using GEOS-Chem. Recommended to ignore if you don't need this.
         """        
         
         #Set up the dimensions of the netcdf file.
-        #launches = np.arange(len(self.Cospar_Id), dtype=np.int64)
+        #launches = np.arange(len(self.cospar_id), dtype=np.int64)
         dims = ('launches')
     
         #Create the DataArrays.
-        data_da_cospar_id = xr.DataArray(self.Cospar_Id, dims=dims,
+        data_da_cospar_id = xr.DataArray(self.cospar_id, dims=dims,
             attrs=dict(long_name="COSPAR ID",
                        short_name="COSPAR ID"))
         
@@ -266,19 +264,19 @@ class import_launches_from_discos:
                        ))
         
         # Create an xarray Dataset from the DataArrays.
-        xr.Dataset()
-        ds['COSPAR_ID'] = data_da_cospar_id
-        ds['Time(UTC)'] = data_da_time
-        ds['Date'] = data_da_date
-        ds['Site'] = data_da_site
-        ds['Longitude'] = data_da_lon
-        ds['Latitude'] = data_da_lat
-        ds['Rocket_Name'] = data_da_rocket_name
-        ds['DISCOSweb_Rocket_ID'] = data_da_vehicle_id
+        ds = xr.Dataset()
+        ds['COSPAR_ID']              = data_da_cospar_id
+        ds['Time(UTC)']              = data_da_time
+        ds['Date']                   = data_da_date
+        ds['Site']                   = data_da_site
+        ds['Longitude']              = data_da_lon
+        ds['Latitude']               = data_da_lat
+        ds['Rocket_Name']            = data_da_rocket_name
+        ds['DISCOSweb_Rocket_ID']    = data_da_vehicle_id
         ds['Megaconstellation_Flag'] = data_da_launch_MCS
              
         #Save to file and close the datset     
-        ds.to_netcdf(f'./databases/launch_activity_data_{self.start_year}-{self.final_year}_final.nc')
+        ds.to_netcdf(f'./databases/launch_activity_data_{self.start_year}-{self.final_year}.nc')
         ds.close()
          
     def handle_stage_info(self, count, stage, i, temp_dict, unique_vehicle_name_list):
@@ -344,7 +342,7 @@ class import_launches_from_discos:
                 if unique_vehicle_name_list[i] == "Epsilon-2 CLPS":
                     stage_number = "Stage1"
                 else:
-                 ds =    stage_number = "Booster"
+                    stage_number = "Booster"
             
             # Long March often uses the same stage for different rockets, but not always at the same position.    
             elif stage_name == "H-18 (Long March (CZ) YF)":
@@ -483,8 +481,9 @@ class import_launches_from_discos:
         #print(temp_dict[f"{stage_number} Stage Mass"])
         
         return temp_dict
-
+    
     def get_rocket_info(self):
+
         self.unique_rocket_list = []
         
         #Open file and get a list of unique vehicles.
@@ -565,7 +564,7 @@ class import_launches_from_discos:
         This is only needed if using GEOS-Chem. Recommended to ignore if you don't need this.
         """        
         #Set up the dimensions of the netcdf file.
-        #launches = np.arange(len(self.Cospar_Id), dtype=np.int64)
+        #launches = np.arange(len(self.cospar_id), dtype=np.int64)
         dims = ('rockets')
         
         #Set up the data
@@ -752,9 +751,9 @@ class import_launches_from_discos:
                          
 if __name__ == "__main__":
     """The main running of the program goes here. 
-    All of the functions are inside the import_launches_from_discos class.
-    Call each of the functions using import_launches_from_discos._function_
-    e.g. import_launches_from_discos.launches_per_year(start_year,end_year)
+    All of the functions are inside the import_launches class.
+    Call each of the functions using import_launches._function_
+    e.g. import_launches.launches_per_year(start_year,end_year)
     """         
     
     # Set up the arguments for each function.
@@ -777,7 +776,7 @@ if __name__ == "__main__":
     print(f"Processing from year {start_year} to {final_year}.")  
     
     #Loop over all years and run functions depending on input arguments.
-    LaunchData = import_launches_from_discos(start_year,final_year)    
+    LaunchData = import_launches(start_year,final_year)    
     if args.yearly_launches == True:
         LaunchData.get_launch_list()
     if args.launch_info == True:
