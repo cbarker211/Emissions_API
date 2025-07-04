@@ -1110,16 +1110,10 @@ def update_mass_info(i,temp_dict,unique_vehicle_name_list):
         # So we will just use the same masses as Antares 230 but with a smaller stage 2 mass.
         if unique_vehicle_name_list[i] == "Zhuque-2E":
             temp_dict[f"Stage2 Stage Mass"] = temp_dict[f"Stage2 Stage Mass"] - 400
-       
-    if temp_dict["Fairing Mass"] == 0 and unique_vehicle_name_list[i] != "Atlas V N22 v2020":
-        print(f"Setting fairing mass to average (1756) for {unique_vehicle_name_list[i]}")
-        temp_dict["Fairing Mass"] = 1756
-       
-    temp_dict["Fairing Mass"] = round(temp_dict["Fairing Mass"],1)
-        
- 
 
-
+    ############################
+    # New Vehicles in 2023/2024
+    ############################
 
     if unique_vehicle_name_list[i] == "Goche Yeollyo Uju Balsache (GYUB) - TV2":
             # No Information available for this vehicle.
@@ -1133,7 +1127,6 @@ def update_mass_info(i,temp_dict,unique_vehicle_name_list):
             temp_dict[f"Stage1 Stage Mass"]         = 10150.0
             temp_dict[f"Stage2 Stage Mass"]         = 2355.0
             temp_dict[f"Stage3 Stage Mass"]         = 1000.0
-
 
     if unique_vehicle_name_list[i] == "H-III 22":
             # Manual - https://www.mhi.com/products/space/launch_srv_lineup.html#pdh3
@@ -1157,7 +1150,6 @@ def update_mass_info(i,temp_dict,unique_vehicle_name_list):
             temp_dict[f"Fairing Mass"]              = 1756.0# Discosweb
             temp_dict[f"GTO "]                      = 6500.0 # Manual
     
-
     if unique_vehicle_name_list[i] == "RS1":
             # Manual - https://ablspacesystems.com/wp-content/uploads/2022/06/ABL-Payload-Users-Guide-2022-V1.pdf
             # Used Information Similar to Firefly Alpha
@@ -1260,7 +1252,6 @@ def update_mass_info(i,temp_dict,unique_vehicle_name_list):
             temp_dict[f"LEO capacity"]              = 10000 # SLR 
             temp_dict[f"GTO capacity"]              = 4500 # SLR
 
-
     if unique_vehicle_name_list[i] == "Chollima-1":
         #Used information from Long March (CZ) 2C/YZ-1S
         temp_dict[f"Stage1 Fuel Type"] = 'Hypergolic'
@@ -1338,7 +1329,6 @@ def update_mass_info(i,temp_dict,unique_vehicle_name_list):
             temp_dict[f"Stage4 Stage Mass"]         = 12000.0
             temp_dict[f"Fairing Mass"]              = 1756.0
             
-
     if unique_vehicle_name_list[i] == "Long March (CZ) 6C":
             # No information available for this vehicle.
             #Used Information Similar to Long March (CZ) 6A
@@ -1360,8 +1350,6 @@ def update_mass_info(i,temp_dict,unique_vehicle_name_list):
             temp_dict[f"Stage1 Stage Mass"]         = 21351.0
             temp_dict[f"Stage2 Stage Mass"]         = 2030.0
             temp_dict[f"Fairing Mass"]              = 1756.0
-
-
 
     if unique_vehicle_name_list[i] == "Vulcan Centaur VC2S":
             #Used Information Similar to Zhuque-2
@@ -1389,7 +1377,6 @@ def update_mass_info(i,temp_dict,unique_vehicle_name_list):
             temp_dict[f"Stage3 Stage Mass"]      = (30+55+315)/ 3 # 
             temp_dict[f"Fairing Mass"]           = 100 # SLR
 
-    
     if unique_vehicle_name_list[i] == "Shavit 2":
         #https://web.archive.org/web/20220406013832/http://www.spacelaunchreport.com/shavit.html
         temp_dict[f"Stage1 Propellant Name"] = 'HTPB'
@@ -1410,5 +1397,10 @@ def update_mass_info(i,temp_dict,unique_vehicle_name_list):
         temp_dict[f"Stage4 Stage Mass"]      = 71    # SLR
         temp_dict[f"Fairing Mass"]           = 57 
     
+    if temp_dict["Fairing Mass"] == 0 and unique_vehicle_name_list[i] != "Atlas V N22 v2020":
+        print(f"Setting fairing mass to average (1756) for {unique_vehicle_name_list[i]}")
+        temp_dict["Fairing Mass"] = 1756
+       
+    temp_dict["Fairing Mass"] = round(temp_dict["Fairing Mass"],1)
     
     return temp_dict
