@@ -206,7 +206,20 @@ class import_launches:
                 else:
                     response_error_handler(response,"")
                 break
+        
+
+        for count, site in enumerate(self.site_name):
+            if site == 'China Sea Launch':
+                self.latitude[count] = 35.4943
+                self.longitude[count] = 123.7965
+                print(f"{self.cospar_id[count]} has been set to China Sea Launch.")
+            elif site == 'Naro Space Center':
+                self.latitude[count] = 34.5
+                self.longitude[count] = 127.5
+                print(f"{self.cospar_id[count]} has been set to Naro Space Center.")
                     
+       
+            
         return [self.cospar_id, self.launch_time, self.launch_datestr, self.site_name, self.latitude, self.longitude, self.rocket_name, self.mcs_check]
       
     def launch_info_to_netcdf(self):
@@ -763,8 +776,8 @@ if __name__ == "__main__":
     parser.add_argument('-ri', "--rocket_info", action='store_true', help='Get rocket info.')
     parser.add_argument('-sri', "--save_rocket_info", action='store_true', help='Save launch info.')
     parser.add_argument('-sdwr', "--save_discosweb_reentries", action='store_true', help='Save launch info.')
-    parser.add_argument('-sy', "--start_year", default = "2023", choices=str(np.arange(1957,2025)), help='Start Year.')
-    parser.add_argument('-fy', "--final_year", default = "2024", choices=str(np.arange(1957,2025)), help='Final Year.')
+    parser.add_argument('-sy', "--start_year", default = "2025", choices=str(np.arange(1957,2025)), help='Start Year.')
+    parser.add_argument('-fy', "--final_year", default = "2025", choices=str(np.arange(1957,2025)), help='Final Year.')
     args = parser.parse_args()
     
     # Sort out the year range.
