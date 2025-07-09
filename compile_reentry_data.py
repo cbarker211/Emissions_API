@@ -933,7 +933,8 @@ class build_reentry_list:
             if jsr_id[5:6] in ["F","U"]:
                 pass
                 # TODO: Sort failed mass for post-2022.
-                abl_mass, other_mass = self.failed_launch_mass(jsr_id, jsr_name, reentry_category)
+                #abl_mass, other_mass = self.failed_launch_mass(jsr_id, jsr_name, reentry_category)
+                abl_mass, other_mass = 0, 0
             else:
                 abl_mass = np.float64(jsr_data_stripped_range["DryMass"][reentry_count])
                 other_mass = 0
@@ -1068,8 +1069,6 @@ class build_reentry_list:
         
         """Use the Aerospace Corp database to fill in missing time information and any other missing objects.
         """
-        
-        # TODO: This needs to be loaded in automatically?
 
         # First load the database and strip to only reentries in the year specified.        
         aerospace_corp_data = pd.read_csv(filepath)
@@ -1101,6 +1100,21 @@ class build_reentry_list:
         
         # Now add any new entries.
         for reentry_count in range(len(aerospace_corp_data_year)):  
+            if "DEB" in aerospace_corp_data_year['Object Name'][reentry_count]:
+                continue
+            if aerospace_corp_data_year['International Designator'][reentry_count] in ["2023-097A",  # Already in GCAT with different COSPAR ID.
+                                                                                       "1982-092A",  # Debris of Kosmos 1408.
+                                                                                       "2024-076Y",  # Still orbiting according to satellite tracker websites.
+                                                                                       "2019-018AC", # Orbital platform that re-entered attached to the 4th stage.
+                                                                                       "2023-046AZ", # Already in GCAT with different COSPAR ID.
+                                                                                       "2023-046AV", # Already in GCAT with different COSPAR ID.
+                                                                                       "2023-046BF", # Already in GCAT with different COSPAR ID.
+                                                                                       "2019-069B",  # GCAT has this reentering in 2022.
+                                                                                       "2020-074AM", # GCAT has this reentering in 2022.
+                                                                                       "1984-108B",  # GCAT has this reentering in 2022.
+            ]:
+                continue
+
             if aerospace_corp_data_year["International Designator"][reentry_count] not in jsr_id_list:
                 print(f"Found new reentry from Aerospace Corp - {aerospace_corp_data_year['International Designator'][reentry_count]}, {aerospace_corp_data_year['Object Name'][reentry_count]}") 
                 # 1992-021C, Ariane 44L H10+ 3rd Rocket Stage. DISCOSweb and AC list this as reentering in Oct 2020. JSR lists this as exploding in Apr 1993.
@@ -1343,7 +1357,7 @@ class build_reentry_list:
                                         beco = 55
                                 
                                 # Now add the boosters.        
-                                print(f"Adding {int(self.dsr['Booster_No'].values[count])-booster_count} boosters for {self.dsl['COSPAR_ID'].values[i]}")
+                                print(f"Adding {int(self.dsr['Booster_No'].values[count])-booster_count} boosters for {self.dsl['COSPAR_ID'].values[i]} - {self.dsl['Rocket_Name'].values[i]}")
                                 for j in range(int(self.dsr["Booster_No"].values[count])-booster_count):
                                     abl_mass = float(self.dsr["Booster_StageMass"].values[count]) / int(self.dsr["Booster_No"].values[count])
                                     if np.isnan(abl_mass):
@@ -1408,7 +1422,7 @@ class build_reentry_list:
                             if reentry["id"][:8] == self.dsl["COSPAR_ID"].values[i] and reentry["category"] == "S1":
                                 found_stage = True
                         if found_stage == False:
-                            print(f"Adding 1st stage for {self.dsl['COSPAR_ID'].values[i]}")
+                            print(f"Adding 1st stage for {self.dsl['COSPAR_ID'].values[i]} - {self.dsl['Rocket_Name'].values[i]}")
                             abl_mass = self.dsr["Stage1_StageMass"].values[count]
                             if np.isnan(abl_mass):
                                 abl_mass = 0
@@ -1563,7 +1577,7 @@ class build_reentry_list:
         print("Looking for missing rocket stages.")
         self.add_missing_stages()
         print("Searching for Aerospace Corp re-entries.")
-        self.extract_aerospace_info("./databases/reentry/AerospaceCorp/AerospaceCorp_Reentries_14thDec23.csv")
+        self.extract_aerospace_info("./databases/reentry/AerospaceCorp/AerospaceCorp_Reentries_07-07-25.csv")
         print("Searching for DISCOSweb re-entries.")
         self.extract_discosweb_info()
         
@@ -1793,8 +1807,8 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument('-sv', "--save_reentry_info", action='store_true', help='Save reentry info.')
     parser.add_argument('-usegpd', "--use_geopandas", action='store_true', help='Load in geopandas dataframes.')
-    parser.add_argument('-sy', "--start_year", default = "2025", choices=str(np.arange(1957,2025)), help='Start Year.')
-    parser.add_argument('-fy', "--final_year", default = "2025", choices=str(np.arange(1957,2025)), help='Final Year.')
+    parser.add_argument('-sy', "--start_year", default = "2023", choices=str(np.arange(1957,2025)), help='Start Year.')
+    parser.add_argument('-fy', "--final_year", default = "2024", choices=str(np.arange(1957,2025)), help='Final Year.')
     args = parser.parse_args()
     use_gpd = args.use_geopandas
 

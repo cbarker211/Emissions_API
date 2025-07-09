@@ -1096,10 +1096,10 @@ class OutputEmis:
                     "burnup": burnup[w], 
                 }
                 
-                if event_id[w][:8] in ["2021-F09","2022-065"] and category[w] == "S1":
+                if event_id[w][:8] in ["2021-F09","2022-065","2023-72"] and category[w] == "S1":
                     reentry_details["lat"] = 34.43194444
                     reentry_details["lon"] = 127.535
-                elif event_id[w][:8] in ["2020-065","2022-167","2022-046","2022-126"] and category[w] == "S1":
+                elif event_id[w][:8] in ["2020-065","2022-167","2022-046","2022-126","2023-135","2024-102","2024-153","2024-173","2024-245","2025-007","2025-105"] and category[w] == "S1":
                     reentry_details["lat"] = 34.9
                     reentry_details["lon"] = 121.2
                 else:
