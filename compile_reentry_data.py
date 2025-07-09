@@ -933,8 +933,7 @@ class build_reentry_list:
             if jsr_id[5:6] in ["F","U"]:
                 pass
                 # TODO: Sort failed mass for post-2022.
-                #abl_mass, other_mass = self.failed_launch_mass(jsr_id, jsr_name, reentry_category)
-                abl_mass, other_mass = 0, 0
+                abl_mass, other_mass = self.failed_launch_mass(jsr_id, jsr_name, reentry_category)
             else:
                 abl_mass = np.float64(jsr_data_stripped_range["DryMass"][reentry_count])
                 other_mass = 0
@@ -1434,7 +1433,7 @@ class build_reentry_list:
                             }
         
                             self.unique_reentry_list.append(temp_reentry_dict)
-
+        
         print(f"Missing Boosters:    {missing_boosters_mass},{missing_boosters_count}")
         print(f"Missing First Stage: {missing_first_mass},{missing_first_count}")
     
@@ -1709,11 +1708,11 @@ class build_reentry_list:
                 reentry["time"] = 0
                 time_update_mass_2 += (reentry["abl_mass"] +reentry["other_mass"])
                 time_update_count_2 += 1
-
+        
         print(f"Time set to launch:   {int(time_update_mass_1)},{int(time_update_count_1)}")
         print(f"Time set to midnight: {int(time_update_mass_2)},{int(time_update_count_2)}")
         print(f"Time missing:         {missing_time_count}")
-
+        
         self.dsl.close()
         self.dsr.close()
         self.ds_dw.close()

@@ -788,7 +788,7 @@ if __name__ == "__main__":
     print(f"Processing from year {start_year} to {final_year}.")  
     
     #Loop over all years and run functions depending on input arguments.
-    LaunchData = import_launches(start_year,final_year)    
+    LaunchData = import_launches(start_year,final_year)   
     if args.yearly_launches == True:
         LaunchData.get_launch_list()
     if args.launch_info == True:

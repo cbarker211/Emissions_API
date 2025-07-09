@@ -181,7 +181,6 @@ class OutputEmis:
         self.included_prop = 0
         self.model_alt = model_alt
 
-
         # Define Molecular Weights:
         self.mw_h   = 1.008
         self.mw_h2  = self.mw_h * 2
@@ -251,7 +250,7 @@ class OutputEmis:
             elif m in [3,5,8,10]:
                 ndays = 30
             elif m == 1:
-                if self.year in ["2020","2024"]:
+                if self.year in ["2020","2024"]: # TODO: Make this work for other leap years.
                     ndays = 29
                 else:
                     ndays = 28    
@@ -333,13 +332,6 @@ class OutputEmis:
                 daily_events_data = {"launches": daily_launches,
                                      "reentries": daily_reentries}
                 events_data[f"{self.year}-{self.strmon}-{self.strday}"] = daily_events_data 
-
-                #for i, x in enumerate(daily_launches):
-                    #print(x)
-                    #if np.ma.is_masked(x):
-                        #print(f"Problem Here:{x}")
-                    
-   
                 
         ####################################
         # Conservation of mass check
@@ -361,39 +353,6 @@ class OutputEmis:
             with np.errstate(divide='ignore', invalid='ignore'):
                 if np.abs(diff_out[i_emis]-final_emis[i_emis])/final_emis[i_emis]*100 > 0.1:
                     print(f"Error with {spec_names[i_emis]} emissions - {np.abs(diff_out[i_emis]-final_emis[i_emis])/final_emis[i_emis]*100:.2f}%.") 
-        
-      # if np.ma.is_masked(rocket_data):
-      #     sys.exit(f"This is the problem 1{rocket_data}, Year: {year}, Month {months}, Launch ID {rocket_data.launch_id}")
-      # if np.ma.is_masked(grid_res):
-      #     sys.exit(f"This is the problem 2 {grid_res}, Year: {year}, Month {months}, Launch ID {rocket_data.launch_id}")
-      # if np.ma.is_masked(timestep):
-      #     sys.exit(f"This is the problem 3 {timestep}, Year: {year}, Month {months}, Launch ID {rocket_data.launch_id}")
-      # if np.ma.is_masked(levels):
-      #     sys.exit(f"This is the problem 4 {levels}, Year: {year}, Month {months}, Launch ID {rocket_data.launch_id}")
-      # if np.ma.is_masked(booster_cutoff_alts):
-      #     sys.exit(f"This is the problem 5 {booster_cutoff_alts}, Year: {year}, Month {months}, Launch ID {rocket_data.launch_id}")
-      # if np.ma.is_masked(MECO_alts):
-      #     sys.exit(f"This is the problem 6 {MECO_alts}, Year: {year}, Month {months}, Launch ID {rocket_data.launch_id}")
-      # if np.ma.is_masked(SEI_alts):
-      #     sys.exit(f"This is the problem 7 {SEI_alts}, Year: {year}, Month {months}, Launch ID {rocket_data.launch_id}")
-      # if np.ma.is_masked(SECO_alts):
-      #     sys.exit(f"This is the problem 8 {SECO_alts}, Year: {year}, Month {months}, Launch ID {rocket_data.launch_id}")
-      # if np.ma.is_masked(reentry_levs):
-      #     sys.exit(f"This is the problem 9 {reentry_levs}, Year: {year}, Month {months}, Launch ID {rocket_data.launch_id}")
-      # if np.ma.is_masked(vert_filepath):
-      #     sys.exit(f"This is the problem 10 {vert_filepath}, Year: {year}, Month {months}, Launch ID {rocket_data.launch_id}")
-      # if np.ma.is_masked(months):
-      #     sys.exit(f"This is the problem 11 {months}, Year: {year}, Month {months}, Launch ID {rocket_data.launch_id}")
-      # if np.ma.is_masked(year):
-      #     sys.exit(f"This is the problem 12 {year}, Year: {year}, Month {months}, Launch ID {rocket_data.launch_id}")
-      # if np.ma.is_masked(ground_landing_list):
-      #     sys.exit(f"This is the problem 13 {ground_landing_list}, Year: {year}, Month {months}, Launch ID {rocket_data.launch_id}")
-      # if np.ma.is_masked(stage_alt_data):
-      #     sys.exit(f"This is the problem 14 {stage_alt_data}, Year: {year}, Month {months}, Launch ID {rocket_data.launch_id}")
-      # if np.ma.is_masked(model_alt):
-      #      sys.exit(f"This is the problem 15 {model_alt}, Year: {year}, Month {months}, Launch ID {rocket_data.launch_id}")
-      # if np.ma.is_masked(events_data):
-      #     sys.exit(f"This is the problem {events_data}")
         
         for date in events_data:
             for value in events_data[date]:
@@ -443,9 +402,9 @@ class OutputEmis:
                     rocket_config_type = 2
 
                 else:
-                    sys.exit(f"Incorrect rocket configuration 1.{launch_rocket}")
+                    sys.exit(f"Incorrect rocket configuration 1 {launch_rocket}")
 
-            else:                    
+            else:
                 if rocket_data.stage1_prop_type[valid_index] != '' and rocket_data.stage2_prop_type[valid_index] != '' and rocket_data.stage3_prop_type[valid_index] == '' and rocket_data.stage4_prop_type[valid_index] == '':
                     rocket_config_type = 3
                 elif rocket_data.stage1_prop_type[valid_index] != '' and rocket_data.stage2_prop_type[valid_index] != '' and rocket_data.stage3_prop_type[valid_index] != '' and rocket_data.stage4_prop_type[valid_index] == '':
@@ -453,7 +412,7 @@ class OutputEmis:
                 elif rocket_data.stage1_prop_type[valid_index] != '' and rocket_data.stage2_prop_type[valid_index] != '' and rocket_data.stage3_prop_type[valid_index] != '' and rocket_data.stage4_prop_type[valid_index] != '':
                     rocket_config_type = 5
                
-                else:    
+                else:
                     sys.exit(f"Incorrect rocket configuration 2 {launch_rocket}")
                     
             stage_alt_beco = self.booster_levs[rocket_config_type]
@@ -468,7 +427,7 @@ class OutputEmis:
         # NOTE: This section needs to be tweaked if wanting to run for different vertical heights above 80km.
         
         if rocket_data.booster_prop_type[valid_index] != '':
-           
+            
             # If BECO occurs above the fine grid, then we only use some of the booster emissions.
             if stage_alt_beco * 1e3 > self.fine_grid_top_alt[-1]:
                 self.fine_grid_mass_booster = np.asarray(self.fine_grid_mass)
@@ -603,12 +562,7 @@ class OutputEmis:
     def calc_emis(self,start_ind,stop_ind,pei_index,prop_mass,vertical_profile,time_index, q, p, kg_to_kgm2s, total_vertical_propellant,stage):
         
         # Calculate the emissions over the range of the stag within the fine grid (0-100 km).
-        #try:
         ei_bc = calculate_bc_ei(self.fine_grid_mid_alt[start_ind:stop_ind]*1e-3, rocket_data.bc_pei[pei_index])
-            
-        #except:
-            #sys.exit(f"Indexes:{self.fine_grid_mid_alt[start_ind:stop_ind]} and: {rocket_data.bc_pei[pei_index]} ")
-
         ei_co, ei_co2 = calculate_co_ei(self.fine_grid_mid_alt[start_ind:stop_ind]*1e-3, rocket_data.co_pei[pei_index], rocket_data.co2_pei[pei_index])
         ei_sec_nox = calculate_nox_ei(self.fine_grid_mid_alt[start_ind:stop_ind]*1e-3)
         ei_h2o =  rocket_data.h2o_pei[pei_index] + rocket_data.h2_pei[pei_index] * self.mw_h2o / self.mw_h2 
@@ -689,7 +643,7 @@ class OutputEmis:
                   
     def grid_emis(self,index,lon,lat,hour,emis_type,event_id,name,smc,category,time,location, burnup):
         """Grid the data onto the GEOS-Chem horizontal and vertical grid"""
-       
+        
         daily_info = []                
         #Loop over each launch/reentry.
         for w in range(len(lon)):
@@ -788,7 +742,7 @@ class OutputEmis:
                 if event_id[w] in ["2021-F09","2022-065","2023-72"]:
                     launch_details["lat"] = 34.43194444
                     launch_details["lon"] = 127.535
-                elif event_id[w] in ["2020-065","2022-167","2022-046","2022-126","2023-135","2024-102","2024-153","2024-173","2024-245"]:
+                elif event_id[w] in ["2020-065","2022-167","2022-046","2022-126","2023-135","2024-102","2024-153","2024-173","2024-245","2025-007","2025-105"]:
                     launch_details["lat"] = 34.9
                     launch_details["lon"] = 121.2
                 else:
@@ -1336,13 +1290,7 @@ if __name__ == "__main__":
     
     #Loop over all years and run functions depending on input arguments.
     for year in year_range:
-        
-        #for i in (rocket_data):
-        
-        #print(f"Year: {year}")
         # Go through process of gridding and saving rocket emissions:
-        
-        
         emis_data = OutputEmis(rocket_data, 
                             grid_res, 
                             timestep, 
@@ -1359,7 +1307,3 @@ if __name__ == "__main__":
                             stage_alt_dict,
                             model_alt
                             )
-
-    
-        
-        

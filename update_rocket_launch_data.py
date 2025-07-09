@@ -479,7 +479,7 @@ def update_mass_info(i,temp_dict,unique_vehicle_name_list):
             temp_dict[f"Stage3 Stage Mass"]      = 2500 # DW
             temp_dict[f"Stage3 Propellant Name"]  = "UDMH (Unsymmetrical Dimethyl Hydrazine)/N2O4"
             temp_dict[f"Stage3 Fuel Type"]        = "Hypergolic"
-        
+    
     if unique_vehicle_name_list[i] == "Long March (CZ) 2D":
         # Long March (CZ) 2D 
         # DISCOSweb dry match SLR
