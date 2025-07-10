@@ -62,18 +62,24 @@ class build_reentry_list:
         
         # Import the shapefiles and create unions for the main oceans.
         if use_gpd == True:
-            ocean_shapefile     = gpd.read_file("./databases/reentry/GOaS_v1_20211214/goas_v01.shp")
-            pacific             = ocean_shapefile[ocean_shapefile.name.isin(['North Pacific Ocean','South Pacific Ocean'])]
+            gom_shapefile          = gpd.read_file("./databases/reentry/iho/gulf_of_mexico/iho.shp")
+            indian_ocean_shapefile = gpd.read_file("./databases/reentry/iho/indian_ocean/iho.shp")
+            pacific_shapefile      = gpd.read_file("./databases/reentry/iho/pacific/iho.shp")
+            atlantic_shapefile     = gpd.read_file("./databases/reentry/iho/atlantic/iho.shp")
+            country_shapefile      = gpd.read_file("./databases/reentry/ne_110m_admin_0_countries/ne_110m_admin_0_countries.shp") 
+            states_shapefile       = gpd.read_file("./databases/reentry/ne_10m_admin_1_states_provinces/ne_10m_admin_1_states_provinces.shp")
+
+            pacific             = pacific_shapefile[pacific_shapefile.name.isin(['North Pacific Ocean','South Pacific Ocean'])]
             pacific_union       = gpd.GeoDataFrame(geometry=[pacific.unary_union]) 
-            atlantic            = ocean_shapefile[ocean_shapefile.name.isin(['North Atlantic Ocean','South Atlantic Ocean'])]
+            atlantic            = atlantic_shapefile[atlantic_shapefile.name.isin(['North Atlantic Ocean','South Atlantic Ocean'])]
             atlantic_union      = gpd.GeoDataFrame(geometry=[atlantic.unary_union])
-            country_shapefile   = gpd.read_file("./databases/reentry/ne_110m_admin_0_countries/ne_110m_admin_0_countries.shp") 
-            states_shapefile    = gpd.read_file("./databases/reentry/ne_10m_admin_1_states_provinces/ne_10m_admin_1_states_provinces.shp")
-            self.ocean_shapefile   = ocean_shapefile
-            self.pacific_union     = pacific_union
-            self.atlantic_union    = atlantic_union
-            self.country_shapefile = country_shapefile
-            self.states_shapefile  = states_shapefile
+
+            self.gom_shapefile          = gom_shapefile
+            self.indian_ocean_shapefile = indian_ocean_shapefile
+            self.pacific                = pacific_union
+            self.atlantic               = atlantic_union
+            self.country_shapefile      = country_shapefile
+            self.states_shapefile       = states_shapefile
             
     def print_stats(self):
         """Print out statistics about the database at the end of the program.
@@ -220,6 +226,17 @@ class build_reentry_list:
                            "Mexico","S Africa","Gujarat"]:
             lat = 0
             lon = 0
+        elif latlonstr == "Gulf":
+            print(latlonstr)
+            location = 4
+            # Gulf of Mexico
+            gom = self.gom_shapefile[self.gom_shapefile.name.isin(['Gulf of Mexico'])] 
+            while True:
+                lat = round(random.uniform(-inc, inc),2)
+                lon = round(random.uniform(-180, 180),2)
+                coordinate = Point(lon,lat)
+                if gom.geometry.contains(coordinate).any():
+                    break 
         elif latlonstr == "WSSH":
             location = 2
             # This is the White Sands Missile Range in New Mexico.
@@ -286,7 +303,7 @@ class build_reentry_list:
         elif latlonstr in ["Pacific", "Pacific?", "PO", "POR"]:
             location = 4
             while True:
-                random_location = self.pacific_union.sample_points(1).get_coordinates()
+                random_location = self.pacific.sample_points(1).get_coordinates()
                 lon = random_location["x"].values[0]
                 lat = random_location["y"].values[0]
                 if -inc <= lat <= inc:
@@ -294,7 +311,7 @@ class build_reentry_list:
         elif latlonstr in ["AO","Atlantic"]: 
             location = 4 
             while True:
-                random_location = self.atlantic_union.sample_points(1).get_coordinates()
+                random_location = self.atlantic.sample_points(1).get_coordinates()
                 lon = random_location["x"].values[0]
                 lat = random_location["y"].values[0]
                 if -inc <= lat <= inc:
@@ -302,7 +319,7 @@ class build_reentry_list:
         elif latlonstr in ["E Pacific", "E Pacific?"]:
             location = 4
             while True:
-                random_location = self.pacific_union.sample_points(1).get_coordinates()
+                random_location = self.pacific.sample_points(1).get_coordinates()
                 lon = random_location["x"].values[0]
                 lat = random_location["y"].values[0]
                 if -inc <= lat <= inc and -180 <= lon <= -60: # Bounded to East Pacific only.
@@ -310,14 +327,14 @@ class build_reentry_list:
         elif latlonstr in ["S Pacific", "S POR"]:
             location = 4
             while True:
-                random_location = self.pacific_union.sample_points(1).get_coordinates()
+                random_location = self.pacific.sample_points(1).get_coordinates()
                 lon = random_location["x"].values[0]
                 lat = random_location["y"].values[0]
                 if -inc <= lat <= inc and lat <= 0: # Bounded to South Pacific only.
                     break 
         elif latlonstr in ["Indian O?"]:
             location = 4
-            indian_ocean = self.ocean_shapefile[self.ocean_shapefile.name.isin(['Indian Ocean'])] 
+            indian_ocean = self.indian_ocean_shapefile[self.indian_ocean_shapefile.name.isin(['Indian Ocean'])] 
             while True:
                 lat = round(random.uniform(-inc, inc),2)
                 lon = round(random.uniform(-180, 180),2)
@@ -338,7 +355,7 @@ class build_reentry_list:
                     break 
         elif latlonstr in ["SE IOR?","SE IOR"]:
             location = 4
-            indian_ocean = self.ocean_shapefile[self.ocean_shapefile.name.isin(['Indian Ocean'])] 
+            indian_ocean = self.indian_ocean_shapefile[self.indian_ocean_shapefile.name.isin(['Indian Ocean'])] 
             while True:
                 lat = round(random.uniform(-inc, -30),2)
                 lon = round(random.uniform(77, 180),2)
