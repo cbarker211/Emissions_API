@@ -775,8 +775,10 @@ class OutputEmis:
                 # Most failures are for upper stages, and so can be treated as normal here.
                 # Full information is provided in source_info/failed_launch_info.txt.
                 if event_id[w] in ['2020-F02','2020-F05',
-                                      '2021-F02','2021-F07','2021-F08',
-                                      '2022-F01','2022-F02']:
+                                    '2021-F02','2021-F07','2021-F08','2022-F01',
+                                    '2022-F02','2022-F03','2023-F01','2023-F04',
+                                    '2023-F05', '2023-F07','2025-F05','2023-F09',
+                                    '2023-F11']:
                     self.fine_grid_mass_stage2 = np.asarray([0])
                     self.SEI_alt_index = None
                 elif event_id[w] in ['2020-F07','2021-F01','2021-F07']:
