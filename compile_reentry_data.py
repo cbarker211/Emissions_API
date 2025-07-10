@@ -61,18 +61,26 @@ class build_reentry_list:
         self.final_year = final_year
         
         # Import the shapefiles and create unions for the main oceans.
-        #ocean_shapefile     = gpd.read_file("./databases/reentry/GOaS_v1_20211214/goas_v01.shp")
-        #pacific             = ocean_shapefile[ocean_shapefile.name.isin(['North Pacific Ocean','South Pacific Ocean'])]
-        #pacific_union       = gpd.GeoDataFrame(geometry=[pacific.unary_union]) 
-        #atlantic            = ocean_shapefile[ocean_shapefile.name.isin(['North Atlantic Ocean','South Atlantic Ocean'])]
-        #atlantic_union      = gpd.GeoDataFrame(geometry=[atlantic.unary_union])
-        #country_shapefile   = gpd.read_file("./databases/reentry/ne_110m_admin_0_countries/ne_110m_admin_0_countries.shp") 
-        #states_shapefile    = gpd.read_file("./databases/reentry/ne_10m_admin_1_states_provinces/ne_10m_admin_1_states_provinces.shp")
-        #self.ocean_shapefile   = ocean_shapefile
-        #self.pacific_union     = pacific_union
-        #self.atlantic_union    = atlantic_union
-        #self.country_shapefile = country_shapefile
-        #self.states_shapefile  = states_shapefile
+
+        if use_gpd == True:
+            gom_shapefile          = gpd.read_file("./databases/reentry/iho/gulf_of_mexico/iho.shp")
+            indian_ocean_shapefile = gpd.read_file("./databases/reentry/iho/indian_ocean/iho.shp")
+            pacific_shapefile      = gpd.read_file("./databases/reentry/iho/pacific/iho.shp")
+            atlantic_shapefile     = gpd.read_file("./databases/reentry/iho/atlantic/iho.shp")
+            country_shapefile      = gpd.read_file("./databases/reentry/ne_110m_admin_0_countries/ne_110m_admin_0_countries.shp") 
+            states_shapefile       = gpd.read_file("./databases/reentry/ne_10m_admin_1_states_provinces/ne_10m_admin_1_states_provinces.shp")
+
+            pacific             = pacific_shapefile[pacific_shapefile.name.isin(['North Pacific Ocean','South Pacific Ocean'])]
+            pacific_union       = gpd.GeoDataFrame(geometry=[pacific.unary_union]) 
+            atlantic            = atlantic_shapefile[atlantic_shapefile.name.isin(['North Atlantic Ocean','South Atlantic Ocean'])]
+            atlantic_union      = gpd.GeoDataFrame(geometry=[atlantic.unary_union])
+
+            self.gom_shapefile          = gom_shapefile
+            self.indian_ocean_shapefile = indian_ocean_shapefile
+            self.pacific                = pacific_union
+            self.atlantic               = atlantic_union
+            self.country_shapefile      = country_shapefile
+            self.states_shapefile       = states_shapefile
             
     def print_stats(self):
         """Print out statistics about the database at the end of the program.
@@ -217,9 +225,20 @@ class build_reentry_list:
         #elif latlonstr # TODO: Sort out Gulf of Mexico
         elif latlonstr in ["Pacific","Pacific?","PO","AO","E Pacific","E Pacific?","S Pacific",
                            "S POR","Indian O?","SE IOR?","SE IOR","Atlantic","POR","Kazakhstan",
-                           "Mexico","S Africa","Gujarat"]:
+                           "Mexico","S Africa","Gujarat","Gulf"]:
             lat = 0
             lon = 0
+        elif latlonstr == "Gulf":
+            print(latlonstr)
+            location = 4
+            # Gulf of Mexico
+            gom = self.gom_shapefile[self.gom_shapefile.name.isin(['Gulf of Mexico'])] 
+            while True:
+                lat = round(random.uniform(-inc, inc),2)
+                lon = round(random.uniform(-180, 180),2)
+                coordinate = Point(lon,lat)
+                if gom.geometry.contains(coordinate).any():
+                    break 
         elif latlonstr == "WSSH":
             location = 2
             # This is the White Sands Missile Range in New Mexico.
@@ -286,7 +305,7 @@ class build_reentry_list:
         elif latlonstr in ["Pacific", "Pacific?", "PO", "POR"]:
             location = 4
             while True:
-                random_location = self.pacific_union.sample_points(1).get_coordinates()
+                random_location = self.pacific.sample_points(1).get_coordinates()
                 lon = random_location["x"].values[0]
                 lat = random_location["y"].values[0]
                 if -inc <= lat <= inc:
@@ -294,7 +313,7 @@ class build_reentry_list:
         elif latlonstr in ["AO","Atlantic"]: 
             location = 4 
             while True:
-                random_location = self.atlantic_union.sample_points(1).get_coordinates()
+                random_location = self.atlantic.sample_points(1).get_coordinates()
                 lon = random_location["x"].values[0]
                 lat = random_location["y"].values[0]
                 if -inc <= lat <= inc:
@@ -302,7 +321,7 @@ class build_reentry_list:
         elif latlonstr in ["E Pacific", "E Pacific?"]:
             location = 4
             while True:
-                random_location = self.pacific_union.sample_points(1).get_coordinates()
+                random_location = self.pacific.sample_points(1).get_coordinates()
                 lon = random_location["x"].values[0]
                 lat = random_location["y"].values[0]
                 if -inc <= lat <= inc and -180 <= lon <= -60: # Bounded to East Pacific only.
@@ -310,14 +329,14 @@ class build_reentry_list:
         elif latlonstr in ["S Pacific", "S POR"]:
             location = 4
             while True:
-                random_location = self.pacific_union.sample_points(1).get_coordinates()
+                random_location = self.pacific.sample_points(1).get_coordinates()
                 lon = random_location["x"].values[0]
                 lat = random_location["y"].values[0]
                 if -inc <= lat <= inc and lat <= 0: # Bounded to South Pacific only.
                     break 
         elif latlonstr in ["Indian O?"]:
             location = 4
-            indian_ocean = self.ocean_shapefile[self.ocean_shapefile.name.isin(['Indian Ocean'])] 
+            indian_ocean = self.indian_ocean_shapefile[self.indian_ocean_shapefile.name.isin(['Indian Ocean'])] 
             while True:
                 lat = round(random.uniform(-inc, inc),2)
                 lon = round(random.uniform(-180, 180),2)
@@ -338,7 +357,7 @@ class build_reentry_list:
                     break 
         elif latlonstr in ["SE IOR?","SE IOR"]:
             location = 4
-            indian_ocean = self.ocean_shapefile[self.ocean_shapefile.name.isin(['Indian Ocean'])] 
+            indian_ocean = self.indian_ocean_shapefile[self.indian_ocean_shapefile.name.isin(['Indian Ocean'])] 
             while True:
                 lat = round(random.uniform(-inc, -30),2)
                 lon = round(random.uniform(77, 180),2)
@@ -683,7 +702,7 @@ class build_reentry_list:
 
         return abl_mass, other_mass
         
-    def sort_inclination(self,jsr_inc,jsr_id):      
+    def sort_inclination(self,jsr_inc,jsr_id):
         
         """When the inclination on file is zero (including failed), this function sets it appropriately.
         This is mainly the case for lower suborbital stages, which can then be set using the inclination of an upper stage or payload.
@@ -705,70 +724,74 @@ class build_reentry_list:
                     if reentry["inc"] > jsr_inc:
                         jsr_inc == reentry["inc"]
                 count += 1
+            if count > 1:
+                break
             
         # Sometimes, there is no entry in the reentry list because it didn't meet the criteria before.
         # In this case we need to reload the satcat to look for any matching entries.
         if jsr_inc == 0:
-            for file in ["satcat","ftocat"]:
+
+            if "F" in jsr_id:
+                jsr_data = self.jsr_data_dict["ftocat"]
+                jsr_data = jsr_data[jsr_data["Piece"].str[:4] == jsr_id[:4]].reset_index(drop=True)
+            else:
+                jsr_data = self.jsr_data_dict["satcat"]
+                jsr_data = jsr_data[jsr_data["Piece"].str[:8] == jsr_id[:8]].reset_index(drop=True)
                 
-                jsr_data = self.jsr_data_dict[file]
-                jsr_data = jsr_data[jsr_data["Piece"].str[:3] == jsr_id[:3]].reset_index(drop=True)
-                jsr_data = jsr_data[jsr_data["Inc"].astype(np.float64) != 0].reset_index(drop=True)
+            jsr_data = jsr_data[jsr_data["Inc"].astype(np.float64) != 0].reset_index(drop=True)
+            inc_values = pd.to_numeric(jsr_data["Inc"], errors="coerce")  # convert to float, turn invalids to NaN
 
-                satcat_list = []
-                for reentry_count in range(len(jsr_data)):
-                    
-                    if jsr_data["Piece"][reentry_count][:8] == "2020-F09":
-                        new_id = "2020-F10"
-                    elif jsr_data["Piece"][reentry_count][:8] == "2020-U01":
-                        new_id = "2020-F09"
-                    elif jsr_data["Piece"][reentry_count][:8] == "2022-U02":
-                        new_id = "2022-F04"
-                    elif jsr_data["Piece"][reentry_count][:8] == "2022-F04":
-                        new_id = "2022-F05"
-                    elif jsr_data["Piece"][reentry_count][:8] == "2022-F05":
-                        new_id = "2022-F06"
-                    elif jsr_data["Piece"][reentry_count][:8] == "2022-F06":
-                        new_id = "2022-F07"
-                    elif jsr_data["Piece"][reentry_count][:8] == "2023-F10":
-                        new_id = "2023-F03"
-                    elif jsr_data["Piece"][reentry_count][:8] == "2023-F03":
-                        new_id = "2023-F04"
-                    elif jsr_data["Piece"][reentry_count][:8] == "2023-F04":
-                        new_id = "2023-F05"
-                    elif jsr_data["Piece"][reentry_count][:8] == "2023-F05":
-                        new_id = "2023-F06"
-                    elif jsr_data["Piece"][reentry_count][:8] == "2023-F06":
-                        new_id = "2023-F07"
-                    elif jsr_data["Piece"][reentry_count][:8] == "2023-F07":
-                        new_id = "2023-F08"
-                    elif jsr_data["Piece"][reentry_count][:8] == "2023-F08":
-                        new_id = "2023-F09"
-                    elif jsr_data["Piece"][reentry_count][:8] == "2023-F09":
-                        new_id = "2023-F10"   
-                    else:
-                        new_id = jsr_data["Piece"][reentry_count][:8]
+            satcat_list = []
+            for reentry_count in range(len(jsr_data)):
+                
+                if jsr_data["Piece"][reentry_count][:8] == "2020-F09":
+                    new_id = "2020-F10"
+                elif jsr_data["Piece"][reentry_count][:8] == "2020-U01":
+                    new_id = "2020-F09"
+                elif jsr_data["Piece"][reentry_count][:8] == "2022-U02":
+                    new_id = "2022-F04"
+                elif jsr_data["Piece"][reentry_count][:8] == "2022-F04":
+                    new_id = "2022-F05"
+                elif jsr_data["Piece"][reentry_count][:8] == "2022-F05":
+                    new_id = "2022-F06"
+                elif jsr_data["Piece"][reentry_count][:8] == "2022-F06":
+                    new_id = "2022-F07"
+                elif jsr_data["Piece"][reentry_count][:8] == "2023-F10":
+                    new_id = "2023-F03"
+                elif jsr_data["Piece"][reentry_count][:8] == "2023-F03":
+                    new_id = "2023-F04"
+                elif jsr_data["Piece"][reentry_count][:8] == "2023-F04":
+                    new_id = "2023-F05"
+                elif jsr_data["Piece"][reentry_count][:8] == "2023-F05":
+                    new_id = "2023-F06"
+                elif jsr_data["Piece"][reentry_count][:8] == "2023-F06":
+                    new_id = "2023-F07"
+                elif jsr_data["Piece"][reentry_count][:8] == "2023-F07":
+                    new_id = "2023-F08"
+                elif jsr_data["Piece"][reentry_count][:8] == "2023-F08":
+                    new_id = "2023-F09"
+                elif jsr_data["Piece"][reentry_count][:8] == "2023-F09":
+                    new_id = "2023-F10"   
+                else:
+                    new_id = jsr_data["Piece"][reentry_count][:8]
 
-                    if new_id == jsr_id[:8]:
-                        satcat_list.append(jsr_data.iloc[[reentry_count]])
-                        break
+                if new_id == jsr_id[:8]:
+                    satcat_list.append(jsr_data.iloc[[reentry_count]])
                     
-                if len(satcat_list) > 0:
-                    satcat = pd.concat(satcat_list, ignore_index=True)
-                    count = 0
-                    for i in range(len(satcat)):
-                        if satcat["Status"][i] in ["O","R","DSO","DSA","AF","AS","F","S","GRP","AO","AR"]:
-                            if count == 0:
-                                jsr_inc = np.float64(satcat["Inc"][i])
-                            elif count > 0:
-                                if np.float64(satcat["Inc"][i]) > jsr_inc:
-                                    jsr_inc == np.float64(satcat["Inc"][i])
-                            count += 1
+            if len(satcat_list) > 0:
+                satcat = pd.concat(satcat_list, ignore_index=True)
+                count = 0
+                for i in range(len(satcat)):
+                    if satcat["Status"][i] in ["O","R","DSO","DSA","AF","AS","F","S","GRP","AO","AR"]:
+                        if count == 0:
+                            jsr_inc = np.float64(satcat["Inc"][i])
+                        elif count > 0:
+                            if np.float64(satcat["Inc"][i]) > jsr_inc:
+                                jsr_inc == np.float64(satcat["Inc"][i])
+                        count += 1
                 
         if jsr_inc == 0:
-            pass
-            print(f"inc still empty for {jsr_id}")
-            
+            sys.exit(f"inc still empty for {jsr_id}")
         return jsr_inc 
          
     def extract_jsr_info(self, jsr_data):
@@ -892,11 +915,19 @@ class build_reentry_list:
             if jsr_data_stripped_range["Type"][reentry_count][0] == "R":
                 # Sort out the rocket stages. This is mainly Soyuz (Russian's just do the numbering differently), and errors in the GCAT.
                 reentry_category = f"S{(jsr_data_stripped_range['Type'][reentry_count][1:2])}"
-                if jsr_data_stripped_range["#JCAT"][reentry_count] in ["R81714","R81715"]:
+
+                # Setting Falcon Heavy Boosters as S0.
+                if reentry_category == "S1" and "Falcon 9 Stage 1" in jsr_name:
+                    if jsr_data_stripped_range["Parent"][reentry_count] != "-":
+                        reentry_category = "S0"
+
+                if jsr_data_stripped_range["#JCAT"][reentry_count] in ["R81714","R81715"]: # Falcon Heavy
                     reentry_category = "S0"
-                if jsr_data_stripped_range["Name"][reentry_count] in ["RSRMV-1L","RSRMV-1R"]:
+                elif jsr_data_stripped_range["Name"][reentry_count] in ["RSRMV-1L","RSRMV-1R"]: # SLS
                     reentry_category = "S0"   
-                if "Blok-BVGD" in jsr_data_stripped_range["Bus"][reentry_count]:
+
+                # Soyuz 
+                elif "Blok-BVGD" in jsr_data_stripped_range["Bus"][reentry_count]:
                     reentry_category = "S0"
                 elif "Blok-A" in jsr_data_stripped_range["Bus"][reentry_count]:
                     reentry_category = "S1"
@@ -904,8 +935,7 @@ class build_reentry_list:
                     reentry_category = "S2"
                 elif "Fregat" in jsr_data_stripped_range["Name"][reentry_count]:
                     reentry_category = "S3"
-                elif jsr_data_stripped_range["Piece"][reentry_count] in ["2020-028C","2021-086B","2021-097B","2021-112B","2022-066B","2022-102B"]:
-                    reentry_category = "S4"  
+
             elif jsr_data_stripped_range["Type"][reentry_count][0] in ["C","P"]:
                 reentry_category = jsr_data_stripped_range["Type"][reentry_count][0]
             else:
@@ -944,7 +974,7 @@ class build_reentry_list:
                 other_mass = 0
             
             # Check for items with a missing geolocation (should have been dealt with already so this is just a sanity check).    
-            if lat == 0 and lon == 0:
+            if use_gpd == True and lat == 0 and lon == 0:
                 print(f"No location for {jsr_id}, dest = {jsr_data_stripped_range['Dest'][reentry_count]}")
             
             # Set up the dictionary.                      
@@ -976,6 +1006,10 @@ class build_reentry_list:
         jsr_data = jsr_data[jsr_data["Status"].isin(["AL IN","AR IN"])].reset_index(drop=True)
         
         for reentry_count in range(len(jsr_data)):           
+
+            if jsr_data["#JCAT"][reentry_count] == "A11023": # This might be a mistake in GCAT, listed as AL IN but still in orbit?
+                continue
+
             if (self.start_year <= int(jsr_data["DDate"][reentry_count][0:4]) <= self.final_year):
                 cargo_found = False 
                 for reentry in self.unique_reentry_list:
@@ -1165,32 +1199,34 @@ class build_reentry_list:
                 jsr_ac_id_list.append(reentry["id"]) 
         
         for reentry_count in range(len(self.ds_dw["DISCOSweb_Reentry_ID"].values)):
+
+            discosweb_name = self.ds_dw["DISCOSweb_Reentry_Name"].values[reentry_count].item()
+            discosweb_id   = self.ds_dw["DISCOSweb_Reentry_ID"].values[reentry_count].item()
             
             # Excluding Debris
-            valid_types = ["Rocket Body","Rocket Mission Related Object","Payload Mission Related Object","Payload"]
-            if (self.ds_dw["DISCOSweb_Reentry_ID"].values[reentry_count] not in jsr_ac_id_list) and self.ds_dw["DISCOSweb_Reentry_Class"].values[reentry_count] in valid_types:
+            if (discosweb_id not in jsr_ac_id_list):
                 
                 # Check if the stage has already been added.  
                 found_stage = False               
                 if self.ds_dw["DISCOSweb_Reentry_Class"].values[reentry_count] == "Rocket Body":
-                    if (self.ds_dw["DISCOSweb_Reentry_Name"].values[reentry_count] in ["H-II LE-5B (H-IIB)", "L-53 (YF24B) (Long March (CZ) 2D)",
+                    
+                    if (discosweb_name in ["H-II LE-5B (H-IIB)", "L-53 (YF24B) (Long March (CZ) 2D)",
                                                                                        "CZ-5-HO (Long March (CZ) 5)","Delta IV DCSS 5 (Delta 4H)"]
-                        or "Falcon 9 Merlin-V (1D" in self.ds_dw["DISCOSweb_Reentry_Name"].values[reentry_count]
-                        or "Centaur-5" in self.ds_dw["DISCOSweb_Reentry_Name"].values[reentry_count]):
+                        or "Falcon 9 Merlin-V (1D" in discosweb_name or "Centaur-5" in discosweb_name):
                         reentry_category = "S2"
-                    elif (("Fregat" in self.ds_dw["DISCOSweb_Reentry_Name"].values[reentry_count])
-                        or (self.ds_dw["DISCOSweb_Reentry_Name"].values[reentry_count] in ["PBV (Long March (CZ) 6)","YZ-1S (Long March (CZ) 2C/YZ-1S)",
+                    elif (("Fregat" in discosweb_name)
+                        or (discosweb_name in ["PBV (Long March (CZ) 6)","YZ-1S (Long March (CZ) 2C/YZ-1S)",
                                                                                       "H-18 (Long March (CZ) YF) (Long March (CZ) 3C/E)","Angara AM (Angara 1.2)"])):
                         reentry_category = "S3" 
-                    elif self.ds_dw["DISCOSweb_Reentry_Name"].values[reentry_count] in ["AVUM (Vega)","Ceres-1 upperstage","YZ-1 (Long March (CZ) 3B/YZ-1)",
+                    elif discosweb_name in ["AVUM (Vega)","Ceres-1 upperstage","YZ-1 (Long March (CZ) 3B/YZ-1)",
                                                                                    "KZ-1 Stage 4 (Kuaizhou-1)","Long March (CZ) 11 Stage 4"]:
                         reentry_category = "S4"
                     else:
-                        print("Missing stage designation for : ",self.ds_dw["DISCOSweb_Reentry_ID"].values[reentry_count], self.ds_dw["DISCOSweb_Reentry_Name"].values[reentry_count])
+                        print("Missing stage designation for : ",discosweb_id, discosweb_name)
                         reentry_category = "S0"
                     
                     for reentry in self.unique_reentry_list:
-                        if reentry["id"][:8] == self.ds_dw["DISCOSweb_Reentry_ID"].values[reentry_count][:8] and str(reentry["category"]) == str(reentry_category):
+                        if reentry["id"][:8] == discosweb_id[:8] and str(reentry["category"]) == str(reentry_category):
                             found_stage = True
                             
                 skipped_ids = ["2014-065A", # Chang'e 5-T1, reentered in 2014.
@@ -1226,6 +1262,8 @@ class build_reentry_list:
                                "1998-067NF",# Already in GCAT, tracable through JCAT.
                                "1998-067PU",# Already in GCAT, tracable through JCAT.
                                ]
+
+                # 2023-004IA
                 
                 # Included IDs: 
                 #               2020-022A https://www.n2yo.com/satellite/?s=45464     
@@ -1239,12 +1277,12 @@ class build_reentry_list:
                         reentry_category = "P" 
                     else:
                         print("Unexpected re-entry stage.") 
-                    datestr = int(self.ds_dw["DISCOSweb_Reentry_Epoch"].values[reentry_count][:10].replace("-",""))
+                    datestr = int(self.ds_dw["DISCOSweb_Reentry_Epoch"].values[reentry_count].item()[:10].replace("-",""))
                     time_utc = -1
                     
-                    if self.ds_dw["DISCOSweb_Reentry_ID"].values[reentry_count] == "2020-029B":
+                    if discosweb_id == "2020-029B":
                         inc = 45.01
-                    elif self.ds_dw["DISCOSweb_Reentry_ID"].values[reentry_count] == "2020-022A":
+                    elif discosweb_id == "2020-022A":
                         inc = 26.50
                     else: 
                         inc = 0
@@ -1256,9 +1294,9 @@ class build_reentry_list:
                         mass = 0
     
                     temp_reentry_dict = {
-                        "id"               : self.ds_dw["DISCOSweb_Reentry_ID"].values[reentry_count],
+                        "id"               : discosweb_id,
                         "jcat"             : "N/A",
-                        "name"             : self.ds_dw["DISCOSweb_Reentry_Name"].values[reentry_count],
+                        "name"             : discosweb_name,
                         "category"         : reentry_category,
                         "burnup"           : "Complete",
                         "time"             : time_utc,
@@ -1323,10 +1361,16 @@ class build_reentry_list:
         
         missing_boosters_count, missing_first_count = 0,0
         missing_boosters_mass, missing_first_mass = 0,0
+
         # Loop over each launch, locate the rocket and then filter for rocket configuration.
         for i in range(len(self.dsl["COSPAR_ID"])):
             for count, rocket_name in enumerate(self.dsr["Rocket_Name"].values):
                 if rocket_name == self.dsl["Rocket_Name"].values[i] and self.dsl["COSPAR_ID"].values[i][5] != "F":
+
+                    ################
+                    # Boosters 
+                    ################
+                    
                     if int(self.dsr['Booster_No'].values[count]) > 0:
                         # Count how many boosters are currently added, and compare it to the number of boosters there should be.
                         booster_count = 0
@@ -1374,17 +1418,10 @@ class build_reentry_list:
                     
                                     self.unique_reentry_list.append(temp_reentry_dict) 
         
-                    # Check the number of stages.
-                    stage_count = np.zeros((4))
-                    for reentry in self.unique_reentry_list:
-                        for j in range(1,5):
-                            if reentry["id"][:8] == self.dsl["COSPAR_ID"].values[i] and reentry["category"] == f"S{j}":
-                                stage_count[j-1] += 1
-                    #print(stage_count)
-                    for stage in stage_count:
-                        if stage > 1:
-                            print(f"Multiple stages for {self.dsl['COSPAR_ID'].values[i]}")
-                
+                    ################
+                    # 1st Stage 
+                    ################
+
                     meco = stage_alt_dict[f"{rocket_name} MECO"]
                     
                     add_first_stage = False
@@ -1438,8 +1475,17 @@ class build_reentry_list:
         
                             self.unique_reentry_list.append(temp_reentry_dict)
 
-                
-            
+                    # Check the number of stages.
+                    stage_count = np.zeros((4))
+                    for reentry in self.unique_reentry_list:
+                        for j in range(1,5):
+                            if reentry["id"][:8] == self.dsl["COSPAR_ID"].values[i] and reentry["category"] == f"S{j}":
+                                stage_count[j-1] += 1
+                    #print(stage_count)
+                    for stage in stage_count:
+                        if stage > 1:
+                            print(f"Multiple stages for {self.dsl['COSPAR_ID'].values[i]}, {stage_count}")
+        
         print(f"Missing Boosters:    {missing_boosters_mass},{missing_boosters_count}")
         print(f"Missing First Stage: {missing_first_mass},{missing_first_count}")
     
@@ -1502,6 +1548,7 @@ class build_reentry_list:
        
                              
     def get_reentry_info(self):
+
         """This is the main function of this class, and loops over all the key databases (GCAT, AC, DW).
         It also does small final adjustments:
             - checks for duplicates
@@ -1515,6 +1562,9 @@ class build_reentry_list:
         
         # Import the required files.
         self.ds_dw = xr.open_dataset(f"./databases/reentry/DISCOSweb/discosweb_reentries_{self.start_year}-{self.final_year}.nc", decode_times=False)
+        class_mask = self.ds_dw["DISCOSweb_Reentry_Class"].isin(["Payload","Rocket Body","Rocket Mission Related Object","Payload Mission Related Object"])
+        self.ds_dw = self.ds_dw.where(class_mask, drop=True) # Filter for only the relevant classes.
+
         self.dsr = xr.open_dataset(f"./databases/rocket_attributes_{self.start_year}-{self.final_year}.nc", decode_times=False)
         self.dsl = xr.open_dataset(f"./databases/launch_activity_data_{self.start_year}-{self.final_year}.nc", decode_times=False) 
         self.import_raul_spacex_map() #(https://t.co/RAsQ9NDmEr)
@@ -1563,8 +1613,8 @@ class build_reentry_list:
             print(f"Duplicates: {duplicate_jcat_list}")
         
         #Add missing stages and check the Aerospace Corp and DISCOSweb databases.
-        print("Looking for missing rocket stages.")
-        self.add_missing_stages()
+        #print("Looking for missing rocket stages.")
+        #self.add_missing_stages()
         print("Searching for Aerospace Corp re-entries.")
         self.extract_aerospace_info("./databases/reentry/AerospaceCorp/AerospaceCorp_Reentries_14thDec23.csv")
         print("Searching for DISCOSweb re-entries.")
