@@ -679,7 +679,7 @@ class build_reentry_list:
 
         return abl_mass, other_mass
         
-    def sort_inclination(self,jsr_inc,jsr_id):      
+    def sort_inclination(self,jsr_inc,jsr_id):
         
         """When the inclination on file is zero (including failed), this function sets it appropriately.
         This is mainly the case for lower suborbital stages, which can then be set using the inclination of an upper stage or payload.
@@ -701,70 +701,74 @@ class build_reentry_list:
                     if reentry["inc"] > jsr_inc:
                         jsr_inc == reentry["inc"]
                 count += 1
+            if count > 1:
+                break
             
         # Sometimes, there is no entry in the reentry list because it didn't meet the criteria before.
         # In this case we need to reload the satcat to look for any matching entries.
         if jsr_inc == 0:
-            for file in ["satcat","ftocat"]:
+
+            if "F" in jsr_id:
+                jsr_data = self.jsr_data_dict["ftocat"]
+                jsr_data = jsr_data[jsr_data["Piece"].str[:4] == jsr_id[:4]].reset_index(drop=True)
+            else:
+                jsr_data = self.jsr_data_dict["satcat"]
+                jsr_data = jsr_data[jsr_data["Piece"].str[:8] == jsr_id[:8]].reset_index(drop=True)
                 
-                jsr_data = self.jsr_data_dict[file]
-                jsr_data = jsr_data[jsr_data["Piece"].str[:3] == jsr_id[:3]].reset_index(drop=True)
-                jsr_data = jsr_data[jsr_data["Inc"].astype(np.float64) != 0].reset_index(drop=True)
+            jsr_data = jsr_data[jsr_data["Inc"].astype(np.float64) != 0].reset_index(drop=True)
+            inc_values = pd.to_numeric(jsr_data["Inc"], errors="coerce")  # convert to float, turn invalids to NaN
 
-                satcat_list = []
-                for reentry_count in range(len(jsr_data)):
-                    
-                    if jsr_data["Piece"][reentry_count][:8] == "2020-F09":
-                        new_id = "2020-F10"
-                    elif jsr_data["Piece"][reentry_count][:8] == "2020-U01":
-                        new_id = "2020-F09"
-                    elif jsr_data["Piece"][reentry_count][:8] == "2022-U02":
-                        new_id = "2022-F04"
-                    elif jsr_data["Piece"][reentry_count][:8] == "2022-F04":
-                        new_id = "2022-F05"
-                    elif jsr_data["Piece"][reentry_count][:8] == "2022-F05":
-                        new_id = "2022-F06"
-                    elif jsr_data["Piece"][reentry_count][:8] == "2022-F06":
-                        new_id = "2022-F07"
-                    elif jsr_data["Piece"][reentry_count][:8] == "2023-F10":
-                        new_id = "2023-F03"
-                    elif jsr_data["Piece"][reentry_count][:8] == "2023-F03":
-                        new_id = "2023-F04"
-                    elif jsr_data["Piece"][reentry_count][:8] == "2023-F04":
-                        new_id = "2023-F05"
-                    elif jsr_data["Piece"][reentry_count][:8] == "2023-F05":
-                        new_id = "2023-F06"
-                    elif jsr_data["Piece"][reentry_count][:8] == "2023-F06":
-                        new_id = "2023-F07"
-                    elif jsr_data["Piece"][reentry_count][:8] == "2023-F07":
-                        new_id = "2023-F08"
-                    elif jsr_data["Piece"][reentry_count][:8] == "2023-F08":
-                        new_id = "2023-F09"
-                    elif jsr_data["Piece"][reentry_count][:8] == "2023-F09":
-                        new_id = "2023-F10"   
-                    else:
-                        new_id = jsr_data["Piece"][reentry_count][:8]
+            satcat_list = []
+            for reentry_count in range(len(jsr_data)):
+                
+                if jsr_data["Piece"][reentry_count][:8] == "2020-F09":
+                    new_id = "2020-F10"
+                elif jsr_data["Piece"][reentry_count][:8] == "2020-U01":
+                    new_id = "2020-F09"
+                elif jsr_data["Piece"][reentry_count][:8] == "2022-U02":
+                    new_id = "2022-F04"
+                elif jsr_data["Piece"][reentry_count][:8] == "2022-F04":
+                    new_id = "2022-F05"
+                elif jsr_data["Piece"][reentry_count][:8] == "2022-F05":
+                    new_id = "2022-F06"
+                elif jsr_data["Piece"][reentry_count][:8] == "2022-F06":
+                    new_id = "2022-F07"
+                elif jsr_data["Piece"][reentry_count][:8] == "2023-F10":
+                    new_id = "2023-F03"
+                elif jsr_data["Piece"][reentry_count][:8] == "2023-F03":
+                    new_id = "2023-F04"
+                elif jsr_data["Piece"][reentry_count][:8] == "2023-F04":
+                    new_id = "2023-F05"
+                elif jsr_data["Piece"][reentry_count][:8] == "2023-F05":
+                    new_id = "2023-F06"
+                elif jsr_data["Piece"][reentry_count][:8] == "2023-F06":
+                    new_id = "2023-F07"
+                elif jsr_data["Piece"][reentry_count][:8] == "2023-F07":
+                    new_id = "2023-F08"
+                elif jsr_data["Piece"][reentry_count][:8] == "2023-F08":
+                    new_id = "2023-F09"
+                elif jsr_data["Piece"][reentry_count][:8] == "2023-F09":
+                    new_id = "2023-F10"   
+                else:
+                    new_id = jsr_data["Piece"][reentry_count][:8]
 
-                    if new_id == jsr_id[:8]:
-                        satcat_list.append(jsr_data.iloc[[reentry_count]])
-                        break
+                if new_id == jsr_id[:8]:
+                    satcat_list.append(jsr_data.iloc[[reentry_count]])
                     
-                if len(satcat_list) > 0:
-                    satcat = pd.concat(satcat_list, ignore_index=True)
-                    count = 0
-                    for i in range(len(satcat)):
-                        if satcat["Status"][i] in ["O","R","DSO","DSA","AF","AS","F","S","GRP","AO","AR"]:
-                            if count == 0:
-                                jsr_inc = np.float64(satcat["Inc"][i])
-                            elif count > 0:
-                                if np.float64(satcat["Inc"][i]) > jsr_inc:
-                                    jsr_inc == np.float64(satcat["Inc"][i])
-                            count += 1
+            if len(satcat_list) > 0:
+                satcat = pd.concat(satcat_list, ignore_index=True)
+                count = 0
+                for i in range(len(satcat)):
+                    if satcat["Status"][i] in ["O","R","DSO","DSA","AF","AS","F","S","GRP","AO","AR"]:
+                        if count == 0:
+                            jsr_inc = np.float64(satcat["Inc"][i])
+                        elif count > 0:
+                            if np.float64(satcat["Inc"][i]) > jsr_inc:
+                                jsr_inc == np.float64(satcat["Inc"][i])
+                        count += 1
                 
         if jsr_inc == 0:
-            pass
-            print(f"inc still empty for {jsr_id}")
-            
+            sys.exit(f"inc still empty for {jsr_id}")
         return jsr_inc 
          
     def extract_jsr_info(self, jsr_data):
@@ -972,6 +976,10 @@ class build_reentry_list:
         jsr_data = jsr_data[jsr_data["Status"].isin(["AL IN","AR IN"])].reset_index(drop=True)
         
         for reentry_count in range(len(jsr_data)):           
+
+            if jsr_data["#JCAT"][reentry_count] == "A11023": # This might be a mistake in GCAT, listed as AL IN but still in orbit?
+                continue
+
             if (self.start_year <= int(jsr_data["DDate"][reentry_count][0:4]) <= self.final_year):
                 cargo_found = False 
                 for reentry in self.unique_reentry_list:
@@ -1177,8 +1185,7 @@ class build_reentry_list:
         for reentry_count in range(len(self.ds_dw["DISCOSweb_Reentry_ID"].values)):
             
             # Excluding Debris
-            valid_types = ["Rocket Body","Rocket Mission Related Object","Payload Mission Related Object","Payload"]
-            if (self.ds_dw["DISCOSweb_Reentry_ID"].values[reentry_count] not in jsr_ac_id_list) and self.ds_dw["DISCOSweb_Reentry_Class"].values[reentry_count] in valid_types:
+            if (self.ds_dw["DISCOSweb_Reentry_ID"].values[reentry_count] not in jsr_ac_id_list):
                 
                 # Check if the stage has already been added.  
                 found_stage = False               
@@ -1393,7 +1400,7 @@ class build_reentry_list:
                     #print(stage_count)
                     for stage in stage_count:
                         if stage > 1:
-                            print(f"Multiple stages for {self.dsl['COSPAR_ID'].values[i]}")
+                            print(f"Multiple stages for {self.dsl['COSPAR_ID'].values[i]}, {stage_count}")
 
                     meco = stage_alt_dict[f"{rocket_name} MECO"]
                     
@@ -1526,6 +1533,9 @@ class build_reentry_list:
         
         # Import the required files.
         self.ds_dw = xr.open_dataset(f"./databases/reentry/DISCOSweb/discosweb_reentries_{self.start_year}-{self.final_year}.nc", decode_times=False)
+        class_mask = self.ds_dw["DISCOSweb_Reentry_Class"].isin(["Payload","Rocket Body","Rocket Mission Related Object","Payload Mission Related Object"])
+        self.ds_dw = self.ds_dw.where(class_mask, drop=True) # Filter for only the relevant classes.
+
         self.dsr = xr.open_dataset(f"./databases/rocket_attributes_{self.start_year}-{self.final_year}.nc", decode_times=False)
         self.dsl = xr.open_dataset(f"./databases/launch_activity_data_{self.start_year}-{self.final_year}.nc", decode_times=False) 
         self.import_raul_spacex_map() #(https://t.co/RAsQ9NDmEr)
