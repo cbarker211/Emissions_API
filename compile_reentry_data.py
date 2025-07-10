@@ -654,11 +654,14 @@ class build_reentry_list:
                 abl_mass = 920
             elif jsr_name == "Pleiades Neo 6":
                 abl_mass = 920
-                     
+
+        
         # Add second stage propellant mass to non aluminium mass.    
         if jsr_id in ["2020-F02","2020-F05",
                       "2021-F02",
-                      "2022-F01","2022-F02","2022-F03"] and reentry_category == "S2":
+                      "2022-F01","2022-F02","2022-F03","2023-F01",
+                      "2023-F04","2023-F05", "2023-F07","2025-F05","2023-F09",
+                       "2023-F11" ] and reentry_category == "S2":
             other_mass = self.dsr[f"Stage2_PropMass"].values[rocket_ind]
             if jsr_id == "2022-F03":
                 other_mass = other_mass * 0.24
@@ -666,7 +669,8 @@ class build_reentry_list:
         # Add third stage propellant mass to non aluminium mass.    
         if jsr_id in ["2020-F02","2020-F03","2020-F05","2020-F06",
                       "2021-F02","2021-F06","2021-F09","2021-F10",
-                      "2022-F02","2022-F05","2022-F07"] and reentry_category == "S3":   
+                      "2022-F02","2022-F05","2022-F07","2023-F10"
+                       "2024-F05","2025-F06","2024-F03"] and reentry_category == "S3":   
             other_mass = self.dsr[f"Stage3_PropMass"].values[rocket_ind]
             if jsr_id == "2021-F09":
                 other_mass = other_mass * 0.08
