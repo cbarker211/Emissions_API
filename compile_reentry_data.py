@@ -28,7 +28,6 @@ def convert_time(date):
         monstr = str(datetime.strptime(date[1], '%b').month).zfill(2)  
         if len(date) > 2: 
             daystr = str(date[2].replace("?","")).zfill(2)
-        # TODO: Check the day of reentries when missing in GCAT.
         elif date == ['2022', 'Apr']:
             # DISCOSweb puts reentry on Mar 31st. Setting as March 31st.
             daystr = "31"
@@ -406,7 +405,7 @@ class build_reentry_list:
                 lat = np.float64(lat_data.replace("S",""))*-1  
             else:
                 lat = np.float64(lat_data) 
-                # TODO: Going to assume that a missing value means N.
+                # Going to assume that a missing value means N.
         else:
             lat = 0
             lon = 0
@@ -546,7 +545,7 @@ class build_reentry_list:
               
         return lat, lon
     
-    def failed_launch_mass(self, jsr_id, jsr_name, reentry_category):
+    def failed_launch_mass(self, jsr_id, jsr_name, reentry_category, drymass):
         
         """For all failed launches, set the masses manually as we need to differentiate wet vs dry mass reentry.
 
@@ -563,13 +562,13 @@ class build_reentry_list:
                 for count, rocket_name in enumerate(self.dsr["Rocket_Name"].values):
                     if rocket_name == self.dsl["Rocket_Name"].values[i]:
                         rocket_ind = count
-                        
+
         if reentry_category == "S0":
             abl_mass = self.dsr["Booster_StageMass"].values[rocket_ind] / int(self.dsr["Booster_No"].values[rocket_ind])
         elif reentry_category in ["S1","S2","S3","S4"]:
             abl_mass = self.dsr[f"Stage{reentry_category[1]}_StageMass"].values[rocket_ind]
         elif "fairing" in jsr_name.lower():
-                abl_mass = self.dsr["Fairing_Mass"].values[rocket_ind]  / 2    
+            abl_mass = self.dsr["Fairing_Mass"].values[rocket_ind]  / 2    
         elif reentry_category in ["C","P"]:
             
             # 2020
@@ -671,13 +670,15 @@ class build_reentry_list:
                 abl_mass = 920
             elif jsr_name == "Pleiades Neo 6":
                 abl_mass = 920
+            else:
+                abl_mass = np.float64(drymass)
 
         # Add second stage propellant mass to non aluminium mass.    
         if jsr_id in ["2020-F02","2020-F05",
                       "2021-F02",
-                      "2022-F01","2022-F02","2022-F03","2023-F01",
-                      "2023-F04","2023-F05", "2023-F07","2025-F05","2023-F09",
-                       "2023-F11" ] and reentry_category == "S2":
+                      "2022-F01","2022-F02","2022-F03",
+                      "2023-F04","2023-F05","2023-F06","2023-F07","2023-F09",
+                      "2024-F02","2024-F04"] and reentry_category == "S2":
             other_mass = self.dsr[f"Stage2_PropMass"].values[rocket_ind]
             if jsr_id == "2022-F03":
                 other_mass = other_mass * 0.24
@@ -685,8 +686,9 @@ class build_reentry_list:
         # Add third stage propellant mass to non aluminium mass.    
         if jsr_id in ["2020-F02","2020-F03","2020-F05","2020-F06",
                       "2021-F02","2021-F06","2021-F09","2021-F10",
-                      "2022-F02","2022-F05","2022-F07","2023-F10"
-                       "2024-F05","2025-F06","2024-F03"] and reentry_category == "S3":   
+                      "2022-F02","2022-F05","2022-F07",
+                      "2023-F07","2023-F08","2023-F09","2023-F10",
+                      "2024-F02","2024-F04","2024-F05"] and reentry_category == "S3":   
             other_mass = self.dsr[f"Stage3_PropMass"].values[rocket_ind]
             if jsr_id == "2021-F09":
                 other_mass = other_mass * 0.08
@@ -694,7 +696,9 @@ class build_reentry_list:
         # Add fourth stage propellant mass to non aluminium mass.  
         if jsr_id in ["2020-F08","2020-F09",
                       "2021-F10",
-                      "2022-F02","2022-F04","2022-F05","2022-F07"] and reentry_category == "S4":   
+                      "2022-F02","2022-F04","2022-F05","2022-F07",
+                      "2023-F10",
+                      "2024-F04"] and reentry_category == "S4":   
             other_mass = self.dsr[f"Stage4_PropMass"].values[rocket_ind]
 
         return abl_mass, other_mass
@@ -825,8 +829,7 @@ class build_reentry_list:
                 
                 if (
                     self.start_year <= int(jsr_data_stripped["DDate"][reentry_count][0:4]) <= self.final_year     # This time range only
-                    and (int(jsr_data_stripped["Apogee"][reentry_count]) >= 50 or int(jsr_data_stripped["Apogee"][reentry_count]) == -54771) # Apogee above 50 km.
-                    # TODO: Check for more negative apogees that should be included.     
+                    and (int(jsr_data_stripped["Apogee"][reentry_count]) >= 50 or int(jsr_data_stripped["Apogee"][reentry_count]) == -54771) # Apogee above 50 km.     
                 ): 
                     if jsr_data_stripped["Status"][reentry_count] == "AS":
                         if jsr_data_stripped["Piece"][reentry_count][5:6] in ["F","U"]: 
@@ -870,19 +873,22 @@ class build_reentry_list:
             elif jsr_id == "2023-F10":
                 jsr_id == "2023-F03"
             elif jsr_id == "2023-F03":
-                jsr_id == "2023-F04"
+                jsr_id = "2023-F04"
             elif jsr_id == "2023-F04":
-                jsr_id == "2023-F05"
+                jsr_id = "2023-F05"
             elif jsr_id == "2023-F05":
-                jsr_id == "2023-F06"
+                jsr_id = "2023-F06"
             elif jsr_id == "2023-F06":
-                jsr_id == "2023-F07"
+                jsr_id = "2023-F07"
             elif jsr_id == "2023-F07":
-                jsr_id == "2023-F08"
+                jsr_id = "2023-F08"
             elif jsr_id == "2023-F08":
-                jsr_id == "2023-F09"
+                jsr_id = "2023-F09"
             elif jsr_id == "2023-F09":
-                jsr_id == "2023-F10"   
+                jsr_id = "2023-F10"   
+
+            if jsr_id[5] == "U":
+                continue
             
             # Set the burnup as partial for all objects landing or splashing down at the surface.
             if jsr_data_stripped_range["Status"][reentry_count] == "L":
@@ -890,7 +896,7 @@ class build_reentry_list:
             # NOTE: Need to manually check for Electron booster recoveries.
             elif jsr_name == "Electron Stage 1":
                 if jsr_id in ["2020-007","2020-085","2021-F02","2021-106","2022-047","2022-147",
-                              "2023-041","2023-041","2023-100","2023-126","	2024-022",""]:
+                              "2023-041","2023-100","2023-126","2024-022"]:
                     burnup = "Partial"
                 else:
                     burnup = "Complete"   
@@ -964,9 +970,7 @@ class build_reentry_list:
             # Sort the mass.      
             if jsr_id[5:6] in ["F","U"]:
                 pass
-                # TODO: Sort failed mass for post-2022.
-                #abl_mass, other_mass = self.failed_launch_mass(jsr_id, jsr_name, reentry_category)
-                abl_mass, other_mass = 0, 0
+                abl_mass, other_mass = self.failed_launch_mass(jsr_id, jsr_name, reentry_category,jsr_data_stripped_range["DryMass"][reentry_count])
             else:
                 abl_mass = np.float64(jsr_data_stripped_range["DryMass"][reentry_count])
                 other_mass = 0
@@ -995,7 +999,7 @@ class build_reentry_list:
             }
             
             self.unique_reentry_list.append(temp_reentry_dict)   
-    
+
     def add_cargo(self,jsr_data):
         
         """Short function to add the cargo mass to its parent object. jsr_data is ecat.
@@ -1296,8 +1300,7 @@ class build_reentry_list:
                     elif self.ds_dw["DISCOSweb_Reentry_Class"].values[reentry_count] == "Payload":
                         reentry_category = "P" 
                     else:
-                        pass
-                        #print("Unexpected re-entry stage.") 
+                        print("Unexpected re-entry stage.") 
                     datestr = int(self.ds_dw["DISCOSweb_Reentry_Epoch"].values[reentry_count].item()[:10].replace("-",""))
                     time_utc = -1
                     
@@ -1756,8 +1759,7 @@ class build_reentry_list:
         for reentry in self.unique_reentry_list:                 
             # For West Ford dipoles, these are part of the West Ford Needles project. # https://space.skyrocket.de/doc_sdat/westford.htm
             # The needles each weigh 40 ng, and one 'clump' reentered in 2020. The needles are Copper, and so will not contribute to Al emissions.  
-            if reentry["name"] in ["CZ-2C sep motor cover","CZ-4C sep motor cover?","CZ-2D sep motor cover",
-                                   "CZ-2D sep motor cover"]:
+            if "sep motor cover" in reentry["name"]:
                 # The same item is also listed as weighing 1 kg elsewhere.
                 reentry["abl_mass"] = 1
             if reentry["id"] == "2020-086B": # Dest listed as 180E, this messes up other script so adjust to 179.9, will be in same grid square.
@@ -1891,4 +1893,4 @@ if __name__ == "__main__":
     if args.save_reentry_info == True:
         Data.reentry_info_to_netcdf()
         
-    # TODO: Check what Jonathan lists as the YYYY-UXX launches. These seem to be missing in DISCOSweb but include Starship launches above 50 km.
+    # TODO: Check what Jonathan lists as the YYYY-UXX launches. These seem to be missing in DISCOSweb but include Starship launches above 50 km and a Chang'e-6.

@@ -299,11 +299,11 @@ class import_launches:
         ##########################
         
         # Sometimes the stages are not in the right order on DISCOSweb, so we need to manually rearrange.
-        if unique_vehicle_name_list[i] in ["Angara A5", "Angara A5 Persei", "Angara A5 Orion", "Ariane 5ECA", 
+        if unique_vehicle_name_list[i] in ["Angara A5", "Angara A5 Persei", "Angara A5 Orion", "Ariane 5ECA", "Ariane 62", 
                                            "Atlas V N22 v2020", "Atlas V 401 v2020", "Atlas V 411", "Atlas V 421 v2021",
                                            "Atlas V 511 v2020", "Atlas V 531 v2020", 
                                            "Atlas V 541", "Atlas V 541 v2020", "Atlas V 551", "Atlas V 551 v2020",
-                                           "Delta 4H", "Epsilon-2 CLPS", "H-IIA 202", "H-IIA 204", "H-IIB", "GSLV Mk II ", "GSLV Mk III",
+                                           "Delta 4H", "Epsilon-2 CLPS", "H-IIA 202", "H-IIA 204", "H-IIB", "H-III 22" "GSLV Mk II ", "GSLV Mk III",
                                            "PSLV", "PSLV-DL", "PSLV-XL", "PSLV-CA", "Space Launch System - Block 1 Crew", "Falcon Heavy",
                                            "Long March (CZ) 11", "Long March (CZ) 2F", "Long March (CZ) 3B", "Long March (CZ) 3B/YZ-1", "Long March (CZ) 3C", "Long March (CZ) 5", 
                                            "Long March (CZ) 5B", "Long March (CZ) 5/YZ-2", "Long March (CZ) 6", "Long March (CZ) 6A", "Long March (CZ) 7", "Long March (CZ) 7A", 
@@ -323,14 +323,14 @@ class import_launches:
             # For stage ids 114183 and 114190, this is stages with the same name for the Shavit 2 rocket.  
             elif (stage_name in ["URM-1","EPC H173", "Atlas V CCB", "H-II LE-7A", "H-II widebody LE-7A", "PS1", "Soyuz-FG Blok-A", 	"Soyuz-2.1V Blok-A",
                                  "Long March (CZ) 11 Stage 1", "L-186 (YF21B)", "L-172 (YF21C)", "L-186 (YF21C)", "CZ-5-500", "L-165 (H5-1)", "L-76 (YF100)",
-                                 "GSLV-1", "Minuteman 1", "ORION 50SXL","SLS-B1 First Stage","P120C","Falcon Heavy Centre Core","L-110","JIE-3 first stage",
-                                 "NK Kerolox LV","Rafe"]) or stage["id"] in ["775","114183"]:
+                                 "GSLV-1", "Minuteman 1", "ORION 50SXL","SLS-B1 First Stage","Falcon Heavy Centre Core","L-110","JIE-3 first stage",
+                                 "NK Kerolox LV","Rafe","LE-9"]) or stage["id"] in ["775","114183","117814"]:
                 stage_number = "Stage1"
                 
             elif (stage_name in ["URM-2","ESC-A","Centaur-5 SEC","Centaur-5 DEC", "H-II LE-5B", "PS2", "Blok-I", "Long March (CZ) 11 Stage 2", 
                                  "L-84 (YF26)", "L-45 (YF-24E)", "CZ-5-HO", "L-15 (YF115)", "L-15 (YF-115) (7)", "K3-2 short",
                                  "M-35","GSLV-2","SR19","SLS  iCPS","Zefiro 40C","Falcon Heavy second stage","JIE-3 second stage","C-25",
-                                 "Salman","L-15 (YF-115) (6A)"]) or stage["id"] in ["773","116151","114190"]:
+                                 "Salman","L-15 (YF-115) (6A)","LE-5B-3","Stage 2 - Upper Liquid Propulsion Module"]) or stage["id"] in ["773","116151","114190"]:
                 stage_number = "Stage2"
                 
             elif (stage_name in ["Briz-M", "PS3", "Fregat-M", "Fregat", "Fregat-MT", "Long March (CZ) 11 Stage 3", "PBV",
@@ -356,6 +356,12 @@ class import_launches:
                     stage_number = "Stage1"
                 else:
                     stage_number = "Booster"
+            elif stage_name == "P120C":
+                if unique_vehicle_name_list[i] == "Vega C":
+                    stage_number = "Stage1"
+                else:
+                    stage_number = "Booster"
+
             
             # Long March often uses the same stage for different rockets, but not always at the same position.    
             elif stage_name == "H-18 (Long March (CZ) YF)":
@@ -426,8 +432,10 @@ class import_launches:
                             temp_dict[f"{stage_number} Fuel Type"] = "Hypergolic"
                         else:
                             temp_dict[f"{stage_number} Fuel Type"] = "Hydrogen"
+                    elif unique_vehicle_name_list[i] == "Long March (CZ) 11":
+                        temp_dict[f"{stage_number} Fuel Type"] = "Solid"
                     else:
-                        print(f"Warning: Missing propellant <{temp_dict[f'{stage_number} Propellant Name']}> for {stage_number} of {unique_vehicle_name_list[i]}.")
+                        print(f"Warning 1: Missing propellant <{temp_dict[f'{stage_number} Propellant Name']}> for {stage_number} of {unique_vehicle_name_list[i]}.")
                         
                         
                     # Fix minor spelling errors from database.
@@ -468,13 +476,13 @@ class import_launches:
                     elif stage_number in ['Stage3']:
                         temp_dict[f"{stage_number} Propellant Name"] = "N2O4/MMH" # From JSR https://planet4589.org/space/gcat/data/tables/engines.html GYUB4
                         temp_dict[f"{stage_number} Fuel Type"] = "Hypergolic"
-                elif unique_vehicle_name_list[i] == "Jielong-3":
-                    temp_dict[f"{stage_number} Fuel Type"] = "Solid"
                 elif unique_vehicle_name_list[i] == "KAIROS" and stage_number == "Stage4":
                     temp_dict[f"{stage_number} Propellant Name"] = "Monopropellant hydrazine" # From JSR https://planet4589.org/space/gcat/data/tables/engines.html Kairos PBS
                     temp_dict[f"{stage_number} Fuel Type"] = "Hypergolic"
+                elif unique_vehicle_name_list[i] in ["Kuaizhou-11","Qaem-100 ","Jielong-3","Zhongke 1A"]:
+                    temp_dict[f"{stage_number} Fuel Type"] = "Solid"
                 else:
-                    print(f"Warning: Missing propellant <<{temp_dict[f'{stage_number} Propellant Name']}>> for {stage_number} of {unique_vehicle_name_list[i]}.")
+                    print(f"Warning 2: Missing propellant <<{temp_dict[f'{stage_number} Propellant Name']}>> for {stage_number} of {unique_vehicle_name_list[i]}.")
                     
             elif response.status_code == 429:
                 message = f"On rocket {i+1} of {len(unique_vehicle_name_list)}."
@@ -507,6 +515,9 @@ class import_launches:
         
         #Loop over all rockets, and pull the information for each.
         for i in range(0,len(unique_vehicle_name_list)):
+
+            if unique_vehicle_name_list[i] == "Shavit":
+                unique_vehicle_name_list[i] = "Shavit 2"
             
             temp_vehicle_id = vehicle_id_list[np.where(vehicle_name_list == unique_vehicle_name_list[i])[0][0]]
             temp_dict = {

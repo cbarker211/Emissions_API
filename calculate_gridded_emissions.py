@@ -154,7 +154,7 @@ class RocketData:
               
 class OutputEmis:
     def __init__(self, rocketdata, res, ts, levs, booster_levs, meco_levs, sei_levs, seco_levs, 
-                 reentry_levs, vert_filepath, months, year, ground_landing_list,
+                 reentry_levs, vert_filepath, months, dataset, year, ground_landing_list,
                  stage_alt_dict, model_alt):
 
         ####################################
@@ -174,6 +174,7 @@ class OutputEmis:
         self.n_reenter_levs = self.top_reenter - self.bot_reenter + 1
         self.nhours = 24
         self.include_landing = True
+        self.dataset = dataset
         self.year = year
         self.ground_landing_list = ground_landing_list
         self.stage_alt_dict = stage_alt_dict
@@ -221,8 +222,15 @@ class OutputEmis:
         
         # Create the arrays for the output file to check prop/species distribution.
         self.csv_count, self.csv_count_2 = 0, 0
-        launch_length  = np.sum(np.where((rocket_data.launch_year == year), 1, 0))
-        reentry_length = np.sum(np.where((rocket_data.reentry_year == year), 1, 0))
+        if self.dataset == 1:
+            launch_length  = np.sum(np.where((rocket_data.launch_year == year)&(rocket_data.launch_smc==False), 1, 0))
+            reentry_length = np.sum(np.where((rocket_data.reentry_year == year)&(rocket_data.reentry_smc==False), 1, 0))
+        elif self.dataset == 2:
+            launch_length  = np.sum(np.where((rocket_data.launch_year == year)&(rocket_data.launch_smc==True), 1, 0))
+            reentry_length = np.sum(np.where((rocket_data.reentry_year == year)&(rocket_data.reentry_smc==True), 1, 0))
+        elif self.dataset == 3:
+            launch_length  = np.sum(np.where((rocket_data.launch_year == year), 1, 0))
+            reentry_length = np.sum(np.where((rocket_data.reentry_year == year), 1, 0))
         self.output_csv_launch_prop  = np.zeros((launch_length*3,self.nlev))
         self.output_csv_emis  = np.zeros(((launch_length+reentry_length)*10,self.nlev))
         
@@ -288,8 +296,15 @@ class OutputEmis:
                 self.qmin,self.qmax=np.nan,np.nan
 
                 # Define output file name for this day
-                l_ind=np.where((rocket_data.launch_month==(m+1))&(rocket_data.launch_day==np.int64(d+1))&(rocket_data.launch_year==self.year)&(~np.isnan(rocket_data.launch_time)))[0]
-                r_ind=np.where((rocket_data.reentry_month==(m+1))&(rocket_data.reentry_day==np.int64(d+1))&(rocket_data.reentry_year==self.year)&(~np.isnan(rocket_data.reentry_time)))[0]
+                if self.dataset == 1:
+                    l_ind=np.where((rocket_data.launch_month==(m+1))&(rocket_data.launch_day==np.int64(d+1))&(rocket_data.launch_year==self.year)&(~np.isnan(rocket_data.launch_time))&(rocket_data.launch_smc==False))[0]
+                    r_ind=np.where((rocket_data.reentry_month==(m+1))&(rocket_data.reentry_day==np.int64(d+1))&(rocket_data.reentry_year==self.year)&(~np.isnan(rocket_data.reentry_time))&(rocket_data.reentry_smc==False))[0]
+                elif self.dataset == 2:
+                    l_ind=np.where((rocket_data.launch_month==(m+1))&(rocket_data.launch_day==np.int64(d+1))&(rocket_data.launch_year==self.year)&(~np.isnan(rocket_data.launch_time))&(rocket_data.launch_smc==True))[0]
+                    r_ind=np.where((rocket_data.reentry_month==(m+1))&(rocket_data.reentry_day==np.int64(d+1))&(rocket_data.reentry_year==self.year)&(~np.isnan(rocket_data.reentry_time))&(rocket_data.reentry_smc==True))[0]
+                elif self.dataset == 3:
+                    l_ind=np.where((rocket_data.launch_month==(m+1))&(rocket_data.launch_day==np.int64(d+1))&(rocket_data.launch_year==self.year)&(~np.isnan(rocket_data.launch_time)))[0]
+                    r_ind=np.where((rocket_data.reentry_month==(m+1))&(rocket_data.reentry_day==np.int64(d+1))&(rocket_data.reentry_year==self.year)&(~np.isnan(rocket_data.reentry_time)))[0]
                 
                 ########################################################################
                 # Call grid_emis function to calculate distribution from launches
@@ -367,8 +382,12 @@ class OutputEmis:
                                 else:
                                     print(type(event[key]), event)
 
-                                    
-        with open(f'./out_files/data_{self.year}.json', 'w') as json_file:
+
+        if self.dataset == 3:
+            filename = f'./out_files/data_{self.year}.json'    
+        else:
+            filename = f'./out_files/data_{self.year}_{self.dataset}.json'                            
+        with open(filename, 'w') as json_file:
             json.dump(events_data, json_file, indent=4)
 
     def __str__(self):
@@ -753,7 +772,8 @@ class OutputEmis:
                 # Start processing the launch event altitudes and deal with failed launches.
                 ############################################################################
                 
-                if event_id[w] in ['2020-F04','2021-F04']:
+                # This is where the launch failed close to the launch pad.
+                if event_id[w] in ['2020-F04','2021-F04','2023-F02','2024-F01']:
                     print(f'Launch {event_id[w]} failed. Not processing.')
                     self.csv_count += 3
                     self.csv_count_2 += 10
@@ -777,8 +797,8 @@ class OutputEmis:
                 if event_id[w] in ['2020-F02','2020-F05',
                                     '2021-F02','2021-F07','2021-F08','2022-F01',
                                     '2022-F02','2022-F03','2023-F01','2023-F04',
-                                    '2023-F05', '2023-F07','2025-F05','2023-F09',
-                                    '2023-F11']:
+                                    '2023-F05','2023-F06','2023-F07','2023-F09',
+                                    '2024-F02','2024-F04']:
                     self.fine_grid_mass_stage2 = np.asarray([0])
                     self.SEI_alt_index = None
                 elif event_id[w] in ['2020-F07','2021-F01','2021-F07']:
@@ -1185,7 +1205,28 @@ class OutputEmis:
                 self.csv_count_2 += 1
         
         return daily_info
-    
+
+def check_total_emissions(year,dataset,res,levels):
+    """ Print total emissions of each species.
+        The total emissions including all afterburning are compared to a scenario where only primary emission indices are used.
+    """
+    total_missing_emis = np.sum(emis_data.missing_emis)*1e-9 
+    total_inc_emis = np.sum([emis_data.bc_launch_total*1e-9, emis_data.nox_launch_total*1e-9,   emis_data.h2o_total*1e-9, 
+                                    emis_data.co_total*1e-9, emis_data.co2_total*1e-9, emis_data.al2o3_launch_total*1e-9, 
+                                    emis_data.hcl_launch_total*1e-9, emis_data.cl_launch_total*1e-9, emis_data.cl2_total*1e-9, 
+                                    emis_data.nox_reentry_total*1e-9, emis_data.al2o3_reentry_total*1e-9])
+    total_inc_prop       = emis_data.included_prop*1e-6
+     
+    data = {'Species'        : ['BC (Launch)', 'NOx (Launch)', 'H2O', 'CO', 'CO2', 'Al2O3 (Launch)', 'HCl (Launch)', 'Cl (Launch)', 'Cl2', 'NOx (Reentry)', 'Al2O3 (Reentry)',
+                                'Total Emis','Total Prop','Surviving Mass'],
+            'Emissions 0-80 km [Gg]': [emis_data.bc_launch_total*1e-9, emis_data.nox_launch_total*1e-9,   emis_data.h2o_total*1e-9, 
+                                        emis_data.co_total*1e-9, emis_data.co2_total*1e-9, emis_data.al2o3_launch_total*1e-9, emis_data.hcl_launch_total*1e-9, 
+                                        emis_data.cl_launch_total*1e-9, emis_data.cl2_total*1e-9, emis_data.nox_reentry_total*1e-9, 
+                                        emis_data.al2o3_reentry_total*1e-9, total_inc_emis,total_inc_prop, emis_data.mass_survive * 1e-6]}
+    df = pd.DataFrame(data)
+    print(df.round(4))  
+    df.to_csv(f"./out_files/emis_stats_{year}_{dataset}_{res}_{levels}.csv",sep=',')    
+
 # Main section of the program
 if __name__ == "__main__":
 
@@ -1193,6 +1234,8 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument('-sm', "--start_month", default = "1", choices=str(np.arange(1,13)), help='Start Month (will override final month if greater than final month).')
     parser.add_argument('-fm', "--final_month", default = "12", choices=str(np.arange(1,13)), help='Final Month.')
+    parser.add_argument('-sd', "--start_dataset", default = "1", choices=str(np.arange(1,4)), help='Dataset. 1=Non-SMC, 2=SMC, 3=All')
+    parser.add_argument('-fd', "--final_dataset", default = "3", choices=str(np.arange(1,4)), help='Dataset. 1=Non-SMC, 2=SMC, 3=All')
     parser.add_argument('-sy', "--start_year", default = "2023", choices=str(np.arange(2020,2025)), help='Start Year.')
     parser.add_argument('-fy', "--final_year", default = "2024", choices=str(np.arange(2020,2025)), help='Final Year.')
     args = parser.parse_args()
@@ -1208,6 +1251,12 @@ if __name__ == "__main__":
     if start_month > final_month:
         final_month = start_month + 1
     months = np.arange(start_month-1,final_month)
+
+    # Sort out the dataset range.
+    start_dataset, final_dataset = int(args.start_dataset), int(args.final_dataset)
+    if start_dataset > final_dataset:
+        final_dataset = start_dataset + 1
+    dataset_range = np.arange(start_dataset,final_dataset+1)
     
     print(f"Years: {start_year}-{final_year}. Months: {start_month}-{final_month}.")
       
@@ -1292,21 +1341,25 @@ if __name__ == "__main__":
     
     #Loop over all years and run functions depending on input arguments.
     for year in year_range:
-        print(f"Processing year {year}.")
-        # Go through process of gridding and saving rocket emissions:
-        emis_data = OutputEmis(rocket_data, 
-                            grid_res, 
-                            timestep, 
-                            levels, 
-                            booster_cutoff_alts, 
-                            MECO_alts, 
-                            SEI_alts, 
-                            SECO_alts,
-                            reentry_levs, 
-                            vert_filepath, 
-                            months,
-                            year,
-                            ground_landing_list,
-                            stage_alt_dict,
-                            model_alt
-                            )
+        for dataset in dataset_range:
+            print(f"Year: {year} Dataset: {dataset}")    
+            # Go through process of gridding and saving rocket emissions:
+            emis_data = OutputEmis(rocket_data, 
+                                grid_res, 
+                                timestep, 
+                                levels, 
+                                booster_cutoff_alts, 
+                                MECO_alts, 
+                                SEI_alts, 
+                                SECO_alts,
+                                reentry_levs, 
+                                vert_filepath, 
+                                months,
+                                dataset,
+                                year,
+                                ground_landing_list,
+                                stage_alt_dict,
+                                model_alt
+                                )
+
+            check_total_emissions(year,dataset,grid_res,levels)
