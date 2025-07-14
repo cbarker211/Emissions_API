@@ -384,10 +384,8 @@ def update_mass_info(i,temp_dict,unique_vehicle_name_list):
         
         if unique_vehicle_name_list[i] == "H-IIA 202":
             temp_dict[f"Booster Number"] = 2
-            temp_dict[f"Booster Stage Mass"]      = 21000 
         elif unique_vehicle_name_list[i] == "H-IIA 204":
             temp_dict[f"Booster Number"] = 4
-            temp_dict[f"Booster Propellant Mass"] = 130000
         
         temp_dict[f"Booster Propellant Mass"] = 130000 / 2 * int(temp_dict[f"Booster Number"]) 
         temp_dict[f"Booster Stage Mass"]      = 21000 / 2 * int(temp_dict[f"Booster Number"])
@@ -480,7 +478,7 @@ def update_mass_info(i,temp_dict,unique_vehicle_name_list):
             temp_dict[f"Stage3 Propellant Name"]  = "UDMH (Unsymmetrical Dimethyl Hydrazine)/N2O4"
             temp_dict[f"Stage3 Fuel Type"]        = "Hypergolic"
     
-    if unique_vehicle_name_list[i] == "Long March (CZ) 2D":
+    if "Long March (CZ) 2D" in unique_vehicle_name_list[i]:
         # Long March (CZ) 2D 
         # DISCOSweb dry match SLR
         # https://discosweb.esoc.esa.int/launch-vehicles/158
@@ -489,6 +487,11 @@ def update_mass_info(i,temp_dict,unique_vehicle_name_list):
         temp_dict[f"Stage1 Propellant Mass"] = 182000  # http://cgwic.com/Launchservice/LM2D.html
         temp_dict[f"Stage2 Propellant Mass"] = 52700   # http://cgwic.com/Launchservice/LM2D.html
         temp_dict[f"Fairing Mass"]           = 750 # http://www.b14643.de/Spacerockets_1/China/CZ-2D/Description/Frame.htm
+
+        if unique_vehicle_name_list[i] == "Long March (CZ) 2D/YZ-3":
+            # Basing this off YZ-1S
+            temp_dict[f"Stage3 Propellant Mass"]   = 1350
+            temp_dict[f"Stage3 Stage Mass"]        = 2500
     
     if unique_vehicle_name_list[i] == "Long March (CZ) 2F":
         
@@ -516,7 +519,7 @@ def update_mass_info(i,temp_dict,unique_vehicle_name_list):
         # Manual: https://www.mach5lowdown.com/wp-content/uploads/PUG/LM-3B-User-Manual-v1999.pdf
         # Manual: https://www.mach5lowdown.com/wp-content/uploads/PUG/LM-3C-User-Manual-v1998.pdf
     
-        if unique_vehicle_name_list[i] == "Long March (CZ) 3B":
+        if unique_vehicle_name_list[i] in ["Long March (CZ) 3B","Long March (CZ) 3B/YZ-1"]:
             temp_dict[f"Booster Number"] = 4
         elif unique_vehicle_name_list[i] == "Long March (CZ) 3C":
             temp_dict[f"Booster Number"] = 2
@@ -541,6 +544,10 @@ def update_mass_info(i,temp_dict,unique_vehicle_name_list):
         temp_dict[f"Stage2 Stage Mass"]      = (4000+3848) / 2                                     # SLR/Sp101
         temp_dict[f"Stage3 Stage Mass"]      = (2800+2740) / 2                                     # SLR/Sp101
         temp_dict[f"Fairing Mass"]           = 1500 # Sp101
+
+        if unique_vehicle_name_list[i] == "Long March (CZ) 3B/YZ-1":
+            temp_dict[f"Stage3 Propellant Name"]  = 'UDMH (Unsymmetrical Dimethyl Hydrazine)/N2O4'
+            temp_dict[f"Stage3 Fuel Type"]        = 'Hypergolic'
         
     if unique_vehicle_name_list[i] in ["Long March (CZ) 4B","Long March (CZ) 4C"]: 
         
@@ -578,7 +585,7 @@ def update_mass_info(i,temp_dict,unique_vehicle_name_list):
         
         if unique_vehicle_name_list[i] == "Long March (CZ) 5B":
             temp_dict[f"Fairing Mass"]  = 2400       # http://www.b14643.de/Spacerockets_1/China/CZ-5/Description/Frame.htm
-        if unique_vehicle_name_list[i] == "Long March (CZ) 5":
+        if unique_vehicle_name_list[i] in ["Long March (CZ) 5","Long March (CZ) 5/YZ-2"]:
             temp_dict[f"Stage2 Propellant Mass"]  = (22900+26500) / 2
             temp_dict[f"Stage2 Stage Mass"]       = (3520+3400) / 2       
             temp_dict[f"Fairing Mass"]  = 3000 # http://www.b14643.de/Spacerockets_1/China/CZ-5/Description/Frame.htm
@@ -1116,141 +1123,92 @@ def update_mass_info(i,temp_dict,unique_vehicle_name_list):
     ############################
 
     if unique_vehicle_name_list[i] == "Goche Yeollyo Uju Balsache (GYUB) - TV2":
-            # No Information available for this vehicle.
-            #Used Information Similar to Qased
-            temp_dict[f"Stage1 Fuel Type"] =  'Solid'
-            temp_dict[f"Stage2 Fuel Type"] = 'Solid'
-            temp_dict[f"Stage3 Fuel Type"] = 'Solid'
-            temp_dict[f"Stage1 Propellant Mass"]    = 128800.0
-            temp_dict[f"Stage2 Propellant Mass"]    = 25700.0
-            temp_dict[f"Stage3 Propellant Mass"]    = 2000.0
-            temp_dict[f"Stage1 Stage Mass"]         = 10150.0
-            temp_dict[f"Stage2 Stage Mass"]         = 2355.0
-            temp_dict[f"Stage3 Stage Mass"]         = 1000.0
+        # No Information available for this vehicle.
+        #Used Information Similar to Qased
+        temp_dict[f"Stage1 Fuel Type"] =  'Solid'
+        temp_dict[f"Stage2 Fuel Type"] = 'Solid'
+        temp_dict[f"Stage3 Fuel Type"] = 'Solid'
+        temp_dict[f"Stage1 Propellant Mass"]    = 128800.0
+        temp_dict[f"Stage2 Propellant Mass"]    = 25700.0
+        temp_dict[f"Stage3 Propellant Mass"]    = 2000.0
+        temp_dict[f"Stage1 Stage Mass"]         = 10150.0
+        temp_dict[f"Stage2 Stage Mass"]         = 2355.0
+        temp_dict[f"Stage3 Stage Mass"]         = 1000.0
 
     if unique_vehicle_name_list[i] == "H-III 22":
-            # Manual - https://www.mhi.com/products/space/launch_srv_lineup.html#pdh3
-            
-             # Prop masses:
-            # DISCOSweb : 66400, 227200, 25000
-            temp_dict[f"Booster Number"] = 2
-            temp_dict[f"Booster Propellant Mass"] = 65000
-            temp_dict[f"Stage1 Propellant Name"]  = 'Liquid Oxygen (LOX)/Liquid Hydrogen (LH2)' # Manual
-            temp_dict[f"Stage2 Propellant Name"] = 'Liquid Oxygen (LOX)/Liquid Hydrogen (LH2)' # Manual
-            temp_dict[f"Stage3 Propellant Name"] = 'Hydrogen' # Discosweb
-            temp_dict[f"Stage1 Fuel Type"] =  'Solid'
-            temp_dict[f"Stage2 Fuel Type"] = 'Solid'
-            temp_dict[f"Stage3 Fuel Type"] = 'Solid'
-            temp_dict[f"Stage1 Propellant Mass"]    = 66400.0 # Discosweb
-            temp_dict[f"Stage2 Propellant Mass"]    = 227200.0 # Discosweb
-            temp_dict[f"Stage3 Propellant Mass"]    = 25000.0 # Discosweb
-            temp_dict[f"Stage1 Stage Mass"]         = 10400.0 # Discosweb
-            temp_dict[f"Stage2 Stage Mass"]         = 31800.0# Discosweb
-            temp_dict[f"Stage3 Stage Mass"]         = 4500.0# Discosweb
-            temp_dict[f"Fairing Mass"]              = 1756.0# Discosweb
-            temp_dict[f"GTO "]                      = 6500.0 # Manual
+        # Manual - https://www.mhi.com/products/space/launch_srv_lineup.html#pdh3
+        # Approximating using H3B, as SLR says that "In many ways, H3 appears to be an improved H-2B."
+
+        temp_dict[f"Booster Number"] = 2
+        temp_dict[f"Booster Propellant Mass"] = 263800 / 4 * temp_dict[f"Booster Number"]
+        temp_dict[f"Stage1 Propellant Mass"]  = 177800
+        temp_dict[f"Stage2 Propellant Mass"]  = 16600 
+        temp_dict[f"Booster Stage Mass"]      = (306000-263800) / 4 * temp_dict[f"Booster Number"]
+        temp_dict[f"Stage1 Stage Mass"]       = 202000-177800 
+        temp_dict[f"Stage2 Stage Mass"]       = 20000-16600  
+        temp_dict[f"Fairing Mass"]            = 3200 # website/Sp101/SLR
+        temp_dict[f"GTO "]                      = 6500.0 # Manual
     
     if unique_vehicle_name_list[i] == "RS1":
-            # Manual - https://ablspacesystems.com/wp-content/uploads/2022/06/ABL-Payload-Users-Guide-2022-V1.pdf
-            # Used Information Similar to Firefly Alpha
-            temp_dict[f"Stage1 Propellant Name"] = 'Liquid Oxygen (LOX)/RP-1' # Manual
-            temp_dict[f"Stage2 Propellant Name"] = 'Liquid Oxygen (LOX)/RP-1' # Manual 
-            temp_dict[f"Stage1 Fuel Type"] = 'Kerosene' 
-            temp_dict[f"Stage2 Fuel Type"] = 'Kerosene'
-            temp_dict[f"Stage1 Propellant Mass"]    = 284089.0
-            temp_dict[f"Stage2 Propellant Mass"]    = 20800.0
-            temp_dict[f"Stage1 Stage Mass"]         = 21351.0
-            temp_dict[f"Stage2 Stage Mass"]         = 2030.0
-            temp_dict[f"Fairing Mass"]              = 1756.0 #Discosweb
-            temp_dict[f"LEO capacity"]              = 1350 # Manual
-            temp_dict[f"GTO capacity"]              = 320 # Manual
+        # Manual - https://ablspacesystems.com/wp-content/uploads/2022/06/ABL-Payload-Users-Guide-2022-V1.pdf
+        # Used Information Similar to Firefly Alpha
+        temp_dict[f"Stage1 Propellant Name"] = 'Liquid Oxygen (LOX)/RP-1' # Manual
+        temp_dict[f"Stage2 Propellant Name"] = 'Liquid Oxygen (LOX)/RP-1' # Manual 
+        temp_dict[f"Stage1 Fuel Type"] = 'Kerosene' 
+        temp_dict[f"Stage2 Fuel Type"] = 'Kerosene'
+        temp_dict[f"Stage1 Propellant Mass"]    = 284089.0
+        temp_dict[f"Stage2 Propellant Mass"]    = 20800.0
+        temp_dict[f"Stage1 Stage Mass"]         = 21351.0
+        temp_dict[f"Stage2 Stage Mass"]         = 2030.0
+        temp_dict[f"LEO capacity"]              = 1350 # Manual
+        temp_dict[f"GTO capacity"]              = 320 # Manual
 
     if unique_vehicle_name_list[i] == "Starship":
-            # No information available for this vehicle.
-            temp_dict[f"Stage1 Fuel Type"] = 'Methane'
-            temp_dict[f"Stage2 Fuel Type"] = 'Methane'
-            temp_dict[f"Stage1 Propellant Mass"]    = 3400000.0 #Discosweb
-            temp_dict[f"Stage2 Propellant Mass"]    = 1200000.0 #Discosweb
-            temp_dict[f"Stage1 Stage Mass"]         = 100000.0 #Discosweb
-            temp_dict[f"Stage2 Stage Mass"]         = 100000.0 #Discosweb
-            temp_dict[f"Fairing Mass"]              = 1756.0 #Discosweb
+        # No information available for this vehicle.
+        temp_dict[f"Stage1 Fuel Type"] = 'Methane'
+        temp_dict[f"Stage2 Fuel Type"] = 'Methane'
+        temp_dict[f"Stage1 Propellant Mass"]    = 3400000.0 #Discosweb
+        temp_dict[f"Stage2 Propellant Mass"]    = 1200000.0 #Discosweb
+        temp_dict[f"Stage1 Stage Mass"]         = 100000.0 #Discosweb
+        temp_dict[f"Stage2 Stage Mass"]         = 100000.0 #Discosweb
 
     if unique_vehicle_name_list[i] == "Terran-1":
-            # https://www.relativityspace.com/terran-r
-            # Used Information Similar to Zhuque-2
-            temp_dict[f"Stage1 Fuel Type"] = 'Methane'
-            temp_dict[f"Stage2 Fuel Type"] = 'Methane'
-            temp_dict[f"Stage1 Propellant Name"]    = 'Liquid Oxygen (LOX)/Subcooled Methane' # Manual
-            temp_dict[f"Stage2 Propellant Name"]    = 'Liquid Oxygen (LOX)/Subcooled Methane' # Manual
-            temp_dict[f"Stage1 Propellant Mass"]    = 128800.0
-            temp_dict[f"Stage2 Propellant Mass"]    = 25700.0
-            temp_dict[f"Stage1 Stage Mass"]         = 10150.0
-            temp_dict[f"Stage2 Stage Mass"]         = 2355.0
-            temp_dict[f"Fairing Mass"]              = 1756.0 #Discosweb
-            temp_dict[f"LEO capacity"]              = 1250 # Manual
+        # https://www.relativityspace.com/terran-r
+        # Used Information Similar to Zhuque-2
+        temp_dict[f"Stage1 Fuel Type"] = 'Methane'
+        temp_dict[f"Stage2 Fuel Type"] = 'Methane'
+        temp_dict[f"Stage1 Propellant Name"]    = 'Liquid Oxygen (LOX)/Subcooled Methane' # Manual
+        temp_dict[f"Stage2 Propellant Name"]    = 'Liquid Oxygen (LOX)/Subcooled Methane' # Manual
+        temp_dict[f"Stage1 Propellant Mass"]    = 128800.0
+        temp_dict[f"Stage2 Propellant Mass"]    = 25700.0
+        temp_dict[f"Stage1 Stage Mass"]         = 10150.0
+        temp_dict[f"Stage2 Stage Mass"]         = 2355.0
+        temp_dict[f"LEO capacity"]              = 1250 # Manual
 
     if unique_vehicle_name_list[i] == "Tianlong 2":
-            # No information available for this vehicle.
-            #https://space.skyrocket.de/doc_lau/tianlong-2.htm
-            # Used Information Similar to Angara A5 Orion
-            temp_dict[f"Stage1 Fuel Type"] = 'Kerosene' # SLR
-            temp_dict[f"Stage2 Fuel Type"] = 'Kerosene' #SLR 
-            temp_dict[f"Stage3 Fuel Type"] = 'Hypergolic' #SLR
-            temp_dict[f"Stage1 Propellant Mass"]    = (530400.0+128500.0)/2
-            temp_dict[f"Stage2 Propellant Mass"]    = (132600.0 + 38500.0)/2
-            temp_dict[f"Stage3 Propellant Mass"]    = 36000.0
-            temp_dict[f"Stage1 Stage Mass"]         = (39200.0 + 52500.0)/2
-            temp_dict[f"Stage2 Stage Mass"]         = (9800.0 + 4000.0)/2
-            temp_dict[f"Stage3 Stage Mass"]         = 2000.0 
-            temp_dict[f"Fairing Mass"]              = 1756.0 #Discosweb 
-            temp_dict[f"LEO capacity"]              = 2000 # Manual
-
-    if unique_vehicle_name_list[i] == "Angara A5 Orion":
-        #https://www.scribd.com/document/248308820/Angara-A5
-        # Prop masses:
-        # DISCOSweb : 530400, 132600, 36000, 15000
-        # SLR       : 128500, 38500
-        
-                
-        # Stage masses:
-        # DISCOSweb : 39200, 9800, 2000, 2140
-        # SLR       : 52500, 4000
-        
-        temp_dict[f"Booster Number"] = 4
-        temp_dict[f"Booster Propellant Mass"] = 132600
-        temp_dict[f"Stage1 Fuel Type"] = 'Kerosene'
-        temp_dict[f"Stage2 Fuel Type"] = 'Kerosene'
-        temp_dict[f"Stage3 Fuel Type"] = 'Kerosene'
-        temp_dict[f"Stage4 Fuel Type"] = 'Kerosene'
-        temp_dict[f"Stage1 Propellant Name"] = 'UDMH (Unsymmetrical Dimethyl Hydrazine)'
+        # No information available for this vehicle.
+        #https://space.skyrocket.de/doc_lau/tianlong-2.htm
+        # Used Information Similar to Angara A5 Orion
+        temp_dict[f"Stage1 Fuel Type"] = 'Kerosene' # SLR
+        temp_dict[f"Stage2 Fuel Type"] = 'Kerosene' #SLR 
+        temp_dict[f"Stage3 Fuel Type"] = 'Hypergolic' #SLR
         temp_dict[f"Stage1 Propellant Mass"]    = (530400.0+128500.0)/2
         temp_dict[f"Stage2 Propellant Mass"]    = (132600.0 + 38500.0)/2
-        temp_dict[f"Stage3 Propellant Mass"]    = 36000.0 # Discosweb
-        temp_dict[f"Stage4 Propellant Mass"]    = 15000.0 # Discosweb
+        temp_dict[f"Stage3 Propellant Mass"]    = 36000.0
         temp_dict[f"Stage1 Stage Mass"]         = (39200.0 + 52500.0)/2
         temp_dict[f"Stage2 Stage Mass"]         = (9800.0 + 4000.0)/2
-        temp_dict[f"Stage3 Stage Mass"]         = 2000.0 # Discosweb
-        temp_dict[f"Stage4 Stage Mass"]         = 2140.0 # Discosweb
-        temp_dict[f"Fairing Mass"]              = 1756.0 # Discosweb
+        temp_dict[f"Stage3 Stage Mass"]         = 2000.0 
+        temp_dict[f"LEO capacity"]              = 2000 # Manual
 
     if unique_vehicle_name_list[i] == "Ariane 62":
-            #No other information available for this vehicle.
-            #Stage Mass information taken from Long March (CZ) 5B
-            temp_dict[f"Booster Number"] = 2
-            temp_dict[f"Booster Propellant Mass"] = 141634
-            temp_dict[f"Stage1 Fuel Type"] = 'Hydrogen'
-            temp_dict[f"Stage2 Fuel Type"] = 'Hydrogen'
-            temp_dict[f"Stage3 Fuel Type"] = 'Solid'
-            temp_dict[f"Stage1 Propellant Mass"]    = 140000.0 # Discosweb
-            temp_dict[f"Stage2 Propellant Mass"]    = 31000.0 # Discosweb 
-            temp_dict[f"Stage3 Propellant Mass"]    = 18700.0 #Using Similar Data from Long March (CZ) 5B 
-            temp_dict[f"Stage1 Stage Mass"]         = 9800.0
-            temp_dict[f"Stage2 Stage Mass"]         = 4000.0
-            temp_dict[f"Stage3 Stage Mass"]         = 2900.0
-            temp_dict[f"Stage3 Stage Mass"]         = 13390.0 # Discosweb
-            temp_dict[f"Fairing Mass"]              = 1756.0 # Discosweb
-            temp_dict[f"LEO capacity"]              = 10000 # SLR 
-            temp_dict[f"GTO capacity"]              = 4500 # SLR
+        #No other information available for this vehicle.
+        #Stage Mass information taken from Long March (CZ) 5B
+        temp_dict[f"Booster Number"] = 2
+        temp_dict[f"Booster Propellant Mass"]   = 142000 * int(temp_dict[f"Booster Number"]) # SLR
+        temp_dict[f"Stage1 Stage Mass"]         = (17000+18000) / 2
+        temp_dict[f"Stage2 Stage Mass"]         = (3520+3400) / 2
+        temp_dict[f"LEO capacity"]              = 10000 # SLR 
+        temp_dict[f"GTO capacity"]              = 4500 # SLR
 
     if unique_vehicle_name_list[i] == "Chollima-1":
         #Used information from Long March (CZ) 2C/YZ-1S
@@ -1262,120 +1220,88 @@ def update_mass_info(i,temp_dict,unique_vehicle_name_list):
         temp_dict[f"Stage2 Stage Mass"]         = 1392.0
 
     if unique_vehicle_name_list[i] == "Gravity-1":
-            #No other information available for this vehicle.
-            #Used Information Similar to Kuaizhou-11
-            temp_dict["Booster Number"] = 4
-            temp_dict[f"Stage1 Fuel Type"] = 'Solid'
-            temp_dict[f"Stage2 Fuel Type"] = 'Solid'
-            temp_dict[f"Stage3 Fuel Type"] = 'Solid'
-            temp_dict[f"Stage1 Propellant Mass"]    = 132600.0
-            temp_dict[f"Stage2 Propellant Mass"]    = 35800.0
-            temp_dict[f"Stage3 Propellant Mass"]    = 19800.0
-            temp_dict[f"Stage1 Stage Mass"]         = 0.0
-            temp_dict[f"Stage2 Stage Mass"]         = 0.0
-            temp_dict[f"Stage3 Stage Mass"]         = 1000.0
-            temp_dict[f"Fairing Mass"]              = 1756.0
+        #No other information available for this vehicle.
+        #Used Information Similar to Kuaizhou-11
+        temp_dict["Booster Number"] = 4
+        temp_dict[f"Stage1 Fuel Type"] = 'Solid'
+        temp_dict[f"Stage2 Fuel Type"] = 'Solid'
+        temp_dict[f"Stage3 Fuel Type"] = 'Solid'
+        temp_dict[f"Stage1 Propellant Mass"]    = 132600.0
+        temp_dict[f"Stage2 Propellant Mass"]    = 35800.0
+        temp_dict[f"Stage3 Propellant Mass"]    = 19800.0
+        temp_dict[f"Stage1 Stage Mass"]         = 0.0
+        temp_dict[f"Stage2 Stage Mass"]         = 0.0
+        temp_dict[f"Stage3 Stage Mass"]         = 1000.0
 
     if unique_vehicle_name_list[i] == "KAIROS":
-            #No other information available for this vehicle.
-            #https://launchreport.neocities.org/kairos.txt
-            temp_dict[f"Stage1 Fuel Type"] = 'Solid'
-            temp_dict[f"Stage2 Fuel Type"] = 'Solid'
-            temp_dict[f"Stage3 Fuel Type"] = 'Solid'
-            temp_dict[f"Stage1 Propellant Mass"]    = 12972.0
-            temp_dict[f"Stage2 Propellant Mass"]    = 4694.0
-            temp_dict[f"Stage3 Propellant Mass"]    = 2476.0
-            temp_dict[f"Stage4 Propellant Mass"]    = 33.0
-            temp_dict[f"Stage1 Stage Mass"]         = 1769.0
-            temp_dict[f"Stage2 Stage Mass"]         = 522.0
-            temp_dict[f"Stage3 Stage Mass"]         = 244.0
-            temp_dict[f"Stage4 Stage Mass"]         = 127.0
-            temp_dict[f"Fairing Mass"]              = 1756.0
-    
-    if unique_vehicle_name_list[i] == "Long March (CZ) 2D/YZ-3":
-        #Used information from Long March (CZ) 2C/YZ-1S
-        temp_dict[f"Stage1 Fuel Type"] = 'Hypergolic'
-        temp_dict[f"Stage2 Fuel Type"] = 'Hypergolic'
-        temp_dict[f"Stage1 Propellant Mass"]    = 242200.0
-        temp_dict[f"Stage2 Propellant Mass"]    = 24924.0
-        temp_dict[f"Stage1 Stage Mass"]         = 19700.0
-        temp_dict[f"Stage2 Stage Mass"]         = 1392.0
+        #No other information available for this vehicle.
+        #https://launchreport.neocities.org/kairos.txt
+        temp_dict[f"Stage1 Fuel Type"] = 'Solid'
+        temp_dict[f"Stage2 Fuel Type"] = 'Solid'
+        temp_dict[f"Stage3 Fuel Type"] = 'Solid'
+        temp_dict[f"Stage1 Propellant Mass"]    = 12972.0
+        temp_dict[f"Stage2 Propellant Mass"]    = 4694.0
+        temp_dict[f"Stage3 Propellant Mass"]    = 2476.0
+        temp_dict[f"Stage4 Propellant Mass"]    = 33.0
+        temp_dict[f"Stage1 Stage Mass"]         = 1769.0
+        temp_dict[f"Stage2 Stage Mass"]         = 522.0
+        temp_dict[f"Stage3 Stage Mass"]         = 244.0
+        temp_dict[f"Stage4 Stage Mass"]         = 127.0
 
     if unique_vehicle_name_list[i] == "Long March (CZ) 12":
-            # No other information available for this vehicle.
-            #Used Information Similar to Falcon 9 v1.2
-            temp_dict[f"Stage1 Fuel Type"] = 'Kerosene'
-            temp_dict[f"Stage2 Fuel Type"] = 'Kerosene'
-            temp_dict[f"Stage1 Propellant Mass"]    = 284089.0
-            temp_dict[f"Stage2 Propellant Mass"]    = 20800.0
-            temp_dict[f"Stage1 Stage Mass"]         = 21054.0
-            temp_dict[f"Stage2 Stage Mass"]         = 2030.0
-            temp_dict[f"Fairing Mass"]              = 1756.0
-
-    if unique_vehicle_name_list[i] == "Long March (CZ) 5/YZ-2":
-            # No other information available for this vehicle.
-            # Used information similar to Long March (CZ) 5
-            temp_dict[f"Stage1 Fuel Type"] = 'Hydrogen'
-            temp_dict[f"Stage2 Fuel Type"] = 'Hydrogen'
-            temp_dict[f"Stage3 Fuel Type"] = 'Hypergolic'
-            temp_dict[f"Stage4 Fuel Type"] = 'Kerosene'
-            temp_dict[f"Stage1 Propellant Mass"]    = 158250.0
-            temp_dict[f"Stage2 Propellant Mass"]    = 22900.0
-            temp_dict[f"Stage3 Propellant Mass"]    = 19800.0
-            temp_dict[f"Stage4 Propellant Mass"]    = 174000.0
-            temp_dict[f"Stage1 Stage Mass"]         = 17500.0
-            temp_dict[f"Stage2 Stage Mass"]         = 3400.0
-            temp_dict[f"Stage3 Stage Mass"]         = 5000.0
-            temp_dict[f"Stage4 Stage Mass"]         = 12000.0
-            temp_dict[f"Fairing Mass"]              = 1756.0
+        # No other information available for this vehicle.
+        #Used Information Similar to Falcon 9 v1.2
+        temp_dict[f"Stage1 Fuel Type"] = 'Kerosene'
+        temp_dict[f"Stage2 Fuel Type"] = 'Kerosene'
+        temp_dict[f"Stage1 Propellant Mass"]    = 284089.0
+        temp_dict[f"Stage2 Propellant Mass"]    = 20800.0
+        temp_dict[f"Stage1 Stage Mass"]         = 21054.0
+        temp_dict[f"Stage2 Stage Mass"]         = 2030.0
             
     if unique_vehicle_name_list[i] == "Long March (CZ) 6C":
-            # No information available for this vehicle.
-            #Used Information Similar to Long March (CZ) 6A
-            temp_dict[f"Stage1 Fuel Type"] = 'Kerosene'
-            temp_dict[f"Stage2 Fuel Type"] = 'Kerosene'
-            temp_dict[f"Stage1 Propellant Mass"]    = 75800.0
-            temp_dict[f"Stage2 Propellant Mass"]    = 2100.0
-            temp_dict[f"Stage1 Stage Mass"]         = 8200.0
-            temp_dict[f"Stage2 Stage Mass"]         = 250.0
-            temp_dict[f"Fairing Mass"]              = 1756.0
+        # No information available for this vehicle.
+        #Used Information Similar to Long March (CZ) 6A
+        temp_dict[f"Stage1 Fuel Type"] = 'Kerosene'
+        temp_dict[f"Stage2 Fuel Type"] = 'Kerosene'
+        temp_dict[f"Stage1 Propellant Mass"]    = 75800.0
+        temp_dict[f"Stage2 Propellant Mass"]    = 2100.0
+        temp_dict[f"Stage1 Stage Mass"]         = 8200.0
+        temp_dict[f"Stage2 Stage Mass"]         = 250.0
     
     if unique_vehicle_name_list[i] == "NK Kerolox LV":
-            #No Information available for this vehicle.
-            #Used Information Similar to GSLV Mk III
-            temp_dict[f"Stage1 Fuel Type"] = 'Hypergolic'
-            temp_dict[f"Stage2 Fuel Type"] = 'Hypergolic'
-            temp_dict[f"Stage1 Propellant Mass"]    = 284089.0
-            temp_dict[f"Stage2 Propellant Mass"]    = 20800.0
-            temp_dict[f"Stage1 Stage Mass"]         = 21351.0
-            temp_dict[f"Stage2 Stage Mass"]         = 2030.0
-            temp_dict[f"Fairing Mass"]              = 1756.0
+        #No Information available for this vehicle.
+        #Used Information Similar to GSLV Mk III
+        temp_dict[f"Stage1 Fuel Type"] = 'Hypergolic'
+        temp_dict[f"Stage2 Fuel Type"] = 'Hypergolic'
+        temp_dict[f"Stage1 Propellant Mass"]    = 284089.0
+        temp_dict[f"Stage2 Propellant Mass"]    = 20800.0
+        temp_dict[f"Stage1 Stage Mass"]         = 21351.0
+        temp_dict[f"Stage2 Stage Mass"]         = 2030.0
 
     if unique_vehicle_name_list[i] == "Vulcan Centaur VC2S":
-            #Used Information Similar to Zhuque-2
-            temp_dict[f"Booster Number"] = 2 
-            temp_dict[f"Booster Propellant Mass"] = 47853
-            temp_dict[f"Stage1 Fuel Type"] = 'Methane'
-            temp_dict[f"Stage2 Fuel Type"] = 'Hydrogen'
-            temp_dict[f"Stage1 Propellant Mass"]    = 25700.0
-            temp_dict[f"Stage2 Propellant Mass"]    = 54000.0
-            temp_dict[f"Stage1 Stage Mass"]         = 31000.0
-            temp_dict[f"Stage2 Stage Mass"]         = 5800.0
-            temp_dict[f"Fairing Mass"]              = 1756.0
-            temp_dict[f"LEO capacity"]              = 8800 # SLR 
+        #Used Information Similar to Zhuque-2
+        temp_dict[f"Booster Number"] = 2 
+        temp_dict[f"Booster Propellant Mass"] = 47853
+        temp_dict[f"Stage1 Fuel Type"] = 'Methane'
+        temp_dict[f"Stage2 Fuel Type"] = 'Hydrogen'
+        temp_dict[f"Stage1 Propellant Mass"]    = 25700.0
+        temp_dict[f"Stage2 Propellant Mass"]    = 54000.0
+        temp_dict[f"Stage1 Stage Mass"]         = 31000.0
+        temp_dict[f"Stage2 Stage Mass"]         = 5800.0
+        temp_dict[f"LEO capacity"]              = 8800 # SLR 
     
     if unique_vehicle_name_list[i] == "Qaem-100 ":
-            #Information Similar to Qased
-            temp_dict[f"Stage1 Fuel Type"] = 'Solid' # SLR
-            temp_dict[f"Stage2 Fuel Type"] = 'Solid' #SLR 
-            temp_dict[f"Stage3 Fuel Type"] = 'Solid' #SLR
-            temp_dict[f"Stage1 Propellant Mass"] = 14400 # SLR
-            temp_dict[f"Stage2 Propellant Mass"] = 1500  # NB 
-            temp_dict[f"Stage3 Propellant Mass"] = 398   # .
-            temp_dict[f"Stage1 Stage Mass"]      = 2700  # SLR
-            temp_dict[f"Stage2 Stage Mass"]      = 200   # NB
-            temp_dict[f"Stage3 Stage Mass"]      = (30+55+315)/ 3 # 
-            temp_dict[f"Fairing Mass"]           = 100 # SLR
+        #Information Similar to Qased
+        temp_dict[f"Stage1 Fuel Type"] = 'Solid' # SLR
+        temp_dict[f"Stage2 Fuel Type"] = 'Solid' #SLR 
+        temp_dict[f"Stage3 Fuel Type"] = 'Solid' #SLR
+        temp_dict[f"Stage1 Propellant Mass"] = 14400 # SLR
+        temp_dict[f"Stage2 Propellant Mass"] = 1500  # NB 
+        temp_dict[f"Stage3 Propellant Mass"] = 398   # .
+        temp_dict[f"Stage1 Stage Mass"]      = 2700  # SLR
+        temp_dict[f"Stage2 Stage Mass"]      = 200   # NB
+        temp_dict[f"Stage3 Stage Mass"]      = (30+55+315)/ 3 # 
+        temp_dict[f"Fairing Mass"]           = 100 # SLR
 
     if unique_vehicle_name_list[i] == "Shavit 2":
         #https://web.archive.org/web/20220406013832/http://www.spacelaunchreport.com/shavit.html

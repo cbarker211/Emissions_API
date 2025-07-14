@@ -375,9 +375,6 @@ class import_launches:
         else:
             stage_number = f"Stage{count+1}"
             
-        if unique_vehicle_name_list[i] in ["Soyuz-ST-A Fregat-M","Soyuz-2-1A Fregat"]:
-            print(unique_vehicle_name_list[i],stage_name, stage_number)
-            
         #############################
         # Obtain the propellant mass
         #############################

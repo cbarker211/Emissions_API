@@ -814,7 +814,8 @@ class build_reentry_list:
         jsr_data_stripped_list = []
         for reentry_count in range(len(jsr_data_stripped)):
             
-            if jsr_data_stripped["DDate"][reentry_count][0:4] != "-" and jsr_data_stripped["#JCAT"][reentry_count] not in ["L80508","L80509","L80510"]: # Skipping 2021-F07
+            if (jsr_data_stripped["DDate"][reentry_count][0:4] != "-" 
+            and jsr_data_stripped["#JCAT"][reentry_count] not in ["L80508","L80509","L80510","S57807"]): # Skipping 2021-F07 and H2A fairing debris object.
                 
                 # Note: A negative apogee means that the object was in a hyperbolic orbit (velocity above escape velocity), so passes by Earth.
                 # However, Hayabusa2 (apogee=-54771) did reenter on 5th Dec 2020, so including this.
@@ -1137,21 +1138,22 @@ class build_reentry_list:
         for reentry_count in range(len(aerospace_corp_data_year)):  
             if "DEB" in aerospace_corp_data_year['Object Name'][reentry_count]:
                 continue
-            if aerospace_corp_data_year['International Designator'][reentry_count] in ["2023-097A",  # Already in GCAT with different COSPAR ID.
-                                                                                       "1982-092A",  # Debris of Kosmos 1408.
-                                                                                       "2024-076Y",  # Still orbiting according to satellite tracker websites.
-                                                                                       "2019-018AC", # Orbital platform that re-entered attached to the 4th stage.
-                                                                                       "2023-046AZ", # Already in GCAT with different COSPAR ID.
-                                                                                       "2023-046AV", # Already in GCAT with different COSPAR ID.
-                                                                                       "2023-046BF", # Already in GCAT with different COSPAR ID.
-                                                                                       "2019-069B",  # GCAT has this reentering in 2022.
-                                                                                       "2020-074AM", # GCAT has this reentering in 2022.
-                                                                                       "1984-108B",  # GCAT has this reentering in 2022.
+            aerospace_corp_id = aerospace_corp_data_year['International Designator'][reentry_count].strip()
+            if aerospace_corp_id in ["2023-097A",  # Already in GCAT with different COSPAR ID.
+                                     "1982-092A",  # Debris of Kosmos 1408.
+                                     "2024-076Y",  # Still orbiting according to satellite tracker websites.
+                                     "2019-018AC", # Orbital platform that re-entered attached to the 4th stage.
+                                     "2023-046AZ", # Already in GCAT with different COSPAR ID.
+                                     "2023-046AV", # Already in GCAT with different COSPAR ID.
+                                     "2023-046BF", # Already in GCAT with different COSPAR ID.
+                                     "2019-069B",  # GCAT has this reentering in 2022.
+                                     "2020-074AM", # GCAT has this reentering in 2022.
+                                     "1984-108B",  # GCAT has this reentering in 2022.
             ]:
                 continue
 
-            if aerospace_corp_data_year["International Designator"][reentry_count] not in jsr_id_list:
-                print(f"Found new reentry from Aerospace Corp - {aerospace_corp_data_year['International Designator'][reentry_count]}, {aerospace_corp_data_year['Object Name'][reentry_count]}") 
+            if aerospace_corp_id not in jsr_id_list:
+                print(f"Found new reentry from Aerospace Corp - {aerospace_corp_id}, {aerospace_corp_data_year['Object Name'][reentry_count]}") 
                 # 1992-021C, Ariane 44L H10+ 3rd Rocket Stage. DISCOSweb and AC list this as reentering in Oct 2020. JSR lists this as exploding in Apr 1993.
                 # 2019-029Q, Starlink payload. DISCOSweb and JSR list this as reentering in July 2022. AC lists this as reentering in 2020. Ignoring.
                 # 2020-012B, Starlink payload. DISCOSweb has no re-entry data. AC lists this as reentering Mar 2020. JSR lists this as still in orbit. Ignoring.
@@ -1169,7 +1171,7 @@ class build_reentry_list:
                 # 1982-092AJF, debris on DISCOSweb, JSR and AC, ignoring.  
                 # 2021-125AE, this is already included in the 2021 reentry list, as JSR says it reentered on 28/12/21.
                 if aerospace_corp_data_year["International Designator"][reentry_count] in ["1992-021C"]:
-                    print(f"Adding reentry from Aerospace Corp - {aerospace_corp_data_year['International Designator'][reentry_count]}") 
+                    print(f"Adding reentry from Aerospace Corp - {aerospace_corp_id}") 
                     if aerospace_corp_data_year["International Designator"][reentry_count] == "1992-021C":
                         reentry_category = "S3"
                         abl_mass = 2080
@@ -1214,7 +1216,9 @@ class build_reentry_list:
             discosweb_name = self.ds_dw["DISCOSweb_Reentry_Name"].values[reentry_count].item()
             discosweb_id   = self.ds_dw["DISCOSweb_Reentry_ID"].values[reentry_count].item()
             
-            # Excluding Debris
+            # Excluding Debris and some duplicated Starlinks with different IDs.
+            if ("debris" in discosweb_name.lower() or "2024-129I" in discosweb_id or "2022-010I" in discosweb_id):
+                continue
             if (discosweb_id not in jsr_ac_id_list):
                 
                 # Check if the stage has already been added.  
@@ -1222,16 +1226,24 @@ class build_reentry_list:
                 if self.ds_dw["DISCOSweb_Reentry_Class"].values[reentry_count] == "Rocket Body":
                     
                     if (discosweb_name in ["H-II LE-5B (H-IIB)", "L-53 (YF24B) (Long March (CZ) 2D)",
-                                                                                       "CZ-5-HO (Long March (CZ) 5)","Delta IV DCSS 5 (Delta 4H)"]
-                        or "Falcon 9 Merlin-V (1D" in discosweb_name or "Centaur-5" in discosweb_name):
-                        reentry_category = "S2"
+                                           "CZ-5-HO (Long March (CZ) 5)","Delta IV DCSS 5 (Delta 4H)",
+                                           "LE-5B-3 (H-III 22)"]
+                        or "Falcon 9 Merlin-V (1D" in discosweb_name or "Centaur-5" in discosweb_name
+                        or "second" in discosweb_name.lower()):
+                            reentry_category = "S2"
                     elif (("Fregat" in discosweb_name)
                         or (discosweb_name in ["PBV (Long March (CZ) 6)","YZ-1S (Long March (CZ) 2C/YZ-1S)",
-                                                                                      "H-18 (Long March (CZ) YF) (Long March (CZ) 3C/E)","Angara AM (Angara 1.2)"])):
-                        reentry_category = "S3" 
-                    elif discosweb_name in ["AVUM (Vega)","Ceres-1 upperstage","YZ-1 (Long March (CZ) 3B/YZ-1)",
-                                                                                   "KZ-1 Stage 4 (Kuaizhou-1)","Long March (CZ) 11 Stage 4"]:
-                        reentry_category = "S4"
+                                               "H-18 (Long March (CZ) YF) (Long March (CZ) 3C/E)","Angara AM (Angara 1.2)",
+                                               "Lunar Photon (Electron (Curie))","Stage-3 (Tianlong 2)","PS3 (PSLV-CA)",
+                                               "KZ-11 Stage 3 (Kuaizhou-11)","YZ-3 (Long March (CZ) 2D/YZ-3)",
+                                               "Blok-DM-3 (Angara A5 Orion)","YZ-2 (Long March (CZ) 5/YZ-2)"])
+                        or "third" in discosweb_name.lower()):
+                            reentry_category = "S3" 
+                    elif (discosweb_name in ["AVUM (Vega)","Ceres-1 upperstage","YZ-1 (Long March (CZ) 3B/YZ-1)",
+                                            "KZ-1 Stage 4 (Kuaizhou-1)","Long March (CZ) 11 Stage 4","AVUM+ (Vega C)",
+                                            ""]
+                        or "fourth" in discosweb_name.lower()):
+                            reentry_category = "S4"
                     else:
                         print("Missing stage designation for : ",discosweb_id, discosweb_name)
                         reentry_category = "S0"
@@ -1252,31 +1264,28 @@ class build_reentry_list:
                                "2020-001BF",# Starlink, still in orbit??
                                "2020-001BM",# Starlink, still in orbit??
                                "2020-001A", # Starlink, still in orbit??
-                               "2021-122E", # Debris.
                                "2020-001AU",# Starlink, still in orbit??
-                               "1967-014M", # Debris.
-                               "2022-010ID", # https://www.spacex.com/launches/sl4-7/ 49 starlink satellites launched.
-                               "2022-010IE","2022-010IS", # https://en.wikipedia.org/wiki/List_of_Starlink_and_Starshield_launches 
-                               "2022-010IF", # Wiki says 38 satellites reentered by 12th Feb.
-                               "2022-010IT", # 38 already included in GCAT, so IDs must be different. Ignoring.
-                               "2022-010IG", "2022-010IQ", "2022-010IR", "2022-010II", "2022-010IM", "2022-010IAD",
-                               "2022-010IO", "2022-010IB", "2022-010IY", "2022-010IJ", "2022-010IU", "2022-010IV",
-                               "2022-010IAF","2022-010IH", "2022-010IL", "2022-010IX", "2022-010IAE","2022-010IW",       
-                               "2022-010IK", "2022-010IC", "2022-010IZ", "2022-010IP", "2022-010IAA",
                                "2015-007B", # Debris.
-                               "2014-065B", # Reentered on the moon.
-                               "1990-010C", # Debris.
-                               "2022-085C", # Debris.
+                               "2021-110A", "2014-065B", "2023-098A", "2023-118A", "2022-168A", "2024-030A", "2023-137D", # Reentered or landed on another planet or moon.
                                "2022-094B", # Falcon Stage 2 # JSR has this has as deep space.
-                               "2014-047H", # Debris.
-                               "2021-110A", # Deorbited on Didymos.
-                               "1998-067NF",# Already in GCAT, tracable through JCAT.
-                               "1998-067PU",# Already in GCAT, tracable through JCAT.
-                               ]
-
-                # 2023-004IA
+                               "1998-067NF",# Already in GCAT, tracable through GCAT.
+                               "1998-067PU",# Already in GCAT, tracable through GCAT.
+                               "1982-092A", # Debris of Cosmos
+                               "1967-048H", "2023-137B", "2023-137G", # GCAT lists as debris.
+                               "2019-038K", # Reentered in 2025, confirmed using satellite tracker.
+                               "2022-093J", # Attached landed.
+                               "2022-175M", # Incorrect on DW, should be 2025. Confirmed using satellite tracker.
+                               "2023-046AV", "2023-046AZ","2023-046BF", # Different COSPAR IDs in GCAT.
+                               "2023-097A", # Attached when reentering.
+                               "2023-035A", # Still in orbit, DW has probably just set re-entry of 2nd and 3rd stages together.
+                               "2023-154C", # Sent into deep space.
+                               "2024-069IB", # Listed as in orbit in GCAT. Couldn't verify using satellite tracker.
+                               "2024-110IA", # Listed as in orbit in GCAT. Couldn't verify using satellite tracker.
+                               "2023-137H"    # Fairing Debris.
+                ]
                 
                 # Included IDs: 
+                #               2019-069B Wrong in GCAT, should be 2023 not 2022. Confirmed using satellite tracker.
                 #               2020-022A https://www.n2yo.com/satellite/?s=45464     
                 #               2020-029B DDate = "2023 Jan?", DISCOSweb has 31st Dec, so it has reentered and we can include.   
                 if found_stage == False and self.ds_dw['DISCOSweb_Reentry_ID'].values[reentry_count] not in skipped_ids:
@@ -1287,7 +1296,8 @@ class build_reentry_list:
                     elif self.ds_dw["DISCOSweb_Reentry_Class"].values[reentry_count] == "Payload":
                         reentry_category = "P" 
                     else:
-                        print("Unexpected re-entry stage.") 
+                        pass
+                        #print("Unexpected re-entry stage.") 
                     datestr = int(self.ds_dw["DISCOSweb_Reentry_Epoch"].values[reentry_count].item()[:10].replace("-",""))
                     time_utc = -1
                     
@@ -1295,6 +1305,8 @@ class build_reentry_list:
                         inc = 45.01
                     elif discosweb_id == "2020-022A":
                         inc = 26.50
+                    elif discosweb_id == "2019-069B":
+                        inc = 87.89
                     else: 
                         inc = 0
                         print(f"Added object not expected ({self.ds_dw['DISCOSweb_Reentry_ID'].values[reentry_count]}).")
@@ -1338,19 +1350,6 @@ class build_reentry_list:
         
         """Add any missing stages for launches in the year.
         """        
-        
-        # Check for boosters and rename the category to B1-B4.
-        booster_id_list = []
-        for reentry in self.unique_reentry_list:
-            if reentry["category"] == "S0":
-                booster_id_list.append(reentry["id"])
-        booster_id_list = sorted(list(set(booster_id_list)))
-        for booster_id in booster_id_list:
-            count = 1
-            for reentry in self.unique_reentry_list:
-                if reentry["id"] == booster_id and reentry["category"] == "S0":
-                    reentry["category"] = "B" + str(count)
-                    count += 1
                     
         stage_alt_dict = {}
         stage_alt_rockets = np.genfromtxt("./input_files/launch_event_altitudes.csv",dtype=str,skip_header=1,usecols=[0],delimiter=",")
@@ -1560,8 +1559,7 @@ class build_reentry_list:
                 self.fairings = fairings
         else:
             self.fairings = []
-       
-                             
+                         
     def get_reentry_info(self):
 
         """This is the main function of this class, and loops over all the key databases (GCAT, AC, DW).
@@ -1626,10 +1624,23 @@ class build_reentry_list:
         duplicate_jcat_list = sorted(list(set(duplicate_jcat_list)))
         if len(duplicate_jcat_list) > 0:
             print(f"Duplicates: {duplicate_jcat_list}")
+
+        # Check for boosters and rename the category to B1-B4.
+        booster_id_list = []
+        for reentry in self.unique_reentry_list:
+            if reentry["category"] == "S0":
+                booster_id_list.append(reentry["id"])
+        booster_id_list = sorted(list(set(booster_id_list)))
+        for booster_id in booster_id_list:
+            count = 1
+            for reentry in self.unique_reentry_list:
+                if reentry["id"] == booster_id and reentry["category"] == "S0":
+                    reentry["category"] = "B" + str(count)
+                    count += 1
         
         #Add missing stages and check the Aerospace Corp and DISCOSweb databases.
-        #print("Looking for missing rocket stages.")
-        #self.add_missing_stages()
+        print("Looking for missing rocket stages.")
+        self.add_missing_stages()
         print("Searching for Aerospace Corp re-entries.")
         self.extract_aerospace_info("./databases/reentry/AerospaceCorp/AerospaceCorp_Reentries_07-07-25.csv")
         print("Searching for DISCOSweb re-entries.")
@@ -1716,7 +1727,6 @@ class build_reentry_list:
                 #print(f"No fairings found for {self.dsl['COSPAR_ID'].values[i]}")
             fairing_count_list.append(fairing_count)
             
-            
         #################################################
         ## Update mass info using rocket_info databases. 
         ################################################# 
@@ -1765,6 +1775,8 @@ class build_reentry_list:
                     if reentry["id"][:8] == launch_id:
                         if reentry["datestr"] == self.dsl["Date"].values[count]:
                             reentry["time"] = self.dsl["Time(UTC)"].values[count]
+                            if np.isnan(reentry["abl_mass"]) or np.isnan(reentry["other_mass"]):
+                                print(reentry["id"],reentry["abl_mass"],reentry["other_mass"])
                             time_update_mass_1 += (reentry["abl_mass"] +reentry["other_mass"])
                             time_update_count_1 += 1
                         else:    
@@ -1777,9 +1789,9 @@ class build_reentry_list:
                 time_update_mass_2 += (reentry["abl_mass"] +reentry["other_mass"])
                 time_update_count_2 += 1
     
-            print(f"Time set to launch:   {int(time_update_mass_1)},{int(time_update_count_1)}")
-            print(f"Time set to midnight: {int(time_update_mass_2)},{int(time_update_count_2)}")
-            print(f"Time missing:         {missing_time_count}")
+        print(f"Time set to launch:   {int(time_update_mass_1)},{int(time_update_count_1)}")
+        print(f"Time set to midnight: {int(time_update_mass_2)},{int(time_update_count_2)}")
+        print(f"Time missing:         {missing_time_count}")
 
         self.dsl.close()
         self.dsr.close()
@@ -1861,8 +1873,8 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument('-sv', "--save_reentry_info", action='store_true', help='Save reentry info.')
     parser.add_argument('-usegpd', "--use_geopandas", action='store_true', help='Load in geopandas dataframes.')
-    parser.add_argument('-sy', "--start_year", default = "2025", choices=str(np.arange(1957,2025)), help='Start Year.')
-    parser.add_argument('-fy', "--final_year", default = "2025", choices=str(np.arange(1957,2025)), help='Final Year.')
+    parser.add_argument('-sy', "--start_year", default = "2023", choices=str(np.arange(1957,2025)), help='Start Year.')
+    parser.add_argument('-fy', "--final_year", default = "2024", choices=str(np.arange(1957,2025)), help='Final Year.')
     args = parser.parse_args()
     use_gpd = args.use_geopandas
     

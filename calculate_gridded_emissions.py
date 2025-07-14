@@ -359,7 +359,7 @@ class OutputEmis:
                 if len(events_data[date][value]) > 0:
                     for event in events_data[date][value]:
                         for key in event:
-                            if type(event[key]) not in [str, np.float64, bool, int, np.str_]:
+                            if type(event[key]) not in [str, np.float64, bool, int, np.str_, float]:
                                 if type(event[key]) == dict:
                                     for species in event[key]:
                                         if type(event[key][species]) not in [np.float64, float]:
@@ -1292,6 +1292,7 @@ if __name__ == "__main__":
     
     #Loop over all years and run functions depending on input arguments.
     for year in year_range:
+        print(f"Processing year {year}.")
         # Go through process of gridding and saving rocket emissions:
         emis_data = OutputEmis(rocket_data, 
                             grid_res, 
