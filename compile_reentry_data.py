@@ -1658,9 +1658,21 @@ class build_reentry_list:
         for i in range(len(self.dsl["COSPAR_ID"])): 
             smc_dict[self.dsl["COSPAR_ID"].values[i]] = self.dsl["Megaconstellation_Flag"].values[i]
             
+        if self.start_year == 2023:
+            print("Adding extra SMC")
+            self.dsl2 = xr.open_dataset(f"./databases/launch_activity_data_2020-2022.nc", decode_times=False)
+            for i in range(len(self.dsl2["COSPAR_ID"])): 
+                smc_dict[self.dsl2["COSPAR_ID"].values[i]] = self.dsl2["Megaconstellation_Flag"].values[i]
+            self.dsl2.close()
+            
         for reentry in self.unique_reentry_list:
             try:
                 reentry["smc"] = smc_dict[reentry["id"][:8]]
+                if reentry["category"] == "P":
+                    reentry["smc"] = False
+                    if any(x.lower() in reentry["name"].lower() for x in ["Starlink", "OneWeb", "Yinhe", "Lingxi", "E-Space", "Lynk", "Kuiper"]):
+                        reentry["smc"] = True
+                    # TODO: Need to add Tranche, Ronghe, Digui, Hulianwang, Qianfan eventually.
             except:
                 if reentry["id"][:8] in ["2018-020","2019-029","2019-074"]:
                     reentry["smc"] = True

@@ -5,7 +5,29 @@
     },
     "2023-01-02": {
         "launches": [],
-        "reentries": []
+        "reentries": [
+            {
+                "date": "2023-01-02",
+                "id": "2022-175BK",
+                "time": 0.0,
+                "reusability": "",
+                "name": "Starlink deployment rail",
+                "category": "C",
+                "lat": -14.59,
+                "lon": -111.31,
+                "smc": true,
+                "location": 6,
+                "burnup": "Complete",
+                "emissions": {
+                    "NOx": 0.02,
+                    "Al2O3": 0.02,
+                    "BC": 0.00205,
+                    "HCl": 0.0004000000000000001,
+                    "Cl": 0.0007499999999999999,
+                    "Unablated_Mass": 0.0
+                }
+            }
+        ]
     },
     "2023-01-03": {
         "launches": [
@@ -31,6 +53,69 @@
             }
         ],
         "reentries": [
+            {
+                "date": "2023-01-03",
+                "id": "2022-175BG",
+                "time": 0.0,
+                "reusability": "",
+                "name": "Starlink deployment rail",
+                "category": "C",
+                "lat": -3.26,
+                "lon": 177.99,
+                "smc": true,
+                "location": 6,
+                "burnup": "Complete",
+                "emissions": {
+                    "NOx": 0.02,
+                    "Al2O3": 0.02,
+                    "BC": 0.00205,
+                    "HCl": 0.0004000000000000001,
+                    "Cl": 0.0007499999999999999,
+                    "Unablated_Mass": 0.0
+                }
+            },
+            {
+                "date": "2023-01-03",
+                "id": "2022-175BH",
+                "time": 0.0,
+                "reusability": "",
+                "name": "Starlink deployment rail",
+                "category": "C",
+                "lat": 26.07,
+                "lon": -165.66,
+                "smc": true,
+                "location": 6,
+                "burnup": "Complete",
+                "emissions": {
+                    "NOx": 0.02,
+                    "Al2O3": 0.02,
+                    "BC": 0.00205,
+                    "HCl": 0.0004000000000000001,
+                    "Cl": 0.0007499999999999999,
+                    "Unablated_Mass": 0.0
+                }
+            },
+            {
+                "date": "2023-01-03",
+                "id": "2022-175BJ",
+                "time": 0.0,
+                "reusability": "",
+                "name": "Starlink deployment rail",
+                "category": "C",
+                "lat": -38.61,
+                "lon": 89.33,
+                "smc": true,
+                "location": 6,
+                "burnup": "Complete",
+                "emissions": {
+                    "NOx": 0.02,
+                    "Al2O3": 0.02,
+                    "BC": 0.00205,
+                    "HCl": 0.0004000000000000001,
+                    "Cl": 0.0007499999999999999,
+                    "Unablated_Mass": 0.0
+                }
+            },
             {
                 "date": "2023-01-03",
                 "id": "2023-001",
@@ -131,11 +216,97 @@
     },
     "2023-01-07": {
         "launches": [],
-        "reentries": []
+        "reentries": [
+            {
+                "date": "2023-01-07",
+                "id": "2022-177BH",
+                "time": 0.0,
+                "reusability": "",
+                "name": "Starlink deployment rail",
+                "category": "C",
+                "lat": 25.97,
+                "lon": -160.06,
+                "smc": true,
+                "location": 6,
+                "burnup": "Complete",
+                "emissions": {
+                    "NOx": 0.02,
+                    "Al2O3": 0.02,
+                    "BC": 0.00205,
+                    "HCl": 0.0004000000000000001,
+                    "Cl": 0.0007499999999999999,
+                    "Unablated_Mass": 0.0
+                }
+            },
+            {
+                "date": "2023-01-07",
+                "id": "2022-177BJ",
+                "time": 0.0,
+                "reusability": "",
+                "name": "Starlink deployment rail",
+                "category": "C",
+                "lat": 32.79,
+                "lon": -156.12,
+                "smc": true,
+                "location": 6,
+                "burnup": "Complete",
+                "emissions": {
+                    "NOx": 0.02,
+                    "Al2O3": 0.02,
+                    "BC": 0.00205,
+                    "HCl": 0.0004000000000000001,
+                    "Cl": 0.0007499999999999999,
+                    "Unablated_Mass": 0.0
+                }
+            },
+            {
+                "date": "2023-01-07",
+                "id": "2022-177BK",
+                "time": 0.0,
+                "reusability": "",
+                "name": "Starlink deployment rail",
+                "category": "C",
+                "lat": 20.86,
+                "lon": 147.14,
+                "smc": true,
+                "location": 6,
+                "burnup": "Complete",
+                "emissions": {
+                    "NOx": 0.02,
+                    "Al2O3": 0.02,
+                    "BC": 0.00205,
+                    "HCl": 0.0004000000000000001,
+                    "Cl": 0.0007499999999999999,
+                    "Unablated_Mass": 0.0
+                }
+            }
+        ]
     },
     "2023-01-08": {
         "launches": [],
-        "reentries": []
+        "reentries": [
+            {
+                "date": "2023-01-08",
+                "id": "2022-177BG",
+                "time": 0.0,
+                "reusability": "",
+                "name": "Starlink deployment rail",
+                "category": "C",
+                "lat": 10.99,
+                "lon": -90.47,
+                "smc": true,
+                "location": 6,
+                "burnup": "Complete",
+                "emissions": {
+                    "NOx": 0.02,
+                    "Al2O3": 0.02,
+                    "BC": 0.00205,
+                    "HCl": 0.0004000000000000001,
+                    "Cl": 0.0007499999999999999,
+                    "Unablated_Mass": 0.0
+                }
+            }
+        ]
     },
     "2023-01-09": {
         "launches": [],
@@ -595,8 +766,8 @@
                 "reusability": "",
                 "name": "Starlink deployment rail",
                 "category": "C",
-                "lat": -59.74,
-                "lon": 117.72,
+                "lat": 40.11,
+                "lon": -141.86,
                 "smc": true,
                 "location": 6,
                 "burnup": "Complete",
@@ -616,8 +787,8 @@
                 "reusability": "",
                 "name": "Starlink deployment rail",
                 "category": "C",
-                "lat": -49.77,
-                "lon": 9.76,
+                "lat": 25.42,
+                "lon": -111.54,
                 "smc": true,
                 "location": 6,
                 "burnup": "Complete",
@@ -637,8 +808,8 @@
                 "reusability": "",
                 "name": "Starlink deployment rail",
                 "category": "C",
-                "lat": 57.17,
-                "lon": 150.25,
+                "lat": -44.03,
+                "lon": -13.42,
                 "smc": true,
                 "location": 6,
                 "burnup": "Complete",
@@ -658,8 +829,8 @@
                 "reusability": "",
                 "name": "Starlink deployment rail",
                 "category": "C",
-                "lat": 3.54,
-                "lon": -113.42,
+                "lat": 33.79,
+                "lon": -65.38,
                 "smc": true,
                 "location": 6,
                 "burnup": "Complete",
@@ -878,11 +1049,55 @@
     },
     "2023-02-04": {
         "launches": [],
-        "reentries": []
+        "reentries": [
+            {
+                "date": "2023-02-04",
+                "id": "2020-074AA",
+                "time": 11.816666666666666,
+                "reusability": "",
+                "name": "Starlink 1902",
+                "category": "P",
+                "lat": 37.0,
+                "lon": 65.0,
+                "smc": true,
+                "location": 1,
+                "burnup": "Complete",
+                "emissions": {
+                    "NOx": 0.09919999999999998,
+                    "Al2O3": 0.09919999999999998,
+                    "BC": 0.010168000000000002,
+                    "HCl": 0.001984,
+                    "Cl": 0.00372,
+                    "Unablated_Mass": 0.0
+                }
+            }
+        ]
     },
     "2023-02-05": {
         "launches": [],
-        "reentries": []
+        "reentries": [
+            {
+                "date": "2023-02-05",
+                "id": "2020-074AP",
+                "time": 1.4333333333333333,
+                "reusability": "",
+                "name": "Starlink 1946",
+                "category": "P",
+                "lat": 42.0,
+                "lon": -143.0,
+                "smc": true,
+                "location": 1,
+                "burnup": "Complete",
+                "emissions": {
+                    "NOx": 0.09919999999999998,
+                    "Al2O3": 0.09919999999999998,
+                    "BC": 0.010168000000000002,
+                    "HCl": 0.001984,
+                    "Cl": 0.00372,
+                    "Unablated_Mass": 0.0
+                }
+            }
+        ]
     },
     "2023-02-06": {
         "launches": [],
@@ -898,8 +1113,8 @@
                 "reusability": "",
                 "name": "Starlink deployment rail",
                 "category": "C",
-                "lat": -20.42,
-                "lon": 52.64,
+                "lat": 37.27,
+                "lon": -2.77,
                 "smc": true,
                 "location": 6,
                 "burnup": "Complete",
@@ -919,8 +1134,8 @@
                 "reusability": "",
                 "name": "Starlink deployment rail",
                 "category": "C",
-                "lat": 35.31,
-                "lon": -8.54,
+                "lat": -11.18,
+                "lon": 82.69,
                 "smc": true,
                 "location": 6,
                 "burnup": "Complete",
@@ -940,8 +1155,8 @@
                 "reusability": "",
                 "name": "Starlink deployment rail",
                 "category": "C",
-                "lat": 8.81,
-                "lon": 12.69,
+                "lat": -24.36,
+                "lon": 121.49,
                 "smc": true,
                 "location": 6,
                 "burnup": "Complete",
@@ -961,8 +1176,8 @@
                 "reusability": "",
                 "name": "Starlink deployment rail",
                 "category": "C",
-                "lat": -2.33,
-                "lon": 32.52,
+                "lat": -5.3,
+                "lon": -145.37,
                 "smc": true,
                 "location": 6,
                 "burnup": "Complete",
@@ -1287,7 +1502,29 @@
     },
     "2023-02-21": {
         "launches": [],
-        "reentries": []
+        "reentries": [
+            {
+                "date": "2023-02-21",
+                "id": "2020-025G",
+                "time": 10.45,
+                "reusability": "",
+                "name": "Starlink 1353",
+                "category": "P",
+                "lat": 41.0,
+                "lon": 147.0,
+                "smc": true,
+                "location": 1,
+                "burnup": "Complete",
+                "emissions": {
+                    "NOx": 0.09919999999999998,
+                    "Al2O3": 0.09919999999999998,
+                    "BC": 0.010168000000000002,
+                    "HCl": 0.001984,
+                    "Cl": 0.00372,
+                    "Unablated_Mass": 0.0
+                }
+            }
+        ]
     },
     "2023-02-22": {
         "launches": [],
@@ -1299,8 +1536,8 @@
                 "reusability": "",
                 "name": "Starlink deployment rail",
                 "category": "C",
-                "lat": -39.64,
-                "lon": -22.83,
+                "lat": -27.79,
+                "lon": 43.23,
                 "smc": true,
                 "location": 6,
                 "burnup": "Complete",
@@ -1329,8 +1566,8 @@
                 "reusability": "",
                 "name": "Starlink deployment rail",
                 "category": "C",
-                "lat": 28.97,
-                "lon": -178.48,
+                "lat": -45.28,
+                "lon": -64.36,
                 "smc": true,
                 "location": 6,
                 "burnup": "Complete",
@@ -1447,13 +1684,34 @@
         "reentries": [
             {
                 "date": "2023-02-28",
+                "id": "2020-088AW",
+                "time": 9.25,
+                "reusability": "",
+                "name": "Starlink 1881",
+                "category": "P",
+                "lat": 6.0,
+                "lon": -81.0,
+                "smc": true,
+                "location": 1,
+                "burnup": "Complete",
+                "emissions": {
+                    "NOx": 0.09919999999999998,
+                    "Al2O3": 0.09919999999999998,
+                    "BC": 0.010168000000000002,
+                    "HCl": 0.001984,
+                    "Cl": 0.00372,
+                    "Unablated_Mass": 0.0
+                }
+            },
+            {
+                "date": "2023-02-28",
                 "id": "2023-021BF",
                 "time": 0.0,
                 "reusability": "",
                 "name": "Starlink deployment rail",
                 "category": "C",
-                "lat": -22.69,
-                "lon": 147.39,
+                "lat": -25.98,
+                "lon": -159.9,
                 "smc": true,
                 "location": 6,
                 "burnup": "Complete",
@@ -1473,8 +1731,8 @@
                 "reusability": "",
                 "name": "Starlink deployment rail",
                 "category": "C",
-                "lat": -55.98,
-                "lon": 87.96,
+                "lat": 7.67,
+                "lon": 56.49,
                 "smc": true,
                 "location": 6,
                 "burnup": "Complete",
@@ -1645,13 +1903,34 @@
         "reentries": [
             {
                 "date": "2023-03-07",
+                "id": "2021-115BC",
+                "time": 0.0,
+                "reusability": "",
+                "name": "Starlink rideshare adapter",
+                "category": "C",
+                "lat": -22.97,
+                "lon": -144.94,
+                "smc": true,
+                "location": 6,
+                "burnup": "Complete",
+                "emissions": {
+                    "NOx": 0.002,
+                    "Al2O3": 0.002,
+                    "BC": 0.00020500000000000005,
+                    "HCl": 3.9999999999999996e-05,
+                    "Cl": 7.5e-05,
+                    "Unablated_Mass": 0.0
+                }
+            },
+            {
+                "date": "2023-03-07",
                 "id": "2023-021BD",
                 "time": 0.0,
                 "reusability": "",
                 "name": "Starlink deployment rail",
                 "category": "C",
-                "lat": 66.28,
-                "lon": 167.76,
+                "lat": -43.23,
+                "lon": -59.15,
                 "smc": true,
                 "location": 6,
                 "burnup": "Complete",
@@ -1671,8 +1950,8 @@
                 "reusability": "",
                 "name": "Starlink deployment rail",
                 "category": "C",
-                "lat": -22.92,
-                "lon": 53.22,
+                "lat": -64.34,
+                "lon": 97.78,
                 "smc": true,
                 "location": 6,
                 "burnup": "Complete",
@@ -1811,8 +2090,8 @@
                 "reusability": "",
                 "name": "Starlink 5723",
                 "category": "P",
-                "lat": -17.67,
-                "lon": 130.42,
+                "lat": -18.24,
+                "lon": 162.25,
                 "smc": true,
                 "location": 6,
                 "burnup": "Complete",
@@ -1832,13 +2111,34 @@
         "reentries": [
             {
                 "date": "2023-03-11",
+                "id": "2021-021AG",
+                "time": 18.0,
+                "reusability": "",
+                "name": "Starlink 2350",
+                "category": "P",
+                "lat": -8.04,
+                "lon": 2.84,
+                "smc": true,
+                "location": 6,
+                "burnup": "Complete",
+                "emissions": {
+                    "NOx": 0.09919999999999998,
+                    "Al2O3": 0.09919999999999998,
+                    "BC": 0.010168000000000002,
+                    "HCl": 0.001984,
+                    "Cl": 0.00372,
+                    "Unablated_Mass": 0.0
+                }
+            },
+            {
+                "date": "2023-03-11",
                 "id": "2023-028BF",
                 "time": 0.0,
                 "reusability": "",
                 "name": "Starlink deployment rail",
                 "category": "C",
-                "lat": 9.31,
-                "lon": -82.97,
+                "lat": -16.79,
+                "lon": 119.74,
                 "smc": true,
                 "location": 6,
                 "burnup": "Complete",
@@ -1870,13 +2170,34 @@
         "reentries": [
             {
                 "date": "2023-03-15",
+                "id": "2021-021N",
+                "time": 10.45,
+                "reusability": "",
+                "name": "Starlink 2328",
+                "category": "P",
+                "lat": -28.29,
+                "lon": -58.93,
+                "smc": true,
+                "location": 6,
+                "burnup": "Complete",
+                "emissions": {
+                    "NOx": 0.09919999999999998,
+                    "Al2O3": 0.09919999999999998,
+                    "BC": 0.010168000000000002,
+                    "HCl": 0.001984,
+                    "Cl": 0.00372,
+                    "Unablated_Mass": 0.0
+                }
+            },
+            {
+                "date": "2023-03-15",
                 "id": "2023-014BE",
                 "time": 0.0,
                 "reusability": "",
                 "name": "Starlink deployment rail",
                 "category": "C",
-                "lat": 18.04,
-                "lon": 126.34,
+                "lat": 35.81,
+                "lon": -63.12,
                 "smc": true,
                 "location": 6,
                 "burnup": "Complete",
@@ -1896,8 +2217,8 @@
                 "reusability": "",
                 "name": "Starlink deployment rail",
                 "category": "C",
-                "lat": 2.01,
-                "lon": -85.34,
+                "lat": -13.89,
+                "lon": 82.09,
                 "smc": true,
                 "location": 6,
                 "burnup": "Complete",
@@ -1917,8 +2238,8 @@
                 "reusability": "",
                 "name": "Starlink deployment rail",
                 "category": "C",
-                "lat": 42.58,
-                "lon": 56.89,
+                "lat": -27.91,
+                "lon": 170.08,
                 "smc": true,
                 "location": 6,
                 "burnup": "Complete",
@@ -1938,8 +2259,8 @@
                 "reusability": "",
                 "name": "Starlink deployment rail",
                 "category": "C",
-                "lat": 52.79,
-                "lon": 1.34,
+                "lat": 25.2,
+                "lon": -17.04,
                 "smc": true,
                 "location": 6,
                 "burnup": "Complete",
@@ -1959,8 +2280,8 @@
                 "reusability": "",
                 "name": "Starlink deployment rail",
                 "category": "C",
-                "lat": 20.22,
-                "lon": 25.22,
+                "lat": -52.71,
+                "lon": 125.5,
                 "smc": true,
                 "location": 6,
                 "burnup": "Complete",
@@ -1980,8 +2301,8 @@
                 "reusability": "",
                 "name": "Starlink deployment rail",
                 "category": "C",
-                "lat": 7.99,
-                "lon": -27.65,
+                "lat": -33.94,
+                "lon": 30.35,
                 "smc": true,
                 "location": 6,
                 "burnup": "Complete",
@@ -2006,8 +2327,8 @@
                 "reusability": "",
                 "name": "Starlink rideshare adapter",
                 "category": "C",
-                "lat": 28.92,
-                "lon": -155.1,
+                "lat": -48.83,
+                "lon": 11.83,
                 "smc": true,
                 "location": 6,
                 "burnup": "Complete",
@@ -2027,8 +2348,8 @@
                 "reusability": "",
                 "name": "Starlink deployment rail",
                 "category": "C",
-                "lat": -21.0,
-                "lon": 78.89,
+                "lat": -16.37,
+                "lon": -64.89,
                 "smc": true,
                 "location": 6,
                 "burnup": "Complete",
@@ -2048,8 +2369,8 @@
                 "reusability": "",
                 "name": "Starlink deployment rail",
                 "category": "C",
-                "lat": -16.41,
-                "lon": -171.54,
+                "lat": -8.2,
+                "lon": -150.88,
                 "smc": true,
                 "location": 6,
                 "burnup": "Complete",
@@ -2184,8 +2505,8 @@
                 "reusability": "",
                 "name": "Starlink deployment rail",
                 "category": "C",
-                "lat": -32.7,
-                "lon": -41.39,
+                "lat": 37.5,
+                "lon": 60.7,
                 "smc": true,
                 "location": 6,
                 "burnup": "Complete",
@@ -2205,8 +2526,8 @@
                 "reusability": "",
                 "name": "Starlink deployment rail",
                 "category": "C",
-                "lat": -24.69,
-                "lon": 101.34,
+                "lat": 38.76,
+                "lon": 20.69,
                 "smc": true,
                 "location": 6,
                 "burnup": "Complete",
@@ -2235,8 +2556,8 @@
                 "reusability": "",
                 "name": "Starlink deployment rail",
                 "category": "C",
-                "lat": 48.3,
-                "lon": -63.37,
+                "lat": 69.13,
+                "lon": -153.84,
                 "smc": true,
                 "location": 6,
                 "burnup": "Complete",
@@ -2256,8 +2577,8 @@
                 "reusability": "",
                 "name": "Starlink deployment rail",
                 "category": "C",
-                "lat": -17.91,
-                "lon": -71.16,
+                "lat": 23.06,
+                "lon": -110.17,
                 "smc": true,
                 "location": 6,
                 "burnup": "Complete",
@@ -2286,8 +2607,8 @@
                 "reusability": "",
                 "name": "Starlink deployment rail",
                 "category": "C",
-                "lat": 2.04,
-                "lon": -5.05,
+                "lat": 18.92,
+                "lon": 27.95,
                 "smc": true,
                 "location": 6,
                 "burnup": "Complete",
@@ -2312,8 +2633,8 @@
                 "reusability": "",
                 "name": "Starlink 5083",
                 "category": "P",
-                "lat": -35.76,
-                "lon": -62.28,
+                "lat": 22.04,
+                "lon": 59.79,
                 "smc": true,
                 "location": 6,
                 "burnup": "Complete",
@@ -2354,13 +2675,55 @@
         "reentries": [
             {
                 "date": "2023-03-24",
+                "id": "2020-070W",
+                "time": 14.083333333333334,
+                "reusability": "",
+                "name": "Starlink 1649",
+                "category": "P",
+                "lat": -28.81,
+                "lon": -10.86,
+                "smc": true,
+                "location": 6,
+                "burnup": "Complete",
+                "emissions": {
+                    "NOx": 0.09919999999999998,
+                    "Al2O3": 0.09919999999999998,
+                    "BC": 0.010168000000000002,
+                    "HCl": 0.001984,
+                    "Cl": 0.00372,
+                    "Unablated_Mass": 0.0
+                }
+            },
+            {
+                "date": "2023-03-24",
+                "id": "2021-115BG",
+                "time": 0.0,
+                "reusability": "",
+                "name": "Starlink deployment rail",
+                "category": "C",
+                "lat": -30.71,
+                "lon": 57.8,
+                "smc": true,
+                "location": 6,
+                "burnup": "Complete",
+                "emissions": {
+                    "NOx": 0.04,
+                    "Al2O3": 0.04,
+                    "BC": 0.0041,
+                    "HCl": 0.0008000000000000001,
+                    "Cl": 0.0014999999999999998,
+                    "Unablated_Mass": 0.0
+                }
+            },
+            {
+                "date": "2023-03-24",
                 "id": "2023-014BB",
                 "time": 0.0,
                 "reusability": "",
                 "name": "Starlink deployment rail",
                 "category": "C",
-                "lat": 21.51,
-                "lon": -71.82,
+                "lat": 32.4,
+                "lon": -0.43,
                 "smc": true,
                 "location": 6,
                 "burnup": "Complete",
@@ -2380,8 +2743,8 @@
                 "reusability": "",
                 "name": "Starlink deployment rail",
                 "category": "C",
-                "lat": -11.43,
-                "lon": 140.65,
+                "lat": 56.38,
+                "lon": -100.63,
                 "smc": true,
                 "location": 6,
                 "burnup": "Complete",
@@ -2557,8 +2920,8 @@
                 "reusability": "",
                 "name": "GSLV-3 Stage 1",
                 "category": "S1",
-                "lat": -27.97,
-                "lon": -132.08,
+                "lat": 16.45,
+                "lon": 91.04,
                 "smc": true,
                 "location": 6,
                 "burnup": "Complete",
@@ -2578,8 +2941,8 @@
                 "reusability": "",
                 "name": "GSLV-3 Fairing",
                 "category": "C",
-                "lat": -6.39,
-                "lon": -43.83,
+                "lat": 12.66,
+                "lon": 161.27,
                 "smc": true,
                 "location": 6,
                 "burnup": "Complete",
@@ -2599,8 +2962,8 @@
                 "reusability": "",
                 "name": "GSLV-3 Fairing",
                 "category": "C",
-                "lat": -6.39,
-                "lon": -43.83,
+                "lat": 12.66,
+                "lon": 161.27,
                 "smc": true,
                 "location": 6,
                 "burnup": "Complete",
@@ -2629,8 +2992,8 @@
                 "reusability": "",
                 "name": "Starlink deployment rail",
                 "category": "C",
-                "lat": 39.74,
-                "lon": -44.18,
+                "lat": 59.58,
+                "lon": 132.06,
                 "smc": true,
                 "location": 6,
                 "burnup": "Complete",
@@ -2650,8 +3013,8 @@
                 "reusability": "",
                 "name": "Starlink deployment rail",
                 "category": "C",
-                "lat": -17.35,
-                "lon": 47.27,
+                "lat": -64.76,
+                "lon": -151.24,
                 "smc": true,
                 "location": 6,
                 "burnup": "Complete",
@@ -2697,8 +3060,8 @@
                 "reusability": "",
                 "name": "Starlink deployment rail",
                 "category": "C",
-                "lat": -19.8,
-                "lon": 2.63,
+                "lat": 64.93,
+                "lon": -17.18,
                 "smc": true,
                 "location": 6,
                 "burnup": "Complete",
@@ -2718,8 +3081,8 @@
                 "reusability": "",
                 "name": "Starlink deployment rail",
                 "category": "C",
-                "lat": 11.24,
-                "lon": 117.17,
+                "lat": -8.95,
+                "lon": -41.61,
                 "smc": true,
                 "location": 6,
                 "burnup": "Complete",
@@ -2976,8 +3339,8 @@
                 "reusability": "",
                 "name": "Starlink deployment rail",
                 "category": "C",
-                "lat": 36.92,
-                "lon": 48.58,
+                "lat": 5.23,
+                "lon": -53.5,
                 "smc": true,
                 "location": 6,
                 "burnup": "Complete",
@@ -2997,8 +3360,8 @@
                 "reusability": "",
                 "name": "Starlink deployment rail",
                 "category": "C",
-                "lat": 9.33,
-                "lon": 50.15,
+                "lat": -10.45,
+                "lon": 33.41,
                 "smc": true,
                 "location": 6,
                 "burnup": "Complete",
@@ -3010,6 +3373,27 @@
                     "Cl": 0.0014999999999999998,
                     "Unablated_Mass": 0.0
                 }
+            },
+            {
+                "date": "2023-04-04",
+                "id": "2020-001BB",
+                "time": 0.2,
+                "reusability": "",
+                "name": "Starlink 1085",
+                "category": "P",
+                "lat": 22.0,
+                "lon": -21.0,
+                "smc": true,
+                "location": 1,
+                "burnup": "Complete",
+                "emissions": {
+                    "NOx": 0.09919999999999998,
+                    "Al2O3": 0.09919999999999998,
+                    "BC": 0.010168000000000002,
+                    "HCl": 0.001984,
+                    "Cl": 0.00372,
+                    "Unablated_Mass": 0.0
+                }
             }
         ]
     },
@@ -3019,11 +3403,55 @@
     },
     "2023-04-06": {
         "launches": [],
-        "reentries": []
+        "reentries": [
+            {
+                "date": "2023-04-06",
+                "id": "2022-136G",
+                "time": 10.033333333333333,
+                "reusability": "",
+                "name": "Starlink 5216",
+                "category": "P",
+                "lat": 47.0,
+                "lon": 103.0,
+                "smc": true,
+                "location": 1,
+                "burnup": "Complete",
+                "emissions": {
+                    "NOx": 0.11599999999999999,
+                    "Al2O3": 0.11599999999999999,
+                    "BC": 0.01189,
+                    "HCl": 0.0023199999999999996,
+                    "Cl": 0.00435,
+                    "Unablated_Mass": 0.0
+                }
+            }
+        ]
     },
     "2023-04-07": {
         "launches": [],
-        "reentries": []
+        "reentries": [
+            {
+                "date": "2023-04-07",
+                "id": "2021-024AM",
+                "time": 19.0,
+                "reusability": "",
+                "name": "Starlink 2216",
+                "category": "P",
+                "lat": -50.33,
+                "lon": 114.08,
+                "smc": true,
+                "location": 6,
+                "burnup": "Complete",
+                "emissions": {
+                    "NOx": 0.09919999999999998,
+                    "Al2O3": 0.09919999999999998,
+                    "BC": 0.010168000000000002,
+                    "HCl": 0.001984,
+                    "Cl": 0.00372,
+                    "Unablated_Mass": 0.0
+                }
+            }
+        ]
     },
     "2023-04-08": {
         "launches": [],
@@ -3077,7 +3505,29 @@
     },
     "2023-04-15": {
         "launches": [],
-        "reentries": []
+        "reentries": [
+            {
+                "date": "2023-04-15",
+                "id": "2020-074D",
+                "time": 4.416666666666667,
+                "reusability": "",
+                "name": "Starlink 1872",
+                "category": "P",
+                "lat": 48.0,
+                "lon": 102.0,
+                "smc": true,
+                "location": 1,
+                "burnup": "Complete",
+                "emissions": {
+                    "NOx": 0.09919999999999998,
+                    "Al2O3": 0.09919999999999998,
+                    "BC": 0.010168000000000002,
+                    "HCl": 0.001984,
+                    "Cl": 0.00372,
+                    "Unablated_Mass": 0.0
+                }
+            }
+        ]
     },
     "2023-04-16": {
         "launches": [],
@@ -3139,22 +3589,22 @@
         "reentries": [
             {
                 "date": "2023-04-19",
-                "id": "2023-001DB",
+                "id": "2021-115BF",
                 "time": 0.0,
                 "reusability": "",
-                "name": "FUTURA-SM3",
-                "category": "P",
-                "lat": 0.89,
-                "lon": 134.63,
+                "name": "Starlink deployment rail",
+                "category": "C",
+                "lat": 27.92,
+                "lon": 177.75,
                 "smc": true,
                 "location": 6,
                 "burnup": "Complete",
                 "emissions": {
-                    "NOx": 0.004,
-                    "Al2O3": 0.004,
-                    "BC": 0.0004100000000000001,
-                    "HCl": 7.999999999999999e-05,
-                    "Cl": 0.00015,
+                    "NOx": 0.04,
+                    "Al2O3": 0.04,
+                    "BC": 0.0041,
+                    "HCl": 0.0008000000000000001,
+                    "Cl": 0.0014999999999999998,
                     "Unablated_Mass": 0.0
                 }
             },
@@ -3267,12 +3717,76 @@
                     "Cl": 0.00372,
                     "Unablated_Mass": 0.0
                 }
+            },
+            {
+                "date": "2023-04-20",
+                "id": "2020-012AA",
+                "time": 7.266666666666667,
+                "reusability": "",
+                "name": "Starlink 1203",
+                "category": "P",
+                "lat": 27.0,
+                "lon": -128.0,
+                "smc": true,
+                "location": 1,
+                "burnup": "Complete",
+                "emissions": {
+                    "NOx": 0.09919999999999998,
+                    "Al2O3": 0.09919999999999998,
+                    "BC": 0.010168000000000002,
+                    "HCl": 0.001984,
+                    "Cl": 0.00372,
+                    "Unablated_Mass": 0.0
+                }
+            },
+            {
+                "date": "2023-04-20",
+                "id": "2021-115BE",
+                "time": 0.0,
+                "reusability": "",
+                "name": "Starlink deployment rail",
+                "category": "C",
+                "lat": 34.55,
+                "lon": -19.47,
+                "smc": true,
+                "location": 6,
+                "burnup": "Complete",
+                "emissions": {
+                    "NOx": 0.04,
+                    "Al2O3": 0.04,
+                    "BC": 0.0041,
+                    "HCl": 0.0008000000000000001,
+                    "Cl": 0.0014999999999999998,
+                    "Unablated_Mass": 0.0
+                }
             }
         ]
     },
     "2023-04-21": {
         "launches": [],
-        "reentries": []
+        "reentries": [
+            {
+                "date": "2023-04-21",
+                "id": "2022-025M",
+                "time": 14.666666666666666,
+                "reusability": "",
+                "name": "Starlink 3695",
+                "category": "P",
+                "lat": 36.0,
+                "lon": 35.0,
+                "smc": true,
+                "location": 1,
+                "burnup": "Complete",
+                "emissions": {
+                    "NOx": 0.11,
+                    "Al2O3": 0.11,
+                    "BC": 0.011275,
+                    "HCl": 0.0022,
+                    "Cl": 0.004125,
+                    "Unablated_Mass": 0.0
+                }
+            }
+        ]
     },
     "2023-04-22": {
         "launches": [],
@@ -3296,8 +3810,8 @@
                 "reusability": "",
                 "name": "Starlink deployment rail",
                 "category": "C",
-                "lat": -5.06,
-                "lon": 138.44,
+                "lat": 7.17,
+                "lon": -5.17,
                 "smc": true,
                 "location": 6,
                 "burnup": "Complete",
@@ -3322,8 +3836,8 @@
                 "reusability": "",
                 "name": "Starlink deployment rail",
                 "category": "C",
-                "lat": -26.59,
-                "lon": -136.11,
+                "lat": 17.15,
+                "lon": -176.26,
                 "smc": true,
                 "location": 6,
                 "burnup": "Complete",
@@ -3362,6 +3876,27 @@
             }
         ],
         "reentries": [
+            {
+                "date": "2023-04-27",
+                "id": "2020-006C",
+                "time": 3.85,
+                "reusability": "",
+                "name": "Starlink 1129",
+                "category": "P",
+                "lat": 51.0,
+                "lon": 39.0,
+                "smc": true,
+                "location": 1,
+                "burnup": "Complete",
+                "emissions": {
+                    "NOx": 0.09919999999999998,
+                    "Al2O3": 0.09919999999999998,
+                    "BC": 0.010168000000000002,
+                    "HCl": 0.001984,
+                    "Cl": 0.00372,
+                    "Unablated_Mass": 0.0
+                }
+            },
             {
                 "date": "2023-04-27",
                 "id": "2023-058",
@@ -3462,8 +3997,8 @@
                 "reusability": "",
                 "name": "Starlink deployment rail",
                 "category": "C",
-                "lat": 13.97,
-                "lon": 95.65,
+                "lat": 34.95,
+                "lon": 135.23,
                 "smc": true,
                 "location": 6,
                 "burnup": "Complete",
@@ -3483,8 +4018,8 @@
                 "reusability": "",
                 "name": "Starlink deployment rail",
                 "category": "C",
-                "lat": -37.47,
-                "lon": 81.8,
+                "lat": 18.36,
+                "lon": -86.55,
                 "smc": true,
                 "location": 6,
                 "burnup": "Complete",
@@ -3517,8 +4052,8 @@
                 "reusability": "",
                 "name": "Starlink deployment rail",
                 "category": "C",
-                "lat": 24.07,
-                "lon": 34.12,
+                "lat": -27.45,
+                "lon": -58.93,
                 "smc": true,
                 "location": 6,
                 "burnup": "Complete",
@@ -3538,8 +4073,8 @@
                 "reusability": "",
                 "name": "Starlink deployment rail",
                 "category": "C",
-                "lat": 4.35,
-                "lon": -63.8,
+                "lat": 35.92,
+                "lon": 91.51,
                 "smc": true,
                 "location": 6,
                 "burnup": "Complete",
@@ -3559,8 +4094,8 @@
                 "reusability": "",
                 "name": "Starlink deployment rail",
                 "category": "C",
-                "lat": -16.05,
-                "lon": -37.39,
+                "lat": 33.21,
+                "lon": -40.23,
                 "smc": true,
                 "location": 6,
                 "burnup": "Complete",
@@ -3577,7 +4112,29 @@
     },
     "2023-05-03": {
         "launches": [],
-        "reentries": []
+        "reentries": [
+            {
+                "date": "2023-05-03",
+                "id": "2020-088J",
+                "time": 9.0,
+                "reusability": "",
+                "name": "Starlink 1839",
+                "category": "P",
+                "lat": -30.34,
+                "lon": 104.82,
+                "smc": true,
+                "location": 6,
+                "burnup": "Complete",
+                "emissions": {
+                    "NOx": 0.09919999999999998,
+                    "Al2O3": 0.09919999999999998,
+                    "BC": 0.010168000000000002,
+                    "HCl": 0.001984,
+                    "Cl": 0.00372,
+                    "Unablated_Mass": 0.0
+                }
+            }
+        ]
     },
     "2023-05-04": {
         "launches": [
@@ -3605,34 +4162,13 @@
         "reentries": [
             {
                 "date": "2023-05-04",
-                "id": "2023-001DA",
-                "time": 0.0,
-                "reusability": "",
-                "name": "FUTURA-SM1",
-                "category": "P",
-                "lat": 79.16,
-                "lon": 36.42,
-                "smc": true,
-                "location": 6,
-                "burnup": "Complete",
-                "emissions": {
-                    "NOx": 0.0016000000000000003,
-                    "Al2O3": 0.0016000000000000003,
-                    "BC": 0.00016400000000000003,
-                    "HCl": 3.2e-05,
-                    "Cl": 5.9999999999999995e-05,
-                    "Unablated_Mass": 0.0
-                }
-            },
-            {
-                "date": "2023-05-04",
                 "id": "2023-046BJ",
                 "time": 0.0,
                 "reusability": "",
                 "name": "Starlink deployment rail",
                 "category": "C",
-                "lat": -27.5,
-                "lon": -165.76,
+                "lat": -4.34,
+                "lon": 12.18,
                 "smc": true,
                 "location": 6,
                 "burnup": "Complete",
@@ -3757,8 +4293,8 @@
                 "reusability": "",
                 "name": "Starlink 30096",
                 "category": "P",
-                "lat": 28.86,
-                "lon": 23.95,
+                "lat": 5.92,
+                "lon": -47.09,
                 "smc": true,
                 "location": 6,
                 "burnup": "Complete",
@@ -3918,8 +4454,8 @@
                 "reusability": "",
                 "name": "Starlink 30038",
                 "category": "P",
-                "lat": -3.31,
-                "lon": 178.69,
+                "lat": 19.04,
+                "lon": 163.69,
                 "smc": true,
                 "location": 6,
                 "burnup": "Complete",
@@ -4062,7 +4598,29 @@
     },
     "2023-05-18": {
         "launches": [],
-        "reentries": []
+        "reentries": [
+            {
+                "date": "2023-05-18",
+                "id": "2020-006AU",
+                "time": 22.0,
+                "reusability": "",
+                "name": "Starlink 1181",
+                "category": "P",
+                "lat": 8.71,
+                "lon": 61.91,
+                "smc": true,
+                "location": 6,
+                "burnup": "Complete",
+                "emissions": {
+                    "NOx": 0.09919999999999998,
+                    "Al2O3": 0.09919999999999998,
+                    "BC": 0.010168000000000002,
+                    "HCl": 0.001984,
+                    "Cl": 0.00372,
+                    "Unablated_Mass": 0.0
+                }
+            }
+        ]
     },
     "2023-05-19": {
         "launches": [
@@ -4286,7 +4844,29 @@
     },
     "2023-05-21": {
         "launches": [],
-        "reentries": []
+        "reentries": [
+            {
+                "date": "2023-05-21",
+                "id": "2022-017BB",
+                "time": 4.316666666666666,
+                "reusability": "",
+                "name": "Starlink 3596",
+                "category": "P",
+                "lat": 1.0,
+                "lon": -50.0,
+                "smc": true,
+                "location": 1,
+                "burnup": "Complete",
+                "emissions": {
+                    "NOx": 0.11,
+                    "Al2O3": 0.11,
+                    "BC": 0.011275,
+                    "HCl": 0.0022,
+                    "Cl": 0.004125,
+                    "Unablated_Mass": 0.0
+                }
+            }
+        ]
     },
     "2023-05-22": {
         "launches": [],
@@ -4302,8 +4882,8 @@
                 "reusability": "",
                 "name": "Starlink deployment rail",
                 "category": "C",
-                "lat": -66.16,
-                "lon": 130.41,
+                "lat": 50.82,
+                "lon": 126.39,
                 "smc": true,
                 "location": 6,
                 "burnup": "Complete",
@@ -4332,8 +4912,8 @@
                 "reusability": "",
                 "name": "Starlink deployment rail",
                 "category": "C",
-                "lat": -26.53,
-                "lon": 73.28,
+                "lat": -0.77,
+                "lon": -159.85,
                 "smc": true,
                 "location": 6,
                 "burnup": "Complete",
@@ -4353,8 +4933,8 @@
                 "reusability": "",
                 "name": "Starlink deployment rail",
                 "category": "C",
-                "lat": -35.54,
-                "lon": -152.0,
+                "lat": 45.75,
+                "lon": -142.33,
                 "smc": true,
                 "location": 6,
                 "burnup": "Complete",
@@ -4374,8 +4954,8 @@
                 "reusability": "",
                 "name": "Starlink deployment rail",
                 "category": "C",
-                "lat": -58.38,
-                "lon": 116.34,
+                "lat": 68.18,
+                "lon": -50.24,
                 "smc": true,
                 "location": 6,
                 "burnup": "Complete",
@@ -4408,7 +4988,29 @@
     },
     "2023-05-30": {
         "launches": [],
-        "reentries": []
+        "reentries": [
+            {
+                "date": "2023-05-30",
+                "id": "2020-006H",
+                "time": 10.466666666666667,
+                "reusability": "",
+                "name": "Starlink 1141",
+                "category": "P",
+                "lat": 36.0,
+                "lon": -156.0,
+                "smc": true,
+                "location": 1,
+                "burnup": "Complete",
+                "emissions": {
+                    "NOx": 0.09919999999999998,
+                    "Al2O3": 0.09919999999999998,
+                    "BC": 0.010168000000000002,
+                    "HCl": 0.001984,
+                    "Cl": 0.00372,
+                    "Unablated_Mass": 0.0
+                }
+            }
+        ]
     },
     "2023-05-31": {
         "launches": [
@@ -4530,7 +5132,29 @@
     },
     "2023-06-03": {
         "launches": [],
-        "reentries": []
+        "reentries": [
+            {
+                "date": "2023-06-03",
+                "id": "2020-025AW",
+                "time": 12.35,
+                "reusability": "",
+                "name": "Starlink 1326",
+                "category": "P",
+                "lat": -12.0,
+                "lon": 123.0,
+                "smc": true,
+                "location": 1,
+                "burnup": "Complete",
+                "emissions": {
+                    "NOx": 0.09919999999999998,
+                    "Al2O3": 0.09919999999999998,
+                    "BC": 0.010168000000000002,
+                    "HCl": 0.001984,
+                    "Cl": 0.00372,
+                    "Unablated_Mass": 0.0
+                }
+            }
+        ]
     },
     "2023-06-04": {
         "launches": [
@@ -4677,7 +5301,29 @@
     },
     "2023-06-08": {
         "launches": [],
-        "reentries": []
+        "reentries": [
+            {
+                "date": "2023-06-08",
+                "id": "2020-001AK",
+                "time": 23.466666666666665,
+                "reusability": "",
+                "name": "Starlink 1116",
+                "category": "P",
+                "lat": -24.0,
+                "lon": -144.0,
+                "smc": true,
+                "location": 1,
+                "burnup": "Complete",
+                "emissions": {
+                    "NOx": 0.09919999999999998,
+                    "Al2O3": 0.09919999999999998,
+                    "BC": 0.010168000000000002,
+                    "HCl": 0.001984,
+                    "Cl": 0.00372,
+                    "Unablated_Mass": 0.0
+                }
+            }
+        ]
     },
     "2023-06-09": {
         "launches": [],
@@ -4688,22 +5334,43 @@
         "reentries": [
             {
                 "date": "2023-06-10",
-                "id": "2023-014BH",
-                "time": 0.0,
+                "id": "2020-062X",
+                "time": 4.0,
                 "reusability": "",
-                "name": "EBAD Test Mass",
+                "name": "Starlink 1546",
                 "category": "P",
-                "lat": -9.08,
-                "lon": 147.04,
+                "lat": 47.74,
+                "lon": -79.84,
                 "smc": true,
                 "location": 6,
                 "burnup": "Complete",
                 "emissions": {
-                    "NOx": 0.004,
-                    "Al2O3": 0.004,
-                    "BC": 0.0004100000000000001,
-                    "HCl": 7.999999999999999e-05,
-                    "Cl": 0.00015,
+                    "NOx": 0.09919999999999998,
+                    "Al2O3": 0.09919999999999998,
+                    "BC": 0.010168000000000002,
+                    "HCl": 0.001984,
+                    "Cl": 0.00372,
+                    "Unablated_Mass": 0.0
+                }
+            },
+            {
+                "date": "2023-06-10",
+                "id": "2021-115BD",
+                "time": 0.0,
+                "reusability": "",
+                "name": "Starlink deployment rail",
+                "category": "C",
+                "lat": -27.73,
+                "lon": 94.63,
+                "smc": true,
+                "location": 6,
+                "burnup": "Complete",
+                "emissions": {
+                    "NOx": 0.04,
+                    "Al2O3": 0.04,
+                    "BC": 0.0041,
+                    "HCl": 0.0008000000000000001,
+                    "Cl": 0.0014999999999999998,
                     "Unablated_Mass": 0.0
                 }
             }
@@ -4855,8 +5522,8 @@
                 "reusability": "",
                 "name": "Starlink 30044",
                 "category": "P",
-                "lat": -5.55,
-                "lon": -19.04,
+                "lat": 12.77,
+                "lon": -98.92,
                 "smc": true,
                 "location": 6,
                 "burnup": "Complete",
@@ -4876,8 +5543,8 @@
                 "reusability": "",
                 "name": "Starlink deployment rail",
                 "category": "C",
-                "lat": 32.45,
-                "lon": 92.9,
+                "lat": -49.23,
+                "lon": 2.8,
                 "smc": true,
                 "location": 6,
                 "burnup": "Complete",
@@ -4897,8 +5564,8 @@
                 "reusability": "",
                 "name": "Starlink deployment rail",
                 "category": "C",
-                "lat": 14.61,
-                "lon": 26.55,
+                "lat": 15.59,
+                "lon": 153.41,
                 "smc": true,
                 "location": 6,
                 "burnup": "Complete",
@@ -4918,8 +5585,8 @@
                 "reusability": "",
                 "name": "Starlink deployment rail",
                 "category": "C",
-                "lat": -6.79,
-                "lon": -155.07,
+                "lat": -15.3,
+                "lon": 0.62,
                 "smc": true,
                 "location": 6,
                 "burnup": "Complete",
@@ -4939,8 +5606,8 @@
                 "reusability": "",
                 "name": "Starlink deployment rail",
                 "category": "C",
-                "lat": -38.35,
-                "lon": -33.3,
+                "lat": 4.58,
+                "lon": 2.96,
                 "smc": true,
                 "location": 6,
                 "burnup": "Complete",
@@ -4965,8 +5632,8 @@
                 "reusability": "",
                 "name": "Starlink deployment rail",
                 "category": "C",
-                "lat": 11.06,
-                "lon": 147.55,
+                "lat": -41.72,
+                "lon": 16.01,
                 "smc": true,
                 "location": 6,
                 "burnup": "Complete",
@@ -4986,8 +5653,8 @@
                 "reusability": "",
                 "name": "Starlink deployment rail",
                 "category": "C",
-                "lat": 33.26,
-                "lon": -165.76,
+                "lat": -64.08,
+                "lon": -136.25,
                 "smc": true,
                 "location": 6,
                 "burnup": "Complete",
@@ -5007,8 +5674,8 @@
                 "reusability": "",
                 "name": "Starlink deployment rail",
                 "category": "C",
-                "lat": -69.7,
-                "lon": -84.77,
+                "lat": 15.2,
+                "lon": 55.86,
                 "smc": true,
                 "location": 6,
                 "burnup": "Complete",
@@ -5033,8 +5700,8 @@
                 "reusability": "",
                 "name": "Starlink deployment rail",
                 "category": "C",
-                "lat": 24.33,
-                "lon": 139.65,
+                "lat": 19.33,
+                "lon": 158.53,
                 "smc": true,
                 "location": 6,
                 "burnup": "Complete",
@@ -5054,8 +5721,8 @@
                 "reusability": "",
                 "name": "Starlink deployment rail",
                 "category": "C",
-                "lat": 56.0,
-                "lon": -25.51,
+                "lat": -54.01,
+                "lon": 159.1,
                 "smc": true,
                 "location": 6,
                 "burnup": "Complete",
@@ -5075,8 +5742,8 @@
                 "reusability": "",
                 "name": "Starlink deployment rail",
                 "category": "C",
-                "lat": 64.34,
-                "lon": -39.69,
+                "lat": 49.97,
+                "lon": -68.87,
                 "smc": true,
                 "location": 6,
                 "burnup": "Complete",
@@ -5096,13 +5763,34 @@
         "reentries": [
             {
                 "date": "2023-06-16",
+                "id": "2020-070AE",
+                "time": 5.1,
+                "reusability": "",
+                "name": "Starlink 1706",
+                "category": "P",
+                "lat": -49.0,
+                "lon": -154.0,
+                "smc": true,
+                "location": 1,
+                "burnup": "Complete",
+                "emissions": {
+                    "NOx": 0.09919999999999998,
+                    "Al2O3": 0.09919999999999998,
+                    "BC": 0.010168000000000002,
+                    "HCl": 0.001984,
+                    "Cl": 0.00372,
+                    "Unablated_Mass": 0.0
+                }
+            },
+            {
+                "date": "2023-06-16",
                 "id": "2023-058AY",
                 "time": 0.0,
                 "reusability": "",
                 "name": "Starlink deployment rail",
                 "category": "C",
-                "lat": 18.64,
-                "lon": -96.6,
+                "lat": 22.0,
+                "lon": -53.57,
                 "smc": true,
                 "location": 6,
                 "burnup": "Complete",
@@ -5127,8 +5815,8 @@
                 "reusability": "",
                 "name": "Starlink deployment rail",
                 "category": "C",
-                "lat": 30.29,
-                "lon": -115.43,
+                "lat": -38.53,
+                "lon": -152.97,
                 "smc": true,
                 "location": 6,
                 "burnup": "Complete",
@@ -5190,8 +5878,8 @@
                 "reusability": "",
                 "name": "Starlink deployment rail",
                 "category": "C",
-                "lat": 15.01,
-                "lon": 90.96,
+                "lat": 27.58,
+                "lon": -175.59,
                 "smc": true,
                 "location": 6,
                 "burnup": "Complete",
@@ -5321,8 +6009,8 @@
                 "reusability": "",
                 "name": "Starlink deployment rail",
                 "category": "C",
-                "lat": -18.06,
-                "lon": -172.99,
+                "lat": -32.33,
+                "lon": 43.04,
                 "smc": true,
                 "location": 6,
                 "burnup": "Complete",
@@ -5431,8 +6119,8 @@
                 "reusability": "",
                 "name": "Starlink deployment rail",
                 "category": "C",
-                "lat": -26.4,
-                "lon": 161.91,
+                "lat": -29.55,
+                "lon": 100.06,
                 "smc": true,
                 "location": 6,
                 "burnup": "Complete",
@@ -5456,13 +6144,34 @@
         "reentries": [
             {
                 "date": "2023-06-26",
+                "id": "2021-021AY",
+                "time": 18.8,
+                "reusability": "",
+                "name": "Starlink 2366",
+                "category": "P",
+                "lat": 28.11,
+                "lon": 83.39,
+                "smc": true,
+                "location": 6,
+                "burnup": "Complete",
+                "emissions": {
+                    "NOx": 0.09919999999999998,
+                    "Al2O3": 0.09919999999999998,
+                    "BC": 0.010168000000000002,
+                    "HCl": 0.001984,
+                    "Cl": 0.00372,
+                    "Unablated_Mass": 0.0
+                }
+            },
+            {
+                "date": "2023-06-26",
                 "id": "2023-065BJ",
                 "time": 0.0,
                 "reusability": "",
                 "name": "Starlink deployment rail",
                 "category": "C",
-                "lat": -20.23,
-                "lon": -177.09,
+                "lat": 31.06,
+                "lon": -48.57,
                 "smc": true,
                 "location": 6,
                 "burnup": "Complete",
@@ -5479,7 +6188,29 @@
     },
     "2023-06-27": {
         "launches": [],
-        "reentries": []
+        "reentries": [
+            {
+                "date": "2023-06-27",
+                "id": "2020-070AT",
+                "time": 9.95,
+                "reusability": "",
+                "name": "Starlink 1650",
+                "category": "P",
+                "lat": 2.0,
+                "lon": -64.0,
+                "smc": true,
+                "location": 1,
+                "burnup": "Complete",
+                "emissions": {
+                    "NOx": 0.09919999999999998,
+                    "Al2O3": 0.09919999999999998,
+                    "BC": 0.010168000000000002,
+                    "HCl": 0.001984,
+                    "Cl": 0.00372,
+                    "Unablated_Mass": 0.0
+                }
+            }
+        ]
     },
     "2023-06-28": {
         "launches": [],
@@ -5499,8 +6230,8 @@
                 "reusability": "",
                 "name": "Starlink 30061",
                 "category": "P",
-                "lat": 23.8,
-                "lon": -135.38,
+                "lat": -32.07,
+                "lon": -7.96,
                 "smc": true,
                 "location": 6,
                 "burnup": "Complete",
@@ -5612,8 +6343,8 @@
                 "reusability": "",
                 "name": "Starlink deployment rail",
                 "category": "C",
-                "lat": -29.1,
-                "lon": 37.38,
+                "lat": 6.44,
+                "lon": -62.25,
                 "smc": true,
                 "location": 6,
                 "burnup": "Complete",
@@ -5633,8 +6364,8 @@
                 "reusability": "",
                 "name": "Starlink deployment rail",
                 "category": "C",
-                "lat": -40.51,
-                "lon": -171.89,
+                "lat": -34.3,
+                "lon": 62.38,
                 "smc": true,
                 "location": 6,
                 "burnup": "Complete",
@@ -5763,6 +6494,27 @@
         "reentries": [
             {
                 "date": "2023-07-09",
+                "id": "2020-001AN",
+                "time": 12.35,
+                "reusability": "",
+                "name": "Starlink 1125",
+                "category": "P",
+                "lat": -6.0,
+                "lon": -156.0,
+                "smc": true,
+                "location": 1,
+                "burnup": "Complete",
+                "emissions": {
+                    "NOx": 0.09919999999999998,
+                    "Al2O3": 0.09919999999999998,
+                    "BC": 0.010168000000000002,
+                    "HCl": 0.001984,
+                    "Cl": 0.00372,
+                    "Unablated_Mass": 0.0
+                }
+            },
+            {
+                "date": "2023-07-09",
                 "id": "2023-095",
                 "time": 11.7,
                 "reusability": "",
@@ -5810,8 +6562,8 @@
                 "reusability": "",
                 "name": "CZ-2C fairing half",
                 "category": "C",
-                "lat": -28.79,
-                "lon": -52.62,
+                "lat": 43.11,
+                "lon": -141.73,
                 "smc": true,
                 "location": 6,
                 "burnup": "Complete",
@@ -5831,8 +6583,8 @@
                 "reusability": "",
                 "name": "CZ-2C fairing half",
                 "category": "C",
-                "lat": -28.79,
-                "lon": -52.62,
+                "lat": 43.11,
+                "lon": -141.73,
                 "smc": true,
                 "location": 6,
                 "burnup": "Complete",
@@ -5967,8 +6719,8 @@
                 "reusability": "",
                 "name": "Starlink deployment rail",
                 "category": "C",
-                "lat": 25.0,
-                "lon": 143.75,
+                "lat": -13.21,
+                "lon": -169.44,
                 "smc": true,
                 "location": 6,
                 "burnup": "Complete",
@@ -5988,8 +6740,8 @@
                 "reusability": "",
                 "name": "Starlink deployment rail",
                 "category": "C",
-                "lat": 17.68,
-                "lon": -26.02,
+                "lat": 0.66,
+                "lon": -167.73,
                 "smc": true,
                 "location": 6,
                 "burnup": "Complete",
@@ -6014,7 +6766,29 @@
     },
     "2023-07-14": {
         "launches": [],
-        "reentries": []
+        "reentries": [
+            {
+                "date": "2023-07-14",
+                "id": "2021-012BB",
+                "time": 18.483333333333334,
+                "reusability": "",
+                "name": "Starlink 2060",
+                "category": "P",
+                "lat": 9.59,
+                "lon": 23.51,
+                "smc": true,
+                "location": 6,
+                "burnup": "Complete",
+                "emissions": {
+                    "NOx": 0.09919999999999998,
+                    "Al2O3": 0.09919999999999998,
+                    "BC": 0.010168000000000002,
+                    "HCl": 0.001984,
+                    "Cl": 0.00372,
+                    "Unablated_Mass": 0.0
+                }
+            }
+        ]
     },
     "2023-07-15": {
         "launches": [],
@@ -6044,6 +6818,27 @@
             }
         ],
         "reentries": [
+            {
+                "date": "2023-07-16",
+                "id": "2020-012T",
+                "time": 15.516666666666667,
+                "reusability": "",
+                "name": "Starlink 1241",
+                "category": "P",
+                "lat": -51.0,
+                "lon": 88.0,
+                "smc": true,
+                "location": 1,
+                "burnup": "Complete",
+                "emissions": {
+                    "NOx": 0.09919999999999998,
+                    "Al2O3": 0.09919999999999998,
+                    "BC": 0.010168000000000002,
+                    "HCl": 0.001984,
+                    "Cl": 0.00372,
+                    "Unablated_Mass": 0.0
+                }
+            },
             {
                 "date": "2023-07-16",
                 "id": "2023-099",
@@ -6140,8 +6935,8 @@
                 "reusability": "",
                 "name": "Starlink 5139",
                 "category": "P",
-                "lat": -18.46,
-                "lon": 154.53,
+                "lat": -26.22,
+                "lon": 63.21,
                 "smc": true,
                 "location": 6,
                 "burnup": "Complete",
@@ -6166,8 +6961,8 @@
                 "reusability": "",
                 "name": "Starlink 30134",
                 "category": "P",
-                "lat": 7.54,
-                "lon": -106.79,
+                "lat": -5.11,
+                "lon": 1.07,
                 "smc": true,
                 "location": 6,
                 "burnup": "Complete",
@@ -6310,8 +7105,8 @@
                 "reusability": "",
                 "name": "Starlink deployment rail",
                 "category": "C",
-                "lat": -29.86,
-                "lon": -167.05,
+                "lat": -4.44,
+                "lon": 17.34,
                 "smc": true,
                 "location": 6,
                 "burnup": "Complete",
@@ -6331,8 +7126,8 @@
                 "reusability": "",
                 "name": "Yuanzheng-1S Y3",
                 "category": "S3",
-                "lat": 53.41,
-                "lon": 177.12,
+                "lat": -40.19,
+                "lon": -73.25,
                 "smc": true,
                 "location": 6,
                 "burnup": "Complete",
@@ -6420,8 +7215,8 @@
                 "reusability": "",
                 "name": "CZ-2D fairing half",
                 "category": "C",
-                "lat": -49.57,
-                "lon": 138.53,
+                "lat": 57.63,
+                "lon": 66.32,
                 "smc": true,
                 "location": 6,
                 "burnup": "Complete",
@@ -6441,8 +7236,8 @@
                 "reusability": "",
                 "name": "CZ-2D fairing half",
                 "category": "C",
-                "lat": -49.57,
-                "lon": 138.53,
+                "lat": 57.63,
+                "lon": 66.32,
                 "smc": true,
                 "location": 6,
                 "burnup": "Complete",
@@ -6577,8 +7372,8 @@
                 "reusability": "",
                 "name": "Starlink deployment rail",
                 "category": "C",
-                "lat": 23.89,
-                "lon": 176.42,
+                "lat": 13.81,
+                "lon": 36.78,
                 "smc": true,
                 "location": 6,
                 "burnup": "Complete",
@@ -6598,8 +7393,8 @@
                 "reusability": "",
                 "name": "Starlink deployment rail",
                 "category": "C",
-                "lat": 14.33,
-                "lon": 176.14,
+                "lat": 40.25,
+                "lon": 72.88,
                 "smc": true,
                 "location": 6,
                 "burnup": "Complete",
@@ -6619,8 +7414,8 @@
                 "reusability": "",
                 "name": "Starlink deployment rail",
                 "category": "C",
-                "lat": -33.13,
-                "lon": -61.88,
+                "lat": 25.48,
+                "lon": -45.25,
                 "smc": true,
                 "location": 6,
                 "burnup": "Complete",
@@ -6640,8 +7435,8 @@
                 "reusability": "",
                 "name": "Starlink deployment rail",
                 "category": "C",
-                "lat": 11.41,
-                "lon": 90.96,
+                "lat": -11.99,
+                "lon": 44.44,
                 "smc": true,
                 "location": 6,
                 "burnup": "Complete",
@@ -6661,8 +7456,8 @@
                 "reusability": "",
                 "name": "Starlink deployment rail",
                 "category": "C",
-                "lat": -38.29,
-                "lon": 67.11,
+                "lat": -1.46,
+                "lon": -55.67,
                 "smc": true,
                 "location": 6,
                 "burnup": "Complete",
@@ -6682,8 +7477,8 @@
                 "reusability": "",
                 "name": "Starlink deployment rail",
                 "category": "C",
-                "lat": -27.58,
-                "lon": -69.34,
+                "lat": 4.07,
+                "lon": -2.17,
                 "smc": true,
                 "location": 6,
                 "burnup": "Complete",
@@ -6737,8 +7532,8 @@
                 "reusability": "",
                 "name": "Starlink deployment rail",
                 "category": "C",
-                "lat": 20.05,
-                "lon": -161.79,
+                "lat": 19.79,
+                "lon": 67.22,
                 "smc": true,
                 "location": 6,
                 "burnup": "Complete",
@@ -6889,8 +7684,8 @@
                 "reusability": "",
                 "name": "Starlink deployment rail",
                 "category": "C",
-                "lat": 8.06,
-                "lon": 109.73,
+                "lat": 18.84,
+                "lon": 109.37,
                 "smc": true,
                 "location": 6,
                 "burnup": "Complete",
@@ -6907,7 +7702,29 @@
     },
     "2023-08-04": {
         "launches": [],
-        "reentries": []
+        "reentries": [
+            {
+                "date": "2023-08-04",
+                "id": "2020-025AG",
+                "time": 22.283333333333335,
+                "reusability": "",
+                "name": "Starlink 1348",
+                "category": "P",
+                "lat": 4.0,
+                "lon": 98.0,
+                "smc": true,
+                "location": 1,
+                "burnup": "Complete",
+                "emissions": {
+                    "NOx": 0.09919999999999998,
+                    "Al2O3": 0.09919999999999998,
+                    "BC": 0.010168000000000002,
+                    "HCl": 0.001984,
+                    "Cl": 0.00372,
+                    "Unablated_Mass": 0.0
+                }
+            }
+        ]
     },
     "2023-08-05": {
         "launches": [],
@@ -6919,8 +7736,8 @@
                 "reusability": "",
                 "name": "Starlink deployment rail",
                 "category": "C",
-                "lat": -42.17,
-                "lon": -39.6,
+                "lat": 35.58,
+                "lon": -36.02,
                 "smc": true,
                 "location": 6,
                 "burnup": "Complete",
@@ -7101,8 +7918,8 @@
                 "reusability": "",
                 "name": "Starlink deployment rail",
                 "category": "C",
-                "lat": -4.45,
-                "lon": -74.86,
+                "lat": -40.63,
+                "lon": -27.58,
                 "smc": true,
                 "location": 6,
                 "burnup": "Complete",
@@ -7211,8 +8028,8 @@
                 "reusability": "",
                 "name": "Starlink deployment rail",
                 "category": "C",
-                "lat": 40.42,
-                "lon": -159.16,
+                "lat": -35.75,
+                "lon": -174.47,
                 "smc": true,
                 "location": 6,
                 "burnup": "Complete",
@@ -7606,13 +8423,34 @@
         "reentries": [
             {
                 "date": "2023-08-24",
+                "id": "2020-019BL",
+                "time": 0.8666666666666667,
+                "reusability": "",
+                "name": "Starlink 1299",
+                "category": "P",
+                "lat": 43.87,
+                "lon": 5.21,
+                "smc": true,
+                "location": 6,
+                "burnup": "Complete",
+                "emissions": {
+                    "NOx": 0.09919999999999998,
+                    "Al2O3": 0.09919999999999998,
+                    "BC": 0.010168000000000002,
+                    "HCl": 0.001984,
+                    "Cl": 0.00372,
+                    "Unablated_Mass": 0.0
+                }
+            },
+            {
+                "date": "2023-08-24",
                 "id": "2023-099BH",
                 "time": 0.0,
                 "reusability": "",
                 "name": "Starlink deployment rail",
                 "category": "C",
-                "lat": 36.4,
-                "lon": 13.3,
+                "lat": 39.07,
+                "lon": -103.8,
                 "smc": true,
                 "location": 6,
                 "burnup": "Complete",
@@ -7632,8 +8470,8 @@
                 "reusability": "",
                 "name": "Starlink deployment rail",
                 "category": "C",
-                "lat": -20.09,
-                "lon": 16.34,
+                "lat": -16.85,
+                "lon": 16.45,
                 "smc": true,
                 "location": 6,
                 "burnup": "Complete",
@@ -7653,8 +8491,8 @@
                 "reusability": "",
                 "name": "Starlink deployment rail",
                 "category": "C",
-                "lat": -27.75,
-                "lon": -136.02,
+                "lat": -29.53,
+                "lon": -75.69,
                 "smc": true,
                 "location": 6,
                 "burnup": "Complete",
@@ -7708,8 +8546,8 @@
                 "reusability": "",
                 "name": "Starlink deployment rail",
                 "category": "C",
-                "lat": 8.75,
-                "lon": 13.65,
+                "lat": 11.72,
+                "lon": 51.55,
                 "smc": true,
                 "location": 6,
                 "burnup": "Complete",
@@ -8079,8 +8917,8 @@
                 "reusability": "",
                 "name": "Starlink 5343",
                 "category": "P",
-                "lat": 12.44,
-                "lon": 106.51,
+                "lat": -8.19,
+                "lon": 51.76,
                 "smc": true,
                 "location": 6,
                 "burnup": "Complete",
@@ -8363,8 +9201,8 @@
                 "reusability": "",
                 "name": "Starlink 1034",
                 "category": "P",
-                "lat": 18.79,
-                "lon": -52.87,
+                "lat": 9.28,
+                "lon": 4.4,
                 "smc": true,
                 "location": 6,
                 "burnup": "Complete",
@@ -8769,8 +9607,8 @@
                 "reusability": "",
                 "name": "Starlink 1026",
                 "category": "P",
-                "lat": -20.24,
-                "lon": -60.89,
+                "lat": -46.84,
+                "lon": 93.94,
                 "smc": true,
                 "location": 6,
                 "burnup": "Complete",
@@ -8835,6 +9673,27 @@
             }
         ],
         "reentries": [
+            {
+                "date": "2023-09-24",
+                "id": "2020-035AP",
+                "time": 10.966666666666667,
+                "reusability": "",
+                "name": "Starlink 1419",
+                "category": "P",
+                "lat": -30.0,
+                "lon": 108.0,
+                "smc": true,
+                "location": 1,
+                "burnup": "Complete",
+                "emissions": {
+                    "NOx": 0.09919999999999998,
+                    "Al2O3": 0.09919999999999998,
+                    "BC": 0.010168000000000002,
+                    "HCl": 0.001984,
+                    "Cl": 0.00372,
+                    "Unablated_Mass": 0.0
+                }
+            },
             {
                 "date": "2023-09-24",
                 "id": "2023-147",
@@ -8947,6 +9806,27 @@
         "reentries": [
             {
                 "date": "2023-09-25",
+                "id": "2021-017BK",
+                "time": 3.1666666666666665,
+                "reusability": "",
+                "name": "Starlink 2212",
+                "category": "P",
+                "lat": -1.38,
+                "lon": 149.91,
+                "smc": true,
+                "location": 6,
+                "burnup": "Complete",
+                "emissions": {
+                    "NOx": 0.09919999999999998,
+                    "Al2O3": 0.09919999999999998,
+                    "BC": 0.010168000000000002,
+                    "HCl": 0.001984,
+                    "Cl": 0.00372,
+                    "Unablated_Mass": 0.0
+                }
+            },
+            {
+                "date": "2023-09-25",
                 "id": "2023-148",
                 "time": 10.65,
                 "reusability": "",
@@ -9040,13 +9920,34 @@
         "reentries": [
             {
                 "date": "2023-09-27",
+                "id": "2021-021AC",
+                "time": 17.0,
+                "reusability": "",
+                "name": "Starlink 2345",
+                "category": "P",
+                "lat": -51.08,
+                "lon": -100.55,
+                "smc": true,
+                "location": 6,
+                "burnup": "Complete",
+                "emissions": {
+                    "NOx": 0.09919999999999998,
+                    "Al2O3": 0.09919999999999998,
+                    "BC": 0.010168000000000002,
+                    "HCl": 0.001984,
+                    "Cl": 0.00372,
+                    "Unablated_Mass": 0.0
+                }
+            },
+            {
+                "date": "2023-09-27",
                 "id": "2023-015AD",
                 "time": 17.683333333333334,
                 "reusability": "",
                 "name": "Starlink 5596",
                 "category": "P",
-                "lat": 17.01,
-                "lon": 38.69,
+                "lat": -21.17,
+                "lon": 55.43,
                 "smc": true,
                 "location": 6,
                 "burnup": "Complete",
@@ -9067,7 +9968,29 @@
     },
     "2023-09-29": {
         "launches": [],
-        "reentries": []
+        "reentries": [
+            {
+                "date": "2023-09-29",
+                "id": "2020-001AV",
+                "time": 21.0,
+                "reusability": "",
+                "name": "Starlink 1074",
+                "category": "P",
+                "lat": -32.77,
+                "lon": 86.44,
+                "smc": true,
+                "location": 6,
+                "burnup": "Complete",
+                "emissions": {
+                    "NOx": 0.09919999999999998,
+                    "Al2O3": 0.09919999999999998,
+                    "BC": 0.010168000000000002,
+                    "HCl": 0.001984,
+                    "Cl": 0.00372,
+                    "Unablated_Mass": 0.0
+                }
+            }
+        ]
     },
     "2023-09-30": {
         "launches": [
@@ -9182,6 +10105,27 @@
     "2023-10-01": {
         "launches": [],
         "reentries": [
+            {
+                "date": "2023-10-01",
+                "id": "2020-088AJ",
+                "time": 13.25,
+                "reusability": "",
+                "name": "Starlink 1868",
+                "category": "P",
+                "lat": 26.19,
+                "lon": -85.02,
+                "smc": true,
+                "location": 6,
+                "burnup": "Complete",
+                "emissions": {
+                    "NOx": 0.09919999999999998,
+                    "Al2O3": 0.09919999999999998,
+                    "BC": 0.010168000000000002,
+                    "HCl": 0.001984,
+                    "Cl": 0.00372,
+                    "Unablated_Mass": 0.0
+                }
+            },
             {
                 "date": "2023-10-01",
                 "id": "2023-147K",
@@ -9353,13 +10297,34 @@
         "reentries": [
             {
                 "date": "2023-10-06",
+                "id": "2020-012C",
+                "time": 3.5,
+                "reusability": "",
+                "name": "Starlink 1192",
+                "category": "P",
+                "lat": -10.57,
+                "lon": 172.47,
+                "smc": true,
+                "location": 6,
+                "burnup": "Complete",
+                "emissions": {
+                    "NOx": 0.09919999999999998,
+                    "Al2O3": 0.09919999999999998,
+                    "BC": 0.010168000000000002,
+                    "HCl": 0.001984,
+                    "Cl": 0.00372,
+                    "Unablated_Mass": 0.0
+                }
+            },
+            {
+                "date": "2023-10-06",
                 "id": "2023-154",
                 "time": 18.0,
                 "reusability": "",
                 "name": "Atlas V 501 AV-104",
                 "category": "S1",
-                "lat": -4.09,
-                "lon": 109.49,
+                "lat": 17.49,
+                "lon": -140.45,
                 "smc": true,
                 "location": 6,
                 "burnup": "Complete",
@@ -9379,8 +10344,8 @@
                 "reusability": "",
                 "name": "CFLR",
                 "category": "C",
-                "lat": 29.51,
-                "lon": 76.73,
+                "lat": 5.17,
+                "lon": 52.97,
                 "smc": true,
                 "location": 6,
                 "burnup": "Complete",
@@ -9400,8 +10365,8 @@
                 "reusability": "",
                 "name": "CFLR half",
                 "category": "C",
-                "lat": 25.37,
-                "lon": 128.8,
+                "lat": 5.78,
+                "lon": 171.89,
                 "smc": true,
                 "location": 6,
                 "burnup": "Complete",
@@ -9421,8 +10386,8 @@
                 "reusability": "",
                 "name": "5-m Short Fairing",
                 "category": "C",
-                "lat": -24.07,
-                "lon": -7.44,
+                "lat": 25.22,
+                "lon": 120.99,
                 "smc": true,
                 "location": 6,
                 "burnup": "Complete",
@@ -9442,8 +10407,8 @@
                 "reusability": "",
                 "name": "5-m Short Fairing",
                 "category": "C",
-                "lat": -24.07,
-                "lon": -7.44,
+                "lat": 25.22,
+                "lon": 120.99,
                 "smc": true,
                 "location": 6,
                 "burnup": "Complete",
@@ -9472,8 +10437,8 @@
                 "reusability": "",
                 "name": "Starlink 1033",
                 "category": "P",
-                "lat": -17.27,
-                "lon": -33.88,
+                "lat": -8.16,
+                "lon": 94.67,
                 "smc": true,
                 "location": 6,
                 "burnup": "Complete",
@@ -9737,6 +10702,27 @@
         "reentries": [
             {
                 "date": "2023-10-17",
+                "id": "2022-010R",
+                "time": 16.333333333333332,
+                "reusability": "",
+                "name": "Starlink 3165",
+                "category": "P",
+                "lat": 45.57,
+                "lon": 79.43,
+                "smc": true,
+                "location": 6,
+                "burnup": "Complete",
+                "emissions": {
+                    "NOx": 0.11,
+                    "Al2O3": 0.11,
+                    "BC": 0.011275,
+                    "HCl": 0.0022,
+                    "Cl": 0.004125,
+                    "Unablated_Mass": 0.0
+                }
+            },
+            {
+                "date": "2023-10-17",
                 "id": "2023-107K",
                 "time": 0.7666666666666667,
                 "reusability": "",
@@ -9782,6 +10768,27 @@
             }
         ],
         "reentries": [
+            {
+                "date": "2023-10-18",
+                "id": "2021-021AR",
+                "time": 18.616666666666667,
+                "reusability": "",
+                "name": "Starlink 2359",
+                "category": "P",
+                "lat": 50.0,
+                "lon": -120.0,
+                "smc": true,
+                "location": 1,
+                "burnup": "Complete",
+                "emissions": {
+                    "NOx": 0.09919999999999998,
+                    "Al2O3": 0.09919999999999998,
+                    "BC": 0.010168000000000002,
+                    "HCl": 0.001984,
+                    "Cl": 0.00372,
+                    "Unablated_Mass": 0.0
+                }
+            },
             {
                 "date": "2023-10-18",
                 "id": "2023-160",
@@ -10646,7 +11653,29 @@
     },
     "2023-11-12": {
         "launches": [],
-        "reentries": []
+        "reentries": [
+            {
+                "date": "2023-11-12",
+                "id": "2020-025BF",
+                "time": 7.683333333333334,
+                "reusability": "",
+                "name": "Starlink 1343",
+                "category": "P",
+                "lat": 30.0,
+                "lon": 167.0,
+                "smc": true,
+                "location": 1,
+                "burnup": "Complete",
+                "emissions": {
+                    "NOx": 0.09919999999999998,
+                    "Al2O3": 0.09919999999999998,
+                    "BC": 0.010168000000000002,
+                    "HCl": 0.001984,
+                    "Cl": 0.00372,
+                    "Unablated_Mass": 0.0
+                }
+            }
+        ]
     },
     "2023-11-13": {
         "launches": [],
@@ -10654,7 +11683,50 @@
     },
     "2023-11-14": {
         "launches": [],
-        "reentries": []
+        "reentries": [
+            {
+                "date": "2023-11-14",
+                "id": "2020-019F",
+                "time": 10.083333333333334,
+                "reusability": "",
+                "name": "Starlink 1317",
+                "category": "P",
+                "lat": 22.0,
+                "lon": -109.0,
+                "smc": true,
+                "location": 1,
+                "burnup": "Complete",
+                "emissions": {
+                    "NOx": 0.09919999999999998,
+                    "Al2O3": 0.09919999999999998,
+                    "BC": 0.010168000000000002,
+                    "HCl": 0.001984,
+                    "Cl": 0.00372,
+                    "Unablated_Mass": 0.0
+                }
+            },
+            {
+                "date": "2023-11-14",
+                "id": "2020-055AF",
+                "time": 13.116666666666667,
+                "reusability": "",
+                "name": "Starlink 1561",
+                "category": "P",
+                "lat": -22.0,
+                "lon": -62.0,
+                "smc": true,
+                "location": 1,
+                "burnup": "Complete",
+                "emissions": {
+                    "NOx": 0.09919999999999998,
+                    "Al2O3": 0.09919999999999998,
+                    "BC": 0.010168000000000002,
+                    "HCl": 0.001984,
+                    "Cl": 0.00372,
+                    "Unablated_Mass": 0.0
+                }
+            }
+        ]
     },
     "2023-11-15": {
         "launches": [],
@@ -10692,6 +11764,27 @@
             }
         ],
         "reentries": [
+            {
+                "date": "2023-11-18",
+                "id": "2020-073AS",
+                "time": 5.0,
+                "reusability": "",
+                "name": "Starlink 1811",
+                "category": "P",
+                "lat": 39.77,
+                "lon": 67.04,
+                "smc": true,
+                "location": 6,
+                "burnup": "Complete",
+                "emissions": {
+                    "NOx": 0.09919999999999998,
+                    "Al2O3": 0.09919999999999998,
+                    "BC": 0.010168000000000002,
+                    "HCl": 0.001984,
+                    "Cl": 0.00372,
+                    "Unablated_Mass": 0.0
+                }
+            },
             {
                 "date": "2023-11-18",
                 "id": "2023-177",
@@ -10894,7 +11987,29 @@
     },
     "2023-11-21": {
         "launches": [],
-        "reentries": []
+        "reentries": [
+            {
+                "date": "2023-11-21",
+                "id": "2020-025AY",
+                "time": 18.383333333333333,
+                "reusability": "",
+                "name": "Starlink 1330",
+                "category": "P",
+                "lat": -45.0,
+                "lon": 56.0,
+                "smc": true,
+                "location": 1,
+                "burnup": "Complete",
+                "emissions": {
+                    "NOx": 0.09919999999999998,
+                    "Al2O3": 0.09919999999999998,
+                    "BC": 0.010168000000000002,
+                    "HCl": 0.001984,
+                    "Cl": 0.00372,
+                    "Unablated_Mass": 0.0
+                }
+            }
+        ]
     },
     "2023-11-22": {
         "launches": [
@@ -11079,8 +12194,8 @@
                 "reusability": "",
                 "name": "CZ-2D Stage 1",
                 "category": "S1",
-                "lat": 0.89,
-                "lon": -45.05,
+                "lat": 21.84,
+                "lon": -144.3,
                 "smc": true,
                 "location": 6,
                 "burnup": "Complete",
@@ -11100,8 +12215,8 @@
                 "reusability": "",
                 "name": "Fairing",
                 "category": "C",
-                "lat": -37.93,
-                "lon": -122.23,
+                "lat": 14.65,
+                "lon": -76.52,
                 "smc": true,
                 "location": 6,
                 "burnup": "Complete",
@@ -11121,8 +12236,8 @@
                 "reusability": "",
                 "name": "Fairing",
                 "category": "C",
-                "lat": -37.93,
-                "lon": -122.23,
+                "lat": 14.65,
+                "lon": -76.52,
                 "smc": true,
                 "location": 6,
                 "burnup": "Complete",
@@ -11265,7 +12380,50 @@
     },
     "2023-11-29": {
         "launches": [],
-        "reentries": []
+        "reentries": [
+            {
+                "date": "2023-11-29",
+                "id": "2020-055AQ",
+                "time": 14.666666666666666,
+                "reusability": "",
+                "name": "Starlink 1515",
+                "category": "P",
+                "lat": 52.0,
+                "lon": -3.0,
+                "smc": true,
+                "location": 1,
+                "burnup": "Complete",
+                "emissions": {
+                    "NOx": 0.09919999999999998,
+                    "Al2O3": 0.09919999999999998,
+                    "BC": 0.010168000000000002,
+                    "HCl": 0.001984,
+                    "Cl": 0.00372,
+                    "Unablated_Mass": 0.0
+                }
+            },
+            {
+                "date": "2023-11-29",
+                "id": "2020-057T",
+                "time": 20.0,
+                "reusability": "",
+                "name": "Starlink 1638",
+                "category": "P",
+                "lat": 46.01,
+                "lon": -31.77,
+                "smc": true,
+                "location": 6,
+                "burnup": "Complete",
+                "emissions": {
+                    "NOx": 0.09919999999999998,
+                    "Al2O3": 0.09919999999999998,
+                    "BC": 0.010168000000000002,
+                    "HCl": 0.001984,
+                    "Cl": 0.00372,
+                    "Unablated_Mass": 0.0
+                }
+            }
+        ]
     },
     "2023-11-30": {
         "launches": [],
@@ -11419,13 +12577,34 @@
         "reentries": [
             {
                 "date": "2023-12-05",
+                "id": "2020-012AG",
+                "time": 17.95,
+                "reusability": "",
+                "name": "Starlink 1211",
+                "category": "P",
+                "lat": -49.0,
+                "lon": -93.0,
+                "smc": true,
+                "location": 1,
+                "burnup": "Complete",
+                "emissions": {
+                    "NOx": 0.09919999999999998,
+                    "Al2O3": 0.09919999999999998,
+                    "BC": 0.010168000000000002,
+                    "HCl": 0.001984,
+                    "Cl": 0.00372,
+                    "Unablated_Mass": 0.0
+                }
+            },
+            {
+                "date": "2023-12-05",
                 "id": "2023-190",
                 "time": 19.44,
                 "reusability": "",
                 "name": "JL-3 Stage 2",
                 "category": "S2",
-                "lat": -35.9,
-                "lon": -62.16,
+                "lat": -23.1,
+                "lon": -63.06,
                 "smc": true,
                 "location": 6,
                 "burnup": "Complete",
@@ -11466,8 +12645,8 @@
                 "reusability": "",
                 "name": "JL-3 Fairing",
                 "category": "C",
-                "lat": 10.77,
-                "lon": 57.5,
+                "lat": 7.93,
+                "lon": -151.47,
                 "smc": true,
                 "location": 6,
                 "burnup": "Complete",
@@ -11487,8 +12666,8 @@
                 "reusability": "",
                 "name": "JL-3 Fairing",
                 "category": "C",
-                "lat": 10.77,
-                "lon": 57.5,
+                "lat": 7.93,
+                "lon": -151.47,
                 "smc": true,
                 "location": 6,
                 "burnup": "Complete",
@@ -11552,6 +12731,27 @@
             }
         ],
         "reentries": [
+            {
+                "date": "2023-12-07",
+                "id": "2020-019Y",
+                "time": 21.45,
+                "reusability": "",
+                "name": "Starlink 1264",
+                "category": "P",
+                "lat": -47.0,
+                "lon": 89.0,
+                "smc": true,
+                "location": 1,
+                "burnup": "Complete",
+                "emissions": {
+                    "NOx": 0.09919999999999998,
+                    "Al2O3": 0.09919999999999998,
+                    "BC": 0.010168000000000002,
+                    "HCl": 0.001984,
+                    "Cl": 0.00372,
+                    "Unablated_Mass": 0.0
+                }
+            },
             {
                 "date": "2023-12-07",
                 "id": "2023-191",
@@ -11750,7 +12950,29 @@
     },
     "2023-12-09": {
         "launches": [],
-        "reentries": []
+        "reentries": [
+            {
+                "date": "2023-12-09",
+                "id": "2020-038G",
+                "time": 0.45,
+                "reusability": "",
+                "name": "Starlink 1472",
+                "category": "P",
+                "lat": 43.0,
+                "lon": 74.0,
+                "smc": true,
+                "location": 1,
+                "burnup": "Complete",
+                "emissions": {
+                    "NOx": 0.09919999999999998,
+                    "Al2O3": 0.09919999999999998,
+                    "BC": 0.010168000000000002,
+                    "HCl": 0.001984,
+                    "Cl": 0.00372,
+                    "Unablated_Mass": 0.0
+                }
+            }
+        ]
     },
     "2023-12-10": {
         "launches": [],
@@ -11766,7 +12988,29 @@
     },
     "2023-12-13": {
         "launches": [],
-        "reentries": []
+        "reentries": [
+            {
+                "date": "2023-12-13",
+                "id": "2020-012AM",
+                "time": 1.3666666666666667,
+                "reusability": "",
+                "name": "Starlink 1232",
+                "category": "P",
+                "lat": 29.0,
+                "lon": -71.0,
+                "smc": true,
+                "location": 1,
+                "burnup": "Complete",
+                "emissions": {
+                    "NOx": 0.09919999999999998,
+                    "Al2O3": 0.09919999999999998,
+                    "BC": 0.010168000000000002,
+                    "HCl": 0.001984,
+                    "Cl": 0.00372,
+                    "Unablated_Mass": 0.0
+                }
+            }
+        ]
     },
     "2023-12-14": {
         "launches": [],
@@ -11774,7 +13018,50 @@
     },
     "2023-12-15": {
         "launches": [],
-        "reentries": []
+        "reentries": [
+            {
+                "date": "2023-12-15",
+                "id": "2020-001AT",
+                "time": 11.966666666666667,
+                "reusability": "",
+                "name": "Starlink 1069",
+                "category": "P",
+                "lat": 24.0,
+                "lon": -153.0,
+                "smc": true,
+                "location": 1,
+                "burnup": "Complete",
+                "emissions": {
+                    "NOx": 0.09919999999999998,
+                    "Al2O3": 0.09919999999999998,
+                    "BC": 0.010168000000000002,
+                    "HCl": 0.001984,
+                    "Cl": 0.00372,
+                    "Unablated_Mass": 0.0
+                }
+            },
+            {
+                "date": "2023-12-15",
+                "id": "2022-017AJ",
+                "time": 6.433333333333334,
+                "reusability": "",
+                "name": "Starlink 3600",
+                "category": "P",
+                "lat": 14.41,
+                "lon": 149.62,
+                "smc": true,
+                "location": 6,
+                "burnup": "Complete",
+                "emissions": {
+                    "NOx": 0.11,
+                    "Al2O3": 0.11,
+                    "BC": 0.011275,
+                    "HCl": 0.0022,
+                    "Cl": 0.004125,
+                    "Unablated_Mass": 0.0
+                }
+            }
+        ]
     },
     "2023-12-16": {
         "launches": [],
@@ -11908,7 +13195,29 @@
     },
     "2023-12-22": {
         "launches": [],
-        "reentries": []
+        "reentries": [
+            {
+                "date": "2023-12-22",
+                "id": "2020-001AU",
+                "time": 3.65,
+                "reusability": "",
+                "name": "Starlink 1070",
+                "category": "P",
+                "lat": 52.0,
+                "lon": 180.0,
+                "smc": true,
+                "location": 1,
+                "burnup": "Complete",
+                "emissions": {
+                    "NOx": 0.09919999999999998,
+                    "Al2O3": 0.09919999999999998,
+                    "BC": 0.010168000000000002,
+                    "HCl": 0.001984,
+                    "Cl": 0.00372,
+                    "Unablated_Mass": 0.0
+                }
+            }
+        ]
     },
     "2023-12-23": {
         "launches": [
@@ -12198,6 +13507,48 @@
         "reentries": [
             {
                 "date": "2023-12-30",
+                "id": "2020-001AR",
+                "time": 15.0,
+                "reusability": "",
+                "name": "Starlink 1124",
+                "category": "P",
+                "lat": 43.96,
+                "lon": 81.68,
+                "smc": true,
+                "location": 6,
+                "burnup": "Complete",
+                "emissions": {
+                    "NOx": 0.09919999999999998,
+                    "Al2O3": 0.09919999999999998,
+                    "BC": 0.010168000000000002,
+                    "HCl": 0.001984,
+                    "Cl": 0.00372,
+                    "Unablated_Mass": 0.0
+                }
+            },
+            {
+                "date": "2023-12-30",
+                "id": "2022-041S",
+                "time": 8.033333333333333,
+                "reusability": "",
+                "name": "Starlink 3787",
+                "category": "P",
+                "lat": -44.0,
+                "lon": 62.0,
+                "smc": true,
+                "location": 1,
+                "burnup": "Complete",
+                "emissions": {
+                    "NOx": 0.11,
+                    "Al2O3": 0.11,
+                    "BC": 0.011275,
+                    "HCl": 0.0022,
+                    "Cl": 0.004125,
+                    "Unablated_Mass": 0.0
+                }
+            },
+            {
+                "date": "2023-12-30",
                 "id": "2023-212",
                 "time": 0.5,
                 "reusability": "",
@@ -12266,8 +13617,8 @@
                 "reusability": "",
                 "name": "CZ-2C fairing half",
                 "category": "C",
-                "lat": -21.0,
-                "lon": 2.4,
+                "lat": 17.34,
+                "lon": -118.22,
                 "smc": true,
                 "location": 6,
                 "burnup": "Complete",
@@ -12287,8 +13638,8 @@
                 "reusability": "",
                 "name": "CZ-2C fairing half",
                 "category": "C",
-                "lat": -21.0,
-                "lon": 2.4,
+                "lat": 17.34,
+                "lon": -118.22,
                 "smc": true,
                 "location": 6,
                 "burnup": "Complete",
