@@ -207,7 +207,6 @@ class import_launches:
                     response_error_handler(response,"")
                 break
         
-
         for count, site in enumerate(self.site_name):
             if site == 'China Sea Launch':
                 self.latitude[count] = 35.4943
@@ -217,9 +216,7 @@ class import_launches:
                 self.latitude[count] = 34.5
                 self.longitude[count] = 127.5
                 print(f"{self.cospar_id[count]} has been set to Naro Space Center.")
-                    
-       
-            
+
         return [self.cospar_id, self.launch_time, self.launch_datestr, self.site_name, self.latitude, self.longitude, self.rocket_name, self.mcs_check]
       
     def launch_info_to_netcdf(self):
@@ -305,12 +302,13 @@ class import_launches:
                                            "Atlas V 541", "Atlas V 541 v2020", "Atlas V 551", "Atlas V 551 v2020",
                                            "Delta 4H", "Epsilon-2 CLPS", "H-IIA 202", "H-IIA 204", "H-IIB", "H-III 22" "GSLV Mk II ", "GSLV Mk III",
                                            "PSLV", "PSLV-DL", "PSLV-XL", "PSLV-CA", "Space Launch System - Block 1 Crew", "Falcon Heavy",
-                                           "Long March (CZ) 11", "Long March (CZ) 2F", "Long March (CZ) 3B", "Long March (CZ) 3B/YZ-1", "Long March (CZ) 3C", "Long March (CZ) 5", 
-                                           "Long March (CZ) 5B", "Long March (CZ) 5/YZ-2", "Long March (CZ) 6", "Long March (CZ) 6A", "Long March (CZ) 7", "Long March (CZ) 7A", 
-                                           "Long March (CZ) 8", "Minotaur 1", "Pegasus XL", "Vega C",
+                                           "Long March (CZ) 11", "Long March (CZ) 2F", "Long March (CZ) 3B","Long March (CZ) 3B/YZ-1",
+                                           "Long March (CZ) 3C", "Long March (CZ) 5", "Long March (CZ) 5B", "Long March (CZ) 5/YZ-2", 
+                                           "Long March (CZ) 6", "Long March (CZ) 6A", "Long March (CZ) 7", "Long March (CZ) 7A", "Long March (CZ) 8",
+                                           "Long March (CZ) 8A",
+                                           "Minotaur 1", "Pegasus XL", "Vega C",
                                            "Soyuz-2-1A", "Soyuz-2-1A Fregat-M", "Soyuz-2-1B Fregat", "Soyuz-2-1B Fregat-M", "Soyuz-ST-A Fregat-M",
                                            "Soyuz-2-1A Fregat","Soyuz-2-1B","Soyuz-2-1V Volga","Soyuz-ST-B Fregat-MT",
-                                           
                                            "NK Kerolox LV","Qaem-100", "Shavit 2"]:
             
             stage_name = stage["attributes"]["name"]
@@ -330,7 +328,7 @@ class import_launches:
             elif (stage_name in ["URM-2","ESC-A","Centaur-5 SEC","Centaur-5 DEC", "H-II LE-5B", "PS2", "Blok-I", "Long March (CZ) 11 Stage 2", 
                                  "L-84 (YF26)", "L-45 (YF-24E)", "CZ-5-HO", "L-15 (YF115)", "L-15 (YF-115) (7)", "K3-2 short",
                                  "M-35","GSLV-2","SR19","SLS  iCPS","Zefiro 40C","Falcon Heavy second stage","JIE-3 second stage","C-25",
-                                 "Salman","L-15 (YF-115) (6A)","LE-5B-3","Stage 2 - Upper Liquid Propulsion Module"]) or stage["id"] in ["773","116151","114190"]:
+                                 "Salman","L-15 (YF-115) (6A)","LE-5B-3","Stage 2 - Upper Liquid Propulsion Module","WB"]) or stage["id"] in ["773","116151","114190"]:
                 stage_number = "Stage2"
                 
             elif (stage_name in ["Briz-M", "PS3", "Fregat-M", "Fregat", "Fregat-MT", "Long March (CZ) 11 Stage 3", "PBV",
@@ -373,7 +371,7 @@ class import_launches:
             elif stage_name == "K3-1":
                 if unique_vehicle_name_list[i] in ["Long March (CZ) 5", "Long March (CZ) 5B", "Long March (CZ) 5/YZ-2"]:
                     stage_number = "Booster"
-                elif unique_vehicle_name_list[i] in ["Long March (CZ) 8", "Long March (CZ) 7", "Long March (CZ) 7A"]:
+                elif unique_vehicle_name_list[i] in ["Long March (CZ) 8", "Long March (CZ) 7", "Long March (CZ) 7A", "Long March (CZ) 8A"]:
                     stage_number = "Stage1"
                     
             else:
@@ -454,7 +452,7 @@ class import_launches:
                         temp_dict[f"{stage_number} Fuel Type"] = "Hypergolic"  
                     elif temp_dict[f"{stage_number} Propellant Name"] in ['LH2 (Liquid Hydrogen)/LOX']:
                         temp_dict[f"{stage_number} Fuel Type"] = "Hydrogen"  
-                    elif temp_dict[f"{stage_number} Propellant Name"] in ['LNG (Liquid Natural Gas)/LOX']:
+                    elif temp_dict[f"{stage_number} Propellant Name"] in ['LNG (Liquid Natural Gas)/LOX','LCH4 (Liquid Methan)/LOX','Methane/LOX']:
                         temp_dict[f"{stage_number} Fuel Type"] = "Methane"
                         
                 # Sort out rockets where the propellant type is missing.  
@@ -784,8 +782,8 @@ if __name__ == "__main__":
     parser.add_argument('-ri', "--rocket_info", action='store_true', help='Get rocket info.')
     parser.add_argument('-sri', "--save_rocket_info", action='store_true', help='Save launch info.')
     parser.add_argument('-sdwr', "--save_discosweb_reentries", action='store_true', help='Save launch info.')
-    parser.add_argument('-sy', "--start_year", default = "2023", choices=str(np.arange(1957,2025)), help='Start Year.')
-    parser.add_argument('-fy', "--final_year", default = "2024", choices=str(np.arange(1957,2025)), help='Final Year.')
+    parser.add_argument('-sy', "--start_year", default = "2023", choices=str(np.arange(1957,2026)), help='Start Year.')
+    parser.add_argument('-fy', "--final_year", default = "2024", choices=str(np.arange(1957,2026)), help='Final Year.')
     args = parser.parse_args()
     
     # Sort out the year range.

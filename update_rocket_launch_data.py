@@ -666,7 +666,7 @@ def update_mass_info(i,temp_dict,unique_vehicle_name_list):
         elif unique_vehicle_name_list[i] == "Long March (CZ) 7":
             temp_dict[f"Fairing Mass"]            = 2800 # http://www.b14643.de/Spacerockets_1/China/CZ-7/Description/Frame.htm
         
-    if unique_vehicle_name_list[i] == "Long March (CZ) 8":
+    if "Long March (CZ) 8" in unique_vehicle_name_list[i]:
         # Long March (CZ) 8
         # https://discosweb.esoc.esa.int/launch-vehicles/102354
         # https://web.archive.org/web/20220411235209/http://www.spacelaunchreport.com/cz5.html
@@ -676,6 +676,11 @@ def update_mass_info(i,temp_dict,unique_vehicle_name_list):
         temp_dict[f"Booster Stage Mass"]      = 6000 * 2  # SLR
         temp_dict[f"Stage1 Stage Mass"]       = 12500     # SLR   
         temp_dict[f"Fairing Mass"] = 2500 # http://www.b14643.de/Spacerockets_1/China/CZ-8/Description/Frame.htm        
+
+        # https://spacenews.com/first-launch-of-long-march-8a-sends-second-group-of-guowang-megaconstellation-satellites-into-orbit/
+        # The Long March 8A is an upgraded variant of the standard Long March 8, which debuted in December 2020. 
+        # It features the same first stage and side boosters as the original but includes a newly designed 
+        # 3.35-meter-diameter hydrogen-oxygen second stage, allowing a wider, 5.2-meter-diameter payload fairing.      
 
     if unique_vehicle_name_list[i] == "Long March (CZ) 11":
         # Long March (CZ) 11.
@@ -1150,9 +1155,8 @@ def update_mass_info(i,temp_dict,unique_vehicle_name_list):
         temp_dict[f"Stage2 Stage Mass"]         = 909
 
     if unique_vehicle_name_list[i] == "Starship":
+        pass
         # No information available for this vehicle.
-        temp_dict[f"Stage1 Fuel Type"] = 'Methane'
-        temp_dict[f"Stage2 Fuel Type"] = 'Methane'
 
     if unique_vehicle_name_list[i] == "Terran-1":
         # https://www.relativityspace.com/terran-r
@@ -1246,6 +1250,10 @@ def update_mass_info(i,temp_dict,unique_vehicle_name_list):
         temp_dict[f"Stage2 Stage Mass"]      = 200   # NB
         temp_dict[f"Stage3 Stage Mass"]      = (30+55+315)/ 3 # 
         temp_dict[f"Fairing Mass"]           = 100 # SLR
+
+    if unique_vehicle_name_list[i] == "Spectrum":
+        pass 
+        # This is 2025-F04. Rocket failed early into flight and crashed into the sea, so ignoring.
     
     if temp_dict["Fairing Mass"] == 0 and unique_vehicle_name_list[i] != "Atlas V N22 v2020":
         #print(f"Setting fairing mass to average (1756) for {unique_vehicle_name_list[i]}")
