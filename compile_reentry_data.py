@@ -185,6 +185,15 @@ class build_reentry_list:
             lat = 40.78
             lon = 89.27
             location = 2
+        elif latlonstr == "VSFB RW30/12":
+            lat = 34.7
+            lon = -120.6 
+        elif latlonstr == "Koonibba":
+            lat = -31.885558
+            lon = 133.448686
+        elif latlonstr == "Jacklyn": # https://x.com/spaceOFFSHORE/status/1878177979974775139/photo/1
+            lat = 27.887984558404042
+            lon = -74.15337755494835
         elif latlonstr == "Ocean":
             # Electron Stage 1 (rcat) is occasionally recovered in the ocean.
             # From https://spaceflightnow.com/2020/11/05/rocket-lab-to-attempt-booster-recovery-on-next-mission/:
@@ -915,6 +924,11 @@ class build_reentry_list:
             if jsr_id[5] == "U":
                 continue
             
+            # This is where we skip objects where the date is wrong in GCAT. 
+            # These are added manually from Aerospace Corp or DISCOSweb.
+            if jsr_data_stripped_range["#JCAT"][reentry_count] in ["S46138","S44635","S40899"]:
+                continue
+            
             if jsr_id[:4] == "2025" and jsr_id[5] != "F" and int(jsr_id[5:8]) > max(self.dsl_id_list):
                 continue
             
@@ -1208,7 +1222,7 @@ class build_reentry_list:
                                      "2020-074AM", # GCAT has this reentering in 2022.
                                      "1984-108B",  # GCAT has this reentering in 2022.
                                      "2025-082B",  # Already in GCAT with different COSPAR ID.
-                                     "2024-253C",  # POEM 4, has definitley reentered but JSR lists the stage its attached to as still orbiting. TODO
+                                     "2024-253C",  # POEM 4, has definitley reentered but JSR lists the stage its attached to as still orbiting.
                                      "2025-037L",  # Still orbiting according to satellite tracker websites. 
                                      "2024-181B",  # Not yet reentered according to DW and GCAT.
                                      "2022-025AC", # Reentered in late Dec 2024.
@@ -1304,42 +1318,48 @@ class build_reentry_list:
                         if reentry["id"][:8] == discosweb_id[:8] and str(reentry["category"]) == str(reentry_category):
                             found_stage = True
                             
-                skipped_ids = ["2014-065A", # Chang'e 5-T1, reentered in 2014.
-                               "2021-011A", # Progress MS-16 is listed in JSR as AR, so the mass is just added to the parent object and no object exists.
+                skipped_ids = ["2014-065A",  # Chang'e 5-T1, reentered in 2014.
+                               "2021-011A",  # Progress MS-16 is listed in JSR as AR, so the mass is just added to the parent object and no object exists.
                                # Progress MS-16 has been added though, so we can ignore it.
-                               "2020-001N", # Starlink, still in orbit??
-                               "2020-001T", # Starlink, still in orbit??
-                               "2020-001G", # Starlink, still in orbit??
-                               "2017-069C", # Listed in JSR as still in orbit.
-                               "2020-001AQ",# Starlink, still in orbit??
-                               "2020-001BG",# Starlink, still in orbit??
-                               "2020-001BF",# Starlink, still in orbit??
-                               "2020-001BM",# Starlink, still in orbit??
-                               "2020-001A", # Starlink, still in orbit??
-                               "2020-001AU",# Starlink, still in orbit??
-                               "2015-007B", # Debris.
-                               "2021-110A", "2014-065B", "2023-098A", "2023-118A", "2022-168A", "2024-030A", "2023-137D", # Reentered or landed on another planet or moon.
-                               "2022-094B", # Falcon Stage 2 # JSR has this has as deep space.
-                               "1998-067NF",# Already in GCAT, tracable through GCAT.
-                               "1998-067PU",# Already in GCAT, tracable through GCAT.
-                               "1982-092A", # Debris of Cosmos
+                               "2020-001N",  # Starlink, still in orbit??
+                               "2020-001T",  # Starlink, still in orbit??
+                               "2020-001G",  # Starlink, still in orbit??
+                               "2017-069C",  # Listed in JSR as still in orbit.
+                               "2020-001AQ", # Starlink, still in orbit??
+                               "2020-001BG", # Starlink, still in orbit??
+                               "2020-001BF", # Starlink, still in orbit??
+                               "2020-001BM", # Starlink, still in orbit??
+                               "2020-001A",  # Starlink, still in orbit??
+                               "2020-001AU", # Starlink, still in orbit??
+                               "2015-007B",  # Debris.
+                               "2021-110A", "2014-065B", "2023-098A", "2023-118A", "2022-168A", # Reentered or landed on another planet or moon.
+                               "2024-030A", "2023-137D", "2025-010A", "2025-038A", # Reentered or landed on another planet or moon.
+                               "2022-094B",  # Falcon Stage 2 # JSR has this has as deep space.
+                               "1998-067NF", # Already in GCAT, tracable through GCAT.
+                               "1998-067PU", # Already in GCAT, tracable through GCAT.
+                               "1982-092A",  # Debris of Cosmos
                                "1967-048H", "2023-137B", "2023-137G", # GCAT lists as debris.
-                               "2019-038K", # Reentered in 2025, confirmed using satellite tracker.
-                               "2022-093J", # Attached landed.
-                               "2022-175M", # Incorrect on DW, should be 2025. Confirmed using satellite tracker.
+                               "2022-093J",  # Attached landed.
+                               "2022-175M",  # Incorrect on DW, should be 2025. Confirmed using satellite tracker.
                                "2023-046AV", "2023-046AZ","2023-046BF", # Different COSPAR IDs in GCAT.
-                               "2023-097A", # Attached when reentering.
-                               "2023-035A", # Still in orbit, DW has probably just set re-entry of 2nd and 3rd stages together.
-                               "2023-154C", # Sent into deep space.
+                               "2023-097A",  # Attached when reentering.
+                               "2023-035A",  # Still in orbit, DW has probably just set re-entry of 2nd and 3rd stages together.
+                               "2023-154C",  # Sent into deep space.
                                "2024-069IB", # Listed as in orbit in GCAT. Couldn't verify using satellite tracker.
                                "2024-110IA", # Listed as in orbit in GCAT. Couldn't verify using satellite tracker.
-                               "2023-137H"    # Fairing Debris.
+                               "2023-137H",  # Fairing Debris.
+                               "2023-054AY", # Reentered in 2024.
+                               "2023-193C",  # Still orbiting according to satellite tracker websites.
+                               "2019-038K",  # Reentered in 2025, confirmed using satellite tracker.
+                               "2020-029B",  # GCAT has DDate as "2023 Jan?", but DISCOSweb has 31st Dec 2022.
+                               "2020-057X",  # GCAT / DW have this as 2024 but should be 2025.
                 ]
                 
                 # Included IDs: 
-                #               2019-069B Wrong in GCAT, should be 2023 not 2022. Confirmed using satellite tracker.
-                #               2020-022A https://www.n2yo.com/satellite/?s=45464     
-                #               2020-029B DDate = "2023 Jan?", DISCOSweb has 31st Dec, so it has reentered and we can include.   
+                # 2019-069B Wrong in GCAT, should be 2023 not 2022. Confirmed using satellite tracker.
+                # 2023-109A https://www.n2yo.com/satellite/?s=57481 Reentered in Jan 2025 
+                # 2015-049A https://www.n2yo.com/satellite/?s=40899 Reentered in Apr 2025, not 2024 as in GCAT.
+
                 if found_stage == False and self.ds_dw['DISCOSweb_Reentry_ID'].values[reentry_count] not in skipped_ids:
                     print(f"Adding object with COSPAR ID {self.ds_dw['DISCOSweb_Reentry_ID'].values[reentry_count]}")          
                 
@@ -1352,12 +1372,12 @@ class build_reentry_list:
                     datestr = int(self.ds_dw["DISCOSweb_Reentry_Epoch"].values[reentry_count].item()[:10].replace("-",""))
                     time_utc = -1
                     
-                    if discosweb_id == "2020-029B":
-                        inc = 45.01
-                    elif discosweb_id == "2020-022A":
-                        inc = 26.50
-                    elif discosweb_id == "2019-069B":
+                    if discosweb_id == "2019-069B":
                         inc = 87.89
+                    elif discosweb_id == "2023-109A":
+                        inc = 5.00
+                    elif discosweb_id == "2015-049A":
+                        inc = 97.42
                     else: 
                         inc = 0
                         print(f"Added object not expected ({self.ds_dw['DISCOSweb_Reentry_ID'].values[reentry_count]}).")
@@ -1651,7 +1671,7 @@ class build_reentry_list:
                 # Load the data into a pandas DataFrame
                 self.jsr_data_dict[file] = pd.read_csv(tsv_data, delimiter="\t", dtype=object)
             else:
-                sys.exit(f"Failed to fetch {catfile} from JSR", response.status_code)
+                sys.exit(f"Failed to fetch {file} from JSR", response.status_code)
             
         # Add each file sequentially. There is nothing relevant for this inventory in hcocat, tmpcat and csocat.
         for file in ["satcat","auxcat","lcat","rcat","lprcat","deepcat","ecat"]:
@@ -1724,7 +1744,6 @@ class build_reentry_list:
                     reentry["smc"] = False
                     if any(x.lower() in reentry["name"].lower() for x in ["Starlink", "OneWeb", "Yinhe", "Lingxi", "E-Space", "Lynk", "Kuiper"]):
                         reentry["smc"] = True
-                    # TODO: Need to add Tranche, Ronghe, Digui, Hulianwang, Qianfan eventually.
             except:
                 if reentry["id"][:8] in ["2018-020","2019-029","2019-074"]:
                     reentry["smc"] = True
@@ -1958,7 +1977,7 @@ if __name__ == "__main__":
         Data.reentry_info_to_netcdf()
         
     # TODO: Check what Jonathan lists as the YYYY-UXX launches. These seem to be missing in DISCOSweb but include Starship launches above 50 km and a Chang'e-6.
+    # Missing all 2024 starship failures (guess these are listed as suborbital).
+    # Missing latest May 27th 2025 starship failure.
     # Sort out POEM 4
-    # Add Tranche, Ronghe, Digui, Hulianwang, Qianfan eventually when they reenter. 
-    # Rerun the discosweb reentry function and then go through the new objects.
-    # Simplify the code by making each year separate.
+    # Add Tranche, Ronghe, Digui, Hulianwang, Qianfan eventually when they reenter.

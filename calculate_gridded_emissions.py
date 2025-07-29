@@ -1332,9 +1332,9 @@ if __name__ == "__main__":
     
     fiona.drvsupport.supported_drivers['KML'] = 'rw'
     raul_data = gpd.read_file('./databases/reentry/General_SpaceX_Map_Raul.kml', driver='KML', layer =2) # Falcon landing data.   
-    launch_path       = './databases/launch_activity_data_2023-2024.nc'
-    rocket_info_path  = './databases/rocket_attributes_2023-2024.nc'
-    reentry_path      = './databases/reentry_activity_data_2023-2024.nc'
+    launch_path       = f'./databases/launch_activity_data_{start_year}-{final_year}.nc'
+    rocket_info_path  = f'./databases/rocket_attributes_{start_year}-{final_year}.nc'
+    reentry_path      = f'./databases/reentry_activity_data_{start_year}-{final_year}.nc'
     pei_path          = './input_files/primary_emission_indices.csv'  
     rocket_data       = RocketData(launch_path, reentry_path, rocket_info_path, pei_path)
     print("Successfully loaded input databases.")
