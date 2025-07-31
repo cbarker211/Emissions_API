@@ -1210,19 +1210,29 @@ def check_total_emissions(year,dataset,res,levels):
     """ Print total emissions of each species.
         The total emissions including all afterburning are compared to a scenario where only primary emission indices are used.
     """
-    total_missing_emis = np.sum(emis_data.missing_emis)*1e-9 
-    total_inc_emis = np.sum([emis_data.bc_launch_total*1e-9, emis_data.nox_launch_total*1e-9,   emis_data.h2o_total*1e-9, 
-                                    emis_data.co_total*1e-9, emis_data.co2_total*1e-9, emis_data.al2o3_launch_total*1e-9, 
-                                    emis_data.hcl_launch_total*1e-9, emis_data.cl_launch_total*1e-9, emis_data.cl2_total*1e-9, 
-                                    emis_data.nox_reentry_total*1e-9, emis_data.al2o3_reentry_total*1e-9])
+    total_inc_emis = np.sum([emis_data.bc_launch_total*1e-9,   emis_data.nox_launch_total*1e-9, emis_data.h2o_total*1e-9, 
+                             emis_data.co_total*1e-9,          emis_data.co2_total*1e-9,        emis_data.al2o3_launch_total*1e-9, 
+                             emis_data.hcl_launch_total*1e-9,  emis_data.cl_launch_total*1e-9,  emis_data.cl2_total*1e-9, 
+                             emis_data.hcl_reentry_total*1e-9, emis_data.cl_reentry_total*1e-9, emis_data.bc_reentry_total*1e-9, 
+                             emis_data.nox_reentry_total*1e-9, emis_data.al2o3_reentry_total*1e-9])
     total_inc_prop       = emis_data.included_prop*1e-6
      
-    data = {'Species'        : ['BC (Launch)', 'NOx (Launch)', 'H2O', 'CO', 'CO2', 'Al2O3 (Launch)', 'HCl (Launch)', 'Cl (Launch)', 'Cl2', 'NOx (Reentry)', 'Al2O3 (Reentry)',
+    data = {'Species'        : ['BC (Launch)',   'NOx (Launch)', 'H2O (Launch)', 
+                                'CO (Launch)',   'CO2 (Launch)', 'Al2O3 (Launch)',
+                                'HCl (Launch)',  'Cl (Launch)',  'Cl2 (Launch)', 
+                                'HCl (Reentry)', 'Cl (Reentry)', 'BC (Reentry)',
+                                'NOx (Reentry)', 'Al2O3 (Reentry)',
+                                'Cly (Total)','NOx (Total)',
                                 'Total Emis','Total Prop','Surviving Mass'],
-            'Emissions 0-80 km [Gg]': [emis_data.bc_launch_total*1e-9, emis_data.nox_launch_total*1e-9,   emis_data.h2o_total*1e-9, 
-                                        emis_data.co_total*1e-9, emis_data.co2_total*1e-9, emis_data.al2o3_launch_total*1e-9, emis_data.hcl_launch_total*1e-9, 
-                                        emis_data.cl_launch_total*1e-9, emis_data.cl2_total*1e-9, emis_data.nox_reentry_total*1e-9, 
-                                        emis_data.al2o3_reentry_total*1e-9, total_inc_emis,total_inc_prop, emis_data.mass_survive * 1e-6]}
+            'Emissions 0-80 km [Gg]': [emis_data.bc_launch_total*1e-9,    emis_data.nox_launch_total*1e-9, emis_data.h2o_total*1e-9, 
+                                        emis_data.co_total*1e-9,          emis_data.co2_total*1e-9,        emis_data.al2o3_launch_total*1e-9, 
+                                        emis_data.hcl_launch_total*1e-9,  emis_data.cl_launch_total*1e-9,  emis_data.cl2_total*1e-9, 
+                                        emis_data.hcl_reentry_total*1e-9, emis_data.cl_reentry_total*1e-9, emis_data.bc_reentry_total*1e-9, 
+                                        emis_data.nox_reentry_total*1e-9, emis_data.al2o3_reentry_total*1e-9, 
+                                        np.sum([emis_data.cl2_total*1e-9,  emis_data.hcl_launch_total*1e-9, emis_data.cl_launch_total*1e-9, 
+                                                emis_data.hcl_reentry_total*1e-9, emis_data.cl_reentry_total*1e-9]),
+                                        np.sum([emis_data.nox_launch_total*1e-9, emis_data.nox_reentry_total*1e-9]),
+                                        total_inc_emis,total_inc_prop, emis_data.mass_survive * 1e-6]}
     df = pd.DataFrame(data)
     print(df.round(4))  
     df.to_csv(f"./out_files/emis_stats_{year}_{dataset}_{res}_{levels}.csv",sep=',')    
@@ -1334,7 +1344,10 @@ if __name__ == "__main__":
     raul_data = gpd.read_file('./databases/reentry/General_SpaceX_Map_Raul.kml', driver='KML', layer =2) # Falcon landing data.   
     launch_path       = f'./databases/launch_activity_data_{start_year}-{final_year}.nc'
     rocket_info_path  = f'./databases/rocket_attributes_{start_year}-{final_year}.nc'
-    reentry_path      = f'./databases/reentry_activity_data_{start_year}-{final_year}.nc'
+    if start_year == 2020:
+        reentry_path  = f'./databases/reentry_activity_data_{start_year}-{final_year}_moredatacorrectlocations.nc'
+    else:
+        reentry_path  = f'./databases/reentry_activity_data_{start_year}-{final_year}.nc'
     pei_path          = './input_files/primary_emission_indices.csv'  
     rocket_data       = RocketData(launch_path, reentry_path, rocket_info_path, pei_path)
     print("Successfully loaded input databases.")
