@@ -1,11 +1,11 @@
-from datetime import datetime, timedelta
+from datetime import datetime
 from time import sleep
 import numpy as np
 import xarray as xr
 import argparse
 import sys
 sys.path.append('./python_modules/')
-from discosweb_api_func import server_request, wait_function, response_error_handler
+from discosweb_api_func import server_request, response_error_handler
 from update_rocket_launch_data import update_mass_info
 
 """ Script to request data from the DISCOSweb database. 
@@ -118,15 +118,19 @@ class import_launches:
         for count, launch in enumerate(self.full_launch_list):
             
             self.cospar_id.append(launch["attributes"]["cosparLaunchNo"])
-            temp_launch_epoch = launch["attributes"]["epoch"]
-            self.launch_datestr.append(temp_launch_epoch[:10].replace("-",""))
-            
-            temp_launch_time = temp_launch_epoch[10:]
-            hour = int(temp_launch_time[1:3])
-            minute = int(temp_launch_time[4:6])
-            sec = int(temp_launch_time[7:9])
-            time_utc = np.float64(hour + minute / 60 + sec / 3600)
-            self.launch_time.append(time_utc)
+            if self.cospar_id[-1] == "2023-F07":
+                self.launch_time.append(21.36)
+                self.launch_datestr.append("20230530")
+            else:
+                temp_launch_epoch = launch["attributes"]["epoch"]
+                self.launch_datestr.append(temp_launch_epoch[:10].replace("-",""))
+                
+                temp_launch_time = temp_launch_epoch[10:]
+                hour = int(temp_launch_time[1:3])
+                minute = int(temp_launch_time[4:6])
+                sec = int(temp_launch_time[7:9])
+                time_utc = np.float64(hour + minute / 60 + sec / 3600)
+                self.launch_time.append(time_utc)
             
             # Mark as MCS any launches containing payloads with the name:
             #   - Starlink
@@ -168,8 +172,12 @@ class import_launches:
                 if response.ok:
                     doc = response.json()
                     self.site_name.append(doc['data']["attributes"]["name"])
-                    self.latitude.append(np.float64(doc['data']["attributes"]["latitude"]))
-                    self.longitude.append(np.float64(doc['data']["attributes"]["longitude"]))
+                    if doc['data']["attributes"]["name"] == "Newquay, Spaceport Cornwall":
+                        self.latitude.append(50.439240)
+                        self.longitude.append(-4.999055)
+                    else:
+                        self.latitude.append(np.float64(doc['data']["attributes"]["latitude"]))
+                        self.longitude.append(np.float64(doc['data']["attributes"]["longitude"]))
                     break
                 elif response.status_code == 429:
                     message = f"On launch {count} of {len(self.full_launch_list)} in {self.cospar_id[-1][:4]}."
@@ -221,12 +229,10 @@ class import_launches:
       
     def launch_info_to_netcdf(self):
         """This saves the launch information as a NetCDF file for later processing for GEOS-Chem.
-        This is only needed if using GEOS-Chem. Recommended to ignore if you don't need this.
         """        
         
         #Set up the dimensions of the netcdf file.
-        #launches = np.arange(len(self.cospar_id), dtype=np.int64)
-        dims = ('launches')
+        dims = ('launches',)
     
         #Create the DataArrays.
         data_da_cospar_id = xr.DataArray(self.cospar_id, dims=dims,
