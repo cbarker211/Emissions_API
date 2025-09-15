@@ -1,5 +1,5 @@
 #!/usr/bin/python
-""" Save out rocket emissions as COARDS compliant files for input to HEMCO/GEOS-Chem.
+""" Save out rocket emissions as JSON for output to the API.
 
     Input Files:
         launchfile     (str): The path of the launch database, a netcdf file containing information for each rocket launch.
@@ -142,26 +142,17 @@ class RocketData:
         self.cly_pei   = pei_file["Cly"].to_numpy()
               
 class OutputEmis:
-    def __init__(self, rocketdata, res, ts, levs, booster_levs, meco_levs, sei_levs, seco_levs, 
-                 reentry_levs, vert_filepath, months, dataset, year, ground_landing_list,
-                 stage_alt_dict, model_alt):
+    def __init__(self, event_alts, reentry_levs, months, dataset, year, ground_landing_list,stage_alt_dict):
 
         ####################################
         # Initial Setup
         ####################################
         
         # Setup input variables.
-        self.launch_id = rocketdata.launch_id # Extract launch IDs from the imported rocket data.
-        self.ts = ts
-        self.nlev = levs
-        self.booster_levs = booster_levs
-        self.meco_levs = meco_levs
-        self.sei_levs = sei_levs
-        self.seco_levs = seco_levs
+        self.event_alts = event_alts
         self.bot_reenter = min(reentry_levs)
         self.top_reenter = max(reentry_levs)
         self.n_reenter_levs = self.top_reenter - self.bot_reenter + 1
-        self.nhours = 24
         self.include_landing = True
         self.dataset = dataset
         self.year = year
@@ -169,7 +160,9 @@ class OutputEmis:
         self.stage_alt_dict = stage_alt_dict
         self.total_landing_prop = 0
         self.included_prop = 0
-        self.model_alt = model_alt
+        self.model_alt = MODEL_ALT
+        self.rocket_index_map = {r: i for i, r in enumerate(rocket_data.rocket_name)}
+        vert_filepath = f"geoschem_vertical_grid_{LEVELS}.csv"
 
         # Define Molecular Weights:
         self.mw_h   = 1.008
@@ -192,17 +185,17 @@ class OutputEmis:
         # BC launch, CO launch, CO2 launch, NOx launch, H2O launch, Al2O3 launch, Cl launch, HCl launch, Cl2 launch 0-8
         # NOx reentry, Al2O3 reentry, BC reentry, Cl reentry, HCl reentry 9-13
         self.emission_totals = np.zeros(14)
-        self.prop_consumed = np.zeros((3,len(self.launch_id)))
+        self.prop_consumed = np.zeros((3,len(rocket_data.launch_id)))
         self.total_prop_consumed = np.zeros((len(rocket_data.h2o_pei),3))
         self.launch_count = 0
         self.mass_survive_total = 0
         
         # Make grid at input resolution (no bounds supplied so full global).
         # Can use this with different in and out edges.
-        if res == "2x25":
+        if GRID_RES == "2x25":
             grid = make_grid_LL("2x2.5")  
         else:
-            grid = make_grid_LL(res)  
+            grid = make_grid_LL(GRID_RES)  
         #Extract useful variables from the grid.    
         self.nlon = len(grid['lon'])
         self.nlat = len(grid['lat'])
@@ -228,9 +221,9 @@ class OutputEmis:
         reentry_length = np.sum(reentry_mask)
                                 
         if launch_length > 0:
-            self.output_csv_launch_prop  = np.zeros((launch_length*3,self.nlev))
+            self.output_csv_launch_prop  = np.zeros((launch_length*3,LEVELS))
         if launch_length+reentry_length > 0:
-            self.output_csv_emis  = np.zeros(((launch_length+reentry_length)*10,self.nlev))
+            self.output_csv_emis  = np.zeros(((launch_length+reentry_length)*10,LEVELS))
         
         # Build the ocean landing list for the year in question.
         ocean_landings = raul_data[
@@ -266,9 +259,9 @@ class OutputEmis:
                 self.strday = str(d+1).zfill(2) # Process day data
 
                 layer_data = np.loadtxt("./input_files/" + vert_filepath ,delimiter=",")
-                self.top_alt = np.zeros((self.nlev,self.nlat,self.nlon))
-                self.bot_alt = np.zeros((self.nlev,self.nlat,self.nlon))
-                self.mid_alt = np.zeros((self.nlev,self.nlat,self.nlon))
+                self.top_alt = np.zeros((LEVELS,self.nlat,self.nlon))
+                self.bot_alt = np.zeros((LEVELS,self.nlat,self.nlon))
+                self.mid_alt = np.zeros((LEVELS,self.nlat,self.nlon))
                 self.area = np.zeros((self.nlat,self.nlon))
                 for lat in range(self.nlat):
                     for lon in range(self.nlon):
@@ -400,7 +393,7 @@ class OutputEmis:
         with open(filename, 'w') as json_file:
             json.dump(events_data, json_file, indent=4)
              
-    def process_launch_event_altitudes(self, valid_index, p, q, launch_rocket,launch_id):
+    def process_launch_event_altitudes(self, valid_index, launch_rocket,launch_id):
         
         # Define the propellant saved for landing for reusable rockets.
         if launch_id in self.ground_landing_list:
@@ -427,7 +420,7 @@ class OutputEmis:
                     rocket_config_type = 2
 
                 else:
-                    sys.exit(f"Incorrect rocket configuration 1 {launch_rocket}")
+                    raise IndexError(f"Incorrect rocket configuration 1 {launch_rocket}")
 
             else:
                 if rocket_data.stage1_prop_type[valid_index] != '' and rocket_data.stage2_prop_type[valid_index] != '' and rocket_data.stage3_prop_type[valid_index] == '' and rocket_data.stage4_prop_type[valid_index] == '':
@@ -438,12 +431,12 @@ class OutputEmis:
                     rocket_config_type = 5
                
                 else:
-                    sys.exit(f"Incorrect rocket configuration 2 {launch_rocket}")
+                    raise IndexError(f"Incorrect rocket configuration 2 {launch_rocket}")
                     
-            stage_alt_beco = self.booster_levs[rocket_config_type]
-            stage_alt_meco = self.meco_levs[rocket_config_type]
-            stage_alt_sei  = self.sei_levs[rocket_config_type]    
-            stage_alt_seco = self.seco_levs[rocket_config_type]
+            stage_alt_beco = self.event_alts[0][rocket_config_type]
+            stage_alt_meco = self.event_alts[1][rocket_config_type]
+            stage_alt_sei  = self.event_alts[2][rocket_config_type]    
+            stage_alt_seco = self.event_alts[3][rocket_config_type]
         
         ###########
         # Boosters
@@ -584,38 +577,24 @@ class OutputEmis:
         return stage_alt_beco, stage_alt_meco
     
     def calc_emis(self,start_ind,stop_ind,pei_index,prop_mass,vertical_profile,time_index, q, p, total_vertical_propellant,stage):
+        '''
+        Calculate the emissions over the range of the stag within the fine grid (0-100 km).
+        '''
         
-        # Calculate the emissions over the range of the stag within the fine grid (0-100 km).
-        ei_bc = calculate_bc_ei(self.fine_grid_mid_alt[start_ind:stop_ind]*1e-3, rocket_data.bc_pei[pei_index])
-        ei_co, ei_co2 = calculate_co_ei(self.fine_grid_mid_alt[start_ind:stop_ind]*1e-3, rocket_data.co_pei[pei_index], rocket_data.co2_pei[pei_index])
-        ei_sec_nox = calculate_nox_ei(self.fine_grid_mid_alt[start_ind:stop_ind]*1e-3)
-        ei_h2o =  rocket_data.h2o_pei[pei_index] + rocket_data.h2_pei[pei_index] * self.mw_h2o / self.mw_h2 
-        ei_cl, ei_hcl, ei_cl2 = calculate_cl_ei(self.fine_grid_mid_alt[start_ind:stop_ind]*1e-3, rocket_data.cly_pei[pei_index])
-        bc_emis         = ei_bc * prop_mass * 1e-2 * vertical_profile
-        co_emis         = ei_co * prop_mass * 1e-2 * vertical_profile
-        co2_emis        = ei_co2 * prop_mass * 1e-2 * vertical_profile
-        launch_nox_emis = ei_sec_nox * prop_mass * 1e-2 * vertical_profile
-        fuel_nox_emis   = rocket_data.nox_pei[pei_index] * prop_mass * 1e-2 * vertical_profile
-        h2o_emis        = ei_h2o * prop_mass * 1e-2 * vertical_profile
-        al2o3_emis      = rocket_data.al2o3_pei[pei_index] * prop_mass * 1e-2 * vertical_profile
-        cl_emis         = ei_cl * prop_mass * 1e-2 * vertical_profile
-        hcl_emis        = ei_hcl * prop_mass * 1e-2 * vertical_profile
-        cl2_emis        = ei_cl2 * prop_mass * 1e-2 * vertical_profile
-        
-        # Place the emissions into a larger array covering the whole fine grid (0-100km). 
+        # Calculate the emission indices for each species.
+        ei_bc                 = calculate_bc_ei (self.fine_grid_mid_alt[start_ind:stop_ind]*1e-3, rocket_data.bc_pei[pei_index])
+        ei_co, ei_co2         = calculate_co_ei (self.fine_grid_mid_alt[start_ind:stop_ind]*1e-3, rocket_data.co_pei[pei_index], rocket_data.co2_pei[pei_index])
+        ei_sec_nox            = calculate_nox_ei(self.fine_grid_mid_alt[start_ind:stop_ind]*1e-3)
+        ei_cl, ei_hcl, ei_cl2 = calculate_cl_ei (self.fine_grid_mid_alt[start_ind:stop_ind]*1e-3, rocket_data.cly_pei[pei_index])
+        ei_h2o                = rocket_data.h2o_pei[pei_index] + rocket_data.h2_pei[pei_index] * self.mw_h2o / self.mw_h2 
+
+        # Calculate the emissions for each species in g.
         emis_full = np.zeros((len(self.fine_grid_mid_alt),11))
-        emis_full[start_ind:stop_ind,0]  = bc_emis
-        emis_full[start_ind:stop_ind,1]  = co_emis
-        emis_full[start_ind:stop_ind,2]  = co2_emis
-        emis_full[start_ind:stop_ind,3]  = launch_nox_emis
-        emis_full[start_ind:stop_ind,4]  = fuel_nox_emis
-        emis_full[start_ind:stop_ind,5]  = h2o_emis
-        emis_full[start_ind:stop_ind,6]  = al2o3_emis
-        emis_full[start_ind:stop_ind,7]  = cl_emis
-        emis_full[start_ind:stop_ind,8]  = hcl_emis
-        emis_full[start_ind:stop_ind,9]  = cl2_emis
+        for index, emission_index in enumerate([ei_bc, ei_co, ei_co2, ei_sec_nox, rocket_data.nox_pei[pei_index], ei_h2o, rocket_data.al2o3_pei[pei_index], ei_cl, ei_hcl, ei_cl2]):
+            emis_full[start_ind:stop_ind,index] = emission_index * prop_mass * 1e-2 * vertical_profile
         emis_full[start_ind:stop_ind,10] = vertical_profile
-        
+
+        # Place the emissions into a larger array covering the whole fine grid (0-100km).
         vertical_propellant = np.zeros(len(self.mid_alt[:,q,p]))
         selected_alts = []
         # Regrid the vertical_profile to the desired model profile.
@@ -628,30 +607,21 @@ class OutputEmis:
             selected_alts.extend(np.arange(bot_ind,top_ind))
             
             # Sum the emissions in this range for each species and place in an array.
-            self.rocket_launch_bc[time_index,i,q,p]  += (np.sum(emis_full[bot_ind:top_ind,0]) * 1e-6)
-            self.rocket_co[time_index,i,q,p]         += (np.sum(emis_full[bot_ind:top_ind,1]) * 1e-6)
-            self.rocket_co2[time_index,i,q,p]        += (np.sum(emis_full[bot_ind:top_ind,2]) * 1e-6)
-            self.rocket_launch_nox[time_index,i,q,p] += (np.sum(emis_full[bot_ind:top_ind,3]) * 1e-6)
-            self.rocket_fuel_nox[time_index,i,q,p]   += (np.sum(emis_full[bot_ind:top_ind,4]) * 1e-6)
-            self.rocket_h2o[time_index,i,q,p]        += (np.sum(emis_full[bot_ind:top_ind,5]) * 1e-6)
-            self.rocket_launch_al[time_index,i,q,p]  += (np.sum(emis_full[bot_ind:top_ind,6]) * 1e-6)
-            self.rocket_launch_cl[time_index,i,q,p]  += (np.sum(emis_full[bot_ind:top_ind,7]) * 1e-6)
-            self.rocket_launch_hcl[time_index,i,q,p] += (np.sum(emis_full[bot_ind:top_ind,8]) * 1e-6)
-            self.rocket_cl2[time_index,i,q,p]        += (np.sum(emis_full[bot_ind:top_ind,9]) * 1e-6)
-            total_vertical_propellant[i,0]           += np.sum(emis_full[bot_ind:top_ind,10]) * prop_mass
-            total_vertical_propellant[i,1]           += np.sum(emis_full[bot_ind:top_ind,0]) 
-            total_vertical_propellant[i,2]           += np.sum(emis_full[bot_ind:top_ind,1]) 
-            total_vertical_propellant[i,3]           += np.sum(emis_full[bot_ind:top_ind,2])
-            total_vertical_propellant[i,4]           += np.sum(emis_full[bot_ind:top_ind,3:5]) 
-            total_vertical_propellant[i,5]           += np.sum(emis_full[bot_ind:top_ind,5]) 
-            total_vertical_propellant[i,6]           += np.sum(emis_full[bot_ind:top_ind,6]) 
-            total_vertical_propellant[i,7]           += np.sum(emis_full[bot_ind:top_ind,7]) 
-            total_vertical_propellant[i,8]           += np.sum(emis_full[bot_ind:top_ind,8]) 
-            total_vertical_propellant[i,9]           += np.sum(emis_full[bot_ind:top_ind,9]) 
+            for i, key in enumerate(["launch_bc","co","co2","launch_nox","fuel_nox","h2o","launch_al","launch_cl","launch_hcl","cl2"]):
+                self.rocket_data_arrays[key][time_index,i,q,p]  += (np.sum(emis_full[bot_ind:top_ind,i]) * 1e-6)
+            total_vertical_propellant[i,0] += np.sum(emis_full[bot_ind:top_ind,10]) * prop_mass
+            total_vertical_propellant[i,1] += np.sum(emis_full[bot_ind:top_ind,0]) 
+            total_vertical_propellant[i,2] += np.sum(emis_full[bot_ind:top_ind,1]) 
+            total_vertical_propellant[i,3] += np.sum(emis_full[bot_ind:top_ind,2])
+            total_vertical_propellant[i,4] += np.sum(emis_full[bot_ind:top_ind,3:5]) 
+            total_vertical_propellant[i,5] += np.sum(emis_full[bot_ind:top_ind,5]) 
+            total_vertical_propellant[i,6] += np.sum(emis_full[bot_ind:top_ind,6]) 
+            total_vertical_propellant[i,7] += np.sum(emis_full[bot_ind:top_ind,7]) 
+            total_vertical_propellant[i,8] += np.sum(emis_full[bot_ind:top_ind,8]) 
+            total_vertical_propellant[i,9] += np.sum(emis_full[bot_ind:top_ind,9]) 
              
-           
         if len(list(set(selected_alts))) != len(selected_alts):
-            sys.exit("Error in fine grid indexing.")
+            raise IndexError("Error in fine grid indexing.")
         
         # BC launch, CO launch, CO2 launch, NOx launch, H2O launch, Al2O3 launch, Cl launch, HCl launch, Cl2 launch
         # NOx reentry, Al2O3 reentry, BC reentry, HCl reentry, Cl reentry
@@ -674,30 +644,23 @@ class OutputEmis:
         daily_info = []                
         #Loop over each launch/reentry.
         for w in range(len(lon)):
-            
-            # Set up the data arrays which will be saved to file.
-            self.rocket_launch_nox  = np.zeros((self.nhours,self.nlev,self.nlat,self.nlon))
-            self.rocket_fuel_nox    = np.zeros((self.nhours,self.nlev,self.nlat,self.nlon))
-            self.rocket_h2o         = np.zeros((self.nhours,self.nlev,self.nlat,self.nlon))
-            self.rocket_launch_bc   = np.zeros((self.nhours,self.nlev,self.nlat,self.nlon))
-            self.rocket_co          = np.zeros((self.nhours,self.nlev,self.nlat,self.nlon))
-            self.rocket_co2         = np.zeros((self.nhours,self.nlev,self.nlat,self.nlon))
-            self.rocket_launch_al   = np.zeros((self.nhours,self.nlev,self.nlat,self.nlon))
-            self.rocket_launch_hcl  = np.zeros((self.nhours,self.nlev,self.nlat,self.nlon))
-            self.rocket_launch_cl   = np.zeros((self.nhours,self.nlev,self.nlat,self.nlon))
-            self.rocket_cl2         = np.zeros((self.nhours,self.nlev,self.nlat,self.nlon))
-            self.rocket_reentry_nox = np.zeros((self.nhours,self.nlev,self.nlat,self.nlon))
-            self.rocket_reentry_al  = np.zeros((self.nhours,self.nlev,self.nlat,self.nlon))
-            self.rocket_reentry_bc  = np.zeros((self.nhours,self.nlev,self.nlat,self.nlon))
-            self.rocket_reentry_hcl = np.zeros((self.nhours,self.nlev,self.nlat,self.nlon))
-            self.rocket_reentry_cl  = np.zeros((self.nhours,self.nlev,self.nlat,self.nlon))
+
+            # Set up the emission arrays for this launch/reentry.
+            self.rocket_data_arrays = {}
+            species = ['launch_nox', 'fuel_nox',  'h2o',       'launch_bc',  'co',
+                       'co2',        'launch_al', 'launch_hcl','launch_cl',  'cl2',
+                       'reentry_nox','reentry_al','reentry_bc','reentry_hcl','reentry_cl'
+            ]
+
+            for sp in species:
+                self.rocket_data_arrays[sp] = np.zeros((HOURS, LEVELS, self.nlat, self.nlon))
             
             ################
             # Setup grid.
             ################
             # Get grid horizontal indices (p is lon index; q is lat index).
             # This works out the nearest latitude and longitude on the grid.
-            p,q = np.argmin(abs(lon[w]-self.lon)), np.argmin(abs(lat[w]-self.lat))
+            p,q = np.argmin(np.abs(lon[w]-self.lon)), np.argmin(np.abs(lat[w]-self.lat))
             
             # Usually, any reentries from launches are placed at the same lat/lon as the launch itself.
             # This code is only used where a non launch related reentry occurs on the same day as a launch.
@@ -715,11 +678,11 @@ class OutputEmis:
                 self.qmax=q
                                 
             # Get factor to convert from kg to kg/m2/s if needed for GEOS-Chem outputs:
-            #self.kg_to_kgm2s        = self.area[q,p]*self.ts
-            #self.falcon_kg_to_kgm2s = self.area[falcon_q,falcon_p]*self.ts
+            #self.kg_to_kgm2s        = self.area[q,p]*TIMESTEP
+            #self.falcon_kg_to_kgm2s = self.area[falcon_q,falcon_p]*TIMESTEP
             
             # Format the time of the event.
-            time_index = int(hour[w]*60*60)//self.ts
+            time_index = int(hour[w]*60*60)//TIMESTEP
             
             #########################################################
             # Work out vertical distribution for launch emissions.
@@ -740,19 +703,11 @@ class OutputEmis:
                 # Check the rocket type 
                 ############################################
                 
-                rocket_found = False
                 valid_index = 0
-                
-                # Loop over rockets to find matching rocket and associated propellant mass:
-                for ll in range(len(rocket_data.rocket_name)):
-                    if name[w] == rocket_data.rocket_name[ll]:
-                        rocket_found = True
-                        valid_index=ll
-                        break
-                    
-                # Catch any missing rocket propellant masses:
-                if rocket_found == False:
-                    sys.exit(f"No propellant mass found for {name[w]}. Exiting programme.")
+                if name[w] in self.rocket_index_map:
+                    valid_index = self.rocket_index_map[name[w]]
+                else:
+                    raise IndexError(f"No propellant mass found for {name[w]}")
                     
                 launch_details = {
                     "date": f"{self.year}-{self.strmon}-{self.strday}",
@@ -766,15 +721,12 @@ class OutputEmis:
                     "location": location[w],
                 }
                 
-                if event_id[w] in ["2021-F09","2022-065","2023-72"]:
+                if event_id[w] in ["2021-F09","2022-065","2023-72"]: # Naro Space Center
                     launch_details["lat"] = 34.43194444
                     launch_details["lon"] = 127.535
-                elif event_id[w] in ["2020-065","2022-167","2022-046","2022-126","2023-135","2024-102","2024-153","2024-173","2024-245","2025-007","2025-105"]:
+                elif event_id[w] in ["2020-065","2022-167","2022-046","2022-126","2023-135","2024-102","2024-153","2024-173","2024-245","2025-007","2025-105"]: # China Sea Launch
                     launch_details["lat"] = 34.9
                     launch_details["lon"] = 121.2
-                else:
-                    launch_details["lat"] = lat[w]
-                    launch_details["lon"] = lon[w]
                     
                 ############################################################################
                 # Start processing the launch event altitudes and deal with failed launches.
@@ -788,8 +740,7 @@ class OutputEmis:
                     continue
                 
                 if pd.isna(event_id[w]) or pd.isna(lon[w]) or pd.isna(lat[w]):
-                    print(f"Event ID: {event_id[w]}")
-                    print(f"Latitude: {lat[w]}, Longitude: {lon[w]}, Site: {location[w]}")
+                    raise ValueError(f"Event ID: {event_id[w]} Latitude: {lat[w]}, Longitude: {lon[w]}, Site: {location[w]}")
                                                     
                 # Next find index of fuel type in primary emissions index data:
                 pei_booster_index  = np.where( rocket_data.pei_fuel_type == rocket_data.booster_prop_type[valid_index])[0]
@@ -797,7 +748,7 @@ class OutputEmis:
                 pei_stage2_index   = np.where( rocket_data.pei_fuel_type == rocket_data.stage2_prop_type[valid_index] )[0]
                 pei_stage3_index   = np.where( rocket_data.pei_fuel_type == rocket_data.stage3_prop_type[valid_index] )[0]
                 
-                stage_alt_beco, stage_alt_meco = self.process_launch_event_altitudes(valid_index, p, q, name[w],event_id[w])
+                stage_alt_beco, stage_alt_meco = self.process_launch_event_altitudes(valid_index, name[w], event_id[w])
                 # NOTE: Need to recheck which failures are within model limits if wanting to run for different vertical heights above 80km.
                 # Most failures are for upper stages, and so can be treated as normal here.
                 # Full information is provided in source_info/failed_launch_info.txt.
@@ -839,17 +790,17 @@ class OutputEmis:
                         if stage_alt_beco < self.model_alt:
                             if ((np.abs(self.prop_consumed[0,self.launch_count] - rocket_data.booster_prop_mass[valid_index]) / rocket_data.booster_prop_mass[valid_index] * 100) > error_lim) and (rocket_data.rocket_name[valid_index] != "Falcon Heavy"):
                                 print(np.abs(self.prop_consumed[0,self.launch_count]),rocket_data.booster_prop_mass[valid_index],np.abs(self.prop_consumed[0,self.launch_count] - rocket_data.booster_prop_mass[valid_index]) / rocket_data.booster_prop_mass[valid_index] * 100)
-                                sys.exit(f"Error with booster emissions -2. {event_id[w]}") 
+                                raise ValueError(f"Error with booster emissions -2. {event_id[w]}") 
                             
                     self.prop_consumed[1,self.launch_count]  = np.sum(self.fine_grid_mass_stage1 * rocket_data.stage1_prop_mass[valid_index] * 1e-2)
                     self.prop_consumed[2,self.launch_count]  = np.sum(self.fine_grid_mass_stage2 * rocket_data.stage2_prop_mass[valid_index] * 1e-2)
 
                     # For all rockets, the propellant consumed for each stage should never be bigger than the total propellant in each stage.
                     if ((self.prop_consumed[1,self.launch_count] - rocket_data.stage1_prop_mass[valid_index]) / rocket_data.stage1_prop_mass[valid_index] * 100 ) > error_lim:
-                        sys.exit(f"Error with Stage 1 emissions - 1.")
+                        raise ValueError(f"Error with Stage 1 emissions - 1.")
                     if (rocket_data.rocket_name[valid_index] != "Long March (CZ) 5B"):
                         if (((self.prop_consumed[2,self.launch_count] - rocket_data.stage2_prop_mass[valid_index]) / rocket_data.stage2_prop_mass[valid_index] * 100 ) > error_lim):
-                            sys.exit("Error with Stage 2 emissions.")
+                            raise ValueError("Error with Stage 2 emissions.")
 
                     # When MECO occurs in the model, the consumed propellant should be within 1% of the total propellant mass of stage 1.  
                     # The error is suppressed for 2020-F07, 2021-F01, and 2021-F07 where rockets failed early. 
@@ -858,7 +809,7 @@ class OutputEmis:
                     if stage_alt_meco < self.model_alt:
                         if (event_id[w] not in ['2020-F07','2021-F01','2021-F07']) and rocket_data.rocket_name[valid_index] != "Falcon 9 v1.2" and ((np.abs(self.prop_consumed[1,self.launch_count] - rocket_data.stage1_prop_mass[valid_index]) / rocket_data.stage1_prop_mass[valid_index] * 100) > 1):
                             print(event_id[w],self.prop_consumed[1,self.launch_count],rocket_data.stage1_prop_mass[valid_index],(np.abs(self.prop_consumed[1,self.launch_count] - rocket_data.stage1_prop_mass[valid_index]) / rocket_data.stage1_prop_mass[valid_index] * 100))
-                            sys.exit("Error with Stage 1 emissions - 2.")  
+                            raise ValueError("Error with Stage 1 emissions - 2.")  
                         
                 self.total_prop_consumed[pei_booster_index,0] += self.prop_consumed[0,self.launch_count]
                 self.total_prop_consumed[pei_stage1_index,1]  += self.prop_consumed[1,self.launch_count]
@@ -878,7 +829,7 @@ class OutputEmis:
                 # Check whether there is a booster:
                 if (rocket_data.booster_prop_type[valid_index] != ''):
                     if np.sum(1e-2 * self.fine_grid_mass_booster) > 1.01:
-                        sys.exit("Error with Boosters. Propellant distribution exceeds unity.")
+                        raise ValueError("Error with Boosters. Propellant distribution exceeds unity.")
                     total_vertical_propellant = self.calc_emis(None,
                                 self.booster_alt_index,
                                 pei_booster_index,
@@ -891,44 +842,25 @@ class OutputEmis:
                                 0)
                         
                 # Every rocket has a first stage.
-                try:
-                    if np.sum(1e-2 * self.fine_grid_mass_stage1) > 1.01:
-                        raise ValueError("Error with Stage 1. Propellant distribution exceeds unity.")  
-
-                    total_vertical_propellant = self.calc_emis(self.fei_alt_index,
-                                    self.MECO_alt_index,
-                                    pei_stage1_index,
-                                    rocket_data.stage1_prop_mass[valid_index],
-                                    self.fine_grid_mass_stage1,
-                                    time_index, 
-                                    q, 
-                                    p, 
-                                    total_vertical_propellant,
-                                    1)
-                except:
-                    if rocket_data.launch_id[valid_index] == '2018-008':
-                        rocket_data.stage1_prop_type[valid_index] = 'Hypergolic'
-                        if np.sum(1e-2 * self.fine_grid_mass_stage1) > 1.01:
-                            sys.exit("Error with Stage 1. Propellant distribution exceeds unity.")  
-                        total_vertical_propellant = self.calc_emis(self.fei_alt_index,
-                                    self.MECO_alt_index,
-                                    pei_stage1_index,
-                                    rocket_data.stage1_prop_mass[valid_index],
-                                    self.fine_grid_mass_stage1,
-                                    time_index, 
-                                    q, 
-                                    p, 
-                                    total_vertical_propellant,
-                                    1)
-
-                    else:
-                        sys.exit(f"First Stage problem{rocket_data.launch_id[valid_index]} MECO value: {self.MECO_alt_index}, self value: {self.fei_alt_index}, Stage One Fuel type is: {rocket_data.stage1_prop_type[valid_index]}")
+                if np.sum(1e-2 * self.fine_grid_mass_stage1) > 1.01:
+                    raise ValueError("Error with Stage 1. Propellant distribution exceeds unity.")  
+                total_vertical_propellant = self.calc_emis(self.fei_alt_index,
+                                                           self.MECO_alt_index,
+                                                           pei_stage1_index,
+                                                           rocket_data.stage1_prop_mass[valid_index],
+                                                           self.fine_grid_mass_stage1,
+                                                           time_index, 
+                                                           q, 
+                                                           p, 
+                                                           total_vertical_propellant,
+                                                           1
+                                                           )
                 
 
                 # Check whether there is a second stage:
                 if rocket_data.stage2_prop_type[valid_index] != '' and self.SEI_alt_index != None:
                     if np.sum(1e-2 * self.fine_grid_mass_stage2) > 1.01:
-                        sys.exit("Error with Stage 2. Propellant distribution exceeds unity.")
+                        raise ValueError("Error with Stage 2. Propellant distribution exceeds unity.")
                     total_vertical_propellant = self.calc_emis(self.SEI_alt_index,
                                 self.seco_alt_index,
                                 pei_stage2_index,
@@ -945,7 +877,7 @@ class OutputEmis:
                 # Add third stage emissions for Minotaur 1.
                 if rocket_data.rocket_name[valid_index] == "Minotaur 1":
                     if np.sum(1e-2 * self.fine_grid_mass_stage3) > 1.01:
-                        sys.exit("Error with Stage 3 for Minotaur 1. Propellant distribution exceeds unity.")
+                        raise ValueError("Error with Stage 3 for Minotaur 1. Propellant distribution exceeds unity.")
                     total_vertical_propellant = self.calc_emis(self.TEI_alt_index,
                                 None,
                                 pei_stage3_index,
@@ -1021,6 +953,10 @@ class OutputEmis:
                     elif rocket_data.rocket_name[valid_index] == "Falcon Heavy":
                         pei = pei_booster_index
                         prop_mass = rocket_data.booster_prop_mass[valid_index]
+                    else:
+                        pei = None
+                        prop_mass = None
+                        raise RuntimeError("Error identifying Falcon rocket type.")
                     
                     # NOTE: This section needs to be tweaked if wanting to run for different vertical heights above 80km.
                     # Should implement the boostback burn if the vertical height is increased to 100 km.
@@ -1047,14 +983,15 @@ class OutputEmis:
                                 total_vertical_propellant,
                                 5)
                     
-                launch_details["emissions"] = {"BC":  np.sum(self.rocket_launch_bc),
-                             "CO":  np.sum(self.rocket_co),
-                             "CO2": np.sum(self.rocket_co2),
-                             "NOx": np.sum(self.rocket_launch_nox) + np.sum(self.rocket_fuel_nox),
-                             "H2O": np.sum(self.rocket_h2o),
-                             "Cly": np.sum(self.rocket_launch_cl) + np.sum(self.rocket_cl2) + np.sum(self.rocket_launch_hcl),
-                             "Al2O3": np.sum(self.rocket_launch_al),
-                             }   
+                launch_details["emissions"] = {
+                    "BC":    np.sum(self.rocket_data_arrays["launch_bc"]),
+                    "CO":    np.sum(self.rocket_data_arrays["co"]),
+                    "CO2":   np.sum(self.rocket_data_arrays["co2"]),
+                    "NOx":   np.sum(self.rocket_data_arrays["launch_nox"]) + np.sum(self.rocket_data_arrays["fuel_nox"]),
+                    "H2O":   np.sum(self.rocket_data_arrays["h2o"]),
+                    "Cly":   np.sum(self.rocket_data_arrays["launch_cl"]) + np.sum(self.rocket_data_arrays["cl2"]) + np.sum(self.rocket_data_arrays["launch_hcl"]),
+                    "Al2O3": np.sum(self.rocket_data_arrays["launch_al"]),
+                    }   
                 
                 daily_info.append(launch_details) 
                 
@@ -1111,15 +1048,16 @@ class OutputEmis:
                     reentry_details["lon"] = lon[w]
                 
                 total_vertical_propellant = np.zeros((len(self.mid_alt[:,q,p]),10))
+                reentry_ei = np.zeros(5) # Al2O3, NOx, BC, Cl, HCl
                 if np.ma.is_masked(rocket_data.reentry_abl_mass[index[w]]) or np.ma.is_masked(rocket_data.reentry_other_mass[index[w]]):
                     pass
                 else:
                 
-                    reentry_ei_al2o3   = rocket_data.reentry_abl_deg[index[w]] * rocket_data.reentry_per_alu[index[w]]
+                    reentry_ei[0]   = rocket_data.reentry_abl_deg[index[w]] * rocket_data.reentry_per_alu[index[w]]
                     if rocket_data.reentry_abl_deg[index[w]] == 0:
-                        reentry_ei_nox = 0.175
+                        reentry_ei[1] = 0.175
                     else:
-                        reentry_ei_nox = 0.4
+                        reentry_ei[1] = 0.4
                         
                     # Calculate the total mass surviving re-entry in tonnes
                     # We are adding all mass that comes back, so this includes reusable stages and fairings.
@@ -1127,54 +1065,37 @@ class OutputEmis:
                      
                     # Add chlorine and bc reentry emissions from ATISPADE Report. Don't add for lower stages, only upper (>S2).
                     if rocket_data.reentry_category[index[w]] in ["P","C"]:
-                        reentry_ei_bc  = 0.041 # Worst Case
-                        reentry_ei_hcl = 0.008 # Worst Case
-                        reentry_ei_cl  = 0.015 # Worst Case
+                        reentry_ei[2:] = [0.041,0.015,0.008] # Worst Case
                     elif rocket_data.reentry_category[index[w]] in ["S2","S3","S4"]:
-                        reentry_ei_bc  = 0.029 # Worst Case
-                        reentry_ei_hcl = 0.005 # Worst Case
-                        reentry_ei_cl  = 0.011 # Worst Case
-                    else:
-                        reentry_ei_bc  = 0
-                        reentry_ei_hcl = 0
-                        reentry_ei_cl  = 0
+                        reentry_ei[2:] = [0.029,0.011,0.005] # Worst Case
                      
                     # For consistency with launch emissions, the totals are kept in g units. 
                     # NOx reentry, Al2O3 reentry, BC reentry, Cl reentry, HCl reentry 9-13           
-                    t_nox_reentry = (rocket_data.reentry_abl_mass[index[w]] + rocket_data.reentry_other_mass[index[w]]) * reentry_ei_nox * 1000
+                    t_nox_reentry = (rocket_data.reentry_abl_mass[index[w]] + rocket_data.reentry_other_mass[index[w]]) * reentry_ei[1] * 1000
                     self.emission_totals[9] += t_nox_reentry
-                    self.rocket_reentry_nox[time_index,self.bot_reenter:self.top_reenter+1,q,p] += t_nox_reentry / self.n_reenter_levs * 1e-6 
+                    self.rocket_data_arrays["reentry_nox"][time_index,self.bot_reenter:self.top_reenter+1,q,p] += t_nox_reentry / self.n_reenter_levs * 1e-6 
                     
-                    t_al2o3_reentry = rocket_data.reentry_abl_mass[index[w]] * reentry_ei_al2o3 * 1000
+                    t_al2o3_reentry = rocket_data.reentry_abl_mass[index[w]] * reentry_ei[0] * 1000
                     self.emission_totals[10] += t_al2o3_reentry
-                    self.rocket_reentry_al[time_index,self.bot_reenter:self.top_reenter+1,q,p] += t_al2o3_reentry / self.n_reenter_levs * 1e-6
-                    
-                    if rocket_data.reentry_category[index[w]] in ["P","C","S2","S3","S4"]:
-                        
-                        t_bc_reentry = (rocket_data.reentry_abl_mass[index[w]] + rocket_data.reentry_other_mass[index[w]]) * reentry_ei_bc * 1000
-                        self.emission_totals[11] += t_bc_reentry
-                        self.rocket_reentry_bc[time_index,self.bot_reenter:self.top_reenter+1,q,p] += t_bc_reentry / self.n_reenter_levs * 1e-6
+                    self.rocket_data_arrays["reentry_al"][time_index,self.bot_reenter:self.top_reenter+1,q,p] += t_al2o3_reentry / self.n_reenter_levs * 1e-6
 
-                        t_cl_reentry = (rocket_data.reentry_abl_mass[index[w]] + rocket_data.reentry_other_mass[index[w]]) * reentry_ei_cl * 1000
-                        self.emission_totals[12] += t_cl_reentry
-                        self.rocket_reentry_cl[time_index,self.bot_reenter:self.top_reenter+1,q,p] += t_cl_reentry / self.n_reenter_levs * 1e-6
-                        
-                        t_hcl_reentry = (rocket_data.reentry_abl_mass[index[w]] + rocket_data.reentry_other_mass[index[w]]) * reentry_ei_hcl * 1000
-                        self.emission_totals[13] += t_hcl_reentry
-                        self.rocket_reentry_hcl[time_index,self.bot_reenter:self.top_reenter+1,q,p] += t_hcl_reentry / self.n_reenter_levs * 1e-6 
-                        
-                        total_vertical_propellant[self.bot_reenter:self.top_reenter+1,1]   += np.full((self.n_reenter_levs),t_bc_reentry/self.n_reenter_levs)
-                        total_vertical_propellant[self.bot_reenter:self.top_reenter+1,7]   += np.full((self.n_reenter_levs),t_cl_reentry/self.n_reenter_levs)
-                        total_vertical_propellant[self.bot_reenter:self.top_reenter+1,8]   += np.full((self.n_reenter_levs),t_hcl_reentry/self.n_reenter_levs)
-                    
                     total_vertical_propellant[self.bot_reenter:self.top_reenter+1,4]   += np.full((self.n_reenter_levs),t_nox_reentry/self.n_reenter_levs)
                     total_vertical_propellant[self.bot_reenter:self.top_reenter+1,6]   += np.full((self.n_reenter_levs),t_al2o3_reentry/self.n_reenter_levs)
                     
-                reentry_details["emissions"] = {"NOx": np.sum(self.rocket_reentry_nox),
-                                                "Al2O3": np.sum(self.rocket_reentry_al),
-                                                "BC": np.sum(self.rocket_reentry_bc),
-                                                "HCl": np.sum(self.rocket_reentry_hcl),
-                                                "Cl": np.sum(self.rocket_reentry_cl),
+                    if rocket_data.reentry_category[index[w]] in ["P","C","S2","S3","S4"]:
+                        
+                        prop_dict = {"reentry_bc": 1,"reentry_cl":7,"reentry_hcl": 8}
+                        for i, key in enumerate(["reentry_bc","reentry_cl","reentry_hcl"]):
+                            t_reentry = (rocket_data.reentry_abl_mass[index[w]] + rocket_data.reentry_other_mass[index[w]]) * reentry_ei[i+2] * 1000
+                            self.emission_totals[i+11] += t_reentry
+                            self.rocket_data_arrays[key][time_index,self.bot_reenter:self.top_reenter+1,q,p] += t_reentry / self.n_reenter_levs * 1e-6
+                            total_vertical_propellant[self.bot_reenter:self.top_reenter+1,prop_dict[key]]   += np.full((self.n_reenter_levs),t_reentry/self.n_reenter_levs)
+                    
+                reentry_details["emissions"] = {"NOx":   np.sum(self.rocket_data_arrays["reentry_nox"]),
+                                                "Al2O3": np.sum(self.rocket_data_arrays["reentry_al"]),
+                                                "BC":    np.sum(self.rocket_data_arrays["reentry_bc"]),
+                                                "HCl":   np.sum(self.rocket_data_arrays["reentry_hcl"]),
+                                                "Cl":    np.sum(self.rocket_data_arrays["reentry_cl"]),
                                                 "Unablated_Mass": self.mass_survive,
                              }   
                 
@@ -1231,59 +1152,40 @@ if __name__ == "__main__":
     parser.add_argument('-fy', "--final_year", default = "2024", choices=str(np.arange(2020,2025)), help='Final Year.')
     args = parser.parse_args()
 
-    # Sort out the year range.
-    start_year, final_year = int(args.start_year), int(args.final_year)
-    if start_year > final_year:
-        final_year = start_year + 1
-    year_range = np.arange(start_year,final_year+1)  
+    # Define the ranges of years, months and datasets to process.
+    def make_range(start, end):
+        start, end = int(start), int(end)
+        if start > end:
+            end = start + 1
+        return np.arange(start, end + 1), start, end
     
-    # Sort out the month range.
-    start_month, final_month = int(args.start_month), int(args.final_month)
-    if start_month > final_month:
-        final_month = start_month + 1
-    months = np.arange(start_month,final_month+1)
-
-    # Sort out the dataset range.
-    start_dataset, final_dataset = int(args.start_dataset), int(args.final_dataset)
-    if start_dataset > final_dataset:
-        final_dataset = start_dataset + 1
-    dataset_range = np.arange(start_dataset,final_dataset+1)
+    years,    start_year,    final_year    = make_range(args.start_year, args.final_year)
+    months,   start_month,   final_month   = make_range(args.start_month, args.final_month)
+    datasets, start_dataset, final_dataset = make_range(args.start_dataset, args.final_dataset)
     
     print(f"Years: {start_year}-{final_year}. Months: {start_month}-{final_month}.")
       
-    #################################
     # Define launch event altitudes.
-    #################################
-    
+
     # BECO, MECO and SEI values from literature sources are used wherever possible. 
     # When not available, the average of other rockets with the same configuration is used.
 
     stage_alt_dict = {}
     stage_alt_rockets = np.genfromtxt("./input_files/launch_event_altitudes.csv",dtype=str,skip_header=1,usecols=[0],delimiter=",")
     stage_alt_data = np.genfromtxt("./input_files/launch_event_altitudes.csv",dtype=np.float64,skip_header=1,usecols=[1,2,3,4],delimiter=",")
-    for i in range(len(stage_alt_data)):
-        if stage_alt_data[i][0] == '':
-            stage_alt_dict[f"{stage_alt_rockets[i]} BECO"] = None
-        else:
-            stage_alt_dict[f"{stage_alt_rockets[i]} BECO"] = np.float64(stage_alt_data[i][0])
-        if stage_alt_data[i][1] == '':
-            stage_alt_dict[f"{stage_alt_rockets[i]} MECO"] = None
-        else:
-            stage_alt_dict[f"{stage_alt_rockets[i]} MECO"] = np.float64(stage_alt_data[i][1])
-        if stage_alt_data[i][2] == '':
-            stage_alt_dict[f"{stage_alt_rockets[i]} SEI1"] = None
-        else:
-            stage_alt_dict[f"{stage_alt_rockets[i]} SEI1"] =  np.float64(stage_alt_data[i][2])
-        if stage_alt_data[i][2] == '':
-            stage_alt_dict[f"{stage_alt_rockets[i]} SECO"] = None
-        else:
-            stage_alt_dict[f"{stage_alt_rockets[i]} SECO"] =  np.float64(stage_alt_data[i][3])
+
+    stages = ["BECO", "MECO", "SEI1", "SECO"]
+    for rocket, row in zip(stage_alt_rockets, stage_alt_data):
+        for stage, value in zip(stages, row):
+            stage_alt_dict[f"{rocket} {stage}"] = None if value == "" else np.float64(value)
     
-    # B+1/2S, B+3S, B+4S, 2S, 3S, 4S,    
-    booster_cutoff_alts = [66,55,29,0,0,0]
-    MECO_alts           = [220,120,64,90,56,52]
-    SEI_alts            = [229,120,64,103,61,59]
-    SECO_alts           = [356,232,216,312,176,149]
+    # BECO, MECO, SEI1, SECO
+    # B+1/2S, B+3S, B+4S, 2S, 3S, 4S 
+    event_alts = [[66,55,29,0,0,0],
+                  [220,120,64,90,56,52],
+                  [229,120,64,103,61,59],
+                  [356,232,216,312,176,149]]
+
     # TODO: Check for Falcon Heavy expendable/reusable lower stages.
     ground_landing_list = ["2020-016","2020-059","2020-086","2020-101","2021-059","2022-002","2022-008","2022-009",
                            "2022-040","2022-057","2022-063","2022-144","2022-166","2022-168","2022-173","2022-179",
@@ -1297,25 +1199,22 @@ if __name__ == "__main__":
     # Define resolutions and set timings.
     ###################################### 
     
-    timestep = 3600
-    levels   = 72
-    model_alt = 80
-    grid_res  = "2x25"
-    vert_filepath = f"geoschem_vertical_grid_{levels}.csv"
-        
-    print(f"Timestep: {timestep}s. Resolution: {grid_res}x{levels}. Vertical Range: 0-{model_alt} km.")
+    TIMESTEP  = 3600
+    LEVELS    = 72
+    MODEL_ALT = 80
+    GRID_RES  = "2x25"    
+    HOURS     = 24    
+    print(f"Timestep: {TIMESTEP}s. Resolution: {GRID_RES}x{LEVELS}. Vertical Range: 0-{MODEL_ALT} km.")
     
-    # Re-entry emissions are placed in the GEOS-Chem model at ~68 km (reentry burnup location).
-    # The emissions are evenly distributed across two vertical layers in the model.
-    # 46-47 for the 47-layer model, 65-72 for the 72-layer model (equivalent to 60-80 km).
-    # This means greater smoothing for the 47-layer model.
-    # WARNING: Changing vertical grid will require adjusting this.
-    if levels==47:
-        reentry_levs = [45,46] 
-    elif levels==72:
-        reentry_levs = [64,71]
+    # Re-entry emissions are placed at ~68 km (reentry burnup location).
+    # The emissions are evenly distributed across two vertical layers in the model (equivalent to 60-80 km).
+    # TODO: Should make it so this automatically places from 60-80 km.
+    if LEVELS==47:
+        reentry_levs = [45,46] # 46-47 for the 47-layer model
+    elif LEVELS==72:
+        reentry_levs = [64,71] # 65-72 for the 72-layer model
     else:
-        sys.exit("Invalid number of levels.")
+        raise ValueError("Invalid number of levels.")
         
     ################
     # Import files.
@@ -1334,26 +1233,17 @@ if __name__ == "__main__":
     print("Successfully loaded input databases.")
     
     #Loop over all years and run functions depending on input arguments.
-    for year in year_range:
-        for dataset in dataset_range:
+    for year in years:
+        for dataset in datasets:
             print(f"Year: {year} Dataset: {dataset}")    
             # Go through process of gridding and saving rocket emissions:
-            emis_data = OutputEmis(rocket_data, 
-                                grid_res, 
-                                timestep, 
-                                levels, 
-                                booster_cutoff_alts, 
-                                MECO_alts, 
-                                SEI_alts, 
-                                SECO_alts,
-                                reentry_levs, 
-                                vert_filepath, 
-                                months,
-                                dataset,
-                                year,
-                                ground_landing_list,
-                                stage_alt_dict,
-                                model_alt
-                                )
+            emis_data = OutputEmis(event_alts, 
+                                   reentry_levs, 
+                                   months,
+                                   dataset,
+                                   year,
+                                   ground_landing_list,
+                                   stage_alt_dict,
+                                   )
 
-            check_total_emissions(year,dataset,grid_res,levels)
+            check_total_emissions(year,dataset,GRID_RES,LEVELS)
