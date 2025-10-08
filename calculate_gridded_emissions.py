@@ -13,7 +13,7 @@
 
 # Import modules:
 import argparse
-from netCDF4 import Dataset
+from netCDF4 import Dataset # type: ignore
 import numpy as np
 import pandas as pd
 pd.set_option('display.max_colwidth', None)
@@ -21,23 +21,21 @@ import geopandas as gpd
 import fiona
 import json
 import calendar
-import sys
 
-sys.path.append('./python_modules/')
-from distribute_emis_func import make_grid_LL, read_gc_box_height, get_ross_profiles, interp_prop_mass
-from alt_emis_func import calculate_bc_ei, calculate_nox_ei, calculate_co_ei, calculate_cl_ei
+from python_modules.distribute_emis_func import make_grid_LL, read_gc_box_height, get_ross_profiles, interp_prop_mass
+from python_modules.alt_emis_func import calculate_bc_ei, calculate_nox_ei, calculate_co_ei, calculate_cl_ei
 
 class RocketData:
-    '''Read rocket launch and re-entry emissions'''
+    '''Read rocket launch and re-entry activity data.'''
     def __init__(self, launchfile: str,reentryfile: str, rocketinfofile: str, peifile: str):
         
-        self.read_launch_emissions(launchfile)
-        self.read_reentry_emissions(reentryfile)
+        self.read_launch_activity(launchfile)
+        self.read_reentry_activity(reentryfile)
         self.read_rocket_info(rocketinfofile)
         self.define_pei(peifile)
     
-    def read_launch_emissions(self, launchfile):
-        """Read launch emissions from the database.
+    def read_launch_activity(self, launchfile):
+        """Read launch activity from the database.
 
         Args:
             launchfile (str): The path of the launch database.
@@ -62,8 +60,8 @@ class RocketData:
                 self.launch_month.append(np.int64(datestring[4:6]))
                 self.launch_day.append(np.int64(datestring[6:]))
         
-    def read_reentry_emissions(self, reentryfile):
-        """Read re-entry emissions from the database.
+    def read_reentry_activity(self, reentryfile):
+        """Read re-entry activity from the database.
 
         Args:
             reentryfile (str): The path of the reentry database.
@@ -1220,7 +1218,7 @@ if __name__ == "__main__":
     # Import files.
     ################
     
-    fiona.drvsupport.supported_drivers['KML'] = 'rw'
+    fiona.drvsupport.supported_drivers['KML'] = 'rw' # type: ignore
     raul_data = gpd.read_file('./databases/reentry/General_SpaceX_Map_Raul.kml', driver='KML', layer =2) # Falcon landing data.   
     launch_path       = f'./databases/launch_activity_data_{start_year}-{final_year}.nc'
     rocket_info_path  = f'./databases/rocket_attributes_{start_year}-{final_year}.nc'

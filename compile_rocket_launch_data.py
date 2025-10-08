@@ -3,9 +3,11 @@ from time import sleep
 import numpy as np
 import xarray as xr
 import argparse
-import sys
-sys.path.append('./python_modules/')
-from discosweb_api_func import server_request, response_error_handler
+import pandas as pd
+import requests
+from io import StringIO
+
+from python_modules.discosweb_api_func import server_request, response_error_handler
 from update_rocket_launch_data import update_mass_info
 
 """ Script to request data from the DISCOSweb database. 
@@ -23,10 +25,45 @@ class import_launches:
         
         self.start_year = start_year
         self.final_year = final_year
+
+    def convert_time(self,date):
+
+        """Converts the "DDate" listing from GCAT to day, month, and time strings.
+
+        Returns:
+            datestr(str):  The date in YYYYMMDD format.
+            time_utc(str): The decimal time in hours.
+        """   
+        yearstr = str(date[0])
+        monstr  = str(datetime.strptime(date[1].replace("?", ""), '%b').month).zfill(2) if len(date) > 1 else "01"
+        daystr  = date[2].replace("?", "").zfill(2) if len(date) > 2 else "01"
+        datestr = yearstr+monstr+daystr
+        time_utc = np.float64(int(date[3].replace("?","")[0:2]) + int(date[3].replace("?","")[2:4]) / 60) if len(date) >= 4 else -1
+
+        return datestr, time_utc
+
+    def server_loop(self,urlpath,params,message):
+
+        while True:
+            response = server_request(params,urlpath)
+            if response.ok:
+                return(response.json())
+            elif response.status_code == 429:
+                response_error_handler(response,message)
+                continue
+            else:
+                response_error_handler(response,"")
+                break
+            
+        return None
         
     def get_launch_list(self): 
-        """This function is called in all of the following functions.
-        It gets the launch information for an entire year, which will be saved as self.full_launch_list
+        """
+        Retrieve launch information for a given year range and store it in self.full_launch_list.
+
+        This function fetches launch data between self.start_year and self.final_year (inclusive),
+        handling pagination and rate limits automatically. It also removes irrelevant launches
+        (e.g., Chang'e 5 ascender) and reports the number of successes and failures.
 
         Args:
             year (int): The year to get launches for.
@@ -37,50 +74,36 @@ class import_launches:
         start_epoch = f'{str(self.start_year)}-01-01'
         end_epoch = f'{str(self.final_year+1)}-01-01'
         
-        #This loop will run until all launches are found.
+        # Fetch all pages of launch activity data.
         page_number = 1
         while True:
-            #Add the filtering here. Currently set up to show successful and unsuccessful launches per year.
-            #The filtering params currently get all launches between start_epoch and end_epoch, sorted by epoch.
             params={
-                    'filter': f"ge(epoch,epoch:'{start_epoch}')&lt(epoch,epoch:'{end_epoch}')",
-                    'sort' : 'epoch',  
-                    'page[number]' : page_number
+                    'filter': f"ge(epoch,epoch:'{start_epoch}')&lt(epoch,epoch:'{end_epoch}')", # launches bteween start_epoch and end_epoch
+                    'sort' : 'epoch', # sort by epoch
+                    'page[number]' : page_number 
                 }
-            #Now we need a while loop to deal with the rate limit. 
-            #If the response is ok (code <400), then it breaks the while loop, and if not then the while loop continues after a delay.
+
             response = server_request(params, '/launches')
             
-            if response.ok:            
-                #This converts the reponse to a json object and exracts the data.
-                doc = response.json()
-                temp_launch_list = doc['data']
-                self.full_launch_list.extend(temp_launch_list)
+            # If the response is ok, extract the data and check if we need to request another page.
+            if response.ok: 
+                data = response.json().get("data", [])           
+                self.full_launch_list.extend(data)
                 
-                #Each request gives a 'page' of results, and the maximum is 30 results per page. 
-                #The script loops to request the next page.
-                if len(temp_launch_list) == 30:
-                    page_number += 1
-                    continue
-                else:
+                # If the page has less than 30 items, its the last one.
+                if len(data) < 30:
                     break
+                page_number += 1
+                    
             elif response.status_code == 429:
                 message = ""
                 response_error_handler(response,message)
                 continue
             else:
                 response_error_handler(response,"")
-            break
                     
-        # Skip the Chang'e 5 launch which was the 'ascender' launching from the moon to dock with the 'orbiter'.
-        # It eventually 'crashed' back onto the moon to avoid space debris, so is irrelevant for this inventory.
-        change_found = False
-        for count, launch in enumerate(self.full_launch_list):
-            if launch["attributes"]["cosparLaunchNo"] == "2020-F11":
-                change_found = True
-                break
-        if change_found == True:
-            self.full_launch_list= np.delete(self.full_launch_list, count)
+        # Skip Chang'e 5 launch (this was from the moon and eventually 'crashed' back onto the moon to avoid space debris, so is irrelevant for this inventory.
+        self.full_launch_list = [launch for launch in self.full_launch_list if launch["attributes"]["cosparLaunchNo"] != "2020-F11"]
         
         #This section simply goes through each launch and counts the numbers of successes and failures.
         #It then prints the totals to the screen. Can be switched off if not needed.    
@@ -104,34 +127,23 @@ class import_launches:
             launch_info: A list of all of the extracted launch information for the year.
         """        
         self.get_launch_list()
-                
-        self.cospar_id = []
-        self.launch_time = []
-        self.launch_datestr = []
-        self.site_name = []
-        self.latitude = []
-        self.longitude = []
-        self.rocket_name = []
-        self.vehicle_id = []
-        self.mcs_check = []
+        self.launches = []
         
         for count, launch in enumerate(self.full_launch_list):
+
+            message = f"On launch {count} of {len(self.full_launch_list)} in {launch_info['COSPAR_ID'][:4]}."
+            launch_info = {}
+            launch_info["COSPAR_ID"] = launch["attributes"]["cosparLaunchNo"]
             
-            self.cospar_id.append(launch["attributes"]["cosparLaunchNo"])
-            if self.cospar_id[-1] == "2023-F07":
-                self.launch_time.append(21.36)
-                self.launch_datestr.append("20230530")
+            if launch_info["COSPAR_ID"] == "2023-F07":
+                launch_info["Date"] = "20230530"
+                launch_info["Time(UTC)"] = 21.36
             else:
                 temp_launch_epoch = launch["attributes"]["epoch"]
-                self.launch_datestr.append(temp_launch_epoch[:10].replace("-",""))
-                
-                temp_launch_time = temp_launch_epoch[10:]
-                hour = int(temp_launch_time[1:3])
-                minute = int(temp_launch_time[4:6])
-                sec = int(temp_launch_time[7:9])
-                time_utc = np.float64(hour + minute / 60 + sec / 3600)
-                self.launch_time.append(time_utc)
-            
+                dt = datetime.fromisoformat(temp_launch_epoch)
+                launch_info["Date"] = dt.strftime("%Y%m%d")
+                launch_info["Time(UTC)"] = dt.hour + dt.minute / 60 + dt.second / 3600
+
             # Mark as MCS any launches containing payloads with the name:
             #   - Starlink
             #   - Oneweb
@@ -141,155 +153,169 @@ class import_launches:
             #   - Tranche (covers all 2023-050, 1 2023-133, all 2024-028). 2023-133 also contains Wildfire 1-10 and BB 4 and BB 4. But this launch is already tagged.
             #   - Chinese National Constellation (Guowang/Xingwang/Guangwang/Hulianwang) - Ronghe, Digui, Hulianwang.
             #   - Qianfan
-            params={
-                    'filter' : "(eq(objectClass,Payload))&(contains(name,Starlink)|contains(name,OneWeb)|contains(name,Oneweb)|contains(name,Yinhe)|contains(name,Lynk)|contains(name,E-Space)|contains(name,Lingxi)|contains(name,Protosat-1)|contains(name,Kuiper)|contains(name,Tranche)|contains(name,Ronghe)|contains(name,Digui)|contains(name,Hulianwang)|contains(name,Qianfan))",
-                    'sort' : 'id'         
-                }
-            while True:
-                response = server_request(params,f'/launches/{launch["id"]}/objects')
-                
-                if response.ok:
-                    doc = response.json()
-                    temp_object_list = doc['data']
-                    # The Lynk 04 satellite is misassigned to 2020-011 instead of 2020-016 (confirmed used JSR). Fixed here.
-                    if len(temp_object_list) > 0 and self.cospar_id[-1] != "2020-011":
-                        self.mcs_check.append(True)
-                    elif self.cospar_id[-1] == "2020-016": 
-                        self.mcs_check.append(True)  
-                    else:
-                        self.mcs_check.append(False)   
-                elif response.status_code == 429:
-                    message = f"On launch {count} of {len(self.full_launch_list)} in {self.cospar_id[-1][:4]}."
-                    response_error_handler(response,message)
-                    continue
-                else:
-                    response_error_handler(response,"")
-                break
+            params={'filter' : "(eq(objectClass,Payload))&(contains(name,Starlink)|contains(name,OneWeb)|contains(name,Oneweb)|contains(name,Yinhe)|contains(name,Lynk)|contains(name,E-Space)|contains(name,Lingxi)|contains(name,Protosat-1)|contains(name,Kuiper)|contains(name,Tranche)|contains(name,Ronghe)|contains(name,Digui)|contains(name,Hulianwang)|contains(name,Qianfan))",
+                    'sort' : 'id'}
             
-            # Get the launch site info.
-            while True:
-                response = server_request({},f'/launches/{launch["id"]}/site')
-                if response.ok:
-                    doc = response.json()
-                    self.site_name.append(doc['data']["attributes"]["name"])
-                    if doc['data']["attributes"]["name"] == "Newquay, Spaceport Cornwall":
-                        self.latitude.append(50.439240)
-                        self.longitude.append(-4.999055)
-                    else:
-                        self.latitude.append(np.float64(doc['data']["attributes"]["latitude"]))
-                        self.longitude.append(np.float64(doc['data']["attributes"]["longitude"]))
-                    break
-                elif response.status_code == 429:
-                    message = f"On launch {count} of {len(self.full_launch_list)} in {self.cospar_id[-1][:4]}."
-                    response_error_handler(response,message)
-                    continue
-                else:
-                    response_error_handler(response,"")
-                break
-                
-            # Get the vehicle info.
-            while True:
-                response = server_request({},f'/launches/{launch["id"]}/vehicle')
-                if response.ok:
-                    doc = response.json()
-                    if doc['data']["attributes"]["name"][:5] == "Atlas":
-                        if datetime(int(self.launch_datestr[-1][:4]),int(self.launch_datestr[-1][4:6]),int(self.launch_datestr[-1][6:8])) < datetime(2020,11,13):
-                            self.rocket_name.append(doc['data']["attributes"]["name"])
-                        elif self.cospar_id[-1] in ["2021-042","2022-092"]:
-                            self.rocket_name.append(doc['data']['attributes']["name"] + " v2021")
-                        else:
-                            self.rocket_name.append(doc['data']['attributes']["name"] + " v2020")
-                    elif doc['data']["attributes"]["name"][:5] == "Zhuque-2":
-                        if datetime(int(self.launch_datestr[-1][:4]),int(self.launch_datestr[-1][4:6]),int(self.launch_datestr[-1][6:8])) > datetime(2024,1,1):
-                            self.rocket_name.append(doc['data']['attributes']["name"] + "E")
-                        else:
-                            self.rocket_name.append(doc['data']['attributes']["name"])
-                    else:
-                        self.rocket_name.append(doc['data']["attributes"]["name"])
-                    self.vehicle_id.append(int(doc["data"]["id"]))
-                elif response.status_code == 429:
-                    message = f"On launch {count} of {len(self.full_launch_list)} in {self.cospar_id[-1][:4]}."
-                    response_error_handler(response,message)
-                    continue
-                else:
-                    response_error_handler(response,"")
-                break
+            doc = self.server_loop(f'/launches/{launch["id"]}/objects',params,message)
+            
+            if doc:
+                # The Lynk 04 satellite is misassigned to 2020-011 instead of 2020-016 (confirmed used JSR). Fixed here.
+                launch_info["Megaconstellation_Flag"] = bool(doc["data"]) and launch_info["COSPAR_ID"] != "2020-011" or launch_info["COSPAR_ID"] == "2020-016"
         
-        for count, site in enumerate(self.site_name):
-            if site == 'China Sea Launch':
-                self.latitude[count] = 35.4943
-                self.longitude[count] = 123.7965
-                print(f"{self.cospar_id[count]} has been set to China Sea Launch.")
-            elif site == 'Naro Space Center':
-                self.latitude[count] = 34.5
-                self.longitude[count] = 127.5
-                print(f"{self.cospar_id[count]} has been set to Naro Space Center.")
+            # Get the launch site info.
+            site_coords = {
+                "Newquay, Spaceport Cornwall": (50.439240, -4.999055),
+                "China Sea Launch": (35.4943, 123.7965),
+                "Naro Space Center": (34.5, 127.5),
+            }
+            doc = self.server_loop(f'/launches/{launch["id"]}/site',{},message)
+            if doc:
+                site_name = doc['data']["attributes"]["name"]
+                launch_info["Site"] = site_name
 
-        return [self.cospar_id, self.launch_time, self.launch_datestr, self.site_name, self.latitude, self.longitude, self.rocket_name, self.mcs_check]
-      
+                lat_lon = site_coords.get(site_name)
+                if lat_lon:
+                    launch_info["Latitude"], launch_info["Longitude"] = lat_lon
+                    print(f"{launch_info['COSPAR_ID']} set to {site_name}.")
+                else:
+                    launch_info["Latitude"] = np.float64(doc["data"]["attributes"]["latitude"])
+                    launch_info["Longitude"] = np.float64(doc["data"]["attributes"]["longitude"])
+
+            # Get the rocket info.
+            doc = self.server_loop(f'/launches/{launch["id"]}/vehicle',{},message)
+            if doc:
+                rocket_name = doc['data']["attributes"]["name"]
+                launch_date = datetime.strptime(launch_info["Date"], "%Y%m%d")
+                launch_info["Rocket_Name"] = rocket_name
+
+                if rocket_name.startswith("Atlas"):
+                    if launch_date < datetime(2020,11,13):
+                        launch_info["Rocket_Name"] = rocket_name
+                    elif launch_info['COSPAR_ID'] in ["2021-042","2022-092"]:
+                        launch_info["Rocket_Name"] = rocket_name + " v2021"
+                    else:
+                        launch_info["Rocket_Name"] = rocket_name + " v2020"
+                elif rocket_name.startswith("Zhuque-2"):
+                    if launch_date > datetime(2024,1,1):
+                        launch_info["Rocket_Name"] = rocket_name + "E"
+
+                launch_info["DISCOSweb_Rocket_ID"] = int(doc["data"]["id"])
+
+            # Save to the dictionary list.
+            
+            self.launches.append(launch_info)
+
+    def get_launch_info_jsr(self):
+
+        # Function to web scrape the data and convert to a pandas DataFrame.
+        def get_jsr_info(url):
+            response = requests.get(url)
+            if response.status_code == 200:
+                # Convert the content to a file-like object for pandas
+                tsv_data = StringIO(response.text)
+                # Load the data into a pandas DataFrame
+                df = pd.read_csv(tsv_data, delimiter="\t", dtype=object)
+            else:
+                raise ImportError(f"Failed to fetch from JSR URL: {url}", response.status_code)
+            return df
+        
+        ####################################################################
+        # Web scrape the launch data from Jonathan McDowell's JSR website.
+        ####################################################################
+
+        df       = get_jsr_info("https://planet4589.org/space/gcat/tsv/launch/launch.tsv")
+        df_sites = get_jsr_info("https://planet4589.org/space/gcat/tsv/tables/sites.tsv")
+
+        jsr_data_dict = {}
+        # satcat (main database), auxcat (should be in main but isn't), lcat (suborbital stages/objects). 
+        # rcat (lower stages and fairings), ecat (capsules from ISS / crewed missions), ftocat (failed launches).
+        files = ["satcat","auxcat","lcat","rcat","ecat","ftocat"]
+        for file in files:
+            url = "https://planet4589.org/space/gcat/tsv/cat/" + file + ".tsv"
+            jsr_data_dict[file] = get_jsr_info(url)
+
+        # Filter the launches to remove unwanted entries.
+        df.drop(0, inplace=True)
+        df = df[df["#Launch_Tag"].str[:4].astype(int).between(self.start_year, self.final_year)]
+        df = df[~df["#Launch_Tag"].str.contains("A")] # No endoatmospheric.
+        df = df[~df["#Launch_Tag"].str.contains("E")] # No pad explosions.
+        df = df[~df["#Launch_Tag"].str.contains("S")] # No suborbital.
+        df = df[~df["#Launch_Tag"].str.contains("M")] # No mesosphere.
+        df = df[~df["LaunchCode"].str.startswith("X")] # No launches from another planetary body or satellite.   
+        df = df[~df["LaunchCode"].str.startswith("M")] # No military launches.  
+        df = df.reset_index()
+        
+        # Filter for apogees above 50 km.
+        #df.loc[df["Apogee"].str.strip() == "-", "Apogee"] = 0
+        #df = df[df["Apogee"].astype(int) >= 50] # No pad explosions
+        
+        print("Found",len(df),"launches from JSR for the years",self.start_year,"to",self.final_year)
+
+        ####################################################################
+        # Extract the required launch activity data and convert to a dict.
+        ####################################################################
+
+        self.launches = []
+        
+        for i, row in df.iterrows():
+            if i % 10 == 0:
+                print("On row",i,"of",len(df))
+
+            datestr, time_utc = self.convert_time(row["Launch_Date"].split()) 
+            df_site = df_sites[df_sites["#Site"] == row["Launch_Site"]]
+            
+            # Look in the payload catalogs to find which launches contain megaconstellations.
+            mcs_flag = False
+            for file in files:
+                catalog = jsr_data_dict[file]
+                matching = catalog[catalog["Launch_Tag"].str.contains(row["#Launch_Tag"].strip(), na=False)]
+                matching = matching[matching["Type"].str[0].isin(["P","C","S","X","Z"])] # P = Payload, C = Component, S = Suborbital payload, X = Catalog entry that has been deleted, Z = Spurious catalog entry.
+                matching = matching[matching["Name"].str.lower().str.contains("starlink|oneweb|yinhe|lynk|e-space|protosat-1|kuiper|tranche|ronghe|digui|hulianwang|qianfan", na=False)]
+                if len(matching) > 0:
+                    mcs_flag = True
+                    break
+
+            self.launches.append({
+                "COSPAR_ID":              row["#Launch_Tag"].strip(),
+                "Time(UTC)":              round(time_utc, 2),
+                "Date":                   datestr,
+                "Site":                   df_site["Name"].values[0],
+                "Latitude":               float(df_site["Latitude"].values[0].strip()),
+                "Longitude":              float(df_site["Longitude"].values[0].strip()),
+                "Rocket_Name":            row["LV_Type"],
+                "DISCOSweb_Rocket_ID":    0,
+                "Megaconstellation_Flag": mcs_flag
+            })
+   
     def launch_info_to_netcdf(self):
         """This saves the launch information as a NetCDF file for later processing for GEOS-Chem.
         """        
         
-        #Set up the dimensions of the netcdf file.
+        if not self.launches:
+            print("No launch data to save.")
+            return
+
         dims = ('launches',)
-    
-        #Create the DataArrays.
-        data_da_cospar_id = xr.DataArray(self.cospar_id, dims=dims,
-            attrs=dict(long_name="COSPAR ID",
-                       short_name="COSPAR ID"))
+
+        def get_field(field):
+            return [launch.get(field, np.nan) for launch in self.launches]
+
+        fields = ["COSPAR_ID","Time(UTC)","Date","Longitude","Latitude","Site","Rocket_Name","DISCOSweb_Rocket_ID","Megaconstellation_Flag"]
+
+        # Create DataArrays dynamically
+        data_arrays = {}
+        for field in fields:
+            var_name = field.replace("_", " ").title()
+            attrs = dict(long_name=var_name, short_name=var_name)
+            data_arrays[field] = xr.DataArray(get_field(field), dims=dims, attrs=attrs)
         
-        data_da_time = xr.DataArray(self.launch_time, dims=dims,
-            attrs=dict(long_name="Time (UTC)",
-                       short_name="Time (UTC)",
-                       ))
-        
-        data_da_date = xr.DataArray(self.launch_datestr, dims=dims,
-            attrs=dict(long_name="Date in form YYYYMMDD",
-                       short_name="Date",
-                       ))
-        
-        data_da_lon = xr.DataArray(self.longitude, dims=dims,
-            attrs=dict(long_name="Longitude",
-                       short_name="Longitude",
-                       units="Degrees"))
-        
-        data_da_site = xr.DataArray(self.site_name, dims=dims,
-            attrs=dict(long_name="Site Name",
-                       short_name="Site Name",
-                       ))
-        
-        data_da_lat = xr.DataArray(self.latitude, dims=dims,
-            attrs=dict(long_name="Latitude",
-                       short_name="Latitude",
-                       units="Degrees"))
-        
-        data_da_rocket_name = xr.DataArray(self.rocket_name, dims=dims,
-            attrs=dict(long_name="Rocket Type",
-                       short_name="Rocket Type",
-                       ))
-        
-        data_da_vehicle_id = xr.DataArray(self.vehicle_id, dims=dims,
-            attrs=dict(long_name="Vehicle ID",
-                       short_name="Vehicle ID",
-                       ))
-        
-        data_da_launch_MCS = xr.DataArray(self.mcs_check, dims=dims,
-            attrs=dict(long_name="MCS Launch Check",
-                       short_name="MCS Launch Check",
-                       ))
-        
-        # Create an xarray Dataset from the DataArrays.
-        ds = xr.Dataset()
-        ds['COSPAR_ID']              = data_da_cospar_id
-        ds['Time(UTC)']              = data_da_time
-        ds['Date']                   = data_da_date
-        ds['Site']                   = data_da_site
-        ds['Longitude']              = data_da_lon
-        ds['Latitude']               = data_da_lat
-        ds['Rocket_Name']            = data_da_rocket_name
-        ds['DISCOSweb_Rocket_ID']    = data_da_vehicle_id
-        ds['Megaconstellation_Flag'] = data_da_launch_MCS
+        ds = xr.Dataset(data_arrays)
+
+        # Add units only to specific variables
+        ds['Longitude'].attrs['units'] = "Degrees"
+        ds['Latitude'].attrs['units']  = "Degrees"
+        ds['Date'].attrs['units']      = "YYYYMMDD"
+        ds['Time(UTC)'].attrs['units'] = "UTC"
              
         #Save to file and close the dataset     
         ds.to_netcdf(f'./databases/launch_activity_data_{self.start_year}-{self.final_year}.nc')
@@ -582,7 +608,10 @@ class import_launches:
             # Handle any incomplete/incorrect propellant/stage mass information.
             temp_dict = update_mass_info(i,temp_dict,unique_vehicle_name_list)
             # Update the rocket list.   
-            self.unique_rocket_list.append(temp_dict)    
+            self.unique_rocket_list.append(temp_dict) 
+
+    def get_rocket_info_jsr(self):  
+        pass 
         
     def rocket_info_to_netcdf(self):
         """This saves the propellant information as a NetCDF file for later processing for GEOS-Chem.
@@ -782,14 +811,15 @@ if __name__ == "__main__":
     
     # Set up the arguments for each function.
     parser = argparse.ArgumentParser()
-    parser.add_argument('-yl', "--yearly_launches", action='store_true', help="Get yearly launches.")
-    parser.add_argument('-li', "--launch_info", action='store_true', help='Get launch info.')
-    parser.add_argument('-sli', "--save_launch_info", action='store_true', help='Save launch info.')
-    parser.add_argument('-ri', "--rocket_info", action='store_true', help='Get rocket info.')
-    parser.add_argument('-sri', "--save_rocket_info", action='store_true', help='Save launch info.')
-    parser.add_argument('-sdwr', "--save_discosweb_reentries", action='store_true', help='Save launch info.')
-    parser.add_argument('-sy', "--start_year", default = "2023", choices=str(np.arange(1957,2026)), help='Start Year.')
-    parser.add_argument('-fy', "--final_year", default = "2024", choices=str(np.arange(1957,2026)), help='Final Year.')
+    parser.add_argument('-yl',   "--yearly_launches",          action='store_true',                                 help="Get yearly launches.")
+    parser.add_argument('-lidw', "--launch_info_dw",           action='store_true',                                 help='Get launch info from dw.')
+    parser.add_argument('-lijsr',"--launch_info_jsr",          action='store_true',                                 help='Get launch info from jsr.')
+    parser.add_argument('-sli',  "--save_launch_info",         action='store_true',                                 help='Save launch info.')
+    parser.add_argument('-ri',   "--rocket_info",              action='store_true',                                 help='Get rocket info.')
+    parser.add_argument('-sri',  "--save_rocket_info",         action='store_true',                                 help='Save launch info.')
+    parser.add_argument('-sdwr', "--save_discosweb_reentries", action='store_true',                                 help='Save dw reentries.')
+    parser.add_argument('-sy',   "--start_year",               default = "2023", choices=str(np.arange(1957,2026)), help='Start Year.')
+    parser.add_argument('-fy',   "--final_year",               default = "2024", choices=str(np.arange(1957,2026)), help='Final Year.')
     args = parser.parse_args()
     
     # Sort out the year range.
@@ -803,10 +833,12 @@ if __name__ == "__main__":
     LaunchData = import_launches(start_year,final_year)   
     if args.yearly_launches == True:
         LaunchData.get_launch_list()
-    if args.launch_info == True:
-        LaunchData.get_launch_info()      
-        if args.save_launch_info == True:
-            LaunchData.launch_info_to_netcdf()               
+    if args.launch_info_dw == True:
+        LaunchData.get_launch_info()
+    if args.launch_info_jsr == True:
+        LaunchData.get_launch_info_jsr()       
+    if args.save_launch_info == True:
+        LaunchData.launch_info_to_netcdf()               
     if args.save_discosweb_reentries == True:
         LaunchData.save_discosweb_reentries() 
     if args.rocket_info == True:
