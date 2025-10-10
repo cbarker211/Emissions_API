@@ -6,6 +6,7 @@ import argparse
 import pandas as pd
 import requests
 from io import StringIO
+import time
 
 from python_modules.discosweb_api_func import server_request, response_error_handler
 from update_rocket_launch_data import update_mass_info
@@ -25,22 +26,6 @@ class import_launches:
         
         self.start_year = start_year
         self.final_year = final_year
-
-    def convert_time(self,date):
-
-        """Converts the "DDate" listing from GCAT to day, month, and time strings.
-
-        Returns:
-            datestr(str):  The date in YYYYMMDD format.
-            time_utc(str): The decimal time in hours.
-        """   
-        yearstr = str(date[0])
-        monstr  = str(datetime.strptime(date[1].replace("?", ""), '%b').month).zfill(2) if len(date) > 1 else "01"
-        daystr  = date[2].replace("?", "").zfill(2) if len(date) > 2 else "01"
-        datestr = yearstr+monstr+daystr
-        time_utc = np.float64(int(date[3].replace("?","")[0:2]) + int(date[3].replace("?","")[2:4]) / 60) if len(date) >= 4 else -1
-
-        return datestr, time_utc
 
     def server_loop(self,urlpath,params,message):
 
@@ -131,9 +116,9 @@ class import_launches:
         
         for count, launch in enumerate(self.full_launch_list):
 
-            message = f"On launch {count} of {len(self.full_launch_list)} in {launch_info['COSPAR_ID'][:4]}."
             launch_info = {}
             launch_info["COSPAR_ID"] = launch["attributes"]["cosparLaunchNo"]
+            message = f"On launch {count} of {len(self.full_launch_list)} in {launch_info['COSPAR_ID'][:4]}."
             
             if launch_info["COSPAR_ID"] == "2023-F07":
                 launch_info["Date"] = "20230530"
@@ -188,6 +173,7 @@ class import_launches:
                 launch_date = datetime.strptime(launch_info["Date"], "%Y%m%d")
                 launch_info["Rocket_Name"] = rocket_name
 
+                # Sometimes the rocket has been upgraded, so we need to specify which version was used.
                 if rocket_name.startswith("Atlas"):
                     if launch_date < datetime(2020,11,13):
                         launch_info["Rocket_Name"] = rocket_name
@@ -202,29 +188,28 @@ class import_launches:
                 launch_info["DISCOSweb_Rocket_ID"] = int(doc["data"]["id"])
 
             # Save to the dictionary list.
-            
             self.launches.append(launch_info)
 
+    # Function to web scrape the data and convert to a pandas DataFrame.
+    def get_jsr_info(self,url):
+        response = requests.get(url)
+        if response.status_code == 200:
+            # Convert the content to a file-like object for pandas
+            tsv_data = StringIO(response.text)
+            # Load the data into a pandas DataFrame
+            df = pd.read_csv(tsv_data, delimiter="\t", dtype=object)
+        else:
+            raise ImportError(f"Failed to fetch from JSR URL: {url}", response.status_code)
+        return df
+    
     def get_launch_info_jsr(self):
-
-        # Function to web scrape the data and convert to a pandas DataFrame.
-        def get_jsr_info(url):
-            response = requests.get(url)
-            if response.status_code == 200:
-                # Convert the content to a file-like object for pandas
-                tsv_data = StringIO(response.text)
-                # Load the data into a pandas DataFrame
-                df = pd.read_csv(tsv_data, delimiter="\t", dtype=object)
-            else:
-                raise ImportError(f"Failed to fetch from JSR URL: {url}", response.status_code)
-            return df
         
         ####################################################################
         # Web scrape the launch data from Jonathan McDowell's JSR website.
         ####################################################################
 
-        df       = get_jsr_info("https://planet4589.org/space/gcat/tsv/launch/launch.tsv")
-        df_sites = get_jsr_info("https://planet4589.org/space/gcat/tsv/tables/sites.tsv")
+        df       = self.get_jsr_info("https://planet4589.org/space/gcat/tsv/launch/launch.tsv")
+        df_sites = self.get_jsr_info("https://planet4589.org/space/gcat/tsv/tables/sites.tsv")
 
         jsr_data_dict = {}
         # satcat (main database), auxcat (should be in main but isn't), lcat (suborbital stages/objects). 
@@ -232,20 +217,27 @@ class import_launches:
         files = ["satcat","auxcat","lcat","rcat","ecat","ftocat"]
         for file in files:
             url = "https://planet4589.org/space/gcat/tsv/cat/" + file + ".tsv"
-            jsr_data_dict[file] = get_jsr_info(url)
+            catalog = self.get_jsr_info(url)
+            catalog = catalog[catalog["Type"].str[0].isin(["P","C","S","X","Z"])] # P = Payload, C = Component, S = Suborbital payload, X = Catalog entry that has been deleted, Z = Spurious catalog entry.
+            catalog = catalog[catalog["Name"].str.lower().str.contains("starlink|oneweb|yinhe|lynk|e-space|protosat-1|kuiper|tranche|ronghe|digui|hulianwang|qianfan", na=False)]
+            jsr_data_dict[file] = catalog
 
         # Filter the launches to remove unwanted entries.
         df.drop(0, inplace=True)
         df = df[df["#Launch_Tag"].str[:4].astype(int).between(self.start_year, self.final_year)]
-        df = df[~df["#Launch_Tag"].str.contains("A")] # No endoatmospheric.
-        df = df[~df["#Launch_Tag"].str.contains("E")] # No pad explosions.
-        df = df[~df["#Launch_Tag"].str.contains("S")] # No suborbital.
-        df = df[~df["#Launch_Tag"].str.contains("M")] # No mesosphere.
-        df = df[~df["LaunchCode"].str.startswith("X")] # No launches from another planetary body or satellite.   
-        df = df[~df["LaunchCode"].str.startswith("M")] # No military launches.  
+        df = df[~df["#Launch_Tag"].str.contains("A")]                   # No endoatmospheric.
+        df = df[~df["#Launch_Tag"].str.contains("C")]                   # No 'not a launch'.
+        df = df[~df["#Launch_Tag"].str.contains("E")]                   # No pad explosions.
+        df = df[~df["#Launch_Tag"].str.contains("S")]                   # No suborbital.
+        df = df[~df["#Launch_Tag"].str.contains("Y")]                   # No suborbital (obselete old notation)
+        df = df[~df["#Launch_Tag"].str.contains("M")]                   # No mesosphere.
+        df = df[~df["#Launch_Tag"].str.contains("W")]                   # No mesosphere (obselete old notation)
+        df = df[~df["LaunchCode"].str.startswith("X")]                  # No launches from another planetary body or satellite.   
+        df = df[~df["LaunchCode"].str.startswith("M")]                  # No military launches. 
+        df = df[~df["LV_Type"].str.contains("Aerobee|R-UNK|Scout|Trailblazer", na=False)] # Skip sounding rockets.
         df = df.reset_index()
         
-        # Filter for apogees above 50 km.
+        # Filter for apogees above 50 km. Doesn't look like this is necessary.
         #df.loc[df["Apogee"].str.strip() == "-", "Apogee"] = 0
         #df = df[df["Apogee"].astype(int) >= 50] # No pad explosions
         
@@ -257,20 +249,24 @@ class import_launches:
 
         self.launches = []
         
-        for i, row in df.iterrows():
-            if i % 10 == 0:
-                print("On row",i,"of",len(df))
+        for n, (_, row) in enumerate(df.iterrows()):
+            if n % 50 == 0:
+                print(f"On row {n} of {len(df)}")
 
-            datestr, time_utc = self.convert_time(row["Launch_Date"].split()) 
-            df_site = df_sites[df_sites["#Site"] == row["Launch_Site"]]
+            date = row["Launch_Date"].split()
+            yearstr = str(date[0])
+            monstr  = str(datetime.strptime(date[1].replace("?", ""), '%b').month).zfill(2) if len(date) > 1 else "01"
+            daystr  = date[2].replace("?", "").zfill(2) if len(date) > 2 else "01"
+            datestr = yearstr+monstr+daystr
+            time_utc = np.float64(int(date[3].replace("?","")[0:2]) + int(date[3].replace("?","")[2:4]) / 60) if len(date) >= 4 else -1
+
+            df_site = df_sites[df_sites["#Site"] == row["Launch_Site"].replace("?", "")]
             
             # Look in the payload catalogs to find which launches contain megaconstellations.
             mcs_flag = False
             for file in files:
                 catalog = jsr_data_dict[file]
                 matching = catalog[catalog["Launch_Tag"].str.contains(row["#Launch_Tag"].strip(), na=False)]
-                matching = matching[matching["Type"].str[0].isin(["P","C","S","X","Z"])] # P = Payload, C = Component, S = Suborbital payload, X = Catalog entry that has been deleted, Z = Spurious catalog entry.
-                matching = matching[matching["Name"].str.lower().str.contains("starlink|oneweb|yinhe|lynk|e-space|protosat-1|kuiper|tranche|ronghe|digui|hulianwang|qianfan", na=False)]
                 if len(matching) > 0:
                     mcs_flag = True
                     break
@@ -282,12 +278,12 @@ class import_launches:
                 "Site":                   df_site["Name"].values[0],
                 "Latitude":               float(df_site["Latitude"].values[0].strip()),
                 "Longitude":              float(df_site["Longitude"].values[0].strip()),
-                "Rocket_Name":            row["LV_Type"],
+                "Rocket_Name":            row["LV_Type"] + " V=" + row["Variant"],
                 "DISCOSweb_Rocket_ID":    0,
                 "Megaconstellation_Flag": mcs_flag
             })
    
-    def launch_info_to_netcdf(self):
+    def launch_info_to_netcdf(self,source):
         """This saves the launch information as a NetCDF file for later processing for GEOS-Chem.
         """        
         
@@ -318,7 +314,7 @@ class import_launches:
         ds['Time(UTC)'].attrs['units'] = "UTC"
              
         #Save to file and close the dataset     
-        ds.to_netcdf(f'./databases/launch_activity_data_{self.start_year}-{self.final_year}.nc')
+        ds.to_netcdf(f'./databases/launch_activity_data_{self.start_year}-{self.final_year}_{source}.nc')
         ds.close()
         
     def handle_stage_info(self, count, stage, i, temp_dict, unique_vehicle_name_list):
@@ -327,6 +323,7 @@ class import_launches:
         # Manually rearrage stages
         ##########################
         
+        stage_number = ""
         # Sometimes the stages are not in the right order on DISCOSweb, so we need to manually rearrange.
         if unique_vehicle_name_list[i] in ["Angara A5", "Angara A5 Persei", "Angara A5 Orion", "Ariane 5ECA", "Ariane 62", 
                                            "Atlas V N22 v2020", "Atlas V 401 v2020", "Atlas V 411", "Atlas V 421 v2021",
@@ -440,7 +437,6 @@ class import_launches:
             if response.ok:
                 doc = response.json()
                 
-                # TODO: We could probably look up this information from JSR if we wanted to and it would be much simpler as its a more complete database.
                 if doc['data'] != None:
                     propellant_info = doc['data']["attributes"]
                     
@@ -530,190 +526,215 @@ class import_launches:
         
         return temp_dict
 
-    def get_rocket_info(self):
+    def get_rocket_info(self,source):
         
-        self.unique_rocket_list = []
-        
-        #Open file and get a list of unique vehicles.
-        vehicle_name_list, vehicle_id_list = [], []
-        
-        ds = xr.open_dataset(f'./databases/launch_activity_data_{self.start_year}-{self.final_year}.nc', decode_times=False)
-        vehicle_name_list = np.concatenate([vehicle_name_list,ds['Rocket_Name'].values])
-        vehicle_id_list = np.concatenate([vehicle_id_list,ds['DISCOSweb_Rocket_ID'].values]).astype(int)
-        ds.close()
-        unique_vehicle_name_list = sorted(list(set(vehicle_name_list))) 
+        self.unique_rocket_list,vehicle_ids = [], []
+        with xr.open_dataset(f'./databases/launch_activity_data_{self.start_year}-{self.final_year}_{source}.nc', decode_times=False) as ds:
+            vehicle_names = ds['Rocket_Name'].values
+            if source == "dw":
+                vehicle_ids = ds['DISCOSweb_Rocket_ID'].values.astype(int)
+
+        # Clean name list and ensure uniqueness
+        if self.start_year >= 2007 and source == "dw": # DISCOSweb only starts calling it Shavit 2 from 2023, whereas JSR, SLR, and wiki say it was from 2007.
+            vehicle_names = np.where(vehicle_names == "Shavit", "Shavit 2", vehicle_names)
+
+        unique_vehicle_names = np.unique(vehicle_names)
+
+        # Map rocket names to proxy names
+        proxy_map = {"dw": {"Astra Rocket 3":     "Electron",
+                            "Ceres-1":            "Shavit 2",
+                            "Long March (CZ) 11": "Minotaur 1",
+                            "Jielong-3":          "Epsilon-2 CLPS",
+                            "Zhongke 1A":         "Vega C",
+                            "Long March (CZ) 6A": "Long March (CZ) 7A",
+                            "Kuaizhou-11":        "Long March (CZ) 6",
+                            "Zhuque-2":           "Antares 230",
+                            },
+                     "jsr": {}} # TODO: Add JSR proxy mappings.
+
+        df_vehicles, df_stages, df_engines = pd.DataFrame(), pd.DataFrame(), pd.DataFrame()
+        if source == "jsr":
+            df_vehicles = self.get_jsr_info("https://planet4589.org/space/gcat/tsv/tables/lvs.tsv") 
+            df_stages   = self.get_jsr_info("https://planet4589.org/space/gcat/tsv/tables/stages.tsv")
+            df_engines  = self.get_jsr_info("https://planet4589.org/space/gcat/tsv/tables/engines.tsv")
         
         #Loop over all rockets, and pull the information for each.
-        for i in range(0,len(unique_vehicle_name_list)):
+        for i, name in enumerate(unique_vehicle_names):
 
-            if unique_vehicle_name_list[i] == "Shavit":
-                unique_vehicle_name_list[i] = "Shavit 2"
-            
-            temp_vehicle_id = vehicle_id_list[np.where(vehicle_name_list == unique_vehicle_name_list[i])[0][0]]
+            #Set up the arrays to hold the rocket info.
             temp_dict = {
-                "id" : temp_vehicle_id,
-                "name": unique_vehicle_name_list[i],
+                "name":                    name,
+                "proxy":                   proxy_map[source].get(name, ""),
+                "Booster Number":          0,
+                "Fairing Mass":            0,
             }
-            if temp_dict["name"] == "Astra Rocket 3":
-                temp_dict["proxy"] = "Electron"
-            elif temp_dict["name"] == "Ceres-1":
-                temp_dict["proxy"] = "Shavit"
-            elif temp_dict["name"] == "Long March (CZ) 11":
-                temp_dict["proxy"] = "Minotaur 1"
-            elif temp_dict["name"] == "Jielong-3":
-                temp_dict["proxy"] = "Epsilon-2 CLPS"
-            elif temp_dict["name"] == "Zhongke 1A":
-                temp_dict["proxy"] = "Vega C"
-            elif temp_dict["name"] == "Long March (CZ) 6A":
-                temp_dict["proxy"] = "Long March (CZ) 7A"
-            elif temp_dict["name"] == "Kuaizhou-11":
-                temp_dict["proxy"] = "Long March (CZ) 6"
-            elif temp_dict["name"] == "Zhuque-2":
-                temp_dict["proxy"] = "Antares 230"
-            else:
-                temp_dict["proxy"] = ""
-                    
-            # Get the propellant mass info.
-            while True:
-                response = server_request({},f'/launch-vehicles/{temp_vehicle_id}/stages')
-                if response.ok:
-                    doc = response.json()
-                    vehicle_info = doc['data']
-                    # Usually 2-5 stages, so won't need to account for the maximum of 30 items in a list.
+
+            for j in range(0,5):
+                temp_dict.update({
+                    f"Stage{j} Fuel Type":       "",
+                    f"Stage{j} Propellant Mass": 0,
+                    f"Stage{j} Stage Mass":      0,
+                })
+
+            if source == "dw":
+                vehicle_index = np.where(vehicle_names == name)[0][0]
+                vehicle_id = vehicle_ids[vehicle_index]    
+                # Get the propellant mass info.
+                doc = self.server_loop(f'/launch-vehicles/{vehicle_id}/stages',{},f"On rocket {i+1} of {len(unique_vehicle_names)}.")
+                if doc:
+                    for count,stage in enumerate(doc['data']):
+                        temp_dict = self.handle_stage_info(count,stage,i,temp_dict,unique_vehicle_names)   
                 
-                    #Set up the arrays
-                    temp_dict[f"Booster Propellant Mass"] = 0
-                    temp_dict[f"Booster Fuel Type"] = ""
-                    temp_dict[f"Booster Propellant Name"] = ""
-                    temp_dict[f"Booster Stage Mass"] = 0
-                    temp_dict[f"Booster Number"] = 0
-                    temp_dict[f"Fairing Mass"] = 0
-                    for j in range(0,4):
-                        temp_dict[f"Stage{j+1} Propellant Mass"] = 0
-                        temp_dict[f"Stage{j+1} Fuel Type"] = ""
-                        temp_dict[f"Stage{j+1} Propellant Name"] = ""
-                        temp_dict[f"Stage{j+1} Stage Mass"] = 0
-                        
-                    for count,stage in enumerate(vehicle_info):
-                        temp_dict = self.handle_stage_info(count,stage,i,temp_dict,unique_vehicle_name_list) 
-                                               
-                elif response.status_code == 429:
-                    message = f"On rocket {i+1} of {len(unique_vehicle_name_list)}. "
-                    response_error_handler(response,message)
-                    continue
-                else:
-                    response_error_handler(response,"")
-                break      
-            
-            # Handle any incomplete/incorrect propellant/stage mass information.
-            temp_dict = update_mass_info(i,temp_dict,unique_vehicle_name_list)
+                # Handle any incomplete/incorrect propellant/stage mass information.
+                temp_dict = update_mass_info(i,temp_dict,unique_vehicle_names)
+
+            elif source == "jsr":
+
+                # First find the vehicle and its stages in the vehicles databases.
+                launch_vehicle, launch_variant = name.split(" V=")  
+                df_vehicle = df_vehicles[(df_vehicles["#LV_Name"] == launch_vehicle) & (df_vehicles["LV_Variant"] == launch_variant)].reset_index()
+
+                # Then loop over all stages to extract mass information. 
+                for i, row in df_vehicle.iterrows():
+
+                    # Get the stage number and skip fairings and payloads as the mass isn't in JSR.
+                    stage_number = row['Stage_No'].strip()
+                    if stage_number in ["F","P"]:
+                        continue
+                    
+                    # Get the number of boosters.
+                    if stage_number == "0":
+                        temp_dict["Booster Number"] = int(row["Multiplicity"])
+
+                    # Skip adapters, ullage motors, kick motors (Start, Proton-M/DM-03 and Molniya 8K78).
+                    if row["Stage_Name"] in ["Perekhodnik","SOZ","BOZ","DS"]:
+                        continue
+                    if "Molniya 8K78" in name and stage_number == "5":
+                        stage_number = "4"
+                    if (name.startswith("Proton-K/") or name.startswith("Proton-M/D") or name.startswith("UR-500K/")) and stage_number == "5":
+                        stage_number = "4"
+
+                    # Fix Saturn V.
+                    if name.startswith("Saturn V"):
+                        if stage_number == "2":
+                            continue # Skip the interstage.
+                        if stage_number in ["3","4"]:
+                            stage_number = str(int(stage_number)-1)
+                    
+                    # Find the stage in the stages database.
+                    df_stage = df_stages[df_stages["#Stage_Name"] == row["Stage_Name"]]
+                    if len(df_stage) != 1:
+                        print(f"Warning: Found {len(df_stage)} stages for stage {row['Stage_Name']} of {name}.")
+                        continue
+
+                    # Skip air-launched first stages - these are aircraft.
+                    if df_stage["Stage_Family"].values[0].strip() == "Air":
+                        continue
+
+                    if int(stage_number) > 4: 
+                        print("Too many stages for",name,stage_number,"-",row["Stage_Name"])
+                        pass
+                    if int(stage_number) < 0:
+                        if name == "H-II V=(2S)":
+                            continue # This rocket has two boosters but for some reason its duplicated in JSR.
+                        print("Extra booster found for",name,stage_number,"-",row["Stage_Name"])
+                        pass
+
+                    # TODO: Ariane 44LP and Atlas IIAS had two solid and two liquid boosters, so we need to handle this.
+                    # Same for H-IIA 2022 and 2024, but these are all solid boosters.
+
+                    # TODO: Minotaur IV, Minotaur V, NOTS EV1, Start all have five stages, so we need to deal with these.
+
+                    # Get the dry mass and wet mass and handle.
+                    dry_mass    = df_stage["Dry_Mass"].values[0]
+                    launch_mass = df_stage["Launch_Mass"].values[0]
+                    dry_mass    = None if dry_mass    == '-' or pd.isna(dry_mass)    else float(dry_mass)
+                    launch_mass = None if launch_mass == '-' or pd.isna(launch_mass) else float(launch_mass)*1000
+                    
+                    #if dry_mass is None or launch_mass is None:
+                    #    print(f"Dry mass: {dry_mass}, Launch mass: {launch_mass}, Rocket: {name}, Stage: {stage_number} - {row['Stage_Name']}")
+
+                    temp_dict[f"Stage{stage_number} Stage Mass"] = dry_mass
+                    if dry_mass is not None and launch_mass is not None:
+                        temp_dict[f"Stage{stage_number} Propellant Mass"] = launch_mass - dry_mass
+
+                    # Get the propellant name and type.
+                    df_engine = df_engines[df_engines["#Name"] == df_stage["Engine"].values[0]]
+                    if ("ZK-1A" not in df_stage["Engine"].values[0]) and ("YL-1" not in df_stage["Engine"].values[0]):
+                        if len(df_engine) != 1:
+                            print(f"Warning: Found {len(df_engine)} engines for stage {row['Stage_Name']} of {name}.")
+                            continue
+                    
+                    if df_engine["Group"].values[0] == "Solid":
+                        fuel_type = "Solid"
+                    elif df_engine["Group"].values[0] == "LOX/Methane":
+                        fuel_type = "Methane"
+                    elif df_engine["Group"].values[0] == "LOX/LH2":
+                        fuel_type = "Hydrogen"
+                    elif ("Kero" in df_engine["Group"].values[0]) or (df_engine["Group"].values[0] == "NA/Turps"): 
+                        # Assuming that nitric acid + turpentine is similar to kerosene.
+                        fuel_type = "Kerosene"
+                    elif df_engine["Group"].values[0] in ["NTO/UDMH","MonoHyd","NA/UDMH","LOX/UDMH","NTO/Hyd","Green"]:
+                        fuel_type = "Hypergolic"
+                    else:
+                        print("Missing fuel type", df_engine["Group"].values[0],name,stage_number) 
+                        fuel_type = None
+
+                    temp_dict[f"Stage{stage_number} Fuel Type"] = fuel_type
+            else:
+                raise ValueError(f"Unknown source {source} for rocket data.")
+
             # Update the rocket list.   
             self.unique_rocket_list.append(temp_dict) 
-
-    def get_rocket_info_jsr(self):  
-        pass 
         
-    def rocket_info_to_netcdf(self):
-        """This saves the propellant information as a NetCDF file for later processing for GEOS-Chem.
-        This is only needed if using GEOS-Chem. Recommended to ignore if you don't need this.
+    def rocket_info_to_netcdf(self,source):
+        """
+        This saves the propellant information as a NetCDF file for later processing for GEOS-Chem.
+        Recommended to ignore if you don't need this.
         """        
         #Set up the dimensions of the netcdf file.
-        #launches = np.arange(len(self.cospar_id), dtype=np.int64)
         dims = ('rockets')
+
+        def safe_mass(val):
+            return float(val or 0.0)
         
-        #Set up the data
-        rocket_name_list = []
-        booster_propmass_list, booster_fuel_type_list, booster_stagemass_list, booster_number_list = [], [], [], []
-        stage1_propmass_list,  stage1_fuel_type_list, stage1_stagemass_list  = [], [], []
-        stage2_propmass_list,  stage2_fuel_type_list, stage2_stagemass_list  = [], [], []
-        stage3_propmass_list,  stage3_fuel_type_list, stage3_stagemass_list  = [], [], []
-        stage4_propmass_list,  stage4_fuel_type_list, stage4_stagemass_list  = [], [], []
-        fairing_stagemass_list, proxy_list = [], []
+        fields = {
+            "Rocket_Name":       ("name", None),
+            "Booster_No":        ("Booster Number", None),
+            "Fairing_Mass":      ("Fairing Mass", "kg"),
+            "Proxy_Rocket":      ("proxy", None),
+        }
 
-        for rocket in self.unique_rocket_list:
-            rocket_name_list.append(rocket["name"])
-            booster_propmass_list.append(rocket["Booster Propellant Mass"])
-            booster_fuel_type_list.append(rocket["Booster Fuel Type"])
-            booster_stagemass_list.append(rocket["Booster Stage Mass"])
-            booster_number_list.append(rocket["Booster Number"])
-            stage1_propmass_list.append(rocket["Stage1 Propellant Mass"])
-            stage1_fuel_type_list.append(rocket["Stage1 Fuel Type"])
-            if rocket["Stage1 Stage Mass"] == None:
-                stage1_stagemass_list.append(float(0))
-            else:
-                stage1_stagemass_list.append(float(rocket["Stage1 Stage Mass"]))
+        # Add stages dynamically
+        for stage in range(0, 5):  # Stage1 to Stage4
+            fields.update({
+                f"Stage{stage}_PropMass":  (f"Stage{stage} Propellant Mass", "kg"),
+                f"Stage{stage}_Fuel_Type": (f"Stage{stage} Fuel Type", None),
+                f"Stage{stage}_StageMass": (f"Stage{stage} Stage Mass", "kg"),
+            })
 
-            stage2_propmass_list.append(rocket["Stage2 Propellant Mass"])
-            stage2_fuel_type_list.append(rocket["Stage2 Fuel Type"])
-            
-            if rocket["Stage2 Stage Mass"] == None:
-                stage2_stagemass_list.append(float(0.0))
-            else:
-                stage2_stagemass_list.append(float(rocket["Stage2 Stage Mass"]))
+        # Build data arrays in one pass
+        data_vars = {}
+        for field_name, (rocket_key, units) in fields.items():
+            values = []
+            for rocket in self.unique_rocket_list:
+                val = rocket[rocket_key]
+                if "Stage Mass" in rocket_key:
+                    val = safe_mass(val)
+                values.append(val)
 
-            stage3_propmass_list.append(rocket["Stage3 Propellant Mass"])
-            stage3_fuel_type_list.append(rocket["Stage3 Fuel Type"])
-            if rocket["Stage3 Stage Mass"] == None:
-                stage3_stagemass_list.append(float(0.0))
-            else:
-                stage3_stagemass_list.append(float(rocket["Stage3 Stage Mass"]))
+            attrs = {"long_name": rocket_key}
+            if units:
+                attrs["units"] = units
 
-            stage4_propmass_list.append(rocket["Stage4 Propellant Mass"])
-            stage4_fuel_type_list.append(rocket["Stage4 Fuel Type"])
-            if rocket["Stage4 Stage Mass"] == None:
-                    stage4_stagemass_list.append(float(0.0))
-            else:
-                stage4_stagemass_list.append(float(rocket["Stage4 Stage Mass"]))
-
-            fairing_stagemass_list.append(rocket["Fairing Mass"])
-            proxy_list.append(rocket["proxy"])
-
-        #Create the DataArrays.
-        data_da_name                = xr.DataArray(rocket_name_list,       dims=dims, attrs=dict(long_name="Rocket Name"))
-        data_da_booster_propmass    = xr.DataArray(booster_propmass_list,  dims=dims, attrs=dict(long_name="Booster Propellant Mass", units="kg"))
-        data_da_booster_fuel_type   = xr.DataArray(booster_fuel_type_list, dims=dims, attrs=dict(long_name="Booster Fuel Type"))
-        data_da_booster_stagemass   = xr.DataArray(booster_stagemass_list, dims=dims, attrs=dict(long_name="Booster Stage Mass", units="kg"))
-        data_da_booster_number      = xr.DataArray(booster_number_list,    dims=dims, attrs=dict(long_name="Booster Number"))
-        data_da_stage1_propmass     = xr.DataArray(stage1_propmass_list,   dims=dims, attrs=dict(long_name="Stage 1 Propellant Mass", units="kg"))
-        data_da_stage1_fuel_type    = xr.DataArray(stage1_fuel_type_list,  dims=dims, attrs=dict(long_name="Stage 1 Fuel Type"))
-        data_da_stage1_stagemass    = xr.DataArray(stage1_stagemass_list,  dims=dims, attrs=dict(long_name="Stage 1 Stage Mass", units="kg"))
-        data_da_stage2_propmass     = xr.DataArray(stage2_propmass_list,   dims=dims, attrs=dict(long_name="Stage 2 Propellant Mass", units="kg"))
-        data_da_stage2_fuel_type    = xr.DataArray(stage2_fuel_type_list,  dims=dims, attrs=dict(long_name="Stage 2 Fuel Type"))
-        data_da_stage2_stagemass    = xr.DataArray(stage2_stagemass_list,  dims=dims, attrs=dict(long_name="Stage 2 Stage Mass", units="kg"))
-        data_da_stage3_propmass     = xr.DataArray(stage3_propmass_list,   dims=dims, attrs=dict(long_name="Stage 3 Propellant Mass", units="kg"))
-        data_da_stage3_fuel_type    = xr.DataArray(stage3_fuel_type_list,  dims=dims, attrs=dict(long_name="Stage 3 Fuel Type"))
-        data_da_stage3_stagemass    = xr.DataArray(stage3_stagemass_list,  dims=dims, attrs=dict(long_name="Stage 3 Stage Mass", units="kg"))
-        data_da_stage4_propmass     = xr.DataArray(stage4_propmass_list,   dims=dims, attrs=dict(long_name="Stage 4 Propellant Mass", units="kg"))
-        data_da_stage4_fuel_type    = xr.DataArray(stage4_fuel_type_list,  dims=dims, attrs=dict(long_name="Stage 4 Fuel Type"))
-        data_da_stage4_stagemass    = xr.DataArray(stage4_stagemass_list,  dims=dims, attrs=dict(long_name="Stage 4 Stage Mass", units="kg"))
-        data_da_fairing_stagemass   = xr.DataArray(fairing_stagemass_list, dims=dims, attrs=dict(long_name="Fairing Mass", units="kg"))
-        data_da_proxy               = xr.DataArray(proxy_list,             dims=dims, attrs=dict(long_name="Proxy Rocket"))
+            data_vars[field_name] = xr.DataArray(values, dims=dims, attrs=attrs)        
         
         # Create an xarray Dataset from the DataArrays.
-        ds = xr.Dataset()
-        ds['Rocket_Name']           = data_da_name
-        ds['Booster_No']            = data_da_booster_number
-        ds['Booster_PropMass']      = data_da_booster_propmass
-        ds['Booster_Fuel_Type']     = data_da_booster_fuel_type
-        ds['Booster_StageMass']     = data_da_booster_stagemass
-        ds['Stage1_PropMass']       = data_da_stage1_propmass
-        ds['Stage1_Fuel_Type']      = data_da_stage1_fuel_type
-        ds['Stage1_StageMass']      = data_da_stage1_stagemass
-        ds['Stage2_PropMass']       = data_da_stage2_propmass
-        ds['Stage2_Fuel_Type']      = data_da_stage2_fuel_type
-        ds['Stage2_StageMass']      = data_da_stage2_stagemass
-        ds['Stage3_PropMass']       = data_da_stage3_propmass
-        ds['Stage3_Fuel_Type']      = data_da_stage3_fuel_type
-        ds['Stage3_StageMass']      = data_da_stage3_stagemass
-        ds['Stage4_PropMass']       = data_da_stage4_propmass
-        ds['Stage4_Fuel_Type']      = data_da_stage4_fuel_type
-        ds['Stage4_StageMass']      = data_da_stage4_stagemass
-        ds['Fairing_Mass']          = data_da_fairing_stagemass
-        ds['Proxy_Rocket']          = data_da_proxy
-             
+        ds = xr.Dataset(data_vars)
+        
         #Save to file and close the DataSet     
         #ds.to_netcdf(f'./databases/rocket_attributes_{self.start_year}-{self.final_year}_noupdate.nc')
-        ds.to_netcdf(f'./databases/rocket_attributes_{self.start_year}-{self.final_year}.nc')
+        ds.to_netcdf(f'./databases/rocket_attributes_{self.start_year}-{self.final_year}_{source}.nc')
         ds.close()
         
     def save_discosweb_reentries(self):
@@ -760,7 +781,7 @@ class import_launches:
                 unique_DISCOSweb_reentry_list.append(item)
         
         #We now have a list of reentries, however we need to query DISCOSweb for the object details.  
-        name_list, mass_list, cosparId_list, objectClass_list, epoch_list = [], [], [], [], []      
+        name_list, mass_list, cosparId_list, objectClass_list, epoch_list, temp_object_list = [], [], [], [], [], []   
         for count, reentry in enumerate(unique_DISCOSweb_reentry_list):
             while True:
                 response = server_request({},f'/reentries/{reentry["id"]}/objects')
@@ -811,15 +832,15 @@ if __name__ == "__main__":
     
     # Set up the arguments for each function.
     parser = argparse.ArgumentParser()
+    parser.add_argument('-so',   "--source",                   default = "jsr",                                     help="Source (DISCOSweb - dw or JSR - jsr).")
     parser.add_argument('-yl',   "--yearly_launches",          action='store_true',                                 help="Get yearly launches.")
-    parser.add_argument('-lidw', "--launch_info_dw",           action='store_true',                                 help='Get launch info from dw.')
-    parser.add_argument('-lijsr',"--launch_info_jsr",          action='store_true',                                 help='Get launch info from jsr.')
+    parser.add_argument('-li',   "--launch_info",              action='store_true',                                 help='Get launch info.')
     parser.add_argument('-sli',  "--save_launch_info",         action='store_true',                                 help='Save launch info.')
     parser.add_argument('-ri',   "--rocket_info",              action='store_true',                                 help='Get rocket info.')
     parser.add_argument('-sri',  "--save_rocket_info",         action='store_true',                                 help='Save launch info.')
     parser.add_argument('-sdwr', "--save_discosweb_reentries", action='store_true',                                 help='Save dw reentries.')
-    parser.add_argument('-sy',   "--start_year",               default = "2023", choices=str(np.arange(1957,2026)), help='Start Year.')
-    parser.add_argument('-fy',   "--final_year",               default = "2024", choices=str(np.arange(1957,2026)), help='Final Year.')
+    parser.add_argument('-sy',   "--start_year",               default = "2023", choices=str(np.arange(1942,2026)), help='Start Year (1957-2025).')
+    parser.add_argument('-fy',   "--final_year",               default = "2024", choices=str(np.arange(1942,2026)), help='Final Year (1957-2025).')
     args = parser.parse_args()
     
     # Sort out the year range.
@@ -833,15 +854,19 @@ if __name__ == "__main__":
     LaunchData = import_launches(start_year,final_year)   
     if args.yearly_launches == True:
         LaunchData.get_launch_list()
-    if args.launch_info_dw == True:
-        LaunchData.get_launch_info()
-    if args.launch_info_jsr == True:
-        LaunchData.get_launch_info_jsr()       
-    if args.save_launch_info == True:
-        LaunchData.launch_info_to_netcdf()               
+
+    if args.launch_info == True:
+        if args.source == "dw":
+            LaunchData.get_launch_info()
+        else:
+            LaunchData.get_launch_info_jsr()
+        if args.save_launch_info == True:
+            LaunchData.launch_info_to_netcdf(args.source)  
+
     if args.save_discosweb_reentries == True:
         LaunchData.save_discosweb_reentries() 
+
     if args.rocket_info == True:
-        LaunchData.get_rocket_info()      
+        LaunchData.get_rocket_info(args.source)      
         if args.save_rocket_info == True:
-            LaunchData.rocket_info_to_netcdf()
+            LaunchData.rocket_info_to_netcdf(args.source)
