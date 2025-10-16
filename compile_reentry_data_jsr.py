@@ -6,10 +6,14 @@ from datetime import datetime, timedelta
 import sys
 import random
 import geopandas as gpd
-from shapely.geometry import Point, Polygon
+from shapely.geometry import Point, Polygon, shape
 import fiona
 import requests
 from io import StringIO
+from cProfile import Profile
+from pstats import Stats
+import time
+from tqdm import tqdm
 
 def convert_time(date):
     
@@ -19,10 +23,14 @@ def convert_time(date):
         datestr(str):  The date in YYYYMMDD format.
         time_utc(str): The decimal time in hours.
     """   
+    
     yearstr=str(date[0]).replace("?","")
     if len(date) == 1:
         monstr = "01"   
-        daystr = "01"  
+        daystr = "01"
+    elif date[1] == "Q3?": # 1995-005A
+        monstr = "06"
+        daystr = "30"  
     else:   
         date[1] = date[1].replace("?","")
         monstr = str(datetime.strptime(date[1], '%b').month).zfill(2)  
@@ -58,27 +66,24 @@ class build_reentry_list:
         
         self.start_year = start_year
         self.final_year = final_year
+        self.session = requests.Session()
         
-        # Import the shapefiles and create unions for the main oceans.
+        # Import the shapefiles.
         if use_gpd == True:
-            gom_shapefile          = gpd.read_file("./databases/reentry/iho/gulf_of_mexico/iho.shp")
-            indian_ocean_shapefile = gpd.read_file("./databases/reentry/iho/indian_ocean/iho.shp")
-            pacific_shapefile      = gpd.read_file("./databases/reentry/iho/pacific/iho.shp")
-            atlantic_shapefile     = gpd.read_file("./databases/reentry/iho/atlantic/iho.shp")
-            country_shapefile      = gpd.read_file("./databases/reentry/ne_110m_admin_0_countries/ne_110m_admin_0_countries.shp") 
-            states_shapefile       = gpd.read_file("./databases/reentry/ne_10m_admin_1_states_provinces/ne_10m_admin_1_states_provinces.shp")
 
-            pacific             = pacific_shapefile[pacific_shapefile.name.isin(['North Pacific Ocean','South Pacific Ocean'])]
-            pacific_union       = gpd.GeoDataFrame(geometry=[pacific.unary_union]) 
-            atlantic            = atlantic_shapefile[atlantic_shapefile.name.isin(['North Atlantic Ocean','South Atlantic Ocean'])]
-            atlantic_union      = gpd.GeoDataFrame(geometry=[atlantic.unary_union])
+            shapefiles = {
+                "Gulf of Mexico": "./databases/reentry/iho/gulf_of_mexico/iho.shp",
+                "Indian Ocean":   "./databases/reentry/iho/indian_ocean/iho.shp",
+                "Pacific":        "./databases/reentry/iho/pacific/iho.shp",
+                "Atlantic":       "./databases/reentry/iho/atlantic/iho.shp",
+                "Countries":      "./databases/reentry/ne_110m_admin_0_countries/ne_110m_admin_0_countries.shp",
+                "States":         "./databases/reentry/ne_50m_admin_1_states_provinces/ne_50m_admin_1_states_provinces.shp"
+            }
 
-            self.gom_shapefile          = gom_shapefile
-            self.indian_ocean_shapefile = indian_ocean_shapefile
-            self.pacific                = pacific_union
-            self.atlantic               = atlantic_union
-            self.country_shapefile      = country_shapefile
-            self.states_shapefile       = states_shapefile
+            self.loaded_shapefiles = {}
+            for name, path in tqdm(shapefiles.items(), total=len(shapefiles.keys()), desc="Loading Shapefiles."):
+                gdf = gpd.read_file(path, engine="pyogrio")
+                self.loaded_shapefiles[name] = gdf
             
     def print_stats(self):
         """Print out statistics about the database at the end of the program.
@@ -112,6 +117,39 @@ class build_reentry_list:
         print(f"Timed (All):       {time_percent_all:.0f}%, {non_time_count}.")    
         print(f"Mass (All):        {mass_percent_all:.0f}%, {non_mass_count}.")
         print(f"Geolocated Mass:   {geolocated_mass_percent:.0f}%.")
+                
+    def convert_launch_tag(self,tag):
+
+        # Example dictionary mapping codes to orders
+        code_to_order = {"ALP": 1, "BET": 2, "GAM": 3, "DEL": 4, "EPS": 5, "ZET": 6, "ETA": 7,
+                            "THE": 8, "IOT": 9, "KAP": 10, "LAM": 11, "MU": 12, "NU": 13, "XI": 14,
+                            "OMI": 15, "PI": 16, "RHO": 17, "SIG": 18, "TAU": 19, "UPS": 20,
+                            "PHI": 21, "CHI": 22, "PSI": 23, "OME": 24}
+        
+        tag = str(tag).strip()
+        if '-' in tag:
+            return tag
+        # Otherwise, assume format "YYYY (greek)"
+        parts = tag.split()
+        year = parts[0]
+        mult = 0
+        greek_letter = ""
+
+        if len(parts[1]) > 1:
+            mult = 0
+            greek_letter = parts[1]
+        else:
+            greek_letter = parts[2]
+            if parts[1] == "A":
+                mult = 1
+            elif parts[1] == "B":
+                mult = 2
+            else:
+                raise ValueError("Unexpected Launch Tag")
+
+        number = code_to_order.get(greek_letter, 0) + mult*24
+        
+        return f"{year}-{str(number).zfill(3)}" 
         
     def convert_lat_lon(self,latlonstr,inc,category,apogee,jsr_id):
         """Set the geolocation for all items that are not Falcon 9 fairings/1st stage.
@@ -142,176 +180,166 @@ class build_reentry_list:
         if inc > 90:
             inc = 180-inc
         elif inc == 0:
-            print(f"0 Inc for {jsr_id}")
             inc=90
+        #print(jsr_id,latlonstr)
+
+        def sample_within_region(region, lat_range=(-inc, inc)):
+
+            while True:
+                coords = region.sample_points(1).get_coordinates()
+                lon, lat = coords["x"].values[0], coords["y"].values[0]
+                if lat_range[0] <= lat <= lat_range[1]:
+                    break   
+            return lat, lon             
         
-        if latlonstr == "-":
-            # If location is missing for lower stages for failed and successful launches, set as launch coordinates.
+        if use_gpd == True:    
+            shapefile_map = {
+                "Gujarat":      (self.loaded_shapefiles["States"], "name_en", "Gujarat", 3),
+                "Kazakhstan":   (self.loaded_shapefiles["Countries"], "NAME", "Kazakhstan", 3),
+                "Mexico":       (self.loaded_shapefiles["Countries"], "NAME", "Mexico", 3),
+                "S Africa":     (self.loaded_shapefiles["Countries"], "NAME", "South Africa", 3),
+                "N Zealand":    (self.loaded_shapefiles["Countries"], "NAME", "New Zealand", 3),
+                "China":        (self.loaded_shapefiles["Countries"], "NAME", "China", 3),
+
+                "Gulf":         (self.loaded_shapefiles["Gulf of Mexico"], "name", "Gulf of Mexico", 4),
+                "Indian O":     (self.loaded_shapefiles["Indian Ocean"], "name", "Indian Ocean", 4),
+                "Indian Ocean": (self.loaded_shapefiles["Indian Ocean"], "name", "Indian Ocean", 4),
+                "Indian O.":    (self.loaded_shapefiles["Indian Ocean"], "name", "Indian Ocean", 4),
+                "IOR":          (self.loaded_shapefiles["Indian Ocean"], "name", "Indian Ocean", 4), 
+                "S POR":        (self.loaded_shapefiles["Pacific"], "name", "South Pacific Ocean", 4),
+                "S Pacific":    (self.loaded_shapefiles["Pacific"], "name", "South Pacific Ocean", 4),
+                "N Atlantic":   (self.loaded_shapefiles["Atlantic"], "name", "North Atlantic Ocean", 4),
+                "S AOR":        (self.loaded_shapefiles["Atlantic"], "name", "South Atlantic Ocean", 4),
+                "S Atl":        (self.loaded_shapefiles["Atlantic"], "name", "South Atlantic Ocean", 4),
+            }
+        else:
+            shapefile_map = {}
+
+        # If location is missing for lower stages for failed and successful launches, set as launch coordinates.    
+        if latlonstr in ["-",""]:
+            
             if (apogee <= 100) and (category in ["S0","S1"]): 
-                for i in range(len(self.dsl["COSPAR_ID"])):
-                    if jsr_id[:8] == self.dsl["COSPAR_ID"].values[i][:8]:
+                for i, cpid in enumerate(self.dsl["COSPAR_ID"].values):
+                    if jsr_id[:8] == cpid[:8]:
                         lat = self.dsl["Latitude"].values[i]
                         lon = self.dsl["Longitude"].values[i]
-                        location = 2  
+                        location = 2
+                        break  
             else: 
                 lat = round(random.uniform(-inc, inc),2)
                 lon = round(random.uniform(-180, 180),2)
                 location = 6  
-        elif latlonstr == "Alashan": 
-            # Landing expected east of Jiuquan launch site (this was actually launched from Wenchang).
-            # Assuming that Alashan refers to Helen Shan Mountain (new name for Alashan Mountain).
-            # https://space.skyrocket.de/doc_sdat/rcs-fc-sc.htm
-            # https://planet4589.org/space/jsr/news.778
-            # https://www.peakbagger.com/peak.aspx?pid=10693
-            # https://www.nasaspaceflight.com/2020/05/china-next-generation-crew-capsule/
-            lat = 38.833
-            lon = 105.95
+
+        # Lat/Lon Provided
+        elif latlonstr in ["GM 86.2W 29.7N", "32W 1E"]:
+            location = 1
+            if latlonstr == "GM 86.2W 29.7N": # Gulf of Mexico named coordinates.
+                lat = 29.7
+                lon = -86.2
+            elif latlonstr == "32W 1E": # TODO: Check with Jonathan about this.
+                lon = -32
+                lat = 1
+        
+        # Launch Site / Named Location
+        elif latlonstr in ["Alashan","Jiuquan","Dongfeng","LOPNOR RW05","Lop Nor","VSFB RW30/12","Koonibba","Jacklyn","Ocean","STB OLP1","WSSH","Splash","KSC SLF"]:
             location = 2
-        elif latlonstr in ["Jiuquan","Dongfeng"]:
-            # This refers to the Chinese launch center, sources say it landed 'in the desert near Jiuquan', and 'in China’s Inner Mongolia autonomous region'.
-            # Using lat/lon for Jiuquan launch site.
-            # https://discosweb.esoc.esa.int/launch-sites/21
-            # https://nssdc.gsfc.nasa.gov/nmc/spacecraft/display.action?id=2020-027A
-            # https://space.skyrocket.de/doc_sdat/xzf-sc.htm 
-            # https://spaceflightnow.com/2020/05/08/chinas-next-generation-crew-spacecraft-lands-after-unpiloted-test-flight/ 
-            lat = 41.3
-            lon = 100.3               
-            location = 2              
-        elif latlonstr in ["LOPNOR RW05","Lop Nor"]:
-            # Reported test flight of a Chinese reusable experimental spacecraft.
-            # Runway 05/22 at Lop Nor air base in Xinjiang (https://planet4589.org/space/gcat/data/tables/lp.html).
-            # https://www.seradata.com/china-launches-own-mini-spaceplane-reusable-spacecraft-using-long-march-2f 
-            # https://twitter.com/planet4589/status/1302486141090885632                
-            lat = 40.78
-            lon = 89.27
-            location = 2
-        elif latlonstr == "VSFB RW30/12":
-            lat = 34.7
-            lon = -120.6 
-        elif latlonstr == "Koonibba":
-            lat = -31.885558
-            lon = 133.448686
-        elif latlonstr == "Jacklyn": # https://x.com/spaceOFFSHORE/status/1878177979974775139/photo/1
-            lat = 27.887984558404042
-            lon = -74.15337755494835
-        elif latlonstr == "Ocean":
-            # Electron Stage 1 (rcat) is occasionally recovered in the ocean.
-            # From https://spaceflightnow.com/2020/11/05/rocket-lab-to-attempt-booster-recovery-on-next-mission/:
-            #   Recovery vessels stationed near the booster’s splashdown zone around 250 miles (400 kilometers) 
-            #   south of the launch site will move in to secure the first stage and hoist it onto a ship for return to New Zealand.
-            # Geoloating 400km south of launch site.
-            lat = -42.86 
-            lon = 177.87
-            location = 2
-        elif latlonstr == "Antarctic?":
+            if latlonstr == "Alashan": 
+                # Landing expected east of Jiuquan launch site (this was actually launched from Wenchang).
+                # Assuming that Alashan refers to Helen Shan Mountain (new name for Alashan Mountain).
+                # https://space.skyrocket.de/doc_sdat/rcs-fc-sc.htm
+                # https://planet4589.org/space/jsr/news.778
+                # https://www.peakbagger.com/peak.aspx?pid=10693
+                # https://www.nasaspaceflight.com/2020/05/china-next-generation-crew-capsule/
+                lat = 38.833
+                lon = 105.95
+            elif latlonstr in ["Jiuquan","Dongfeng"]:
+                # This refers to the Chinese launch center, sources say it landed 'in the desert near Jiuquan', and 'in China’s Inner Mongolia autonomous region'.
+                # Using lat/lon for Jiuquan launch site.
+                # https://discosweb.esoc.esa.int/launch-sites/21
+                # https://nssdc.gsfc.nasa.gov/nmc/spacecraft/display.action?id=2020-027A
+                # https://space.skyrocket.de/doc_sdat/xzf-sc.htm 
+                # https://spaceflightnow.com/2020/05/08/chinas-next-generation-crew-spacecraft-lands-after-unpiloted-test-flight/ 
+                lat = 41.3
+                lon = 100.3               
+            elif latlonstr in ["LOPNOR RW05","Lop Nor"]:
+                # Reported test flight of a Chinese reusable experimental spacecraft.
+                # Runway 05/22 at Lop Nor air base in Xinjiang (https://planet4589.org/space/gcat/data/tables/lp.html).
+                # https://www.seradata.com/china-launches-own-mini-spaceplane-reusable-spacecraft-using-long-march-2f 
+                # https://twitter.com/planet4589/status/1302486141090885632                
+                lat = 40.78
+                lon = 89.27
+            elif latlonstr == "VSFB RW30/12":
+                lat = 34.7
+                lon = -120.6 
+            elif latlonstr == "Koonibba":
+                lat = -31.885558
+                lon = 133.448686
+            elif latlonstr == "Jacklyn": # https://x.com/spaceOFFSHORE/status/1878177979974775139/photo/1
+                lat = 27.887984558404042
+                lon = -74.15337755494835
+            elif latlonstr == "Ocean": # TODO: CHeck this doesn't include others.
+                # Electron Stage 1 (rcat) is occasionally recovered in the ocean.
+                # From https://spaceflightnow.com/2020/11/05/rocket-lab-to-attempt-booster-recovery-on-next-mission/:
+                #   Recovery vessels stationed near the booster’s splashdown zone around 250 miles (400 kilometers) 
+                #   south of the launch site will move in to secure the first stage and hoist it onto a ship for return to New Zealand.
+                # Geoloating 400km south of launch site.
+                lat = -42.86 
+                lon = 177.87
+            elif latlonstr == "STB OLP1": # Starbase in Texas.
+                lat = 25.996198
+                lon = -97.154394
+            elif latlonstr == "WSSH": # This is the White Sands Missile Range in New Mexico.
+                
+                lat = 33.238462 
+                lon = -106.346383 
+            elif latlonstr == "Splash":
+                # This is the Electron failed helicopter stage 1 recovery in May 22. 
+                # https://www.youtube.com/watch?v=BY0CXlOeWHI "Several hundred kilometers from the launch site."
+                # Using inclination of 94 degrees (wiki), and distance of 300km.
+                lat = -36.57
+                lon = 177.63
+            elif latlonstr == "KSC SLF": # https://www.world-airport-codes.com/united-states/nasa-shuttle-landing-facility-69738.html
+                # https://www.spaceforce.mil/News/Article/3217077/x-37b-orbital-test-vehicle-concludes-sixth-successful-mission/
+                lat = 28.61
+                lon = -80.69
+        
+        # Ocean/Continent
+        elif latlonstr in ["Antarctic", "Arctic", "S Ocean","S Oc.","S OCean"]:
             location = 4
-            while True:
-                lat = round(random.uniform(-inc, inc),2)
-                lon = round(random.uniform(-180, 180),2)
-                coordinate = Point(lon,lat)
-                if lat <= -60:
-                    break 
-        elif latlonstr == "Arctic": 
-            location = 4
-            while True:
-                lat = round(random.uniform(-inc, inc),2)
-                lon = round(random.uniform(-180, 180),2)
-                coordinate = Point(lon,lat)
-                if lat >= 66:
-                    break
-        elif latlonstr in ["S Ocean", "S Ocean?"]:
-            location = 4
-            # For these three objects in auxcat, the inclination is 51.65-53.
-            # This is outside of the general definition of the southern ocean (<60S).
-            # Therefore we will just set the lat to the inclination.
-            lat = -inc
-            lon = round(random.uniform(-180, 180),2)
-        elif latlonstr == "STB OLP1":
-            lat = 25.996198
-            lon = -97.154394
-        elif use_gpd == False and latlonstr in ["Pacific","Pacific?","PO","AO","E Pacific","E Pacific?","S Pacific",
-                           "S POR","Indian O?","SE IOR?","SE IOR","Atlantic","POR","Kazakhstan",
-                           "Mexico","S Africa","Gujarat","Gulf"]:
+            lon = round(random.uniform(-180, 180), 2)
+
+            if latlonstr in ["S Ocean","S Oc.","S OCean"]:
+                # For these objects in auxcat, the inclination is 51.65-74, outside of the general definition of the southern ocean (<60S).
+                # Therefore we will just set the lat to the inclination.
+                lat = -inc
+            else:
+                # Generate latitude until within target polar bounds
+                while True:
+                    lat = round(random.uniform(-inc, inc), 2)
+                    if (latlonstr == "Antarctic" and lat <= -60) or (latlonstr == "Arctic" and lat >= 66):
+                        break
+            coordinate = Point(lon, lat)
+
+        elif use_gpd == False and latlonstr in ["Pacific","PO","E Pacific","S Pacific","S POR","POR","SW POR","SE Pacific","W POR","NE RU/NW POR","SW POR","N Pacific",
+                                                "Indian O","SE IOR","Indian Ocean","Indian O.","SW IOR","IOR",
+                                                "Atlantic","N Atlantic","S AOR","SW AOR","S Atl","AOR","AO",
+                                                "Kazakhstan","Gujarat","Gulf","Mexico","S Africa","E USA","N Zealand","SE Arkalyk","China","Africa","KRZ?",
+                                                "S of Aus","S of Austr.","S of S Afr."
+                                               ]:
             lat = 0
             lon = 0
-        elif latlonstr == "Gulf":
-            print(latlonstr)
-            location = 4
-            # Gulf of Mexico
-            gom = self.gom_shapefile[self.gom_shapefile.name.isin(['Gulf of Mexico'])] 
-            while True:
-                lat = round(random.uniform(-inc, inc),2)
-                lon = round(random.uniform(-180, 180),2)
-                coordinate = Point(lon,lat)
-                if gom.geometry.contains(coordinate).any():
-                    break 
-        elif latlonstr == "WSSH":
-            location = 2
-            # This is the White Sands Missile Range in New Mexico.
-            lat = 33.238462 
-            lon = -106.346383 
-        elif latlonstr == "GM 86.2W 29.7N":
-            location = 1
-            # Gulf of Mexico
-            lat = 29.7
-            lon = -86.2
-        elif latlonstr == "Splash?":
-            location = 2
-            # This is the Electron failed helicopter stage 1 recovery in May 22. 
-            # https://www.youtube.com/watch?v=BY0CXlOeWHI "Several hundred kilometers from the launch site."
-            # Using inclination of 94 degrees (wiki), and distance of 300km.
-            lat = -36.57
-            lon = 177.63
-        elif latlonstr == "Gujarat":
-            location = 3
-            gujurat     = self.states_shapefile[self.states_shapefile.name_en.isin(['Gujarat'])] 
-            while True:
-                lat = round(random.uniform(-inc, inc),2)
-                lon = round(random.uniform(-180, 180),2)
-                coordinate = Point(lon,lat)
-                if gujurat.geometry.contains(coordinate).any():
-                    break
-        elif latlonstr == "KSC SLF": # https://www.world-airport-codes.com/united-states/nasa-shuttle-landing-facility-69738.html
-            # https://www.spaceforce.mil/News/Article/3217077/x-37b-orbital-test-vehicle-concludes-sixth-successful-mission/
-            location = 2
-            lat = 28.61
-            lon = -80.69
-        elif latlonstr == "Kazakhstan":
-            location = 3
-            kazakhstan     = self.country_shapefile[self.country_shapefile.NAME.isin(['Kazakhstan'])]
-            while True:
-                lat = round(random.uniform(-inc, inc),2)
-                lon = round(random.uniform(-180, 180),2)
-                coordinate = Point(lon,lat)
-                if kazakhstan.geometry.contains(coordinate).any():
-                    break
-        elif latlonstr == "Mexico":
-            location = 3
-            mexico     = self.country_shapefile[self.country_shapefile.NAME.isin(['Mexico'])]
-            while True:
-                lat = round(random.uniform(-inc, inc),2)
-                lon = round(random.uniform(-180, 180),2)
-                coordinate = Point(lon,lat)
-                if mexico.geometry.contains(coordinate).any():
-                    break
-        elif latlonstr == "S Africa":
-            location = 3
-            s_africa     = self.country_shapefile[self.country_shapefile.NAME.isin(['South Africa'])]
-            while True:
-                lat = round(random.uniform(-inc, inc),2)
-                lon = round(random.uniform(-180, 180),2)
-                coordinate = Point(lon,lat)
-                if s_africa.geometry.contains(coordinate).any():
-                    break
-        elif latlonstr == "32W 1E":
-            # TODO: Check with Jonathan about this.
-            location = 1
-            lon = -32
-            lat = 1
-        elif latlonstr in ["Pacific", "Pacific?", "PO", "POR"]:
+            location = 0
+
+        # Regions defined by shapefiles.
+        elif latlonstr in shapefile_map:
+            shp, col, name, location = shapefile_map[latlonstr]
+            region = shp[shp[col].isin([name])]
+            lat, lon = sample_within_region(region)
+         
+        elif latlonstr in ["Pacific", "PO", "POR"]:
             location = 4
             while True:
-                random_location = self.pacific.sample_points(1).get_coordinates()
+                random_location = self.loaded_shapefiles["Pacific"].sample_points(1).get_coordinates()
                 lon = random_location["x"].values[0]
                 lat = random_location["y"].values[0]
                 if -inc <= lat <= inc:
@@ -319,37 +347,20 @@ class build_reentry_list:
         elif latlonstr in ["AO","Atlantic"]: 
             location = 4 
             while True:
-                random_location = self.atlantic.sample_points(1).get_coordinates()
+                random_location = self.loaded_shapefiles["Atlantic"].sample_points(1).get_coordinates()
                 lon = random_location["x"].values[0]
                 lat = random_location["y"].values[0]
                 if -inc <= lat <= inc:
                     break
-        elif latlonstr in ["E Pacific", "E Pacific?"]:
+        elif latlonstr in ["E Pacific"]:
             location = 4
             while True:
-                random_location = self.pacific.sample_points(1).get_coordinates()
+                random_location = self.loaded_shapefiles["Pacific"].sample_points(1).get_coordinates()
                 lon = random_location["x"].values[0]
                 lat = random_location["y"].values[0]
                 if -inc <= lat <= inc and -180 <= lon <= -60: # Bounded to East Pacific only.
                     break 
-        elif latlonstr in ["S Pacific", "S POR"]:
-            location = 4
-            while True:
-                random_location = self.pacific.sample_points(1).get_coordinates()
-                lon = random_location["x"].values[0]
-                lat = random_location["y"].values[0]
-                if -inc <= lat <= inc and lat <= 0: # Bounded to South Pacific only.
-                    break 
-        elif latlonstr in ["Indian O?"]:
-            location = 4
-            indian_ocean = self.indian_ocean_shapefile[self.indian_ocean_shapefile.name.isin(['Indian Ocean'])] 
-            while True:
-                lat = round(random.uniform(-inc, inc),2)
-                lon = round(random.uniform(-180, 180),2)
-                coordinate = Point(lon,lat)
-                if indian_ocean.geometry.contains(coordinate).any():
-                    break 
-        elif latlonstr in ["S of Tasmania?"]:
+        elif latlonstr in ["S of Tasmania"]:
             location = 4
             lon_lat_list = [[153.23, -30.02],[146.83, -43.64],[166.00, -50.92], [167.53, -47.29],
                             [168.14, -46.85], [168.85, -46.66], [174.28, -41.72], [175.28, -41.62], [173.01, -34.39]]
@@ -361,7 +372,7 @@ class build_reentry_list:
                 coordinate = Point(lon,lat)
                 if tasman_sea.geometry.contains(coordinate).any():
                     break 
-        elif latlonstr in ["SE IOR?","SE IOR"]:
+        elif latlonstr in ["SE IOR"]:
             location = 4
             indian_ocean = self.indian_ocean_shapefile[self.indian_ocean_shapefile.name.isin(['Indian Ocean'])] 
             while True:
@@ -370,8 +381,9 @@ class build_reentry_list:
                 coordinate = Point(lon,lat)
                 if indian_ocean.geometry.contains(coordinate).any():
                     break
-        elif len(latlonstr.replace("?","").split()) == 4: # Coordinates in degrees-minutes
-            geolocation = latlonstr.replace("?","").split()
+
+        elif len(latlonstr.split()) == 4: # Coordinates in degrees-minutes
+            geolocation = latlonstr.split()
             if geolocation[3][-1] in ["E","W","S","N"]: # Check its actually coordinates and not some long name.
                 location = 1
 
@@ -392,39 +404,53 @@ class build_reentry_list:
                 elif "S" in lat_data[-1]:
                     lat = (np.float64(lat_data[0]) + np.float64(lat_data[1].replace("S",""))/60)*-1
             
-        elif latlonstr.replace("?","").split()[0][-1] in ["E","W","S","N"]: # Coordinates in degrees
+        elif latlonstr.split()[0][-1] in ["E","W","S","N"]: # Coordinates in degrees
             location = 1
-            geolocation = latlonstr.replace("?","").split()
+            geolocation = latlonstr.split()
+            if len(geolocation) == 1:
+                if geolocation[0] == '155W50S':
+                    lon_data = "155W"
+                    lat_data = "50S"
+            else:
+                if geolocation[0][-1] in ["E","W"]: # If the longitude comes first.
+                    lon_data = geolocation[0]
+                    lat_data = geolocation[1]
+                elif geolocation[1][-1] in ["E","W"]: # If the longitude comes last.
+                    lon_data = geolocation[1]
+                    lat_data = geolocation[0]  
+                else:
+                    raise ValueError(f"Can't find lon/lat coords for {jsr_id} - {latlonstr}.")
 
-            if geolocation[0][-1] in ["E","W"]: # If the longitude comes first.
-                lon_data = geolocation[0]
-                lat_data = geolocation[1]
-            elif geolocation[1][-1] in ["E","W"]: # If the longitude comes last.
-                lon_data = geolocation[1]
-                lat_data = geolocation[0]  
-                
             if lon_data[-1] == "W":
                 lon = np.float64(lon_data.replace("W",""))*-1
             elif lon_data[-1] == "E":
                 lon = np.float64(lon_data.replace("E",""))
-                
+            else:
+                print("Missing Lon Direction - Assuming W")
+                lat = np.float64(lon_data.replace("W",""))*-1
+
             if lat_data[-1] == "N":
                 lat = np.float64(lat_data.replace("N",""))
             elif lat_data[-1] == "S":
                 lat = np.float64(lat_data.replace("S",""))*-1  
             else:
+                print("Missing Lat Direction - Assuming N")
                 lat = np.float64(lat_data) 
-                # Going to assume that a missing value means N.
+
         else:
             lat = 0
             lon = 0
-            print(f"Need to sort out geolocation for {latlonstr}")
+            #print(f"Need to sort out geolocation for {latlonstr}")
         
         try:
             lat = np.float64(lat) 
             lon = np.float64(lon)
         except:
-            sys.exit(f"Problem converting lat/lon for >{latlonstr}< - {jsr_id}.")
+            raise ValueError(f"Problem converting lat/lon for >{latlonstr}< - {jsr_id}.")
+
+        if location == -1:
+            pass
+            #print(f"Missing location tag for {latlonstr}")
             
         return lat, lon, location
     
@@ -437,6 +463,7 @@ class build_reentry_list:
             lon(np.float64) : The longitude of the object..
         """  
         
+        # TODO: Add more Falcon Heavy
         falcon_heavy_list = ["2022-144","2023-008","2023-108"]
         # Launches "2023-157","2023-210","2024-119" are also falcon heavy, but not in Raul's SpaceX map.
         
@@ -493,14 +520,15 @@ class build_reentry_list:
                     if self.dsl["COSPAR_ID"].values[i] == jsr_id:
                         found_launch = True
                         # Kennedy Space Center (ETR)
-                        if (self.dsl["Longitude"].values[i] == -81) and (self.dsl["Latitude"].values[i] == 28.5):
+                        if (np.round(self.dsl["Longitude"].values[i],0) == -81) and (np.round(self.dsl["Latitude"].values[i],0) in [28,29]):
                             lat = 34
                             lon = -75  
                         # Vandenberg
-                        elif (self.dsl["Longitude"].values[i] == -120.6) and (self.dsl["Latitude"].values[i] == 34.7):
+                        elif (np.round(self.dsl["Longitude"].values[i],0) == -121) and (np.round(self.dsl["Latitude"].values[i],0) == 35):
                             lat = 30
                             lon = -120 
                         else:
+                            print(self.dsl["Longitude"].values[i],self.dsl["Latitude"].values[i])
                             sys.exit("Falcon launch site not found.")
             elif matching.shape[0] > 1:
                 print(matching)
@@ -549,14 +577,15 @@ class build_reentry_list:
                 if self.dsl["COSPAR_ID"].values[i] == jsr_id:
                     found_launch = True
                     # Kennedy Space Center (ETR)
-                    if (self.dsl["Longitude"].values[i] == -81) and (self.dsl["Latitude"].values[i] == 28.5):
+                    if (np.round(self.dsl["Longitude"].values[i],0) == -81) and (np.round(self.dsl["Latitude"].values[i],0) in [28,29]):
                         lat = 34
-                        lon = -75   
+                        lon = -75  
                     # Vandenberg
-                    elif (self.dsl["Longitude"].values[i] == -120.6) and (self.dsl["Latitude"].values[i] == 34.7):
+                    elif (np.round(self.dsl["Longitude"].values[i],0) == -121) and (np.round(self.dsl["Latitude"].values[i],0) == 35):
                         lat = 30
-                        lon = -120 
+                        lon = -120
                     else:
+                        print(self.dsl["Longitude"].values[i],self.dsl["Latitude"].values[i])
                         sys.exit("Falcon launch site not found.")
             if found_launch == False:
                 sys.exit(f"Problem geolocating Falcon fairing recovery - {jsr_id}.")
@@ -575,14 +604,11 @@ class build_reentry_list:
         abl_mass = 0
         other_mass = 0
 
-        for i in range(len(self.dsl["COSPAR_ID"])):
-            if self.dsl["COSPAR_ID"].values[i] == jsr_id:
-                for count, rocket_name in enumerate(self.dsr["Rocket_Name"].values):
-                    if rocket_name == self.dsl["Rocket_Name"].values[i]:
-                        rocket_ind = count
+        rocket_ind = np.where(self.dsr["Rocket_Name"].values == self.dsl["Rocket_Name"].where(
+                              self.dsl["COSPAR_ID"] == jsr_id, drop=True).values[0])[0][0]
 
         if reentry_category == "S0":
-            abl_mass = self.dsr["Booster_StageMass"].values[rocket_ind] / int(self.dsr["Booster_No"].values[rocket_ind])
+            abl_mass = self.dsr["Stage0_StageMass"].values[rocket_ind] / int(self.dsr["Booster_No"].values[rocket_ind])
         elif reentry_category in ["S1","S2","S3","S4"]:
             abl_mass = self.dsr[f"Stage{reentry_category[1]}_StageMass"].values[rocket_ind]
         elif "fairing" in jsr_name.lower():
@@ -734,17 +760,12 @@ class build_reentry_list:
         # NOTE: Occasionally, the inclinations are slightly different for each object.
         # The difference is usually <1 degree, but can be higher. As we don't know which inclination is 'correct',
         # we use the larger one to bound the geolocation.   
-        count = 0
+
         for reentry in (self.unique_reentry_list):
             if reentry["id"][:8] == jsr_id[:8] and reentry["inc"] != 0:
-                if count == 0:
-                    jsr_inc = reentry["inc"] 
-                elif count > 0:
-                    if reentry["inc"] > jsr_inc:
-                        jsr_inc == reentry["inc"]
-                count += 1
-            if count > 1:
-                break
+                if reentry["inc"] > jsr_inc:
+                    jsr_inc = reentry["inc"]
+                    break            
             
         # Sometimes, there is no entry in the reentry list because it didn't meet the criteria before.
         # In this case we need to reload the satcat to look for any matching entries.
@@ -752,235 +773,131 @@ class build_reentry_list:
 
             if "F" in jsr_id:
                 jsr_data = self.jsr_data_dict["ftocat"]
-                jsr_data = jsr_data[jsr_data["Piece"].str[:4] == jsr_id[:4]].reset_index(drop=True)
             else:
-                jsr_data = self.jsr_data_dict["satcat"]
-                jsr_data = jsr_data[jsr_data["Piece"].str[:8] == jsr_id[:8]].reset_index(drop=True)
-                
-            jsr_data = jsr_data[jsr_data["Inc"].astype(np.float64) != 0].reset_index(drop=True)
-            inc_values = pd.to_numeric(jsr_data["Inc"], errors="coerce")  # convert to float, turn invalids to NaN
+                keys = ["satcat", "rcat", "auxcat", "ecat"]
+                jsr_data = pd.concat([self.jsr_data_dict[k] for k in keys], ignore_index=True)
 
-            satcat_list = []
-            for reentry_count in range(len(jsr_data)):
-                
-                if jsr_data["Piece"][reentry_count][:8] == "2020-F09":
-                    new_id = "2020-F10"
-                elif jsr_data["Piece"][reentry_count][:8] == "2020-U01":
-                    new_id = "2020-F09"
-                elif jsr_data["Piece"][reentry_count][:8] == "2022-U02":
-                    new_id = "2022-F04"
-                elif jsr_data["Piece"][reentry_count][:8] == "2022-F04":
-                    new_id = "2022-F05"
-                elif jsr_data["Piece"][reentry_count][:8] == "2022-F05":
-                    new_id = "2022-F06"
-                elif jsr_data["Piece"][reentry_count][:8] == "2022-F06":
-                    new_id = "2022-F07"
-                elif jsr_data["Piece"][reentry_count][:8] == "2023-F10":
-                    new_id = "2023-F03"
-                elif jsr_data["Piece"][reentry_count][:8] == "2023-F03":
-                    new_id = "2023-F04"
-                elif jsr_data["Piece"][reentry_count][:8] == "2023-F04":
-                    new_id = "2023-F05"
-                elif jsr_data["Piece"][reentry_count][:8] == "2023-F05":
-                    new_id = "2023-F06"
-                elif jsr_data["Piece"][reentry_count][:8] == "2023-F06":
-                    new_id = "2023-F07"
-                elif jsr_data["Piece"][reentry_count][:8] == "2023-F07":
-                    new_id = "2023-F08"
-                elif jsr_data["Piece"][reentry_count][:8] == "2023-F08":
-                    new_id = "2023-F09"
-                elif jsr_data["Piece"][reentry_count][:8] == "2023-F09":
-                    new_id = "2023-F10"  
-                elif jsr_data["Piece"][reentry_count][:8] == "2025-F05":
-                    new_id = "2025-F06"  
-                elif jsr_data["Piece"][reentry_count][:8] == "2023-U01":
-                    new_id = "2025-F05"       
-                else:
-                    new_id = jsr_data["Piece"][reentry_count][:8]
+            jsr_data = jsr_data[jsr_data["Converted_Tag"].str[:8] == jsr_id[:8]]
+            jsr_data = jsr_data[jsr_data["Inc"] != "-"]
+            jsr_data = jsr_data[jsr_data["Inc"].astype(np.float64) != 0]
+            jsr_data = jsr_data[jsr_data["Status"].isin(["O","R","DSO","DSA","AF","AS","F","S","GRP","AO","AR"])].reset_index(drop=True)
+            
+            if len(jsr_data) > 0:
+                for i in range(len(jsr_data)):
+                    if np.float64(jsr_data["Inc"][i]) > jsr_inc:
+                        jsr_inc = np.float64(jsr_data["Inc"][i])  
+                        break
 
-                if new_id == jsr_id[:8]:
-                    satcat_list.append(jsr_data.iloc[[reentry_count]])
-                    
-            if len(satcat_list) > 0:
-                satcat = pd.concat(satcat_list, ignore_index=True)
-                count = 0
-                for i in range(len(satcat)):
-                    if satcat["Status"][i] in ["O","R","DSO","DSA","AF","AS","F","S","GRP","AO","AR"]:
-                        if count == 0:
-                            jsr_inc = np.float64(satcat["Inc"][i])
-                        elif count > 0:
-                            if np.float64(satcat["Inc"][i]) > jsr_inc:
-                                jsr_inc == np.float64(satcat["Inc"][i])
-                        count += 1
-                
-        if jsr_inc == 0:
-            sys.exit(f"inc still empty for {jsr_id}")
+        if jsr_inc == 0 and jsr_id[5] not in ["F","U"]:
+            # TODO: Sort failed launches.
+            print(f"inc still empty for {jsr_id}")
         return jsr_inc 
          
     def extract_jsr_info(self, jsr_data):
         """For each GCAT database, extract all the relevant information and output to the dictionary of all reentry objects.
         """        
         
-        # Only include specific statuses (see https://planet4589.org/space/gcat/web/intro/phases.html)
-        subset = jsr_data[jsr_data["Status"].isin(["R","R?","D","L","L?","S","F","AF","AS"])].reset_index(drop=True)
-        
-        # Ignore Z, this is a spurious entry according to JSR, and ignore D, this is debris objects. 
-        subset = subset[~subset["Type"].str[0].isin(["Z","D"])].reset_index(drop=True)
-        
-        # Only objects whose primary body is Earth.
-        subset = subset[subset["Primary"] == "Earth"].reset_index(drop=True) 
-        
-        # No suborbital launches (mainly military rockets).
-        subset = subset[subset["Piece"].str[5:6] != "S"].reset_index(drop=True) 
-        
-        # Skipping military tests (mostly North Korea).
-        subset = subset[~subset["Piece"].isin(["2021-U01","2022-U01","2022-U03","2023-U01",
-                                               "2023-U02","2023-U03","2023-U04","2024-U05"])].reset_index(drop=True)
-        
-        # Work out how many launches there should be in the final year
+        ################################################
+        # Filter the database for the relevant entries.
+        ################################################
+
+        subset = jsr_data[jsr_data["Status"].isin(["R","R?","D","L","L?","S","F","AF","AS"])]           # Only include specific statuses (see https://planet4589.org/space/gcat/web/intro/phases.html)
+        subset = subset[~subset["Launch_Tag"].str[5].isin(["A","C","E","S","Y","M","W"])]               # Exclude items from launches we ignore.
+        subset = subset[~subset["Type"].str[0].isin(["Z","D"])]                                         # Ignore Z, this is a spurious entry according to JSR, and ignore D, this is debris objects. 
+        subset = subset[subset["Primary"] == "Earth"]                                                   # Only objects whose primary body is Earth.
+        subset = subset[subset["Piece"].str[5:6] != "S"]                                                # No suborbital launches (mainly military rockets).
+        subset = subset[~subset["Piece"].isin(["2021-U01","2022-U01","2022-U03","2023-U01",             # Skipping military tests (mostly North Korea).
+                                               "2023-U02","2023-U03","2023-U04","2024-U05"])]           # TODO: Will have to add more military launches here.
+        subset = subset[~subset["Piece"].isin(["1961-U02","1962-U02","1964-U01","1964-U05",             # Skipping sounding rockets (Trailblazer).
+                                               "1965-U03","1966-U05","1966-U07","1967-U01"])]                                                                
+        subset["Apogee"] = subset["Apogee"].replace("-", 0).mask(subset["Apogee"].str.contains("Inf", na=False), 0).astype(int) # Sort apogees.
+        subset = subset[~subset["#JCAT"].isin(["L80508","L80509","L80510","S57807"])]                   # Skipping 2021-F07 and H2A fairing debris object.
+        subset = subset[subset["DDate"].str[0:4].ne("-")]                                               # Remove objects that haven't re-entered yet.
+        subset = subset[subset["DDate"].str[0:4].astype(int).between(self.start_year, self.final_year)] # This time range only.
+        subset = subset[(subset["Apogee"] >= 50) | (subset["Apogee"] == -54771)]                        # Apogee above 50 km, but include Hayabusa 2 Return Capsule.
+        subset = subset[(subset["Status"] != "AS") | (subset["Piece"].str[5:6].isin(["F","U"]))]        # Only include AS re-entries if they are part of a failed or uncategorized launch.
+
+        # Note: A negative apogee means that the object was in a hyperbolic orbit (velocity above escape velocity), so passes by Earth.
+        # However, Hayabusa2 (apogee=-54771) did reenter on 5th Dec 2020, so including this.  
+
+        # Work out how many launches there should be in the final year.
         # This is for in case we want to run an incomplete year and want to stop early.
-        self.dsl_id_list = [int(dsl_id[-3:]) for dsl_id in self.dsl["COSPAR_ID"].values if "F" not in dsl_id]
-
-        jsr_data_stripped_list = []
-        for reentry_count in range(len(subset)):
-            
-            if (subset["DDate"][reentry_count][0:4] != "-" 
-            and subset["#JCAT"][reentry_count] not in ["L80508","L80509","L80510","S57807"]): # Skipping 2021-F07 and H2A fairing debris object.
-                
-                # Note: A negative apogee means that the object was in a hyperbolic orbit (velocity above escape velocity), so passes by Earth.
-                # However, Hayabusa2 (apogee=-54771) did reenter on 5th Dec 2020, so including this.
-
-                if (subset["Apogee"][reentry_count] == "-") or ("Inf" in subset["Apogee"][reentry_count]):
-                    subset["Apogee"][reentry_count] = 0
-                
-                if (
-                    self.start_year <= int(subset["DDate"][reentry_count][0:4]) <= self.final_year     # This time range only
-                    and (int(subset["Apogee"][reentry_count]) >= 50 or int(subset["Apogee"][reentry_count]) == -54771) # Apogee above 50 km.     
-                ): 
-                    if subset["Status"][reentry_count] == "AS":
-                        if subset["Piece"][reentry_count][5:6] in ["F","U"]: 
-                            jsr_data_stripped_list.append(subset.iloc[[reentry_count]])
-                    else:
-                        jsr_data_stripped_list.append(subset.iloc[[reentry_count]])
-                        
-        # Rebuild the database.
-        if len(jsr_data_stripped_list) > 0:          
-            jsr_data_stripped_range = pd.concat(jsr_data_stripped_list, ignore_index=True)
-        else:
-            jsr_data_stripped_range = []
+        # TODO: Need to figure out a way this can work with the old notations before COSPAR.
+        #self.dsl_id_list = [int(dsl_id[-3:]) for dsl_id in self.dsl["COSPAR_ID"].values if "F" not in dsl_id and "U" not in dsl_id]
             
         # Now loop over the list and format into a dictionary.
-        for reentry_count in range(len(jsr_data_stripped_range)):
-            
-            jsr_id     = jsr_data_stripped_range["Piece"][reentry_count] 
-            jsr_name   = jsr_data_stripped_range["Name"][reentry_count]
-            jsr_inc    = np.float64(jsr_data_stripped_range["Inc"][reentry_count])
-            jsr_dest   = jsr_data_stripped_range["Dest"][reentry_count]
-            jsr_apogee = int(jsr_data_stripped_range["Apogee"][reentry_count])
+        for i, row in subset.iterrows():
+
+            # First sort out COSPAR-IDs for pre-1962 launches.
+            jsr_id = row["Piece"]
+            jsr_id = self.convert_launch_tag(jsr_id)
+            jsr_name   = str(row["Name"])
+            jsr_inc    = np.float64(row["Inc"])
+            jsr_dest   = row["Dest"]
+            jsr_apogee = int(row["Apogee"])
             
             if str(jsr_name) == "Hayabusa 2 Return Capsule":
                 jsr_apogee = jsr_apogee * -1
-         
-            # The failure numbers are labelled differently in DW and JSR. To make sure the main script runs OK, adjust the COSPAR ID here.
-            if jsr_id == "2020-F09":
-                jsr_id = "2020-F10"
-            elif jsr_id == "2020-U01":
-                jsr_id = "2020-F09"
-
-            elif jsr_id == "2022-U02":
-                jsr_id = "2022-F04"
-            elif jsr_id == "2022-F04":
-                jsr_id = "2022-F05"
-            elif jsr_id == "2022-F05":
-                jsr_id = "2022-F06"
-            elif jsr_id == "2022-F06":
-                jsr_id = "2022-F07"
-            
-            elif jsr_id == "2023-F10":
-                jsr_id == "2023-F03"
-            elif jsr_id == "2023-F03":
-                jsr_id = "2023-F04"
-            elif jsr_id == "2023-F04":
-                jsr_id = "2023-F05"
-            elif jsr_id == "2023-F05":
-                jsr_id = "2023-F06"
-            elif jsr_id == "2023-F06":
-                jsr_id = "2023-F07"
-            elif jsr_id == "2023-F07":
-                jsr_id = "2023-F08"
-            elif jsr_id == "2023-F08":
-                jsr_id = "2023-F09"
-            elif jsr_id == "2023-F09":
-                jsr_id = "2023-F10"   
-
-            elif jsr_id == "2025-F05":
-                jsr_id = "2025-F06"
-            elif jsr_id == "2025-U01":
-                jsr_id = "2025-F05"
-
-            if jsr_id[5] == "U":
-                continue
-            
+    
             # This is where we skip objects where the date is wrong in GCAT. 
+            # TODO: Email Jonathan about this.
             # These are added manually from Aerospace Corp or DISCOSweb.
-            if jsr_data_stripped_range["#JCAT"][reentry_count] in ["S46138","S44635","S40899"]:
+            if row["#JCAT"] in ["S46138","S44635","S40899"]:
                 continue
             
-            if jsr_id[:4] == "2025" and jsr_id[5] != "F" and int(jsr_id[5:8]) > max(self.dsl_id_list):
-                continue
+            # TODO: Sort this when we want to do up to date launches.
+            #if jsr_id[:4] == "2025" and jsr_id[5] != "F" and int(jsr_id[5:8]) > max(self.dsl_id_list):
+            #    continue
             
+            burnup = "Complete"
             # Set the burnup as partial for all objects landing or splashing down at the surface.
-            if jsr_data_stripped_range["Status"][reentry_count] == "L":
+            if row["Status"] == "L":
                 burnup = "Partial"
             # NOTE: Need to manually check for Electron booster recoveries.
-            elif jsr_name == "Electron Stage 1":
-                if jsr_id in ["2020-007","2020-085","2021-F02","2021-106","2022-047","2022-147",
-                              "2023-041","2023-100","2023-126","2024-022"]:
+            elif (jsr_name == "Electron Stage 1") and jsr_id in ["2019-084","2020-007","2020-085","2021-F02","2021-106",
+                                                                 "2022-047","2022-147","2023-041","2023-100","2023-126","2024-022"]:
                     burnup = "Partial"
-                else:
-                    burnup = "Complete"   
-            else:
-                burnup = "Complete"
-                
+                 
             # Duplicates:
             #   2019-036H. This is TEPCE 1 and TEPCE 2, listed with same "Piece" in JSR. TEPCE 2 listed as 2019-036IA in DISCOSweb, so renaming to this.
             #   2020-027A. This is Xinyidai Zairen Feichuan (XZF) and XZF Service Module (not in DISCOSweb). Setting auxcat id to XZF 2020-027D.
             #   Remaining are where multiple objects in auxcat from same launch are just given the COSPAR ID of the launch.
-            if jsr_data_stripped_range["Name"][reentry_count] == "TEPCE 2":
+            # TODO: Email Jonathan about these.
+            if row["Name"] == "TEPCE 2":
                 jsr_id = "2019-036IA" 
-            elif jsr_data_stripped_range["Name"][reentry_count] == "XZF Service Module":
+            elif row["Name"] == "XZF Service Module":
                 jsr_id = "2020-027D"
                 
             # Sort out the reentry time/date.
-            datestr, time_utc = convert_time(jsr_data_stripped_range["DDate"][reentry_count].split()) 
+            datestr, time_utc = convert_time(row["DDate"].split()) 
             
             # Handle categories.
-            if jsr_data_stripped_range["Type"][reentry_count][0] == "R":
+            if row["Type"][0] == "R":
                 # Sort out the rocket stages. This is mainly Soyuz (Russian's just do the numbering differently), and errors in the GCAT.
-                reentry_category = f"S{(jsr_data_stripped_range['Type'][reentry_count][1:2])}"
+                reentry_category = f"S{(row['Type'][1:2])}"
 
                 # Setting Falcon Heavy Boosters as S0.
                 if reentry_category == "S1" and "Falcon 9 Stage 1" in jsr_name:
-                    if jsr_data_stripped_range["Parent"][reentry_count] != "-":
+                    if row["Parent"] != "-":
                         reentry_category = "S0"
 
-                if jsr_data_stripped_range["#JCAT"][reentry_count] in ["R81714","R81715"]: # Falcon Heavy
+                if row["#JCAT"] in ["R81714","R81715"]: # Falcon Heavy
                     reentry_category = "S0"
-                elif jsr_data_stripped_range["Name"][reentry_count] in ["RSRMV-1L","RSRMV-1R"]: # SLS
+                elif row["Name"] in ["RSRMV-1L","RSRMV-1R"]: # SLS
                     reentry_category = "S0"   
 
                 # Soyuz 
-                elif "Blok-BVGD" in jsr_data_stripped_range["Bus"][reentry_count]:
+                elif "Blok-BVGD" in row["Bus"]:
                     reentry_category = "S0"
-                elif "Blok-A" in jsr_data_stripped_range["Bus"][reentry_count]:
+                elif "Blok-A" in row["Bus"]:
                     reentry_category = "S1"
-                elif "Blok-I" in jsr_data_stripped_range["Name"][reentry_count]:
+                elif "Blok-I" in row["Name"]:
                     reentry_category = "S2"
-                elif "Fregat" in jsr_data_stripped_range["Name"][reentry_count]:
+                elif "Fregat" in row["Name"]:
                     reentry_category = "S3"
 
-            elif jsr_data_stripped_range["Type"][reentry_count][0] in ["C","P"]:
-                reentry_category = jsr_data_stripped_range["Type"][reentry_count][0]
+            elif row["Type"][0] in ["C","P"]:
+                reentry_category = row["Type"][0]
             else:
                 reentry_category = -1
                 
@@ -990,39 +907,42 @@ class build_reentry_list:
 
             # Sort out the reentry lat/lon.
             if ("Falcon 9 Stage 1" in jsr_name):
-                if jsr_data_stripped_range["Status"][reentry_count] == "L":
+                if row["Status"] == "L":
                     lat, lon = self.falcon_stage_lat_lon(datestr,jsr_id,jsr_dest) 
                     location = 5
-                elif (jsr_data_stripped_range["Status"][reentry_count] in ["S","D"] or # Sometimes the 1st stage is expended to suit the mission.
-                      jsr_data_stripped_range["Piece"][reentry_count] == "2025-021"):  # This one is listed as R for some reason.
-                    if jsr_data_stripped_range["Status"][reentry_count] == "D":
-                        print(f"Warning: Assuming missing landing of {jsr_data_stripped_range['#JCAT'][reentry_count]}")
-                    lat, lon, location = self.convert_lat_lon(jsr_dest, jsr_inc, reentry_category, jsr_apogee, jsr_id)
+                elif (row["Status"] in ["S","D"] or # Sometimes the 1st stage is expended to suit the mission.
+                      row["Piece"] == "2025-021"):  # This one is listed as R for some reason.
+                    if row["Status"] == "D":
+                        print(f"Warning: Assuming missing landing of {row['#JCAT']}")
+                    lat, lon, location = self.convert_lat_lon(jsr_dest.replace("?",""), jsr_inc, reentry_category, jsr_apogee, jsr_id)
                 else:
-                    sys.exit(f"Unexpected Falcon Stage 1 Status {jsr_data_stripped_range['Status'][reentry_count]} {jsr_data_stripped_range['#JCAT'][reentry_count]}")
+                    sys.exit(f"Unexpected Falcon Stage 1 Status {row['Status']} {row['#JCAT']}")
             elif ("Falcon 9 Fairing" in jsr_name) or ("Falcon Heavy Fairing" in jsr_name):    
                 lat, lon = self.falcon_fairing_lat_lon(datestr,jsr_id)
                 burnup = "Partial"
                 location = 5
             else:   
-                lat, lon, location = self.convert_lat_lon(jsr_dest, jsr_inc, reentry_category, jsr_apogee, jsr_id)
+                lat, lon, location = self.convert_lat_lon(jsr_dest.replace("?",""), jsr_inc, reentry_category, jsr_apogee, jsr_id)
             
-            # Sort the mass.      
-            if jsr_id[5:6] in ["F","U"]:
-                pass
-                abl_mass, other_mass = self.failed_launch_mass(jsr_id, jsr_name, reentry_category,jsr_data_stripped_range["DryMass"][reentry_count])
-            else:
-                abl_mass = np.float64(jsr_data_stripped_range["DryMass"][reentry_count])
-                other_mass = 0
+            # Sort the mass.    
+            # # TODO: Sort failed launches back to 1957. 
+            #if jsr_id[5:6] in ["F","U"]:
+            #    abl_mass, other_mass = self.failed_launch_mass(jsr_id, jsr_name, reentry_category,row["DryMass"])
+            #else:
+            #    abl_mass = np.float64(row["DryMass"])
+            #    other_mass = 0
+
+            abl_mass = np.float64(row["DryMass"])
+            other_mass = 0
             
             # Check for items with a missing geolocation (should have been dealt with already so this is just a sanity check).    
             if use_gpd == True and lat == 0 and lon == 0:
-                print(f"No location for {jsr_id}, dest = {jsr_data_stripped_range['Dest'][reentry_count]}")
+                print(f"No location for {jsr_id}, dest = {row['Dest']}")
             
             # Set up the dictionary.                      
             temp_reentry_dict = {
                 "id"               : str(jsr_id),
-                "jcat"             : str(jsr_data_stripped_range["#JCAT"][reentry_count]),
+                "jcat"             : str(row["#JCAT"]),
                 "name"             : str(jsr_name),
                 "category"         : reentry_category,
                 "burnup"           : burnup,
@@ -1471,7 +1391,7 @@ class build_reentry_list:
                                 # Now add the boosters.        
                                 print(f"Adding {int(self.dsr['Booster_No'].values[count])-booster_count} boosters for {self.dsl['COSPAR_ID'].values[i]}")
                                 for j in range(int(self.dsr["Booster_No"].values[count])-booster_count):
-                                    abl_mass = float(self.dsr["Booster_StageMass"].values[count]) / int(self.dsr["Booster_No"].values[count])
+                                    abl_mass = float(self.dsr["Stage0_StageMass"].values[count]) / int(self.dsr["Booster_No"].values[count])
                                     if np.isnan(abl_mass):
                                         abl_mass = 0
                                     missing_boosters_count += 1
@@ -1507,7 +1427,7 @@ class build_reentry_list:
                         add_first_stage = True
                     elif np.isnan(meco):
                         # 2S,3S,4S
-                        if self.dsr["Booster_PropMass"].values[count] == 0: 
+                        if self.dsr["Stage0_PropMass"].values[count] == 0: 
                             add_first_stage = True
                             if ((self.dsr["Stage3_PropMass"].values[count] == 0) and (self.dsr["Stage4_PropMass"].values[count] == 0)):
                                 meco = 90 #2S
@@ -1516,7 +1436,7 @@ class build_reentry_list:
                             elif ((self.dsr["Stage3_PropMass"].values[count] != 0) and (self.dsr["Stage4_PropMass"].values[count] != 0)):
                                 meco = 52 #4S
                         # B+4S
-                        if ((self.dsr["Booster_PropMass"].values[count] != 0) and (self.dsr["Stage4_PropMass"].values[count] != 0)):    
+                        if ((self.dsr["Stage0_PropMass"].values[count] != 0) and (self.dsr["Stage4_PropMass"].values[count] != 0)):    
                             add_first_stage = True
                             meco = 64
                     
@@ -1642,12 +1562,12 @@ class build_reentry_list:
         """        
         
         # Import the required files.
-        self.ds_dw = xr.open_dataset(f"./databases/reentry/DISCOSweb/discosweb_reentries_{self.start_year}-{self.final_year}.nc", decode_times=False)
-        class_mask = self.ds_dw["DISCOSweb_Reentry_Class"].isin(["Payload","Rocket Body","Rocket Mission Related Object","Payload Mission Related Object"])
-        self.ds_dw = self.ds_dw.where(class_mask, drop=True) # Filter for only the relevant classes.
+        #self.ds_dw = xr.open_dataset(f"./databases/reentry/DISCOSweb/discosweb_reentries_{self.start_year}-{self.final_year}.nc", decode_times=False)
+        #class_mask = self.ds_dw["DISCOSweb_Reentry_Class"].isin(["Payload","Rocket Body","Rocket Mission Related Object","Payload Mission Related Object"])
+        #self.ds_dw = self.ds_dw.where(class_mask, drop=True) # Filter for only the relevant classes.
 
-        self.dsr = xr.open_dataset(f"./databases/rocket_attributes_{self.start_year}-{self.final_year}.nc", decode_times=False)
-        self.dsl = xr.open_dataset(f"./databases/launch_activity_data_{self.start_year}-{self.final_year}.nc", decode_times=False) 
+        self.dsr = xr.open_dataset(f"./databases/rocket_attributes_{self.start_year}-{self.final_year}_jsr.nc", decode_times=False)
+        self.dsl = xr.open_dataset(f"./databases/launch_activity_data_{self.start_year}-{self.final_year}_jsr.nc", decode_times=False) 
         self.import_raul_spacex_map() #(https://t.co/RAsQ9NDmEr)
              
         self.unique_reentry_list = []
@@ -1661,14 +1581,19 @@ class build_reentry_list:
         self.jsr_data_dict = {}
         for file in files:
             url = "https://planet4589.org/space/gcat/tsv/cat/" + file + ".tsv"
-            response = requests.get(url)
+            response = self.session.get(url)
             if response.status_code == 200:
                 # Convert the content to a file-like object for pandas
                 tsv_data = StringIO(response.text)
                 # Load the data into a pandas DataFrame
-                self.jsr_data_dict[file] = pd.read_csv(tsv_data, delimiter="\t", dtype=object)
+                df = pd.read_csv(tsv_data, delimiter="\t", dtype=object)
+                df = df[df["Piece"].notna()]
+                df = df[df["Piece"] != "UNK"]
+                df = df[~df["Type"].str[0].isin(["Z","D"])] 
+                df["Converted_Tag"] = df["Piece"].apply(self.convert_launch_tag)
+                self.jsr_data_dict[file] = df
             else:
-                sys.exit(f"Failed to fetch {file} from JSR", response.status_code)
+                raise ImportError(f"Failed to fetch {file} from JSR", response.status_code)
             
         # Add each file sequentially. There is nothing relevant for this inventory in hcocat, tmpcat and csocat.
         for file in ["satcat","auxcat","lcat","rcat","lprcat","deepcat","ecat"]:
@@ -1823,7 +1748,7 @@ class build_reentry_list:
                         for count, rocket_name in enumerate(self.dsr["Rocket_Name"].values):
                             if rocket_name == self.dsl["Rocket_Name"].values[i]:
                                 if reentry["category"] in ["B1","B2","B3","B4","B5","B6"]:  
-                                    reentry["abl_mass"] = self.dsr["Booster_StageMass"].values[count] / int(self.dsr["Booster_No"].values[count])
+                                    reentry["abl_mass"] = self.dsr["Stage0_StageMass"].values[count] / int(self.dsr["Booster_No"].values[count])
                                 elif reentry["category"] in ["S1","S2","S3","S4"]:
                                     reentry["abl_mass"] = self.dsr[f"Stage{reentry['category'][1]}_StageMass"].values[count]
                     
@@ -1978,3 +1903,12 @@ if __name__ == "__main__":
     # Missing latest May 27th 2025 starship failure.
     # Sort out POEM 4
     # Add Tranche, Ronghe, Digui, Hulianwang, Qianfan eventually when they reenter.
+
+    def test():
+        return build_reentry_list(start_year, final_year)
+    profiler = Profile()
+    profiler.runcall(test)
+    stats = Stats(profiler)
+    stats.strip_dirs()
+    stats.sort_stats('cumulative')
+    stats.print_stats()

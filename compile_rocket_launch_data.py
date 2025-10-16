@@ -7,6 +7,9 @@ import pandas as pd
 import requests
 from io import StringIO
 import time
+from tqdm import tqdm
+from cProfile import Profile
+from pstats import Stats
 
 from python_modules.discosweb_api_func import server_request, response_error_handler
 from update_rocket_launch_data import update_mass_info
@@ -26,6 +29,7 @@ class import_launches:
         
         self.start_year = start_year
         self.final_year = final_year
+        self.session = requests.Session()
 
     def server_loop(self,urlpath,params,message):
 
@@ -87,7 +91,7 @@ class import_launches:
             else:
                 response_error_handler(response,"")
                     
-        # Skip Chang'e 5 launch (this was from the moon and eventually 'crashed' back onto the moon to avoid space debris, so is irrelevant for this inventory.
+        # Skip Chang'e 5 launch (this was from the moon and eventually 'crashed' back onto the moon to avoid space debris, so is irrelevant for this inventory).
         self.full_launch_list = [launch for launch in self.full_launch_list if launch["attributes"]["cosparLaunchNo"] != "2020-F11"]
         
         #This section simply goes through each launch and counts the numbers of successes and failures.
@@ -120,7 +124,7 @@ class import_launches:
             launch_info["COSPAR_ID"] = launch["attributes"]["cosparLaunchNo"]
             message = f"On launch {count} of {len(self.full_launch_list)} in {launch_info['COSPAR_ID'][:4]}."
             
-            if launch_info["COSPAR_ID"] == "2023-F07":
+            if launch_info["COSPAR_ID"] == "2023-F07": # This is wrong in DISCOSweb, it puts F07 and F08 at the same date and time.
                 launch_info["Date"] = "20230530"
                 launch_info["Time(UTC)"] = 21.36
             else:
@@ -153,6 +157,7 @@ class import_launches:
                 "China Sea Launch": (35.4943, 123.7965),
                 "Naro Space Center": (34.5, 127.5),
             }
+
             doc = self.server_loop(f'/launches/{launch["id"]}/site',{},message)
             if doc:
                 site_name = doc['data']["attributes"]["name"]
@@ -174,6 +179,7 @@ class import_launches:
                 launch_info["Rocket_Name"] = rocket_name
 
                 # Sometimes the rocket has been upgraded, so we need to specify which version was used.
+                # TODO: Need to check this doesn't mess things up pre-2020.
                 if rocket_name.startswith("Atlas"):
                     if launch_date < datetime(2020,11,13):
                         launch_info["Rocket_Name"] = rocket_name
@@ -190,14 +196,14 @@ class import_launches:
             # Save to the dictionary list.
             self.launches.append(launch_info)
 
-    # Function to web scrape the data and convert to a pandas DataFrame.
-    def get_jsr_info(self,url):
-        response = requests.get(url)
+    def scrape_jsr(self,url):
+        # Function to web scrape data and convert to a pandas DataFrame.
+        response = self.session.get(url)
         if response.status_code == 200:
             # Convert the content to a file-like object for pandas
             tsv_data = StringIO(response.text)
             # Load the data into a pandas DataFrame
-            df = pd.read_csv(tsv_data, delimiter="\t", dtype=object)
+            df = pd.read_csv(tsv_data, delimiter="\t", dtype=object, low_memory=False)
         else:
             raise ImportError(f"Failed to fetch from JSR URL: {url}", response.status_code)
         return df
@@ -208,8 +214,8 @@ class import_launches:
         # Web scrape the launch data from Jonathan McDowell's JSR website.
         ####################################################################
 
-        df       = self.get_jsr_info("https://planet4589.org/space/gcat/tsv/launch/launch.tsv")
-        df_sites = self.get_jsr_info("https://planet4589.org/space/gcat/tsv/tables/sites.tsv")
+        df       = self.scrape_jsr("https://planet4589.org/space/gcat/tsv/launch/launch.tsv")
+        df_sites = self.scrape_jsr("https://planet4589.org/space/gcat/tsv/tables/sites.tsv")
 
         jsr_data_dict = {}
         # satcat (main database), auxcat (should be in main but isn't), lcat (suborbital stages/objects). 
@@ -217,7 +223,7 @@ class import_launches:
         files = ["satcat","auxcat","lcat","rcat","ecat","ftocat"]
         for file in files:
             url = "https://planet4589.org/space/gcat/tsv/cat/" + file + ".tsv"
-            catalog = self.get_jsr_info(url)
+            catalog = self.scrape_jsr(url)
             catalog = catalog[catalog["Type"].str[0].isin(["P","C","S","X","Z"])] # P = Payload, C = Component, S = Suborbital payload, X = Catalog entry that has been deleted, Z = Spurious catalog entry.
             catalog = catalog[catalog["Name"].str.lower().str.contains("starlink|oneweb|yinhe|lynk|e-space|protosat-1|kuiper|tranche|ronghe|digui|hulianwang|qianfan", na=False)]
             jsr_data_dict[file] = catalog
@@ -225,16 +231,52 @@ class import_launches:
         # Filter the launches to remove unwanted entries.
         df.drop(0, inplace=True)
         df = df[df["#Launch_Tag"].str[:4].astype(int).between(self.start_year, self.final_year)]
-        df = df[~df["#Launch_Tag"].str.contains("A")]                   # No endoatmospheric.
-        df = df[~df["#Launch_Tag"].str.contains("C")]                   # No 'not a launch'.
-        df = df[~df["#Launch_Tag"].str.contains("E")]                   # No pad explosions.
-        df = df[~df["#Launch_Tag"].str.contains("S")]                   # No suborbital.
-        df = df[~df["#Launch_Tag"].str.contains("Y")]                   # No suborbital (obselete old notation)
-        df = df[~df["#Launch_Tag"].str.contains("M")]                   # No mesosphere.
-        df = df[~df["#Launch_Tag"].str.contains("W")]                   # No mesosphere (obselete old notation)
-        df = df[~df["LaunchCode"].str.startswith("X")]                  # No launches from another planetary body or satellite.   
-        df = df[~df["LaunchCode"].str.startswith("M")]                  # No military launches. 
-        df = df[~df["LV_Type"].str.contains("Aerobee|R-UNK|Scout|Trailblazer", na=False)] # Skip sounding rockets.
+
+        # Example dictionary mapping codes to orders
+        code_to_order = {
+            "ALP": 1, "BET": 2, "GAM": 3, "DEL": 4, "EPS": 5, "ZET": 6, "ETA": 7,
+            "THE": 8, "IOT": 9, "KAP": 10, "LAM": 11, "MU": 12, "NU": 13, "XI": 14,
+            "OMI": 15, "PI": 16, "RHO": 17, "SIG": 18, "TAU": 19, "UPS": 20,
+            "PHI": 21, "CHI": 22, "PSI": 23, "OME": 24}
+        
+        def convert_launch_tag(tag):
+            tag = tag.strip()
+            if '-' in tag:
+                return tag
+            
+            # Otherwise, assume format "YYYY (greek)"
+            parts = tag.split()
+            year = parts[0]
+            mult = 0
+            greek_letter = ""
+            if len(parts) == 2:
+                mult = 0
+                greek_letter = parts[1]
+            elif len(parts) == 3:
+                greek_letter = parts[2]
+                if parts[1] == "A":
+                    mult = 1
+                elif parts[1] == "B":
+                    mult = 2
+                else:
+                    raise ValueError("Unexpected Launch Tag")
+
+            number = code_to_order.get(greek_letter, 0) +mult*24
+            return f"{year}-{str(number).zfill(3)}"          
+
+        df['#Launch_Tag'] = df['#Launch_Tag'].apply(convert_launch_tag)
+
+        df = df[~df["#Launch_Tag"].str.contains("A")]   # No endoatmospheric.
+        df = df[~df["#Launch_Tag"].str.contains("C")]   # No 'not a launch'.
+        df = df[~df["#Launch_Tag"].str.contains("E")]   # No pad explosions.
+        df = df[~df["#Launch_Tag"].str.contains("S")]   # No suborbital.
+        df = df[~df["#Launch_Tag"].str.contains("Y")]   # No suborbital (obselete old notation)
+        df = df[~df["#Launch_Tag"].str.contains("M")]   # No mesosphere.
+        df = df[~df["#Launch_Tag"].str.contains("W")]   # No mesosphere (obselete old notation)
+        df = df[~df["LaunchCode"].str.startswith("X")]  # No launches from another planetary body or satellite.   
+        df = df[~df["LaunchCode"].str.startswith("M")]  # No military launches. 
+        df = df[~df["LaunchCode"].str.startswith("H")]  # No high-altitude sounding rockets.
+        df = df[~df["LV_Type"].str.contains("Aerobee|R-UNK|Trailblazer", na=False)] # Skip sounding rockets.
         df = df.reset_index()
         
         # Filter for apogees above 50 km. Doesn't look like this is necessary.
@@ -247,41 +289,42 @@ class import_launches:
         # Extract the required launch activity data and convert to a dict.
         ####################################################################
 
-        self.launches = []
-        
-        for n, (_, row) in enumerate(df.iterrows()):
-            if n % 50 == 0:
-                print(f"On row {n} of {len(df)}")
+        mcs_tags = set()
+        for file in files:
+            catalog = jsr_data_dict[file]
+            mcs_tags.update(catalog["Launch_Tag"].dropna().str.strip())
 
-            date = row["Launch_Date"].split()
-            yearstr = str(date[0])
-            monstr  = str(datetime.strptime(date[1].replace("?", ""), '%b').month).zfill(2) if len(date) > 1 else "01"
-            daystr  = date[2].replace("?", "").zfill(2) if len(date) > 2 else "01"
-            datestr = yearstr+monstr+daystr
-            time_utc = np.float64(int(date[3].replace("?","")[0:2]) + int(date[3].replace("?","")[2:4]) / 60) if len(date) >= 4 else -1
+        def process_launches(df, df_sites):
+            launches = []
+            for n, row in tqdm(df.iterrows(), total=len(df), desc="Processing rows"):
+                
+                date = row["Launch_Date"].split()
+                yearstr = str(date[0])
+                monstr  = str(datetime.strptime(date[1].replace("?", ""), '%b').month).zfill(2) if len(date) > 1 else "01"
+                daystr  = date[2].replace("?", "").zfill(2) if len(date) > 2 else "01"
+                datestr = yearstr+monstr+daystr
+                time_utc = np.float64(int(date[3].replace("?","")[0:2]) + int(date[3].replace("?","")[2:4]) / 60) if len(date) >= 4 else -1
 
-            df_site = df_sites[df_sites["#Site"] == row["Launch_Site"].replace("?", "")]
-            
-            # Look in the payload catalogs to find which launches contain megaconstellations.
-            mcs_flag = False
-            for file in files:
-                catalog = jsr_data_dict[file]
-                matching = catalog[catalog["Launch_Tag"].str.contains(row["#Launch_Tag"].strip(), na=False)]
-                if len(matching) > 0:
-                    mcs_flag = True
-                    break
+                df_site = df_sites[df_sites["#Site"] == row["Launch_Site"].replace("?", "")]
+                
+                # Look in the payload catalogs to find which launches contain megaconstellations.
+                mcs_flag = row["#Launch_Tag"].strip() in mcs_tags
 
-            self.launches.append({
-                "COSPAR_ID":              row["#Launch_Tag"].strip(),
-                "Time(UTC)":              round(time_utc, 2),
-                "Date":                   datestr,
-                "Site":                   df_site["Name"].values[0],
-                "Latitude":               float(df_site["Latitude"].values[0].strip()),
-                "Longitude":              float(df_site["Longitude"].values[0].strip()),
-                "Rocket_Name":            row["LV_Type"] + " V=" + row["Variant"],
-                "DISCOSweb_Rocket_ID":    0,
-                "Megaconstellation_Flag": mcs_flag
-            })
+                launches.append({
+                    "COSPAR_ID":              row["#Launch_Tag"].strip(),
+                    "Time(UTC)":              round(time_utc, 2),
+                    "Date":                   datestr,
+                    "Site":                   df_site["Name"].values[0],
+                    "Latitude":               float(df_site["Latitude"].values[0].strip()),
+                    "Longitude":              float(df_site["Longitude"].values[0].strip()),
+                    "Rocket_Name":            row["LV_Type"] + " V=" + row["Variant"],
+                    "DISCOSweb_Rocket_ID":    0,
+                    "Megaconstellation_Flag": mcs_flag
+                })
+
+            return launches
+
+        self.launches = process_launches(df, df_sites) 
    
     def launch_info_to_netcdf(self,source):
         """This saves the launch information as a NetCDF file for later processing for GEOS-Chem.
@@ -554,9 +597,9 @@ class import_launches:
 
         df_vehicles, df_stages, df_engines = pd.DataFrame(), pd.DataFrame(), pd.DataFrame()
         if source == "jsr":
-            df_vehicles = self.get_jsr_info("https://planet4589.org/space/gcat/tsv/tables/lvs.tsv") 
-            df_stages   = self.get_jsr_info("https://planet4589.org/space/gcat/tsv/tables/stages.tsv")
-            df_engines  = self.get_jsr_info("https://planet4589.org/space/gcat/tsv/tables/engines.tsv")
+            df_vehicles = self.scrape_jsr("https://planet4589.org/space/gcat/tsv/tables/lvs.tsv") 
+            df_stages   = self.scrape_jsr("https://planet4589.org/space/gcat/tsv/tables/stages.tsv")
+            df_engines  = self.scrape_jsr("https://planet4589.org/space/gcat/tsv/tables/engines.tsv")
         
         #Loop over all rockets, and pull the information for each.
         for i, name in enumerate(unique_vehicle_names):
