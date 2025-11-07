@@ -21,6 +21,7 @@ import geopandas as gpd
 import fiona
 import json
 import calendar
+import sys
 
 from python_modules.distribute_emis_func import make_grid_LL, read_gc_box_height, get_ross_profiles, interp_prop_mass
 from python_modules.alt_emis_func import calculate_bc_ei, calculate_nox_ei, calculate_co_ei, calculate_cl_ei
@@ -51,6 +52,10 @@ class RocketData:
             self.launch_datestr = launchdata.variables['Date'][:]
             self.launch_id      = launchdata.variables['COSPAR_ID'][:].astype(str)
             self.launch_rocket  = launchdata.variables['Rocket_Name'][:]
+            try:
+                self.launch_variant = launchdata.variables['Rocket_Variant'][:]
+            except:
+                self.launch_variant = np.array(['-']*len(self.launch_id))
             self.launch_smc     = launchdata.variables['Megaconstellation_Flag'][:]
             self.launch_site    = launchdata.variables['Site'][:]
             
@@ -105,8 +110,16 @@ class RocketData:
         
             # Extract variables:
             self.rocket_name         = vehicledata.variables['Rocket_Name'][:]
-            self.booster_prop_mass   = vehicledata.variables['Booster_PropMass'][:]
-            self.booster_prop_type   = vehicledata.variables['Booster_Fuel_Type'][:]
+            try:
+                self.rocket_variant = vehicledata.variables['Rocket_Variant'][:]
+            except:
+                self.rocket_variant = np.array(['-']*len(self.rocket_name))
+            try:
+                self.booster_prop_mass   = vehicledata.variables['Stage0_PropMass'][:]
+                self.booster_prop_type   = vehicledata.variables['Stage0_Fuel_Type'][:]
+            except:
+                self.booster_prop_mass   = vehicledata.variables['Booster_PropMass'][:]
+                self.booster_prop_type   = vehicledata.variables['Booster_Fuel_Type'][:]
             self.stage1_prop_mass    = vehicledata.variables['Stage1_PropMass'][:]
             self.stage1_prop_type    = vehicledata.variables['Stage1_Fuel_Type'][:]
             self.stage2_prop_mass    = vehicledata.variables['Stage2_PropMass'][:]
@@ -238,7 +251,21 @@ class OutputEmis:
             (ocean_landings["Date"] < f'{year+1}-01-01') &
             (ocean_landings["Date"] >= f'{year}-01-01')
         ].reset_index(drop=True)
-        
+
+        layer_data = np.loadtxt("./input_files/" + vert_filepath ,delimiter=",") 
+        # TODO: Will need to put this in the loop later if we want to use meteorological box heights.
+        bot_alt_base = layer_data[::-1,0]*1000  # shape (LEVELS,)
+        mid_alt_base = layer_data[::-1,1]*1000
+        top_alt_base = layer_data[::-1,2]*1000
+
+        # Reshape for broadcasting: (LEVELS,1,1)
+        bot_alt_3d = bot_alt_base[:, None, None]
+        mid_alt_3d = mid_alt_base[:, None, None]
+        top_alt_3d = top_alt_base[:, None, None]
+
+        # Area can also be precomputed
+        area_2d = np.ones((self.nlat, self.nlon))
+
         #################################
         # Loop over each day and month.
         #################################
@@ -251,26 +278,6 @@ class OutputEmis:
             
             #Loop over all days:
             for d in range(ndays):
-                
-                
-                self.daily_emis = {} # Set up dictionary
-                self.strday = str(d+1).zfill(2) # Process day data
-
-                layer_data = np.loadtxt("./input_files/" + vert_filepath ,delimiter=",")
-                self.top_alt = np.zeros((LEVELS,self.nlat,self.nlon))
-                self.bot_alt = np.zeros((LEVELS,self.nlat,self.nlon))
-                self.mid_alt = np.zeros((LEVELS,self.nlat,self.nlon))
-                self.area = np.zeros((self.nlat,self.nlon))
-                for lat in range(self.nlat):
-                    for lon in range(self.nlon):
-                        self.bot_alt[:,lat,lon] = layer_data[::-1,0]*1000
-                        self.mid_alt[:,lat,lon] = layer_data[::-1,1]*1000
-                        self.top_alt[:,lat,lon] = layer_data[::-1,2]*1000
-                        self.area[lat,lon]      = 1 # This is set to 1 as its only needed to output the final netcdf files, not the stats.
-
-                # Initialize:
-                self.pmin,self.pmax=np.nan,np.nan
-                self.qmin,self.qmax=np.nan,np.nan
 
                 # Find launches and reentries.
                 launch_mask = (
@@ -294,6 +301,21 @@ class OutputEmis:
                 elif self.dataset == 2:
                     launch_mask  &= (rocket_data.launch_smc.astype(bool))
                     reentry_mask &= (rocket_data.reentry_smc.astype(bool))
+                
+                self.strday = str(d+1).zfill(2) # Process day data
+                if not np.any(launch_mask) and not np.any(reentry_mask):
+                    daily_events_data = {"launches": [], "reentries": []}
+                    events_data[f"{self.year}-{self.strmon}-{self.strday}"] = daily_events_data 
+                    continue  # skip to next day
+                
+                self.bot_alt = bot_alt_3d + np.zeros((LEVELS, self.nlat, self.nlon))
+                self.mid_alt = mid_alt_3d + np.zeros((LEVELS, self.nlat, self.nlon))
+                self.top_alt = top_alt_3d + np.zeros((LEVELS, self.nlat, self.nlon))
+                self.area = area_2d.copy()  # ensure a fresh array per day
+
+                # Initialize:
+                self.pmin,self.pmax=np.nan,np.nan
+                self.qmin,self.qmax=np.nan,np.nan
 
                 # Get indices
                 l_ind = np.where(launch_mask)[0]
@@ -399,74 +421,66 @@ class OutputEmis:
         else:
             landing_prop_percent = 100-5.6-1.2
                     
-        stage_alt_beco = stage_alt_dict[f"{launch_rocket} BECO"] 
-        stage_alt_meco = stage_alt_dict[f"{launch_rocket} MECO"]
-        stage_alt_sei  = stage_alt_dict[f"{launch_rocket} SEI1"] 
-        stage_alt_seco = stage_alt_dict[f"{launch_rocket} SECO"]
+        stage_keys = ['BECO', 'MECO', 'SEI1', 'SECO']
+        stage_alts = {key: stage_alt_dict.get(f"{launch_rocket} {key}", np.nan) for key in stage_keys}
+
+        stage_alt_beco = stage_alts['BECO']
+        stage_alt_meco = stage_alts['MECO']
+        stage_alt_sei  = stage_alts['SEI1']
+        stage_alt_seco = stage_alts['SECO']
         
-        if np.isnan(stage_alt_meco) and np.isnan(stage_alt_sei):
-            # Define the rocket configuration.
-            if rocket_data.booster_prop_type[valid_index] != '':
-                
-                if rocket_data.stage1_prop_type[valid_index] != '' and rocket_data.stage2_prop_type[valid_index] == '' and rocket_data.stage3_prop_type[valid_index] == '' and rocket_data.stage4_prop_type[valid_index] == '':
-                    rocket_config_type = 0
-                elif rocket_data.stage1_prop_type[valid_index] != '' and rocket_data.stage2_prop_type[valid_index] != '' and rocket_data.stage3_prop_type[valid_index] == '' and rocket_data.stage4_prop_type[valid_index] == '':
-                    rocket_config_type = 0
-                elif rocket_data.stage1_prop_type[valid_index] != '' and rocket_data.stage2_prop_type[valid_index] != '' and rocket_data.stage3_prop_type[valid_index] != '' and rocket_data.stage4_prop_type[valid_index] == '':
-                    rocket_config_type = 1
-                elif rocket_data.stage1_prop_type[valid_index] != '' and rocket_data.stage2_prop_type[valid_index] != '' and rocket_data.stage3_prop_type[valid_index] != '' and rocket_data.stage4_prop_type[valid_index] != '':
-                    rocket_config_type = 2
+        if np.isnan(stage_alt_meco) and np.isnan(stage_alt_sei) and np.isnan(stage_alt_seco):
 
-                else:
-                    raise IndexError(f"Incorrect rocket configuration 1 {launch_rocket}")
+            stages = [
+                rocket_data.booster_prop_type[valid_index] != '',
+                rocket_data.stage1_prop_type[valid_index] != '',
+                rocket_data.stage2_prop_type[valid_index] != '',
+                rocket_data.stage3_prop_type[valid_index] != '',
+                rocket_data.stage4_prop_type[valid_index] != ''
+            ]
 
-            else:
-                if rocket_data.stage1_prop_type[valid_index] != '' and rocket_data.stage2_prop_type[valid_index] != '' and rocket_data.stage3_prop_type[valid_index] == '' and rocket_data.stage4_prop_type[valid_index] == '':
-                    rocket_config_type = 3
-                elif rocket_data.stage1_prop_type[valid_index] != '' and rocket_data.stage2_prop_type[valid_index] != '' and rocket_data.stage3_prop_type[valid_index] != '' and rocket_data.stage4_prop_type[valid_index] == '':
-                    rocket_config_type = 4
-                elif rocket_data.stage1_prop_type[valid_index] != '' and rocket_data.stage2_prop_type[valid_index] != '' and rocket_data.stage3_prop_type[valid_index] != '' and rocket_data.stage4_prop_type[valid_index] != '':
-                    rocket_config_type = 5
-               
-                else:
-                    raise IndexError(f"Incorrect rocket configuration 2 {launch_rocket}")
+            config_map = {
+                # booster, s1, s2, s3, s4
+                (True,  True,  False, False, False): 0,
+                (True,  True,  True,  False, False): 0,
+                (True,  True,  True,  True,  False): 1,
+                (True,  True,  True,  True,  True ): 2,
+                (False, True,  True,  False, False): 3,
+                (False, True,  True,  True,  False): 4,
+                (False, True,  True,  True,  True ): 5
+            }
+
+            # Look up configuration safely
+            stages_tuple = tuple(stages)
+            rocket_config_type = config_map.get(stages_tuple)
+
+            if rocket_config_type is None:
+                raise IndexError(f"Incorrect rocket configuration for {launch_rocket} (stages={stages_tuple})")
                     
             stage_alt_beco = self.event_alts[0][rocket_config_type]
             stage_alt_meco = self.event_alts[1][rocket_config_type]
             stage_alt_sei  = self.event_alts[2][rocket_config_type]    
             stage_alt_seco = self.event_alts[3][rocket_config_type]
-        
-        ###########
-        # Boosters
-        ###########
-        
-        # NOTE: This section needs to be tweaked if wanting to run for different vertical heights above 80km.
-        
-        if rocket_data.booster_prop_type[valid_index] != '':
-            
-            # If BECO occurs above the fine grid, then we only use some of the booster emissions.
-            if stage_alt_beco * 1e3 > self.fine_grid_top_alt[-1]:
-                self.fine_grid_mass_booster = np.asarray(self.fine_grid_mass)
-                self.booster_alt_index = None
-            # If BECO occurs below the fine grid, then we can use all of the booster emissions.
+
+        def get_alt_index(alt_km, fine_top, fine_bot):
+            """Return index of layer containing altitude, or None if above grid."""
+            if alt_km*1e3 > fine_top[-1]:
+                return None
             else:
-                # Find out which layer BECO occurs in.
-                self.booster_alt_index = np.argmax(self.fine_grid_top_alt > stage_alt_beco*1e3) + 1
-                if not (int(self.fine_grid_bot_alt[self.booster_alt_index-1]) <= stage_alt_beco*1e3 <= self.fine_grid_top_alt[self.booster_alt_index-1]):
-                    raise IndexError(f"ID:{launch_rocket} Booster indexing error: {self.fine_grid_bot_alt[self.booster_alt_index-1]} {stage_alt_beco*1e3} {self.fine_grid_top_alt[self.booster_alt_index-1]}")
-                fine_grid_mass_booster = np.asarray(self.fine_grid_mass[:self.booster_alt_index])
-                
-                # Normalize the vertical emission profile for the booster emissions.
-                if launch_rocket == "Falcon Heavy" and self.include_landing == True:
-                    self.fine_grid_mass_booster = fine_grid_mass_booster / np.sum(fine_grid_mass_booster) * landing_prop_percent
-                    self.total_landing_prop += (100 - landing_prop_percent) * rocket_data.booster_prop_mass[valid_index] / 100
-                else:
-                    self.fine_grid_mass_booster = fine_grid_mass_booster / np.sum(fine_grid_mass_booster) * 100
-                
-        ###########
-        # Stage 1
-        ###########              
-        # NOTE: This section needs to be tweaked if wanting to run for different vertical heights above 100km.    
+                idx = np.searchsorted(fine_top, alt_km*1e3, side='right') 
+                if not (np.round(fine_bot[idx],1) <= alt_km*1e3 <= np.round(fine_top[idx],1)):
+                    raise IndexError(f"Altitude indexing error {fine_bot[idx]} {alt_km*1e3} {fine_top[idx]}")
+                return idx + 1
+
+        def normalize_mass(mass_array, percent):
+            mass_array = np.asarray(mass_array)
+            total = np.sum(mass_array)
+            if total == 0:
+                print(mass_array)
+                raise ValueError(f"Zero fine-grid mass {percent}")
+            return mass_array / total * percent
+        
+        # TODO: Add FEI for all air-launched rockets. 
         fei_alt_dict = {
             "GSLV Mk III": 46.534,
             "Pegasus XL": 11.79,
@@ -474,100 +488,101 @@ class OutputEmis:
         }   
         # Get altitude, default to 0 if rocket not in dictionary
         fei_alt = fei_alt_dict.get(launch_rocket, 0)
-        self.fei_alt_index = np.searchsorted(self.fine_grid_top_alt, fei_alt*1e3)
-
-        # If MECO occurs above the fine grid, then we only use some of the stage 1 emissions. 
-        if stage_alt_meco * 1e3 > self.fine_grid_top_alt[-1]:
-            self.MECO_alt_index = None
-        # If MECO occurs below the fine grid, then we can use all of the stage 1 emissions.
-        else:    
-            # Find out which layer MECO occurs in.
-            self.MECO_alt_index = np.argmax(np.abs(self.fine_grid_top_alt > stage_alt_meco*1e3)) + 1
-            if not (int(self.fine_grid_bot_alt[self.MECO_alt_index-1]) <= stage_alt_meco*1e3 <= self.fine_grid_top_alt[self.MECO_alt_index-1]):
-                    raise IndexError(f"Stage 1 indexing error: {self.fine_grid_bot_alt[self.MECO_alt_index-1]} {stage_alt_meco*1e3} {self.fine_grid_top_alt[self.MECO_alt_index-1]}") 
-                      
-        self.fine_grid_mass_stage1 = np.asarray(self.fine_grid_mass[self.fei_alt_index:self.MECO_alt_index])
         
-        if stage_alt_meco * 1e3 > self.fine_grid_top_alt[-1]:
-            if launch_rocket == "GSLV Mk III":
-                # Now interpolate the cumulative mass to optimise what percentage of propellant is within the model.
-                fei_mass = np.interp(fei_alt,self.ross_alt_edge, self.ross_cumulative_mass)
-                model_percent = (self.prop_in_fine_grid - fei_mass) / (100 - fei_mass) * 100
-                self.fine_grid_mass_stage1 = self.fine_grid_mass_stage1 / np.sum(self.fine_grid_mass_stage1) * model_percent
+        if (launch_rocket in ["Falcon 9 v1.2", "Falcon Heavy"] and self.include_landing):
+            percent = landing_prop_percent
         else:
-            # If the rocket is Falcon v1.2 Block 5, then MECO is always in model, and 93.2% of the emissions are used for ascent.
-            # There is an extra 'boostback' burn for ground landings. No information of % of propellant, so assumed to be equal to the reentry burn.
-            if launch_rocket == "Falcon 9 v1.2" and self.include_landing == True:
-                self.fine_grid_mass_stage1 = self.fine_grid_mass_stage1 / np.sum(self.fine_grid_mass_stage1) * landing_prop_percent 
-                self.total_landing_prop += (100 - landing_prop_percent) * rocket_data.stage1_prop_mass[valid_index] / 100                
-            # For all other rockets, 100% is used for ascent.
-            else:
-                self.fine_grid_mass_stage1 = self.fine_grid_mass_stage1 / np.sum(self.fine_grid_mass_stage1) * 100  
+            percent = 100
         
+        ###########
+        # Boosters
+        ###########
+        
+        if rocket_data.booster_prop_type[valid_index] != '':
+            
+            self.booster_alt_index = get_alt_index(stage_alt_beco, self.fine_grid_top_alt, self.fine_grid_bot_alt)
+
+            if stage_alt_beco * 1e3 > self.fine_grid_top_alt[-1]:
+                self.fine_grid_mass_booster = np.asarray(self.fine_grid_mass)
+            else:
+                self.fine_grid_mass_booster = normalize_mass(self.fine_grid_mass[:self.booster_alt_index].copy(), percent)
+                         
+            if launch_rocket == "Falcon Heavy" and self.include_landing == True:
+                self.total_landing_prop += (100 - landing_prop_percent) * rocket_data.booster_prop_mass[valid_index] / 100
+
+        ###########
+        # Stage 1
+        ###########              
+        # TODO: These stages need to be tweaked if wanting to run for different vertical heights above 100km.    
+        self.fei_alt_index = np.searchsorted(self.fine_grid_top_alt, fei_alt*1e3)
+        self.MECO_alt_index = get_alt_index(stage_alt_meco, self.fine_grid_top_alt, self.fine_grid_bot_alt)
+        if stage_alt_meco * 1e3 > self.fine_grid_top_alt[-1]:
+            self.fine_grid_mass_stage1 = self.fine_grid_mass[self.fei_alt_index:].copy()
+            if launch_rocket == "GSLV Mk III":
+                fei_mass = np.interp(fei_alt,self.ross_alt_edge, self.ross_cumulative_mass)
+                fei_percent = (self.prop_in_fine_grid - fei_mass) / (100 - fei_mass) * 100
+                self.fine_grid_mass_stage1 = normalize_mass(self.fine_grid_mass_stage1, fei_percent)
+        else:
+            fine_grid_mass_stage1 = self.fine_grid_mass[self.fei_alt_index:self.MECO_alt_index].copy()
+            self.fine_grid_mass_stage1 = normalize_mass(fine_grid_mass_stage1, percent)
+                        
+        if launch_rocket == "Falcon Heavy" and self.include_landing == True:
+            self.total_landing_prop += (100 - landing_prop_percent) * rocket_data.stage1_prop_mass[valid_index] / 100
+
         ###########
         # Stage 2
         ###########
                                
-        # NOTE: This section needs to be tweaked if wanting to run for different vertical heights above 100km.
         # If SEI occurs above the fine grid, then we can ignore the second stage.
-        if stage_alt_sei * 1e3 > self.fine_grid_top_alt[-1]:
+        if stage_alt_sei * 1e3 >= self.fine_grid_top_alt[-1]:
             self.fine_grid_mass_stage2 = np.asarray([0])
-            self.SEI_alt_index = None
-            self.seco_alt_index = None
+            self.sei_alt_index, self.seco_alt_index = None, None   
         
         # If SEI is within fine grid, we need to differentiate based on SECO.
         else:
-            self.SEI_alt_index = np.argmax(np.abs(self.fine_grid_top_alt > stage_alt_sei*1e3))
+            self.sei_alt_index = np.searchsorted(self.fine_grid_top_alt, stage_alt_sei*1e3, side='right')
+            self.seco_alt_index = get_alt_index(stage_alt_seco, self.fine_grid_top_alt, self.fine_grid_bot_alt)
             
             # If SECO occurs above the fine grid, then we only use some of the stage 2 emissions.
             if stage_alt_seco * 1e3 > self.fine_grid_top_alt[-1]:
-                
-                self.fine_grid_mass_stage2 = np.asarray(self.fine_grid_mass[self.SEI_alt_index:])
-                # Now interpolate the cumulative mass to optimise what percentage of propellant is within GEOS-Chem.
+                # Interpolate the cumulative mass to optimise what percentage of propellant is within GEOS-Chem.
                 sei_mass = np.interp(stage_alt_sei,self.ross_alt_edge, self.ross_cumulative_mass)
-                model_percent = (self.prop_in_fine_grid - sei_mass) / (100 - sei_mass) * 100
-                self.fine_grid_mass_stage2 = self.fine_grid_mass_stage2 / np.sum(self.fine_grid_mass_stage2) * model_percent
-                self.seco_alt_index = None
-            
-            # If SECO occurs below the fine grid, then we can use all of the stage 2 emissions.
+                seco_percent = (self.prop_in_fine_grid - sei_mass) / (100 - sei_mass) * 100
             else:
-                self.seco_alt_index = np.argmax(np.abs(self.fine_grid_top_alt > stage_alt_seco*1e3)) + 1
-                self.fine_grid_mass_stage2 = np.asarray(self.fine_grid_mass[self.SEI_alt_index:self.seco_alt_index])
-                self.fine_grid_mass_stage2 = self.fine_grid_mass_stage2 / np.sum(self.fine_grid_mass_stage2) * 100
+                seco_percent = 100
+            self.fine_grid_mass_stage2 = normalize_mass(self.fine_grid_mass[self.sei_alt_index:self.seco_alt_index].copy(), seco_percent)
             
         ###########
         # Stage 3
         ###########
                 
-        # NOTE: This section needs to be tweaked if wanting to run for different vertical heights above 80km.       
-        # TEI data not collected here, would need to check if any other rocket third stages start below 100 km.        
+        # TODO: TEI data not collected here, need to check if any other rocket third stages start below 100 km.        
         # Calculate third stage emissions for Minotaur 1 only.    
         if launch_rocket == "Minotaur 1":
             # Minotaur 1 third stage ignition occurs below the model boundary, so we can need to add some of the stage 3 emissions.
-            self.TEI_alt_index = np.argmax(np.abs(self.fine_grid_top_alt > 73.47*1e3))
-            self.fine_grid_mass_stage3 = np.asarray(self.fine_grid_mass[self.TEI_alt_index:])
+            self.TEI_alt_index = np.searchsorted(self.fine_grid_top_alt, 73.47*1e3, side='right')
             # Now interpolate the cumulative mass to optimise what percentage of propellant is within GEOS-Chem.
             tei_mass = np.interp(73.47,self.ross_alt_edge, self.ross_cumulative_mass)
-            model_percent = (self.prop_in_fine_grid - tei_mass) / (100 - tei_mass) * 100
-            self.fine_grid_mass_stage3 = self.fine_grid_mass_stage3 / np.sum(self.fine_grid_mass_stage3) * model_percent
+            tei_percent = (self.prop_in_fine_grid - tei_mass) / (100 - tei_mass) * 100
+            self.fine_grid_mass_stage3 = normalize_mass(self.fine_grid_mass[self.TEI_alt_index:].copy(), tei_percent)
          
         ##################
         # Falcon Reusable
         ##################
            
         # Finally create an extra stage just for the landing emissions of Falcon 9 v1.2. 
-        # NOTE: Need to add boostback emissions if top is above 80.
+        # TODO: Need to add boostback emissions if top is above 80.
         if launch_rocket in ["Falcon 9 v1.2","Falcon Heavy"]:
+
             # 5.6% are used in the entry burn, over 70-54.7 km.
-            self.entry_top = np.argmax(np.abs(self.fine_grid_top_alt > 70000))
-            self.entry_bot = np.argmax(np.abs(self.fine_grid_top_alt > 54700))
-            self.fine_grid_mass_entry = np.asarray(self.fine_grid_mass[self.entry_bot:self.entry_top+1])
-            self.fine_grid_mass_entry = self.fine_grid_mass_entry / np.sum(self.fine_grid_mass_entry) * 5.6
+            self.entry_top = np.searchsorted(self.fine_grid_top_alt, 70000, side='right')
+            self.entry_bot = np.searchsorted(self.fine_grid_top_alt, 54700, side='right')
+            self.fine_grid_mass_entry = normalize_mass(self.fine_grid_mass[self.entry_bot:self.entry_top+1].copy(), 5.6)
             
             # 1.2% are used in the landing burn, over 3.3-0 km.
-            self.landing_top = np.argmax(np.abs(self.fine_grid_top_alt > 3300))
-            self.fine_grid_mass_landing = np.asarray(self.fine_grid_mass[:self.landing_top+1])
-            self.fine_grid_mass_landing = self.fine_grid_mass_landing / np.sum(self.fine_grid_mass_landing) * 1.2
+            self.landing_top = np.searchsorted(self.fine_grid_top_alt, 3300, side='right')
+            self.fine_grid_mass_landing = normalize_mass(self.fine_grid_mass[:self.landing_top+1].copy(), 1.2)
+
         else:
             self.fine_grid_mass_landing = 0
             self.fine_grid_mass_entry = 0
@@ -677,7 +692,7 @@ class OutputEmis:
                                 
             # Get factor to convert from kg to kg/m2/s if needed for GEOS-Chem outputs:
             #self.kg_to_kgm2s        = self.area[q,p]*TIMESTEP
-            #self.falcon_kg_to_kgm2s = self.area[falcon_q,falcon_p]*TIMESTEP
+            #self.falcon_kg_to_kgm2s = self.area[falcon_q,falcon_p]*TIMESTEP # TODO: Where do we calculate Falcon q and Falcon p
             
             # Format the time of the event.
             time_index = int(hour[w]*60*60)//TIMESTEP
@@ -719,23 +734,16 @@ class OutputEmis:
                     "location": location[w],
                 }
                 
-                if event_id[w] in ["2021-F09","2022-065","2023-72"]: # Naro Space Center
+                if location[w] == "Naro Space Center":
                     launch_details["lat"] = 34.43194444
                     launch_details["lon"] = 127.535
-                elif event_id[w] in ["2020-065","2022-167","2022-046","2022-126","2023-135","2024-102","2024-153","2024-173","2024-245","2025-007","2025-105"]: # China Sea Launch
+                elif location[w] == "China Sea Launch":
                     launch_details["lat"] = 34.9
                     launch_details["lon"] = 121.2
                     
                 ############################################################################
-                # Start processing the launch event altitudes and deal with failed launches.
+                # Process the launch event altitudes.
                 ############################################################################
-                
-                # This is where the launch failed close to the launch pad.
-                if event_id[w] in ['2020-F04','2021-F04','2023-F02','2024-F01']:
-                    print(f'Launch {event_id[w]} failed. Not processing.')
-                    self.csv_count += 3
-                    self.csv_count_2 += 10
-                    continue
                 
                 if pd.isna(event_id[w]) or pd.isna(lon[w]) or pd.isna(lat[w]):
                     raise ValueError(f"Event ID: {event_id[w]} Latitude: {lat[w]}, Longitude: {lon[w]}, Site: {location[w]}")
@@ -747,11 +755,37 @@ class OutputEmis:
                 pei_stage3_index   = np.where( rocket_data.pei_fuel_type == rocket_data.stage3_prop_type[valid_index] )[0]
                 
                 stage_alt_beco, stage_alt_meco = self.process_launch_event_altitudes(valid_index, name[w], event_id[w])
-                # NOTE: Need to recheck which failures are within model limits if wanting to run for different vertical heights above 80km.
+                # TODO: Need to recheck which failures are within model limits if wanting to run for different vertical heights above 80km.
                 # Most failures are for upper stages, and so can be treated as normal here.
                 # Full information is provided in source_info/failed_launch_info.txt.
 
-                zero_stage2_events = { # When stage 2 never ignited.
+                ############################################################################
+                # Deal with failed launches.
+                ############################################################################
+                         
+                # TODO: Failed launches back to 1957.
+                # This is where the launch failed close to the launch pad.
+                if event_id[w] in ['2020-F04','2021-F04','2023-F02','2024-F01']:
+                    self.csv_count += 3
+                    self.csv_count_2 += 10
+                    continue
+                
+                # This is where stage 1 failed during ascent.
+                failed_alt_events = {
+                    '2020-F07': 900,    # Astra Rocket 3 launch, rocket shut off at 0.9km.
+                    '2021-F01': 10700,  # Shuang Quxian-1 launch, rocket disintegrated at Max-Q. Approximating altitude using Proton-M and Minotaur-IV max-q alts.
+                    '2021-F07': 31000   # Astra Rocket 3 launch, rocket shut off at 31km.
+                }
+
+                # its messed up 2020-f07 onwards for 2020, why???
+
+                if event_id[w] in failed_alt_events:
+                    failed_alt = failed_alt_events[event_id[w]]
+                    cutoff_ind = np.searchsorted(self.fine_grid_mid_alt, failed_alt, side='right')
+                    self.fine_grid_mass_stage1[cutoff_ind:] = 0.0 # Zero above the cutoff_ind.
+
+                # This is where stage 2 never ignited.
+                zero_stage2_events = {
                     '2020-F02','2020-F05',
                     '2021-F02','2021-F07','2021-F08','2022-F01',
                     '2022-F02','2022-F03','2023-F01','2023-F04',
@@ -759,19 +793,9 @@ class OutputEmis:
                     '2024-F02','2024-F04'
                 }
 
-                failed_alt_events = {
-                    '2020-F07': 900,    # Astra Rocket 3 launch, rocket shut off at 0.9km.
-                    '2021-F01': 10700,  # Shuang Quxian-1 launch, rocket disintegrated at Max-Q. Approximating altitude using Proton-M and Minotaur-IV max-q alts.
-                    '2021-F07': 31000   # Astra Rocket 3 launch, rocket shut off at 31km.
-                }
-
                 if event_id[w] in zero_stage2_events:
                     self.fine_grid_mass_stage2 = np.asarray([0])
-                    self.SEI_alt_index = None
-                elif event_id[w] in failed_alt_events:
-                    failed_alt = failed_alt_events[event_id[w]]
-                    cutoff_ind = np.argmin(np.abs(failed_alt - self.fine_grid_mid_alt))
-                    self.fine_grid_mass_stage1[:cutoff_ind+1] = np.zeros((len(self.fine_grid_mass_stage1[:cutoff_ind+1])))
+                    self.sei_alt_index = None
                 
                 ##################################################
                 # Sanity Checks for Propellant Mass Distributions
@@ -853,13 +877,12 @@ class OutputEmis:
                                                            total_vertical_propellant,
                                                            1
                                                            )
-                
 
                 # Check whether there is a second stage:
-                if rocket_data.stage2_prop_type[valid_index] != '' and self.SEI_alt_index != None:
+                if rocket_data.stage2_prop_type[valid_index] != '' and self.sei_alt_index != None:
                     if np.sum(1e-2 * self.fine_grid_mass_stage2) > 1.01:
                         raise ValueError("Error with Stage 2. Propellant distribution exceeds unity.")
-                    total_vertical_propellant = self.calc_emis(self.SEI_alt_index,
+                    total_vertical_propellant = self.calc_emis(self.sei_alt_index,
                                 self.seco_alt_index,
                                 pei_stage2_index,
                                 rocket_data.stage2_prop_mass[valid_index],
