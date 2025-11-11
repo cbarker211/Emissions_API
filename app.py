@@ -12,7 +12,7 @@ events_data = {}
 
 # Load all yearly files from 1957–2024 if they exist
 for year in range(1957, 2025):
-    file_path = os.path.join(data_dir, f'data_{year}.json')
+    file_path = os.path.join(data_dir, f'{(year // 10) * 10}/data_{year}.json')
     if os.path.exists(file_path):
         with open(file_path, 'r') as json_file:
             events_data |= json.load(json_file)
