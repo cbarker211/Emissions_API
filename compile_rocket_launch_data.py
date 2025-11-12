@@ -308,6 +308,78 @@ class import_launches:
                 time_utc = np.float64(int(date[3].replace("?","")[0:2]) + int(date[3].replace("?","")[2:4]) / 60) if len(date) >= 4 else -1
 
                 df_site = df_sites[df_sites["#Site"] == row["Launch_Site"].replace("?", "")]
+
+                def sort_sitenames(site):
+                    site_map = {
+                        "Centre Spatial Guyanais, Kourou, Guyane Francaise": "Guiana Space Center (Kourou)",
+                        "Satish Dhawan Space Ctr, Sriharikota, Andhra Pradesh, India": "Sriharikota Space Center",
+                        "Rocket Lab Launch Complex 1, Onenui Station, Mahia Peninsula": "Rocket Lab Launch Complex 1, Mahia Peninsula",
+                        "Wenchang Space Center, Hainan": "Wenchang Satellite Launch Center",
+                        "Xichang Space Center (Songlin), Sichuan, China": "Xichang Satellite Launch Center",
+                        "Tanegashima Space Center, Tanegashima, Nippon": "Tanegashima Space Center",
+                        "Naro Space Center (Naro Uju Senteo),Oenaro I,GoHeung, Jeollanam-do,Korea": "Naro Space Center",
+                        "Israeli Air Force Test Range, Palmachim Beach, Israel": "Yavne Launch Facility (Palmachim)",
+                        "Huang Hai CZ-11 launch zone": "China Sea Launch",
+                        "NASA John F. Kennedy Space Center, Florida": "Kennedy Space Center (ETR)",
+                        "Semnan missile launch site, Iran": "Semnan",
+                        "Taiyuan weixing fashe zhongxin": "Taiyuan SLC (Wuzhai)",
+                        "Sohae Launch Site, Tongch'ang-dong, Pyongang-bukdo (N Pyongan Prov), N Korea": "Sohae Satellite Launching Station",
+                        "Jiuquan Space Center, Nei Monggol Zizhiqu, China": "Jiuquan SLC (Shuang Cheng Tzu)",
+                        "Kodiak Launch Complex, Kodiak Island, Alaska": "Kodiak Launch Complex",
+                    }
+
+                    # Handle groups of equivalent site names
+                    group_map = {
+                        "Spaceport Florida Authority": [
+                            "Spaceport Florida, Cape Canaveral",
+                            "Space Florida, Cape Canaveral",
+                            "Cape Canaveral Air Station, Florida"
+                        ],
+                        "Kagoshima Space Center (Uchinoura)": [
+                            "Kagoshima Space Center, Kagoshima, Kyushu, Nippon",
+                            "Uchinoura Space Center, Kagoshima (formerly Kagoshima)"
+                        ],
+                        "Vandenberg Space Force Base": [
+                            "Vandenberg AFB, California",
+                            "South Vandenberg AFB, California",
+                            "Naval Missile Facility, Point Arguello, California"
+                        ],
+                        "Mid-Atlantic Regional Spaceport": [
+                            "Mid-Atlantic Regional Spaceport, Wallops Island, Virginia",
+                            "Wallops Flight Facility, Wallops Island, Virginia",
+                            "Wallops Island Main Base, NASA Wallops Flight Facility, Chincoteague, Virginia"
+                        ],
+                        "Baikonur Cosmodrome (Tyuratam)": [
+                            "NIIP-5, Baykonur, Kazakstan",
+                            "GIK-5, Baykonur, Kazakstan"
+                        ],
+                        "Kapustin Yar MSC": [
+                            "GTsP-4, Kapustin Yar, Volgograd, Rossiya",
+                            "GTsMP-4 MO RF, Znamensk (Kapustin Yar), Rossiya"
+                        ],
+                        "Vostochny Cosmodrome": [
+                            "Vostochniy, Svobodniy, Amurskaya Oblast', Rossiya",
+                            "GIK-2, Svobodniy, Amurskaya Oblast', Rossiya"
+                        ],
+                        "Plesetsk Cosmodrome": [
+                            "GNIIP, Plesetsk, Rossiya",
+                            "1-y Gosudarstvenniy Ispitatelniy Kosmodrom MO RF",
+                            "GNIIP, VKS section, Plesetsk, Rossiya",
+                            "53-y Nauchno-Issledovatelskiy Ispitatelniy Poligon,"
+                        ]
+                    }
+
+                    # Direct lookup
+                    if site in site_map:
+                        return site_map[site]
+
+                    # Group lookup
+                    for normalized, variants in group_map.items():
+                        if site in variants:
+                            return normalized
+
+                    # Default: return unchanged
+                    return site
                 
                 # Look in the payload catalogs to find which launches contain megaconstellations.
                 mcs_flag = row["#Launch_Tag"].strip() in mcs_tags
@@ -326,7 +398,7 @@ class import_launches:
                     "COSPAR_ID":              row["#Launch_Tag"].strip(),
                     "Time(UTC)":              round(time_utc, 2),
                     "Date":                   datestr,
-                    "Site":                   df_site["Name"].values[0],
+                    "Site":                   sort_sitenames(df_site["Name"].values[0]),
                     "Latitude":               float(df_site["Latitude"].values[0].strip()),
                     "Longitude":              float(df_site["Longitude"].values[0].strip()),
                     "Rocket_Name":            name,
