@@ -10,6 +10,7 @@ import time
 from tqdm import tqdm
 from cProfile import Profile
 from pstats import Stats
+import sys
 
 from python_modules.discosweb_api_func import server_request, response_error_handler
 from update_rocket_launch_data import update_mass_info
@@ -734,10 +735,6 @@ class import_launches:
                     stage_number = row['Stage_No'].strip()
                     if stage_number in ["F","P"]:
                         continue
-                    
-                    # Get the number of boosters.
-                    if stage_number == "0":
-                        temp_dict["Booster Number"] = int(row["Multiplicity"])
 
                     # Skip adapters, ullage motors, kick motors (Start, Proton-M/DM-03 and Molniya 8K78).
                     if row["Stage_Name"] in ["Perekhodnik","SOZ","BOZ","DS"]:
@@ -783,6 +780,12 @@ class import_launches:
                     launch_mass = df_stage["Launch_Mass"].values[0]
                     dry_mass    = None if dry_mass    == '-' or pd.isna(dry_mass)    else float(dry_mass)
                     launch_mass = None if launch_mass == '-' or pd.isna(launch_mass) else float(launch_mass)*1000
+                    if stage_number == "0":
+                        temp_dict["Booster Number"] = int(row["Multiplicity"])
+                        if dry_mass != None:
+                            dry_mass    = dry_mass * temp_dict["Booster Number"]
+                        if launch_mass != None:
+                            launch_mass = launch_mass * temp_dict["Booster Number"]
                     
                     if dry_mass is None:
                         print(f"Missing dry mass for Rocket: {name,variant}, Stage: {stage_number} - {row['Stage_Name']}")
