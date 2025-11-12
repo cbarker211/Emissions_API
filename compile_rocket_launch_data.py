@@ -330,7 +330,7 @@ class import_launches:
                     "Latitude":               float(df_site["Latitude"].values[0].strip()),
                     "Longitude":              float(df_site["Longitude"].values[0].strip()),
                     "Rocket_Name":            name,
-                    "Rocket_Variant":         variant,
+                    "Rocket_Variant":         variant.replace("?",""),
                     "DISCOSweb_Rocket_ID":    0,
                     "Megaconstellation_Flag": mcs_flag
                 })
@@ -757,7 +757,6 @@ class import_launches:
             temp_dict = update_mass_info(temp_dict, temp_dict["name"], variant)
 
             changed = False
-            changed_key = ""
             for key in temp_dict:
                 if key == "Fairing Mass":
                     continue

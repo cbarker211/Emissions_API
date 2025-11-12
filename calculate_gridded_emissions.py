@@ -936,7 +936,7 @@ class OutputEmis:
                             
                         elif matching.shape[0] == 0:
                             # The database hasn't been well updated for 2022, so lets just fill in based on most common geolocation for all other 2020-2022 launches.
-                            if lon[w] == -81.0 and lat[w] == 28.5:
+                            if np.round(lon[w]) == -81.0 and np.round(lat[w]) == 29.0:
                                 falcon_lon = -75
                                 falcon_lat = 32
                             elif lon[w] == -120.6 and lat[w] == 34.7:
@@ -946,7 +946,7 @@ class OutputEmis:
                                 falcon_lon = 100.3
                                 falcon_lat = 41.3
                             else:
-                                raise RuntimeError("Launch not from assigned site.")
+                                raise RuntimeError("Launch not from assigned site.",lon[w],lat[w])
                         
                         elif matching.shape[0] > 1: 
                             raise RuntimeError(f"Multiple ocean entries for Falcon Stage 1 landing for {event_id[w]}.")
@@ -1242,7 +1242,7 @@ if __name__ == "__main__":
     
     fiona.drvsupport.supported_drivers['KML'] = 'rw' # type: ignore
     raul_data = gpd.read_file('./databases/reentry/General_SpaceX_Map_Raul.kml', driver='KML', layer =2) # Falcon landing data.  
-    if start_year == 1957:
+    if start_year < 2020:
         source = "_jsr"
         launch_path       = f'./databases/launch_activity_data_1957-2019_jsr.nc'
         rocket_info_path  = f'./databases/rocket_attributes_1957-2019_jsr.nc'
