@@ -10,9 +10,8 @@ This update contains code refactoring and bug fixes.
 - Completely refactored the calculations of fine_grid_mass_stage_{i}. Floating point changes to results.
 - Minor adjustments to syntax throughout. No changes to results.
 - Removed hardcode of launch IDs for lat/lon assignment for Naro Space Center and China Sea Launch. Now automatic based on name, very small change to coordinates of one launch in 2023.
-- Fixed a bug where the first 9 levels of the fine_grid_mass array were wrongly set to zero during a failed launch on 12/09/2020, affecting all launches from 12/09/20 onwards (49 launches). This meant that the launch emissions were being underestimated, and will particularly affect NOx and CO2 (largest emissions close to surface).
+- Fixed a bug where the first 9 levels of the fine_grid_mass array were wrongly set to zero during a failed launch on 12/09/2020, affecting launches in 2020 only from 12/09/20 onwards (49 launches). This meant that the launch emissions were being underestimated, and will particularly affect NOx and CO2 (largest emissions close to surface).
 
 - Small adjustments to prepare the scripts for launches back to 1957. No changes to results.
 - Rocket attributes now contains a 'variant' tag from JSR.
 - Minor fix to Long March (CZ) 3B/YZ-1 upper stage masses.
-- 
