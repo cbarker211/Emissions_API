@@ -31,7 +31,7 @@ class RocketData:
     def __init__(self, launchfile: str,reentryfile: str, rocketinfofile: str, peifile: str):
         
         self.read_launch_activity(launchfile)
-        #self.read_reentry_activity(reentryfile) # TODO: Re-enable when reentry emissions are added.
+        self.read_reentry_activity(reentryfile) # TODO: Re-enable when reentry emissions are added.
         self.read_rocket_info(rocketinfofile)
         self.define_pei(peifile)
     
@@ -52,10 +52,7 @@ class RocketData:
             self.launch_datestr = launchdata.variables['Date'][:]
             self.launch_id      = launchdata.variables['COSPAR_ID'][:].astype(str)
             self.launch_rocket  = launchdata.variables['Rocket_Name'][:]
-            try:
-                self.launch_variant = launchdata.variables['Rocket_Variant'][:]
-            except:
-                self.launch_variant = np.array(['-']*len(self.launch_id))
+            self.launch_variant = launchdata.variables['Rocket_Variant'][:]
             self.launch_smc     = launchdata.variables['Megaconstellation_Flag'][:]
             self.launch_site    = launchdata.variables['Site'][:]
             
@@ -110,16 +107,9 @@ class RocketData:
         
             # Extract variables:
             self.rocket_name         = vehicledata.variables['Rocket_Name'][:]
-            try:
-                self.rocket_variant = vehicledata.variables['Rocket_Variant'][:]
-            except:
-                self.rocket_variant = np.array(['-']*len(self.rocket_name))
-            try:
-                self.booster_prop_mass   = vehicledata.variables['Stage0_PropMass'][:]
-                self.booster_prop_type   = vehicledata.variables['Stage0_Fuel_Type'][:]
-            except:
-                self.booster_prop_mass   = vehicledata.variables['Booster_PropMass'][:]
-                self.booster_prop_type   = vehicledata.variables['Booster_Fuel_Type'][:]
+            self.rocket_variant = vehicledata.variables['Rocket_Variant'][:]
+            self.booster_prop_mass   = vehicledata.variables['Stage0_PropMass'][:]
+            self.booster_prop_type   = vehicledata.variables['Stage0_Fuel_Type'][:]
             self.stage1_prop_mass    = vehicledata.variables['Stage1_PropMass'][:]
             self.stage1_prop_type    = vehicledata.variables['Stage1_Fuel_Type'][:]
             self.stage2_prop_mass    = vehicledata.variables['Stage2_PropMass'][:]
@@ -217,20 +207,20 @@ class OutputEmis:
         self.csv_count, self.csv_count_2 = 0, 0
 
         launch_mask = np.zeros(len(rocket_data.launch_year), dtype=bool)
-        #reentry_mask = np.zeros(len(rocket_data.reentry_year), dtype=bool) 
+        reentry_mask = np.zeros(len(rocket_data.reentry_year), dtype=bool) 
         # TODO: Re-enable when reentry emissions are added.
         if self.dataset == 1:
             launch_mask  = (rocket_data.launch_year  == year) & (~(rocket_data.launch_smc.astype(bool)))
-            #reentry_mask = (rocket_data.reentry_year == year) & (~(rocket_data.reentry_smc.astype(bool)))
+            reentry_mask = (rocket_data.reentry_year == year) & (~(rocket_data.reentry_smc.astype(bool)))
         elif self.dataset == 2:
             launch_mask  = (rocket_data.launch_year  == year) & (rocket_data.launch_smc.astype(bool))
-            #reentry_mask = (rocket_data.reentry_year == year) & (rocket_data.reentry_smc.astype(bool))
+            reentry_mask = (rocket_data.reentry_year == year) & (rocket_data.reentry_smc.astype(bool))
         elif self.dataset == 3:
             launch_mask  = (rocket_data.launch_year  == year)
-            #reentry_mask = (rocket_data.reentry_year == year)
+            reentry_mask = (rocket_data.reentry_year == year)
 
         launch_length  = np.sum(launch_mask)
-        reentry_length = 0#np.sum(reentry_mask)
+        reentry_length = np.sum(reentry_mask)
                                 
         if launch_length > 0:
             self.output_csv_launch_prop  = np.zeros((launch_length*3,LEVELS))
@@ -288,24 +278,24 @@ class OutputEmis:
                     (~np.isnan(np.array(rocket_data.launch_time)))
                 )
 
-                #reentry_mask = ( # TODO: Re-enable when reentry emissions are added.
-                #    (np.array(rocket_data.reentry_month) == m) &
-                #    (np.array(rocket_data.reentry_day) == d+1) &
-                #    (np.array(rocket_data.reentry_year) == self.year) &
-                #    (~np.isnan(np.array(rocket_data.reentry_time)))
-                #)
+                reentry_mask = ( # TODO: Re-enable when reentry emissions are added.
+                    (np.array(rocket_data.reentry_month) == m) &
+                    (np.array(rocket_data.reentry_day) == d+1) &
+                    (np.array(rocket_data.reentry_year) == self.year) &
+                    (~np.isnan(np.array(rocket_data.reentry_time)))
+                )
 
                 # Apply dataset-specific SMC filter. No extra filter needed for dataset 3 as all launches/reentries included.
                 if self.dataset == 1:
                     launch_mask  &= ~(rocket_data.launch_smc.astype(bool))
-                    #reentry_mask &= ~(rocket_data.reentry_smc.astype(bool))
+                    reentry_mask &= ~(rocket_data.reentry_smc.astype(bool))
                 elif self.dataset == 2:
                     launch_mask  &= (rocket_data.launch_smc.astype(bool))
-                    #reentry_mask &= (rocket_data.reentry_smc.astype(bool))
+                    reentry_mask &= (rocket_data.reentry_smc.astype(bool))
 
                 self.strday = str(d+1).zfill(2) # Process day data
-                if not np.any(launch_mask): # and not np.any(reentry_mask):
-                    continue  # skip to next day
+                #if not np.any(launch_mask) and not np.any(reentry_mask):
+                #    continue  # skip to next day
                 
                 self.bot_alt = bot_alt_3d + np.zeros((LEVELS, self.nlat, self.nlon))
                 self.mid_alt = mid_alt_3d + np.zeros((LEVELS, self.nlat, self.nlon))
@@ -318,7 +308,7 @@ class OutputEmis:
 
                 # Get indices
                 l_ind = np.where(launch_mask)[0]
-                r_ind = []#np.where(reentry_mask)[0]
+                r_ind = np.where(reentry_mask)[0]
                 
                 ########################################################################
                 # Call grid_emis function to calculate distribution from launches
@@ -936,7 +926,7 @@ class OutputEmis:
                             
                         elif matching.shape[0] == 0:
                             # The database hasn't been well updated for 2022, so lets just fill in based on most common geolocation for all other 2020-2022 launches.
-                            if np.round(lon[w]) == -81.0 and np.round(lat[w]) == 29.0:
+                            if np.isclose(lon[w], -81.0, atol=1.0) and np.isclose(lat[w], 29.0, atol=1.0):
                                 falcon_lon = -75
                                 falcon_lat = 32
                             elif lon[w] == -120.6 and lat[w] == 34.7:
@@ -1252,11 +1242,11 @@ if __name__ == "__main__":
     
 
     # TODO: Removing re-entries for now, re-enable when data is fixed.
-    #if start_year == 2020:
-    #    reentry_path  = f'./databases/reentry_activity_data_{start_year}-{final_year}_moredatacorrectlocations.nc'
-    #else:
-    #    reentry_path  = f'./databases/reentry_activity_data_{start_year}-{final_year}.nc'
-    reentry_path = ""
+    if start_year == 2020:
+        reentry_path  = f'./databases/reentry_activity_data_{start_year}-{final_year}_moredatacorrectlocations.nc'
+    else:
+        reentry_path  = f'./databases/reentry_activity_data_{start_year}-{final_year}.nc'
+    #reentry_path = ""
 
     pei_path          = './input_files/primary_emission_indices.csv'  
     rocket_data       = RocketData(launch_path, reentry_path, rocket_info_path, pei_path)

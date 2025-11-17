@@ -5518,7 +5518,28 @@
         "reentries": []
     },
     "2022-05-20": {
-        "launches": [],
+        "launches": [
+            {
+                "date": "2022-05-20",
+                "id": "2022-056",
+                "time": 10.56,
+                "site": "",
+                "rocket": "Long March (CZ) 2C/YZ-1S",
+                "lat": 41.3,
+                "lon": 100.3,
+                "smc": true,
+                "location": "Jiuquan SLC (Shuang Cheng Tzu)",
+                "emissions": {
+                    "BC": 0.7927904184176845,
+                    "CO": 1.5947498116636378,
+                    "CO2": 58.17994571996325,
+                    "NOx": 3.0294741393867155,
+                    "H2O": 79.04050783242896,
+                    "Cly": 0.0,
+                    "Al2O3": 0.0
+                }
+            }
+        ],
         "reentries": []
     },
     "2022-05-21": {

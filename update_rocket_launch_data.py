@@ -78,8 +78,8 @@ def update_mass_info(temp_dict,name,variant):
         # Manual   : N/A,   14700, 4540
         
         temp_dict[f"Booster Number"]            = 2 # Manual
-        temp_dict[f"Stage0 Propellant Mass"]   = 240000 * int(temp_dict[f"Booster Number"]) # Manual
-        temp_dict[f"Stage0 Stage Mass"]        = 31000     # SLR/Sp101
+        temp_dict[f"Stage0 Propellant Mass"]    = 240000 * int(temp_dict[f"Booster Number"]) # Manual
+        temp_dict[f"Stage0 Stage Mass"]         = 31000     # SLR/Sp101
         temp_dict[f"Stage1 Propellant Mass"]    = 170000    # Manual 
         temp_dict[f"Stage1 Stage Mass"]         = 14700     # Manual
         temp_dict[f"Stage2 Propellant Mass"]    = 14900     # Manual
@@ -232,9 +232,6 @@ def update_mass_info(temp_dict,name,variant):
         # Kick-stage is placed into low elliptical orbit, and burns some propellant to move into final orbit.
         # Seems like it is specific to mission, so would have to take an educated guess to the average prop.
 
-        temp_dict[f"Stage1 Propellant Name"] = 'Kerosene/LOX'
-        temp_dict[f"Stage2 Propellant Name"] = 'Kerosene/LOX'
-        temp_dict[f"Stage3 Propellant Name"] = 'Liquid bi-propellant'
         temp_dict[f"Stage1 Propellant Mass"] = 9250             # Using value from SLR/DISCOSweb(wet/dry)/Sp101
         temp_dict[f"Stage2 Propellant Mass"] = (2050+2150) / 2  # SLR/Sp101
         temp_dict[f"Stage3 Propellant Mass"] = 245              # Using value from DISCOSweb(wet/dry)
@@ -347,8 +344,8 @@ def update_mass_info(temp_dict,name,variant):
         temp_dict[f"Stage3 Stage Mass"]       = 2601                                                    # SLR
         temp_dict[f"Fairing Mass"] = 0
         
-        temp_dict[f"Booster Propellant Name"] = "HTPB"
-        temp_dict[f"Stage1 Propellant Name"]  = "UDMH (Unsymmetrical Dimethyl Hydrazine)/N2O4"
+        temp_dict[f"Stage0 Propellant Name"]  = "UDMH (Unsymmetrical Dimethyl Hydrazine)/N2O4"
+        temp_dict[f"Stage1 Propellant Name"]  = "HTPB"
         temp_dict[f"Stage2 Propellant Name"]  = "UDMH (Unsymmetrical Dimethyl Hydrazine)/N2O4"
         temp_dict[f"Stage3 Propellant Name"]  = "LH2 (Liquid Hydrogen)/LOX"
         
@@ -484,12 +481,6 @@ def update_mass_info(temp_dict,name,variant):
         temp_dict[f"Stage1 Stage Mass"]      = 10000   # SLR
         temp_dict[f"Stage2 Stage Mass"]      = 4000    # SLR
         temp_dict[f"Fairing Mass"]           = 800 # http://www.b14643.de/Spacerockets_1/China/CZ-2C/Description/Frame.htm
-        temp_dict[f"Stage1 Propellant Name"] = 'UDMH'
-        temp_dict[f"Stage2 Propellant Name"] = 'Kerosene/LOX'
-        temp_dict[f"Stage3 Propellant Name"] = 'Liquid bi-propellant'
-        temp_dict[f"Stage1 Fuel Type"] = "Kerosene"
-        temp_dict[f"Stage2 Fuel Type"] = "Kerosene"
-        temp_dict[f"Stage3 Fuel Type"] = "Hypergolic"
 
         if name == "Long March (CZ) 2C/YZ-1S":
             # No clear info available. DISCOSweb dry mass matches JSR reentry data, so keeping DW values.
@@ -663,8 +654,8 @@ def update_mass_info(temp_dict,name,variant):
         temp_dict[f"Stage0 Propellant Mass"]  = (75500+75000) / 2 * int(temp_dict[f"Booster Number"])
         temp_dict[f"Stage0 Stage Mass"]       = 6000 * int(temp_dict[f"Booster Number"])
         
-        temp_dict[f"Booster Propellant Name"]  = "Solid"
-        temp_dict[f"Booster Fuel Type"]        = "Solid"
+        temp_dict[f"Stage0 Propellant Name"]  = "Solid"
+        temp_dict[f"Stage0 Fuel Type"]        = "Solid"
              
     if "Long March (CZ) 7" in name:
         
@@ -881,16 +872,17 @@ def update_mass_info(temp_dict,name,variant):
         temp_dict[f"Stage1 Propellant Mass"] = 428300 # SLR
         temp_dict[f"Stage2 Propellant Mass"] = 157300 # SLR
         temp_dict[f"Stage3 Propellant Mass"] = 46562  # SLR
-        temp_dict[f"Stage4 Propellant Mass"] = 19800  # SLR
         temp_dict[f"Stage1 Stage Mass"]      = 30600  # SLR
         temp_dict[f"Stage2 Stage Mass"]      = 11000  # SLR
         temp_dict[f"Stage3 Stage Mass"]      = 3500   # SLR
-        temp_dict[f"Stage4 Stage Mass"]      = 2370   # SLR
         temp_dict[f"Fairing Mass"]           = 2000   # Sp101 has this value for Proton Medium and Briz-M / DM-03. Using here.
         
-        if name == "Proton-M/DM-3":
+        if name.endswith("DM-3"):
             temp_dict[f"Stage4 Propellant Mass"] = 18600 # Sp101
             temp_dict[f"Stage4 Stage Mass"]      = 3500  # Sp101
+        if name.endswith("Briz-M"):
+            temp_dict[f"Stage4 Propellant Mass"] = 19800  # SLR
+            temp_dict[f"Stage4 Stage Mass"]      = 2370   # SLR
             
     if "Pegasus XL" in name:
         # Manual: https://web.archive.org/web/20221230022508/https://www.mach5lowdown.com/wp-content/uploads/PUG/pegasus-user-guide-2007-1.pdf
@@ -1303,7 +1295,7 @@ def update_mass_info(temp_dict,name,variant):
         temp_dict[f"Booster Number"] = 2 
         temp_dict[f"Stage0 Propellant Mass"] = 48000 * int(temp_dict[f"Booster Number"]) # Manual
         temp_dict[f"Stage0 Stage Mass"]      = 5400 * int(temp_dict[f"Booster Number"]) # Manual
-        temp_dict[f"Booster Fuel Type"] = 'Solid'
+        temp_dict[f"Stage0 Fuel Type"] = 'Solid'
         temp_dict[f"Stage1 Propellant Mass"]    = 368000 # SLR
         temp_dict[f"Stage1 Stage Mass"]         = 400000-368000 # SLR
     
