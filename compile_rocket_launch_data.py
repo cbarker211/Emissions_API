@@ -5,14 +5,10 @@ import xarray as xr
 import argparse
 import pandas as pd
 import requests
-from io import StringIO
-import time
 from tqdm import tqdm
-from cProfile import Profile
-from pstats import Stats
 import sys
 
-from python_modules.discosweb_api_func import server_request, response_error_handler
+from python_modules.web_scrape_func import server_request, response_error_handler, scrape_jsr
 from update_rocket_launch_data import update_mass_info
 
 """ Script to request data from the DISCOSweb database. 
@@ -216,26 +212,14 @@ class import_launches:
             # Save to the dictionary list.
             self.launches.append(launch_info)
 
-    def scrape_jsr(self,url):
-        # Function to web scrape data and convert to a pandas DataFrame.
-        response = self.session.get(url)
-        if response.status_code == 200:
-            # Convert the content to a file-like object for pandas
-            tsv_data = StringIO(response.text)
-            # Load the data into a pandas DataFrame
-            df = pd.read_csv(tsv_data, delimiter="\t", dtype=object, low_memory=False)
-        else:
-            raise ImportError(f"Failed to fetch from JSR URL: {url}", response.status_code)
-        return df
-    
     def get_launch_info_jsr(self):
         
         ####################################################################
         # Web scrape the launch data from Jonathan McDowell's JSR website.
         ####################################################################
 
-        df       = self.scrape_jsr("https://planet4589.org/space/gcat/tsv/launch/launch.tsv")
-        df_sites = self.scrape_jsr("https://planet4589.org/space/gcat/tsv/tables/sites.tsv")
+        df       = scrape_jsr("https://planet4589.org/space/gcat/tsv/launch/launch.tsv",self.session)
+        df_sites = scrape_jsr("https://planet4589.org/space/gcat/tsv/tables/sites.tsv",self.session)
 
         jsr_data_dict = {}
         # satcat (main database), auxcat (should be in main but isn't), lcat (suborbital stages/objects). 
@@ -243,7 +227,7 @@ class import_launches:
         files = ["satcat","auxcat","lcat","rcat","ecat","ftocat"]
         for file in files:
             url = "https://planet4589.org/space/gcat/tsv/cat/" + file + ".tsv"
-            catalog = self.scrape_jsr(url)
+            catalog = scrape_jsr(url,self.session)
             catalog = catalog[catalog["Type"].str[0].isin(["P","C","S","X","Z"])] # P = Payload, C = Component, S = Suborbital payload, X = Catalog entry that has been deleted, Z = Spurious catalog entry.
             catalog = catalog[catalog["Name"].str.lower().str.contains("starlink|oneweb|yinhe|lynk|e-space|protosat-1|kuiper|tranche|ronghe|digui|hulianwang|qianfan", na=False)]
             jsr_data_dict[file] = catalog
@@ -413,6 +397,9 @@ class import_launches:
                     name = row["LV_Type"].replace("Chang Zheng","Long March (CZ)")
                 else:
                     name = row["LV_Type"]
+
+                if "Proton-M" in name and datetime.strptime(datestr, "%Y%m%d") >= datetime(2007,7,7):
+                    variant = "Enhanced"
 
                 launches.append({
                     "COSPAR_ID":              row["#Launch_Tag"].strip(),
@@ -677,8 +664,8 @@ class import_launches:
     def get_rocket_info(self,source):
         
         self.unique_rocket_list,vehicle_ids = [], []
-        #with xr.open_dataset(f'./databases/launch_activity_data_{self.start_year}-{self.final_year}_{source}.nc', decode_times=False) as ds:
-        with xr.open_dataset(f'./databases/launch_activity_data_{self.start_year}-{self.final_year}.nc', decode_times=False) as ds:
+        with xr.open_dataset(f'./databases/launch_activity_data_{self.start_year}-{self.final_year}_{source}.nc', decode_times=False) as ds:
+        #with xr.open_dataset(f'./databases/launch_activity_data_{self.start_year}-{self.final_year}.nc', decode_times=False) as ds:
             vehicle_names = ds['Rocket_Name'].values
             vehicle_variants = ds['Rocket_Variant'].values
             if source == "dw":
@@ -707,9 +694,9 @@ class import_launches:
 
         df_vehicles, df_stages, df_engines = pd.DataFrame(), pd.DataFrame(), pd.DataFrame()
         if source == "jsr":
-            df_vehicles = self.scrape_jsr("https://planet4589.org/space/gcat/tsv/tables/lvs.tsv") 
-            df_stages   = self.scrape_jsr("https://planet4589.org/space/gcat/tsv/tables/stages.tsv")
-            df_engines  = self.scrape_jsr("https://planet4589.org/space/gcat/tsv/tables/engines.tsv")
+            df_vehicles = scrape_jsr("https://planet4589.org/space/gcat/tsv/tables/lvs.tsv",self.session) 
+            df_stages   = scrape_jsr("https://planet4589.org/space/gcat/tsv/tables/stages.tsv",self.session)
+            df_engines  = scrape_jsr("https://planet4589.org/space/gcat/tsv/tables/engines.tsv",self.session)
 
         #Loop over all rockets, and pull the information for each.
         for i, (name, variant) in enumerate(unique_vehicle_names):
@@ -721,7 +708,7 @@ class import_launches:
                 "Fairing Mass":            0,
             }
 
-            for j in range(0,5):
+            for j in range(0,6):
                 temp_dict.update({
                     f"Stage{j} Fuel Type":       "",
                     f"Stage{j} Propellant Mass": 0,
@@ -782,11 +769,13 @@ class import_launches:
 
                     # Skip air-launched first stages - these are aircraft.
                     if df_stage["Stage_Family"].values[0].strip() == "Air":
+                        print("Skipping air-launched stage for",name,variant,stage_number,"-",row["Stage_Name"])
                         continue
 
-                    if int(stage_number) > 4: 
+                    if int(stage_number) > 5: 
                         print("Too many stages for",name,variant,stage_number,"-",row["Stage_Name"])
                         pass
+                    
                     if int(stage_number) < 0:
                         if name == "H-II" and launch_variant == "(2S)":
                             continue # This rocket has two boosters but for some reason its duplicated in JSR.
@@ -810,10 +799,15 @@ class import_launches:
                         if launch_mass != None:
                             launch_mass = launch_mass * temp_dict["Booster Number"]
                     
-                    if dry_mass is None:
-                        print(f"Missing dry mass for Rocket: {name,variant}, Stage: {stage_number} - {row['Stage_Name']}")
-                    if launch_mass is None:
-                        print(f"Missing launch mass for Rocket: {name,variant}, Stage: {stage_number} - {row['Stage_Name']}")
+                    # These are fixed later in update_mass_info, so suppress warnings here.
+                    if name not in ["Diamant A","Diamant B","Diamant BP4","Electron","Kuaizhou","Kuaizhou-1A","Lambda 4S","Juno II",
+                                    "Jupiter C","Chang Zheng 11","Chang Zheng 2C/YZ-1S","Chang Zheng 2B/YZ-3","Chang Zheng 3B/YZ-1",
+                                    "Chang Zheng 3C/YZ-1","Chang Zheng 2D/YZ-3","Chang Zheng 5/YZ-2","Chang Zheng 6","Chang Zheng 7/YZ-1A",
+                                    "Minotaur-C 3210","Safir","Shuang Quxian 1","Simorgh","Strela","Taurus 3110","Taurus 3210"]: 
+                        if not dry_mass:
+                            print(f"Missing dry mass for Rocket: {name,variant}, Stage: {stage_number} - {row['Stage_Name']}")
+                        if not launch_mass:
+                            print(f"Missing launch mass for Rocket: {name,variant}, Stage: {stage_number} - {row['Stage_Name']}")
 
                     temp_dict[f"Stage{stage_number} Stage Mass"] = dry_mass
                     if dry_mass is not None and launch_mass is not None:
@@ -888,7 +882,7 @@ class import_launches:
         }
 
         # Add stages dynamically
-        for stage in range(0, 5):  # Stage1 to Stage4
+        for stage in range(0, 6):  # Stage1 to Stage5
             fields.update({
                 f"Stage{stage}_PropMass":  (f"Stage{stage} Propellant Mass", "kg"),
                 f"Stage{stage}_Fuel_Type": (f"Stage{stage} Fuel Type", None),

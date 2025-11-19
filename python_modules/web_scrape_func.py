@@ -2,6 +2,9 @@ import requests
 import numpy as np
 import time
 from pathlib import Path
+from io import StringIO
+import pandas as pd
+
 path = Path(__file__).parent.absolute()
 
 def server_request(user_params,url_mod):
@@ -52,4 +55,16 @@ def response_error_handler(response,message):
         print("Client Error")
     elif response.status_code == 429:
         wait_time=(int(response.headers["X-Ratelimit-Reset"])-int(time.time()))+1
-        wait_function(message,wait_time)
+        wait_function(message,wait_time)#
+
+def scrape_jsr(url,session):
+    # Function to web scrape data and convert to a pandas DataFrame.
+    response = session.get(url)
+    if response.status_code == 200:
+        # Convert the content to a file-like object for pandas
+        tsv_data = StringIO(response.text)
+        # Load the data into a pandas DataFrame
+        df = pd.read_csv(tsv_data, delimiter="\t", dtype=object, low_memory=False)
+    else:
+        raise ImportError(f"Failed to fetch from JSR URL: {url}", response.status_code)
+    return df
