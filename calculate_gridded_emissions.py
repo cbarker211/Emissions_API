@@ -143,7 +143,7 @@ class RocketData:
         
             # Extract variables:
             self.rocket_name         = vehicledata.variables['Rocket_Name'][:]
-            self.rocket_variant = vehicledata.variables['Rocket_Variant'][:]
+            self.rocket_variant      = vehicledata.variables['Rocket_Variant'][:]
             self.booster_prop_mass   = vehicledata.variables['Stage0_PropMass'][:]
             self.booster_prop_type   = vehicledata.variables['Stage0_Fuel_Type'][:]
             self.stage1_prop_mass    = vehicledata.variables['Stage1_PropMass'][:]
@@ -192,7 +192,14 @@ class OutputEmis:
         self.total_landing_prop = 0
         self.included_prop = 0
         self.model_alt = MODEL_ALT
-        self.rocket_index_map = {r: i for i, r in enumerate(rocket_data.rocket_name)}
+        
+        rocket_pairs = zip(rocket_data.rocket_name, rocket_data.rocket_variant)
+        
+        self.rocket_index_map = {
+            (name, variant): i
+            for i, (name, variant) in enumerate(rocket_pairs)
+        }
+        
         events_data = {}
         self.csv_count, self.csv_count_2 = 0, 0
 
@@ -357,6 +364,7 @@ class OutputEmis:
                                    'launch',
                                    rocket_data.launch_id[l_ind],
                                    rocket_data.launch_rocket[l_ind],
+                                   rocket_data.launch_variant[l_ind],
                                    rocket_data.launch_smc[l_ind],
                                    '',
                                    rocket_data.launch_time[l_ind],
@@ -376,6 +384,7 @@ class OutputEmis:
                                    'reentry',
                                    rocket_data.reentry_id[r_ind],
                                    rocket_data.reentry_name[r_ind],
+                                   "",
                                    rocket_data.reentry_smc[r_ind],
                                    rocket_data.reentry_category[r_ind],
                                    rocket_data.reentry_time[r_ind],
@@ -711,7 +720,7 @@ class OutputEmis:
         
         return total_vertical_propellant        
                   
-    def grid_emis(self,index,lon,lat,hour,emis_type,event_id,name,smc,category,time,location, burnup):
+    def grid_emis(self,index,lon,lat,hour,emis_type,event_id,name, variant, smc,category,time,location, burnup):
         """Grid the data onto the GEOS-Chem horizontal and vertical grid"""
         
         daily_info = []                
@@ -775,11 +784,12 @@ class OutputEmis:
                 ############################################
                 # Check the rocket type 
                 ############################################
-                
-                if name[w] in self.rocket_index_map:
-                    valid_index = self.rocket_index_map[name[w]]
+
+                key = (name[w], variant[w])
+                if key in self.rocket_index_map:
+                    valid_index = self.rocket_index_map[key]
                 else:
-                    raise IndexError(f"No propellant mass found for {name[w]}")
+                    raise IndexError(f"No propellant mass found for {key}")
                     
                 launch_details = {
                     "date": f"{self.year}-{self.strmon}-{self.strday}",

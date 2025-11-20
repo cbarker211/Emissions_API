@@ -101,7 +101,7 @@ def update_mass_info(temp_dict,name,variant):
         #   - https://web.archive.org/web/20220406013818/http://www.spacelaunchreport.com/atlas5.html   2260 kg (EPF)                                    
                 
         temp_dict[f"Booster Number"] = name[9]
-        if name[-5:] in ["v2020","v2021"] or ("G" in variant): 
+        if "G" in variant: 
             temp_dict[f"Stage0 Propellant Mass"]   = 44200 * int(temp_dict[f"Booster Number"]) # Manual for GEM63
             temp_dict[f"Stage0 Stage Mass"]        = 5100 * int(temp_dict[f"Booster Number"])  # Manual for GEM63
         else:
@@ -112,7 +112,7 @@ def update_mass_info(temp_dict,name,variant):
         temp_dict[f"Stage2 Propellant Mass"]    = 20800 # SLR for RL-10C-1
 
         # But the newer RL-10C-1-1A engine has a slightly lower dry mass.
-        if name[-5:] in ["v2021"]: 
+        if "1" in variant: 
             temp_dict[f"Stage2 Stage Mass"] = 2028  # Manual for RL-10C-1-1A
         else:
             temp_dict[f"Stage2 Stage Mass"] = 2030  # SLR for RL-10C-1
@@ -127,7 +127,7 @@ def update_mass_info(temp_dict,name,variant):
             temp_dict[f"Fairing Mass"]      = 3524   # https://www.ulalaunch.com/docs/default-source/rockets/atlasvusersguide2010a.pdf?sfvrsn=f84bb59e_2 
         # The N Series, no fairing and uses DEC not SEC. No info so using DISCOSweb for stage masses.
         else:
-            temp_dict[f"Stage2 Propellant Mass"] = 20830 # DW wet-dry, same as SEC.
+            temp_dict[f"Stage2 Propellant Mass"] = 20800 # DW wet-dry, same as SEC.
             
     if name in ["Antares 230","Antares 230+"]:
         
@@ -261,8 +261,10 @@ def update_mass_info(temp_dict,name,variant):
         temp_dict[f"Stage1 Propellant Mass"] = 9250             # Using value from SLR/DISCOSweb(wet/dry)/Sp101
         temp_dict[f"Stage2 Propellant Mass"] = (2050+2150) / 2  # SLR/Sp101
         temp_dict[f"Stage3 Propellant Mass"] = 245              # Using value from DISCOSweb(wet/dry)
-        temp_dict[f"Stage3 Stage Mass"]      = 40               # https://www.rocketlabusa.com/assets/Uploads/Electron-Payload-User-Guide-7.0.pdf 
-        temp_dict[f"Fairing Mass"]           = 44               # https://www.rocketlabusa.com/assets/Uploads/Electron-Payload-User-Guide-7.0.pdf 
+        temp_dict[f"Stage1 Stage Mass"]      = 950
+        temp_dict[f"Stage2 Stage Mass"]      = 250
+        temp_dict[f"Stage3 Stage Mass"]      = 40               # https://rocketlabcorp.com/assets/Electron-Payload-User-Guide-7.0-v6.pdf 
+        temp_dict[f"Fairing Mass"]           = 44               # https://rocketlabcorp.com/assets/Electron-Payload-User-Guide-7.0-v6.pdf
       
     if name == "Epsilon-2 CLPS":
         # Manual: https://global.jaxa.jp/projects/rockets/epsilon/pdf/EpsilonUsersManual_e.pdf
@@ -769,7 +771,7 @@ def update_mass_info(temp_dict,name,variant):
         # It features the same first stage and side boosters as the original but includes a newly designed 
         # 3.35-meter-diameter hydrogen-oxygen second stage, allowing a wider, 5.2-meter-diameter payload fairing.      
 
-    if name in ["Long March (CZ) 11"]:
+    if name == "Long March (CZ) 11":
         # Long March (CZ) 11.
         # Ryan22 approximated the propellant masses using the masses from the Vega rocket.
         # Fourth Stage is Solid (Wiki, GSP, CSR/NB) or Liquid (SLR)?

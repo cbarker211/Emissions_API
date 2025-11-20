@@ -183,30 +183,33 @@ class import_launches:
             # Get the rocket info.
             doc = self.server_loop(f'/launches/{launch["id"]}/vehicle',{},message)
             if doc:
-                print(launch_info["COSPAR_ID"],doc['data']["attributes"]["name"],(doc['data']["attributes"]["name"] == "Shavit"),(launch_date > datetime(2007,1,1)))
-                if doc['data']["attributes"]["name"] == "PSLV":
-                    rocket_name = "PSLV-CA"
-                elif (doc['data']["attributes"]["name"] == "Shavit") and (launch_date > datetime(2007,1,1)):
+                name = doc["data"]["attributes"]["name"]
+                rocket_name = name # Default rocket name.
+                rocket_variant = "-"
+
+                rocket_name_map = {
+                    "PSLV": "PSLV-CA",
+                }
+
+                if name in rocket_name_map:
+                    rocket_name = rocket_name_map[name]
+                elif (name == "Shavit") and (launch_date > datetime(2007,6,10)):
                     rocket_name = "Shavit 2"
-                else:
-                    rocket_name = doc['data']["attributes"]["name"]
-                
-                launch_info["Rocket_Name"] = rocket_name
-                launch_info["Rocket_Variant"] = "-"
-
-                # Sometimes the rocket has been upgraded, so we need to specify which version was used.
-                # TODO: Need to check this doesn't mess things up pre-2020.
-                if rocket_name.startswith("Atlas"):
-                    if launch_date < datetime(2020,11,13):
-                        launch_info["Rocket_Name"] = rocket_name
-                    elif launch_info['COSPAR_ID'] in ["2021-042","2022-092"]:
-                        launch_info["Rocket_Name"] = rocket_name + " v2021"
+                elif (name.startswith("Proton-M")) and (launch_date >= datetime(2007,7,7)):
+                    rocket_variant = "Enhanced"
+                elif (name == "Zhuque-2") and (launch_date > datetime(2024,1,1)):
+                    rocket_name = "Zhuque-2E"
+                elif name.startswith("Atlas V"):
+                    if launch_date < datetime(2020,11,13) or name in ["Atlas V 401","Atlas V 501","Atlas V N22"] or launch_info['COSPAR_ID'] == "2021-042":
+                        pass
                     else:
-                        launch_info["Rocket_Name"] = rocket_name + " v2020"
-                elif rocket_name.startswith("Zhuque-2"):
-                    if launch_date > datetime(2024,1,1):
-                        launch_info["Rocket_Name"] = rocket_name + "E"
+                        rocket_variant = "G"
 
+                    if launch_info['COSPAR_ID'] in ["2021-042","2022-092","2022-123"]:
+                        rocket_variant = rocket_variant.replace("-","") + "1"
+                
+                launch_info["Rocket_Name"]    = rocket_name
+                launch_info["Rocket_Variant"] = rocket_variant
                 launch_info["DISCOSweb_Rocket_ID"] = int(doc["data"]["id"])
 
             # Save to the dictionary list.
@@ -461,19 +464,18 @@ class import_launches:
         stage_number = ""
         # Sometimes the stages are not in the right order on DISCOSweb, so we need to manually rearrange.
         if name in ["Angara A5", "Angara A5 Persei", "Angara A5 Orion", "Ariane 5ECA", "Ariane 62", 
-                                           "Atlas V N22 v2020", "Atlas V 401 v2020", "Atlas V 411", "Atlas V 421 v2021",
-                                           "Atlas V 511 v2020", "Atlas V 531 v2020", 
-                                           "Atlas V 541", "Atlas V 541 v2020", "Atlas V 551", "Atlas V 551 v2020",
-                                           "Delta 4H", "Epsilon-2 CLPS", "H-IIA 202", "H-IIA 204", "H-IIB", "H-III 22", "GSLV Mk II", "GSLV Mk III",
-                                           "PSLV", "PSLV-DL", "PSLV-XL", "PSLV-CA", "Space Launch System - Block 1 Crew", "Falcon Heavy",
-                                           "Long March (CZ) 11", "Long March (CZ) 2F", "Long March (CZ) 3B","Long March (CZ) 3B/YZ-1",
-                                           "Long March (CZ) 3C", "Long March (CZ) 5", "Long March (CZ) 5B", "Long March (CZ) 5/YZ-2", 
-                                           "Long March (CZ) 6", "Long March (CZ) 6A", "Long March (CZ) 7", "Long March (CZ) 7A", "Long March (CZ) 8",
-                                           "Long March (CZ) 8A",
-                                           "Minotaur 1", "Pegasus XL", "Vega C",
-                                           "Soyuz-2-1A", "Soyuz-2-1A Fregat-M", "Soyuz-2-1B Fregat", "Soyuz-2-1B Fregat-M", "Soyuz-ST-A Fregat-M",
-                                           "Soyuz-2-1A Fregat","Soyuz-2-1B","Soyuz-2-1V Volga","Soyuz-ST-B Fregat-MT",
-                                           "NK Kerolox LV","Qaem-100", "Shavit 2"]:
+                    "Atlas V N22", "Atlas V 401", "Atlas V 411", "Atlas V 421",
+                    "Atlas V 511", "Atlas V 531", "Atlas V 541", "Atlas V 551",
+                    "Delta 4H", "Epsilon-2 CLPS", "H-IIA 202", "H-IIA 204", "H-IIB", "H-III 22", "GSLV Mk II", "GSLV Mk III",
+                    "PSLV", "PSLV-DL", "PSLV-XL", "PSLV-CA", "Space Launch System - Block 1 Crew", "Falcon Heavy",
+                    "Long March (CZ) 11", "Long March (CZ) 2F", "Long March (CZ) 3B","Long March (CZ) 3B/YZ-1",
+                    "Long March (CZ) 3C", "Long March (CZ) 5", "Long March (CZ) 5B", "Long March (CZ) 5/YZ-2", 
+                    "Long March (CZ) 6", "Long March (CZ) 6A", "Long March (CZ) 7", "Long March (CZ) 7A",
+                    "Long March (CZ) 8", "Long March (CZ) 8A",
+                    "Minotaur 1", "Pegasus XL", "Vega C",
+                    "Soyuz-2-1A", "Soyuz-2-1A Fregat-M", "Soyuz-2-1B Fregat", "Soyuz-2-1B Fregat-M", "Soyuz-ST-A Fregat-M",
+                    "Soyuz-2-1A Fregat","Soyuz-2-1B","Soyuz-2-1V Volga","Soyuz-ST-B Fregat-MT",
+                    "NK Kerolox LV","Qaem-100", "Shavit 2"]:
             
             stage_name = stage["attributes"]["name"]
 
@@ -664,8 +666,8 @@ class import_launches:
     def get_rocket_info(self,source):
         
         self.unique_rocket_list,vehicle_ids = [], []
-        with xr.open_dataset(f'./databases/launch_activity_data_{self.start_year}-{self.final_year}_{source}.nc', decode_times=False) as ds:
-        #with xr.open_dataset(f'./databases/launch_activity_data_{self.start_year}-{self.final_year}.nc', decode_times=False) as ds:
+        #with xr.open_dataset(f'./databases/launch_activity_data_{self.start_year}-{self.final_year}_{source}.nc', decode_times=False) as ds:
+        with xr.open_dataset(f'./databases/launch_activity_data_{self.start_year}-{self.final_year}.nc', decode_times=False) as ds:
             vehicle_names = ds['Rocket_Name'].values
             vehicle_variants = ds['Rocket_Variant'].values
             if source == "dw":
@@ -681,16 +683,14 @@ class import_launches:
         unique_vehicle_names = np.unique(vehicles_combined, axis=0)
 
         # Map rocket names to proxy names
-        proxy_map = {"dw": {"Astra Rocket 3":     "Electron",
-                            "Ceres-1":            "Shavit 2",
-                            "Long March (CZ) 11": "Minotaur 1",
-                            "Jielong-3":          "Epsilon-2 CLPS",
-                            "Zhongke 1A":         "Vega C",
-                            "Long March (CZ) 6A": "Long March (CZ) 7A",
-                            "Kuaizhou-11":        "Long March (CZ) 6",
-                            "Zhuque-2":           "Antares 230",
-                            },
-                     "jsr": {}} # TODO: Add JSR proxy mappings.
+        proxy_map = {"Astra Rocket 3":     "Electron",
+                     "Ceres-1":            "Shavit 2",
+                     "Long March (CZ) 11": "Minotaur 1",
+                     "Jielong-3":          "Epsilon-2 CLPS",
+                     "Zhongke 1A":         "Vega C",
+                     "Long March (CZ) 6A": "Long March (CZ) 7A",
+                     "Kuaizhou-11":        "Long March (CZ) 6",
+                     "Zhuque-2":           "Antares 230"}
 
         df_vehicles, df_stages, df_engines = pd.DataFrame(), pd.DataFrame(), pd.DataFrame()
         if source == "jsr":
@@ -703,7 +703,7 @@ class import_launches:
 
             #Set up the arrays to hold the rocket info.
             temp_dict = {
-                "proxy":                   proxy_map[source].get(name, ""),
+                "proxy":                   proxy_map.get(name, ""),
                 "Booster Number":          0,
                 "Fairing Mass":            0,
             }
@@ -718,7 +718,7 @@ class import_launches:
 
             if source == "dw":
                 temp_dict["name"] = name
-                temp_dict["variant"] = ""
+                temp_dict["variant"] = variant
                 vehicle_index = np.where(vehicle_names == name)[0][0]
                 vehicle_id = vehicle_ids[vehicle_index]    
                 # Get the propellant mass info.
