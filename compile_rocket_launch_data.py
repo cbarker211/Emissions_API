@@ -193,6 +193,13 @@ class import_launches:
 
                 if name in rocket_name_map:
                     rocket_name = rocket_name_map[name]
+                elif "Volga" in name:
+                    rocket_name = rocket_name.replace(" Volga","")
+                    rocket_variant = "Volga"
+                elif "Fregat" in name:
+                    var_ind = rocket_name.index("Fregat")
+                    rocket_name = name[:var_ind].strip()
+                    rocket_variant = name[var_ind:].strip()
                 elif (name == "Shavit") and (launch_date > datetime(2007,6,10)):
                     rocket_name = "Shavit 2"
                 elif (name.startswith("Proton-M")) and (launch_date >= datetime(2007,7,7)):
@@ -284,6 +291,7 @@ class import_launches:
         df = df[~df["LaunchCode"].str.startswith("M")]  # No military launches. 
         df = df[~df["LaunchCode"].str.startswith("H")]  # No high-altitude sounding rockets.
         df = df[~df["LV_Type"].str.contains("Aerobee|R-UNK|Trailblazer", na=False)] # Skip sounding rockets.
+        df = df[~df["LV_Type"].str.contains("NOTS EV1", na=False)] # These were failed launches from an expendable launch system / anti-satellite weapon.
         df = df[~df["#Launch_Tag"].str.contains("2013-U01", na=False)] # Skip sounding rockets.
 
         df = df.reset_index()
@@ -452,7 +460,7 @@ class import_launches:
         ds['Time(UTC)'].attrs['units'] = "UTC"
              
         #Save to file and close the dataset     
-        ds.to_netcdf(f'./databases/launch_activity_data_{self.start_year}-{self.final_year}_{source}.nc')
+        ds.to_netcdf(f'./databases/launch_activity_data_{self.start_year}-{self.final_year}.nc')
         ds.close()
         
     def handle_stage_info(self, count, stage, i, temp_dict, unique_vehicle_name_list,name):
@@ -473,8 +481,7 @@ class import_launches:
                     "Long March (CZ) 6", "Long March (CZ) 6A", "Long March (CZ) 7", "Long March (CZ) 7A",
                     "Long March (CZ) 8", "Long March (CZ) 8A",
                     "Minotaur 1", "Pegasus XL", "Vega C",
-                    "Soyuz-2-1A", "Soyuz-2-1A Fregat-M", "Soyuz-2-1B Fregat", "Soyuz-2-1B Fregat-M", "Soyuz-ST-A Fregat-M",
-                    "Soyuz-2-1A Fregat","Soyuz-2-1B","Soyuz-2-1V Volga","Soyuz-ST-B Fregat-MT",
+                    "Soyuz-2-1A", "Soyuz-2-1B","Soyuz-2-1V", "Soyuz-ST-A","Soyuz-ST-B",
                     "NK Kerolox LV","Qaem-100", "Shavit 2"]:
             
             stage_name = stage["attributes"]["name"]
@@ -690,6 +697,7 @@ class import_launches:
                      "Zhongke 1A":         "Vega C",
                      "Long March (CZ) 6A": "Long March (CZ) 7A",
                      "Kuaizhou-11":        "Long March (CZ) 6",
+                     "Zhuque-1":           "Super Strypi",
                      "Zhuque-2":           "Antares 230"}
 
         df_vehicles, df_stages, df_engines = pd.DataFrame(), pd.DataFrame(), pd.DataFrame()
@@ -719,7 +727,7 @@ class import_launches:
             if source == "dw":
                 temp_dict["name"] = name
                 temp_dict["variant"] = variant
-                vehicle_index = np.where(vehicle_names == name)[0][0]
+                vehicle_index = np.where((vehicle_names == name) & (vehicle_variants == variant))[0][0]
                 vehicle_id = vehicle_ids[vehicle_index]    
                 # Get the propellant mass info.
                 doc = self.server_loop(f'/launch-vehicles/{vehicle_id}/stages',{},f"On rocket {i+1} of {len(unique_vehicle_names)}.")
@@ -733,10 +741,13 @@ class import_launches:
                     name = name.replace("Long March (CZ)","Chang Zheng")
 
                 # First find the vehicle and its stages in the vehicles databases.
-                launch_vehicle, launch_variant = name, variant
-                temp_dict["variant"] = launch_variant
+                temp_dict["variant"] = variant
 
-                df_vehicle = df_vehicles[(df_vehicles["#LV_Name"] == name) & (df_vehicles["LV_Variant"] == launch_variant)].reset_index()
+                # This is because Proton-M Enhanced is only listed under the name Proton-M in JSR.
+                if "Proton-M" in name and variant == "Enhanced":
+                    df_vehicle = df_vehicles[(df_vehicles["#LV_Name"] == name)].reset_index()
+                else:
+                    df_vehicle = df_vehicles[(df_vehicles["#LV_Name"] == name) & (df_vehicles["LV_Variant"] == variant)].reset_index()
 
                 # Then loop over all stages to extract mass information. 
                 for i, row in df_vehicle.iterrows():
@@ -745,21 +756,25 @@ class import_launches:
                     stage_number = row['Stage_No'].strip()
                     if stage_number in ["F","P"]:
                         continue
+                    if "Soyuz" in name and name != "Soyuz-2-1V":
+                        stage_number = int(stage_number) - 1
+                    else:
+                        stage_number = int(stage_number)
 
                     # Skip adapters, ullage motors, kick motors (Start, Proton-M/DM-03 and Molniya 8K78).
                     if row["Stage_Name"] in ["Perekhodnik","SOZ","BOZ","DS"]:
                         continue
-                    if "Molniya 8K78" in name and stage_number == "5":
-                        stage_number = "4"
-                    if (name.startswith("Proton-K/") or name.startswith("Proton-M/D") or name.startswith("UR-500K/")) and stage_number == "5":
-                        stage_number = "4"
-
+                    if "Molniya 8K78" in name and stage_number == 5:
+                        stage_number = 4
+                    if (name.startswith("Proton-K/") or name.startswith("Proton-M/D") or name.startswith("UR-500K/")) and stage_number == 5:
+                        stage_number = 4
+                    
                     # Fix Saturn V.
                     if name.startswith("Saturn V"):
-                        if stage_number == "2":
+                        if stage_number == 2:
                             continue # Skip the interstage.
-                        if stage_number in ["3","4"]:
-                            stage_number = str(int(stage_number)-1)
+                        if stage_number in [3,4]:
+                            stage_number = stage_number-1
                     
                     # Find the stage in the stages database.
                     df_stage = df_stages[df_stages["#Stage_Name"] == row["Stage_Name"]]
@@ -769,15 +784,15 @@ class import_launches:
 
                     # Skip air-launched first stages - these are aircraft.
                     if df_stage["Stage_Family"].values[0].strip() == "Air":
-                        print("Skipping air-launched stage for",name,variant,stage_number,"-",row["Stage_Name"])
+                        print("Air-launched - ",name,variant,stage_number,"-",row["Stage_Name"])
                         continue
 
-                    if int(stage_number) > 5: 
+                    if stage_number > 5: 
                         print("Too many stages for",name,variant,stage_number,"-",row["Stage_Name"])
                         pass
                     
-                    if int(stage_number) < 0:
-                        if name == "H-II" and launch_variant == "(2S)":
+                    if stage_number < 0:
+                        if name == "H-II" and variant == "(2S)":
                             continue # This rocket has two boosters but for some reason its duplicated in JSR.
                         print("Extra booster found for",name,variant,stage_number,"-",row["Stage_Name"])
                         pass
@@ -792,18 +807,25 @@ class import_launches:
                     launch_mass = df_stage["Launch_Mass"].values[0]
                     dry_mass    = None if dry_mass    == '-' or pd.isna(dry_mass)    else float(dry_mass)
                     launch_mass = None if launch_mass == '-' or pd.isna(launch_mass) else float(launch_mass)*1000
-                    if stage_number == "0":
+                    if stage_number == 0:
                         temp_dict["Booster Number"] = int(row["Multiplicity"])
                         if dry_mass != None:
                             dry_mass    = dry_mass * temp_dict["Booster Number"]
                         if launch_mass != None:
                             launch_mass = launch_mass * temp_dict["Booster Number"]
                     
+                    # Going to use a constant mass ratio when we have the launch mass but not the dry.
+                    # For the MG-18 stage (Thor MG-18, Scout X-2M, Scout X-3M), this is within the range of other scout 4th stages (10-33).
+                    # https://www.planet4589.org/space/book/lv/engines/kick/WIDELYUSEDMOTORS.html 'high-mass ratio'
+                    # TODO: Should ask Martin Ross and Jonathan McDowell about these, are these values reasonable? Different values for each stage?
+                    if launch_mass is not None and dry_mass is None:
+                        dry_mass = launch_mass / 10
+                    
                     # These are fixed later in update_mass_info, so suppress warnings here.
                     if name not in ["Diamant A","Diamant B","Diamant BP4","Electron","Kuaizhou","Kuaizhou-1A","Lambda 4S","Juno II",
                                     "Jupiter C","Chang Zheng 11","Chang Zheng 2C/YZ-1S","Chang Zheng 2B/YZ-3","Chang Zheng 3B/YZ-1",
                                     "Chang Zheng 3C/YZ-1","Chang Zheng 2D/YZ-3","Chang Zheng 5/YZ-2","Chang Zheng 6","Chang Zheng 7/YZ-1A",
-                                    "Minotaur-C 3210","Safir","Shuang Quxian 1","Simorgh","Strela","Taurus 3110","Taurus 3210"]: 
+                                    "Minotaur-C 3210","Safir","Shuang Quxian 1","Simorgh","Strela","Taurus 3110","Taurus 3210", "Scout F-1"]:
                         if not dry_mass:
                             print(f"Missing dry mass for Rocket: {name,variant}, Stage: {stage_number} - {row['Stage_Name']}")
                         if not launch_mass:
@@ -910,7 +932,7 @@ class import_launches:
         
         #Save to file and close the DataSet     
         #ds.to_netcdf(f'./databases/rocket_attributes_{self.start_year}-{self.final_year}_noupdate.nc')
-        ds.to_netcdf(f'./databases/rocket_attributes_{self.start_year}-{self.final_year}_{source}.nc')
+        ds.to_netcdf(f'./databases/rocket_attributes_{self.start_year}-{self.final_year}.nc')
         ds.close()
         
     def save_discosweb_reentries(self):
