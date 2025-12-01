@@ -119,6 +119,7 @@ class OutputEmis:
         self.stage_alt_dict = stage_alt_dict
         self.total_landing_prop = 0
         self.included_prop = 0
+        self.missing_prop_total = 0
         self.model_alt = MODEL_ALT
         events_data = {}
         self.csv_count, self.csv_count_2 = 0, 0
@@ -135,6 +136,7 @@ class OutputEmis:
         # BC launch, CO launch, CO2 launch, NOx launch, H2O launch, Al2O3 launch, Cl launch, HCl launch, Cl2 launch 0-8
         # NOx reentry, Al2O3 reentry, BC reentry, Cl reentry, HCl reentry 9-13
         self.emission_totals = np.zeros(14)
+        self.missing_emis = np.zeros(14)
         self.prop_consumed = np.zeros((3,len(input_data.dsl)))
         self.total_prop_consumed = np.zeros((len(input_data.h2o_pei),3))
         self.launch_count = 0
@@ -329,19 +331,6 @@ class OutputEmis:
             with np.errstate(divide='ignore', invalid='ignore'):
                 if np.abs(diff_out[i_emis]-final_emis[i_emis])/final_emis[i_emis]*100.0 > 0.1:
                     raise RuntimeError(f"Error with {spec_names[i_emis]} emissions - {np.abs(diff_out[i_emis]-final_emis[i_emis])/final_emis[i_emis]*100.0:.2f}%.") 
-        
-        for date in events_data:
-            for value in events_data[date]:
-                if len(events_data[date][value]) > 0:
-                    for event in events_data[date][value]:
-                        for key in event:
-                            if type(event[key]) not in [str, np.float64, bool, int, np.str_, float]:
-                                if type(event[key]) == dict:
-                                    for species in event[key]:
-                                        if type(event[key][species]) not in [np.float64, float]:
-                                            print(type(event[key][species]),species)
-                                else:
-                                    print(type(event[key]), event, key)
 
         if dataset == 3:
             filename = f'./out_files/{(year // 10) * 10}/data_{self.year}.json'    
@@ -397,26 +386,29 @@ class OutputEmis:
         stage_alt_meco = stage_alts['MECO']
         stage_alt_sei  = stage_alts['SEI1']
         stage_alt_seco = stage_alts['SECO']
-        
-        if np.isnan(stage_alt_meco) and np.isnan(stage_alt_sei) and np.isnan(stage_alt_seco):
 
-            stages = (
+        stages = (
                 bool(input_data.dsr["Stage0_Fuel_Type"][roc_ind] != ''),
                 bool(input_data.dsr["Stage1_Fuel_Type"][roc_ind] != ''),
                 bool(input_data.dsr["Stage2_Fuel_Type"][roc_ind] != ''),
                 bool(input_data.dsr["Stage3_Fuel_Type"][roc_ind] != ''),
-                bool(input_data.dsr["Stage4_Fuel_Type"][roc_ind] != '')
+                bool(input_data.dsr["Stage4_Fuel_Type"][roc_ind] != ''),
+                bool(input_data.dsr["Stage5_Fuel_Type"][roc_ind] != '')
             )
+        
+        if np.isnan(stage_alt_meco) and np.isnan(stage_alt_sei) and np.isnan(stage_alt_seco):
 
             config_map = {
-                # booster, s1, s2, s3, s4
-                (True,  True,  False, False, False): 0,
-                (True,  True,  True,  False, False): 0,
-                (True,  True,  True,  True,  False): 1,
-                (True,  True,  True,  True,  True ): 2,
-                (False, True,  True,  False, False): 3,
-                (False, True,  True,  True,  False): 4,
-                (False, True,  True,  True,  True ): 5
+                # booster, s1, s2, s3, s4, s5
+                (True,  True,  False, False, False, False): 0,
+                (True,  True,  True,  False, False, False): 0,
+                (True,  True,  True,  True,  False, False): 1,
+                (True,  True,  True,  True,  True , False): 2,
+                (True,  True,  True,  True,  True , True):  2,
+                (False, True,  True,  False, False, False): 3,
+                (False, True,  True,  True,  False, False): 4,
+                (False, True,  True,  True,  True , False): 5,
+                (False, True,  True,  True,  True , True):  5
             }
             # Look up configuration safely
             rocket_config_type = config_map.get(stages)
@@ -462,19 +454,21 @@ class OutputEmis:
         }  
         # Get altitude, default to 0 if rocket not in dictionary
         fei_alt = fei_alt_dict.get(launch_rocket, 0)
+
+        self.fine_grid_mass_stages = [np.array([]) for _ in range(8)]
         
         ###########
         # Boosters
         ###########
 
-        if input_data.dsr["Stage0_Fuel_Type"][roc_ind] != '':
+        if stages[0]:
             
             self.booster_alt_index = get_alt_index(stage_alt_beco, self.fine_grid_top_alt, self.fine_grid_bot_alt)
 
             if stage_alt_beco * 1e3 > self.fine_grid_top_alt[-1]:
-                self.fine_grid_mass_booster = np.asarray(self.fine_grid_mass)
+                self.fine_grid_mass_stages[0] = np.asarray(self.fine_grid_mass)
             else:
-                self.fine_grid_mass_booster = normalize_mass(self.fine_grid_mass[:self.booster_alt_index].copy(), booster_percent)
+                self.fine_grid_mass_stages[0] = normalize_mass(self.fine_grid_mass[:self.booster_alt_index].copy(), booster_percent)
                          
             if launch_rocket == "Falcon Heavy":
                 self.total_landing_prop += (100.0 - booster_percent) * input_data.dsr["Stage0_PropMass"][roc_ind] / 100.0
@@ -486,14 +480,14 @@ class OutputEmis:
         self.fei_alt_index = np.searchsorted(self.fine_grid_top_alt, fei_alt*1e3)
         self.MECO_alt_index = get_alt_index(stage_alt_meco, self.fine_grid_top_alt, self.fine_grid_bot_alt)
         if stage_alt_meco * 1e3 > self.fine_grid_top_alt[-1]:
-            self.fine_grid_mass_stage1 = self.fine_grid_mass[self.fei_alt_index:].copy()
+            self.fine_grid_mass_stages[1] = self.fine_grid_mass[self.fei_alt_index:].copy()
             if launch_rocket == "GSLV Mk III":
                 fei_mass = np.interp(fei_alt,self.ross_alt_edge, self.ross_cumulative_mass)
                 fei_percent = (self.prop_in_fine_grid - fei_mass) / (100.0 - fei_mass) * 100.0
-                self.fine_grid_mass_stage1 = normalize_mass(self.fine_grid_mass_stage1, fei_percent)
+                self.fine_grid_mass_stages[1] = normalize_mass(self.fine_grid_mass_stages[1], fei_percent)
         else:
             fine_grid_mass_stage1 = self.fine_grid_mass[self.fei_alt_index:self.MECO_alt_index].copy()
-            self.fine_grid_mass_stage1 = normalize_mass(fine_grid_mass_stage1, s1_percent)
+            self.fine_grid_mass_stages[1] = normalize_mass(fine_grid_mass_stage1, s1_percent)
                         
         if launch_rocket == "Falcon Heavy":
             self.total_landing_prop += (100.0 - s1_percent) * input_data.dsr["Stage1_PropMass"][roc_ind] / 100.0
@@ -504,7 +498,7 @@ class OutputEmis:
                                
         # If SEI occurs above the fine grid, then we can ignore the second stage.
         if stage_alt_sei * 1e3 >= self.fine_grid_top_alt[-1]:
-            self.fine_grid_mass_stage2 = np.asarray([0])
+            self.fine_grid_mass_stages[2] = np.asarray([0])
             self.sei_alt_index, self.seco_alt_index = None, None   
         
         # If SEI is within fine grid, we need to differentiate based on SECO.
@@ -519,7 +513,7 @@ class OutputEmis:
                 seco_percent = (self.prop_in_fine_grid - sei_mass) / (100.0 - sei_mass) * 100.0
             else:
                 seco_percent = 100.0
-            self.fine_grid_mass_stage2 = normalize_mass(self.fine_grid_mass[self.sei_alt_index:self.seco_alt_index].copy(), seco_percent)
+            self.fine_grid_mass_stages[2] = normalize_mass(self.fine_grid_mass[self.sei_alt_index:self.seco_alt_index].copy(), seco_percent)
             
         ###########
         # Stage 3
@@ -533,7 +527,7 @@ class OutputEmis:
             # Now interpolate the cumulative mass to optimise what percentage of propellant is within GEOS-Chem.
             tei_mass = np.interp(73.47,self.ross_alt_edge, self.ross_cumulative_mass)
             tei_percent = (self.prop_in_fine_grid - tei_mass) / (100.0 - tei_mass) * 100.0
-            self.fine_grid_mass_stage3 = normalize_mass(self.fine_grid_mass[self.TEI_alt_index:].copy(), tei_percent)
+            self.fine_grid_mass_stages[3] = normalize_mass(self.fine_grid_mass[self.TEI_alt_index:].copy(), tei_percent)
          
         ##################
         # Falcon Reusable
@@ -547,22 +541,32 @@ class OutputEmis:
             # 5.6% are used in the entry burn, over 70-54.7 km.
             self.entry_top = np.searchsorted(self.fine_grid_top_alt, 70000, side='right')
             self.entry_bot = np.searchsorted(self.fine_grid_top_alt, 54700, side='right')
-            self.fine_grid_mass_entry = normalize_mass(self.fine_grid_mass[self.entry_bot:self.entry_top+1].copy(), 5.6)
+            self.fine_grid_mass_stages[6] = normalize_mass(self.fine_grid_mass[self.entry_bot:self.entry_top+1].copy(), 5.6)
             
             # 1.2% are used in the landing burn, over 3.3-0 km.
             self.landing_top = np.searchsorted(self.fine_grid_top_alt, 3300, side='right')
-            self.fine_grid_mass_landing = normalize_mass(self.fine_grid_mass[:self.landing_top+1].copy(), 1.2)
-
-        else:
-            self.fine_grid_mass_landing = 0
-            self.fine_grid_mass_entry = 0
+            self.fine_grid_mass_stages[7] = normalize_mass(self.fine_grid_mass[:self.landing_top+1].copy(), 1.2)
         
-        return stage_alt_beco, stage_alt_meco
+        return stage_alt_beco, stage_alt_meco, stages
     
-    def calc_emis(self,start_ind,stop_ind,pei_index,prop_mass,vertical_profile,time_index, q, p, total_vertical_propellant,stage):
+    def calc_emis(self, start_ind, stop_ind, total_vertical_propellant, stage, launch_tuple):
         '''
         Calculate the emissions over the range of the stag within the fine grid (0-100 km).
         '''
+
+        time_index, q, p, pei_indices, prop_masses, falcon_flag = launch_tuple
+        pei_index = pei_indices[stage]
+        prop_mass = prop_masses[stage]
+        if falcon_flag:
+            if start_ind != None:
+                vertical_profile = self.fine_grid_mass_stages[6]
+            else:
+                vertical_profile = self.fine_grid_mass_stages[7]
+        else:
+            vertical_profile = self.fine_grid_mass_stages[stage]
+
+        if np.sum(1e-2 * vertical_profile) > 1.01:
+            raise ValueError("Error with Stage {stage}. Propellant distribution exceeds unity.")
         
         # Calculate the emission indices for each species.
         ei_bc                 = calculate_bc_ei (self.fine_grid_mid_alt[start_ind:stop_ind]*1e-3, input_data.bc_pei[pei_index])
@@ -578,10 +582,9 @@ class OutputEmis:
         emis_full[start_ind:stop_ind,10] = vertical_profile
 
         # Place the emissions into a larger array covering the whole fine grid (0-100km).
-        vertical_propellant = np.zeros(len(self.mid_alt[:,q,p]))
         selected_alts = []
         # Regrid the vertical_profile to the desired model profile.
-        for i, alt in enumerate(self.mid_alt[:,q,p]):
+        for i in range(len(self.mid_alt[:,q,p])):
             if i == 0:
                 bot_ind = 0
             else:
@@ -618,15 +621,55 @@ class OutputEmis:
         self.emission_totals[7] += np.sum(emis_full[selected_alts[0]:selected_alts[-1]+1,8])   
         self.emission_totals[8] += np.sum(emis_full[selected_alts[0]:selected_alts[-1]+1,9])   
         self.included_prop      += (np.sum(emis_full[selected_alts[0]:selected_alts[-1]+1,10]) * prop_mass * 1e-2)
+
+        if falcon_flag:
+            self.missing_prop[stage] += np.round((np.sum(emis_full[selected_alts[0]:selected_alts[-1]+1,10])),2)
+        else:
+            self.missing_prop[stage] += np.round((100-np.sum(emis_full[selected_alts[0]:selected_alts[-1]+1,10])),2)
         
         return total_vertical_propellant        
-                  
-    def grid_emis(self, df, emis_type):#, index, lon, lat, time, emis_type, event_id, name, variant, smc, category, location, burnup):
+
+    def calc_missing_emis(self, pei_index, prop_mass, percent_included):
+
+        ei_bc = calculate_bc_ei([self.model_alt], input_data.bc_pei[pei_index])
+        ei_co, ei_co2 = calculate_co_ei([self.model_alt], input_data.co_pei[pei_index], input_data.co2_pei[pei_index])
+        ei_sec_nox = calculate_nox_ei([self.model_alt])
+        ei_h2o =  input_data.h2o_pei[pei_index] + input_data.h2_pei[pei_index] * (1.008 * 2 + 16) / (1.008 * 2) 
+        ei_cl, ei_hcl, ei_cl2 = calculate_cl_ei([self.model_alt], input_data.cly_pei[pei_index]) 
+        
+        t_bc_emis = ei_bc * prop_mass * 1e-2 * percent_included
+        t_co_emis = ei_co * prop_mass * 1e-2 * percent_included
+        t_co2_emis = ei_co2 * prop_mass * 1e-2 * percent_included
+        t_launch_nox_emis = ei_sec_nox * prop_mass * 1e-2 * percent_included
+        t_fuel_nox_emis = input_data.nox_pei[pei_index] * prop_mass * 1e-2 * percent_included
+        t_h2o_emis = ei_h2o * prop_mass * 1e-2 * percent_included
+        t_al2o3_emis = input_data.al2o3_pei[pei_index] * prop_mass * 1e-2 * percent_included
+        t_cl_emis = ei_cl * prop_mass * 1e-2 * percent_included
+        t_hcl_emis = ei_hcl * prop_mass * 1e-2 * percent_included
+        t_cl2_emis = ei_cl2 * prop_mass * 1e-2 * percent_included
+        
+        self.missing_prop_total += prop_mass * 1e-2 * percent_included
+        self.missing_emis[0] += np.sum(t_bc_emis) 
+        self.missing_emis[1] += np.sum(t_co_emis)
+        self.missing_emis[2] += np.sum(t_launch_nox_emis)
+        self.missing_emis[2] += np.sum(t_fuel_nox_emis)
+        self.missing_emis[3] += np.sum(t_h2o_emis)
+        self.missing_emis[4] += np.sum(t_al2o3_emis)
+        self.missing_emis[5] += np.sum(t_cl_emis)
+        self.missing_emis[6] += np.sum(t_hcl_emis)
+        self.missing_emis[7] += np.sum(t_cl2_emis)
+        self.missing_emis[8] += np.sum(t_co2_emis)    
+
+    def grid_emis(self, df, emis_type):
         """Grid the data onto the GEOS-Chem horizontal and vertical grid"""
         
         daily_info = []
         #Loop over each launch/reentry.
         for row in df.itertuples():
+            
+            # TODO: Add this back in when re-entires are readded.
+            #if pd.isna(row.COSPAR_ID) or pd.isna(row.Longitude) or pd.isna(row.Latitude):
+            #    raise ValueError(f"{row.COSPAR_ID} {row.Longitude} {row.Latitude}")
 
             # Set up the emission arrays for this launch/reentry.
             self.rocket_data_arrays = {}
@@ -683,7 +726,7 @@ class OutputEmis:
                                                                                     self.ross_alt_edge, self.ross_cumulative_mass)
 
                 ############################################
-                # Check the rocket type 
+                # Check the rocket type and get info.
                 ############################################
 
                 key = (row.Rocket_Name, row.Rocket_Variant)
@@ -705,27 +748,28 @@ class OutputEmis:
                     "location": row.Site,
                 }
                 
-                ############################################################################
+                ############################################
                 # Process the launch event altitudes.
-                ############################################################################
+                ############################################
                 
-                if pd.isna(row.COSPAR_ID) or pd.isna(row.Longitude) or pd.isna(row.Latitude):
-                    raise ValueError(f"Event ID: {row.COSPAR_ID} Latitude: {row.Latitude}, Longitude: {row.Longitude}, Site: {row.Site}")
-                                                    
-                # Next find index of fuel type in primary emissions index data:
-                pei_booster_index  = np.where( input_data.pei_fuel_type == input_data.dsr["Stage0_Fuel_Type"][roc_ind] )[0]
-                pei_stage1_index   = np.where( input_data.pei_fuel_type == input_data.dsr["Stage1_Fuel_Type"][roc_ind] )[0]
-                pei_stage2_index   = np.where( input_data.pei_fuel_type == input_data.dsr["Stage2_Fuel_Type"][roc_ind] )[0]
-                pei_stage3_index   = np.where( input_data.pei_fuel_type == input_data.dsr["Stage3_Fuel_Type"][roc_ind] )[0]
-                
-                stage_alt_beco, stage_alt_meco = self.process_launch_event_altitudes(roc_ind, row.Rocket_Name, row.Rocket_Variant, row.COSPAR_ID)
+                stage_alt_beco, stage_alt_meco, stages = self.process_launch_event_altitudes(roc_ind, row.Rocket_Name, row.Rocket_Variant, row.COSPAR_ID)
+                prop_masses, pei_indices = np.zeros(6), np.full(6, -1, dtype=int)
+                for i, active in enumerate(stages):
+                    if active:
+                        prop_masses[i] = input_data.dsr[f"Stage{i}_PropMass"][roc_ind]
+
+                        idx = np.where(input_data.pei_fuel_type == input_data.dsr[f"Stage{i}_Fuel_Type"][roc_ind])[0]
+                        if len(idx) != 1:
+                            raise RuntimeError(f"Expected one PEI fuel match for Stage {i}, got {idx}") 
+                        pei_indices[i] = idx[0]
                 # TODO: Needs reworking if running for different model ceilings above 80km.
+
+                ############################################
+                # Deal with failed launches.
+                ############################################
+
                 # Most failures are for upper stages, and so can be treated as normal here.
                 # Full information is provided in source_info/failed_launch_info.txt.
-
-                ############################################################################
-                # Deal with failed launches.
-                ############################################################################
                          
                 # Skip launches where the launch failed close to the launch pad, and all failed launches before 2020.
                 if row.COSPAR_ID in ['2020-F04','2021-F04','2023-F02','2024-F01'] or (row.COSPAR_ID[5] == "F" and self.year < 2020):
@@ -742,7 +786,7 @@ class OutputEmis:
                 if row.COSPAR_ID in failed_alt_events:
                     failed_alt = failed_alt_events[row.COSPAR_ID]
                     cutoff_ind = np.searchsorted(self.fine_grid_mid_alt, failed_alt, side='right')
-                    self.fine_grid_mass_stage1[cutoff_ind:] = 0.0 # Zero above the cutoff_ind.
+                    self.fine_grid_mass_stages[1][cutoff_ind:] = 0.0 # Zero above the cutoff_ind.
 
                 # This is where stage 2 never ignited.
                 zero_stage2_events = {
@@ -753,32 +797,32 @@ class OutputEmis:
                     '2024-F02','2024-F04'
                 }
                 if row.COSPAR_ID in zero_stage2_events:
-                    self.fine_grid_mass_stage2 = np.asarray([0])
+                    self.fine_grid_mass_stages[2] = np.asarray([0])
                     self.sei_alt_index = None
                 
                 ##################################################
-                # Sanity Checks for Propellant Mass Distributions
+                # Sanity Checks for Propellant Mass Distributions.
                 ##################################################
 
                 # The propellant consumed should never be bigger than the total propellant.
                 error_lim = 0.001 # Maximum error from rounding / floating point errors.
                 def check_error(stage,cospar,error_lim):
                     with np.errstate(divide='ignore', invalid='ignore'):
-                        per_error = ((self.prop_consumed[stage,self.launch_count] - input_data.dsr[f"Stage{stage}_PropMass"][roc_ind]) / input_data.dsr[f"Stage{stage}_PropMass"][roc_ind] * 100.0)
+                        per_error = ((self.prop_consumed[stage,self.launch_count] - prop_masses[stage]) / prop_masses[stage] * 100.0)
                         if per_error > error_lim:
-                            raise ValueError(f'Error with emissions for stage {stage} of {cospar}. Prop consumed: {self.prop_consumed[stage,self.launch_count]}, Prop mass: {input_data.dsr[f"Stage{stage}_PropMass"][roc_ind]}, Per Error: {per_error}.') 
+                            raise ValueError(f'Error with emissions for stage {stage} of {cospar}. Prop consumed: {self.prop_consumed[stage,self.launch_count]}, Prop mass: {prop_masses[stage]}, Per Error: {per_error}.') 
                  
-                if input_data.dsr["Stage0_Fuel_Type"][roc_ind] != '': # If there are boosters.
-                    self.prop_consumed[0,self.launch_count] = np.sum(self.fine_grid_mass_booster * input_data.dsr["Stage0_PropMass"][roc_ind]  * 1e-2)
-                    if (stage_alt_beco < self.model_alt) and (input_data.dsr["Rocket_Name"][roc_ind] != "Falcon Heavy"): # Suppressed for Falcon Heavy, as this has reusable boosters.
+                if stages[0]: # If there are boosters.
+                    self.prop_consumed[0,self.launch_count] = np.sum(self.fine_grid_mass_stages[0] * prop_masses[0]  * 1e-2)
+                    if (stage_alt_beco < self.model_alt) and (row.Rocket_Name != "Falcon Heavy"): # Suppressed for Falcon Heavy, as this has reusable boosters.
                         check_error(0,row.COSPAR_ID,error_lim)
                         
-                self.prop_consumed[1,self.launch_count]  = np.sum(self.fine_grid_mass_stage1 * input_data.dsr["Stage1_PropMass"][roc_ind] * 1e-2)
-                self.prop_consumed[2,self.launch_count]  = np.sum(self.fine_grid_mass_stage2 * input_data.dsr["Stage2_PropMass"][roc_ind] * 1e-2)
+                self.prop_consumed[1,self.launch_count]  = np.sum(self.fine_grid_mass_stages[1] * prop_masses[1] * 1e-2)
+                self.prop_consumed[2,self.launch_count]  = np.sum(self.fine_grid_mass_stages[2] * prop_masses[2] * 1e-2)
 
                 # For all rockets, the propellant consumed for each stage should never be bigger than the total propellant in each stage.
                 check_error(1,row.COSPAR_ID,error_lim)
-                if (input_data.dsr["Rocket_Name"][roc_ind] != "Long March (CZ) 5B"):
+                if row.Rocket_Name != "Long March (CZ) 5B":
                     check_error(2,row.COSPAR_ID,error_lim)
 
                 # When MECO occurs in the model, the consumed propellant should be within 1% of the total propellant mass of stage 1.  
@@ -789,12 +833,9 @@ class OutputEmis:
                     if (row.COSPAR_ID not in ['2020-F07','2021-F01','2021-F07']) and input_data.dsr["Rocket_Name"][roc_ind] != "Falcon 9 v1.2":
                         check_error(1,row.COSPAR_ID,1)
                         
-                self.total_prop_consumed[pei_booster_index,0] += self.prop_consumed[0,self.launch_count]
-                self.total_prop_consumed[pei_stage1_index,1]  += self.prop_consumed[1,self.launch_count]
-                self.total_prop_consumed[pei_stage2_index,2]  += self.prop_consumed[2,self.launch_count]                  
-
-                total_prop_mass = input_data.dsr["Stage0_PropMass"][roc_ind] + input_data.dsr["Stage1_PropMass"][roc_ind] + input_data.dsr["Stage2_PropMass"][roc_ind]
-                total_prop_mass += input_data.dsr["Stage3_PropMass"][roc_ind] + input_data.dsr["Stage4_PropMass"][roc_ind]
+                self.total_prop_consumed[pei_indices[0],0]  += self.prop_consumed[0,self.launch_count]
+                self.total_prop_consumed[pei_indices[1],1]  += self.prop_consumed[1,self.launch_count]
+                self.total_prop_consumed[pei_indices[2],2]  += self.prop_consumed[2,self.launch_count]                  
                 
                 ##############################################
                 # Calculate the emissions for each species.
@@ -802,73 +843,48 @@ class OutputEmis:
                 
                 # Creating a 2d array for the prop output.
                 # Total prop, bc, co, co2, nox, h2o, al2o3, cl, hcl, cl2
-                total_vertical_propellant = np.zeros((len(self.mid_alt[:,q,p]),10))    
+                total_vertical_propellant = np.zeros((len(self.mid_alt[:,q,p]),10)) 
+                self.missing_prop = np.zeros(6) # An array for propellant consumed >80 km.
+
+                launch_tuple = (time_index, q, p, pei_indices, prop_masses, False)  
                                 
                 # Check whether there is a booster:
-                if (input_data.dsr["Stage0_Fuel_Type"][roc_ind] != ''):
-                    if np.sum(1e-2 * self.fine_grid_mass_booster) > 1.01:
-                        raise ValueError("Error with Boosters. Propellant distribution exceeds unity.")
+                if stages[0]:
                     total_vertical_propellant = self.calc_emis(None,
                                 self.booster_alt_index,
-                                pei_booster_index,
-                                input_data.dsr["Stage0_PropMass"][roc_ind],
-                                self.fine_grid_mass_booster,
-                                time_index, 
-                                q, 
-                                p, 
                                 total_vertical_propellant,
-                                0)
+                                0,
+                                launch_tuple)
                         
                 # Every rocket has a first stage.
-                if np.sum(1e-2 * self.fine_grid_mass_stage1) > 1.01:
-                    raise ValueError("Error with Stage 1. Propellant distribution exceeds unity.")  
                 total_vertical_propellant = self.calc_emis(self.fei_alt_index,
                                                            self.MECO_alt_index,
-                                                           pei_stage1_index,
-                                                          input_data.dsr["Stage1_PropMass"][roc_ind],
-                                                           self.fine_grid_mass_stage1,
-                                                           time_index, 
-                                                           q, 
-                                                           p, 
                                                            total_vertical_propellant,
-                                                           1
+                                                           1,
+                                                           launch_tuple
                                                            )
 
                 # Check whether there is a second stage:
-                if input_data.dsr["Stage2_Fuel_Type"][roc_ind] != '' and self.sei_alt_index != None:
-                    if np.sum(1e-2 * self.fine_grid_mass_stage2) > 1.01:
-                        raise ValueError("Error with Stage 2. Propellant distribution exceeds unity.")
+                if stages[2] and self.sei_alt_index != None:
                     total_vertical_propellant = self.calc_emis(self.sei_alt_index,
                                 self.seco_alt_index,
-                                pei_stage2_index,
-                                input_data.dsr["Stage2_PropMass"][roc_ind],
-                                self.fine_grid_mass_stage2,
-                                time_index, 
-                                q, 
-                                p, 
                                 total_vertical_propellant,
-                                2)
+                                2,
+                                launch_tuple)
                     
                 # NOTE: This section needs to be tweaked if wanting to run for different vertical heights above 80km.
                 # Check for more rockets that have third stage emissions within model.    
                 # Add third stage emissions for Minotaur 1.
-                if input_data.dsr["Rocket_Name"][roc_ind] == "Minotaur 1":
-                    if np.sum(1e-2 * self.fine_grid_mass_stage3) > 1.01:
-                        raise ValueError("Error with Stage 3 for Minotaur 1. Propellant distribution exceeds unity.")
+                if row.Rocket_Name == "Minotaur 1":
                     total_vertical_propellant = self.calc_emis(self.TEI_alt_index,
                                 None,
-                                pei_stage3_index,
-                                input_data.dsr["Stage3_PropMass"][roc_ind],
-                                self.fine_grid_mass_stage3,
-                                time_index, 
-                                q, 
-                                p, 
                                 total_vertical_propellant,
-                                3)
+                                3,
+                                launch_tuple)
                     
                 # If the rocket is a Falcon 9, then add the landing emissions. Kerosene, so no Al2O3 or Cly.     
                 
-                if input_data.dsr["Rocket_Name"][roc_ind] in ["Falcon 9 v1.2","Falcon Heavy"]:
+                if row.Rocket_Name in ["Falcon 9 v1.2","Falcon Heavy"]:
                     falcon_p, falcon_q = None, None
 
                     if input_data.falcon_landing_dict[row.COSPAR_ID] == "ground":
@@ -916,51 +932,86 @@ class OutputEmis:
                             
                         if falcon_p > self.pmax:
                             self.pmax = falcon_p
-                            #print(f"Falcon9 stage 1 reentry longitude out of bounds for {row.COSPAR_ID}. Updating bounds.")
                         if falcon_q > self.qmax:
                             self.qmax = falcon_q
-                            #print(f"Falcon9 stage 1 reentry latitude out of bounds for {row.COSPAR_ID}. Updating bounds.")                  
                     
-                    if np.sum(self.fine_grid_mass_entry) + np.sum(self.fine_grid_mass_landing) > 7:
+                    if np.sum(self.fine_grid_mass_stages[6]) + np.sum(self.fine_grid_mass_stages[7]) > 7:
                         raise RuntimeError("Error with Stage 1 Ocean Landing. Propellant distribution exceeds what is expected.")
-                        
-                    if input_data.dsr["Rocket_Name"][roc_ind] == "Falcon 9 v1.2":
-                        pei = pei_stage1_index
-                        prop_mass = input_data.dsr["Stage1_PropMass"][roc_ind]
-                    elif input_data.dsr["Rocket_Name"][roc_ind] == "Falcon Heavy":
-                        pei = pei_booster_index
-                        prop_mass = input_data.dsr["Stage0_PropMass"][roc_ind]
-                    else:
-                        pei = None
-                        prop_mass = None
-                        raise RuntimeError("Error identifying Falcon rocket type.")
+                    
+                    falcon_map = {
+                        "Falcon 9 v1.2": 1,
+                        "Falcon Heavy": 0,
+                    }
+
+                    try:
+                        falcon_stage = falcon_map[row.Rocket_Name]
+                    except KeyError:
+                        raise RuntimeError(f"Error identifying Falcon rocket type: {row.Rocket_Name}")
                     
                     # NOTE: This section needs to be tweaked if wanting to run for different vertical heights above 80km.
                     # Should implement the boostback burn if the vertical height is increased to 100 km.
                     # First the entry emissions.
+                    falcon_tuple = (time_index, falcon_q, falcon_p, pei_indices, prop_masses, True) 
                     total_vertical_propellant = self.calc_emis(self.entry_bot,
                                 self.entry_top+1,
-                                pei,
-                                prop_mass,
-                                self.fine_grid_mass_entry,
-                                time_index, 
-                                falcon_q, 
-                                falcon_p, 
                                 total_vertical_propellant,
-                                5)
+                                falcon_stage,
+                                falcon_tuple)
                     # Now the landing emissions.
                     total_vertical_propellant = self.calc_emis(None,
                                 self.landing_top+1,
-                                pei,
-                                prop_mass,
-                                self.fine_grid_mass_landing,
-                                time_index, 
-                                falcon_q, 
-                                falcon_p, 
                                 total_vertical_propellant,
-                                5)
+                                falcon_stage,
+                                falcon_tuple)
 
-                # TODO: Need to add back in the code to calculate emissions above the model.
+                # NOTE: This section may need to be tweaked if wanting to run for different vertical heights above 80km. 
+                
+                # Calculate the missing emissions from above model.
+                # Check if there are missing emissions from the boosters stage.
+                if stages[0] and self.missing_prop[0] > 0:
+                    if 100 - np.sum(self.fine_grid_mass_stages[0]) > 100:
+                        sys.exit("Error with Booster emissions above model.") 
+                    self.calc_missing_emis(pei_indices[0],prop_masses[0],self.missing_prop[0])                  
+            
+                # Check if there are missing emissions from the first stage.
+                if stages[1] and self.missing_prop[1] > 0 and row.COSPAR_ID not in ['2020-F04','2020-F07','2021-F01','2021-F07']:
+                    if 100 - np.sum(self.fine_grid_mass_stages[1]) > 100:
+                        sys.exit("Error with Stage 1 emissions above model.") 
+
+                    self.calc_missing_emis(pei_indices[1],prop_masses[1],self.missing_prop[1] - self.missing_prop[5])
+                    
+                # Check if there are missing emissions from the second stage.
+                if stages[2] and self.missing_prop[2] > 0 and row.COSPAR_ID not in ['2020-F02','2020-F04','2020-F05','2020-F07','2021-F01',
+                                                                                    '2021-F02','2021-F07','2021-F08','2022-F01','2022-F02']:
+                    if 100 - np.sum(self.fine_grid_mass_stages[2]) > 100:
+                        sys.exit("Error with Stage 2 emissions above model.") 
+                    
+                    if row.COSPAR_ID == "2022-F03":
+                        included_emis = 240/315*100 - (100-self.missing_prop[2])
+                    else:
+                        included_emis = self.missing_prop[2]
+                        
+                    self.calc_missing_emis(pei_indices[2],prop_masses[2],included_emis)
+                    
+                # Check if there are missing emissions from the third stage.
+                if stages[3] and row.COSPAR_ID not in ['2020-F02','2020-F03','2020-F05','2020-F06','2021-F01',
+                                                       '2021-F06','2021-F10','2022-F02','2022-F05','2022-F07']:
+                    if row.COSPAR_ID == "2021-F09":
+                        included_emis = 475/521*100
+                    elif row.Rocket_Name == "Minotaur 1":
+                        included_emis = self.missing_prop[3]
+                    else:
+                        included_emis = 100
+                        
+                    self.calc_missing_emis(pei_indices[3],prop_masses[3],included_emis)
+                
+                # Check if there are missing emissions from the fourth stage.
+                if stages[4] and row.COSPAR_ID[-3:] not in ['2020-F08','2020-F09','2021-F01','2022-F02',
+                                                            '2022-F04','2022-F05','2022-F07']:
+                    self.calc_missing_emis(pei_indices[4],prop_masses[4],100)
+
+                if stages[5]:
+                    self.calc_missing_emis(pei_indices[5],prop_masses[5],100)
                     
                 launch_details["emissions"] = {
                     "BC":    np.sum(self.rocket_data_arrays["launch_bc"]),
@@ -977,8 +1028,7 @@ class OutputEmis:
                 ##############################################
                 # Output the emissions to a file for viewing.
                 ##############################################                  
-                #with np.errstate(divide='ignore', invalid='ignore'):
-                #    total_vertical_propellant[:,0] = total_vertical_propellant[:,0] / total_prop_mass
+
                 self.output_csv_launch_prop[self.csv_count,:] = total_vertical_propellant[:,0]
                 self.csv_count += 1
                 self.output_csv_launch_prop[self.csv_count,:] = self.mid_alt[:,q,p]*1e-3
