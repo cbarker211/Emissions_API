@@ -24,6 +24,8 @@ import calendar
 import sys
 import requests
 import xarray as xr
+import cProfile
+import pstats
 
 from python_modules.distribute_emis_func import make_grid_LL, read_gc_box_height, get_ross_profiles, interp_prop_mass
 from python_modules.alt_emis_func import calculate_bc_ei, calculate_nox_ei, calculate_co_ei, calculate_cl_ei
@@ -204,12 +206,12 @@ class OutputEmis:
 
         total_length = launch_length
 
-        if start_year >= 2020:
+        if year >= 2020:
             reentry_mask = (input_data.dsre["Date"].dt.year == year)
             if dataset == 1:
-                reentry_mask &= ~input_data.dsre["Megaconstellation_Flag"].dt.year.astype(bool)
+                reentry_mask &= ~input_data.dsre["Megaconstellation_Flag"].astype(bool)
             elif dataset == 2:
-                reentry_mask &= input_data.dsre["Megaconstellation_Flag"].dt.year.astype(bool)
+                reentry_mask &= input_data.dsre["Megaconstellation_Flag"].astype(bool)
             reentry_length = np.sum(reentry_mask)
             total_length += reentry_length
 
@@ -223,6 +225,7 @@ class OutputEmis:
         #############################################
 
         # Build the ocean landing list for the year in question.
+        raul_data = gpd.read_file('./databases/reentry/General_SpaceX_Map_Raul.kml', driver='KML', layer = 2) # Falcon landing data.  
         ocean_landings = raul_data[
             (raul_data["Name"].str.contains("ASDS")) &
             (raul_data["Description"].str.contains("Landing -"))].copy()
@@ -249,7 +252,7 @@ class OutputEmis:
             print('MONTH = ', self.strmon)   
 
             month_launch_mask = (launch_mask & (input_data.dsl["Date"].dt.month == m))
-            if start_year >= 2020:
+            if year >= 2020:
                 month_reentry_mask = (reentry_mask & (input_data.dsre["Date"].dt.month == m))           
             
             #Loop over all days:
@@ -262,7 +265,7 @@ class OutputEmis:
                 )
                 daily_launches_df = input_data.dsl[day_launch_mask].reset_index(drop=True).copy()
 
-                if start_year >= 2020:
+                if year >= 2020:
 
                     day_reentry_mask = ( month_reentry_mask &
                         (np.array(input_data.dsre["Date"].dt.day) == d+1) &
@@ -549,7 +552,7 @@ class OutputEmis:
         
         return stage_alt_beco, stage_alt_meco, stages
     
-    def calc_emis(self, start_ind, stop_ind, total_vertical_propellant, stage, launch_tuple):
+    def calc_emis(self, start_ind, stop_ind, total_vertical_propellant, stage, launch_tuple, launch_details):
         '''
         Calculate the emissions over the range of the stag within the fine grid (0-100 km).
         '''
@@ -557,6 +560,8 @@ class OutputEmis:
         time_index, q, p, pei_indices, prop_masses, falcon_flag = launch_tuple
         pei_index = pei_indices[stage]
         prop_mass = prop_masses[stage]
+        species_keys = ["launch_bc","co","co2","launch_nox","fuel_nox","h2o","launch_al","launch_cl","launch_hcl","cl2"]
+
         if falcon_flag:
             if start_ind != None:
                 vertical_profile = self.fine_grid_mass_stages[6]
@@ -567,60 +572,74 @@ class OutputEmis:
 
         if np.sum(1e-2 * vertical_profile) > 1.01:
             raise ValueError("Error with Stage {stage}. Propellant distribution exceeds unity.")
-        
+
+        seg_slice = slice(start_ind, stop_ind)
+        seg_mid_alts_km = self.fine_grid_mid_alt[seg_slice] * 1e-3  # km
+
         # Calculate the emission indices for each species.
-        ei_bc                 = calculate_bc_ei (self.fine_grid_mid_alt[start_ind:stop_ind]*1e-3, input_data.bc_pei[pei_index])
-        ei_co, ei_co2         = calculate_co_ei (self.fine_grid_mid_alt[start_ind:stop_ind]*1e-3, input_data.co_pei[pei_index], input_data.co2_pei[pei_index])
-        ei_sec_nox            = calculate_nox_ei(self.fine_grid_mid_alt[start_ind:stop_ind]*1e-3)
-        ei_cl, ei_hcl, ei_cl2 = calculate_cl_ei (self.fine_grid_mid_alt[start_ind:stop_ind]*1e-3, input_data.cly_pei[pei_index])
+        ei_bc                 = calculate_bc_ei (seg_mid_alts_km, input_data.bc_pei[pei_index])
+        ei_co, ei_co2         = calculate_co_ei (seg_mid_alts_km, input_data.co_pei[pei_index], input_data.co2_pei[pei_index])
+        ei_sec_nox            = calculate_nox_ei(seg_mid_alts_km)
+        ei_cl, ei_hcl, ei_cl2 = calculate_cl_ei (seg_mid_alts_km, input_data.cly_pei[pei_index])
         ei_h2o                = input_data.h2o_pei[pei_index] + input_data.h2_pei[pei_index] * (1.008 * 2 + 16) / (1.008 * 2)
 
         # Calculate the emissions for each species in g.
         emis_full = np.zeros((len(self.fine_grid_mid_alt),11))
+        factor = prop_mass * 1e-2 * vertical_profile
         for index, emission_index in enumerate([ei_bc, ei_co, ei_co2, ei_sec_nox, input_data.nox_pei[pei_index], ei_h2o, input_data.al2o3_pei[pei_index], ei_cl, ei_hcl, ei_cl2]):
-            emis_full[start_ind:stop_ind,index] = emission_index * prop_mass * 1e-2 * vertical_profile
-        emis_full[start_ind:stop_ind,10] = vertical_profile
+            emis_full[seg_slice,index] = emission_index * factor
+        emis_full[seg_slice,10] = vertical_profile
 
         # Place the emissions into a larger array covering the whole fine grid (0-100km).
         selected_alts = []
+        bound_arr = np.append(self.bot_alt[:, q, p], self.top_alt[-1, q, p])
+        bound_idx = np.searchsorted(self.fine_grid_bot_alt, bound_arr)
+
         # Regrid the vertical_profile to the desired model profile.
-        for i in range(len(self.mid_alt[:,q,p])):
-            if i == 0:
-                bot_ind = 0
-            else:
-                bot_ind = np.argmin(np.abs(self.fine_grid_mid_alt - self.bot_alt[i,q,p])) + 1
-            top_ind = np.argmin(np.abs(self.fine_grid_mid_alt - self.top_alt[i,q,p])) + 1
-            selected_alts.extend(np.arange(bot_ind,top_ind))
+        for i in range(len(bound_arr)-1):
+
+            bot_ind = bound_idx[i]
+            top_ind = bound_idx[i+1]
+            selected_alts.extend(np.arange(bot_ind, top_ind))
+
+            # Slice and sum once to save time.
+            emis_slice = emis_full[bot_ind:top_ind,:]
+            emis_sum   = np.sum(emis_slice, axis=0)
             
             # Sum the emissions in this range for each species and place in an array.
-            for i, key in enumerate(["launch_bc","co","co2","launch_nox","fuel_nox","h2o","launch_al","launch_cl","launch_hcl","cl2"]):
-                self.rocket_data_arrays[key][time_index,i,q,p]  += (np.sum(emis_full[bot_ind:top_ind,i]) * 1e-6)
-            total_vertical_propellant[i,0] += np.sum(emis_full[bot_ind:top_ind,10]) * prop_mass
-            total_vertical_propellant[i,1] += np.sum(emis_full[bot_ind:top_ind,0]) 
-            total_vertical_propellant[i,2] += np.sum(emis_full[bot_ind:top_ind,1]) 
-            total_vertical_propellant[i,3] += np.sum(emis_full[bot_ind:top_ind,2])
-            total_vertical_propellant[i,4] += np.sum(emis_full[bot_ind:top_ind,3:5]) 
-            total_vertical_propellant[i,5] += np.sum(emis_full[bot_ind:top_ind,5]) 
-            total_vertical_propellant[i,6] += np.sum(emis_full[bot_ind:top_ind,6]) 
-            total_vertical_propellant[i,7] += np.sum(emis_full[bot_ind:top_ind,7]) 
-            total_vertical_propellant[i,8] += np.sum(emis_full[bot_ind:top_ind,8]) 
-            total_vertical_propellant[i,9] += np.sum(emis_full[bot_ind:top_ind,9]) 
+            for i, key in enumerate(species_keys):
+                self.rocket_data_arrays[key][time_index,i,q,p]  += (emis_sum[i] * 1e-6)
+                launch_details["emissions"][key] += (emis_sum[i] * 1e-6)
+            total_vertical_propellant[i,0] += emis_sum[10] * prop_mass
+            total_vertical_propellant[i,1] += emis_sum[0] 
+            total_vertical_propellant[i,2] += emis_sum[1] 
+            total_vertical_propellant[i,3] += emis_sum[2]
+            total_vertical_propellant[i,4] += np.sum(emis_sum[3:5]) 
+            total_vertical_propellant[i,5] += emis_sum[5]
+            total_vertical_propellant[i,6] += emis_sum[6]
+            total_vertical_propellant[i,7] += emis_sum[7]
+            total_vertical_propellant[i,8] += emis_sum[8]
+            total_vertical_propellant[i,9] += emis_sum[9]
              
         if len(list(set(selected_alts))) != len(selected_alts):
             raise IndexError("Error in fine grid indexing.")
         
+        # Slice and sum once to save time.
+        total_slice = emis_full[selected_alts[0]:selected_alts[-1]+1,:]
+        total_sum   = np.sum(total_slice, axis=0)
+        
         # BC launch, CO launch, CO2 launch, NOx launch, H2O launch, Al2O3 launch, Cl launch, HCl launch, Cl2 launch
         # NOx reentry, Al2O3 reentry, BC reentry, HCl reentry, Cl reentry
-        self.emission_totals[0] += np.sum(emis_full[selected_alts[0]:selected_alts[-1]+1,0])       
-        self.emission_totals[1] += np.sum(emis_full[selected_alts[0]:selected_alts[-1]+1,1])         
-        self.emission_totals[2] += np.sum(emis_full[selected_alts[0]:selected_alts[-1]+1,2])   
-        self.emission_totals[3] += np.sum(emis_full[selected_alts[0]:selected_alts[-1]+1,3:5])     
-        self.emission_totals[4] += np.sum(emis_full[selected_alts[0]:selected_alts[-1]+1,5])   
-        self.emission_totals[5] += np.sum(emis_full[selected_alts[0]:selected_alts[-1]+1,6])   
-        self.emission_totals[6] += np.sum(emis_full[selected_alts[0]:selected_alts[-1]+1,7])   
-        self.emission_totals[7] += np.sum(emis_full[selected_alts[0]:selected_alts[-1]+1,8])   
-        self.emission_totals[8] += np.sum(emis_full[selected_alts[0]:selected_alts[-1]+1,9])   
-        self.included_prop      += (np.sum(emis_full[selected_alts[0]:selected_alts[-1]+1,10]) * prop_mass * 1e-2)
+        self.emission_totals[0] += total_sum[0]       
+        self.emission_totals[1] += total_sum[1]         
+        self.emission_totals[2] += total_sum[2]   
+        self.emission_totals[3] += np.sum(total_sum[3:5])     
+        self.emission_totals[4] += total_sum[5]   
+        self.emission_totals[5] += total_sum[6]   
+        self.emission_totals[6] += total_sum[7]   
+        self.emission_totals[7] += total_sum[8]   
+        self.emission_totals[8] += total_sum[9]   
+        self.included_prop      += (total_sum[10] * prop_mass * 1e-2)
 
         if falcon_flag:
             self.missing_prop[stage] += np.round((np.sum(emis_full[selected_alts[0]:selected_alts[-1]+1,10])),2)
@@ -663,7 +682,14 @@ class OutputEmis:
     def grid_emis(self, df, emis_type):
         """Grid the data onto the GEOS-Chem horizontal and vertical grid"""
         
+        # Pre allocate the emission array.
         daily_info = []
+        self.rocket_data_arrays = {}
+        species = ['launch_nox', 'fuel_nox',  'h2o',       'launch_bc',  'co',
+                       'co2',        'launch_al', 'launch_hcl','launch_cl',  'cl2',
+                       'reentry_nox','reentry_al','reentry_bc','reentry_hcl','reentry_cl'
+            ]
+
         #Loop over each launch/reentry.
         for row in df.itertuples():
             
@@ -673,11 +699,6 @@ class OutputEmis:
 
             # Set up the emission arrays for this launch/reentry.
             self.rocket_data_arrays = {}
-            species = ['launch_nox', 'fuel_nox',  'h2o',       'launch_bc',  'co',
-                       'co2',        'launch_al', 'launch_hcl','launch_cl',  'cl2',
-                       'reentry_nox','reentry_al','reentry_bc','reentry_hcl','reentry_cl'
-            ]
-
             for sp in species:
                 self.rocket_data_arrays[sp] = np.zeros((HOURS, LEVELS, self.nlat, self.nlon))
             
@@ -736,16 +757,17 @@ class OutputEmis:
                     raise IndexError(f"No propellant mass found for {key}")
                     
                 launch_details = {
-                    "date":     f"{self.year}-{self.strmon}-{self.strday}",
-                    "id":       row.COSPAR_ID,
-                    "time":     row.Time_UTC,
-                    "site":     "",
-                    "rocket":   row.Rocket_Name,
-                    "variant":  row.Rocket_Variant,
-                    "lat":      row.Latitude,
-                    "lon":      row.Longitude,
-                    "smc":      bool(row.Megaconstellation_Flag),
-                    "location": row.Site,
+                    "date":      f"{self.year}-{self.strmon}-{self.strday}",
+                    "id":        row.COSPAR_ID,
+                    "time":      row.Time_UTC,
+                    "site":      "",
+                    "rocket":    row.Rocket_Name,
+                    "variant":   row.Rocket_Variant,
+                    "lat":       row.Latitude,
+                    "lon":       row.Longitude,
+                    "smc":       bool(row.Megaconstellation_Flag),
+                    "location":  row.Site,
+                    "emissions": {sp: 0 for sp in ["launch_bc","co","co2","launch_nox","fuel_nox","h2o","launch_al","launch_cl","launch_hcl","cl2"]}
                 }
                 
                 ############################################
@@ -854,14 +876,16 @@ class OutputEmis:
                                 self.booster_alt_index,
                                 total_vertical_propellant,
                                 0,
-                                launch_tuple)
+                                launch_tuple,
+                                launch_details)
                         
                 # Every rocket has a first stage.
                 total_vertical_propellant = self.calc_emis(self.fei_alt_index,
                                                            self.MECO_alt_index,
                                                            total_vertical_propellant,
                                                            1,
-                                                           launch_tuple
+                                                           launch_tuple,
+                                                           launch_details
                                                            )
 
                 # Check whether there is a second stage:
@@ -870,7 +894,8 @@ class OutputEmis:
                                 self.seco_alt_index,
                                 total_vertical_propellant,
                                 2,
-                                launch_tuple)
+                                launch_tuple,
+                                launch_details)
                     
                 # NOTE: This section needs to be tweaked if wanting to run for different vertical heights above 80km.
                 # Check for more rockets that have third stage emissions within model.    
@@ -880,7 +905,8 @@ class OutputEmis:
                                 None,
                                 total_vertical_propellant,
                                 3,
-                                launch_tuple)
+                                launch_tuple,
+                                launch_details)
                     
                 # If the rocket is a Falcon 9, then add the landing emissions. Kerosene, so no Al2O3 or Cly.     
                 
@@ -956,13 +982,15 @@ class OutputEmis:
                                 self.entry_top+1,
                                 total_vertical_propellant,
                                 falcon_stage,
-                                falcon_tuple)
+                                falcon_tuple,
+                                launch_details)
                     # Now the landing emissions.
                     total_vertical_propellant = self.calc_emis(None,
                                 self.landing_top+1,
                                 total_vertical_propellant,
                                 falcon_stage,
-                                falcon_tuple)
+                                falcon_tuple,
+                                launch_details)
 
                 # NOTE: This section may need to be tweaked if wanting to run for different vertical heights above 80km. 
                 
@@ -1012,17 +1040,17 @@ class OutputEmis:
 
                 if stages[5]:
                     self.calc_missing_emis(pei_indices[5],prop_masses[5],100)
-                    
-                launch_details["emissions"] = {
-                    "BC":    np.sum(self.rocket_data_arrays["launch_bc"]),
-                    "CO":    np.sum(self.rocket_data_arrays["co"]),
-                    "CO2":   np.sum(self.rocket_data_arrays["co2"]),
-                    "NOx":   np.sum(self.rocket_data_arrays["launch_nox"]) + np.sum(self.rocket_data_arrays["fuel_nox"]),
-                    "H2O":   np.sum(self.rocket_data_arrays["h2o"]),
-                    "Cly":   np.sum(self.rocket_data_arrays["launch_cl"]) + np.sum(self.rocket_data_arrays["cl2"]) + np.sum(self.rocket_data_arrays["launch_hcl"]),
-                    "Al2O3": np.sum(self.rocket_data_arrays["launch_al"]),
-                    }   
                 
+                new_dict = {
+                    "BC":    launch_details["emissions"]["launch_bc"],
+                    "CO":    launch_details["emissions"]["co"],
+                    "CO2":   launch_details["emissions"]["co2"],
+                    "NOx":   (launch_details["emissions"]["launch_nox"] + launch_details["emissions"]["fuel_nox"]),
+                    "H2O":   launch_details["emissions"]["h2o"],
+                    "Cly":   (launch_details["emissions"]["launch_cl"] + launch_details["emissions"]["cl2"] + launch_details["emissions"]["launch_hcl"]),
+                    "Al2O3": launch_details["emissions"]["launch_al"]
+                }
+                launch_details["emissions"] = new_dict                
                 daily_info.append(launch_details) 
                 
                 ##############################################
@@ -1139,7 +1167,7 @@ class OutputEmis:
         
         return daily_info
 
-def check_total_emissions(year,dataset,res,levels):
+def check_total_emissions(year,dataset,res,levels,emis_data):
     """ Print total emissions of each species.
         The total emissions including all afterburning are compared to a scenario where only primary emission indices are used.
     """
@@ -1181,42 +1209,6 @@ if __name__ == "__main__":
     parser.add_argument('-fy', "--final_year", default = "2024", choices=str(np.arange(1957,2025)), help='Final Year.')
     args = parser.parse_args()
 
-    # Define the ranges of years, months and datasets to process.
-    def make_range(start, end):
-        start, end = int(start), int(end)
-        if start > end:
-            end = start + 1
-        return np.arange(start, end + 1), start, end
-    
-    years,    start_year,    final_year    = make_range(args.start_year, args.final_year)
-    months,   start_month,   final_month   = make_range(args.start_month, args.final_month)
-    datasets, start_dataset, final_dataset = make_range(args.start_dataset, args.final_dataset)
-    
-    print(f"Years: {start_year}-{final_year}. Months: {start_month}-{final_month}.")
-
-    #################################  
-    # Define launch event altitudes.
-    #################################
-
-    # BECO, MECO and SEI values from literature sources are used wherever possible. 
-    # When not available, the average of other rockets with the same configuration is used.
-
-    stage_alt_dict = {}
-    stage_alt_rockets = np.genfromtxt("./input_files/launch_event_altitudes.csv",dtype=str,skip_header=1,usecols=[0,1],delimiter=",")
-    stage_alt_data = np.genfromtxt("./input_files/launch_event_altitudes.csv",dtype=np.float64,skip_header=1,usecols=[2,3,4,5],delimiter=",")
-
-    stages = ["BECO", "MECO", "SEI1", "SECO"]
-    for (name, variant), row in zip(stage_alt_rockets, stage_alt_data):
-        for stage, value in zip(stages, row):
-            stage_alt_dict[f"{name} {variant} {stage}"] = None if value == "" else np.float64(value)
-    
-    # BECO, MECO, SEI1, SECO
-    # B+1/2S, B+3S, B+4S, 2S, 3S, 4S 
-    event_alts = [[66,55,29,0,0,0],
-                  [220,120,64,90,56,52],
-                  [229,120,64,103,61,59],
-                  [356,232,216,312,176,149]]
-    
     ######################################   
     # Define resolutions and set timings.
     ###################################### 
@@ -1227,39 +1219,79 @@ if __name__ == "__main__":
     GRID_RES  = "2x25"    
     HOURS     = 24
     print(f"Timestep: {TIMESTEP}s. Resolution: {GRID_RES}x{LEVELS}. Vertical Range: 0-{MODEL_ALT} km.")
+
+    def main():
+        # Define the ranges of years, months and datasets to process.
+        def make_range(start, end):
+            start, end = int(start), int(end)
+            if start > end:
+                end = start + 1
+            return np.arange(start, end + 1), start, end
         
-    ################
-    # Import files.
-    ################
-    
-    fiona.drvsupport.supported_drivers['KML'] = 'rw' # type: ignore
-    raul_data = gpd.read_file('./databases/reentry/General_SpaceX_Map_Raul.kml', driver='KML', layer = 2) # Falcon landing data.  
-    if start_year < 2020:
-        launch_path       = f'./databases/launch_activity_data_1957-2019.nc'
-        rocket_info_path  = f'./databases/rocket_attributes_1957-2019.nc'
-    else: 
-        launch_path       = f'./databases/launch_activity_data_{start_year}-{final_year}.nc'
-        rocket_info_path  = f'./databases/rocket_attributes_{start_year}-{final_year}.nc'
-    
-    if start_year == 2020:
-        reentry_path  = f'./databases/reentry_activity_data_{start_year}-{final_year}_moredatacorrectlocations.nc'
-    else:
-        reentry_path  = f'./databases/reentry_activity_data_{start_year}-{final_year}.nc'
+        years,    start_year,    final_year    = make_range(args.start_year, args.final_year)
+        months,   start_month,   final_month   = make_range(args.start_month, args.final_month)
+        datasets, start_dataset, final_dataset = make_range(args.start_dataset, args.final_dataset)
+        
+        print(f"Years: {start_year}-{final_year}. Months: {start_month}-{final_month}.")
 
-    pei_path          = './input_files/primary_emission_indices.csv'  
-    input_data       = InputData(launch_path, reentry_path, rocket_info_path, pei_path, start_year)
-    print("Successfully loaded input databases.")
-    
-    #Loop over all years and run functions depending on input arguments.
-    for year in years:
-        for dataset in datasets:
-            print(f"Year: {year} Dataset: {dataset}")    
-            # Go through process of gridding and saving rocket emissions:
-            emis_data = OutputEmis(event_alts, 
-                                   months,
-                                   dataset,
-                                   year,
-                                   stage_alt_dict,
-                                   )
+        #################################  
+        # Define launch event altitudes.
+        #################################
 
-            check_total_emissions(year,dataset,GRID_RES,LEVELS)
+        # BECO, MECO and SEI values from literature sources are used wherever possible. 
+        # When not available, the average of other rockets with the same configuration is used.
+
+        stage_alt_dict = {}
+        stage_alt_rockets = np.genfromtxt("./input_files/launch_event_altitudes.csv",dtype=str,skip_header=1,usecols=[0,1],delimiter=",")
+        stage_alt_data = np.genfromtxt("./input_files/launch_event_altitudes.csv",dtype=np.float64,skip_header=1,usecols=[2,3,4,5],delimiter=",")
+
+        stages = ["BECO", "MECO", "SEI1", "SECO"]
+        for (name, variant), row in zip(stage_alt_rockets, stage_alt_data):
+            for stage, value in zip(stages, row):
+                stage_alt_dict[f"{name} {variant} {stage}"] = None if value == "" else np.float64(value)
+        
+        # BECO, MECO, SEI1, SECO
+        # B+1/2S, B+3S, B+4S, 2S, 3S, 4S 
+        event_alts = [[66,55,29,0,0,0],
+                    [220,120,64,90,56,52],
+                    [229,120,64,103,61,59],
+                    [356,232,216,312,176,149]]
+            
+        ################
+        # Import files.
+        ################
+        
+        fiona.drvsupport.supported_drivers['KML'] = 'rw' # type: ignore
+        if start_year < 2020:
+            launch_path       = f'./databases/launch_activity_data_1957-2019.nc'
+            rocket_info_path  = f'./databases/rocket_attributes_1957-2019.nc'
+        else: 
+            launch_path       = f'./databases/launch_activity_data_{start_year}-{final_year}.nc'
+            rocket_info_path  = f'./databases/rocket_attributes_{start_year}-{final_year}.nc'
+        
+        if start_year == 2020:
+            reentry_path  = f'./databases/reentry_activity_data_{start_year}-{final_year}_moredatacorrectlocations.nc'
+        else:
+            reentry_path  = f'./databases/reentry_activity_data_{start_year}-{final_year}.nc'
+
+        pei_path          = './input_files/primary_emission_indices.csv'  
+        global input_data
+        input_data       = InputData(launch_path, reentry_path, rocket_info_path, pei_path, start_year)
+        print("Successfully loaded input databases.")
+        
+        #Loop over all years and run functions depending on input arguments.
+        for year in years:
+            for dataset in datasets:
+                print(f"Year: {year} Dataset: {dataset}")    
+                emis_data = OutputEmis(event_alts, months, dataset, year, stage_alt_dict)
+                check_total_emissions(year,dataset,GRID_RES,LEVELS,emis_data)
+
+    # Profile the main function
+    with cProfile.Profile() as pr:
+        main()
+
+    # Save and print profiling stats
+    stats = pstats.Stats(pr)
+    stats.strip_dirs()
+    stats.sort_stats(pstats.SortKey.TIME)
+    stats.print_stats(20)  # Print the top 20 time-consuming functions
