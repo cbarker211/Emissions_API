@@ -16,7 +16,6 @@ import argparse
 from netCDF4 import Dataset # type: ignore
 import numpy as np
 import pandas as pd
-pd.set_option('display.max_colwidth', None)
 import geopandas as gpd
 import fiona
 import json
@@ -275,8 +274,8 @@ class OutputEmis:
                 else:
                     daily_reentries_df = pd.DataFrame()
 
-                #if len(daily_launches_df) + len(daily_reentries_df) == 0:
-                #    continue
+                if len(daily_launches_df) + len(daily_reentries_df) == 0:
+                    continue
 
                 self.strday = str(d+1).zfill(2) # Process day data
                 #if not np.any(day_launch_mask) and not np.any(day_reentry_mask):
@@ -686,9 +685,8 @@ class OutputEmis:
         daily_info = []
         self.rocket_data_arrays = {}
         species = ['launch_nox', 'fuel_nox',  'h2o',       'launch_bc',  'co',
-                       'co2',        'launch_al', 'launch_hcl','launch_cl',  'cl2',
-                       'reentry_nox','reentry_al','reentry_bc','reentry_hcl','reentry_cl'
-            ]
+                   'co2',        'launch_al', 'launch_hcl','launch_cl',  'cl2',
+                   'reentry_nox','reentry_al','reentry_bc','reentry_hcl','reentry_cl']
 
         #Loop over each launch/reentry.
         for row in df.itertuples():
@@ -1040,15 +1038,14 @@ class OutputEmis:
 
                 if stages[5]:
                     self.calc_missing_emis(pei_indices[5],prop_masses[5],100)
-                
                 new_dict = {
-                    "BC":    launch_details["emissions"]["launch_bc"],
-                    "CO":    launch_details["emissions"]["co"],
-                    "CO2":   launch_details["emissions"]["co2"],
-                    "NOx":   (launch_details["emissions"]["launch_nox"] + launch_details["emissions"]["fuel_nox"]),
-                    "H2O":   launch_details["emissions"]["h2o"],
-                    "Cly":   (launch_details["emissions"]["launch_cl"] + launch_details["emissions"]["cl2"] + launch_details["emissions"]["launch_hcl"]),
-                    "Al2O3": launch_details["emissions"]["launch_al"]
+                    "BC":    f'{launch_details["emissions"]["launch_bc"]:.6f}',
+                    "CO":    f'{launch_details["emissions"]["co"]:.6f}',
+                    "CO2":   f'{launch_details["emissions"]["co2"]:.6f}',
+                    "NOx":   f'{(launch_details["emissions"]["launch_nox"] + launch_details["emissions"]["fuel_nox"]):.6f}',
+                    "H2O":   f'{launch_details["emissions"]["h2o"]:.6f}',
+                    "Cly":   f'{(launch_details["emissions"]["launch_cl"] + launch_details["emissions"]["cl2"] + launch_details["emissions"]["launch_hcl"]):.6f}',
+                    "Al2O3": f'{launch_details["emissions"]["launch_al"]:.6f}'
                 }
                 launch_details["emissions"] = new_dict                
                 daily_info.append(launch_details) 
@@ -1092,6 +1089,7 @@ class OutputEmis:
                     "smc": bool(row.Megaconstellation_Flag),
                     "location": int(row.Location_Constraint),
                     "burnup": row.Burnup, 
+                    "emissions": {sp: 0 for sp in ["reentry_nox","reentry_al","reentry_bc","reentry_hcl","reentry_cl"]}
                 }
                 
                 if row.COSPAR_ID[:8] in ["2021-F09","2022-065","2023-72"] and row.Category == "S1":
@@ -1103,7 +1101,7 @@ class OutputEmis:
                 else:
                     reentry_details["lat"] = row.Latitude
                     reentry_details["lon"] = row.Longitude
-                
+
                 total_vertical_propellant = np.zeros((len(self.mid_alt[:,q,p]),10))
                 reentry_ei = np.zeros(5) # Al2O3, NOx, BC, Cl, HCl
                 if np.ma.is_masked(row.Ablatable_Mass) or np.ma.is_masked(row.Other_Mass):
@@ -1129,12 +1127,15 @@ class OutputEmis:
                     # For consistency with launch emissions, the totals are kept in g units. 
                     # NOx reentry, Al2O3 reentry, BC reentry, Cl reentry, HCl reentry 9-13           
                     t_nox_reentry = (row.Ablatable_Mass + row.Other_Mass) * reentry_ei[1] * 1000
-                    self.emission_totals[9] += t_nox_reentry
-                    self.rocket_data_arrays["reentry_nox"][time_index,self.bot_reenter:self.top_reenter+1,q,p] += t_nox_reentry / self.n_reenter_levs * 1e-6 
-                    
                     t_al2o3_reentry = row.Ablatable_Mass * reentry_ei[0] * 1000
-                    self.emission_totals[10] += t_al2o3_reentry
-                    self.rocket_data_arrays["reentry_al"][time_index,self.bot_reenter:self.top_reenter+1,q,p] += t_al2o3_reentry / self.n_reenter_levs * 1e-6
+
+                    def output_reentry_emis(key,temp,i):
+                        self.emission_totals[i] += temp
+                        reentry_details["emissions"][key] += temp * 1e-6   
+                        self.rocket_data_arrays[key][time_index,self.bot_reenter:self.top_reenter+1,q,p] += temp / self.n_reenter_levs * 1e-6
+
+                    output_reentry_emis("reentry_nox",t_nox_reentry,9)
+                    output_reentry_emis("reentry_al",t_al2o3_reentry,10)
 
                     total_vertical_propellant[self.bot_reenter:self.top_reenter+1,4]   += np.full((self.n_reenter_levs),t_nox_reentry/self.n_reenter_levs)
                     total_vertical_propellant[self.bot_reenter:self.top_reenter+1,6]   += np.full((self.n_reenter_levs),t_al2o3_reentry/self.n_reenter_levs)
@@ -1145,17 +1146,19 @@ class OutputEmis:
                         for i, key in enumerate(["reentry_bc","reentry_cl","reentry_hcl"]):
                             t_reentry = (row.Ablatable_Mass + row.Other_Mass) * reentry_ei[i+2] * 1000
                             self.emission_totals[i+11] += t_reentry
+                            reentry_details["emissions"][key] += t_reentry * 1e-6
                             self.rocket_data_arrays[key][time_index,self.bot_reenter:self.top_reenter+1,q,p] += t_reentry / self.n_reenter_levs * 1e-6
                             total_vertical_propellant[self.bot_reenter:self.top_reenter+1,prop_dict[key]]   += np.full((self.n_reenter_levs),t_reentry/self.n_reenter_levs)
-                    
-                reentry_details["emissions"] = {"NOx":   np.sum(self.rocket_data_arrays["reentry_nox"]),
-                                                "Al2O3": np.sum(self.rocket_data_arrays["reentry_al"]),
-                                                "BC":    np.sum(self.rocket_data_arrays["reentry_bc"]),
-                                                "HCl":   np.sum(self.rocket_data_arrays["reentry_hcl"]),
-                                                "Cl":    np.sum(self.rocket_data_arrays["reentry_cl"]),
-                                                "Unablated_Mass": self.mass_survive,
-                             }   
-                
+   
+                new_dict = {
+                    "NOx":   f'{reentry_details["emissions"]["reentry_nox"]:.6f}',
+                    "Al2O3": f'{reentry_details["emissions"]["reentry_al"]:.6f}',
+                    "BC":    f'{reentry_details["emissions"]["reentry_bc"]:.6f}',
+                    "HCl":   f'{reentry_details["emissions"]["reentry_hcl"]:.6f}',
+                    "Cl":    f'{reentry_details["emissions"]["reentry_cl"]:.6f}',
+                    "Unablated_Mass": self.mass_survive,
+                }
+                reentry_details["emissions"] = new_dict                
                 self.mass_survive_total += self.mass_survive
                 daily_info.append(reentry_details) 
 
@@ -1193,8 +1196,9 @@ def check_total_emissions(year,dataset,res,levels,emis_data):
                                        total_inc_prop,
                                        emis_data.mass_survive_total * 1e-3]}
     df = pd.DataFrame(data)
-    print(df.round(4))  
-    df.to_csv(f"./out_files/{(year // 10) * 10}/emis_stats_{year}_{dataset}_{res}_{levels}.csv",sep=',')    
+    df_rounded = df.round(9)
+    print(df_rounded)  
+    df_rounded.to_csv(f"./out_files/{(year // 10) * 10}/emis_stats_{year}_{dataset}_{res}_{levels}.csv",sep=',',index=False)    
 
 # Main section of the program
 if __name__ == "__main__":
@@ -1265,14 +1269,23 @@ if __name__ == "__main__":
         if start_year < 2020:
             launch_path       = f'./databases/launch_activity_data_1957-2019.nc'
             rocket_info_path  = f'./databases/rocket_attributes_1957-2019.nc'
+        elif start_year >= 2020 and final_year <= 2022:
+            launch_path       = f'./databases/launch_activity_data_2020-2022.nc'
+            rocket_info_path  = f'./databases/rocket_attributes_2020-2022.nc'
+        elif start_year >= 2023 and final_year <= 2024:
+            launch_path       = f'./databases/launch_activity_data_2023-2024.nc'
+            rocket_info_path  = f'./databases/rocket_attributes_2023-2024.nc'
         else: 
-            launch_path       = f'./databases/launch_activity_data_{start_year}-{final_year}.nc'
-            rocket_info_path  = f'./databases/rocket_attributes_{start_year}-{final_year}.nc'
+            raise ImportError(f"Error: Unsupported time range for {start_year}-{final_year}")
         
-        if start_year == 2020:
-            reentry_path  = f'./databases/reentry_activity_data_{start_year}-{final_year}_moredatacorrectlocations.nc'
+        if start_year < 2020:
+            reentry_path  = f'./databases/reentry_activity_data_1957-2019.nc'
+        elif start_year >= 2020 and final_year <= 2022:
+            reentry_path  = f'./databases/reentry_activity_data_2020-2022_moredatacorrectlocations.nc'
+        elif start_year >= 2023 and final_year <= 2024:
+            reentry_path  = f'./databases/reentry_activity_data_2023-2024.nc'
         else:
-            reentry_path  = f'./databases/reentry_activity_data_{start_year}-{final_year}.nc'
+            raise ImportError(f"Error: Unsupported time range for {start_year}-{final_year}")
 
         pei_path          = './input_files/primary_emission_indices.csv'  
         global input_data
