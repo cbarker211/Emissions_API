@@ -446,7 +446,7 @@ def update_mass_info(temp_dict,name,variant):
         temp_dict[f"Stage2 Stage Mass"]       = (4700+5000) / 2
         temp_dict[f"Fairing Mass"] = 0
     
-    if "H-IIA" in name:
+    if name.startswith("H-IIA"):
         # Details from https://global.jaxa.jp/projects/rockets/h2a/ 
         temp_dict[f"Stage1 Propellant Mass"] = 101100
         temp_dict[f"Stage2 Propellant Mass"] = 16900 
@@ -454,13 +454,13 @@ def update_mass_info(temp_dict,name,variant):
         temp_dict[f"Stage2 Stage Mass"]      = 3100  
         temp_dict[f"Fairing Mass"]           = 1400 # website/Sp101/SLR
         
-        if name == "H-IIA 202":
-            temp_dict[f"Booster Number"] = 2
-        elif name == "H-IIA 204":
-            temp_dict[f"Booster Number"] = 4
+        temp_dict[f"Booster Number"] = name[8]
         
         temp_dict[f"Stage0 Propellant Mass"] = 130000 / 2 * int(temp_dict[f"Booster Number"]) 
         temp_dict[f"Stage0 Stage Mass"]      = 21000 / 2 * int(temp_dict[f"Booster Number"])
+        if len(name) == 10:
+            temp_dict[f"Stage-1 Propellant Mass"] = 52400 / 4 * int(name[9])
+            temp_dict[f"Stage-1 Stage Mass"]      = (31/2-52.4/4) * 1000 * int(name[9])
         
     if name == "H-IIB":
         # Details from https://global.jaxa.jp/projects/rockets/h2b/

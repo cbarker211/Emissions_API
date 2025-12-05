@@ -389,14 +389,8 @@ class OutputEmis:
         stage_alt_sei  = stage_alts['SEI1']
         stage_alt_seco = stage_alts['SECO']
 
-        stages = (
-                bool(input_data.dsr["Stage0_Fuel_Type"][roc_ind] != ''),
-                bool(input_data.dsr["Stage1_Fuel_Type"][roc_ind] != ''),
-                bool(input_data.dsr["Stage2_Fuel_Type"][roc_ind] != ''),
-                bool(input_data.dsr["Stage3_Fuel_Type"][roc_ind] != ''),
-                bool(input_data.dsr["Stage4_Fuel_Type"][roc_ind] != ''),
-                bool(input_data.dsr["Stage5_Fuel_Type"][roc_ind] != '')
-            )
+        row = input_data.dsr.iloc[roc_ind]
+        stages = tuple(bool(row[f"Stage{i}_Fuel_Type"]) for i in range(6))
         
         if np.isnan(stage_alt_meco) and np.isnan(stage_alt_sei) and np.isnan(stage_alt_seco):
 
@@ -678,27 +672,459 @@ class OutputEmis:
         self.missing_emis[7] += np.sum(t_cl2_emis)
         self.missing_emis[8] += np.sum(t_co2_emis)    
 
+    def launch_emis(self,row,q,p,time_index):
+        '''Calculate the launch emissions'''
+
+        # Interpolate propellant mass distribution.
+        # Linearly interpolate Ross profile proportion of propellant mass to GEOS-Chem vertical grid.
+        # This is just to double check that the propellant consumption profile is calculated correctly.
+        self.propellant_in_model, self.gc_relative_mass = interp_prop_mass(self.bot_alt[:,q,p], self.mid_alt[:,q,p], self.top_alt[:,q,p],
+                                                                            self.ross_alt_edge, self.ross_cumulative_mass)
+
+        ############################################
+        # Check the rocket type and get info.
+        ############################################
+
+        key = (row.Rocket_Name, row.Rocket_Variant)
+        if key in self.rocket_index_map:
+            roc_ind = self.rocket_index_map[key]
+        else:
+            raise IndexError(f"No propellant mass found for {key}")
+            
+        launch_details = {
+            "date":      f"{self.year}-{self.strmon}-{self.strday}",
+            "id":        row.COSPAR_ID,
+            "time":      row.Time_UTC,
+            "site":      "",
+            "rocket":    row.Rocket_Name,
+            "variant":   row.Rocket_Variant,
+            "lat":       row.Latitude,
+            "lon":       row.Longitude,
+            "smc":       bool(row.Megaconstellation_Flag),
+            "location":  row.Site,
+            "emissions": {sp: 0 for sp in ["launch_bc","co","co2","launch_nox","fuel_nox","h2o","launch_al","launch_cl","launch_hcl","cl2"]}
+        }
+        
+        ############################################
+        # Process the launch event altitudes.
+        ############################################
+        
+        stage_alt_beco, stage_alt_meco, stages = self.process_launch_event_altitudes(roc_ind, row.Rocket_Name, row.Rocket_Variant, row.COSPAR_ID)
+        prop_masses, pei_indices = np.zeros(6), np.full(6, -1, dtype=int)
+        for i, active in enumerate(stages):
+            if active:
+                prop_masses[i] = input_data.dsr[f"Stage{i}_PropMass"][roc_ind]
+
+                idx = np.where(input_data.pei_fuel_type == input_data.dsr[f"Stage{i}_Fuel_Type"][roc_ind])[0]
+                if len(idx) != 1:
+                    raise RuntimeError(f"Expected one PEI fuel match for Stage {i}, got {idx}") 
+                pei_indices[i] = idx[0]
+        # TODO: Needs reworking if running for different model ceilings above 80km.
+
+        ############################################
+        # Deal with failed launches.
+        ############################################
+
+        # Most failures are for upper stages, and so can be treated as normal here.
+        # Full information is provided in source_info/failed_launch_info.txt.
+                    
+        # Skip launches where the launch failed close to the launch pad, and all failed launches before 2020.
+        if row.COSPAR_ID in ['2020-F04','2021-F04','2023-F02','2024-F01'] or (row.COSPAR_ID[5] == "F" and self.year < 2020):
+            self.csv_count += 3
+            self.csv_count_2 += 10
+            return
+        
+        # This is where stage 1 failed during ascent.
+        failed_alt_events = {
+            '2020-F07': 900,    # Astra Rocket 3 launch, rocket shut off at 0.9km.
+            '2021-F01': 10700,  # Shuang Quxian-1 launch, rocket disintegrated at Max-Q. Approximating altitude using Proton-M and Minotaur-IV max-q alts.
+            '2021-F07': 31000   # Astra Rocket 3 launch, rocket shut off at 31km.
+        }
+        if row.COSPAR_ID in failed_alt_events:
+            failed_alt = failed_alt_events[row.COSPAR_ID]
+            cutoff_ind = np.searchsorted(self.fine_grid_mid_alt, failed_alt, side='right')
+            self.fine_grid_mass_stages[1][cutoff_ind:] = 0.0 # Zero above the cutoff_ind.
+
+        # This is where stage 2 never ignited.
+        zero_stage2_events = {
+            '2020-F02','2020-F05',
+            '2021-F02','2021-F07','2021-F08','2022-F01',
+            '2022-F02','2022-F03','2023-F01','2023-F04',
+            '2023-F05','2023-F06','2023-F07','2023-F09',
+            '2024-F02','2024-F04'
+        }
+        if row.COSPAR_ID in zero_stage2_events:
+            self.fine_grid_mass_stages[2] = np.asarray([0])
+            self.sei_alt_index = None
+        
+        ##################################################
+        # Sanity Checks for Propellant Mass Distributions.
+        ##################################################
+
+        # The propellant consumed should never be bigger than the total propellant.
+        error_lim = 0.001 # Maximum error from rounding / floating point errors.
+        def check_error(stage,cospar,error_lim):
+            with np.errstate(divide='ignore', invalid='ignore'):
+                per_error = ((self.prop_consumed[stage,self.launch_count] - prop_masses[stage]) / prop_masses[stage] * 100.0)
+                if per_error > error_lim:
+                    raise ValueError(f'Error with emissions for stage {stage} of {cospar}. Prop consumed: {self.prop_consumed[stage,self.launch_count]}, Prop mass: {prop_masses[stage]}, Per Error: {per_error}.') 
+            
+        if stages[0]: # If there are boosters.
+            self.prop_consumed[0,self.launch_count] = np.sum(self.fine_grid_mass_stages[0] * prop_masses[0]  * 1e-2)
+            if (stage_alt_beco < self.model_alt) and (row.Rocket_Name != "Falcon Heavy"): # Suppressed for Falcon Heavy, as this has reusable boosters.
+                check_error(0,row.COSPAR_ID,error_lim)
+                
+        self.prop_consumed[1,self.launch_count]  = np.sum(self.fine_grid_mass_stages[1] * prop_masses[1] * 1e-2)
+        self.prop_consumed[2,self.launch_count]  = np.sum(self.fine_grid_mass_stages[2] * prop_masses[2] * 1e-2)
+
+        # For all rockets, the propellant consumed for each stage should never be bigger than the total propellant in each stage.
+        check_error(1,row.COSPAR_ID,error_lim)
+        if row.Rocket_Name != "Long March (CZ) 5B":
+            check_error(2,row.COSPAR_ID,error_lim)
+
+        # When MECO occurs in the model, the consumed propellant should be within 1% of the total propellant mass of stage 1.  
+        # The error is suppressed for 2020-F07, 2021-F01, and 2021-F07 where rockets failed early. 
+        # Also suppressed for Falcon 9, as this has a reusable first stage.
+        # A check that the Falcon landing distribution is no greater than 7% of the stage 1 emissions is undertaken later in the grid_emis function.
+        if stage_alt_meco < self.model_alt:
+            if (row.COSPAR_ID not in ['2020-F07','2021-F01','2021-F07']) and input_data.dsr["Rocket_Name"][roc_ind] != "Falcon 9 v1.2":
+                check_error(1,row.COSPAR_ID,1)
+                
+        self.total_prop_consumed[pei_indices[0],0]  += self.prop_consumed[0,self.launch_count]
+        self.total_prop_consumed[pei_indices[1],1]  += self.prop_consumed[1,self.launch_count]
+        self.total_prop_consumed[pei_indices[2],2]  += self.prop_consumed[2,self.launch_count]                  
+        
+        ##############################################
+        # Calculate the emissions for each species.
+        ##############################################     
+        
+        # Creating a 2d array for the prop output.
+        # Total prop, bc, co, co2, nox, h2o, al2o3, cl, hcl, cl2
+        total_vertical_propellant = np.zeros((len(self.mid_alt[:,q,p]),10)) 
+        self.missing_prop = np.zeros(6) # An array for propellant consumed >80 km.
+
+        launch_tuple = (time_index, q, p, pei_indices, prop_masses, False)  
+                        
+        # Check whether there is a booster:
+        if stages[0]:
+            total_vertical_propellant = self.calc_emis(None,
+                        self.booster_alt_index,
+                        total_vertical_propellant,
+                        0,
+                        launch_tuple,
+                        launch_details)
+                
+        # Every rocket has a first stage.
+        total_vertical_propellant = self.calc_emis(self.fei_alt_index,
+                                                    self.MECO_alt_index,
+                                                    total_vertical_propellant,
+                                                    1,
+                                                    launch_tuple,
+                                                    launch_details
+                                                    )
+
+        # Check whether there is a second stage:
+        if stages[2] and self.sei_alt_index != None:
+            total_vertical_propellant = self.calc_emis(self.sei_alt_index,
+                        self.seco_alt_index,
+                        total_vertical_propellant,
+                        2,
+                        launch_tuple,
+                        launch_details)
+            
+        # NOTE: This section needs to be tweaked if wanting to run for different vertical heights above 80km.
+        # Check for more rockets that have third stage emissions within model.    
+        # Add third stage emissions for Minotaur 1.
+        if row.Rocket_Name == "Minotaur 1":
+            total_vertical_propellant = self.calc_emis(self.TEI_alt_index,
+                        None,
+                        total_vertical_propellant,
+                        3,
+                        launch_tuple,
+                        launch_details)
+            
+        # If the rocket is a Falcon 9, then add the landing emissions. Kerosene, so no Al2O3 or Cly.     
+        
+        if row.Rocket_Name in ["Falcon 9 v1.2","Falcon Heavy"]:
+            falcon_p, falcon_q = None, None
+
+            if input_data.falcon_landing_dict[row.COSPAR_ID] == "ground":
+                falcon_p = p
+                falcon_q = q
+                
+            else:
+                matching = self.ocean_landings[self.ocean_landings["Date"].isin([f"{self.year}-{self.strmon}-{self.strday}"])].reset_index(drop=True)
+                # There is a typo in the database, a 2023 launch is listed as 2022.      
+                if (matching.shape[0] == 1) or (f"{self.year}-{self.strmon}-{self.strday}" == "2022-04-27"):
+
+                    falcon_lat = np.array(matching["geometry"].y)[0]
+                    falcon_lon = np.array(matching["geometry"].x)[0]
+                    
+                # There are two launches on the same day.
+                elif row.COSPAR_ID in ["2022-124","2023-037"]:
+                    falcon_lat = np.array(matching["geometry"].y)[0]
+                    falcon_lon = np.array(matching["geometry"].x)[0]
+                    
+                elif row.COSPAR_ID in ["2022-125","2023-038"]:
+                    falcon_lat = np.array(matching["geometry"].y)[1]
+                    falcon_lon = np.array(matching["geometry"].x)[1]
+                    
+                elif matching.shape[0] == 0:
+                    # The database hasn't been well updated for 2022, so lets just fill in based on most common geolocation for all other 2020-2022 launches.
+                    if np.isclose(row.Longitude, -81.0, atol=1.0) and np.isclose(row.Latitude, 29.0, atol=1.0):
+                        falcon_lon = -75
+                        falcon_lat = 32
+                    elif row.Longitude == -120.6 and row.Latitude == 34.7:
+                        falcon_lon = -122.5
+                        falcon_lat = 30
+                    elif row.Longitude == 100.3 and row.Latitude == 41.3:
+                        falcon_lon = 100.3
+                        falcon_lat = 41.3
+                    else:
+                        raise RuntimeError("Launch not from assigned site.",row.Longitude,row.Latitude)
+                
+                elif matching.shape[0] > 1: 
+                    raise RuntimeError(f"Multiple ocean entries for Falcon Stage 1 landing for {row.COSPAR_ID}.")
+                else:
+                    raise RuntimeError(f"Problem geolocating Falcon Stage 1 landing for {row.COSPAR_ID}, {self.lon[falcon_p],self.lat[falcon_q]}") 
+
+                falcon_p = np.argmin(abs(falcon_lon-self.lon))
+                falcon_q = np.argmin(abs(falcon_lat-self.lat))
+                    
+                if falcon_p > self.pmax:
+                    self.pmax = falcon_p
+                if falcon_q > self.qmax:
+                    self.qmax = falcon_q
+            
+            if np.sum(self.fine_grid_mass_stages[6]) + np.sum(self.fine_grid_mass_stages[7]) > 7:
+                raise RuntimeError("Error with Stage 1 Ocean Landing. Propellant distribution exceeds what is expected.")
+            
+            falcon_map = {
+                "Falcon 9 v1.2": 1,
+                "Falcon Heavy": 0,
+            }
+
+            try:
+                falcon_stage = falcon_map[row.Rocket_Name]
+            except KeyError:
+                raise RuntimeError(f"Error identifying Falcon rocket type: {row.Rocket_Name}")
+            
+            # NOTE: This section needs to be tweaked if wanting to run for different vertical heights above 80km.
+            # Should implement the boostback burn if the vertical height is increased to 100 km.
+            # First the entry emissions.
+            falcon_tuple = (time_index, falcon_q, falcon_p, pei_indices, prop_masses, True) 
+            total_vertical_propellant = self.calc_emis(self.entry_bot,
+                        self.entry_top+1,
+                        total_vertical_propellant,
+                        falcon_stage,
+                        falcon_tuple,
+                        launch_details)
+            # Now the landing emissions.
+            total_vertical_propellant = self.calc_emis(None,
+                        self.landing_top+1,
+                        total_vertical_propellant,
+                        falcon_stage,
+                        falcon_tuple,
+                        launch_details)
+
+        # NOTE: This section may need to be tweaked if wanting to run for different vertical heights above 80km. 
+        
+        # Calculate the missing emissions from above model.
+        # Check if there are missing emissions from the boosters stage.
+        if stages[0] and self.missing_prop[0] > 0:
+            if 100 - np.sum(self.fine_grid_mass_stages[0]) > 100:
+                sys.exit("Error with Booster emissions above model.") 
+            self.calc_missing_emis(pei_indices[0],prop_masses[0],self.missing_prop[0])                  
+    
+        # Check if there are missing emissions from the first stage.
+        if stages[1] and self.missing_prop[1] > 0 and row.COSPAR_ID not in ['2020-F04','2020-F07','2021-F01','2021-F07']:
+            if 100 - np.sum(self.fine_grid_mass_stages[1]) > 100:
+                sys.exit("Error with Stage 1 emissions above model.") 
+
+            self.calc_missing_emis(pei_indices[1],prop_masses[1],self.missing_prop[1] - self.missing_prop[5])
+            
+        # Check if there are missing emissions from the second stage.
+        if stages[2] and self.missing_prop[2] > 0 and row.COSPAR_ID not in ['2020-F02','2020-F04','2020-F05','2020-F07','2021-F01',
+                                                                            '2021-F02','2021-F07','2021-F08','2022-F01','2022-F02']:
+            if 100 - np.sum(self.fine_grid_mass_stages[2]) > 100:
+                sys.exit("Error with Stage 2 emissions above model.") 
+            
+            if row.COSPAR_ID == "2022-F03":
+                included_emis = 240/315*100 - (100-self.missing_prop[2])
+            else:
+                included_emis = self.missing_prop[2]
+                
+            self.calc_missing_emis(pei_indices[2],prop_masses[2],included_emis)
+            
+        # Check if there are missing emissions from the third stage.
+        if stages[3] and row.COSPAR_ID not in ['2020-F02','2020-F03','2020-F05','2020-F06','2021-F01',
+                                                '2021-F06','2021-F10','2022-F02','2022-F05','2022-F07']:
+            if row.COSPAR_ID == "2021-F09":
+                included_emis = 475/521*100
+            elif row.Rocket_Name == "Minotaur 1":
+                included_emis = self.missing_prop[3]
+            else:
+                included_emis = 100
+                
+            self.calc_missing_emis(pei_indices[3],prop_masses[3],included_emis)
+        
+        # Check if there are missing emissions from the fourth stage.
+        if stages[4] and row.COSPAR_ID[-3:] not in ['2020-F08','2020-F09','2021-F01','2022-F02',
+                                                    '2022-F04','2022-F05','2022-F07']:
+            self.calc_missing_emis(pei_indices[4],prop_masses[4],100)
+
+        if stages[5]:
+            self.calc_missing_emis(pei_indices[5],prop_masses[5],100)
+        new_dict = {
+            "BC":    f'{launch_details["emissions"]["launch_bc"]:.6f}',
+            "CO":    f'{launch_details["emissions"]["co"]:.6f}',
+            "CO2":   f'{launch_details["emissions"]["co2"]:.6f}',
+            "NOx":   f'{(launch_details["emissions"]["launch_nox"] + launch_details["emissions"]["fuel_nox"]):.6f}',
+            "H2O":   f'{launch_details["emissions"]["h2o"]:.6f}',
+            "Cly":   f'{(launch_details["emissions"]["launch_cl"] + launch_details["emissions"]["cl2"] + launch_details["emissions"]["launch_hcl"]):.6f}',
+            "Al2O3": f'{launch_details["emissions"]["launch_al"]:.6f}'
+        }
+        launch_details["emissions"] = new_dict                 
+        
+        ##############################################
+        # Output the emissions to a file for viewing.
+        ##############################################                  
+
+        self.output_csv_launch_prop[self.csv_count,:] = total_vertical_propellant[:,0]
+        self.csv_count += 1
+        self.output_csv_launch_prop[self.csv_count,:] = self.mid_alt[:,q,p]*1e-3
+        self.csv_count += 1  
+        self.output_csv_launch_prop[self.csv_count,:] = self.gc_relative_mass
+        self.csv_count += 1 
+        
+        if np.sum(self.gc_relative_mass) == 0 and np.sum(total_vertical_propellant[:,0]) == 0:
+            print(f'??? {input_data.dsr["Rocket_Name"][roc_ind]}')
+        
+        for i in range(1,10):
+            self.output_csv_emis[self.csv_count_2,:] = total_vertical_propellant[:,i]
+            self.csv_count_2 += 1 
+        self.output_csv_emis[self.csv_count_2,:] = self.mid_alt[:,q,p]*1e-3
+        self.csv_count_2 += 1
+
+        self.launch_count += 1
+
+        return launch_details
+
+    def reentry_emis(self,row,q,p,time_index):
+        '''Calculate the reentry emissions'''
+
+        reentry_details = {
+            "date": f"{self.year}-{self.strmon}-{self.strday}",
+            "id": row.COSPAR_ID,
+            "time": row.Time_UTC,
+            "reusability": "",
+            "name": row.Object_Name,
+            "category": row.Category, 
+            "lat": row.Latitude,
+            "lon": row.Latitude,
+            "smc": bool(row.Megaconstellation_Flag),
+            "location": int(row.Location_Constraint),
+            "burnup": row.Burnup, 
+            "emissions": {sp: 0 for sp in ["reentry_nox","reentry_al","reentry_bc","reentry_hcl","reentry_cl"]}
+        }
+        
+        if row.COSPAR_ID[:8] in ["2021-F09","2022-065","2023-72"] and row.Category == "S1":
+            reentry_details["lat"] = 34.43194444
+            reentry_details["lon"] = 127.535
+        elif row.COSPAR_ID[:8] in ["2020-065","2022-167","2022-046","2022-126","2023-135","2024-102","2024-153","2024-173","2024-245","2025-007","2025-105"] and row.Category == "S1":
+            reentry_details["lat"] = 34.9
+            reentry_details["lon"] = 121.2
+        else:
+            reentry_details["lat"] = row.Latitude
+            reentry_details["lon"] = row.Longitude
+
+        total_vertical_propellant = np.zeros((len(self.mid_alt[:,q,p]),10))
+        reentry_ei = np.zeros(5) # Al2O3, NOx, BC, Cl, HCl
+        if np.ma.is_masked(row.Ablatable_Mass) or np.ma.is_masked(row.Other_Mass):
+            pass
+        else:
+        
+            reentry_ei[0]   = row.Ablation_Degree * row.Percent_Aluminium
+            if row.Ablation_Degree == 0:
+                reentry_ei[1] = 0.175
+            else:
+                reentry_ei[1] = 0.4
+                
+            # Calculate the total mass surviving re-entry in tonnes
+            # We are adding all mass that comes back, so this includes reusable stages and fairings.
+            self.mass_survive = ((row.Ablatable_Mass* (1-row.Ablation_Degree)) + row.Other_Mass) * 1e-3
+                
+            # Add chlorine and bc reentry emissions from ATISPADE Report. Don't add for lower stages, only upper (>S2).
+            if row.Category in ["P","C"]:
+                reentry_ei[2:] = [0.041,0.015,0.008] # Worst Case
+            elif row.Category in ["S2","S3","S4"]:
+                reentry_ei[2:] = [0.029,0.011,0.005] # Worst Case
+                
+            # For consistency with launch emissions, the totals are kept in g units. 
+            # NOx reentry, Al2O3 reentry, BC reentry, Cl reentry, HCl reentry 9-13           
+            t_nox_reentry = (row.Ablatable_Mass + row.Other_Mass) * reentry_ei[1] * 1000
+            t_al2o3_reentry = row.Ablatable_Mass * reentry_ei[0] * 1000
+
+            def output_reentry_emis(key,temp,i):
+                self.emission_totals[i] += temp
+                reentry_details["emissions"][key] += temp * 1e-6   
+                self.rocket_data_arrays[key][time_index,self.bot_reenter:self.top_reenter+1,q,p] += temp / self.n_reenter_levs * 1e-6
+
+            output_reentry_emis("reentry_nox",t_nox_reentry,9)
+            output_reentry_emis("reentry_al",t_al2o3_reentry,10)
+
+            total_vertical_propellant[self.bot_reenter:self.top_reenter+1,4]   += np.full((self.n_reenter_levs),t_nox_reentry/self.n_reenter_levs)
+            total_vertical_propellant[self.bot_reenter:self.top_reenter+1,6]   += np.full((self.n_reenter_levs),t_al2o3_reentry/self.n_reenter_levs)
+            
+            if row.Category in ["P","C","S2","S3","S4"]:
+                
+                prop_dict = {"reentry_bc": 1,"reentry_cl":7,"reentry_hcl": 8}
+                for i, key in enumerate(["reentry_bc","reentry_cl","reentry_hcl"]):
+                    t_reentry = (row.Ablatable_Mass + row.Other_Mass) * reentry_ei[i+2] * 1000
+                    self.emission_totals[i+11] += t_reentry
+                    reentry_details["emissions"][key] += t_reentry * 1e-6
+                    self.rocket_data_arrays[key][time_index,self.bot_reenter:self.top_reenter+1,q,p] += t_reentry / self.n_reenter_levs * 1e-6
+                    total_vertical_propellant[self.bot_reenter:self.top_reenter+1,prop_dict[key]]   += np.full((self.n_reenter_levs),t_reentry/self.n_reenter_levs)
+
+        new_dict = {
+            "NOx":   f'{reentry_details["emissions"]["reentry_nox"]:.6f}',
+            "Al2O3": f'{reentry_details["emissions"]["reentry_al"]:.6f}',
+            "BC":    f'{reentry_details["emissions"]["reentry_bc"]:.6f}',
+            "HCl":   f'{reentry_details["emissions"]["reentry_hcl"]:.6f}',
+            "Cl":    f'{reentry_details["emissions"]["reentry_cl"]:.6f}',
+            "Unablated_Mass": self.mass_survive,
+        }
+        reentry_details["emissions"] = new_dict                
+        self.mass_survive_total += self.mass_survive
+
+        for i in range(1,10):
+            self.output_csv_emis[self.csv_count_2,:] = total_vertical_propellant[:,i]
+            self.csv_count_2 += 1
+        self.output_csv_emis[self.csv_count_2,:] = self.mid_alt[:,q,p]*1e-3
+        self.csv_count_2 += 1
+
+        return reentry_details
+    
     def grid_emis(self, df, emis_type):
         """Grid the data onto the GEOS-Chem horizontal and vertical grid"""
         
         # Pre allocate the emission array.
         daily_info = []
-        self.rocket_data_arrays = {}
         species = ['launch_nox', 'fuel_nox',  'h2o',       'launch_bc',  'co',
                    'co2',        'launch_al', 'launch_hcl','launch_cl',  'cl2',
                    'reentry_nox','reentry_al','reentry_bc','reentry_hcl','reentry_cl']
 
+        # Set up the emission arrays for this launch/reentry.
+        self.rocket_data_arrays = {}
+        for sp in species:
+            self.rocket_data_arrays[sp] = np.zeros((HOURS, LEVELS, self.nlat, self.nlon))
+
         #Loop over each launch/reentry.
         for row in df.itertuples():
             
-            # TODO: Add this back in when re-entires are readded.
+            # TODO: Add this back in when re-entries are readded.
             #if pd.isna(row.COSPAR_ID) or pd.isna(row.Longitude) or pd.isna(row.Latitude):
             #    raise ValueError(f"{row.COSPAR_ID} {row.Longitude} {row.Latitude}")
-
-            # Set up the emission arrays for this launch/reentry.
-            self.rocket_data_arrays = {}
-            for sp in species:
-                self.rocket_data_arrays[sp] = np.zeros((HOURS, LEVELS, self.nlat, self.nlon))
             
             ################
             # Setup grid.
@@ -729,445 +1155,17 @@ class OutputEmis:
             # Format the time of the event.
             time_index = int(row.Time_UTC*60*60)//TIMESTEP
             
-            #########################################################
-            # Work out vertical distribution for launch emissions.
-            #########################################################
-
+            # Work out vertical distribution for launch or reentry emissions.
             if emis_type=='launch':
-                
-                ############################################
-                # Interpolate propellant mass distribution.
-                ############################################
+                launch_details = self.launch_emis(row,q,p,time_index)
+                if launch_details is not None:
+                    daily_info.append(launch_details)
+            elif emis_type=='reentry':
+                reentry_details = self.reentry_emis(row,q,p,time_index)
+                daily_info.append(reentry_details)
+            else:
+                raise ValueError("Unexpected event type")
 
-                # Linearly interpolate Ross profile proportion of propellant mass to GEOS-Chem vertical grid.
-                # This is just to double check that the propellant consumption profile is calculated correctly.
-                self.propellant_in_model, self.gc_relative_mass = interp_prop_mass(self.bot_alt[:,q,p], self.mid_alt[:,q,p], self.top_alt[:,q,p],
-                                                                                    self.ross_alt_edge, self.ross_cumulative_mass)
-
-                ############################################
-                # Check the rocket type and get info.
-                ############################################
-
-                key = (row.Rocket_Name, row.Rocket_Variant)
-                if key in self.rocket_index_map:
-                    roc_ind = self.rocket_index_map[key]
-                else:
-                    raise IndexError(f"No propellant mass found for {key}")
-                    
-                launch_details = {
-                    "date":      f"{self.year}-{self.strmon}-{self.strday}",
-                    "id":        row.COSPAR_ID,
-                    "time":      row.Time_UTC,
-                    "site":      "",
-                    "rocket":    row.Rocket_Name,
-                    "variant":   row.Rocket_Variant,
-                    "lat":       row.Latitude,
-                    "lon":       row.Longitude,
-                    "smc":       bool(row.Megaconstellation_Flag),
-                    "location":  row.Site,
-                    "emissions": {sp: 0 for sp in ["launch_bc","co","co2","launch_nox","fuel_nox","h2o","launch_al","launch_cl","launch_hcl","cl2"]}
-                }
-                
-                ############################################
-                # Process the launch event altitudes.
-                ############################################
-                
-                stage_alt_beco, stage_alt_meco, stages = self.process_launch_event_altitudes(roc_ind, row.Rocket_Name, row.Rocket_Variant, row.COSPAR_ID)
-                prop_masses, pei_indices = np.zeros(6), np.full(6, -1, dtype=int)
-                for i, active in enumerate(stages):
-                    if active:
-                        prop_masses[i] = input_data.dsr[f"Stage{i}_PropMass"][roc_ind]
-
-                        idx = np.where(input_data.pei_fuel_type == input_data.dsr[f"Stage{i}_Fuel_Type"][roc_ind])[0]
-                        if len(idx) != 1:
-                            raise RuntimeError(f"Expected one PEI fuel match for Stage {i}, got {idx}") 
-                        pei_indices[i] = idx[0]
-                # TODO: Needs reworking if running for different model ceilings above 80km.
-
-                ############################################
-                # Deal with failed launches.
-                ############################################
-
-                # Most failures are for upper stages, and so can be treated as normal here.
-                # Full information is provided in source_info/failed_launch_info.txt.
-                         
-                # Skip launches where the launch failed close to the launch pad, and all failed launches before 2020.
-                if row.COSPAR_ID in ['2020-F04','2021-F04','2023-F02','2024-F01'] or (row.COSPAR_ID[5] == "F" and self.year < 2020):
-                    self.csv_count += 3
-                    self.csv_count_2 += 10
-                    continue
-                
-                # This is where stage 1 failed during ascent.
-                failed_alt_events = {
-                    '2020-F07': 900,    # Astra Rocket 3 launch, rocket shut off at 0.9km.
-                    '2021-F01': 10700,  # Shuang Quxian-1 launch, rocket disintegrated at Max-Q. Approximating altitude using Proton-M and Minotaur-IV max-q alts.
-                    '2021-F07': 31000   # Astra Rocket 3 launch, rocket shut off at 31km.
-                }
-                if row.COSPAR_ID in failed_alt_events:
-                    failed_alt = failed_alt_events[row.COSPAR_ID]
-                    cutoff_ind = np.searchsorted(self.fine_grid_mid_alt, failed_alt, side='right')
-                    self.fine_grid_mass_stages[1][cutoff_ind:] = 0.0 # Zero above the cutoff_ind.
-
-                # This is where stage 2 never ignited.
-                zero_stage2_events = {
-                    '2020-F02','2020-F05',
-                    '2021-F02','2021-F07','2021-F08','2022-F01',
-                    '2022-F02','2022-F03','2023-F01','2023-F04',
-                    '2023-F05','2023-F06','2023-F07','2023-F09',
-                    '2024-F02','2024-F04'
-                }
-                if row.COSPAR_ID in zero_stage2_events:
-                    self.fine_grid_mass_stages[2] = np.asarray([0])
-                    self.sei_alt_index = None
-                
-                ##################################################
-                # Sanity Checks for Propellant Mass Distributions.
-                ##################################################
-
-                # The propellant consumed should never be bigger than the total propellant.
-                error_lim = 0.001 # Maximum error from rounding / floating point errors.
-                def check_error(stage,cospar,error_lim):
-                    with np.errstate(divide='ignore', invalid='ignore'):
-                        per_error = ((self.prop_consumed[stage,self.launch_count] - prop_masses[stage]) / prop_masses[stage] * 100.0)
-                        if per_error > error_lim:
-                            raise ValueError(f'Error with emissions for stage {stage} of {cospar}. Prop consumed: {self.prop_consumed[stage,self.launch_count]}, Prop mass: {prop_masses[stage]}, Per Error: {per_error}.') 
-                 
-                if stages[0]: # If there are boosters.
-                    self.prop_consumed[0,self.launch_count] = np.sum(self.fine_grid_mass_stages[0] * prop_masses[0]  * 1e-2)
-                    if (stage_alt_beco < self.model_alt) and (row.Rocket_Name != "Falcon Heavy"): # Suppressed for Falcon Heavy, as this has reusable boosters.
-                        check_error(0,row.COSPAR_ID,error_lim)
-                        
-                self.prop_consumed[1,self.launch_count]  = np.sum(self.fine_grid_mass_stages[1] * prop_masses[1] * 1e-2)
-                self.prop_consumed[2,self.launch_count]  = np.sum(self.fine_grid_mass_stages[2] * prop_masses[2] * 1e-2)
-
-                # For all rockets, the propellant consumed for each stage should never be bigger than the total propellant in each stage.
-                check_error(1,row.COSPAR_ID,error_lim)
-                if row.Rocket_Name != "Long March (CZ) 5B":
-                    check_error(2,row.COSPAR_ID,error_lim)
-
-                # When MECO occurs in the model, the consumed propellant should be within 1% of the total propellant mass of stage 1.  
-                # The error is suppressed for 2020-F07, 2021-F01, and 2021-F07 where rockets failed early. 
-                # Also suppressed for Falcon 9, as this has a reusable first stage.
-                # A check that the Falcon landing distribution is no greater than 7% of the stage 1 emissions is undertaken later in the grid_emis function.
-                if stage_alt_meco < self.model_alt:
-                    if (row.COSPAR_ID not in ['2020-F07','2021-F01','2021-F07']) and input_data.dsr["Rocket_Name"][roc_ind] != "Falcon 9 v1.2":
-                        check_error(1,row.COSPAR_ID,1)
-                        
-                self.total_prop_consumed[pei_indices[0],0]  += self.prop_consumed[0,self.launch_count]
-                self.total_prop_consumed[pei_indices[1],1]  += self.prop_consumed[1,self.launch_count]
-                self.total_prop_consumed[pei_indices[2],2]  += self.prop_consumed[2,self.launch_count]                  
-                
-                ##############################################
-                # Calculate the emissions for each species.
-                ##############################################     
-                
-                # Creating a 2d array for the prop output.
-                # Total prop, bc, co, co2, nox, h2o, al2o3, cl, hcl, cl2
-                total_vertical_propellant = np.zeros((len(self.mid_alt[:,q,p]),10)) 
-                self.missing_prop = np.zeros(6) # An array for propellant consumed >80 km.
-
-                launch_tuple = (time_index, q, p, pei_indices, prop_masses, False)  
-                                
-                # Check whether there is a booster:
-                if stages[0]:
-                    total_vertical_propellant = self.calc_emis(None,
-                                self.booster_alt_index,
-                                total_vertical_propellant,
-                                0,
-                                launch_tuple,
-                                launch_details)
-                        
-                # Every rocket has a first stage.
-                total_vertical_propellant = self.calc_emis(self.fei_alt_index,
-                                                           self.MECO_alt_index,
-                                                           total_vertical_propellant,
-                                                           1,
-                                                           launch_tuple,
-                                                           launch_details
-                                                           )
-
-                # Check whether there is a second stage:
-                if stages[2] and self.sei_alt_index != None:
-                    total_vertical_propellant = self.calc_emis(self.sei_alt_index,
-                                self.seco_alt_index,
-                                total_vertical_propellant,
-                                2,
-                                launch_tuple,
-                                launch_details)
-                    
-                # NOTE: This section needs to be tweaked if wanting to run for different vertical heights above 80km.
-                # Check for more rockets that have third stage emissions within model.    
-                # Add third stage emissions for Minotaur 1.
-                if row.Rocket_Name == "Minotaur 1":
-                    total_vertical_propellant = self.calc_emis(self.TEI_alt_index,
-                                None,
-                                total_vertical_propellant,
-                                3,
-                                launch_tuple,
-                                launch_details)
-                    
-                # If the rocket is a Falcon 9, then add the landing emissions. Kerosene, so no Al2O3 or Cly.     
-                
-                if row.Rocket_Name in ["Falcon 9 v1.2","Falcon Heavy"]:
-                    falcon_p, falcon_q = None, None
-
-                    if input_data.falcon_landing_dict[row.COSPAR_ID] == "ground":
-                        falcon_p = p
-                        falcon_q = q
-                        
-                    else:
-                        matching = self.ocean_landings[self.ocean_landings["Date"].isin([f"{self.year}-{self.strmon}-{self.strday}"])].reset_index(drop=True)
-                        # There is a typo in the database, a 2023 launch is listed as 2022.      
-                        if (matching.shape[0] == 1) or (f"{self.year}-{self.strmon}-{self.strday}" == "2022-04-27"):
-
-                            falcon_lat = np.array(matching["geometry"].y)[0]
-                            falcon_lon = np.array(matching["geometry"].x)[0]
-                            
-                        # There are two launches on the same day.
-                        elif row.COSPAR_ID in ["2022-124","2023-037"]:
-                            falcon_lat = np.array(matching["geometry"].y)[0]
-                            falcon_lon = np.array(matching["geometry"].x)[0]
-                            
-                        elif row.COSPAR_ID in ["2022-125","2023-038"]:
-                            falcon_lat = np.array(matching["geometry"].y)[1]
-                            falcon_lon = np.array(matching["geometry"].x)[1]
-                            
-                        elif matching.shape[0] == 0:
-                            # The database hasn't been well updated for 2022, so lets just fill in based on most common geolocation for all other 2020-2022 launches.
-                            if np.isclose(row.Longitude, -81.0, atol=1.0) and np.isclose(row.Latitude, 29.0, atol=1.0):
-                                falcon_lon = -75
-                                falcon_lat = 32
-                            elif row.Longitude == -120.6 and row.Latitude == 34.7:
-                                falcon_lon = -122.5
-                                falcon_lat = 30
-                            elif row.Longitude == 100.3 and row.Latitude == 41.3:
-                                falcon_lon = 100.3
-                                falcon_lat = 41.3
-                            else:
-                                raise RuntimeError("Launch not from assigned site.",row.Longitude,row.Latitude)
-                        
-                        elif matching.shape[0] > 1: 
-                            raise RuntimeError(f"Multiple ocean entries for Falcon Stage 1 landing for {row.COSPAR_ID}.")
-                        else:
-                            raise RuntimeError(f"Problem geolocating Falcon Stage 1 landing for {row.COSPAR_ID}, {self.lon[falcon_p],self.lat[falcon_q]}") 
-
-                        falcon_p = np.argmin(abs(falcon_lon-self.lon))
-                        falcon_q = np.argmin(abs(falcon_lat-self.lat))
-                            
-                        if falcon_p > self.pmax:
-                            self.pmax = falcon_p
-                        if falcon_q > self.qmax:
-                            self.qmax = falcon_q
-                    
-                    if np.sum(self.fine_grid_mass_stages[6]) + np.sum(self.fine_grid_mass_stages[7]) > 7:
-                        raise RuntimeError("Error with Stage 1 Ocean Landing. Propellant distribution exceeds what is expected.")
-                    
-                    falcon_map = {
-                        "Falcon 9 v1.2": 1,
-                        "Falcon Heavy": 0,
-                    }
-
-                    try:
-                        falcon_stage = falcon_map[row.Rocket_Name]
-                    except KeyError:
-                        raise RuntimeError(f"Error identifying Falcon rocket type: {row.Rocket_Name}")
-                    
-                    # NOTE: This section needs to be tweaked if wanting to run for different vertical heights above 80km.
-                    # Should implement the boostback burn if the vertical height is increased to 100 km.
-                    # First the entry emissions.
-                    falcon_tuple = (time_index, falcon_q, falcon_p, pei_indices, prop_masses, True) 
-                    total_vertical_propellant = self.calc_emis(self.entry_bot,
-                                self.entry_top+1,
-                                total_vertical_propellant,
-                                falcon_stage,
-                                falcon_tuple,
-                                launch_details)
-                    # Now the landing emissions.
-                    total_vertical_propellant = self.calc_emis(None,
-                                self.landing_top+1,
-                                total_vertical_propellant,
-                                falcon_stage,
-                                falcon_tuple,
-                                launch_details)
-
-                # NOTE: This section may need to be tweaked if wanting to run for different vertical heights above 80km. 
-                
-                # Calculate the missing emissions from above model.
-                # Check if there are missing emissions from the boosters stage.
-                if stages[0] and self.missing_prop[0] > 0:
-                    if 100 - np.sum(self.fine_grid_mass_stages[0]) > 100:
-                        sys.exit("Error with Booster emissions above model.") 
-                    self.calc_missing_emis(pei_indices[0],prop_masses[0],self.missing_prop[0])                  
-            
-                # Check if there are missing emissions from the first stage.
-                if stages[1] and self.missing_prop[1] > 0 and row.COSPAR_ID not in ['2020-F04','2020-F07','2021-F01','2021-F07']:
-                    if 100 - np.sum(self.fine_grid_mass_stages[1]) > 100:
-                        sys.exit("Error with Stage 1 emissions above model.") 
-
-                    self.calc_missing_emis(pei_indices[1],prop_masses[1],self.missing_prop[1] - self.missing_prop[5])
-                    
-                # Check if there are missing emissions from the second stage.
-                if stages[2] and self.missing_prop[2] > 0 and row.COSPAR_ID not in ['2020-F02','2020-F04','2020-F05','2020-F07','2021-F01',
-                                                                                    '2021-F02','2021-F07','2021-F08','2022-F01','2022-F02']:
-                    if 100 - np.sum(self.fine_grid_mass_stages[2]) > 100:
-                        sys.exit("Error with Stage 2 emissions above model.") 
-                    
-                    if row.COSPAR_ID == "2022-F03":
-                        included_emis = 240/315*100 - (100-self.missing_prop[2])
-                    else:
-                        included_emis = self.missing_prop[2]
-                        
-                    self.calc_missing_emis(pei_indices[2],prop_masses[2],included_emis)
-                    
-                # Check if there are missing emissions from the third stage.
-                if stages[3] and row.COSPAR_ID not in ['2020-F02','2020-F03','2020-F05','2020-F06','2021-F01',
-                                                       '2021-F06','2021-F10','2022-F02','2022-F05','2022-F07']:
-                    if row.COSPAR_ID == "2021-F09":
-                        included_emis = 475/521*100
-                    elif row.Rocket_Name == "Minotaur 1":
-                        included_emis = self.missing_prop[3]
-                    else:
-                        included_emis = 100
-                        
-                    self.calc_missing_emis(pei_indices[3],prop_masses[3],included_emis)
-                
-                # Check if there are missing emissions from the fourth stage.
-                if stages[4] and row.COSPAR_ID[-3:] not in ['2020-F08','2020-F09','2021-F01','2022-F02',
-                                                            '2022-F04','2022-F05','2022-F07']:
-                    self.calc_missing_emis(pei_indices[4],prop_masses[4],100)
-
-                if stages[5]:
-                    self.calc_missing_emis(pei_indices[5],prop_masses[5],100)
-                new_dict = {
-                    "BC":    f'{launch_details["emissions"]["launch_bc"]:.6f}',
-                    "CO":    f'{launch_details["emissions"]["co"]:.6f}',
-                    "CO2":   f'{launch_details["emissions"]["co2"]:.6f}',
-                    "NOx":   f'{(launch_details["emissions"]["launch_nox"] + launch_details["emissions"]["fuel_nox"]):.6f}',
-                    "H2O":   f'{launch_details["emissions"]["h2o"]:.6f}',
-                    "Cly":   f'{(launch_details["emissions"]["launch_cl"] + launch_details["emissions"]["cl2"] + launch_details["emissions"]["launch_hcl"]):.6f}',
-                    "Al2O3": f'{launch_details["emissions"]["launch_al"]:.6f}'
-                }
-                launch_details["emissions"] = new_dict                
-                daily_info.append(launch_details) 
-                
-                ##############################################
-                # Output the emissions to a file for viewing.
-                ##############################################                  
-
-                self.output_csv_launch_prop[self.csv_count,:] = total_vertical_propellant[:,0]
-                self.csv_count += 1
-                self.output_csv_launch_prop[self.csv_count,:] = self.mid_alt[:,q,p]*1e-3
-                self.csv_count += 1  
-                self.output_csv_launch_prop[self.csv_count,:] = self.gc_relative_mass
-                self.csv_count += 1 
-                
-                if np.sum(self.gc_relative_mass) == 0 and np.sum(total_vertical_propellant[:,0]) == 0:
-                    print(f'??? {input_data.dsr["Rocket_Name"][roc_ind]}')
-                
-                for i in range(1,10):
-                    self.output_csv_emis[self.csv_count_2,:] = total_vertical_propellant[:,i]
-                    self.csv_count_2 += 1 
-                self.output_csv_emis[self.csv_count_2,:] = self.mid_alt[:,q,p]*1e-3
-                self.csv_count_2 += 1
-
-                self.launch_count += 1
-                
-            #########################################################
-            # Work out vertical distribution for reentry emissions.
-            #########################################################
-            
-            if emis_type=='reentry':
-                reentry_details = {
-                    "date": f"{self.year}-{self.strmon}-{self.strday}",
-                    "id": row.COSPAR_ID,
-                    "time": row.Time_UTC,
-                    "reusability": "",
-                    "name": row.Object_Name,
-                    "category": row.Category, 
-                    "lat": row.Latitude,
-                    "lon": row.Latitude,
-                    "smc": bool(row.Megaconstellation_Flag),
-                    "location": int(row.Location_Constraint),
-                    "burnup": row.Burnup, 
-                    "emissions": {sp: 0 for sp in ["reentry_nox","reentry_al","reentry_bc","reentry_hcl","reentry_cl"]}
-                }
-                
-                if row.COSPAR_ID[:8] in ["2021-F09","2022-065","2023-72"] and row.Category == "S1":
-                    reentry_details["lat"] = 34.43194444
-                    reentry_details["lon"] = 127.535
-                elif row.COSPAR_ID[:8] in ["2020-065","2022-167","2022-046","2022-126","2023-135","2024-102","2024-153","2024-173","2024-245","2025-007","2025-105"] and row.Category == "S1":
-                    reentry_details["lat"] = 34.9
-                    reentry_details["lon"] = 121.2
-                else:
-                    reentry_details["lat"] = row.Latitude
-                    reentry_details["lon"] = row.Longitude
-
-                total_vertical_propellant = np.zeros((len(self.mid_alt[:,q,p]),10))
-                reentry_ei = np.zeros(5) # Al2O3, NOx, BC, Cl, HCl
-                if np.ma.is_masked(row.Ablatable_Mass) or np.ma.is_masked(row.Other_Mass):
-                    pass
-                else:
-                
-                    reentry_ei[0]   = row.Ablation_Degree * row.Percent_Aluminium
-                    if row.Ablation_Degree == 0:
-                        reentry_ei[1] = 0.175
-                    else:
-                        reentry_ei[1] = 0.4
-                        
-                    # Calculate the total mass surviving re-entry in tonnes
-                    # We are adding all mass that comes back, so this includes reusable stages and fairings.
-                    self.mass_survive = ((row.Ablatable_Mass* (1-row.Ablation_Degree)) + row.Other_Mass) * 1e-3
-                     
-                    # Add chlorine and bc reentry emissions from ATISPADE Report. Don't add for lower stages, only upper (>S2).
-                    if row.Category in ["P","C"]:
-                        reentry_ei[2:] = [0.041,0.015,0.008] # Worst Case
-                    elif row.Category in ["S2","S3","S4"]:
-                        reentry_ei[2:] = [0.029,0.011,0.005] # Worst Case
-                     
-                    # For consistency with launch emissions, the totals are kept in g units. 
-                    # NOx reentry, Al2O3 reentry, BC reentry, Cl reentry, HCl reentry 9-13           
-                    t_nox_reentry = (row.Ablatable_Mass + row.Other_Mass) * reentry_ei[1] * 1000
-                    t_al2o3_reentry = row.Ablatable_Mass * reentry_ei[0] * 1000
-
-                    def output_reentry_emis(key,temp,i):
-                        self.emission_totals[i] += temp
-                        reentry_details["emissions"][key] += temp * 1e-6   
-                        self.rocket_data_arrays[key][time_index,self.bot_reenter:self.top_reenter+1,q,p] += temp / self.n_reenter_levs * 1e-6
-
-                    output_reentry_emis("reentry_nox",t_nox_reentry,9)
-                    output_reentry_emis("reentry_al",t_al2o3_reentry,10)
-
-                    total_vertical_propellant[self.bot_reenter:self.top_reenter+1,4]   += np.full((self.n_reenter_levs),t_nox_reentry/self.n_reenter_levs)
-                    total_vertical_propellant[self.bot_reenter:self.top_reenter+1,6]   += np.full((self.n_reenter_levs),t_al2o3_reentry/self.n_reenter_levs)
-                    
-                    if row.Category in ["P","C","S2","S3","S4"]:
-                        
-                        prop_dict = {"reentry_bc": 1,"reentry_cl":7,"reentry_hcl": 8}
-                        for i, key in enumerate(["reentry_bc","reentry_cl","reentry_hcl"]):
-                            t_reentry = (row.Ablatable_Mass + row.Other_Mass) * reentry_ei[i+2] * 1000
-                            self.emission_totals[i+11] += t_reentry
-                            reentry_details["emissions"][key] += t_reentry * 1e-6
-                            self.rocket_data_arrays[key][time_index,self.bot_reenter:self.top_reenter+1,q,p] += t_reentry / self.n_reenter_levs * 1e-6
-                            total_vertical_propellant[self.bot_reenter:self.top_reenter+1,prop_dict[key]]   += np.full((self.n_reenter_levs),t_reentry/self.n_reenter_levs)
-   
-                new_dict = {
-                    "NOx":   f'{reentry_details["emissions"]["reentry_nox"]:.6f}',
-                    "Al2O3": f'{reentry_details["emissions"]["reentry_al"]:.6f}',
-                    "BC":    f'{reentry_details["emissions"]["reentry_bc"]:.6f}',
-                    "HCl":   f'{reentry_details["emissions"]["reentry_hcl"]:.6f}',
-                    "Cl":    f'{reentry_details["emissions"]["reentry_cl"]:.6f}',
-                    "Unablated_Mass": self.mass_survive,
-                }
-                reentry_details["emissions"] = new_dict                
-                self.mass_survive_total += self.mass_survive
-                daily_info.append(reentry_details) 
-
-                for i in range(1,10):
-                    self.output_csv_emis[self.csv_count_2,:] = total_vertical_propellant[:,i]
-                    self.csv_count_2 += 1
-                self.output_csv_emis[self.csv_count_2,:] = self.mid_alt[:,q,p]*1e-3
-                self.csv_count_2 += 1
-        
         return daily_info
 
 def check_total_emissions(year,dataset,res,levels,emis_data):
@@ -1304,7 +1302,7 @@ if __name__ == "__main__":
         main()
 
     # Save and print profiling stats
-    stats = pstats.Stats(pr)
-    stats.strip_dirs()
-    stats.sort_stats(pstats.SortKey.TIME)
-    stats.print_stats(20)  # Print the top 20 time-consuming functions
+    #stats = pstats.Stats(pr)
+    #stats.strip_dirs()
+    #stats.sort_stats(pstats.SortKey.TIME)
+    #stats.print_stats(50)  # Print the top 20 time-consuming functions

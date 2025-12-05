@@ -716,7 +716,7 @@ class import_launches:
                 "Fairing Mass":            0,
             }
 
-            for j in range(0,6):
+            for j in range(-1,6):
                 temp_dict.update({
                     f"Stage{j} Fuel Type":       "",
                     f"Stage{j} Propellant Mass": 0,
@@ -737,6 +737,7 @@ class import_launches:
 
             elif source == "jsr":
 
+                # Change the name so we can get info from JSR.
                 if "Long March (CZ)" in name:
                     name = name.replace("Long March (CZ)","Chang Zheng")
 
@@ -756,7 +757,7 @@ class import_launches:
                     stage_number = row['Stage_No'].strip()
                     if stage_number in ["F","P"]:
                         continue
-                    if "Soyuz" in name and name != "Soyuz-2-1V":
+                    if name.startswith(("Soyuz", "Conestoga 1620", "Polyot", "Molniya 8K78", "Sputnik","Voskhod","Vostok", "Space Shuttle")) and name != "Soyuz-2-1V":
                         stage_number = int(stage_number) - 1
                     else:
                         stage_number = int(stage_number)
@@ -764,8 +765,8 @@ class import_launches:
                     # Skip adapters, ullage motors, kick motors (Start, Proton-M/DM-03 and Molniya 8K78).
                     if row["Stage_Name"] in ["Perekhodnik","SOZ","BOZ","DS"]:
                         continue
-                    if "Molniya 8K78" in name and stage_number == 5:
-                        stage_number = 4
+                    if "Molniya 8K78" in name and stage_number == 4:
+                        stage_number = 3
                     if (name.startswith("Proton-K/") or name.startswith("Proton-M/D") or name.startswith("UR-500K/")) and stage_number == 5:
                         stage_number = 4
                     
@@ -791,34 +792,29 @@ class import_launches:
                         print("Too many stages for",name,variant,stage_number,"-",row["Stage_Name"])
                         pass
                     
-                    if stage_number < 0:
-                        if name == "H-II" and variant == "(2S)":
-                            continue # This rocket has two boosters but for some reason its duplicated in JSR.
-                        print("Extra booster found for",name,variant,stage_number,"-",row["Stage_Name"])
-                        pass
-
-                    # TODO: Ariane 44LP and Atlas IIAS had two solid and two liquid boosters, so we need to handle this.
-                    # Same for H-IIA 2022 and 2024, but these are all solid boosters.
-
-                    # TODO: Minotaur IV, Minotaur V, NOTS EV1, Start all have five stages, so we need to deal with these.
+                    if name == "H-II" and variant == "(2S)" and stage_number < 0:
+                        continue # This rocket has two boosters but for some reason its duplicated in JSR.
 
                     # Get the dry mass and wet mass and handle.
                     dry_mass    = df_stage["Dry_Mass"].values[0]
                     launch_mass = df_stage["Launch_Mass"].values[0]
                     dry_mass    = None if dry_mass    == '-' or pd.isna(dry_mass)    else float(dry_mass)
                     launch_mass = None if launch_mass == '-' or pd.isna(launch_mass) else float(launch_mass)*1000
+                    if stage_number > 0 and int(row["Multiplicity"]) != 1:
+                        print(f'Potential booster found for {name} {variant} - stage {stage_number} x {int(row["Multiplicity"])}')
                     if stage_number == 0:
                         temp_dict["Booster Number"] = int(row["Multiplicity"])
-                        if dry_mass != None:
-                            dry_mass    = dry_mass * temp_dict["Booster Number"]
-                        if launch_mass != None:
-                            launch_mass = launch_mass * temp_dict["Booster Number"]
+                    if dry_mass != None:
+                        dry_mass    = dry_mass * int(row["Multiplicity"])
+                    if launch_mass != None:
+                        launch_mass = launch_mass * int(row["Multiplicity"])                           
                     
                     # Going to use a constant mass ratio when we have the launch mass but not the dry.
                     # For the MG-18 stage (Thor MG-18, Scout X-2M, Scout X-3M), this is within the range of other scout 4th stages (10-33).
                     # https://www.planet4589.org/space/book/lv/engines/kick/WIDELYUSEDMOTORS.html 'high-mass ratio'
                     # TODO: Should ask Martin Ross and Jonathan McDowell about these, are these values reasonable? Different values for each stage?
                     if launch_mass is not None and dry_mass is None:
+                        #print(name,variant)
                         dry_mass = launch_mass / 10
                     
                     # These are fixed later in update_mass_info, so suppress warnings here.
@@ -835,13 +831,14 @@ class import_launches:
                     if dry_mass is not None and launch_mass is not None:
                         temp_dict[f"Stage{stage_number} Propellant Mass"] = launch_mass - dry_mass
 
-                    # Get the propellant name and type.
+                    # Get the propellant info from the engine database.
                     df_engine = df_engines[df_engines["#Name"] == df_stage["Engine"].values[0]]
                     if ("ZK-1A" not in df_stage["Engine"].values[0]) and ("YL-1" not in df_stage["Engine"].values[0]):
                         if len(df_engine) != 1:
                             print(f"Warning: Found {len(df_engine)} engines for stage {row['Stage_Name']} of {name,variant}.")
                             continue
                     
+                    # Assign the propellant type.
                     if df_engine["Group"].values[0] == "Solid":
                         fuel_type = "Solid"
                     elif df_engine["Group"].values[0] == "LOX/Methane":
@@ -861,25 +858,14 @@ class import_launches:
             else:
                 raise ValueError(f"Unknown source {source} for rocket data.")
             
+            # Change the name back so we can use the update script.
             if "Chang Zheng" in name:
                 temp_dict["name"] = name.replace("Chang Zheng","Long March (CZ)")
             else:
                 temp_dict["name"] = name
 
-            temp_dict_before = temp_dict.copy()
             # Handle any incomplete/incorrect propellant/stage mass information.
             temp_dict = update_mass_info(temp_dict, temp_dict["name"], variant)
-
-            changed = False
-            for key in temp_dict:
-                if key == "Fairing Mass":
-                    continue
-                if temp_dict_before.get(key) != temp_dict[key]:
-                    changed = True
-                    continue
-            if changed:
-                pass
-                #print(f"{name} {variant} changed.")
 
             # Update the rocket list.   
             self.unique_rocket_list.append(temp_dict) 
@@ -904,7 +890,7 @@ class import_launches:
         }
 
         # Add stages dynamically
-        for stage in range(0, 6):  # Stage1 to Stage5
+        for stage in range(-1, 6):  # Stage-1 to Stage5
             fields.update({
                 f"Stage{stage}_PropMass":  (f"Stage{stage} Propellant Mass", "kg"),
                 f"Stage{stage}_Fuel_Type": (f"Stage{stage} Fuel Type", None),
