@@ -342,7 +342,7 @@ def update_mass_info(temp_dict,name,variant):
         temp_dict[f"Stage2 Stage Mass"]       = (4500+4000) / 2
         temp_dict[f"Fairing Mass"]            = (2000+1750) / 2 # Average of SLR/Sp101
         
-    if name == "Falcon 9 v1.2" or (name == "Falcon 9" and variant == "FT5"):
+    if name == "Falcon 9" and variant == "FT5":
         # This is listed incorrectly on DISCOSweb, as it should actually be Falcon 9 Block 5, not v1.2. 
         
         # Prop masses:
@@ -473,7 +473,7 @@ def update_mass_info(temp_dict,name,variant):
         temp_dict[f"Stage2 Stage Mass"]       = 20000-16600  
         temp_dict[f"Fairing Mass"]            = 3200 # website/Sp101/SLR
      
-    if name == "H-III 22":
+    if name == "H-3 22":
         # Manual - https://www.mhi.com/products/space/launch_srv_lineup.html#pdh3
         # Approximating using H2B, as SLR says that "In many ways, H3 appears to be an improved H-2B."
         temp_dict[f"Booster Number"] = 2

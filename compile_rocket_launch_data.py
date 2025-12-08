@@ -7,6 +7,7 @@ import pandas as pd
 import requests
 from tqdm import tqdm
 import sys
+from pprint import pprint
 
 from python_modules.web_scrape_func import server_request, response_error_handler, scrape_jsr
 from update_rocket_launch_data import update_mass_info
@@ -193,6 +194,9 @@ class import_launches:
 
                 if name in rocket_name_map:
                     rocket_name = rocket_name_map[name]
+                elif name == "Falcon 9 v1.2":
+                    rocket_name = rocket_name.replace(" v1.2","")
+                    rocket_variant = "FT5"
                 elif "Volga" in name:
                     rocket_name = rocket_name.replace(" Volga","")
                     rocket_variant = "Volga"
@@ -474,7 +478,7 @@ class import_launches:
         if name in ["Angara A5", "Angara A5 Persei", "Angara A5 Orion", "Ariane 5ECA", "Ariane 62", 
                     "Atlas V N22", "Atlas V 401", "Atlas V 411", "Atlas V 421",
                     "Atlas V 511", "Atlas V 531", "Atlas V 541", "Atlas V 551",
-                    "Delta 4H", "Epsilon-2 CLPS", "H-IIA 202", "H-IIA 204", "H-IIB", "H-III 22", "GSLV Mk II", "GSLV Mk III",
+                    "Delta 4H", "Epsilon-2 CLPS", "H-IIA 202", "H-IIA 204", "H-IIB", "H-3 22", "GSLV Mk II", "GSLV Mk III",
                     "PSLV", "PSLV-DL", "PSLV-XL", "PSLV-CA", "Space Launch System - Block 1 Crew", "Falcon Heavy",
                     "Long March (CZ) 11", "Long March (CZ) 2F", "Long March (CZ) 3B","Long March (CZ) 3B/YZ-1",
                     "Long March (CZ) 3C", "Long March (CZ) 5", "Long March (CZ) 5B", "Long March (CZ) 5/YZ-2", 
@@ -522,7 +526,7 @@ class import_launches:
                     stage_number = "Stage3"
                 elif name == "Minotaur 1":
                     stage_number = "Stage4"
-            elif stage_name == "H-II SRB-A":
+            elif stage_name == "H-3 SRB-3":
                 if name == "Epsilon-2 CLPS":
                     stage_number = "Stage1"
                 else:
@@ -870,7 +874,7 @@ class import_launches:
             # Update the rocket list.   
             self.unique_rocket_list.append(temp_dict) 
         
-    def rocket_info_to_netcdf(self,source):
+    def rocket_info_to_netcdf(self):
         """
         This saves the propellant information as a NetCDF file for later processing for GEOS-Chem.
         Recommended to ignore if you don't need this.
@@ -1053,4 +1057,4 @@ if __name__ == "__main__":
     if args.rocket_info == True:
         LaunchData.get_rocket_info(args.source)      
         if args.save_rocket_info == True:
-            LaunchData.rocket_info_to_netcdf(args.source)
+            LaunchData.rocket_info_to_netcdf()
