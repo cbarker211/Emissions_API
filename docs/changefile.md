@@ -11,16 +11,21 @@ This major update contains an extension of emissions for 1957-2024, as well as c
 - Fixed a bug where SECO of Starship was assigned incorrectly, leading to an underestimate of emissions (affects one launch in 2023).
 - Minor adjustments to syntax throughout. No changes to results.
 - Fixed a bug where the first 9 levels of the fine_grid_mass array were wrongly set to zero during a failed launch on 12/09/2020, affecting launches in 2020 only from 12/09/20 onwards (49 launches). This meant that the launch emissions at the surface were being underestimated, and will particularly affect NOx and CO2 (largest emissions close to surface).
-- Tweaks to Falcon Heavy launches to improve handling of booster/stage1 after use. Fixes launches where all boosters and core are expended (one in 2023, one in 2024).
+- Tweaks to Falcon launches to correctly assign the re-entry method for each individual stage (ocean platform, ground landing pad, expended). Previously all were assumed to be reusuable.
 - Slight tweak to altitude of FEI for Pegasus.
 
 ### QOL additions with no impact on emission totals
-- Moved the calculation of the grid to outside the main day-month loop to increase speed. This will need to be changed if using meterological box heights.
-- Refactored the automatic assignment of launch event altitudes to improve readability and prevent errors. 
-- Completely refactored the calculations of fine_grid_mass_stage_{i}. Floating point changes to results.
+- Huge improvement in speed (4x) due to refactoring of code.
+    - Minimised np.sum calls.
+    - Input files loaded as pandas dataframes.
+    - Moved the calculation of the grid to outside the main day-month loop. This will need to be changed back if using meterological box heights.
+    - Refactored the automatic assignment of launch event altitudes.
+    - Refactored the calculations of fine_grid_mass_stage_{i} (fp changes to results).
 - Removed hardcode of launch IDs for lat/lon assignment for Naro Space Center and China Sea Launch. Now automatic based on name, very small change to coordinates of one launch in 2023.
 - Small adjustments to prepare the scripts for launches back to 1957.
-- Added ignition altitudes for air-launched rockets back to 1957 (Pegasus variants and NOTS EV1).
+- Added ignition altitudes for air-launched rockets back to 1957 (Pegasus variants).
+- Edited output files to a fixed 6 decimal places.
+- Added emission totals above the model.
 
 ## Launches
 - 2021-076 and 2022-056 now marked as containing megaconsellation payloads due to the Chinese National Constellation.
@@ -43,16 +48,15 @@ This major update contains an extension of emissions for 1957-2024, as well as c
 - Added masses and proxies for missing mass info in GCAT. 
     - Where launch mass is given but not dry mass, we assume a mass ratio of 10.
     - E.g. for a launch mass of 100, dry mass is 10.
-- Rocket attributes now include a 5th stage and variant.
+- Rocket attributes now include a 5th stage, -1 stage and variant.
 - Updated Shavit to include Shavit, Shavit 1 and Shavit 2.
 - Zhuque-2 renamed to Zhuque-2E from 2024 onwards.
-
+- Falcon 9 v1.2 renamed to Falcon 9 FT5 throughout.
 
 # v1.5.0
 
 This version contained an update to include 2023 and 2024 emissions.
 
-- Fixed inc
 - Various updates to speed up the scripts.
 - Added BECO for Angara A5 Orion.
 - Databases from Jonathan McDowell's GCAT are now loaded in automatically from the URL instead of from a downloaded static file.
@@ -64,7 +68,7 @@ This version contained an update to include 2023 and 2024 emissions.
     - Amazon Kuiper
      - Chinese National Constellation (Guowang/Xingwang/Guangwang/Hulianwang)
     - Qianfan
-- Fixed re-entry location of launches from 'Naro Space Center', 'China Sea Launch', 'Newquay, Spaceport Cornwall', and 'Mojave Air and Space Port.
+- Fixed re-entry location of launches from 'Naro Space Center', 'China Sea Launch', 'Newquay, Spaceport Cornwall', and 'Mojave Air and Space Port'.
 
 # v1.0.0 
 

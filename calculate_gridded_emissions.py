@@ -118,8 +118,8 @@ class OutputEmis:
         self.year = year
         self.stage_alt_dict = stage_alt_dict
         self.total_landing_prop = 0
-        self.included_prop = 0
-        self.missing_prop_total = 0
+        self.prop_in_grid_total = 0
+        self.prop_above_total = 0
         self.model_alt = MODEL_ALT
         events_data = {}
         self.csv_count, self.csv_count_2 = 0, 0
@@ -135,8 +135,7 @@ class OutputEmis:
         # Create variables for totals for a future sanity check:
         # BC launch, CO launch, CO2 launch, NOx launch, H2O launch, Al2O3 launch, Cl launch, HCl launch, Cl2 launch 0-8
         # NOx reentry, Al2O3 reentry, BC reentry, Cl reentry, HCl reentry 9-13
-        self.emission_totals = np.zeros(14)
-        self.missing_emis = np.zeros(14)
+        self.emis_in_grid, self.emis_above = np.zeros(14), np.zeros(14)
         self.prop_consumed = np.zeros((3,len(input_data.dsl)))
         self.total_prop_consumed = np.zeros((len(input_data.h2o_pei),3))
         self.launch_count = 0
@@ -312,15 +311,15 @@ class OutputEmis:
 
         # BC launch, CO launch, CO2 launch, NOx launch, H2O launch, Al2O3 launch, Cl launch, HCl launch, Cl2 launch 0-8
         # NOx reentry, Al2O3 reentry, BC reentry, Cl reentry, HCl reentry 9-13
-        final_emis = np.asarray([self.emission_totals[0]+self.emission_totals[11],
-                                 self.emission_totals[1],
-                                 self.emission_totals[2],
-                                 self.emission_totals[3]+self.emission_totals[9],
-                                 self.emission_totals[4], 
-                                 self.emission_totals[5]+self.emission_totals[10],
-                                 self.emission_totals[6]+self.emission_totals[12],
-                                 self.emission_totals[7]+self.emission_totals[13],
-                                 self.emission_totals[8]])
+        final_emis = np.asarray([self.emis_in_grid[0]+self.emis_in_grid[11],
+                                 self.emis_in_grid[1],
+                                 self.emis_in_grid[2],
+                                 self.emis_in_grid[3]+self.emis_in_grid[9],
+                                 self.emis_in_grid[4], 
+                                 self.emis_in_grid[5]+self.emis_in_grid[10],
+                                 self.emis_in_grid[6]+self.emis_in_grid[12],
+                                 self.emis_in_grid[7]+self.emis_in_grid[13],
+                                 self.emis_in_grid[8]])
         
         spec_names = ["BC", "CO", "CO2", "NOx", "H2O", "Al2O3", "Cl", "HCl", "Cl2"]
         diff_out = np.zeros(9)
@@ -410,7 +409,8 @@ class OutputEmis:
 
             if rocket_config_type is None:
                 raise IndexError(f"Incorrect rocket configuration for {launch_rocket} (stages={stages})")
-                    
+
+            # This uses some default values depending on the rocket config.        
             stage_alt_beco = self.event_alts[0][rocket_config_type]
             stage_alt_meco = self.event_alts[1][rocket_config_type]
             stage_alt_sei  = self.event_alts[2][rocket_config_type]    
@@ -476,7 +476,8 @@ class OutputEmis:
         self.MECO_alt_index = get_alt_index(stage_alt_meco, self.fine_grid_top_alt, self.fine_grid_bot_alt)
         if stage_alt_meco * 1e3 > self.fine_grid_top_alt[-1]:
             self.fine_grid_mass_stages[1] = self.fine_grid_mass[self.fei_alt_index:].copy()
-            if launch_rocket == "GSLV Mk III":
+            if fei_alt > 0: # This is when its air-launched and meco is above the fine grid.
+                # We can get a slightly better idea of propellant consumed by the stage.
                 fei_mass = np.interp(fei_alt,self.ross_alt_edge, self.ross_cumulative_mass)
                 fei_percent = (self.prop_in_fine_grid - fei_mass) / (100.0 - fei_mass) * 100.0
                 self.fine_grid_mass_stages[1] = normalize_mass(self.fine_grid_mass_stages[1], fei_percent)
@@ -514,7 +515,7 @@ class OutputEmis:
         # Stage 3
         ###########
                 
-        # TODO: Check if any other rocket third stages start below 100 km.        
+        # TODO: Add TEI for all rockets to check if any other rocket third stages start below 100 km.        
         # Calculate third stage emissions for Minotaur 1 only.    
         if launch_rocket == "Minotaur 1":
             # Minotaur 1 third stage ignition occurs below the model boundary, so we can need to add some of the stage 3 emissions.
@@ -529,10 +530,10 @@ class OutputEmis:
         ##################
            
         # Finally create an extra stage just for the landing emissions of Falcon 9 v1.2. 
-        # TODO: Needs reworking if running for different model ceilings above 80km.
-        # Would need to add boostback emissions if top is above 80.
         if launch_rocket in ["Falcon 9","Falcon Heavy"]:
             if input_data.falcon_landing_dict[launch_id] != "expended":
+
+                # When 5.6% is used in the boostback burn, this is typically above 100 km, so we don't need to include it here. 
 
                 # 5.6% are used in the entry burn, over 70-54.7 km.
                 self.entry_top = np.searchsorted(self.fine_grid_top_alt, 70000, side='right')
@@ -623,54 +624,52 @@ class OutputEmis:
         
         # BC launch, CO launch, CO2 launch, NOx launch, H2O launch, Al2O3 launch, Cl launch, HCl launch, Cl2 launch
         # NOx reentry, Al2O3 reentry, BC reentry, HCl reentry, Cl reentry
-        self.emission_totals[0] += total_sum[0]       
-        self.emission_totals[1] += total_sum[1]         
-        self.emission_totals[2] += total_sum[2]   
-        self.emission_totals[3] += np.sum(total_sum[3:5])     
-        self.emission_totals[4] += total_sum[5]   
-        self.emission_totals[5] += total_sum[6]   
-        self.emission_totals[6] += total_sum[7]   
-        self.emission_totals[7] += total_sum[8]   
-        self.emission_totals[8] += total_sum[9]   
-        self.included_prop      += (total_sum[10] * prop_mass * 1e-2)
+        self.prop_in_grid_total  += (total_sum[10] * prop_mass * 1e-2)
+        self.emis_in_grid[0]     += total_sum[0]       
+        self.emis_in_grid[1]     += total_sum[1]         
+        self.emis_in_grid[2]     += total_sum[2]   
+        self.emis_in_grid[3]     += np.sum(total_sum[3:5])     
+        self.emis_in_grid[4]     += total_sum[5]   
+        self.emis_in_grid[5]     += total_sum[6]   
+        self.emis_in_grid[6]     += total_sum[7]   
+        self.emis_in_grid[7]     += total_sum[8]   
+        self.emis_in_grid[8]     += total_sum[9]   
 
         if falcon_flag:
-            self.missing_prop[stage] += np.round((np.sum(emis_full[selected_alts[0]:selected_alts[-1]+1,10])),2)
+            self.prop_above[stage] += np.round((np.sum(emis_full[selected_alts[0]:selected_alts[-1]+1,10])),2)
         else:
-            self.missing_prop[stage] += np.round((100-np.sum(emis_full[selected_alts[0]:selected_alts[-1]+1,10])),2)
+            self.prop_above[stage] += np.round((100-np.sum(emis_full[selected_alts[0]:selected_alts[-1]+1,10])),2)
         
         return total_vertical_propellant        
 
-    def calc_missing_emis(self, pei_index, prop_mass, percent_included):
+    def calc_emis_above(self, pei_index, prop_mass, percent_included, launch_details):
 
-        ei_bc = calculate_bc_ei([self.model_alt], input_data.bc_pei[pei_index])
-        ei_co, ei_co2 = calculate_co_ei([self.model_alt], input_data.co_pei[pei_index], input_data.co2_pei[pei_index])
-        ei_sec_nox = calculate_nox_ei([self.model_alt])
-        ei_h2o =  input_data.h2o_pei[pei_index] + input_data.h2_pei[pei_index] * (1.008 * 2 + 16) / (1.008 * 2) 
-        ei_cl, ei_hcl, ei_cl2 = calculate_cl_ei([self.model_alt], input_data.cly_pei[pei_index]) 
+        ei_bc                 = calculate_bc_ei ([self.model_alt], input_data.bc_pei[pei_index])
+        ei_co, ei_co2         = calculate_co_ei ([self.model_alt], input_data.co_pei[pei_index], input_data.co2_pei[pei_index])
+        ei_sec_nox            = calculate_nox_ei([self.model_alt])
+        ei_cl, ei_hcl, ei_cl2 = calculate_cl_ei ([self.model_alt], input_data.cly_pei[pei_index]) 
+        ei_h2o                = input_data.h2o_pei[pei_index] + input_data.h2_pei[pei_index] * (1.008 * 2 + 16) / (1.008 * 2) 
+
+        # Calculate the emissions for each species in g.
+        emis_full = np.zeros(10)
+        factor = prop_mass * 1e-2 * percent_included
+        for index, emission_index in enumerate([ei_bc, ei_co, ei_co2, ei_sec_nox, input_data.nox_pei[pei_index], ei_h2o, input_data.al2o3_pei[pei_index], ei_cl, ei_hcl, ei_cl2]):
+            emis_full[index] = emission_index.item() * factor
+
+        species_keys = ["launch_bc","co","co2","launch_nox","fuel_nox","h2o","launch_al","launch_cl","launch_hcl","cl2"]
+        for i, key in enumerate(species_keys):
+            launch_details["emissions_above"][key] = (emis_full[i] * 1e-6)
         
-        t_bc_emis = ei_bc * prop_mass * 1e-2 * percent_included
-        t_co_emis = ei_co * prop_mass * 1e-2 * percent_included
-        t_co2_emis = ei_co2 * prop_mass * 1e-2 * percent_included
-        t_launch_nox_emis = ei_sec_nox * prop_mass * 1e-2 * percent_included
-        t_fuel_nox_emis = input_data.nox_pei[pei_index] * prop_mass * 1e-2 * percent_included
-        t_h2o_emis = ei_h2o * prop_mass * 1e-2 * percent_included
-        t_al2o3_emis = input_data.al2o3_pei[pei_index] * prop_mass * 1e-2 * percent_included
-        t_cl_emis = ei_cl * prop_mass * 1e-2 * percent_included
-        t_hcl_emis = ei_hcl * prop_mass * 1e-2 * percent_included
-        t_cl2_emis = ei_cl2 * prop_mass * 1e-2 * percent_included
-        
-        self.missing_prop_total += prop_mass * 1e-2 * percent_included
-        self.missing_emis[0] += np.sum(t_bc_emis) 
-        self.missing_emis[1] += np.sum(t_co_emis)
-        self.missing_emis[2] += np.sum(t_launch_nox_emis)
-        self.missing_emis[2] += np.sum(t_fuel_nox_emis)
-        self.missing_emis[3] += np.sum(t_h2o_emis)
-        self.missing_emis[4] += np.sum(t_al2o3_emis)
-        self.missing_emis[5] += np.sum(t_cl_emis)
-        self.missing_emis[6] += np.sum(t_hcl_emis)
-        self.missing_emis[7] += np.sum(t_cl2_emis)
-        self.missing_emis[8] += np.sum(t_co2_emis)    
+        self.prop_above_total += prop_mass * 1e-2 * percent_included
+        self.emis_above[0] += emis_full[0] 
+        self.emis_above[1] += emis_full[1] 
+        self.emis_above[2] += emis_full[2] 
+        self.emis_above[3] += np.sum(emis_full[3:5])
+        self.emis_above[4] += emis_full[5] 
+        self.emis_above[5] += emis_full[6] 
+        self.emis_above[6] += emis_full[7] 
+        self.emis_above[7] += emis_full[8] 
+        self.emis_above[8] += emis_full[9]   
 
     def launch_emis(self,row,q,p,time_index):
         '''Calculate the launch emissions'''
@@ -702,7 +701,8 @@ class OutputEmis:
             "lon":       row.Longitude,
             "smc":       bool(row.Megaconstellation_Flag),
             "location":  row.Site,
-            "emissions": {sp: 0 for sp in ["launch_bc","co","co2","launch_nox","fuel_nox","h2o","launch_al","launch_cl","launch_hcl","cl2"]}
+            "emissions": {sp: 0 for sp in ["launch_bc","co","co2","launch_nox","fuel_nox","h2o","launch_al","launch_cl","launch_hcl","cl2"]},
+            "emissions_above": {sp: 0 for sp in ["launch_bc","co","co2","launch_nox","fuel_nox","h2o","launch_al","launch_cl","launch_hcl","cl2"]}
         }
         
         ############################################
@@ -808,7 +808,7 @@ class OutputEmis:
         # Creating a 2d array for the prop output.
         # Total prop, bc, co, co2, nox, h2o, al2o3, cl, hcl, cl2
         total_vertical_propellant = np.zeros((len(self.mid_alt[:,q,p]),10)) 
-        self.missing_prop = np.zeros(6) # An array for propellant consumed >80 km.
+        self.prop_above = np.zeros(6) # An array for propellant consumed by each stage above the model limits.
 
         launch_tuple = (time_index, q, p, pei_indices, prop_masses, False)  
                         
@@ -936,54 +936,6 @@ class OutputEmis:
                             falcon_tuple,
                             launch_details)
 
-        # NOTE: This section may need to be tweaked if wanting to run for different vertical heights above 80km. 
-        
-        # Calculate the missing emissions from above model.
-        # Check if there are missing emissions from the boosters stage.
-        if stages[0] and self.missing_prop[0] > 0:
-            if 100 - np.sum(self.fine_grid_mass_stages[0]) > 100:
-                sys.exit("Error with Booster emissions above model.") 
-            self.calc_missing_emis(pei_indices[0],prop_masses[0],self.missing_prop[0])                  
-    
-        # Check if there are missing emissions from the first stage.
-        if stages[1] and self.missing_prop[1] > 0 and row.COSPAR_ID not in ['2020-F04','2020-F07','2021-F01','2021-F07']:
-            if 100 - np.sum(self.fine_grid_mass_stages[1]) > 100:
-                sys.exit("Error with Stage 1 emissions above model.") 
-
-            self.calc_missing_emis(pei_indices[1],prop_masses[1],self.missing_prop[1] - self.missing_prop[5])
-            
-        # Check if there are missing emissions from the second stage.
-        if stages[2] and self.missing_prop[2] > 0 and row.COSPAR_ID not in ['2020-F02','2020-F04','2020-F05','2020-F07','2021-F01',
-                                                                            '2021-F02','2021-F07','2021-F08','2022-F01','2022-F02']:
-            if 100 - np.sum(self.fine_grid_mass_stages[2]) > 100:
-                sys.exit("Error with Stage 2 emissions above model.") 
-            
-            if row.COSPAR_ID == "2022-F03":
-                included_emis = 240/315*100 - (100-self.missing_prop[2])
-            else:
-                included_emis = self.missing_prop[2]
-                
-            self.calc_missing_emis(pei_indices[2],prop_masses[2],included_emis)
-            
-        # Check if there are missing emissions from the third stage.
-        if stages[3] and row.COSPAR_ID not in ['2020-F02','2020-F03','2020-F05','2020-F06','2021-F01',
-                                                '2021-F06','2021-F10','2022-F02','2022-F05','2022-F07']:
-            if row.COSPAR_ID == "2021-F09":
-                included_emis = 475/521*100
-            elif row.Rocket_Name == "Minotaur 1":
-                included_emis = self.missing_prop[3]
-            else:
-                included_emis = 100
-                
-            self.calc_missing_emis(pei_indices[3],prop_masses[3],included_emis)
-        
-        # Check if there are missing emissions from the fourth stage.
-        if stages[4] and row.COSPAR_ID[-3:] not in ['2020-F08','2020-F09','2021-F01','2022-F02',
-                                                    '2022-F04','2022-F05','2022-F07']:
-            self.calc_missing_emis(pei_indices[4],prop_masses[4],100)
-
-        if stages[5]:
-            self.calc_missing_emis(pei_indices[5],prop_masses[5],100)
         new_dict = {
             "BC":    f'{launch_details["emissions"]["launch_bc"]:.6f}',
             "CO":    f'{launch_details["emissions"]["co"]:.6f}',
@@ -993,7 +945,52 @@ class OutputEmis:
             "Cly":   f'{(launch_details["emissions"]["launch_cl"] + launch_details["emissions"]["cl2"] + launch_details["emissions"]["launch_hcl"]):.6f}',
             "Al2O3": f'{launch_details["emissions"]["launch_al"]:.6f}'
         }
-        launch_details["emissions"] = new_dict                 
+        launch_details["emissions"] = new_dict  
+
+        ###########################################################
+        # Calculate the emissions above the model for each species.
+        ###########################################################
+
+        skip_ids = [[], # Stage0
+            ['2020-F04','2020-F07','2021-F01','2021-F07'], # Stage1
+            ['2020-F02','2020-F04','2020-F05','2020-F07','2021-F01', '2021-F02','2021-F07','2021-F08','2022-F01','2022-F02'], # Stage2
+            ['2020-F02','2020-F03','2020-F05','2020-F06','2021-F01', '2021-F06','2021-F10','2022-F02','2022-F05','2022-F07'], # Stage3
+            ['2020-F08','2020-F09','2021-F01','2022-F02','2022-F04', '2022-F05','2022-F07'], # Stage4
+            []] # Stage5 
+
+        def calc_emis_above(stage_no,prop_above):
+            if stages[stage_no] and prop_above > 0 and row.COSPAR_ID not in skip_ids[stage_no]:
+                if 100 - np.sum(self.fine_grid_mass_stages[stage_no]) > 100:
+                    sys.exit(f"Error with Stage{stage_no} emissions above model.") 
+
+                if stage_no == 2 and row.COSPAR_ID == "2022-F03":
+                    included = 240/315*100 - (100-self.prop_above[2])
+                elif stage_no == 3 and row.COSPAR_ID == "2021-F09":
+                    included = 475/521*100
+                elif stage_no == 3 and row.Rocket_Name == "Minotaur 1":
+                    included = self.prop_above[3]
+                else:
+                    included = prop_above
+
+                self.calc_emis_above(pei_indices[stage_no],prop_masses[stage_no],included,launch_details)                  
+
+        calc_emis_above(0,self.prop_above[0])
+        calc_emis_above(1,self.prop_above[1] - self.prop_above[5])
+        calc_emis_above(2,self.prop_above[2])
+        calc_emis_above(3,100)
+        calc_emis_above(4,100)
+        calc_emis_above(5,100)   
+
+        new_dict = {
+            "BC":    f'{launch_details["emissions_above"]["launch_bc"]:.6f}',
+            "CO":    f'{launch_details["emissions_above"]["co"]:.6f}',
+            "CO2":   f'{launch_details["emissions_above"]["co2"]:.6f}',
+            "NOx":   f'{(launch_details["emissions_above"]["launch_nox"] + launch_details["emissions_above"]["fuel_nox"]):.6f}',
+            "H2O":   f'{launch_details["emissions_above"]["h2o"]:.6f}',
+            "Cly":   f'{(launch_details["emissions_above"]["launch_cl"] + launch_details["emissions_above"]["cl2"] + launch_details["emissions_above"]["launch_hcl"]):.6f}',
+            "Al2O3": f'{launch_details["emissions_above"]["launch_al"]:.6f}'
+        }
+        launch_details["emissions_above"] = new_dict              
         
         ##############################################
         # Output the emissions to a file for viewing.
@@ -1075,7 +1072,7 @@ class OutputEmis:
             t_al2o3_reentry = row.Ablatable_Mass * reentry_ei[0] * 1000
 
             def output_reentry_emis(key,temp,i):
-                self.emission_totals[i] += temp
+                self.emis_in_grid[i] += temp
                 reentry_details["emissions"][key] += temp * 1e-6   
                 self.rocket_data_arrays[key][time_index,self.bot_reenter:self.top_reenter+1,q,p] += temp / self.n_reenter_levs * 1e-6
 
@@ -1090,7 +1087,7 @@ class OutputEmis:
                 prop_dict = {"reentry_bc": 1,"reentry_cl":7,"reentry_hcl": 8}
                 for i, key in enumerate(["reentry_bc","reentry_cl","reentry_hcl"]):
                     t_reentry = (row.Ablatable_Mass + row.Other_Mass) * reentry_ei[i+2] * 1000
-                    self.emission_totals[i+11] += t_reentry
+                    self.emis_in_grid[i+11] += t_reentry
                     reentry_details["emissions"][key] += t_reentry * 1e-6
                     self.rocket_data_arrays[key][time_index,self.bot_reenter:self.top_reenter+1,q,p] += t_reentry / self.n_reenter_levs * 1e-6
                     total_vertical_propellant[self.bot_reenter:self.top_reenter+1,prop_dict[key]]   += np.full((self.n_reenter_levs),t_reentry/self.n_reenter_levs)
@@ -1185,23 +1182,29 @@ def check_total_emissions(year,dataset,res,levels,emis_data):
     # BC launch, CO launch, CO2 launch, NOx launch, H2O launch, Al2O3 launch, Cl launch, HCl launch, Cl2 launch 0-8
     # NOx reentry, Al2O3 reentry, BC reentry, Cl reentry, HCl reentry 9-13
 
-    total_inc_emis = np.sum(emis_data.emission_totals[:]*1e-9)
-    total_inc_prop = emis_data.included_prop*1e-6
+    total_emis_in_grid = np.sum(emis_data.emis_in_grid[:]*1e-9)
+    total_emis_above = np.sum(emis_data.emis_above[:]*1e-9)
      
-    data = {'Species':                ['BC (Launch)',   'CO (Launch)',     'CO2 (Launch)', 'NOx (Launch)', 'H2O (Launch)', 'Al2O3 (Launch)',
-                                       'Cl (Launch)',   'HCl (Launch)',    'Cl2 (Launch)', 
-                                       'NOx (Reentry)', 'Al2O3 (Reentry)', 'BC (Reentry)', 'Cl (Reentry)', 'HCl (Reentry)', 
-                                       'Cly (Total)',
-                                       'NOx (Total)',
-                                       'Total Emis',
-                                       'Total Prop',
-                                       'Surviving Mass'],
-            'Emissions 0-80 km [Gg]': [*(emis_data.emission_totals * 1e-9).tolist(),
-                                       np.sum(emis_data.emission_totals[6:9]*1e-9) + np.sum(emis_data.emission_totals[12:]*1e-9),
-                                       emis_data.emission_totals[3]*1e-9 + emis_data.emission_totals[9]*1e-9,
-                                       total_inc_emis,
-                                       total_inc_prop,
-                                       emis_data.mass_survive_total * 1e-3]}
+    data = {'Species':                 ['BC (Launch)',   'CO (Launch)',     'CO2 (Launch)', 'NOx (Launch)', 'H2O (Launch)', 'Al2O3 (Launch)',
+                                        'Cl (Launch)',   'HCl (Launch)',    'Cl2 (Launch)', 
+                                        'NOx (Reentry)', 'Al2O3 (Reentry)', 'BC (Reentry)', 'Cl (Reentry)', 'HCl (Reentry)', 
+                                        'Cly (Total)',
+                                        'NOx (Total)',
+                                        'Total Emis',
+                                        'Total Prop',
+                                        'Surviving Mass'],
+            'Emissions in Grid [Gg]':   [*(emis_data.emis_in_grid * 1e-9).tolist(),
+                                        np.sum(emis_data.emis_in_grid[6:9]*1e-9) + np.sum(emis_data.emis_in_grid[12:]*1e-9),
+                                        emis_data.emis_in_grid[3]*1e-9 + emis_data.emis_in_grid[9]*1e-9,
+                                        total_emis_in_grid,
+                                        emis_data.prop_in_grid_total * 1e-6,
+                                        emis_data.mass_survive_total * 1e-3],
+            'Emissions Above Grid [Gg]':[*(emis_data.emis_above * 1e-9).tolist(),
+                                        np.sum(emis_data.emis_above[6:9]*1e-9) + np.sum(emis_data.emis_above[12:]*1e-9),
+                                        emis_data.emis_above[3]*1e-9 + emis_data.emis_above[9]*1e-9,
+                                        total_emis_above,
+                                        emis_data.prop_above_total * 1e-6,
+                                        emis_data.mass_survive_total * 1e-3]}
     df = pd.DataFrame(data)
     df_rounded = df.round(9)
     print(df_rounded)  
@@ -1243,7 +1246,7 @@ if __name__ == "__main__":
         months,   start_month,   final_month   = make_range(args.start_month, args.final_month)
         datasets, start_dataset, final_dataset = make_range(args.start_dataset, args.final_dataset)
         
-        print(f"Years: {start_year}-{final_year}. Months: {start_month}-{final_month}.")
+        print(f"Years: {start_year}-{final_year}. Months: {start_month}-{final_month}. Datasets: {start_dataset}-{final_dataset}.")
 
         #################################  
         # Define launch event altitudes.
