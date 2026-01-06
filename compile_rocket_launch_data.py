@@ -837,11 +837,13 @@ class import_launches:
 
                     # Get the propellant info from the engine database.
                     df_engine = df_engines[df_engines["#Name"] == df_stage["Engine"].values[0]]
-                    if ("ZK-1A" not in df_stage["Engine"].values[0]) and ("YL-1" not in df_stage["Engine"].values[0]):
-                        if len(df_engine) != 1:
-                            print(f"Warning: Found {len(df_engine)} engines for stage {row['Stage_Name']} of {name,variant}.")
-                            continue
-                    
+                    if len(df_engine) != 1:
+                        print(f"Warning: Found {len(df_engine)} engines for stage {row['Stage_Name']} of {name,variant}.")
+                        continue
+                    try:
+                        t = (df_engine["Group"].values[0])
+                    except:
+                        sys.exit(name)
                     # Assign the propellant type.
                     if df_engine["Group"].values[0] == "Solid":
                         fuel_type = "Solid"

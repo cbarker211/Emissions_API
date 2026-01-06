@@ -719,12 +719,13 @@ class OutputEmis:
                 if len(idx) != 1:
                     raise RuntimeError(f"Expected one PEI fuel match for Stage {i}, got {idx}") 
                 pei_indices[i] = idx[0]
-        # TODO: Needs reworking if running for different model ceilings above 80km.
 
         ############################################
         # Deal with failed launches.
         ############################################
 
+        # TODO: Needs reworking if running for different model ceilings above 80km.
+        
         # Most failures are for upper stages, and so can be treated as normal here.
         # Full information is provided in source_info/failed_launch_info.txt.
                     
