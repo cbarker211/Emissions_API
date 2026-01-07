@@ -2,7 +2,7 @@ For a full list of changes, please visit https://github.com/cbarker211/Emissions
 
 # v2.0.0
 
-This major update contains an extension of emissions for 1957-2024, as well as code refactoring and bug fixes.
+This major update contains an extension of launch emissions for 1957-2024, as well as code refactoring and bug fixes.
 
 ## Emissions
 
