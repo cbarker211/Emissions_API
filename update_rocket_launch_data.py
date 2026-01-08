@@ -203,7 +203,7 @@ def update_mass_info(temp_dict,name,variant):
         temp_dict[f"Fairing Mass"]           = 57    # Shavit http://www.b14643.de/Spacerockets_1/Rest_World/Shavit/Description/Frame.htm
 
     if name in ["Chollima-1","NK Kerolox LV"]:
-        # Using information from Long March (CZ) 2C/YZ-1S
+        # Using information from Chang Zheng 2C/YZ-1S
         # NK Kerolox LV is based on Chollima-1.
         temp_dict[f"Stage1 Propellant Mass"]    = 162706
         temp_dict[f"Stage2 Propellant Mass"]    = 54667
@@ -561,7 +561,7 @@ def update_mass_info(temp_dict,name,variant):
         # Kuaizhou-11 (Stage 1-3, no prop mass or type)
         # Might be a liquid fourth stage for propulsion control, looks like its part of the satellite.
         # Comparing to other three-stage rockets. See excel file for comparison details. 
-        # Best represented by Long March 6. 
+        # Best represented by Chang Zheng 6. 
         temp_dict[f"Stage1 Propellant Name"] = 'Solid'
         temp_dict[f"Stage2 Propellant Name"] = 'Solid'
         temp_dict[f"Stage3 Propellant Name"] = 'Solid'
@@ -597,8 +597,8 @@ def update_mass_info(temp_dict,name,variant):
         temp_dict[f"Stage3 Stage Mass"]      = 394.9
         temp_dict[f"Stage4 Stage Mass"]      = 23.05
 
-    if "Long March (CZ) 2C" in name:
-        # Long March (CZ) 2C 
+    if name.startswith("Chang Zheng 2C"):
+        # Chang Zheng 2C 
         # https://discosweb.esoc.esa.int/launch-vehicles/157
         # https://en.wikipedia.org/wiki/Long_March_2C
         # http://cgwic.com/Launchservice/LM2C.html
@@ -608,15 +608,15 @@ def update_mass_info(temp_dict,name,variant):
         temp_dict[f"Stage2 Stage Mass"]      = 4000    # SLR
         temp_dict[f"Fairing Mass"]           = 800 # http://www.b14643.de/Spacerockets_1/China/CZ-2C/Description/Frame.htm
 
-        if name == "Long March (CZ) 2C/YZ-1S":
+        if name.endswith("YZ-1S"):
             # No clear info available. DISCOSweb dry mass matches JSR reentry data, so keeping DW values.
             temp_dict[f"Stage3 Propellant Mass"] = 1350 # DW
             temp_dict[f"Stage3 Stage Mass"]      = 2500 # DW
             temp_dict[f"Stage3 Propellant Name"]  = "UDMH (Unsymmetrical Dimethyl Hydrazine)/N2O4"
             temp_dict[f"Stage3 Fuel Type"]        = "Hypergolic"
     
-    if name.startswith("Long March (CZ) 2D") or name.startswith("Chang Zheng 2D"):
-        # Long March (CZ) 2D 
+    if name.startswith("Chang Zheng 2D"):
+        # Chang Zheng 2D 
         # https://discosweb.esoc.esa.int/launch-vehicles/158
         # https://en.wikipedia.org/wiki/Long_March_2D
         # http://cgwic.com/Launchservice/LM2D.html
@@ -631,7 +631,7 @@ def update_mass_info(temp_dict,name,variant):
             temp_dict[f"Stage3 Propellant Mass"]   = 1350
             temp_dict[f"Stage3 Stage Mass"]        = 2500
     
-    if name in ["Long March (CZ) 2F","Chang Zheng 2F"]:
+    if name == "Chang Zheng 2F":
         
         # Prop masses:
         # DISCOSweb : 41501 (one), 186310, 86150
@@ -651,19 +651,18 @@ def update_mass_info(temp_dict,name,variant):
         temp_dict[f"Stage2 Propellant Mass"]  = (86000+91500) / 2       # SLR/Sp101 
         temp_dict[f"Fairing Mass"]            = 6000                    # http://www.b14643.de/Spacerockets_1/China/CZ-2EF/Description/Frame.htm
         
-    if "Long March (CZ) 3" in name:
-        #These should really be the 3BE/3CE versions, so the 1998/1999 manuals are now outdated.
+    if name.startswith("Chang Zheng 3A") or name.startswith("Chang Zheng 3B") or name.startswith("Chang Zheng 3C"):
         
         # These are for the original version, the upgraded version has updated boosters and first stage.
         # Manual: https://www.mach5lowdown.com/wp-content/uploads/PUG/LM-3B-User-Manual-v1999.pdf
         # Manual: https://www.mach5lowdown.com/wp-content/uploads/PUG/LM-3C-User-Manual-v1998.pdf
     
-        if name.startswith("Long March (CZ) 3B"):
+        if name.startswith("Chang Zheng 3B"):
             temp_dict[f"Booster Number"] = 4
-        elif name.startswith("Long March (CZ) 3C"):
+        elif name.startswith("Chang Zheng 3C"):
             temp_dict[f"Booster Number"] = 2
 
-        if variant.startswith("G") or name.endswith("/E"):
+        if variant.startswith("G"): # Updated boosters and first stage for the upgraded version.
             temp_dict[f"Stage0 Propellant Mass"]  = 41100 * int(temp_dict[f"Booster Number"])           # SLR/Sp101
             temp_dict[f"Stage1 Propellant Mass"]  = 186200                                              # SLR/Sp101
             temp_dict[f"Stage0 Stage Mass"]       = (3900+3200) / 2 * int(temp_dict[f"Booster Number"]) # SLR/Sp101
@@ -674,9 +673,14 @@ def update_mass_info(temp_dict,name,variant):
             temp_dict[f"Stage0 Stage Mass"]       = (3000+3330) / 2 * int(temp_dict[f"Booster Number"]) # SLR/Sp101
             temp_dict[f"Stage1 Stage Mass"]       = (12125+9200)/ 2                                     # SLR/Sp101
 
-        temp_dict[f"Stage2 Propellant Mass"]  = 49605                                                   # Manual
+        if name == "Chang Zheng 3A":
+            temp_dict[f"Stage0 Propellant Mass"]  = 0
+            temp_dict[f"Stage0 Stage Mass"]       = 0
+        else: # 3B and 3C have updated second stage, but 3A, 3B, and 3C share the same first and third stage.
+            temp_dict[f"Stage2 Propellant Mass"]  = 49605                                                   # Manual
+            temp_dict[f"Stage2 Stage Mass"]       = (3848+4000) / 2                                         # SLR/Sp101
+        
         temp_dict[f"Stage3 Propellant Mass"]  = 18193                                                   # Manual
-        temp_dict[f"Stage2 Stage Mass"]       = (3848+4000) / 2                                         # SLR/Sp101
         temp_dict[f"Stage3 Stage Mass"]       = (2740+2800) / 2                                         # SLR/Sp101
         temp_dict[f"Fairing Mass"]            = 1500 # Sp101
 
@@ -686,22 +690,14 @@ def update_mass_info(temp_dict,name,variant):
             temp_dict[f"Stage4 Propellant Name"]  = 'UDMH (Unsymmetrical Dimethyl Hydrazine)/N2O4'
             temp_dict[f"Stage4 Fuel Type"]        = 'Hypergolic'
         
-    if name in ["Long March (CZ) 4B","Long March (CZ) 4C","Chang Zheng 4B","Chang Zheng 4C"]: 
-        
-        # Prop masses:
-        # DISCOSweb : 183200, 35600, 16198
-        # SLR       : 183200, 35550, 14000
-              
-        # Stage masses:
-        # DISCOSweb : 9500, 4000, 1000
-        # SLR       : 9500, 4000, 2000
+    if name in ["Chang Zheng 4B","Chang Zheng 4C"]: 
         
         temp_dict[f"Stage2 Propellant Mass"]  = 35550   # SLR
         temp_dict[f"Stage3 Propellant Mass"]  = 14000   # SLR
         temp_dict[f"Stage3 Stage Mass"]       = 2000    # SLR
         temp_dict[f"Fairing Mass"]            = 1800    # http://www.b14643.de/Spacerockets_1/China/CZ-4/Description/Frame.htm
      
-    if name.startswith("Long March (CZ) 5") or name.startswith("Chang Zheng 5"):  
+    if name.startswith("Chang Zheng 5"):  
         
         # Prop masses:
         # DISCOSweb : 174000, 158500, 22900
@@ -732,7 +728,7 @@ def update_mass_info(temp_dict,name,variant):
                 temp_dict[f"Stage3 Stage Mass"]       = 5000 # DW   
             temp_dict[f"Fairing Mass"]  = 3000 # http://www.b14643.de/Spacerockets_1/China/CZ-5/Description/Frame.htm
         
-    if name in ["Long March (CZ) 6","Chang Zheng 6"]:
+    if name == "Chang Zheng 6":
         # 3rd stage prop:
         # DISCOSweb:    'PBV' with LH2/LOX propellant.
         # Wikipedia:     N2O4/UDMH propellant.
@@ -761,7 +757,7 @@ def update_mass_info(temp_dict,name,variant):
         temp_dict[f"Stage3 Stage Mass"]      = 520                # NB
         temp_dict[f"Fairing Mass"]           = 1500 # http://www.b14643.de/Spacerockets_1/China/CZ-6/Description/Frame.htm
     
-    if name == "Long March (CZ) 6A":
+    if name == "Chang Zheng 6A":
         # No info for prop mass or stage mass anywhere.
         # NB: The CZ-6A is completely different to the the CZ-6. The CZ-6A is basically a CZ-7A without the third stage.
         # NB: Four new solid-fuel boosters have been added.
@@ -783,15 +779,15 @@ def update_mass_info(temp_dict,name,variant):
         temp_dict[f"Stage0 Propellant Name"]  = "Solid"
         temp_dict[f"Stage0 Fuel Type"]        = "Solid"
              
-    if name == "Long March (CZ) 6C":
+    if name == "Chang Zheng 6C":
         # No information available for this vehicle.
-        #Used Information Similar to Long March (CZ) 6
+        #Used Information Similar to Chang Zheng 6
         temp_dict[f"Stage1 Propellant Mass"]    = 76000
         temp_dict[f"Stage2 Propellant Mass"]    = (15000+15150) / 2 
         temp_dict[f"Stage1 Stage Mass"]         = 7530
         temp_dict[f"Stage2 Stage Mass"]         = 1490 
              
-    if name.startswith("Long March (CZ) 7") or name.startswith("Chang Zheng 7"):
+    if name.startswith("Chang Zheng 7"):
         
         # Prop masses:
         # DISCOSweb: 75500 (each), 174000, 65000 (7), 65500 (7A) , 18199 (H18)
@@ -816,15 +812,15 @@ def update_mass_info(temp_dict,name,variant):
             temp_dict["Stage3 Stage Mass"]        = 3100 # DW for HO stage
             temp_dict["Stage3 Propellant Mass"]   = 26000 - 3100 # DW for HO stage
             temp_dict[f"Fairing Mass"]            = 2800 # http://www.b14643.de/Spacerockets_1/China/CZ-7/Description/Frame.htm
-        elif name in ["Long March (CZ) 7","Chang Zheng 7"]:
+        elif name == "Chang Zheng 7":
             temp_dict[f"Fairing Mass"]            = 2800 # http://www.b14643.de/Spacerockets_1/China/CZ-7/Description/Frame.htm
-        elif name in ["Long March (CZ) 7A","Chang Zheng 7A"]:
+        elif name == "Chang Zheng 7A":
             temp_dict[f"Stage3 Propellant Mass"]  = (18200+18193) / 2 # SLR/Sp101
             temp_dict[f"Stage3 Stage Mass"]       = (2740+2800)   / 2 # SLR/Sp101
             temp_dict[f"Fairing Mass"]            = 2500 # http://www.b14643.de/Spacerockets_1/China/CZ-7A/Description/Frame.htm
         
-    if "Long March (CZ) 8" in name:
-        # Long March (CZ) 8
+    if "Chang Zheng 8" in name:
+        #Chang Zheng 8
         # https://discosweb.esoc.esa.int/launch-vehicles/102354
         # https://web.archive.org/web/20220411235209/http://www.spacelaunchreport.com/cz5.html
         # https://en.wikipedia.org/wiki/Long_March_8
@@ -835,12 +831,12 @@ def update_mass_info(temp_dict,name,variant):
         temp_dict[f"Fairing Mass"] = 2500 # http://www.b14643.de/Spacerockets_1/China/CZ-8/Description/Frame.htm        
 
         # https://spacenews.com/first-launch-of-long-march-8a-sends-second-group-of-guowang-megaconstellation-satellites-into-orbit/
-        # The Long March 8A is an upgraded variant of the standard Long March 8, which debuted in December 2020. 
+        # The Chang Zheng 8A is an upgraded variant of the standard Chang Zheng 8, which debuted in December 2020. 
         # It features the same first stage and side boosters as the original but includes a newly designed 
         # 3.35-meter-diameter hydrogen-oxygen second stage, allowing a wider, 5.2-meter-diameter payload fairing.      
 
-    if name in ["Long March (CZ) 11","Chang Zheng 11"]:
-        # Long March (CZ) 11.
+    if name == "Chang Zheng 11":
+        # Chang Zheng 11.
         # Ryan22 approximated the propellant masses using the masses from the Vega rocket.
         # Fourth Stage is Solid (Wiki, GSP, CSR/NB) or Liquid (SLR)?
         # See excel file for comparison details. Best represented by Minotaur-1.
@@ -855,7 +851,7 @@ def update_mass_info(temp_dict,name,variant):
         temp_dict[f"Stage4 Stage Mass"]      = (203+102.1) / 2    # Minotaur-1
         temp_dict[f"Fairing Mass"]           = 300                # Minotaur-1
     
-    if name in ["Long March (CZ) 12", "Chang Zheng 12"]:
+    if name.startswith("Chang Zheng 12"):
         
         # No other information available for this vehicle.
         #Used Information Similar to Falcon 9 v1.2

@@ -408,10 +408,7 @@ class import_launches:
                 else:
                     variant = row["Variant"]
 
-                if "Chang Zheng" in row["LV_Type"]:
-                    name = row["LV_Type"].replace("Chang Zheng","Long March (CZ)")
-                else:
-                    name = row["LV_Type"]
+                name = row["LV_Type"]
 
                 if "Proton-M" in name and datetime.strptime(datestr, "%Y%m%d") >= datetime(2007,7,7):
                     variant = "Enhanced"
@@ -741,10 +738,6 @@ class import_launches:
 
             elif source == "jsr":
 
-                # Change the name so we can get info from JSR.
-                if "Long March (CZ)" in name:
-                    name = name.replace("Long March (CZ)","Chang Zheng")
-
                 # First find the vehicle and its stages in the vehicles databases.
                 temp_dict["variant"] = variant
 
@@ -864,11 +857,7 @@ class import_launches:
             else:
                 raise ValueError(f"Unknown source {source} for rocket data.")
             
-            # Change the name back so we can use the update script.
-            if "Chang Zheng" in name:
-                temp_dict["name"] = name.replace("Chang Zheng","Long March (CZ)")
-            else:
-                temp_dict["name"] = name
+            temp_dict["name"] = name
 
             # Handle any incomplete/incorrect propellant/stage mass information.
             temp_dict = update_mass_info(temp_dict, temp_dict["name"], variant)

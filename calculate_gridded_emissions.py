@@ -24,7 +24,7 @@ import sys
 import requests
 import xarray as xr
 import cProfile
-import pstats
+from datetime import datetime
 
 from python_modules.distribute_emis_func import make_grid_LL, read_gc_box_height, get_ross_profiles, interp_prop_mass
 from python_modules.alt_emis_func import calculate_bc_ei, calculate_nox_ei, calculate_co_ei, calculate_cl_ei
@@ -65,7 +65,7 @@ class InputData:
                     return "ground"
                 elif stage_row["Status"].values[0] in ["L","LF"] or stage_row['Dest'].values[0] == "OCISLY":
                     return "ocean"
-                elif stage_row["Status"].values[0] == "S":
+                elif stage_row["Status"].values[0] in ["S","R"]:
                     return "expended"
                 else:
                     raise ValueError(f"Unknown reentry method for {cospar_id} - {stage_row['Status'].values} - {stage_row['Dest'].values}")
@@ -1214,14 +1214,16 @@ def check_total_emissions(year,dataset,res,levels,emis_data):
 # Main section of the program
 if __name__ == "__main__":
 
+    current_year = datetime.now().year
+
     # Configure the script arguments.
     parser = argparse.ArgumentParser()
     parser.add_argument('-sm', "--start_month", default = "1", choices=str(np.arange(1,13)), help='Start Month (will override final month if greater than final month).')
     parser.add_argument('-fm', "--final_month", default = "12", choices=str(np.arange(1,13)), help='Final Month.')
     parser.add_argument('-sd', "--start_dataset", default = "1", choices=str(np.arange(1,4)), help='Dataset. 1=Non-SMC, 2=SMC, 3=All')
     parser.add_argument('-fd', "--final_dataset", default = "3", choices=str(np.arange(1,4)), help='Dataset. 1=Non-SMC, 2=SMC, 3=All')
-    parser.add_argument('-sy', "--start_year", default = "2023", choices=str(np.arange(1957,2025)), help='Start Year.')
-    parser.add_argument('-fy', "--final_year", default = "2024", choices=str(np.arange(1957,2025)), help='Final Year.')
+    parser.add_argument('-sy', "--start_year", default = "2023", choices=str(np.arange(1957,current_year)), help='Start Year.')
+    parser.add_argument('-fy', "--final_year", default = "2024", choices=str(np.arange(1957,current_year)), help='Final Year.')
     args = parser.parse_args()
 
     ######################################   
@@ -1277,15 +1279,9 @@ if __name__ == "__main__":
         ################
         
         fiona.drvsupport.supported_drivers['KML'] = 'rw' # type: ignore
-        if start_year < 2020:
-            launch_path       = f'./databases/launch_activity_data_1957-2019.nc'
-            rocket_info_path  = f'./databases/rocket_attributes_1957-2019.nc'
-        elif start_year >= 2020 and final_year <= 2022:
-            launch_path       = f'./databases/launch_activity_data_2020-2022.nc'
-            rocket_info_path  = f'./databases/rocket_attributes_2020-2022.nc'
-        elif start_year >= 2023 and final_year <= 2024:
-            launch_path       = f'./databases/launch_activity_data_2023-2024.nc'
-            rocket_info_path  = f'./databases/rocket_attributes_2023-2024.nc'
+        if start_year >= 1957 and final_year <= current_year -1:
+            launch_path       = f'./databases/launch_activity_data_1957-{current_year-1}.nc'
+            rocket_info_path  = f'./databases/rocket_attributes_1957-{current_year-1}.nc'
         else: 
             raise ImportError(f"Error: Unsupported time range for {start_year}-{final_year}")
         
