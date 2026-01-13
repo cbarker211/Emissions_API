@@ -24,7 +24,7 @@ import sys
 import requests
 import xarray as xr
 import cProfile
-import pstats
+from datetime import datetime
 
 from python_modules.distribute_emis_func import make_grid_LL, read_gc_box_height, get_ross_profiles, interp_prop_mass
 from python_modules.alt_emis_func import calculate_bc_ei, calculate_nox_ei, calculate_co_ei, calculate_cl_ei
@@ -65,7 +65,7 @@ class InputData:
                     return "ground"
                 elif stage_row["Status"].values[0] in ["L","LF"] or stage_row['Dest'].values[0] == "OCISLY":
                     return "ocean"
-                elif stage_row["Status"].values[0] == "S":
+                elif stage_row["Status"].values[0] in ["S","R"]:
                     return "expended"
                 else:
                     raise ValueError(f"Unknown reentry method for {cospar_id} - {stage_row['Status'].values} - {stage_row['Dest'].values}")
@@ -440,6 +440,7 @@ class OutputEmis:
         
         fei_alt_dict = {
             "GSLV Mk III": 46.534,
+            "LVM3": 46.534,
             "Pegasus": 11.9, # All Pegasus values from SLR.
             "Pegasus H": 11.9,
             "Pegasus XL": 11.9,
@@ -719,12 +720,13 @@ class OutputEmis:
                 if len(idx) != 1:
                     raise RuntimeError(f"Expected one PEI fuel match for Stage {i}, got {idx}") 
                 pei_indices[i] = idx[0]
-        # TODO: Needs reworking if running for different model ceilings above 80km.
 
         ############################################
         # Deal with failed launches.
         ############################################
 
+        # TODO: Needs reworking if running for different model ceilings above 80km.
+        
         # Most failures are for upper stages, and so can be treated as normal here.
         # Full information is provided in source_info/failed_launch_info.txt.
                     
@@ -748,9 +750,9 @@ class OutputEmis:
         # This is where stage 2 never ignited.
         zero_stage2_events = {
             '2020-F02','2020-F05',
-            '2021-F02','2021-F07','2021-F08','2022-F01',
-            '2022-F02','2022-F03','2023-F01','2023-F04',
-            '2023-F05','2023-F06','2023-F07','2023-F09',
+            '2021-F02','2021-F07','2021-F08',
+            '2022-F01','2022-F02','2022-F03',
+            '2023-F01','2023-F03','2023-F04','2023-F05','2023-F06','2023-F08',
             '2024-F02','2024-F04'
         }
         if row.COSPAR_ID in zero_stage2_events:
@@ -954,8 +956,8 @@ class OutputEmis:
         skip_ids = [[], # Stage0
             ['2020-F04','2020-F07','2021-F01','2021-F07'], # Stage1
             ['2020-F02','2020-F04','2020-F05','2020-F07','2021-F01', '2021-F02','2021-F07','2021-F08','2022-F01','2022-F02'], # Stage2
-            ['2020-F02','2020-F03','2020-F05','2020-F06','2021-F01', '2021-F06','2021-F10','2022-F02','2022-F05','2022-F07'], # Stage3
-            ['2020-F08','2020-F09','2021-F01','2022-F02','2022-F04', '2022-F05','2022-F07'], # Stage4
+            ['2020-F02','2020-F03','2020-F05','2020-F06','2021-F01', '2021-F06','2021-F10','2022-F02','2022-F04','2022-F06'], # Stage3
+            ['2020-F08','2020-U01','2021-F01','2022-F02','2022-U02', '2022-F04','2022-F06'], # Stage4
             []] # Stage5 
 
         def calc_emis_above(stage_no,prop_above):
@@ -1213,14 +1215,16 @@ def check_total_emissions(year,dataset,res,levels,emis_data):
 # Main section of the program
 if __name__ == "__main__":
 
+    current_year = datetime.now().year
+
     # Configure the script arguments.
     parser = argparse.ArgumentParser()
     parser.add_argument('-sm', "--start_month", default = "1", choices=str(np.arange(1,13)), help='Start Month (will override final month if greater than final month).')
     parser.add_argument('-fm', "--final_month", default = "12", choices=str(np.arange(1,13)), help='Final Month.')
     parser.add_argument('-sd', "--start_dataset", default = "1", choices=str(np.arange(1,4)), help='Dataset. 1=Non-SMC, 2=SMC, 3=All')
     parser.add_argument('-fd', "--final_dataset", default = "3", choices=str(np.arange(1,4)), help='Dataset. 1=Non-SMC, 2=SMC, 3=All')
-    parser.add_argument('-sy', "--start_year", default = "2023", choices=str(np.arange(1957,2025)), help='Start Year.')
-    parser.add_argument('-fy', "--final_year", default = "2024", choices=str(np.arange(1957,2025)), help='Final Year.')
+    parser.add_argument('-sy', "--start_year", default = "2023", choices=str(np.arange(1957,current_year)), help='Start Year.')
+    parser.add_argument('-fy', "--final_year", default = "2024", choices=str(np.arange(1957,current_year)), help='Final Year.')
     args = parser.parse_args()
 
     ######################################   
@@ -1276,15 +1280,9 @@ if __name__ == "__main__":
         ################
         
         fiona.drvsupport.supported_drivers['KML'] = 'rw' # type: ignore
-        if start_year < 2020:
-            launch_path       = f'./databases/launch_activity_data_1957-2019.nc'
-            rocket_info_path  = f'./databases/rocket_attributes_1957-2019.nc'
-        elif start_year >= 2020 and final_year <= 2022:
-            launch_path       = f'./databases/launch_activity_data_2020-2022.nc'
-            rocket_info_path  = f'./databases/rocket_attributes_2020-2022.nc'
-        elif start_year >= 2023 and final_year <= 2024:
-            launch_path       = f'./databases/launch_activity_data_2023-2024.nc'
-            rocket_info_path  = f'./databases/rocket_attributes_2023-2024.nc'
+        if start_year >= 1957 and final_year <= current_year -1:
+            launch_path       = f'./databases/launch_activity_data_1957-{current_year-1}.nc'
+            rocket_info_path  = f'./databases/rocket_attributes_1957-{current_year-1}.nc'
         else: 
             raise ImportError(f"Error: Unsupported time range for {start_year}-{final_year}")
         
