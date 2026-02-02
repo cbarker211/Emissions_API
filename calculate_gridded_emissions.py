@@ -31,7 +31,7 @@ from python_modules.alt_emis_func import calculate_bc_ei, calculate_nox_ei, calc
 from python_modules.web_scrape_func import scrape_jsr
 class InputData:
     '''Read rocket launch and re-entry activity data.'''
-    def __init__(self, launchfile: str,reentryfile: str, rocketinfofile: str, peifile: str, start_year):
+    def __init__(self, launchfile: str,reentryfile: str, rocketinfofile: str, peifile: str):
 
         def open_file(filepath):
             ds = xr.open_dataset(filepath).to_dataframe().reset_index(drop=True)
@@ -41,8 +41,7 @@ class InputData:
 
         self.dsl  = open_file(launchfile)
         self.handle_falcon_landings()
-        if start_year >= 2020:
-            self.dsre = open_file(reentryfile)
+        self.dsre = open_file(reentryfile)
         self.dsr = xr.open_dataset(rocketinfofile).to_dataframe().reset_index(drop=True)
         self.define_pei(peifile)
     
@@ -203,14 +202,13 @@ class OutputEmis:
 
         total_length = launch_length
 
-        if year >= 2020:
-            reentry_mask = (input_data.dsre["Date"].dt.year == year)
-            if dataset == 1:
-                reentry_mask &= ~input_data.dsre["Megaconstellation_Flag"].astype(bool)
-            elif dataset == 2:
-                reentry_mask &= input_data.dsre["Megaconstellation_Flag"].astype(bool)
-            reentry_length = np.sum(reentry_mask)
-            total_length += reentry_length
+        reentry_mask = (input_data.dsre["Date"].dt.year == year)
+        if dataset == 1:
+            reentry_mask &= ~input_data.dsre["Megaconstellation_Flag"].astype(bool)
+        elif dataset == 2:
+            reentry_mask &= input_data.dsre["Megaconstellation_Flag"].astype(bool)
+        reentry_length = np.sum(reentry_mask)
+        total_length += reentry_length
 
         if launch_length > 0:
             self.output_csv_launch_prop  = np.zeros((launch_length*3,LEVELS))
@@ -249,8 +247,7 @@ class OutputEmis:
             print('MONTH = ', self.strmon)   
 
             month_launch_mask = (launch_mask & (input_data.dsl["Date"].dt.month == m))
-            if year >= 2020:
-                month_reentry_mask = (reentry_mask & (input_data.dsre["Date"].dt.month == m))           
+            month_reentry_mask = (reentry_mask & (input_data.dsre["Date"].dt.month == m))           
             
             #Loop over all days:
             for d in range(ndays):
@@ -262,15 +259,11 @@ class OutputEmis:
                 )
                 daily_launches_df = input_data.dsl[day_launch_mask].reset_index(drop=True).copy()
 
-                if year >= 2020:
-
-                    day_reentry_mask = ( month_reentry_mask &
-                        (np.array(input_data.dsre["Date"].dt.day) == d+1) &
-                        (~np.isnan(np.array(input_data.dsre['Time_UTC'])))
-                    )                
-                    daily_reentries_df = input_data.dsre[day_reentry_mask].reset_index(drop=True).copy()
-                else:
-                    daily_reentries_df = pd.DataFrame()
+                day_reentry_mask = ( month_reentry_mask &
+                    (np.array(input_data.dsre["Date"].dt.day) == d+1) &
+                    (~np.isnan(np.array(input_data.dsre['Time_UTC'])))
+                )                
+                daily_reentries_df = input_data.dsre[day_reentry_mask].reset_index(drop=True).copy()
 
                 if len(daily_launches_df) + len(daily_reentries_df) == 0:
                     continue
@@ -1221,10 +1214,10 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument('-sm', "--start_month", default = "1", choices=str(np.arange(1,13)), help='Start Month (will override final month if greater than final month).')
     parser.add_argument('-fm', "--final_month", default = "12", choices=str(np.arange(1,13)), help='Final Month.')
-    parser.add_argument('-sd', "--start_dataset", default = "1", choices=str(np.arange(1,4)), help='Dataset. 1=Non-SMC, 2=SMC, 3=All')
+    parser.add_argument('-sd', "--start_dataset", default = "3", choices=str(np.arange(1,4)), help='Dataset. 1=Non-SMC, 2=SMC, 3=All')
     parser.add_argument('-fd', "--final_dataset", default = "3", choices=str(np.arange(1,4)), help='Dataset. 1=Non-SMC, 2=SMC, 3=All')
-    parser.add_argument('-sy', "--start_year", default = "2023", choices=str(np.arange(1957,current_year)), help='Start Year.')
-    parser.add_argument('-fy', "--final_year", default = "2024", choices=str(np.arange(1957,current_year)), help='Final Year.')
+    parser.add_argument('-sy', "--start_year", default = "1957", choices=str(np.arange(1957,current_year)), help='Start Year.')
+    parser.add_argument('-fy', "--final_year", default = "2025", choices=str(np.arange(1957,current_year)), help='Final Year.')
     args = parser.parse_args()
 
     ######################################   
@@ -1283,21 +1276,13 @@ if __name__ == "__main__":
         if start_year >= 1957 and final_year <= current_year -1:
             launch_path       = f'./databases/launch_activity_data_1957-{current_year-1}.nc'
             rocket_info_path  = f'./databases/rocket_attributes_1957-{current_year-1}.nc'
+            reentry_path  = f'./databases/reentry_activity_data_1957-{current_year-1}.nc'
         else: 
-            raise ImportError(f"Error: Unsupported time range for {start_year}-{final_year}")
-        
-        if start_year < 2020:
-            reentry_path  = f'./databases/reentry_activity_data_1957-2019.nc'
-        elif start_year >= 2020 and final_year <= 2022:
-            reentry_path  = f'./databases/reentry_activity_data_2020-2022_moredatacorrectlocations.nc'
-        elif start_year >= 2023 and final_year <= 2024:
-            reentry_path  = f'./databases/reentry_activity_data_2023-2024.nc'
-        else:
             raise ImportError(f"Error: Unsupported time range for {start_year}-{final_year}")
 
         pei_path          = './input_files/primary_emission_indices.csv'  
         global input_data
-        input_data       = InputData(launch_path, reentry_path, rocket_info_path, pei_path, start_year)
+        input_data       = InputData(launch_path, reentry_path, rocket_info_path, pei_path)
         print("Successfully loaded input databases.")
         
         #Loop over all years and run functions depending on input arguments.
