@@ -681,7 +681,6 @@ class import_launches:
     def get_rocket_info(self,source):
         
         self.unique_rocket_list,vehicle_ids = [], []
-        #with xr.open_dataset(f'./databases/launch_activity_data_{self.start_year}-{self.final_year}_{source}.nc', decode_times=False) as ds:
         with xr.open_dataset(f'./databases/launch_activity_data_{self.start_year}-{self.final_year}.nc', decode_times=False) as ds:
             vehicle_names = ds['Rocket_Name'].values
             vehicle_variants = ds['Rocket_Variant'].values
@@ -708,6 +707,29 @@ class import_launches:
                      "Zhuque-1":           "Super Strypi",
                      "Zhuque-2":           "Antares 230"}
 
+        # Load in the stage event altitude data from the file.
+        stage_alt_dict = {}
+        stage_alt_rockets = np.genfromtxt("./input_files/launch_event_altitudes.csv",dtype=str,skip_header=1,usecols=[0,1],delimiter=",")
+        stage_alt_data = np.genfromtxt("./input_files/launch_event_altitudes.csv",dtype=np.float64,skip_header=1,usecols=[2,3,4,5],delimiter=",")
+
+        stages = ["BECO", "MECO", "SEI1", "SECO"]
+        for (name, variant), row in zip(stage_alt_rockets, stage_alt_data):
+            for stage, value in zip(stages, row):
+                stage_alt_dict[f"{name} {variant} {stage}"] = None if value == "" else np.float64(value)
+
+        config_map = {
+            # booster, s1, s2, s3, s4, s5
+            (True,  True,  False, False, False, False): 0,
+            (True,  True,  True,  False, False, False): 0,
+            (True,  True,  True,  True,  False, False): 1,
+            (True,  True,  True,  True,  True , False): 2,
+            (True,  True,  True,  True,  True , True):  2,
+            (False, True,  True,  False, False, False): 3,
+            (False, True,  True,  True,  False, False): 4,
+            (False, True,  True,  True,  True , False): 5,
+            (False, True,  True,  True,  True , True):  5
+        }
+
         df_vehicles, df_stages, df_engines = pd.DataFrame(), pd.DataFrame(), pd.DataFrame()
         if source == "jsr":
             df_vehicles = scrape_jsr("https://planet4589.org/space/gcat/tsv/tables/lvs.tsv",self.session) 
@@ -732,9 +754,12 @@ class import_launches:
                     f"Stage{j} Propellant Name": 0,
                 })
 
+            # First find the vehicle and its stages in the vehicles databases.
+            temp_dict["name"] = name
+            temp_dict["variant"] = variant
+            
             if source == "dw":
-                temp_dict["name"] = name
-                temp_dict["variant"] = variant
+                
                 vehicle_index = np.where((vehicle_names == name) & (vehicle_variants == variant))[0][0]
                 vehicle_id = vehicle_ids[vehicle_index]    
                 # Get the propellant mass info.
@@ -744,9 +769,6 @@ class import_launches:
                         temp_dict = self.handle_stage_info(count,stage,i,temp_dict,unique_vehicle_names,name)
 
             elif source == "jsr":
-
-                # First find the vehicle and its stages in the vehicles databases.
-                temp_dict["variant"] = variant
 
                 # This is because Proton-M Enhanced is only listed under the name Proton-M in JSR.
                 if "Proton-M" in name and variant == "Enhanced":
@@ -838,8 +860,10 @@ class import_launches:
                     # Get the propellant info from the engine database.
                     df_engine = df_engines[df_engines["#Name"] == df_stage["Engine"].values[0]]
                     if len(df_engine) == 1:
+                        
                         # Assign the propellant type.
-                        if df_engine["Group"].values[0] == "Solid":
+                        if (df_engine["Group"].values[0] == "Solid") or (df_engine["Fuel"].values[0].strip() == "Polyethylene") or (df_engine["Fuel"].values[0].strip() == "Paraffin"):
+                            # Assuming that hybrid H2O2/Polyethylene or Lox/Paraffin engines are close enough to solid fuel.
                             fuel_type = "Solid"
                         elif df_engine["Group"].values[0] == "LOX/Methane":
                             fuel_type = "Methane"
@@ -862,11 +886,24 @@ class import_launches:
                     temp_dict[f"Stage{stage_number} Fuel Type"] = fuel_type
             else:
                 raise ValueError(f"Unknown source {source} for rocket data.")
-            
-            temp_dict["name"] = name
 
             # Handle any incomplete/incorrect propellant/stage mass information.
             temp_dict = update_mass_info(temp_dict, temp_dict["name"], variant)
+
+            # Find the event altitude information and look up configuration
+            stage_alts = {key: stage_alt_dict.get(f"{name} {variant} {key}", np.nan) for key in ['BECO', 'MECO', 'SEI1', 'SECO']}
+
+            stages = tuple(bool(temp_dict[f"Stage{i} Fuel Type"]) for i in range(6))
+            rocket_config_type = config_map.get(stages) #type: ignore
+
+            if rocket_config_type is None:
+                raise IndexError(f"Incorrect rocket configuration for {name,variant} (stages={stages})")
+            
+            temp_dict["BECO"] = stage_alts['BECO']
+            temp_dict["MECO"] = stage_alts['MECO']
+            temp_dict["SEI1"] = stage_alts['SEI1']
+            temp_dict["SECO"] = stage_alts['SECO']
+            temp_dict["Rocket_Config"] = rocket_config_type
 
             # Update the rocket list.   
             self.unique_rocket_list.append(temp_dict) 
@@ -883,11 +920,16 @@ class import_launches:
             return float(val or 0.0)
         
         fields = {
-            "Rocket_Name":       ("name", None),
-            "Rocket_Variant":    ("variant", None),
-            "Booster_No":        ("Booster Number", None),
-            "Fairing_Mass":      ("Fairing Mass", "kg"),
-            "Proxy_Rocket":      ("proxy", None),
+            "Rocket_Name":    ("name", None),
+            "Rocket_Variant": ("variant", None),
+            "Booster_No":     ("Booster Number", None),
+            "Fairing_Mass":   ("Fairing Mass", "kg"),
+            "Proxy_Rocket":   ("proxy", None),
+            "BECO":           ("BECO", None),
+            "MECO":           ("MECO", None),
+            "SEI1":           ("SEI1", None),
+            "SECO":           ("SECO", None),
+            "Rocket_Config":  ("Rocket_Config", None),
         }
 
         # Add stages dynamically
@@ -1024,8 +1066,8 @@ if __name__ == "__main__":
     parser.add_argument('-ri',   "--rocket_info",              action='store_true',                                 help='Get rocket info.')
     parser.add_argument('-sri',  "--save_rocket_info",         action='store_true',                                 help='Save launch info.')
     parser.add_argument('-sdwr', "--save_discosweb_reentries", action='store_true',                                 help='Save dw reentries.')
-    parser.add_argument('-sy',   "--start_year",               default = "2023", choices=str(np.arange(1957,2026)), help='Start Year (1957-2025).')
-    parser.add_argument('-fy',   "--final_year",               default = "2024", choices=str(np.arange(1942,2026)), help='Final Year (1957-2025).')
+    parser.add_argument('-sy',   "--start_year",               default = "1957", choices=str(np.arange(1957,2026)), help='Start Year (1957-2025).')
+    parser.add_argument('-fy',   "--final_year",               default = "2025", choices=str(np.arange(1942,2026)), help='Final Year (1957-2025).')
     args = parser.parse_args()
     
     # Sort out the year range.
