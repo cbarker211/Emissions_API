@@ -433,8 +433,10 @@ class build_reentry_list:
                 print(f"Missing lat direction for {jsr_id} - {latlonstr} - Assuming N")
                 lat = lat_data 
 
-        if location is None or lat is None or lon is None:
+        if lat is None or lon is None:
             self.latlonerror.append(latlonstr)
+            lat = 0
+            lon = 0
         else:
             lat = np.float64(lat)
             lon = np.float64(lon)
