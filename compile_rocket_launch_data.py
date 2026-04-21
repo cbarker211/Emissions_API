@@ -243,7 +243,7 @@ class import_launches:
             url = "https://planet4589.org/space/gcat/tsv/cat/" + file + ".tsv"
             catalog = scrape_jsr(url,self.session)
             catalog = catalog[catalog["Type"].str[0].isin(["P","C","S","X","Z"])] # P = Payload, C = Component, S = Suborbital payload, X = Catalog entry that has been deleted, Z = Spurious catalog entry.
-            catalog = catalog[catalog["Name"].str.lower().str.contains("starlink|oneweb|yinhe|lynk|e-space|protosat-1|kuiper|tranche|ronghe|digui|hulianwang|qianfan|lingxi|whdw", na=False)]
+            catalog = catalog[catalog["Name"].str.lower().str.contains("starlink|tintin|oneweb|yinhe|lynk|e-space|protosat-1|kuiper|tranche|ronghe|digui|hulianwang|qianfan|lingxi|whdw", na=False)]
             jsr_data_dict[file] = catalog
 
         # Filter the launches to remove unwanted entries.

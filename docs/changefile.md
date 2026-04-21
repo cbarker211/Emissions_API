@@ -1,5 +1,17 @@
 For a full list of changes, please visit https://github.com/cbarker211/Emissions_API
 
+# v2.5.0
+
+This update include an extension of re-entry emissions back to 1957. 
+
+- Only checking missing stages with an apogee of >100 km.
+- Skipping objects from explosions.
+- Not cross-checking against DISCOSweb or Aerospace Corp.
+- Not including objects from failed launches pre-1957.
+- Not checking for missing fairings.
+- Not updating timings for re-entries with missing timings.
+- Minor changes to re-entry mass for 2020-2024 from updates to rocket stage masses.
+
 # v2.1.0
 
 Combining launch and rocket data into single files, now only using GCAT.

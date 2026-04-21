@@ -1,4 +1,51 @@
 {
+    "1960-01-01": {
+        "launches": [],
+        "reentries": [
+            {
+                "date": "1960-01-01",
+                "id": "1962-015",
+                "time": -1.0,
+                "reusability": "",
+                "name": "Ariel 1 despin weight",
+                "category": "C",
+                "lat": 24.54,
+                "lon": 162.38,
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "emissions": {
+                    "NOx": "0.000400",
+                    "Al2O3": "0.000320",
+                    "BC": "0.000041",
+                    "HCl": "0.000008",
+                    "Cl": "0.000015",
+                    "Unablated_Mass": 0.00019999999999999996
+                }
+            },
+            {
+                "date": "1960-01-01",
+                "id": "1962-015",
+                "time": -1.0,
+                "reusability": "",
+                "name": "Ariel 1 despin weight",
+                "category": "C",
+                "lat": -11.36,
+                "lon": -7.9,
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "emissions": {
+                    "NOx": "0.000400",
+                    "Al2O3": "0.000320",
+                    "BC": "0.000041",
+                    "HCl": "0.000008",
+                    "Cl": "0.000015",
+                    "Unablated_Mass": 0.00019999999999999996
+                }
+            }
+        ]
+    },
     "1960-02-04": {
         "launches": [],
         "reentries": []
@@ -10,6 +57,32 @@
     "1960-02-26": {
         "launches": [],
         "reentries": []
+    },
+    "1960-03-08": {
+        "launches": [],
+        "reentries": [
+            {
+                "date": "1960-03-08",
+                "id": "1959-011",
+                "time": -1.0,
+                "reusability": "",
+                "name": "Agena A 1050",
+                "category": "S2",
+                "lat": -71.51,
+                "lon": -55.34,
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "emissions": {
+                    "NOx": "0.222800",
+                    "Al2O3": "0.253435",
+                    "BC": "0.016153",
+                    "HCl": "0.002785",
+                    "Cl": "0.006127",
+                    "Unablated_Mass": 0.19494999999999998
+                }
+            }
+        ]
     },
     "1960-03-11": {
         "launches": [
@@ -44,7 +117,92 @@
                 }
             }
         ],
-        "reentries": []
+        "reentries": [
+            {
+                "date": "1960-03-11",
+                "id": "1960-001",
+                "time": -1.0,
+                "reusability": "",
+                "name": "Thor DM-18A 219",
+                "category": "S1",
+                "lat": 21.44,
+                "lon": -136.2,
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "emissions": {
+                    "NOx": "1.250000",
+                    "Al2O3": "0.656250",
+                    "BC": "0.000000",
+                    "HCl": "0.000000",
+                    "Cl": "0.000000",
+                    "Unablated_Mass": 2.1875
+                }
+            },
+            {
+                "date": "1960-03-11",
+                "id": "1960-001",
+                "time": -1.0,
+                "reusability": "",
+                "name": "AJ10-101A",
+                "category": "S2",
+                "lat": 8.98,
+                "lon": -16.84,
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "emissions": {
+                    "NOx": "0.171600",
+                    "Al2O3": "0.195195",
+                    "BC": "0.012441",
+                    "HCl": "0.002145",
+                    "Cl": "0.004719",
+                    "Unablated_Mass": 0.15014999999999998
+                }
+            },
+            {
+                "date": "1960-03-11",
+                "id": "1960-001",
+                "time": -1.0,
+                "reusability": "",
+                "name": "Able Fairing",
+                "category": "C",
+                "lat": 11.43,
+                "lon": -55.55,
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "emissions": {
+                    "NOx": "0.351200",
+                    "Al2O3": "0.184380",
+                    "BC": "0.035998",
+                    "HCl": "0.007024",
+                    "Cl": "0.013170",
+                    "Unablated_Mass": 0.6145999999999999
+                }
+            },
+            {
+                "date": "1960-03-11",
+                "id": "1960-001",
+                "time": -1.0,
+                "reusability": "",
+                "name": "Able Fairing",
+                "category": "C",
+                "lat": 0.65,
+                "lon": -38.83,
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "emissions": {
+                    "NOx": "0.351200",
+                    "Al2O3": "0.184380",
+                    "BC": "0.035998",
+                    "HCl": "0.007024",
+                    "Cl": "0.013170",
+                    "Unablated_Mass": 0.6145999999999999
+                }
+            }
+        ]
     },
     "1960-03-23": {
         "launches": [],
@@ -83,7 +241,139 @@
                 }
             }
         ],
-        "reentries": []
+        "reentries": [
+            {
+                "date": "1960-04-01",
+                "id": "1960-002",
+                "time": -1.0,
+                "reusability": "",
+                "name": "Thor DM-18A 148",
+                "category": "S1",
+                "lat": -41.87,
+                "lon": -124.45,
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "emissions": {
+                    "NOx": "1.250000",
+                    "Al2O3": "0.656250",
+                    "BC": "0.000000",
+                    "HCl": "0.000000",
+                    "Cl": "0.000000",
+                    "Unablated_Mass": 2.1875
+                }
+            },
+            {
+                "date": "1960-04-01",
+                "id": "1960-002",
+                "time": -1.0,
+                "reusability": "",
+                "name": "AJ10-42",
+                "category": "S2",
+                "lat": 4.01,
+                "lon": 33.24,
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "emissions": {
+                    "NOx": "0.171600",
+                    "Al2O3": "0.195195",
+                    "BC": "0.012441",
+                    "HCl": "0.002145",
+                    "Cl": "0.004719",
+                    "Unablated_Mass": 0.15014999999999998
+                }
+            },
+            {
+                "date": "1960-04-01",
+                "id": "1960-002",
+                "time": -1.0,
+                "reusability": "",
+                "name": "Altair Fairing",
+                "category": "C",
+                "lat": -20.81,
+                "lon": 148.99,
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "emissions": {
+                    "NOx": "0.351200",
+                    "Al2O3": "0.184380",
+                    "BC": "0.035998",
+                    "HCl": "0.007024",
+                    "Cl": "0.013170",
+                    "Unablated_Mass": 0.6145999999999999
+                }
+            },
+            {
+                "date": "1960-04-01",
+                "id": "1960-002",
+                "time": -1.0,
+                "reusability": "",
+                "name": "Altair Fairing",
+                "category": "C",
+                "lat": -21.39,
+                "lon": -130.9,
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "emissions": {
+                    "NOx": "0.351200",
+                    "Al2O3": "0.184380",
+                    "BC": "0.035998",
+                    "HCl": "0.007024",
+                    "Cl": "0.013170",
+                    "Unablated_Mass": 0.6145999999999999
+                }
+            },
+            {
+                "date": "1960-04-01",
+                "id": "1959-008",
+                "time": -1.0,
+                "reusability": "",
+                "name": "8K72E No. I1-8",
+                "category": "S3",
+                "lat": -15.44,
+                "lon": -107.0,
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "emissions": {
+                    "NOx": "0.000000",
+                    "Al2O3": "0.000000",
+                    "BC": "0.000000",
+                    "HCl": "0.000000",
+                    "Cl": "0.000000",
+                    "Unablated_Mass": 0.0
+                }
+            }
+        ]
+    },
+    "1960-04-06": {
+        "launches": [],
+        "reentries": [
+            {
+                "date": "1960-04-06",
+                "id": "1958-004",
+                "time": -1.0,
+                "reusability": "",
+                "name": "3-y Sovetskiy ISZ",
+                "category": "P",
+                "lat": 24.24,
+                "lon": 74.23,
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "emissions": {
+                    "NOx": "0.530800",
+                    "Al2O3": "0.424640",
+                    "BC": "0.054407",
+                    "HCl": "0.010616",
+                    "Cl": "0.019905",
+                    "Unablated_Mass": 0.2653999999999999
+                }
+            }
+        ]
     },
     "1960-04-13": {
         "launches": [
@@ -118,7 +408,71 @@
                 }
             }
         ],
-        "reentries": []
+        "reentries": [
+            {
+                "date": "1960-04-13",
+                "id": "1960-003",
+                "time": -1.0,
+                "reusability": "",
+                "name": "Thor DM-18A  257",
+                "category": "S1",
+                "lat": 46.19,
+                "lon": -150.94,
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "emissions": {
+                    "NOx": "1.250000",
+                    "Al2O3": "0.656250",
+                    "BC": "0.000000",
+                    "HCl": "0.000000",
+                    "Cl": "0.000000",
+                    "Unablated_Mass": 2.1875
+                }
+            },
+            {
+                "date": "1960-04-13",
+                "id": "1960-003",
+                "time": -1.0,
+                "reusability": "",
+                "name": "Ablestar Fairing",
+                "category": "C",
+                "lat": 1.24,
+                "lon": -11.83,
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "emissions": {
+                    "NOx": "0.351200",
+                    "Al2O3": "0.184380",
+                    "BC": "0.035998",
+                    "HCl": "0.007024",
+                    "Cl": "0.013170",
+                    "Unablated_Mass": 0.6145999999999999
+                }
+            },
+            {
+                "date": "1960-04-13",
+                "id": "1960-003",
+                "time": -1.0,
+                "reusability": "",
+                "name": "Ablestar Fairing",
+                "category": "C",
+                "lat": 16.59,
+                "lon": -77.27,
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "emissions": {
+                    "NOx": "0.351200",
+                    "Al2O3": "0.184380",
+                    "BC": "0.035998",
+                    "HCl": "0.007024",
+                    "Cl": "0.013170",
+                    "Unablated_Mass": 0.6145999999999999
+                }
+            }
+        ]
     },
     "1960-04-15": {
         "launches": [
@@ -183,11 +537,128 @@
                 }
             }
         ],
-        "reentries": []
+        "reentries": [
+            {
+                "date": "1960-04-15",
+                "id": "1960-004",
+                "time": -1.0,
+                "reusability": "",
+                "name": "Thor DM-18A 234",
+                "category": "S1",
+                "lat": 29.77,
+                "lon": 55.73,
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "emissions": {
+                    "NOx": "1.250000",
+                    "Al2O3": "0.656250",
+                    "BC": "0.000000",
+                    "HCl": "0.000000",
+                    "Cl": "0.000000",
+                    "Unablated_Mass": 2.1875
+                }
+            }
+        ]
     },
     "1960-04-16": {
         "launches": [],
-        "reentries": []
+        "reentries": [
+            {
+                "date": "1960-04-16",
+                "id": "1960-004",
+                "time": 22.716666666666665,
+                "reusability": "",
+                "name": "Star 10",
+                "category": "C",
+                "lat": 30.0,
+                "lon": -145.0,
+                "smc": false,
+                "location": 1,
+                "burnup": "Complete",
+                "emissions": {
+                    "NOx": "0.002000",
+                    "Al2O3": "0.001600",
+                    "BC": "0.000205",
+                    "HCl": "0.000040",
+                    "Cl": "0.000075",
+                    "Unablated_Mass": 0.0009999999999999998
+                }
+            },
+            {
+                "date": "1960-04-16",
+                "id": "1960-004",
+                "time": 22.75,
+                "reusability": "",
+                "name": "SRV 103",
+                "category": "P",
+                "lat": 30.0,
+                "lon": -145.0,
+                "smc": false,
+                "location": 1,
+                "burnup": "Complete",
+                "emissions": {
+                    "NOx": "0.028400",
+                    "Al2O3": "0.022720",
+                    "BC": "0.002911",
+                    "HCl": "0.000568",
+                    "Cl": "0.001065",
+                    "Unablated_Mass": 0.014199999999999997
+                }
+            }
+        ]
+    },
+    "1960-04-26": {
+        "launches": [],
+        "reentries": [
+            {
+                "date": "1960-04-26",
+                "id": "1960-004",
+                "time": -1.0,
+                "reusability": "",
+                "name": "Agena A 1055",
+                "category": "S2",
+                "lat": 31.35,
+                "lon": -11.93,
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "emissions": {
+                    "NOx": "0.203200",
+                    "Al2O3": "0.231140",
+                    "BC": "0.014732",
+                    "HCl": "0.002540",
+                    "Cl": "0.005588",
+                    "Unablated_Mass": 0.17779999999999999
+                }
+            }
+        ]
+    },
+    "1960-04-29": {
+        "launches": [],
+        "reentries": [
+            {
+                "date": "1960-04-29",
+                "id": "1959-008",
+                "time": -1.0,
+                "reusability": "",
+                "name": "AMS Luna-3",
+                "category": "P",
+                "lat": 22.8,
+                "lon": -68.24,
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "emissions": {
+                    "NOx": "0.111200",
+                    "Al2O3": "0.088960",
+                    "BC": "0.011398",
+                    "HCl": "0.002224",
+                    "Cl": "0.004170",
+                    "Unablated_Mass": 0.05559999999999999
+                }
+            }
+        ]
     },
     "1960-05-13": {
         "launches": [],
@@ -226,7 +697,155 @@
                 }
             }
         ],
-        "reentries": []
+        "reentries": [
+            {
+                "date": "1960-05-15",
+                "id": "1960-005",
+                "time": -1.0,
+                "reusability": "",
+                "name": "8K71B",
+                "category": "S0",
+                "lat": 46.0,
+                "lon": 63.0,
+                "smc": false,
+                "location": 2,
+                "burnup": "Complete",
+                "emissions": {
+                    "NOx": "0.340000",
+                    "Al2O3": "0.178500",
+                    "BC": "0.000000",
+                    "HCl": "0.000000",
+                    "Cl": "0.000000",
+                    "Unablated_Mass": 0.595
+                }
+            },
+            {
+                "date": "1960-05-15",
+                "id": "1960-005",
+                "time": -1.0,
+                "reusability": "",
+                "name": "8K71V",
+                "category": "S0",
+                "lat": 46.0,
+                "lon": 63.0,
+                "smc": false,
+                "location": 2,
+                "burnup": "Complete",
+                "emissions": {
+                    "NOx": "0.340000",
+                    "Al2O3": "0.178500",
+                    "BC": "0.000000",
+                    "HCl": "0.000000",
+                    "Cl": "0.000000",
+                    "Unablated_Mass": 0.595
+                }
+            },
+            {
+                "date": "1960-05-15",
+                "id": "1960-005",
+                "time": -1.0,
+                "reusability": "",
+                "name": "8K71G",
+                "category": "S0",
+                "lat": 46.0,
+                "lon": 63.0,
+                "smc": false,
+                "location": 2,
+                "burnup": "Complete",
+                "emissions": {
+                    "NOx": "0.340000",
+                    "Al2O3": "0.178500",
+                    "BC": "0.000000",
+                    "HCl": "0.000000",
+                    "Cl": "0.000000",
+                    "Unablated_Mass": 0.595
+                }
+            },
+            {
+                "date": "1960-05-15",
+                "id": "1960-005",
+                "time": -1.0,
+                "reusability": "",
+                "name": "8K71D",
+                "category": "S0",
+                "lat": 46.0,
+                "lon": 63.0,
+                "smc": false,
+                "location": 2,
+                "burnup": "Complete",
+                "emissions": {
+                    "NOx": "0.340000",
+                    "Al2O3": "0.178500",
+                    "BC": "0.000000",
+                    "HCl": "0.000000",
+                    "Cl": "0.000000",
+                    "Unablated_Mass": 0.595
+                }
+            },
+            {
+                "date": "1960-05-15",
+                "id": "1960-005",
+                "time": -1.0,
+                "reusability": "",
+                "name": "8K71A L1-11",
+                "category": "S1",
+                "lat": -45.82,
+                "lon": -76.1,
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "emissions": {
+                    "NOx": "2.998000",
+                    "Al2O3": "1.573950",
+                    "BC": "0.000000",
+                    "HCl": "0.000000",
+                    "Cl": "0.000000",
+                    "Unablated_Mass": 5.2465
+                }
+            },
+            {
+                "date": "1960-05-15",
+                "id": "1960-005",
+                "time": -1.0,
+                "reusability": "",
+                "name": "Vostok Fairing",
+                "category": "C",
+                "lat": -16.24,
+                "lon": -22.08,
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "emissions": {
+                    "NOx": "0.351200",
+                    "Al2O3": "0.184380",
+                    "BC": "0.035998",
+                    "HCl": "0.007024",
+                    "Cl": "0.013170",
+                    "Unablated_Mass": 0.6145999999999999
+                }
+            },
+            {
+                "date": "1960-05-15",
+                "id": "1960-005",
+                "time": -1.0,
+                "reusability": "",
+                "name": "Vostok Fairing",
+                "category": "C",
+                "lat": 4.61,
+                "lon": 51.56,
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "emissions": {
+                    "NOx": "0.351200",
+                    "Al2O3": "0.184380",
+                    "BC": "0.035998",
+                    "HCl": "0.007024",
+                    "Cl": "0.013170",
+                    "Unablated_Mass": 0.6145999999999999
+                }
+            }
+        ]
     },
     "1960-05-24": {
         "launches": [
@@ -261,7 +880,50 @@
                 }
             }
         ],
-        "reentries": []
+        "reentries": [
+            {
+                "date": "1960-05-24",
+                "id": "1960-006",
+                "time": -1.0,
+                "reusability": "",
+                "name": "Atlas Booster",
+                "category": "S0",
+                "lat": 1.37,
+                "lon": -120.09,
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "emissions": {
+                    "NOx": "1.360000",
+                    "Al2O3": "0.714000",
+                    "BC": "0.000000",
+                    "HCl": "0.000000",
+                    "Cl": "0.000000",
+                    "Unablated_Mass": 2.38
+                }
+            },
+            {
+                "date": "1960-05-24",
+                "id": "1960-006",
+                "time": -1.0,
+                "reusability": "",
+                "name": "Atlas D 45D",
+                "category": "S1",
+                "lat": 9.58,
+                "lon": 174.9,
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "emissions": {
+                    "NOx": "1.360000",
+                    "Al2O3": "0.714000",
+                    "BC": "0.000000",
+                    "HCl": "0.000000",
+                    "Cl": "0.000000",
+                    "Unablated_Mass": 2.38
+                }
+            }
+        ]
     },
     "1960-06-22": {
         "launches": [
@@ -296,11 +958,122 @@
                 }
             }
         ],
-        "reentries": []
+        "reentries": [
+            {
+                "date": "1960-06-22",
+                "id": "1960-007",
+                "time": -1.0,
+                "reusability": "",
+                "name": "Thor DM-18A  281",
+                "category": "S1",
+                "lat": 28.64,
+                "lon": 36.26,
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "emissions": {
+                    "NOx": "1.250000",
+                    "Al2O3": "0.656250",
+                    "BC": "0.000000",
+                    "HCl": "0.000000",
+                    "Cl": "0.000000",
+                    "Unablated_Mass": 2.1875
+                }
+            },
+            {
+                "date": "1960-06-22",
+                "id": "1960-007",
+                "time": -1.0,
+                "reusability": "",
+                "name": "Ablestar Fairing",
+                "category": "C",
+                "lat": 38.08,
+                "lon": 130.8,
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "emissions": {
+                    "NOx": "0.351200",
+                    "Al2O3": "0.184380",
+                    "BC": "0.035998",
+                    "HCl": "0.007024",
+                    "Cl": "0.013170",
+                    "Unablated_Mass": 0.6145999999999999
+                }
+            },
+            {
+                "date": "1960-06-22",
+                "id": "1960-007",
+                "time": -1.0,
+                "reusability": "",
+                "name": "Ablestar Fairing",
+                "category": "C",
+                "lat": 61.47,
+                "lon": -149.9,
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "emissions": {
+                    "NOx": "0.351200",
+                    "Al2O3": "0.184380",
+                    "BC": "0.035998",
+                    "HCl": "0.007024",
+                    "Cl": "0.013170",
+                    "Unablated_Mass": 0.6145999999999999
+                }
+            }
+        ]
     },
     "1960-06-29": {
         "launches": [],
         "reentries": []
+    },
+    "1960-07-17": {
+        "launches": [],
+        "reentries": [
+            {
+                "date": "1960-07-17",
+                "id": "1960-003",
+                "time": -1.0,
+                "reusability": "",
+                "name": "Dummy subsatellite?",
+                "category": "P",
+                "lat": -31.62,
+                "lon": 39.97,
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "emissions": {
+                    "NOx": "0.000800",
+                    "Al2O3": "0.000640",
+                    "BC": "0.000082",
+                    "HCl": "0.000016",
+                    "Cl": "0.000030",
+                    "Unablated_Mass": 0.0003999999999999999
+                }
+            },
+            {
+                "date": "1960-07-17",
+                "id": "1960-005",
+                "time": 19.75,
+                "reusability": "",
+                "name": "Vostok 8K72 No. 11 Stage 3",
+                "category": "S3",
+                "lat": -4.96,
+                "lon": 31.32,
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "emissions": {
+                    "NOx": "0.000000",
+                    "Al2O3": "0.000000",
+                    "BC": "0.000000",
+                    "HCl": "0.000000",
+                    "Cl": "0.000000",
+                    "Unablated_Mass": 0.0
+                }
+            }
+        ]
     },
     "1960-07-28": {
         "launches": [],
@@ -339,7 +1112,76 @@
                 }
             }
         ],
-        "reentries": []
+        "reentries": [
+            {
+                "date": "1960-08-10",
+                "id": "1960-008",
+                "time": 20.8,
+                "reusability": "",
+                "name": "Thor DM-18A 231",
+                "category": "S1",
+                "lat": 9.73,
+                "lon": -135.11,
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "emissions": {
+                    "NOx": "1.250000",
+                    "Al2O3": "0.656250",
+                    "BC": "0.000000",
+                    "HCl": "0.000000",
+                    "Cl": "0.000000",
+                    "Unablated_Mass": 2.1875
+                }
+            }
+        ]
+    },
+    "1960-08-11": {
+        "launches": [],
+        "reentries": [
+            {
+                "date": "1960-08-11",
+                "id": "1960-008",
+                "time": 23.366666666666667,
+                "reusability": "",
+                "name": "Star 10",
+                "category": "C",
+                "lat": -49.85,
+                "lon": 69.57,
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "emissions": {
+                    "NOx": "0.002000",
+                    "Al2O3": "0.001600",
+                    "BC": "0.000205",
+                    "HCl": "0.000040",
+                    "Cl": "0.000075",
+                    "Unablated_Mass": 0.0009999999999999998
+                }
+            },
+            {
+                "date": "1960-08-11",
+                "id": "1960-008",
+                "time": 23.866666666666667,
+                "reusability": "",
+                "name": "SRV (GRD)",
+                "category": "P",
+                "lat": 25.6,
+                "lon": -161.6,
+                "smc": false,
+                "location": 1,
+                "burnup": "Partial",
+                "emissions": {
+                    "NOx": "0.012425",
+                    "Al2O3": "0.000000",
+                    "BC": "0.002911",
+                    "HCl": "0.000568",
+                    "Cl": "0.001065",
+                    "Unablated_Mass": 0.07100000000000001
+                }
+            }
+        ]
     },
     "1960-08-12": {
         "launches": [
@@ -374,7 +1216,92 @@
                 }
             }
         ],
-        "reentries": []
+        "reentries": [
+            {
+                "date": "1960-08-12",
+                "id": "1960-009",
+                "time": -1.0,
+                "reusability": "",
+                "name": "Thor DM-18A 270",
+                "category": "S1",
+                "lat": 32.68,
+                "lon": 3.74,
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "emissions": {
+                    "NOx": "1.250000",
+                    "Al2O3": "0.656250",
+                    "BC": "0.000000",
+                    "HCl": "0.000000",
+                    "Cl": "0.000000",
+                    "Unablated_Mass": 2.1875
+                }
+            },
+            {
+                "date": "1960-08-12",
+                "id": "1960-009",
+                "time": -1.0,
+                "reusability": "",
+                "name": "Altair Fairing?",
+                "category": "C",
+                "lat": 18.92,
+                "lon": 120.49,
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "emissions": {
+                    "NOx": "0.351200",
+                    "Al2O3": "0.184380",
+                    "BC": "0.035998",
+                    "HCl": "0.007024",
+                    "Cl": "0.013170",
+                    "Unablated_Mass": 0.6145999999999999
+                }
+            },
+            {
+                "date": "1960-08-12",
+                "id": "1960-009",
+                "time": -1.0,
+                "reusability": "",
+                "name": "Altair Fairing?",
+                "category": "C",
+                "lat": -12.51,
+                "lon": -119.37,
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "emissions": {
+                    "NOx": "0.351200",
+                    "Al2O3": "0.184380",
+                    "BC": "0.035998",
+                    "HCl": "0.007024",
+                    "Cl": "0.013170",
+                    "Unablated_Mass": 0.6145999999999999
+                }
+            },
+            {
+                "date": "1960-08-12",
+                "id": "1960-009",
+                "time": 10.25,
+                "reusability": "",
+                "name": "Delta 2",
+                "category": "S2",
+                "lat": 2.47,
+                "lon": 11.57,
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "emissions": {
+                    "NOx": "0.277600",
+                    "Al2O3": "0.315770",
+                    "BC": "0.020126",
+                    "HCl": "0.003470",
+                    "Cl": "0.007634",
+                    "Unablated_Mass": 0.24289999999999998
+                }
+            }
+        ]
     },
     "1960-08-18": {
         "launches": [
@@ -409,7 +1336,29 @@
                 }
             }
         ],
-        "reentries": []
+        "reentries": [
+            {
+                "date": "1960-08-18",
+                "id": "1960-010",
+                "time": -1.0,
+                "reusability": "",
+                "name": "Thor DM-18A 237",
+                "category": "S1",
+                "lat": 29.45,
+                "lon": 30.27,
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "emissions": {
+                    "NOx": "1.250000",
+                    "Al2O3": "0.656250",
+                    "BC": "0.000000",
+                    "HCl": "0.000000",
+                    "Cl": "0.000000",
+                    "Unablated_Mass": 2.1875
+                }
+            }
+        ]
     },
     "1960-08-19": {
         "launches": [
@@ -444,7 +1393,244 @@
                 }
             }
         ],
-        "reentries": []
+        "reentries": [
+            {
+                "date": "1960-08-19",
+                "id": "1960-010",
+                "time": 22.8,
+                "reusability": "",
+                "name": "Star 10",
+                "category": "C",
+                "lat": -36.41,
+                "lon": -125.24,
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "emissions": {
+                    "NOx": "0.002000",
+                    "Al2O3": "0.001600",
+                    "BC": "0.000205",
+                    "HCl": "0.000040",
+                    "Cl": "0.000075",
+                    "Unablated_Mass": 0.0009999999999999998
+                }
+            },
+            {
+                "date": "1960-08-19",
+                "id": "1960-010",
+                "time": 23.15,
+                "reusability": "",
+                "name": "SRV 101",
+                "category": "P",
+                "lat": 170.1,
+                "lon": -1620.35,
+                "smc": false,
+                "location": 1,
+                "burnup": "Partial",
+                "emissions": {
+                    "NOx": "0.012425",
+                    "Al2O3": "0.000000",
+                    "BC": "0.002911",
+                    "HCl": "0.000568",
+                    "Cl": "0.001065",
+                    "Unablated_Mass": 0.07100000000000001
+                }
+            },
+            {
+                "date": "1960-08-19",
+                "id": "1960-011",
+                "time": -1.0,
+                "reusability": "",
+                "name": "8K71B",
+                "category": "S0",
+                "lat": 46.0,
+                "lon": 63.0,
+                "smc": false,
+                "location": 2,
+                "burnup": "Complete",
+                "emissions": {
+                    "NOx": "0.340000",
+                    "Al2O3": "0.178500",
+                    "BC": "0.000000",
+                    "HCl": "0.000000",
+                    "Cl": "0.000000",
+                    "Unablated_Mass": 0.595
+                }
+            },
+            {
+                "date": "1960-08-19",
+                "id": "1960-011",
+                "time": -1.0,
+                "reusability": "",
+                "name": "8K71V",
+                "category": "S0",
+                "lat": 46.0,
+                "lon": 63.0,
+                "smc": false,
+                "location": 2,
+                "burnup": "Complete",
+                "emissions": {
+                    "NOx": "0.340000",
+                    "Al2O3": "0.178500",
+                    "BC": "0.000000",
+                    "HCl": "0.000000",
+                    "Cl": "0.000000",
+                    "Unablated_Mass": 0.595
+                }
+            },
+            {
+                "date": "1960-08-19",
+                "id": "1960-011",
+                "time": -1.0,
+                "reusability": "",
+                "name": "8K71G",
+                "category": "S0",
+                "lat": 46.0,
+                "lon": 63.0,
+                "smc": false,
+                "location": 2,
+                "burnup": "Complete",
+                "emissions": {
+                    "NOx": "0.340000",
+                    "Al2O3": "0.178500",
+                    "BC": "0.000000",
+                    "HCl": "0.000000",
+                    "Cl": "0.000000",
+                    "Unablated_Mass": 0.595
+                }
+            },
+            {
+                "date": "1960-08-19",
+                "id": "1960-011",
+                "time": -1.0,
+                "reusability": "",
+                "name": "8K71D",
+                "category": "S0",
+                "lat": 46.0,
+                "lon": 63.0,
+                "smc": false,
+                "location": 2,
+                "burnup": "Complete",
+                "emissions": {
+                    "NOx": "0.340000",
+                    "Al2O3": "0.178500",
+                    "BC": "0.000000",
+                    "HCl": "0.000000",
+                    "Cl": "0.000000",
+                    "Unablated_Mass": 0.595
+                }
+            },
+            {
+                "date": "1960-08-19",
+                "id": "1960-011",
+                "time": -1.0,
+                "reusability": "",
+                "name": "8K71A L1-12",
+                "category": "S1",
+                "lat": 55.34,
+                "lon": 115.98,
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "emissions": {
+                    "NOx": "2.998000",
+                    "Al2O3": "1.573950",
+                    "BC": "0.000000",
+                    "HCl": "0.000000",
+                    "Cl": "0.000000",
+                    "Unablated_Mass": 5.2465
+                }
+            },
+            {
+                "date": "1960-08-19",
+                "id": "1960-011",
+                "time": -1.0,
+                "reusability": "",
+                "name": "Vostok Fairing",
+                "category": "C",
+                "lat": 20.98,
+                "lon": 139.06,
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "emissions": {
+                    "NOx": "0.351200",
+                    "Al2O3": "0.184380",
+                    "BC": "0.035998",
+                    "HCl": "0.007024",
+                    "Cl": "0.013170",
+                    "Unablated_Mass": 0.6145999999999999
+                }
+            },
+            {
+                "date": "1960-08-19",
+                "id": "1960-011",
+                "time": -1.0,
+                "reusability": "",
+                "name": "Vostok Fairing",
+                "category": "C",
+                "lat": 46.28,
+                "lon": 94.2,
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "emissions": {
+                    "NOx": "0.351200",
+                    "Al2O3": "0.184380",
+                    "BC": "0.035998",
+                    "HCl": "0.007024",
+                    "Cl": "0.013170",
+                    "Unablated_Mass": 0.6145999999999999
+                }
+            }
+        ]
+    },
+    "1960-08-20": {
+        "launches": [],
+        "reentries": [
+            {
+                "date": "1960-08-20",
+                "id": "1960-011",
+                "time": 8.033333333333333,
+                "reusability": "",
+                "name": "Korabl'-Sputnik-2",
+                "category": "P",
+                "lat": 0.0,
+                "lon": 0.0,
+                "smc": false,
+                "location": -1,
+                "burnup": "Partial",
+                "emissions": {
+                    "NOx": "0.367500",
+                    "Al2O3": "0.000000",
+                    "BC": "0.086100",
+                    "HCl": "0.016800",
+                    "Cl": "0.031500",
+                    "Unablated_Mass": 2.1
+                }
+            },
+            {
+                "date": "1960-08-20",
+                "id": "1960-011",
+                "time": 7.95,
+                "reusability": "",
+                "name": "Priborniy otsek",
+                "category": "C",
+                "lat": -36.17,
+                "lon": -9.06,
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "emissions": {
+                    "NOx": "1.040000",
+                    "Al2O3": "0.832000",
+                    "BC": "0.106600",
+                    "HCl": "0.020800",
+                    "Cl": "0.039000",
+                    "Unablated_Mass": 0.5199999999999999
+                }
+            }
+        ]
     },
     "1960-09-13": {
         "launches": [
@@ -479,7 +1665,102 @@
                 }
             }
         ],
-        "reentries": []
+        "reentries": [
+            {
+                "date": "1960-09-13",
+                "id": "1960-012",
+                "time": -1.0,
+                "reusability": "",
+                "name": "Thor DM-18A 246",
+                "category": "S1",
+                "lat": -1.27,
+                "lon": 44.33,
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "emissions": {
+                    "NOx": "1.250000",
+                    "Al2O3": "0.656250",
+                    "BC": "0.000000",
+                    "HCl": "0.000000",
+                    "Cl": "0.000000",
+                    "Unablated_Mass": 2.1875
+                }
+            }
+        ]
+    },
+    "1960-09-15": {
+        "launches": [],
+        "reentries": [
+            {
+                "date": "1960-09-15",
+                "id": "1960-012",
+                "time": 1.0,
+                "reusability": "",
+                "name": "Star 10",
+                "category": "C",
+                "lat": -23.05,
+                "lon": 167.79,
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "emissions": {
+                    "NOx": "0.002000",
+                    "Al2O3": "0.001600",
+                    "BC": "0.000205",
+                    "HCl": "0.000040",
+                    "Cl": "0.000075",
+                    "Unablated_Mass": 0.0009999999999999998
+                }
+            },
+            {
+                "date": "1960-09-15",
+                "id": "1960-012",
+                "time": 1.3333333333333333,
+                "reusability": "",
+                "name": "SRV 106",
+                "category": "P",
+                "lat": 80.16666666666667,
+                "lon": -1590.2333333333333,
+                "smc": false,
+                "location": 1,
+                "burnup": "Partial",
+                "emissions": {
+                    "NOx": "0.012425",
+                    "Al2O3": "0.000000",
+                    "BC": "0.002911",
+                    "HCl": "0.000568",
+                    "Cl": "0.001065",
+                    "Unablated_Mass": 0.07100000000000001
+                }
+            }
+        ]
+    },
+    "1960-09-16": {
+        "launches": [],
+        "reentries": [
+            {
+                "date": "1960-09-16",
+                "id": "1960-010",
+                "time": -1.0,
+                "reusability": "",
+                "name": "Agena A 1056",
+                "category": "S2",
+                "lat": 6.23,
+                "lon": -170.66,
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "emissions": {
+                    "NOx": "0.210000",
+                    "Al2O3": "0.238875",
+                    "BC": "0.015225",
+                    "HCl": "0.002625",
+                    "Cl": "0.005775",
+                    "Unablated_Mass": 0.18375
+                }
+            }
+        ]
     },
     "1960-09-21": {
         "launches": [
@@ -516,9 +1797,150 @@
         ],
         "reentries": []
     },
+    "1960-09-23": {
+        "launches": [],
+        "reentries": [
+            {
+                "date": "1960-09-23",
+                "id": "1960-011",
+                "time": 13.75,
+                "reusability": "",
+                "name": "Vostok 8K72 No. 12 Stage 3",
+                "category": "S3",
+                "lat": 61.16,
+                "lon": 159.49,
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "emissions": {
+                    "NOx": "0.000000",
+                    "Al2O3": "0.000000",
+                    "BC": "0.000000",
+                    "HCl": "0.000000",
+                    "Cl": "0.000000",
+                    "Unablated_Mass": 0.0
+                }
+            }
+        ]
+    },
+    "1960-09-24": {
+        "launches": [],
+        "reentries": [
+            {
+                "date": "1960-09-24",
+                "id": "1960-005",
+                "time": -1.0,
+                "reusability": "",
+                "name": "Korabl'-Sputnik part",
+                "category": "C",
+                "lat": -40.81,
+                "lon": 56.77,
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "emissions": {
+                    "NOx": "0.000000",
+                    "Al2O3": "0.000000",
+                    "BC": "0.000000",
+                    "HCl": "0.000000",
+                    "Cl": "0.000000",
+                    "Unablated_Mass": 0.0
+                }
+            },
+            {
+                "date": "1960-09-24",
+                "id": "1960-005",
+                "time": -1.0,
+                "reusability": "",
+                "name": "Korabl'-Sputnik part",
+                "category": "C",
+                "lat": 58.87,
+                "lon": 101.2,
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "emissions": {
+                    "NOx": "0.000000",
+                    "Al2O3": "0.000000",
+                    "BC": "0.000000",
+                    "HCl": "0.000000",
+                    "Cl": "0.000000",
+                    "Unablated_Mass": 0.0
+                }
+            }
+        ]
+    },
     "1960-09-25": {
         "launches": [],
         "reentries": []
+    },
+    "1960-10-01": {
+        "launches": [],
+        "reentries": [
+            {
+                "date": "1960-10-01",
+                "id": "1960-005",
+                "time": -1.0,
+                "reusability": "",
+                "name": "Korabl'-Sputnik part",
+                "category": "C",
+                "lat": -29.87,
+                "lon": -116.01,
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "emissions": {
+                    "NOx": "0.000000",
+                    "Al2O3": "0.000000",
+                    "BC": "0.000000",
+                    "HCl": "0.000000",
+                    "Cl": "0.000000",
+                    "Unablated_Mass": 0.0
+                }
+            },
+            {
+                "date": "1960-10-01",
+                "id": "1960-005",
+                "time": -1.0,
+                "reusability": "",
+                "name": "Korabl'-Sputnik part",
+                "category": "C",
+                "lat": -15.77,
+                "lon": 166.42,
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "emissions": {
+                    "NOx": "0.000000",
+                    "Al2O3": "0.000000",
+                    "BC": "0.000000",
+                    "HCl": "0.000000",
+                    "Cl": "0.000000",
+                    "Unablated_Mass": 0.0
+                }
+            },
+            {
+                "date": "1960-10-01",
+                "id": "1960-005",
+                "time": -1.0,
+                "reusability": "",
+                "name": "Korabl'-Sputnik part",
+                "category": "C",
+                "lat": 10.64,
+                "lon": -60.62,
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "emissions": {
+                    "NOx": "0.000000",
+                    "Al2O3": "0.000000",
+                    "BC": "0.000000",
+                    "HCl": "0.000000",
+                    "Cl": "0.000000",
+                    "Unablated_Mass": 0.0
+                }
+            }
+        ]
     },
     "1960-10-04": {
         "launches": [
@@ -583,7 +2005,71 @@
                 }
             }
         ],
-        "reentries": []
+        "reentries": [
+            {
+                "date": "1960-10-04",
+                "id": "1960-013",
+                "time": -1.0,
+                "reusability": "",
+                "name": "Thor DM-18A  293",
+                "category": "S1",
+                "lat": 0.8,
+                "lon": -125.75,
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "emissions": {
+                    "NOx": "1.250000",
+                    "Al2O3": "0.656250",
+                    "BC": "0.000000",
+                    "HCl": "0.000000",
+                    "Cl": "0.000000",
+                    "Unablated_Mass": 2.1875
+                }
+            },
+            {
+                "date": "1960-10-04",
+                "id": "1960-013",
+                "time": -1.0,
+                "reusability": "",
+                "name": "Ablestar Fairing",
+                "category": "C",
+                "lat": -6.81,
+                "lon": 99.08,
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "emissions": {
+                    "NOx": "0.351200",
+                    "Al2O3": "0.184380",
+                    "BC": "0.035998",
+                    "HCl": "0.007024",
+                    "Cl": "0.013170",
+                    "Unablated_Mass": 0.6145999999999999
+                }
+            },
+            {
+                "date": "1960-10-04",
+                "id": "1960-013",
+                "time": -1.0,
+                "reusability": "",
+                "name": "Ablestar Fairing",
+                "category": "C",
+                "lat": 10.95,
+                "lon": 72.66,
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "emissions": {
+                    "NOx": "0.351200",
+                    "Al2O3": "0.184380",
+                    "BC": "0.035998",
+                    "HCl": "0.007024",
+                    "Cl": "0.013170",
+                    "Unablated_Mass": 0.6145999999999999
+                }
+            }
+        ]
     },
     "1960-10-10": {
         "launches": [],
@@ -596,6 +2082,32 @@
     "1960-10-14": {
         "launches": [],
         "reentries": []
+    },
+    "1960-10-18": {
+        "launches": [],
+        "reentries": [
+            {
+                "date": "1960-10-18",
+                "id": "1960-012",
+                "time": -1.0,
+                "reusability": "",
+                "name": "Agena A 1058",
+                "category": "S2",
+                "lat": -53.13,
+                "lon": -115.4,
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "emissions": {
+                    "NOx": "0.215600",
+                    "Al2O3": "0.245245",
+                    "BC": "0.015631",
+                    "HCl": "0.002695",
+                    "Cl": "0.005929",
+                    "Unablated_Mass": 0.18864999999999998
+                }
+            }
+        ]
     },
     "1960-10-26": {
         "launches": [],
@@ -634,7 +2146,92 @@
                 }
             }
         ],
-        "reentries": []
+        "reentries": [
+            {
+                "date": "1960-11-03",
+                "id": "1960-014",
+                "time": -1.0,
+                "reusability": "",
+                "name": "Jupiter AM-19D",
+                "category": "S1",
+                "lat": -33.42,
+                "lon": -140.39,
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "emissions": {
+                    "NOx": "2.177200",
+                    "Al2O3": "1.143030",
+                    "BC": "0.000000",
+                    "HCl": "0.000000",
+                    "Cl": "0.000000",
+                    "Unablated_Mass": 3.8101
+                }
+            },
+            {
+                "date": "1960-11-03",
+                "id": "1960-014",
+                "time": -1.0,
+                "reusability": "",
+                "name": "Cluster Stage 2",
+                "category": "S2",
+                "lat": -7.13,
+                "lon": -143.88,
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "emissions": {
+                    "NOx": "0.092400",
+                    "Al2O3": "0.105105",
+                    "BC": "0.006699",
+                    "HCl": "0.001155",
+                    "Cl": "0.002541",
+                    "Unablated_Mass": 0.08084999999999999
+                }
+            },
+            {
+                "date": "1960-11-03",
+                "id": "1960-014",
+                "time": -1.0,
+                "reusability": "",
+                "name": "Cluster Stage 3",
+                "category": "S3",
+                "lat": 27.52,
+                "lon": -75.85,
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "emissions": {
+                    "NOx": "0.025200",
+                    "Al2O3": "0.028665",
+                    "BC": "0.001827",
+                    "HCl": "0.000315",
+                    "Cl": "0.000693",
+                    "Unablated_Mass": 0.022049999999999997
+                }
+            },
+            {
+                "date": "1960-11-03",
+                "id": "1960-014",
+                "time": -1.0,
+                "reusability": "",
+                "name": "Juno II Fairing",
+                "category": "C",
+                "lat": -36.67,
+                "lon": 166.8,
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "emissions": {
+                    "NOx": "0.351200",
+                    "Al2O3": "0.184380",
+                    "BC": "0.035998",
+                    "HCl": "0.007024",
+                    "Cl": "0.013170",
+                    "Unablated_Mass": 0.6145999999999999
+                }
+            }
+        ]
     },
     "1960-11-12": {
         "launches": [
@@ -669,7 +2266,97 @@
                 }
             }
         ],
-        "reentries": []
+        "reentries": [
+            {
+                "date": "1960-11-12",
+                "id": "1960-015",
+                "time": -1.0,
+                "reusability": "",
+                "name": "Thor DM-21 297",
+                "category": "S1",
+                "lat": 10.03,
+                "lon": -154.52,
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "emissions": {
+                    "NOx": "1.250000",
+                    "Al2O3": "0.656250",
+                    "BC": "0.000000",
+                    "HCl": "0.000000",
+                    "Cl": "0.000000",
+                    "Unablated_Mass": 2.1875
+                }
+            }
+        ]
+    },
+    "1960-11-14": {
+        "launches": [],
+        "reentries": [
+            {
+                "date": "1960-11-14",
+                "id": "1960-008",
+                "time": -1.0,
+                "reusability": "",
+                "name": "Agena A 1057",
+                "category": "S2",
+                "lat": 47.62,
+                "lon": 153.37,
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "emissions": {
+                    "NOx": "0.210000",
+                    "Al2O3": "0.238875",
+                    "BC": "0.015225",
+                    "HCl": "0.002625",
+                    "Cl": "0.005775",
+                    "Unablated_Mass": 0.18375
+                }
+            },
+            {
+                "date": "1960-11-14",
+                "id": "1960-015",
+                "time": 22.533333333333335,
+                "reusability": "",
+                "name": "Star 12",
+                "category": "C",
+                "lat": -77.5,
+                "lon": 1.01,
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "emissions": {
+                    "NOx": "0.004000",
+                    "Al2O3": "0.003200",
+                    "BC": "0.000410",
+                    "HCl": "0.000080",
+                    "Cl": "0.000150",
+                    "Unablated_Mass": 0.0019999999999999996
+                }
+            },
+            {
+                "date": "1960-11-14",
+                "id": "1960-015",
+                "time": 22.65,
+                "reusability": "",
+                "name": "SRV 507",
+                "category": "P",
+                "lat": 30.0,
+                "lon": -151.0,
+                "smc": false,
+                "location": 1,
+                "burnup": "Partial",
+                "emissions": {
+                    "NOx": "0.027475",
+                    "Al2O3": "0.000000",
+                    "BC": "0.006437",
+                    "HCl": "0.001256",
+                    "Cl": "0.002355",
+                    "Unablated_Mass": 0.157
+                }
+            }
+        ]
     },
     "1960-11-23": {
         "launches": [
@@ -704,7 +2391,92 @@
                 }
             }
         ],
-        "reentries": []
+        "reentries": [
+            {
+                "date": "1960-11-23",
+                "id": "1960-016",
+                "time": -1.0,
+                "reusability": "",
+                "name": "Thor DM-18A 245",
+                "category": "S1",
+                "lat": -23.35,
+                "lon": -17.77,
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "emissions": {
+                    "NOx": "1.250000",
+                    "Al2O3": "0.656250",
+                    "BC": "0.000000",
+                    "HCl": "0.000000",
+                    "Cl": "0.000000",
+                    "Unablated_Mass": 2.1875
+                }
+            },
+            {
+                "date": "1960-11-23",
+                "id": "1960-016",
+                "time": -1.0,
+                "reusability": "",
+                "name": "Altair Fairing",
+                "category": "C",
+                "lat": -34.34,
+                "lon": 6.49,
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "emissions": {
+                    "NOx": "0.351200",
+                    "Al2O3": "0.184380",
+                    "BC": "0.035998",
+                    "HCl": "0.007024",
+                    "Cl": "0.013170",
+                    "Unablated_Mass": 0.6145999999999999
+                }
+            },
+            {
+                "date": "1960-11-23",
+                "id": "1960-016",
+                "time": -1.0,
+                "reusability": "",
+                "name": "Altair Fairing",
+                "category": "C",
+                "lat": 42.78,
+                "lon": -20.48,
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "emissions": {
+                    "NOx": "0.351200",
+                    "Al2O3": "0.184380",
+                    "BC": "0.035998",
+                    "HCl": "0.007024",
+                    "Cl": "0.013170",
+                    "Unablated_Mass": 0.6145999999999999
+                }
+            },
+            {
+                "date": "1960-11-23",
+                "id": "1960-016",
+                "time": 11.55,
+                "reusability": "",
+                "name": "Delta 3",
+                "category": "S2",
+                "lat": 45.22,
+                "lon": -137.25,
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "emissions": {
+                    "NOx": "0.277600",
+                    "Al2O3": "0.315770",
+                    "BC": "0.020126",
+                    "HCl": "0.003470",
+                    "Cl": "0.007634",
+                    "Unablated_Mass": 0.24289999999999998
+                }
+            }
+        ]
     },
     "1960-11-30": {
         "launches": [],
@@ -743,11 +2515,253 @@
                 }
             }
         ],
-        "reentries": []
+        "reentries": [
+            {
+                "date": "1960-12-01",
+                "id": "1960-017",
+                "time": -1.0,
+                "reusability": "",
+                "name": "8K71B",
+                "category": "S0",
+                "lat": 46.0,
+                "lon": 63.0,
+                "smc": false,
+                "location": 2,
+                "burnup": "Complete",
+                "emissions": {
+                    "NOx": "0.340000",
+                    "Al2O3": "0.178500",
+                    "BC": "0.000000",
+                    "HCl": "0.000000",
+                    "Cl": "0.000000",
+                    "Unablated_Mass": 0.595
+                }
+            },
+            {
+                "date": "1960-12-01",
+                "id": "1960-017",
+                "time": -1.0,
+                "reusability": "",
+                "name": "8K71V",
+                "category": "S0",
+                "lat": 46.0,
+                "lon": 63.0,
+                "smc": false,
+                "location": 2,
+                "burnup": "Complete",
+                "emissions": {
+                    "NOx": "0.340000",
+                    "Al2O3": "0.178500",
+                    "BC": "0.000000",
+                    "HCl": "0.000000",
+                    "Cl": "0.000000",
+                    "Unablated_Mass": 0.595
+                }
+            },
+            {
+                "date": "1960-12-01",
+                "id": "1960-017",
+                "time": -1.0,
+                "reusability": "",
+                "name": "8K71G",
+                "category": "S0",
+                "lat": 46.0,
+                "lon": 63.0,
+                "smc": false,
+                "location": 2,
+                "burnup": "Complete",
+                "emissions": {
+                    "NOx": "0.340000",
+                    "Al2O3": "0.178500",
+                    "BC": "0.000000",
+                    "HCl": "0.000000",
+                    "Cl": "0.000000",
+                    "Unablated_Mass": 0.595
+                }
+            },
+            {
+                "date": "1960-12-01",
+                "id": "1960-017",
+                "time": -1.0,
+                "reusability": "",
+                "name": "8K71D",
+                "category": "S0",
+                "lat": 46.0,
+                "lon": 63.0,
+                "smc": false,
+                "location": 2,
+                "burnup": "Complete",
+                "emissions": {
+                    "NOx": "0.340000",
+                    "Al2O3": "0.178500",
+                    "BC": "0.000000",
+                    "HCl": "0.000000",
+                    "Cl": "0.000000",
+                    "Unablated_Mass": 0.595
+                }
+            },
+            {
+                "date": "1960-12-01",
+                "id": "1960-017",
+                "time": -1.0,
+                "reusability": "",
+                "name": "8K71A L1-13",
+                "category": "S1",
+                "lat": -47.72,
+                "lon": -87.28,
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "emissions": {
+                    "NOx": "2.998000",
+                    "Al2O3": "1.573950",
+                    "BC": "0.000000",
+                    "HCl": "0.000000",
+                    "Cl": "0.000000",
+                    "Unablated_Mass": 5.2465
+                }
+            },
+            {
+                "date": "1960-12-01",
+                "id": "1960-017",
+                "time": -1.0,
+                "reusability": "",
+                "name": "Vostok Fairing",
+                "category": "C",
+                "lat": 62.85,
+                "lon": 104.38,
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "emissions": {
+                    "NOx": "0.351200",
+                    "Al2O3": "0.184380",
+                    "BC": "0.035998",
+                    "HCl": "0.007024",
+                    "Cl": "0.013170",
+                    "Unablated_Mass": 0.6145999999999999
+                }
+            },
+            {
+                "date": "1960-12-01",
+                "id": "1960-017",
+                "time": -1.0,
+                "reusability": "",
+                "name": "Vostok Fairing",
+                "category": "C",
+                "lat": 19.67,
+                "lon": 36.99,
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "emissions": {
+                    "NOx": "0.351200",
+                    "Al2O3": "0.184380",
+                    "BC": "0.035998",
+                    "HCl": "0.007024",
+                    "Cl": "0.013170",
+                    "Unablated_Mass": 0.6145999999999999
+                }
+            }
+        ]
+    },
+    "1960-12-02": {
+        "launches": [],
+        "reentries": [
+            {
+                "date": "1960-12-02",
+                "id": "1960-017",
+                "time": 9.2,
+                "reusability": "",
+                "name": "Korabl'-Sputnik-3",
+                "category": "P",
+                "lat": -53.51,
+                "lon": 57.9,
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "emissions": {
+                    "NOx": "0.840000",
+                    "Al2O3": "0.672000",
+                    "BC": "0.086100",
+                    "HCl": "0.016800",
+                    "Cl": "0.031500",
+                    "Unablated_Mass": 0.4199999999999999
+                }
+            },
+            {
+                "date": "1960-12-02",
+                "id": "1960-017",
+                "time": -1.0,
+                "reusability": "",
+                "name": "Vostok 8K72 No. 13 Stage 3",
+                "category": "S3",
+                "lat": -22.74,
+                "lon": -178.09,
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "emissions": {
+                    "NOx": "0.000000",
+                    "Al2O3": "0.000000",
+                    "BC": "0.000000",
+                    "HCl": "0.000000",
+                    "Cl": "0.000000",
+                    "Unablated_Mass": 0.0
+                }
+            },
+            {
+                "date": "1960-12-02",
+                "id": "1960-017",
+                "time": -1.0,
+                "reusability": "",
+                "name": "Priborniy otsek",
+                "category": "C",
+                "lat": 13.62,
+                "lon": -94.04,
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "emissions": {
+                    "NOx": "1.040000",
+                    "Al2O3": "0.832000",
+                    "BC": "0.106600",
+                    "HCl": "0.020800",
+                    "Cl": "0.039000",
+                    "Unablated_Mass": 0.5199999999999999
+                }
+            }
+        ]
     },
     "1960-12-04": {
         "launches": [],
         "reentries": []
+    },
+    "1960-12-05": {
+        "launches": [],
+        "reentries": [
+            {
+                "date": "1960-12-05",
+                "id": "1960-006",
+                "time": 7.0,
+                "reusability": "",
+                "name": "Midas 2 Fairing",
+                "category": "C",
+                "lat": -11.62,
+                "lon": 178.37,
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "emissions": {
+                    "NOx": "0.351200",
+                    "Al2O3": "0.184380",
+                    "BC": "0.035998",
+                    "HCl": "0.007024",
+                    "Cl": "0.013170",
+                    "Unablated_Mass": 0.6145999999999999
+                }
+            }
+        ]
     },
     "1960-12-07": {
         "launches": [
@@ -821,10 +2835,58 @@
                 }
             }
         ],
-        "reentries": []
+        "reentries": [
+            {
+                "date": "1960-12-20",
+                "id": "1960-019",
+                "time": -1.0,
+                "reusability": "",
+                "name": "Thor DM-21 258",
+                "category": "S1",
+                "lat": -12.98,
+                "lon": -69.66,
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "emissions": {
+                    "NOx": "1.250000",
+                    "Al2O3": "0.656250",
+                    "BC": "0.000000",
+                    "HCl": "0.000000",
+                    "Cl": "0.000000",
+                    "Unablated_Mass": 2.1875
+                }
+            }
+        ]
     },
     "1960-12-22": {
         "launches": [],
         "reentries": []
+    },
+    "1960-12-29": {
+        "launches": [],
+        "reentries": [
+            {
+                "date": "1960-12-29",
+                "id": "1960-015",
+                "time": -1.0,
+                "reusability": "",
+                "name": "Agena B 1062",
+                "category": "S2",
+                "lat": -17.56,
+                "lon": -15.59,
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "emissions": {
+                    "NOx": "0.354800",
+                    "Al2O3": "0.403585",
+                    "BC": "0.025723",
+                    "HCl": "0.004435",
+                    "Cl": "0.009757",
+                    "Unablated_Mass": 0.31045
+                }
+            }
+        ]
     }
 }
