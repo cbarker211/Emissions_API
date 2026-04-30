@@ -784,8 +784,7 @@ class build_reentry_list:
             (~jsr_data["#JCAT"].isin(["L80508","L80509","L80510"])) &                         # Skipping 2021-F07, GCAT lists apogee as 100km, but it actually failed around 30 km and reached a height of 50 km.
             (jsr_data["DYear"].between(self.start_year, self.final_year)) &                   # This time range only.
             ((jsr_data["Apogee"] >= 50) | (jsr_data["Apogee"] < 0)) &                         # Apogee above 50 km, or below 0. This makes sure to include objects in lprcat returning from space.
-            ((jsr_data["Status"] != "AS") | (jsr_data["Piece"].str[5:6].isin(["F","U"]))) &   # Only include AS re-entries if they are part of a failed or uncategorized launch.
-            (~jsr_data["#JCAT"].isin(["S46138","S44635","S40899"]))                           # Skip objects where the date is wrong in GCAT.
+            ((jsr_data["Status"] != "AS") | (jsr_data["Piece"].str[5:6].isin(["F","U"])))     # Only include AS re-entries if they are part of a failed or uncategorized launch.
         ]
 
         # Ignore failed launches pre-2020.
@@ -821,6 +820,7 @@ class build_reentry_list:
             if jsr_status == "L":
                 burnup = "Partial"
             # NOTE: Need to manually check for Electron booster recoveries if they ever restart recoveries.
+            # TODO: Need to add Blue Origin reusable first stages.
             elif (jsr_name == "Electron Stage 1") and jsr_id in ["2019-084","2020-007","2020-085","2021-F02","2021-106",
                                                                  "2022-047","2022-147","2023-041","2023-100","2023-126","2024-022"]:
                     burnup = "Partial"
@@ -905,7 +905,8 @@ class build_reentry_list:
                 lat, lon, location = self.convert_lat_lon(jsr_dest.replace("?",""), inc_eff, reentry_category, jsr_apogee, jsr_id)
             
             # Sort the mass.    
-            # # TODO: Sort failed launches back to 1957. 
+            # # TODO: Sort failed launches back to 1957. We can do this using the 8th character of the Type column.
+            # This apparently lists which stage was responsible for the failure of the launch.
             if jsr_id[5:6] in ["F","U"]:
                 abl_mass, other_mass = self.failed_launch_mass(jsr_id, jsr_name, reentry_category,jsr_drymass)
             else:
@@ -1010,6 +1011,7 @@ class build_reentry_list:
                         break
                         
             if not found:
+                print(row["#JCAT"], row["Name"], row["Parent"], "Mass not added.")
                 failed_count += 1
                 failed_mass += float(row["DryMass"])
         
@@ -1250,21 +1252,21 @@ class build_reentry_list:
                 # Convert the content to a file-like object for pandas
                 tsv_data = StringIO(response.text)
                 # Load the data into a pandas DataFrame
-                df = pd.read_csv(tsv_data, delimiter="\t", dtype=object)
+                df = pd.read_csv(tsv_data, delimiter="\t", dtype=object, skiprows=[1])
                 
-                # TODO: Will have to add more military launches here.
-                military_launches = ["2021-U01","2022-U01","2022-U03","2023-U01","2023-U02","2023-U03","2023-U04","2024-U05"]
+                # TODO: Will have to add more sounding rockets here.
                 sounding_rockets  = ["1961-U02","1962-U02","1964-U01","1964-U05","1965-U03","1966-U05","1966-U07","1967-U01","2013-U01"]
 
                 # Cut down the size of the dataframe.
                 df = df[
-                      (df["Primary"] == "Earth")                                     # Only objects whose primary body is Earth.
-                    & (df["Piece"].notna())                                          # No NaN pieces.
-                    & (df["Piece"] != "UNK")                                         # No unknown pieces.
-                    & (~df["Type"].str[0].isin(["Z","D", "S"]))                      # No spurious, suborbital or debris objects.
-                    & (df["Piece"].str[5:6] != "S")                                  # No suborbital launches (mainly military rockets).
-                    & (~df["Piece"].isin(military_launches))                         # Skipping military tests (mostly North Korea).
-                    & (~df["Piece"].isin(sounding_rockets))                          # Skipping sounding rockets (Trailblazer).
+                      (df["Primary"] == "Earth")                 # Only objects whose primary body is Earth.
+                    & (df["Piece"].notna())                      # No NaN pieces.
+                    & (df["Piece"] != "UNK")                     # No unknown pieces.
+                    & (~df["Type"].str[0].isin(["Z","D", "S"]))  # No spurious, suborbital or debris objects.
+                    & (df["Piece"].str[5:6] != "S")              # No suborbital launches (mainly military rockets).
+                    & (~df["Name"].str.contains("Hwasong"))      # Skipping North Korea ICBM.
+                    & (df["Piece"] != "2021-U01")                # Skipping Chinese military tests.
+                    & (~df["Piece"].isin(sounding_rockets))      # Skipping sounding rockets (Trailblazer).
                 ]
 
                 # Convert the tags with the old notation and exclude items from launches we ignore.
@@ -1349,39 +1351,45 @@ class build_reentry_list:
         # These values vary based on object class(core stage / upper stage / payload) and nature of launch (reusuable or not). 
         # https://www.sciencedirect.com/science/article/pii/B0122274105008887 "Fairings are typically made of aluminum or composite materials."
         # Therefore we treat fairings as a core stage, except for Falcon 9 which are recovered intact.
-        
+
         print("Setting ablation information.")
-        for idx, row in self.df_reentry.iterrows():
-            if ("fairing" in row["name"].lower()) or (row["category"][0]  == "S"):
-                self.df_reentry.loc[idx, "alu_per"] = 0.7 # https://dspace.mit.edu/handle/1721.1/151443 (70% Al)
-            elif row["category"] in ["C","P"]:
-                self.df_reentry.loc[idx, "alu_per"] = 0.4 # https://doi.org/10.1016/j.asr.2020.10.036 (40% Al)
-            else:
-                print(f"Couldn't assign aluminium mass information for \n{row}")
-            
-            if row["burnup"] == "Complete":
-                if ("fairing" in row["name"].lower()) or (row["category"] in ["S0", "S1"]):
-                     self.df_reentry.loc[idx, "abl_deg"] = 0.3 # https://doi.org/10.1016/j.asr.2020.10.036 (70% survivability)
 
-                elif row["category"] in ["C","P"]:
-                    if row["smc"] == True:
-                        self.df_reentry.loc[idx, "abl_deg"] = 1.0  # https://doi.org/10.1016/j.asr.2020.10.036 (0% survivability)
-                    elif row["smc"] == False:
-                        self.df_reentry.loc[idx, "abl_deg"] = 0.8  # https://doi.org/10.1016/j.asr.2020.10.036 (20% survivability)
-                    else:
-                        print(f"Couldn't assign smc information for \n{row}")
+        # Precompute reusable masks
+        is_fairing      = self.df_reentry["name"].str.lower().str.contains("fairing", na=False)
+        is_payload_comp = self.df_reentry["category"].isin(["C", "P"])
+        is_stage        = self.df_reentry["category"].str[0].eq("S")
+        is_lower_stage  = self.df_reentry["category"].isin(["S0", "S1"])
+        is_upper_stage  = self.df_reentry["category"].isin(["S2", "S3", "S4", "S5"])
+        is_complete     = self.df_reentry["burnup"] == "Complete"
+        is_partial      = self.df_reentry["burnup"] == "Partial"
+        smc = self.df_reentry["smc"]
 
-                elif row["category"] in ["S2","S3","S4","S5"]:
-                    self.df_reentry.loc[idx, "abl_deg"] = 0.65     # https://doi.org/10.1016/j.asr.2020.10.036 (35% survivability)
+        # Initialize columns if needed
+        self.df_reentry["alu_per"] = np.nan
+        self.df_reentry["abl_deg"] = np.nan
 
-                else:
-                    self.df_reentry.loc[idx, "abl_deg"] = 0
-                    print(f"Couldn't assign ablation information for complete burnup for \n{row}")
+        # Aluminium percentage
+        self.df_reentry.loc[is_fairing | is_stage, "alu_per"] = 0.7 # https://dspace.mit.edu/handle/1721.1/151443 (70% Al)
+        self.df_reentry.loc[is_payload_comp, "alu_per"] = 0.4 # https://doi.org/10.1016/j.asr.2020.10.036 (40% Al)
+        
+        # Ablation degree
+        self.df_reentry.loc[is_complete & (is_fairing | is_lower_stage), "abl_deg"]   = 0.3  # https://doi.org/10.1016/j.asr.2020.10.036 (70% survivability)
+        self.df_reentry.loc[is_complete & is_payload_comp & smc.eq(True), "abl_deg"]  = 1.0  # https://doi.org/10.1016/j.asr.2020.10.036 (0% survivability)
+        self.df_reentry.loc[is_complete & is_payload_comp & smc.eq(False), "abl_deg"] = 0.8  # https://doi.org/10.1016/j.asr.2020.10.036 (20% survivability)
+        self.df_reentry.loc[is_complete & is_upper_stage, "abl_deg"]                  = 0.65 # https://doi.org/10.1016/j.asr.2020.10.036 (35% survivability)
+        self.df_reentry.loc[is_partial, "abl_deg"]                                    = 0.0
 
-            elif row["burnup"] == "Partial":
-                self.df_reentry.loc[idx, "abl_deg"] = 0
-            else:
-                print(f"Couldn't understand burnup information for \n{row}")
+        # Optional: report rows that were not classified
+        unknown_alu = self.df_reentry["alu_per"].isna()
+        unknown_abl = self.df_reentry["abl_deg"].isna()
+
+        if unknown_alu.any():
+            print("Couldn't assign aluminium mass information for:")
+            print(self.df_reentry.loc[unknown_alu])
+
+        if unknown_abl.any():
+            print("Couldn't assign ablation information for:")
+            print(self.df_reentry.loc[unknown_abl])
 
         # TODO: Add missing fairings.
         #fairing_count_list = []

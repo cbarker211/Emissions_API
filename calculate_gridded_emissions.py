@@ -652,7 +652,7 @@ class OutputEmis:
 
         species_keys = ["launch_bc","co","co2","launch_nox","fuel_nox","h2o","launch_al","launch_cl","launch_hcl","cl2"]
         for i, key in enumerate(species_keys):
-            launch_details["emissions_above"][key] = (emis_full[i] * 1e-6)
+            launch_details["emissions_above"][key] += (emis_full[i] * 1e-6)
         
         self.prop_above_total += prop_mass * 1e-2 * percent_included
         self.emis_above[0] += emis_full[0] 
