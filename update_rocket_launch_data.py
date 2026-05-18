@@ -650,15 +650,15 @@ def update_mass_info(temp_dict,name,variant):
         temp_dict[f"Stage2 Propellant Mass"]  = (86000+91500) / 2       # SLR/Sp101 
         temp_dict[f"Fairing Mass"]            = 6000                    # http://www.b14643.de/Spacerockets_1/China/CZ-2EF/Description/Frame.htm
         
-    if name.startswith("Long March (CZ) 3A") or name.startswith("Long March (CZ) 3B") or name.startswith("Long March (CZ) 3C"):
+    if name.startswith("Chang Zheng 3A") or name.startswith("Chang Zheng 3B") or name.startswith("Chang Zheng 3C"):
         
         # These are for the original version, the upgraded version has updated boosters and first stage.
         # Manual: https://www.mach5lowdown.com/wp-content/uploads/PUG/LM-3B-User-Manual-v1999.pdf
         # Manual: https://www.mach5lowdown.com/wp-content/uploads/PUG/LM-3C-User-Manual-v1998.pdf
 
-        if name.startswith("Long March (CZ) 3B"):
+        if name.startswith("Chang Zheng 3B"):
             temp_dict[f"Booster Number"] = 4
-        elif name.startswith("Long March (CZ) 3C"):
+        elif name.startswith("Chang Zheng 3C"):
             temp_dict[f"Booster Number"] = 2
 
         if variant.startswith("G"): # Updated boosters and first stage for the upgraded version.
@@ -672,7 +672,7 @@ def update_mass_info(temp_dict,name,variant):
             temp_dict[f"Stage0 Stage Mass"]       = (3000+3330) / 2 * int(temp_dict[f"Booster Number"]) # SLR/Sp101
             temp_dict[f"Stage1 Stage Mass"]       = (12125+9200)/ 2                                     # SLR/Sp101
 
-        if name == "Long March (CZ) 3A":
+        if name == "Chang Zheng 3A":
             temp_dict[f"Stage0 Propellant Mass"]  = 0
             temp_dict[f"Stage0 Stage Mass"]       = 0
         else: # 3B and 3C have updated second stage, but 3A, 3B, and 3C share the same first and third stage.
