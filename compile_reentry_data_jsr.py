@@ -798,6 +798,9 @@ class build_reentry_list:
         # Now loop over the list and format into a dictionary.
         for i in tqdm(range(len(arrays["Piece"])), total=len(subset), desc=f"Processing {file}"):
 
+            if arrays["Piece"][i] == "2026-087":
+                continue
+
             # Sort out the reentry time/date.
             datestr, time_utc = convert_time(arrays["DDate"][i].split()) 
 
@@ -1369,13 +1372,16 @@ class build_reentry_list:
         self.df_reentry["abl_deg"] = np.nan
 
         # Aluminium percentage
-        self.df_reentry.loc[is_fairing | is_stage, "alu_per"] = 0.7 # https://dspace.mit.edu/handle/1721.1/151443 (70% Al)
         self.df_reentry.loc[is_payload_comp, "alu_per"] = 0.4 # https://doi.org/10.1016/j.asr.2020.10.036 (40% Al)
+        self.df_reentry.loc[is_fairing | is_stage, "alu_per"] = 0.7 # https://dspace.mit.edu/handle/1721.1/151443 (70% Al)
+        
         
         # Ablation degree
-        self.df_reentry.loc[is_complete & (is_fairing | is_lower_stage), "abl_deg"]   = 0.3  # https://doi.org/10.1016/j.asr.2020.10.036 (70% survivability)
         self.df_reentry.loc[is_complete & is_payload_comp & smc.eq(True), "abl_deg"]  = 1.0  # https://doi.org/10.1016/j.asr.2020.10.036 (0% survivability)
         self.df_reentry.loc[is_complete & is_payload_comp & smc.eq(False), "abl_deg"] = 0.8  # https://doi.org/10.1016/j.asr.2020.10.036 (20% survivability)
+
+        # This has to go after the previous two so its not reset for fairings.
+        self.df_reentry.loc[is_complete & (is_fairing | is_lower_stage), "abl_deg"]   = 0.3  # https://doi.org/10.1016/j.asr.2020.10.036 (70% survivability)
         self.df_reentry.loc[is_complete & is_upper_stage, "abl_deg"]                  = 0.65 # https://doi.org/10.1016/j.asr.2020.10.036 (35% survivability)
         self.df_reentry.loc[is_partial, "abl_deg"]                                    = 0.0
 

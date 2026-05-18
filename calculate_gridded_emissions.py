@@ -1021,23 +1021,11 @@ class OutputEmis:
             "reusability": "",
             "name": row.Object_Name,
             "category": row.Category, 
-            "lat": row.Latitude,
-            "lon": row.Latitude,
             "smc": bool(row.Megaconstellation_Flag),
             "location": int(row.Location_Constraint),
             "burnup": row.Burnup, 
             "emissions": {sp: 0 for sp in ["reentry_nox","reentry_al","reentry_bc","reentry_hcl","reentry_cl"]}
         }
-        
-        if row.COSPAR_ID[:8] in ["2021-F09","2022-065","2023-72"] and row.Category == "S1":
-            reentry_details["lat"] = 34.43194444
-            reentry_details["lon"] = 127.535
-        elif row.COSPAR_ID[:8] in ["2020-065","2022-167","2022-046","2022-126","2023-135","2024-102","2024-153","2024-173","2024-245","2025-007","2025-105"] and row.Category == "S1":
-            reentry_details["lat"] = 34.9
-            reentry_details["lon"] = 121.2
-        else:
-            reentry_details["lat"] = row.Latitude
-            reentry_details["lon"] = row.Longitude
 
         total_vertical_propellant = np.zeros((len(self.mid_alt[:,q,p]),10))
         reentry_ei = np.zeros(5) # Al2O3, NOx, BC, Cl, HCl

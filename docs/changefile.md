@@ -2,7 +2,9 @@ For a full list of changes, please visit https://github.com/cbarker211/Emissions
 
 # v2.5.0
 
-This update include an extension of re-entry emissions back to 1957. 
+This major update includes an extension of re-entry emissions back to 1957. 
+
+## Re-entries
 
 - Only checking missing stages with an apogee of >100 km.
 - Skipping objects from explosions.
@@ -12,50 +14,52 @@ This update include an extension of re-entry emissions back to 1957.
 - Not updating timings for re-entries with missing timings.
 - Minor changes to re-entry mass for 2020-2024 from updates to rocket stage masses.
 
-# v2.1.0
+## Refactoring
 
-Combining launch and rocket data into single files, now only using GCAT.
+- Now loading all information for launches and rockets using GCAT, and merging into single files across the space age.
+- This has updated the timings, locations, and launch site names, but this won't affect the emissions. The coordinate changes are only small and will be in the same grid box.
+- The names and variants are slightly different in GCAT, so the new names needed to be added to launch event altitudes and update_rocket_launch_data.py script.
+- GCAT also uses slightly different designations for failed launches, which are now accounted for.
+- Removed lat lon from re-entry outputs, as these aren't even used on the website.
 
-- Loading all information for launches and rockets using GCAT:
-    - This has updated the timings, locations, and launch site names, but this won't affect the emissions. The coordinate changes are only small and will be in the same grid box.
-    - The names and variants are slightly different in GCAT, so the new names needed to be added to launch event altitudes and update_rocket_launch_data.py script.
-    - GCAT also uses slightly different designations for failed launches, which are now accounted for.
-    - Changing the names to the GCAT names uncovered missing launch event altitudes and incorrect propellant data which was fixed. Overall there were changes in emissions for:
-        - Changes pre-2020:
-            - Pegasus XL/HAPS
-            - Minotaur I
-            - Proton-M/Briz-M, Protom-M/DM-2
-            - PSLV CA
-            - H-IIA 202 1 variant
-            - Minotaur IV variants
-            - Soyuz ST-A/B Fregat
-            - Epsilon variants.
-            - Atlas V XXX 'C' variants
-            - Vega 1 variant
-            - H-IIA 204 2 variant
-            - Delta 4H A variant
-            - GSLV Mk III a variant
-            - Electron
-            - GSLV Mk II b/c variant
-            - LVM3
-            - Ariane 5ECA+ variant
-            - Antares 230+ variant
-            - CZ 2C and variants 
-            - CZ 3B/C and variants 
-            - Minotaur I/IV and associated variants
-            - Epsilon.
-        - Changes post-2020: 
-            - CZ 2C and variants 
-            - CZ 3B/C and variants 
-            - Minotaur-I
-            - CZ 7A (above only)
-            - CZ 8
-            - Shuang Quxian 1 3 variant
-            - 2023-201 Soyuz-2-1B has changed to Soyuz-2-1A in GCAT
-            - 2024-240 Chang Zheng 5/YZ-2 has changed to Chang Zheng 5B/YZ-2.
-            - New Starship launches 2024-U01, 2024-U03, 2024-U04, 2024-U06
-            - Kairos and Ariane 62 data is now from GCAT so the emissions are slightly different.
-    - GCAT only has Fregat, no Fregat-M or Fregat-MT (this only affects the third stage which is above the model).
+## Bug fixes to launch emissions
+
+Changing the names to the GCAT names uncovered missing launch event altitudes and incorrect propellant data which was fixed. Overall there were changes in emissions for:
+- Changes pre-2020:
+    - Pegasus XL/HAPS
+    - Minotaur I
+    - Proton-M/Briz-M, Protom-M/DM-2
+    - PSLV CA
+    - H-IIA 202 1 variant
+    - Minotaur IV variants
+    - Soyuz ST-A/B Fregat
+    - Epsilon variants.
+    - Atlas V XXX 'C' variants
+    - Vega 1 variant
+    - H-IIA 204 2 variant
+    - Delta 4H A variant
+    - GSLV Mk III a variant
+    - Electron
+    - GSLV Mk II b/c variant
+    - LVM3
+    - Ariane 5ECA+ variant
+    - Antares 230+ variant
+    - CZ 2C and variants 
+    - CZ 3B/C and variants 
+    - Minotaur I/IV and associated variants
+    - Epsilon.
+- Changes post-2020: 
+    - CZ 2C and variants 
+    - CZ 3B/C and variants 
+    - Minotaur-I
+    - CZ 7A (above only)
+    - CZ 8
+    - Shuang Quxian 1 3 variant
+    - 2023-201 Soyuz-2-1B has changed to Soyuz-2-1A in GCAT
+    - 2024-240 Chang Zheng 5/YZ-2 has changed to Chang Zheng 5B/YZ-2.
+    - New Starship launches 2024-U01, 2024-U03, 2024-U04, 2024-U06
+    - Kairos and Ariane 62 data is now from GCAT so the emissions are slightly different.
+- GCAT only has Fregat, no Fregat-M or Fregat-MT (this only affects the third stage which is above the model).
 
 # v2.0.0
 
