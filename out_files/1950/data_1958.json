@@ -1,4 +1,98 @@
 {
+    "1958-01-01": {
+        "launches": [],
+        "reentries": [
+            {
+                "date": "1958-01-01",
+                "id": "1958-004",
+                "time": -1.0,
+                "reusability": "",
+                "name": "GO",
+                "category": "C",
+                "lat": 31.72,
+                "lon": -60.84,
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "emissions": {
+                    "NOx": "0.004000",
+                    "Al2O3": "0.003200",
+                    "BC": "0.000410",
+                    "HCl": "0.000080",
+                    "Cl": "0.000150",
+                    "Unablated_Mass": 0.0019999999999999996
+                }
+            },
+            {
+                "date": "1958-01-01",
+                "id": "1958-004",
+                "time": -1.0,
+                "reusability": "",
+                "name": "GO part",
+                "category": "C",
+                "lat": 24.4,
+                "lon": 72.79,
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "emissions": {
+                    "NOx": "0.004000",
+                    "Al2O3": "0.003200",
+                    "BC": "0.000410",
+                    "HCl": "0.000080",
+                    "Cl": "0.000150",
+                    "Unablated_Mass": 0.0019999999999999996
+                }
+            },
+            {
+                "date": "1958-01-01",
+                "id": "1958-004",
+                "time": -1.0,
+                "reusability": "",
+                "name": "GO part",
+                "category": "C",
+                "lat": -36.24,
+                "lon": 149.63,
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "emissions": {
+                    "NOx": "0.004000",
+                    "Al2O3": "0.003200",
+                    "BC": "0.000410",
+                    "HCl": "0.000080",
+                    "Cl": "0.000150",
+                    "Unablated_Mass": 0.0019999999999999996
+                }
+            }
+        ]
+    },
+    "1958-01-04": {
+        "launches": [],
+        "reentries": [
+            {
+                "date": "1958-01-04",
+                "id": "1957-001",
+                "time": -1.0,
+                "reusability": "",
+                "name": "1-y ISZ",
+                "category": "P",
+                "lat": -37.13,
+                "lon": 18.08,
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "emissions": {
+                    "NOx": "0.033600",
+                    "Al2O3": "0.026880",
+                    "BC": "0.003444",
+                    "HCl": "0.000672",
+                    "Cl": "0.001260",
+                    "Unablated_Mass": 0.0168
+                }
+            }
+        ]
+    },
     "1958-02-01": {
         "launches": [
             {
@@ -22,17 +116,81 @@
                     "Al2O3": "0.022963"
                 },
                 "emissions_above": {
-                    "BC": "0.000336",
-                    "CO": "0.003780",
-                    "CO2": "0.003885",
+                    "BC": "0.003920",
+                    "CO": "0.044097",
+                    "CO2": "0.045322",
                     "NOx": "0.000000",
-                    "H2O": "0.011034",
-                    "Cly": "0.004536",
-                    "Al2O3": "0.006888"
+                    "H2O": "0.128718",
+                    "Cly": "0.052917",
+                    "Al2O3": "0.080355"
                 }
             }
         ],
-        "reentries": []
+        "reentries": [
+            {
+                "date": "1958-02-01",
+                "id": "1958-001",
+                "time": -1.0,
+                "reusability": "",
+                "name": "Redstone RS-29",
+                "category": "S1",
+                "lat": 7.37,
+                "lon": 135.23,
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "emissions": {
+                    "NOx": "1.556000",
+                    "Al2O3": "0.816900",
+                    "BC": "0.000000",
+                    "HCl": "0.000000",
+                    "Cl": "0.000000",
+                    "Unablated_Mass": 2.723
+                }
+            },
+            {
+                "date": "1958-02-01",
+                "id": "1958-001",
+                "time": -1.0,
+                "reusability": "",
+                "name": "Cluster 4 Assembly 2",
+                "category": "S2",
+                "lat": -18.68,
+                "lon": -51.92,
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "emissions": {
+                    "NOx": "0.092400",
+                    "Al2O3": "0.105105",
+                    "BC": "0.006699",
+                    "HCl": "0.001155",
+                    "Cl": "0.002541",
+                    "Unablated_Mass": 0.08084999999999999
+                }
+            },
+            {
+                "date": "1958-02-01",
+                "id": "1958-001",
+                "time": -1.0,
+                "reusability": "",
+                "name": "Cluster 4 Assembly 3",
+                "category": "S3",
+                "lat": -12.04,
+                "lon": -3.96,
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "emissions": {
+                    "NOx": "0.025200",
+                    "Al2O3": "0.028665",
+                    "BC": "0.001827",
+                    "HCl": "0.000315",
+                    "Cl": "0.000693",
+                    "Unablated_Mass": 0.022049999999999997
+                }
+            }
+        ]
     },
     "1958-02-05": {
         "launches": [],
@@ -65,17 +223,81 @@
                     "Al2O3": "0.000000"
                 },
                 "emissions_above": {
-                    "BC": "0.002720",
-                    "CO": "0.030600",
-                    "CO2": "0.031450",
-                    "NOx": "0.000000",
-                    "H2O": "0.089320",
+                    "BC": "0.019727",
+                    "CO": "0.103943",
+                    "CO2": "0.265298",
+                    "NOx": "0.010629",
+                    "H2O": "0.543990",
                     "Cly": "0.036720",
                     "Al2O3": "0.055760"
                 }
             }
         ],
-        "reentries": []
+        "reentries": [
+            {
+                "date": "1958-03-17",
+                "id": "1958-002",
+                "time": -1.0,
+                "reusability": "",
+                "name": "Vanguard TV4",
+                "category": "S1",
+                "lat": -12.68,
+                "lon": -174.31,
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "emissions": {
+                    "NOx": "0.324400",
+                    "Al2O3": "0.170310",
+                    "BC": "0.000000",
+                    "HCl": "0.000000",
+                    "Cl": "0.000000",
+                    "Unablated_Mass": 0.5677
+                }
+            },
+            {
+                "date": "1958-03-17",
+                "id": "1958-002",
+                "time": -1.0,
+                "reusability": "",
+                "name": "AJ10-37",
+                "category": "S2",
+                "lat": -28.73,
+                "lon": 85.54,
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "emissions": {
+                    "NOx": "0.171600",
+                    "Al2O3": "0.195195",
+                    "BC": "0.012441",
+                    "HCl": "0.002145",
+                    "Cl": "0.004719",
+                    "Unablated_Mass": 0.15014999999999998
+                }
+            },
+            {
+                "date": "1958-03-17",
+                "id": "1958-002",
+                "time": -1.0,
+                "reusability": "",
+                "name": "Vanguard Fairing",
+                "category": "C",
+                "lat": -10.35,
+                "lon": -172.78,
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "emissions": {
+                    "NOx": "0.351200",
+                    "Al2O3": "0.184380",
+                    "BC": "0.035998",
+                    "HCl": "0.007024",
+                    "Cl": "0.013170",
+                    "Unablated_Mass": 0.6145999999999999
+                }
+            }
+        ]
     },
     "1958-03-26": {
         "launches": [
@@ -100,17 +322,107 @@
                     "Al2O3": "0.022963"
                 },
                 "emissions_above": {
-                    "BC": "0.000336",
-                    "CO": "0.003780",
-                    "CO2": "0.003885",
+                    "BC": "0.003920",
+                    "CO": "0.044097",
+                    "CO2": "0.045322",
                     "NOx": "0.000000",
-                    "H2O": "0.011034",
-                    "Cly": "0.004536",
-                    "Al2O3": "0.006888"
+                    "H2O": "0.128718",
+                    "Cly": "0.052917",
+                    "Al2O3": "0.080355"
                 }
             }
         ],
-        "reentries": []
+        "reentries": [
+            {
+                "date": "1958-03-26",
+                "id": "1958-003",
+                "time": -1.0,
+                "reusability": "",
+                "name": "Redstone RS-24",
+                "category": "S1",
+                "lat": -13.36,
+                "lon": 5.6,
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "emissions": {
+                    "NOx": "1.556000",
+                    "Al2O3": "0.816900",
+                    "BC": "0.000000",
+                    "HCl": "0.000000",
+                    "Cl": "0.000000",
+                    "Unablated_Mass": 2.723
+                }
+            },
+            {
+                "date": "1958-03-26",
+                "id": "1958-003",
+                "time": -1.0,
+                "reusability": "",
+                "name": "Cluster 7 Assembly 2",
+                "category": "S2",
+                "lat": -29.95,
+                "lon": -45.93,
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "emissions": {
+                    "NOx": "0.092400",
+                    "Al2O3": "0.105105",
+                    "BC": "0.006699",
+                    "HCl": "0.001155",
+                    "Cl": "0.002541",
+                    "Unablated_Mass": 0.08084999999999999
+                }
+            },
+            {
+                "date": "1958-03-26",
+                "id": "1958-003",
+                "time": -1.0,
+                "reusability": "",
+                "name": "Cluster 7 Assembly 3",
+                "category": "S3",
+                "lat": 29.29,
+                "lon": -26.39,
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "emissions": {
+                    "NOx": "0.025200",
+                    "Al2O3": "0.028665",
+                    "BC": "0.001827",
+                    "HCl": "0.000315",
+                    "Cl": "0.000693",
+                    "Unablated_Mass": 0.022049999999999997
+                }
+            }
+        ]
+    },
+    "1958-04-14": {
+        "launches": [],
+        "reentries": [
+            {
+                "date": "1958-04-14",
+                "id": "1957-002",
+                "time": -1.0,
+                "reusability": "",
+                "name": "8K71PS No. M1-11 Stage 2",
+                "category": "S1",
+                "lat": 17.05,
+                "lon": 170.57,
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "emissions": {
+                    "NOx": "3.201200",
+                    "Al2O3": "1.680630",
+                    "BC": "0.000000",
+                    "HCl": "0.000000",
+                    "Cl": "0.000000",
+                    "Unablated_Mass": 5.602099999999999
+                }
+            }
+        ]
     },
     "1958-04-27": {
         "launches": [],
@@ -153,7 +465,92 @@
                 }
             }
         ],
-        "reentries": []
+        "reentries": [
+            {
+                "date": "1958-05-15",
+                "id": "1958-004",
+                "time": -1.0,
+                "reusability": "",
+                "name": "8K74B",
+                "category": "S0",
+                "lat": 46.0,
+                "lon": 63.0,
+                "smc": false,
+                "location": 2,
+                "burnup": "Complete",
+                "emissions": {
+                    "NOx": "0.340000",
+                    "Al2O3": "0.178500",
+                    "BC": "0.000000",
+                    "HCl": "0.000000",
+                    "Cl": "0.000000",
+                    "Unablated_Mass": 0.595
+                }
+            },
+            {
+                "date": "1958-05-15",
+                "id": "1958-004",
+                "time": -1.0,
+                "reusability": "",
+                "name": "8K74V",
+                "category": "S0",
+                "lat": 46.0,
+                "lon": 63.0,
+                "smc": false,
+                "location": 2,
+                "burnup": "Complete",
+                "emissions": {
+                    "NOx": "0.340000",
+                    "Al2O3": "0.178500",
+                    "BC": "0.000000",
+                    "HCl": "0.000000",
+                    "Cl": "0.000000",
+                    "Unablated_Mass": 0.595
+                }
+            },
+            {
+                "date": "1958-05-15",
+                "id": "1958-004",
+                "time": -1.0,
+                "reusability": "",
+                "name": "8K74G",
+                "category": "S0",
+                "lat": 46.0,
+                "lon": 63.0,
+                "smc": false,
+                "location": 2,
+                "burnup": "Complete",
+                "emissions": {
+                    "NOx": "0.340000",
+                    "Al2O3": "0.178500",
+                    "BC": "0.000000",
+                    "HCl": "0.000000",
+                    "Cl": "0.000000",
+                    "Unablated_Mass": 0.595
+                }
+            },
+            {
+                "date": "1958-05-15",
+                "id": "1958-004",
+                "time": -1.0,
+                "reusability": "",
+                "name": "8K74D",
+                "category": "S0",
+                "lat": 46.0,
+                "lon": 63.0,
+                "smc": false,
+                "location": 2,
+                "burnup": "Complete",
+                "emissions": {
+                    "NOx": "0.340000",
+                    "Al2O3": "0.178500",
+                    "BC": "0.000000",
+                    "HCl": "0.000000",
+                    "Cl": "0.000000",
+                    "Unablated_Mass": 0.595
+                }
+            }
+        ]
     },
     "1958-05-28": {
         "launches": [],
@@ -162,6 +559,32 @@
     "1958-06-26": {
         "launches": [],
         "reentries": []
+    },
+    "1958-06-28": {
+        "launches": [],
+        "reentries": [
+            {
+                "date": "1958-06-28",
+                "id": "1958-003",
+                "time": -1.0,
+                "reusability": "",
+                "name": "Cluster 7 Assembly 4",
+                "category": "S4",
+                "lat": 23.14,
+                "lon": 125.39,
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "emissions": {
+                    "NOx": "0.011600",
+                    "Al2O3": "0.013195",
+                    "BC": "0.000841",
+                    "HCl": "0.000145",
+                    "Cl": "0.000319",
+                    "Unablated_Mass": 0.01015
+                }
+            }
+        ]
     },
     "1958-07-26": {
         "launches": [
@@ -186,17 +609,81 @@
                     "Al2O3": "0.022963"
                 },
                 "emissions_above": {
-                    "BC": "0.000336",
-                    "CO": "0.003780",
-                    "CO2": "0.003885",
+                    "BC": "0.003920",
+                    "CO": "0.044097",
+                    "CO2": "0.045322",
                     "NOx": "0.000000",
-                    "H2O": "0.011034",
-                    "Cly": "0.004536",
-                    "Al2O3": "0.006888"
+                    "H2O": "0.128718",
+                    "Cly": "0.052917",
+                    "Al2O3": "0.080355"
                 }
             }
         ],
-        "reentries": []
+        "reentries": [
+            {
+                "date": "1958-07-26",
+                "id": "1958-005",
+                "time": -1.0,
+                "reusability": "",
+                "name": "Redstone RS-CC44",
+                "category": "S1",
+                "lat": 47.23,
+                "lon": -81.78,
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "emissions": {
+                    "NOx": "1.556000",
+                    "Al2O3": "0.816900",
+                    "BC": "0.000000",
+                    "HCl": "0.000000",
+                    "Cl": "0.000000",
+                    "Unablated_Mass": 2.723
+                }
+            },
+            {
+                "date": "1958-07-26",
+                "id": "1958-005",
+                "time": -1.0,
+                "reusability": "",
+                "name": "Cluster 9 Assembly 2",
+                "category": "S2",
+                "lat": 41.17,
+                "lon": -141.45,
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "emissions": {
+                    "NOx": "0.092400",
+                    "Al2O3": "0.105105",
+                    "BC": "0.006699",
+                    "HCl": "0.001155",
+                    "Cl": "0.002541",
+                    "Unablated_Mass": 0.08084999999999999
+                }
+            },
+            {
+                "date": "1958-07-26",
+                "id": "1958-005",
+                "time": -1.0,
+                "reusability": "",
+                "name": "Cluster 9 Assembly 3",
+                "category": "S3",
+                "lat": 38.72,
+                "lon": 73.0,
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "emissions": {
+                    "NOx": "0.025200",
+                    "Al2O3": "0.028665",
+                    "BC": "0.001827",
+                    "HCl": "0.000315",
+                    "Cl": "0.000693",
+                    "Unablated_Mass": 0.022049999999999997
+                }
+            }
+        ]
     },
     "1958-08-17": {
         "launches": [],
@@ -233,11 +720,11 @@
                     "Al2O3": "0.000000"
                 },
                 "emissions_above": {
-                    "BC": "0.002720",
-                    "CO": "0.030600",
-                    "CO2": "0.031450",
-                    "NOx": "0.000000",
-                    "H2O": "0.089320",
+                    "BC": "0.019727",
+                    "CO": "0.103943",
+                    "CO2": "0.265298",
+                    "NOx": "0.010629",
+                    "H2O": "0.543990",
                     "Cly": "0.036720",
                     "Al2O3": "0.055760"
                 }
@@ -268,17 +755,149 @@
                     "Al2O3": "0.000000"
                 },
                 "emissions_above": {
-                    "BC": "0.004416",
-                    "CO": "0.049680",
-                    "CO2": "0.051060",
-                    "NOx": "0.000000",
-                    "H2O": "0.145014",
+                    "BC": "0.021423",
+                    "CO": "0.123023",
+                    "CO2": "0.284908",
+                    "NOx": "0.010629",
+                    "H2O": "0.599684",
                     "Cly": "0.059616",
                     "Al2O3": "0.090528"
                 }
             }
         ],
-        "reentries": []
+        "reentries": [
+            {
+                "date": "1958-10-11",
+                "id": "1958-007",
+                "time": -1.0,
+                "reusability": "",
+                "name": "Thor DM-18A 130",
+                "category": "S1",
+                "lat": -11.4,
+                "lon": -15.47,
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "emissions": {
+                    "NOx": "1.250000",
+                    "Al2O3": "0.656250",
+                    "BC": "0.000000",
+                    "HCl": "0.000000",
+                    "Cl": "0.000000",
+                    "Unablated_Mass": 2.1875
+                }
+            },
+            {
+                "date": "1958-10-11",
+                "id": "1958-007",
+                "time": -1.0,
+                "reusability": "",
+                "name": "AJ10-41",
+                "category": "S2",
+                "lat": 21.25,
+                "lon": -1.7,
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "emissions": {
+                    "NOx": "0.171600",
+                    "Al2O3": "0.195195",
+                    "BC": "0.012441",
+                    "HCl": "0.002145",
+                    "Cl": "0.004719",
+                    "Unablated_Mass": 0.15014999999999998
+                }
+            },
+            {
+                "date": "1958-10-11",
+                "id": "1958-007",
+                "time": -1.0,
+                "reusability": "",
+                "name": "Able Fairing",
+                "category": "C",
+                "lat": 0.12,
+                "lon": 174.15,
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "emissions": {
+                    "NOx": "0.351200",
+                    "Al2O3": "0.184380",
+                    "BC": "0.035998",
+                    "HCl": "0.007024",
+                    "Cl": "0.013170",
+                    "Unablated_Mass": 0.6145999999999999
+                }
+            },
+            {
+                "date": "1958-10-11",
+                "id": "1958-007",
+                "time": -1.0,
+                "reusability": "",
+                "name": "Able Fairing",
+                "category": "C",
+                "lat": 21.87,
+                "lon": -47.73,
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "emissions": {
+                    "NOx": "0.351200",
+                    "Al2O3": "0.184380",
+                    "BC": "0.035998",
+                    "HCl": "0.007024",
+                    "Cl": "0.013170",
+                    "Unablated_Mass": 0.6145999999999999
+                }
+            }
+        ]
+    },
+    "1958-10-13": {
+        "launches": [],
+        "reentries": [
+            {
+                "date": "1958-10-13",
+                "id": "1958-007",
+                "time": 4.766666666666667,
+                "reusability": "",
+                "name": "Pioneer I",
+                "category": "P",
+                "lat": 31.6,
+                "lon": 15.22,
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "emissions": {
+                    "NOx": "0.010800",
+                    "Al2O3": "0.008640",
+                    "BC": "0.001107",
+                    "HCl": "0.000216",
+                    "Cl": "0.000405",
+                    "Unablated_Mass": 0.0053999999999999986
+                }
+            },
+            {
+                "date": "1958-10-13",
+                "id": "1958-007",
+                "time": -1.0,
+                "reusability": "",
+                "name": "Thor Able I Stage 3",
+                "category": "S3",
+                "lat": -18.41,
+                "lon": -4.52,
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "emissions": {
+                    "NOx": "0.009600",
+                    "Al2O3": "0.010920",
+                    "BC": "0.000696",
+                    "HCl": "0.000120",
+                    "Cl": "0.000264",
+                    "Unablated_Mass": 0.0084
+                }
+            }
+        ]
     },
     "1958-10-23": {
         "launches": [],
@@ -287,6 +906,32 @@
     "1958-11-08": {
         "launches": [],
         "reentries": []
+    },
+    "1958-12-03": {
+        "launches": [],
+        "reentries": [
+            {
+                "date": "1958-12-03",
+                "id": "1958-004",
+                "time": -1.0,
+                "reusability": "",
+                "name": "8A91 No. B1-1 Stage 2",
+                "category": "S1",
+                "lat": -17.2,
+                "lon": 88.12,
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "emissions": {
+                    "NOx": "2.800000",
+                    "Al2O3": "1.470000",
+                    "BC": "0.000000",
+                    "HCl": "0.000000",
+                    "Cl": "0.000000",
+                    "Unablated_Mass": 4.9
+                }
+            }
+        ]
     },
     "1958-12-04": {
         "launches": [],
@@ -315,17 +960,149 @@
                     "Al2O3": "0.022963"
                 },
                 "emissions_above": {
-                    "BC": "0.000336",
-                    "CO": "0.003780",
-                    "CO2": "0.003885",
+                    "BC": "0.003920",
+                    "CO": "0.044097",
+                    "CO2": "0.045322",
                     "NOx": "0.000000",
-                    "H2O": "0.011034",
-                    "Cly": "0.004536",
-                    "Al2O3": "0.006888"
+                    "H2O": "0.128718",
+                    "Cly": "0.052917",
+                    "Al2O3": "0.080355"
                 }
             }
         ],
-        "reentries": []
+        "reentries": [
+            {
+                "date": "1958-12-06",
+                "id": "1958-008",
+                "time": -1.0,
+                "reusability": "",
+                "name": "Jupiter AM-11",
+                "category": "S1",
+                "lat": 11.76,
+                "lon": 106.55,
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "emissions": {
+                    "NOx": "2.177200",
+                    "Al2O3": "1.143030",
+                    "BC": "0.000000",
+                    "HCl": "0.000000",
+                    "Cl": "0.000000",
+                    "Unablated_Mass": 3.8101
+                }
+            },
+            {
+                "date": "1958-12-06",
+                "id": "1958-008",
+                "time": -1.0,
+                "reusability": "",
+                "name": "Cluster 11 Assembly 2",
+                "category": "S2",
+                "lat": -21.04,
+                "lon": -61.61,
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "emissions": {
+                    "NOx": "0.092400",
+                    "Al2O3": "0.105105",
+                    "BC": "0.006699",
+                    "HCl": "0.001155",
+                    "Cl": "0.002541",
+                    "Unablated_Mass": 0.08084999999999999
+                }
+            },
+            {
+                "date": "1958-12-06",
+                "id": "1958-008",
+                "time": -1.0,
+                "reusability": "",
+                "name": "Cluster 11 Assembly 3",
+                "category": "S3",
+                "lat": 3.93,
+                "lon": 110.35,
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "emissions": {
+                    "NOx": "0.025200",
+                    "Al2O3": "0.028665",
+                    "BC": "0.001827",
+                    "HCl": "0.000315",
+                    "Cl": "0.000693",
+                    "Unablated_Mass": 0.022049999999999997
+                }
+            },
+            {
+                "date": "1958-12-06",
+                "id": "1958-008",
+                "time": -1.0,
+                "reusability": "",
+                "name": "Juno II Fairing",
+                "category": "C",
+                "lat": 8.53,
+                "lon": 60.91,
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "emissions": {
+                    "NOx": "0.351200",
+                    "Al2O3": "0.184380",
+                    "BC": "0.035998",
+                    "HCl": "0.007024",
+                    "Cl": "0.013170",
+                    "Unablated_Mass": 0.6145999999999999
+                }
+            }
+        ]
+    },
+    "1958-12-07": {
+        "launches": [],
+        "reentries": [
+            {
+                "date": "1958-12-07",
+                "id": "1958-008",
+                "time": 19.866666666666667,
+                "reusability": "",
+                "name": "Pioneer III",
+                "category": "P",
+                "lat": 16.4,
+                "lon": 18.6,
+                "smc": false,
+                "location": 2,
+                "burnup": "Complete",
+                "emissions": {
+                    "NOx": "0.002400",
+                    "Al2O3": "0.001920",
+                    "BC": "0.000246",
+                    "HCl": "0.000048",
+                    "Cl": "0.000090",
+                    "Unablated_Mass": 0.0011999999999999997
+                }
+            },
+            {
+                "date": "1958-12-07",
+                "id": "1958-008",
+                "time": -1.0,
+                "reusability": "",
+                "name": "Cluster 11 Assembly 4",
+                "category": "S4",
+                "lat": -13.12,
+                "lon": 139.71,
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "emissions": {
+                    "NOx": "0.008400",
+                    "Al2O3": "0.009555",
+                    "BC": "0.000609",
+                    "HCl": "0.000105",
+                    "Cl": "0.000231",
+                    "Unablated_Mass": 0.00735
+                }
+            }
+        ]
     },
     "1958-12-18": {
         "launches": [
@@ -360,6 +1137,28 @@
                 }
             }
         ],
-        "reentries": []
+        "reentries": [
+            {
+                "date": "1958-12-18",
+                "id": "1958-006",
+                "time": -1.0,
+                "reusability": "",
+                "name": "Atlas Booster",
+                "category": "S0",
+                "lat": 7.78,
+                "lon": 50.11,
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "emissions": {
+                    "NOx": "1.400000",
+                    "Al2O3": "0.735000",
+                    "BC": "0.000000",
+                    "HCl": "0.000000",
+                    "Cl": "0.000000",
+                    "Unablated_Mass": 2.45
+                }
+            }
+        ]
     }
 }

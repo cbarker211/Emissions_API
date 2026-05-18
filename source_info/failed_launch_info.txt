@@ -122,7 +122,7 @@
             https://www.nasaspaceflight.com/2019/11/kuaizhou-1a-launches-jilin-1-gaofen-2a/ (2A) 230 kg
             https://space.skyrocket.de/doc_sdat/jilin-1-kuanfu-02.htm                       (2A) 230 kg 
 
-    F09 - 17/11/2020 Vega
+    U01 - 17/11/2020 Vega
         https://web.archive.org/web/20220411235210/http://www.spacelaunchreport.com/log2020.html
             AVUM fourth stage tumbled out of control at first ignition.  Two TVC cables inverted.
         https://en.wikipedia.org/wiki/List_of_Vega_launches
@@ -131,7 +131,7 @@
             AVUM stage TVC cabeling error
         Failure occured in upper stage, so can include the emissions as normal.
         Not including S4 emissions in missing emissions.
-        U01 in GCAT.
+        F09 in DISCOSweb.
         F09. Vega (4 stages) failed at upper stage.
         Adding payload reentries, dry mass reentry for first, second and third stage and wet mass reentry for fourth stage.
         https://www.arianespace.com/wp-content/uploads/2020/11/VV17-launchkit-EN2.pdf 
@@ -139,7 +139,7 @@
         https://spaceflightnow.com/2020/11/17/european-vega-rocket-suffers-second-failure-in-three-launches/ 
         https://web.archive.org/web/20220406013740/http://www.spacelaunchreport.com/vega.html
         
-    F10 - 15/12/2020 Astra Rocket 3
+    F09 - 15/12/2020 Astra Rocket 3
         https://en.wikipedia.org/wiki/List_of_Astra_rocket_launches
             First Astra rocket to pass the Kármán Line and reach its target orbital altitude of 390 kilometers. 
             Narrowly failed to reach stable orbit due to issues with the upper stage propellant mixture ratio.
@@ -149,10 +149,10 @@
             First stage, staging and second stage ignition succeeded.  Stage 2 depleted propellant 15-20 seconds early, falling short of orbit.
         In this case, the early SECO would have likely been well above GC, so can treat as normal.
         Including all stages in missing emissions.
-        F10. Astra Rocket 3 (2 stages), stage 2 depleted propellant 15-20 seconds early, falling short of orbit. No payloads.
+        F09. Astra Rocket 3 (2 stages), stage 2 depleted propellant 15-20 seconds early, falling short of orbit. No payloads.
         Adding dry mass reentry for first and second stage.
         
-    F11 - 03/12/2020 Chang'e 5 SSQ (Ascent Stage)
+    U02 - 03/12/2020 Chang'e 5 SSQ (Ascent Stage)
         Moon launch, don't need to include.
 
 2021
@@ -344,7 +344,7 @@
             4    (Each) - GCAT
             5.34 (Each) - https://tropics.ll.mit.edu/CMS/tropics/The-MicroMAS-2-Cubesat
 
-    F04 08/08/2022 SSLV
+    U02 08/08/2022 SSLV
         SFN - The rocket appeared to function as designed for the first 10 minutes of the mission. The SSLV’s three main solid-fueled stages fired one after the other...
                 (https://spaceflightnow.com/2022/08/07/indias-new-small-satellite-launcher-fails-to-put-satellites-into-correct-orbit/)
                 the VTM was supposed to fire for about 20 seconds on the SSLV test flight, known as the SSLV-D1 mission, ...
@@ -358,7 +358,7 @@
             135,8    (EOS-02,AzaadiSAT) - https://space.skyrocket.de/doc_lau/sslv.htm  
         Using official ISRO mass.         
 
-    F05 12/10/2022 Epsilon-2 CLPS
+    F04 12/10/2022 Epsilon-2 CLPS
         Wiki - Vehicle was destroyed by flight termination system shortly after second stage cutoff due to an attitude control fault.
         NSF  - Live coverage by JAXA of the launch showed what appeared to be a stage 3 ignition failure. (https://www.nasaspaceflight.com/2022/10/epsilon-raise-3/)
         Including S1 and S2 emissions as normal, not including S3 or S4 in missing emissions.
@@ -383,7 +383,7 @@
             KOYOH/PETREL/STARS-X launched later.
 
 
-    F06 14/12/2022 Zhuque-2
+    F05 14/12/2022 Zhuque-2
         Wiki - Launch failure caused by an earlier-than-intended shutdown of the vernier engines of the second stage, preventing it from reaching orbital velocity.
         NSF  - In images that spread from the mission control, it was observable that the rocket performed until about five minutes into the flight. 
                 At 5 km/s the second stage most likely suffered an issue during a shutdown and failed to accelerate the mission to orbital velocity. 
@@ -396,7 +396,7 @@
            50/10 (Zhixing/Unknown) - GCAT 
            No info elsewhere so using GCAT.
 
-    F07 21/12/2022 Vega C
+    F06 21/12/2022 Vega C
         Wiki - The Zefiro 40 second stage deviated from its intended trajectory following a loss of pressure, resulting in reentry about 917 km (570 mi) north of the launch site over the Atlantic.
         Space- "Approximately 2 minutes and 27 seconds after liftoff an anomaly occurred on the Zefiro 40, thus ending the Vega C mission," (https://www.space.com/arianespace-vega-c-launch-failure-december-2022)
         SFN  - The chamber pressure suddenly dropped at about T+plus 3 minutes, 28 seconds, about two-thirds of the way through the Zefiro 40’s planned burn.
@@ -428,7 +428,7 @@
         SLR - First stage engines shut down shortly after launch.  All nine of RS1's E2 engines shut down simultaneously. 
             Fell back on pad area and exploded.
         
-    2023-F04 07/03/2023 H-III 22
+    2023-F03 07/03/2023 H-III 22
         Wiki - On the second launch attempt for the H3 Launch Vehicle on 7 March the vehicle launched at 1:37:55 AM UTC (Universal Time Coordinated).
             Shortly after the SRB-3 boosters separated from the rocket around two minutes into the flight, the rocket appeared to lose control and begin to tumble based on the views from the ground camera; however, based on subsequent analysis, this appears to be part of a planned dogleg maneuver in order to achieve sun-synchronous orbit and not in fact a loss of control.
             Approximately five minutes and twenty-seven seconds after launch, the second stage engine failed to ignite. 
@@ -437,7 +437,7 @@
         NSF - The rocket’s second stage failed to ignite. Thirteen minutes and 55 seconds after liftoff, once it had become clear that the rocket would not be able to reach orbit, the flight termination system (FTS) was commanded to destroy the vehicle.
             https://www.nasaspaceflight.com/2024/02/jaxa-second-h3/
 
-    2023-F05 23/03/2023 Terran-1
+    2023-F04 23/03/2023 Terran-1
         SLR - Stage 2 failed to ignite.  No deployable payload or PLF.  
             Slow opening engine main valves impacted pressures in the system and timing of propellant reaching the thrust chamber assembly (TCA) and gas generator (GG) during the start sequence.  
             LOX pump did not generate pressure when spin start power was applied to the turbines. 
@@ -447,32 +447,32 @@
             Preliminary investigations blamed the failure on a slower-than-expected valve opening as well as vapor ingestion into the liquid oxygen turbopump causing reduced performance.
             Although the launch did not orbit, Relativity acknowledged the successful performance of the vehicle's 3D printed structures under flight loads.
 
-    2023-F06 20/04/2023 Starship
+    2023-F05 20/04/2023 Starship
         Wiki - Three engines were shut down before the booster lifted off the launch mount, with at least three more engines shutting down during booster powered flight. 
             The vehicle eventually entered an uncontrolled spin before stage separation due to loss of thrust vector control. The flight termination system activated with the intent to destroy the vehicle immediately, but the vehicle remained intact until T+3:59, more than 40 seconds after activation of the flight termination system.
             SpaceX declared this flight a success, as their primary goal was to only clear the pad.
             The launch resulted in extensive damage to the orbital launch mount and the infrastructures around it, including the propellant tank farm.
 
-    2023-F07 30/05/2023 Chomilla-1
-    2023-F08 23/08/2023 Chomilla-1
+    2023-F06 30/05/2023 Chomilla-1
+    2023-F07 23/08/2023 Chomilla-1
         The maiden launch did not reach orbit as stage 2 failed to ignite. 
         The second vehicle also failed during stage 3 operation, possible due to a flight termination system issue.
         https://space.skyrocket.de/doc_lau/chollima-1.htm
         NSF - This failed to reach orbit due to a third stage malfunction, however, the North Korean Government initially claimed that it had been successful and was orbiting the Earth broadcasting songs celebrating the country’s then-ruler Kim Jong Il and his father and predecessor Kim Il Sung.
 
-    2023-F09 19/09/2023 Electron(Curie)
+    2023-F08 19/09/2023 Electron(Curie)
         NSF - Rocket Lab launched the “We Will Never Desert You” mission on Sept. 19, 2023, at 06:56 UTC from Launch Complex 1 on the Mahia Peninsula, in New Zealand. 
         A hold was called for the opening of the window due to solar weather. However, once launched, the feed died during staging, pointing to an issue with second stage ignition.
         No further information was provided other than the confirmation of an anomaly.
         https://www.nasaspaceflight.com/2023/09/launch-roundup-091823/
 
-    2023-F10 21/09/2023 Ceres-1
+    2023-F09 21/09/2023 Ceres-1
         “We can confirm that the first two stages were nominal. Stage 3 lost attitude three seconds after ignition and the self-destructing mechanism was activated,” CAS Space said in a statement.
         It added that the investigation into the cause of the anomaly is ongoing.
         CAS Space is a launch spinoff from the Chinese Academy of Sciences, aiming to secure contracts to launch domestic and international payloads.
         https://spacenews.com/china-suffers-commercial-rocket-failure-but-sets-record-for-annual-launches/
 
-    2023-F11 18/11/2023 Starship
+    2023-F10 18/11/2023 Starship
         Wiki - Following stage separation, Super Heavy initiated its flip maneuver, and then its boostback burn: the flight computers sent commands to 13 of the vehicle’s 33 Raptor engines to propel the rocket toward its intended landing location. 
             During this burn, several engines began shutting down before one engine failed, leading to the explosion of the booster. 
     

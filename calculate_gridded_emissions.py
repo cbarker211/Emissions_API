@@ -24,14 +24,14 @@ import sys
 import requests
 import xarray as xr
 import cProfile
-import pstats
+from datetime import datetime
 
 from python_modules.distribute_emis_func import make_grid_LL, read_gc_box_height, get_ross_profiles, interp_prop_mass
 from python_modules.alt_emis_func import calculate_bc_ei, calculate_nox_ei, calculate_co_ei, calculate_cl_ei
 from python_modules.web_scrape_func import scrape_jsr
 class InputData:
     '''Read rocket launch and re-entry activity data.'''
-    def __init__(self, launchfile: str,reentryfile: str, rocketinfofile: str, peifile: str, start_year):
+    def __init__(self, launchfile: str,reentryfile: str, rocketinfofile: str, peifile: str):
 
         def open_file(filepath):
             ds = xr.open_dataset(filepath).to_dataframe().reset_index(drop=True)
@@ -41,8 +41,7 @@ class InputData:
 
         self.dsl  = open_file(launchfile)
         self.handle_falcon_landings()
-        if start_year >= 2020:
-            self.dsre = open_file(reentryfile)
+        self.dsre = open_file(reentryfile)
         self.dsr = xr.open_dataset(rocketinfofile).to_dataframe().reset_index(drop=True)
         self.define_pei(peifile)
     
@@ -65,7 +64,7 @@ class InputData:
                     return "ground"
                 elif stage_row["Status"].values[0] in ["L","LF"] or stage_row['Dest'].values[0] == "OCISLY":
                     return "ocean"
-                elif stage_row["Status"].values[0] == "S":
+                elif stage_row["Status"].values[0] in ["S","R"]:
                     return "expended"
                 else:
                     raise ValueError(f"Unknown reentry method for {cospar_id} - {stage_row['Status'].values} - {stage_row['Dest'].values}")
@@ -203,14 +202,13 @@ class OutputEmis:
 
         total_length = launch_length
 
-        if year >= 2020:
-            reentry_mask = (input_data.dsre["Date"].dt.year == year)
-            if dataset == 1:
-                reentry_mask &= ~input_data.dsre["Megaconstellation_Flag"].astype(bool)
-            elif dataset == 2:
-                reentry_mask &= input_data.dsre["Megaconstellation_Flag"].astype(bool)
-            reentry_length = np.sum(reentry_mask)
-            total_length += reentry_length
+        reentry_mask = (input_data.dsre["Date"].dt.year == year)
+        if dataset == 1:
+            reentry_mask &= ~input_data.dsre["Megaconstellation_Flag"].astype(bool)
+        elif dataset == 2:
+            reentry_mask &= input_data.dsre["Megaconstellation_Flag"].astype(bool)
+        reentry_length = np.sum(reentry_mask)
+        total_length += reentry_length
 
         if launch_length > 0:
             self.output_csv_launch_prop  = np.zeros((launch_length*3,LEVELS))
@@ -249,8 +247,7 @@ class OutputEmis:
             print('MONTH = ', self.strmon)   
 
             month_launch_mask = (launch_mask & (input_data.dsl["Date"].dt.month == m))
-            if year >= 2020:
-                month_reentry_mask = (reentry_mask & (input_data.dsre["Date"].dt.month == m))           
+            month_reentry_mask = (reentry_mask & (input_data.dsre["Date"].dt.month == m))           
             
             #Loop over all days:
             for d in range(ndays):
@@ -262,15 +259,11 @@ class OutputEmis:
                 )
                 daily_launches_df = input_data.dsl[day_launch_mask].reset_index(drop=True).copy()
 
-                if year >= 2020:
-
-                    day_reentry_mask = ( month_reentry_mask &
-                        (np.array(input_data.dsre["Date"].dt.day) == d+1) &
-                        (~np.isnan(np.array(input_data.dsre['Time_UTC'])))
-                    )                
-                    daily_reentries_df = input_data.dsre[day_reentry_mask].reset_index(drop=True).copy()
-                else:
-                    daily_reentries_df = pd.DataFrame()
+                day_reentry_mask = ( month_reentry_mask &
+                    (np.array(input_data.dsre["Date"].dt.day) == d+1) &
+                    (~np.isnan(np.array(input_data.dsre['Time_UTC'])))
+                )                
+                daily_reentries_df = input_data.dsre[day_reentry_mask].reset_index(drop=True).copy()
 
                 if len(daily_launches_df) + len(daily_reentries_df) == 0:
                     continue
@@ -440,6 +433,7 @@ class OutputEmis:
         
         fei_alt_dict = {
             "GSLV Mk III": 46.534,
+            "LVM3": 46.534,
             "Pegasus": 11.9, # All Pegasus values from SLR.
             "Pegasus H": 11.9,
             "Pegasus XL": 11.9,
@@ -658,7 +652,7 @@ class OutputEmis:
 
         species_keys = ["launch_bc","co","co2","launch_nox","fuel_nox","h2o","launch_al","launch_cl","launch_hcl","cl2"]
         for i, key in enumerate(species_keys):
-            launch_details["emissions_above"][key] = (emis_full[i] * 1e-6)
+            launch_details["emissions_above"][key] += (emis_full[i] * 1e-6)
         
         self.prop_above_total += prop_mass * 1e-2 * percent_included
         self.emis_above[0] += emis_full[0] 
@@ -749,9 +743,9 @@ class OutputEmis:
         # This is where stage 2 never ignited.
         zero_stage2_events = {
             '2020-F02','2020-F05',
-            '2021-F02','2021-F07','2021-F08','2022-F01',
-            '2022-F02','2022-F03','2023-F01','2023-F04',
-            '2023-F05','2023-F06','2023-F07','2023-F09',
+            '2021-F02','2021-F07','2021-F08',
+            '2022-F01','2022-F02','2022-F03',
+            '2023-F01','2023-F03','2023-F04','2023-F05','2023-F06','2023-F08',
             '2024-F02','2024-F04'
         }
         if row.COSPAR_ID in zero_stage2_events:
@@ -955,8 +949,8 @@ class OutputEmis:
         skip_ids = [[], # Stage0
             ['2020-F04','2020-F07','2021-F01','2021-F07'], # Stage1
             ['2020-F02','2020-F04','2020-F05','2020-F07','2021-F01', '2021-F02','2021-F07','2021-F08','2022-F01','2022-F02'], # Stage2
-            ['2020-F02','2020-F03','2020-F05','2020-F06','2021-F01', '2021-F06','2021-F10','2022-F02','2022-F05','2022-F07'], # Stage3
-            ['2020-F08','2020-F09','2021-F01','2022-F02','2022-F04', '2022-F05','2022-F07'], # Stage4
+            ['2020-F02','2020-F03','2020-F05','2020-F06','2021-F01', '2021-F06','2021-F10','2022-F02','2022-F04','2022-F06'], # Stage3
+            ['2020-F08','2020-U01','2021-F01','2022-F02','2022-U02', '2022-F04','2022-F06'], # Stage4
             []] # Stage5 
 
         def calc_emis_above(stage_no,prop_above):
@@ -1214,14 +1208,16 @@ def check_total_emissions(year,dataset,res,levels,emis_data):
 # Main section of the program
 if __name__ == "__main__":
 
+    current_year = datetime.now().year
+
     # Configure the script arguments.
     parser = argparse.ArgumentParser()
     parser.add_argument('-sm', "--start_month", default = "1", choices=str(np.arange(1,13)), help='Start Month (will override final month if greater than final month).')
     parser.add_argument('-fm', "--final_month", default = "12", choices=str(np.arange(1,13)), help='Final Month.')
-    parser.add_argument('-sd', "--start_dataset", default = "1", choices=str(np.arange(1,4)), help='Dataset. 1=Non-SMC, 2=SMC, 3=All')
+    parser.add_argument('-sd', "--start_dataset", default = "3", choices=str(np.arange(1,4)), help='Dataset. 1=Non-SMC, 2=SMC, 3=All')
     parser.add_argument('-fd', "--final_dataset", default = "3", choices=str(np.arange(1,4)), help='Dataset. 1=Non-SMC, 2=SMC, 3=All')
-    parser.add_argument('-sy', "--start_year", default = "2023", choices=str(np.arange(1957,2025)), help='Start Year.')
-    parser.add_argument('-fy', "--final_year", default = "2024", choices=str(np.arange(1957,2025)), help='Final Year.')
+    parser.add_argument('-sy', "--start_year", default = "1957", choices=str(np.arange(1957,current_year)), help='Start Year.')
+    parser.add_argument('-fy', "--final_year", default = "2025", choices=str(np.arange(1957,current_year)), help='Final Year.')
     args = parser.parse_args()
 
     ######################################   
@@ -1277,30 +1273,16 @@ if __name__ == "__main__":
         ################
         
         fiona.drvsupport.supported_drivers['KML'] = 'rw' # type: ignore
-        if start_year < 2020:
-            launch_path       = f'./databases/launch_activity_data_1957-2019.nc'
-            rocket_info_path  = f'./databases/rocket_attributes_1957-2019.nc'
-        elif start_year >= 2020 and final_year <= 2022:
-            launch_path       = f'./databases/launch_activity_data_2020-2022.nc'
-            rocket_info_path  = f'./databases/rocket_attributes_2020-2022.nc'
-        elif start_year >= 2023 and final_year <= 2024:
-            launch_path       = f'./databases/launch_activity_data_2023-2024.nc'
-            rocket_info_path  = f'./databases/rocket_attributes_2023-2024.nc'
+        if start_year >= 1957 and final_year <= current_year -1:
+            launch_path       = f'./databases/launch_activity_data_1957-{current_year-1}.nc'
+            rocket_info_path  = f'./databases/rocket_attributes_1957-{current_year-1}.nc'
+            reentry_path  = f'./databases/reentry_activity_data_1957-{current_year-1}.nc'
         else: 
-            raise ImportError(f"Error: Unsupported time range for {start_year}-{final_year}")
-        
-        if start_year < 2020:
-            reentry_path  = f'./databases/reentry_activity_data_1957-2019.nc'
-        elif start_year >= 2020 and final_year <= 2022:
-            reentry_path  = f'./databases/reentry_activity_data_2020-2022_moredatacorrectlocations.nc'
-        elif start_year >= 2023 and final_year <= 2024:
-            reentry_path  = f'./databases/reentry_activity_data_2023-2024.nc'
-        else:
             raise ImportError(f"Error: Unsupported time range for {start_year}-{final_year}")
 
         pei_path          = './input_files/primary_emission_indices.csv'  
         global input_data
-        input_data       = InputData(launch_path, reentry_path, rocket_info_path, pei_path, start_year)
+        input_data       = InputData(launch_path, reentry_path, rocket_info_path, pei_path)
         print("Successfully loaded input databases.")
         
         #Loop over all years and run functions depending on input arguments.

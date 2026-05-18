@@ -243,7 +243,7 @@ class import_launches:
             url = "https://planet4589.org/space/gcat/tsv/cat/" + file + ".tsv"
             catalog = scrape_jsr(url,self.session)
             catalog = catalog[catalog["Type"].str[0].isin(["P","C","S","X","Z"])] # P = Payload, C = Component, S = Suborbital payload, X = Catalog entry that has been deleted, Z = Spurious catalog entry.
-            catalog = catalog[catalog["Name"].str.lower().str.contains("starlink|oneweb|yinhe|lynk|e-space|protosat-1|kuiper|tranche|ronghe|digui|hulianwang|qianfan", na=False)]
+            catalog = catalog[catalog["Name"].str.lower().str.contains("starlink|tintin|oneweb|yinhe|lynk|e-space|protosat-1|kuiper|tranche|ronghe|digui|hulianwang|qianfan|lingxi|whdw", na=False)]
             jsr_data_dict[file] = catalog
 
         # Filter the launches to remove unwanted entries.
@@ -297,6 +297,7 @@ class import_launches:
         df = df[~df["LV_Type"].str.contains("Aerobee|R-UNK|Trailblazer", na=False)] # Skip sounding rockets.
         df = df[~df["LV_Type"].str.contains("NOTS EV1", na=False)] # These were failed launches from an expendable launch system / anti-satellite weapon.
         df = df[~df["#Launch_Tag"].str.contains("2013-U01", na=False)] # Skip sounding rockets.
+        df = df[~df["#Launch_Tag"].str.contains("2021-U01", na=False)] # Skip military launches.
 
         df = df.reset_index()
         
@@ -344,11 +345,15 @@ class import_launches:
                         "Taiyuan weixing fashe zhongxin": "Taiyuan SLC (Wuzhai)",
                         "Sohae Launch Site, Tongch'ang-dong, Pyongang-bukdo (N Pyongan Prov), N Korea": "Sohae Satellite Launching Station",
                         "Jiuquan Space Center, Nei Monggol Zizhiqu, China": "Jiuquan SLC (Shuang Cheng Tzu)",
-                        "Kodiak Launch Complex, Kodiak Island, Alaska": "Kodiak Launch Complex",
+                        "Imam Reza Space Ctr, Damghan (Shahroud), Iran (Dasht-E-Kabir?)": "Shahroud Missile Test Site",
                     }
 
                     # Handle groups of equivalent site names
                     group_map = {
+                        "Kodiak Launch Complex": [
+                            "Kodiak Launch Complex, Kodiak Island, Alaska",
+                            "Pacific Spaceport Complex Alaska, Kodiak Island, Alaska",
+                        ],
                         "Spaceport Florida Authority": [
                             "Spaceport Florida, Cape Canaveral",
                             "Space Florida, Cape Canaveral",
@@ -359,6 +364,8 @@ class import_launches:
                             "Uchinoura Space Center, Kagoshima (formerly Kagoshima)"
                         ],
                         "Vandenberg Space Force Base": [
+                            "South Base, Vandenberg Space Force Base, California",
+                            "Vandenberg Space Force Base, California",
                             "Vandenberg AFB, California",
                             "South Vandenberg AFB, California",
                             "Naval Missile Facility, Point Arguello, California"
@@ -408,10 +415,7 @@ class import_launches:
                 else:
                     variant = row["Variant"]
 
-                if "Chang Zheng" in row["LV_Type"]:
-                    name = row["LV_Type"].replace("Chang Zheng","Long March (CZ)")
-                else:
-                    name = row["LV_Type"]
+                name = row["LV_Type"]
 
                 if "Proton-M" in name and datetime.strptime(datestr, "%Y%m%d") >= datetime(2007,7,7):
                     variant = "Enhanced"
@@ -677,7 +681,6 @@ class import_launches:
     def get_rocket_info(self,source):
         
         self.unique_rocket_list,vehicle_ids = [], []
-        #with xr.open_dataset(f'./databases/launch_activity_data_{self.start_year}-{self.final_year}_{source}.nc', decode_times=False) as ds:
         with xr.open_dataset(f'./databases/launch_activity_data_{self.start_year}-{self.final_year}.nc', decode_times=False) as ds:
             vehicle_names = ds['Rocket_Name'].values
             vehicle_variants = ds['Rocket_Variant'].values
@@ -704,6 +707,29 @@ class import_launches:
                      "Zhuque-1":           "Super Strypi",
                      "Zhuque-2":           "Antares 230"}
 
+        # Load in the stage event altitude data from the file.
+        stage_alt_dict = {}
+        stage_alt_rockets = np.genfromtxt("./input_files/launch_event_altitudes.csv",dtype=str,skip_header=1,usecols=[0,1],delimiter=",")
+        stage_alt_data = np.genfromtxt("./input_files/launch_event_altitudes.csv",dtype=np.float64,skip_header=1,usecols=[2,3,4,5],delimiter=",")
+
+        stages = ["BECO", "MECO", "SEI1", "SECO"]
+        for (name, variant), row in zip(stage_alt_rockets, stage_alt_data):
+            for stage, value in zip(stages, row):
+                stage_alt_dict[f"{name} {variant} {stage}"] = None if value == "" else np.float64(value)
+
+        config_map = {
+            # booster, s1, s2, s3, s4, s5
+            (True,  True,  False, False, False, False): 0,
+            (True,  True,  True,  False, False, False): 0,
+            (True,  True,  True,  True,  False, False): 1,
+            (True,  True,  True,  True,  True , False): 2,
+            (True,  True,  True,  True,  True , True):  2,
+            (False, True,  True,  False, False, False): 3,
+            (False, True,  True,  True,  False, False): 4,
+            (False, True,  True,  True,  True , False): 5,
+            (False, True,  True,  True,  True , True):  5
+        }
+
         df_vehicles, df_stages, df_engines = pd.DataFrame(), pd.DataFrame(), pd.DataFrame()
         if source == "jsr":
             df_vehicles = scrape_jsr("https://planet4589.org/space/gcat/tsv/tables/lvs.tsv",self.session) 
@@ -728,9 +754,12 @@ class import_launches:
                     f"Stage{j} Propellant Name": 0,
                 })
 
+            # First find the vehicle and its stages in the vehicles databases.
+            temp_dict["name"] = name
+            temp_dict["variant"] = variant
+            
             if source == "dw":
-                temp_dict["name"] = name
-                temp_dict["variant"] = variant
+                
                 vehicle_index = np.where((vehicle_names == name) & (vehicle_variants == variant))[0][0]
                 vehicle_id = vehicle_ids[vehicle_index]    
                 # Get the propellant mass info.
@@ -740,13 +769,6 @@ class import_launches:
                         temp_dict = self.handle_stage_info(count,stage,i,temp_dict,unique_vehicle_names,name)
 
             elif source == "jsr":
-
-                # Change the name so we can get info from JSR.
-                if "Long March (CZ)" in name:
-                    name = name.replace("Long March (CZ)","Chang Zheng")
-
-                # First find the vehicle and its stages in the vehicles databases.
-                temp_dict["variant"] = variant
 
                 # This is because Proton-M Enhanced is only listed under the name Proton-M in JSR.
                 if "Proton-M" in name and variant == "Enhanced":
@@ -761,7 +783,7 @@ class import_launches:
                     stage_number = row['Stage_No'].strip()
                     if stage_number in ["F","P"]:
                         continue
-                    if name.startswith(("Soyuz", "Conestoga 1620", "Polyot", "Molniya 8K78", "Sputnik","Voskhod","Vostok", "Space Shuttle")) and name != "Soyuz-2-1V":
+                    if name.startswith(("Soyuz", "Conestoga 1620", "Polyot", "Molniya 8K78", "Sputnik","Voskhod","Vostok", "Space Shuttle", "SLS Block 1")) and name != "Soyuz-2-1V":
                         stage_number = int(stage_number) - 1
                     else:
                         stage_number = int(stage_number)
@@ -804,7 +826,7 @@ class import_launches:
                     launch_mass = df_stage["Launch_Mass"].values[0]
                     dry_mass    = None if dry_mass    == '-' or pd.isna(dry_mass)    else float(dry_mass)
                     launch_mass = None if launch_mass == '-' or pd.isna(launch_mass) else float(launch_mass)*1000
-                    if stage_number > 0 and int(row["Multiplicity"]) != 1:
+                    if stage_number > 0 and int(row["Multiplicity"]) != 1 and name not in ["Conestoga 1620"]:
                         print(f'Potential booster found for {name} {variant} - stage {stage_number} x {int(row["Multiplicity"])}')
                     if stage_number == 0:
                         temp_dict["Booster Number"] = int(row["Multiplicity"])
@@ -822,10 +844,10 @@ class import_launches:
                         dry_mass = launch_mass / 10
                     
                     # These are fixed later in update_mass_info, so suppress warnings here.
-                    if name not in ["Diamant A","Diamant B","Diamant BP4","Electron","Kuaizhou","Kuaizhou-1A","Lambda 4S","Juno II",
-                                    "Jupiter C","Chang Zheng 11","Chang Zheng 2C/YZ-1S","Chang Zheng 2B/YZ-3","Chang Zheng 3B/YZ-1",
-                                    "Chang Zheng 3C/YZ-1","Chang Zheng 2D/YZ-3","Chang Zheng 5/YZ-2","Chang Zheng 6","Chang Zheng 7/YZ-1A",
-                                    "Minotaur-C 3210","Safir","Shuang Quxian 1","Simorgh","Strela","Taurus 3110","Taurus 3210", "Scout F-1"]:
+                    if name not in ["Angara-1.2","Diamant A","Diamant B","Diamant BP4","Electron","Kuaizhou","Kuaizhou-1A","Lambda 4S","Juno II","Jupiter C",
+                                    "Chang Zheng 11","Chang Zheng 2C/YZ-1S","Chang Zheng 2B/YZ-3","Chang Zheng 3B/YZ-1","Chang Zheng 3C/YZ-1","Chang Zheng 2D/YZ-3",
+                                    "Chang Zheng 5/YZ-2","Chang Zheng 5B/YZ-2","Chang Zheng 6","Chang Zheng 7/YZ-1A", "Chang Zheng 12", "Chang Zheng 12A",
+                                    "Minotaur-C 3210","Nuri","Safir","Shuang Quxian 1","Simorgh","Strela","Taurus 3110","Taurus 3210", "Scout F-1"]:
                         if not dry_mass:
                             print(f"Missing dry mass for Rocket: {name,variant}, Stage: {stage_number} - {row['Stage_Name']}")
                         if not launch_mass:
@@ -837,41 +859,51 @@ class import_launches:
 
                     # Get the propellant info from the engine database.
                     df_engine = df_engines[df_engines["#Name"] == df_stage["Engine"].values[0]]
-                    if len(df_engine) != 1:
-                        print(f"Warning: Found {len(df_engine)} engines for stage {row['Stage_Name']} of {name,variant}.")
-                        continue
-                    try:
-                        t = (df_engine["Group"].values[0])
-                    except:
-                        sys.exit(name)
-                    # Assign the propellant type.
-                    if df_engine["Group"].values[0] == "Solid":
+                    if len(df_engine) == 1:
+                        
+                        # Assign the propellant type.
+                        if (df_engine["Group"].values[0] == "Solid") or (df_engine["Fuel"].values[0].strip() == "Polyethylene") or (df_engine["Fuel"].values[0].strip() == "Paraffin"):
+                            # Assuming that hybrid H2O2/Polyethylene or Lox/Paraffin engines are close enough to solid fuel.
+                            fuel_type = "Solid"
+                        elif df_engine["Group"].values[0] == "LOX/Methane":
+                            fuel_type = "Methane"
+                        elif df_engine["Group"].values[0] == "LOX/LH2":
+                            fuel_type = "Hydrogen"
+                        elif ("Kero" in df_engine["Group"].values[0]) or (df_engine["Group"].values[0] in ["NA/Turps","LOX/Propane"]): 
+                            # Assuming that nitric acid + turpentine is similar to kerosene.
+                            fuel_type = "Kerosene"
+                        elif df_engine["Group"].values[0] in ["NTO/UDMH","MonoHyd","NA/UDMH","LOX/UDMH","NTO/Hyd","Green"]:
+                            fuel_type = "Hypergolic"
+                        else:
+                            print("Missing fuel type", df_engine["Group"].values[0],name,variant,stage_number) 
+                            fuel_type = None
+                    elif name in ["Yinli-1","Jielong-3","Lijian-1"]:
                         fuel_type = "Solid"
-                    elif df_engine["Group"].values[0] == "LOX/Methane":
-                        fuel_type = "Methane"
-                    elif df_engine["Group"].values[0] == "LOX/LH2":
-                        fuel_type = "Hydrogen"
-                    elif ("Kero" in df_engine["Group"].values[0]) or (df_engine["Group"].values[0] == "NA/Turps"): 
-                        # Assuming that nitric acid + turpentine is similar to kerosene.
-                        fuel_type = "Kerosene"
-                    elif df_engine["Group"].values[0] in ["NTO/UDMH","MonoHyd","NA/UDMH","LOX/UDMH","NTO/Hyd","Green"]:
-                        fuel_type = "Hypergolic"
                     else:
-                        print("Missing fuel type", df_engine["Group"].values[0],name,variant,stage_number) 
+                        print(f"Warning: Found {len(df_engine)} engines for stage {row['Stage_Name']} of {name,variant}.")
                         fuel_type = None
 
                     temp_dict[f"Stage{stage_number} Fuel Type"] = fuel_type
             else:
                 raise ValueError(f"Unknown source {source} for rocket data.")
-            
-            # Change the name back so we can use the update script.
-            if "Chang Zheng" in name:
-                temp_dict["name"] = name.replace("Chang Zheng","Long March (CZ)")
-            else:
-                temp_dict["name"] = name
 
             # Handle any incomplete/incorrect propellant/stage mass information.
             temp_dict = update_mass_info(temp_dict, temp_dict["name"], variant)
+
+            # Find the event altitude information and look up configuration
+            stage_alts = {key: stage_alt_dict.get(f"{name} {variant} {key}", np.nan) for key in ['BECO', 'MECO', 'SEI1', 'SECO']}
+
+            stages = tuple(bool(temp_dict[f"Stage{i} Fuel Type"]) for i in range(6))
+            rocket_config_type = config_map.get(stages) #type: ignore
+
+            if rocket_config_type is None:
+                raise IndexError(f"Incorrect rocket configuration for {name,variant} (stages={stages})")
+            
+            temp_dict["BECO"] = stage_alts['BECO']
+            temp_dict["MECO"] = stage_alts['MECO']
+            temp_dict["SEI1"] = stage_alts['SEI1']
+            temp_dict["SECO"] = stage_alts['SECO']
+            temp_dict["Rocket_Config"] = rocket_config_type
 
             # Update the rocket list.   
             self.unique_rocket_list.append(temp_dict) 
@@ -888,11 +920,16 @@ class import_launches:
             return float(val or 0.0)
         
         fields = {
-            "Rocket_Name":       ("name", None),
-            "Rocket_Variant":    ("variant", None),
-            "Booster_No":        ("Booster Number", None),
-            "Fairing_Mass":      ("Fairing Mass", "kg"),
-            "Proxy_Rocket":      ("proxy", None),
+            "Rocket_Name":    ("name", None),
+            "Rocket_Variant": ("variant", None),
+            "Booster_No":     ("Booster Number", None),
+            "Fairing_Mass":   ("Fairing Mass", "kg"),
+            "Proxy_Rocket":   ("proxy", None),
+            "BECO":           ("BECO", None),
+            "MECO":           ("MECO", None),
+            "SEI1":           ("SEI1", None),
+            "SECO":           ("SECO", None),
+            "Rocket_Config":  ("Rocket_Config", None),
         }
 
         # Add stages dynamically
@@ -1029,8 +1066,8 @@ if __name__ == "__main__":
     parser.add_argument('-ri',   "--rocket_info",              action='store_true',                                 help='Get rocket info.')
     parser.add_argument('-sri',  "--save_rocket_info",         action='store_true',                                 help='Save launch info.')
     parser.add_argument('-sdwr', "--save_discosweb_reentries", action='store_true',                                 help='Save dw reentries.')
-    parser.add_argument('-sy',   "--start_year",               default = "2023", choices=str(np.arange(1957,2026)), help='Start Year (1957-2025).')
-    parser.add_argument('-fy',   "--final_year",               default = "2024", choices=str(np.arange(1942,2026)), help='Final Year (1957-2025).')
+    parser.add_argument('-sy',   "--start_year",               default = "1957", choices=str(np.arange(1957,2026)), help='Start Year (1957-2025).')
+    parser.add_argument('-fy',   "--final_year",               default = "2025", choices=str(np.arange(1942,2026)), help='Final Year (1957-2025).')
     args = parser.parse_args()
     
     # Sort out the year range.
