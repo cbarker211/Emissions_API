@@ -12,7 +12,6 @@ import requests
 from io import StringIO
 from cProfile import Profile
 from pstats import Stats
-import time
 from tqdm import tqdm
 
 def convert_time(date):
@@ -20,29 +19,27 @@ def convert_time(date):
     """Converts the "DDate" listing from GCAT to day, month, and time strings.
 
     Returns:
-        datestr(str):  The date in YYYYMMDD format.
-        time_utc(str): The decimal time in hours.
+        date_obj(pandas datetime):  The date in YYYY-MM-DDTHH:MM:SSZ format.
     """   
-    
-    yearstr=str(date[0]).replace("?","")
+    date = [s.replace("?", "") for s in date]
+    yearstr=str(date[0])
     if len(date) == 1:
         yearstr = yearstr.replace("s","")
         monstr = "01"   
         daystr = "01"
-    elif date[1] == "Q3?": # 1995-005A
+    elif date[1] == "Q3": # 1995-005A
         monstr = "07"
         daystr = "01"  
-    elif date[1] == "Q4?": # 2015-025H
+    elif date[1] == "Q4": # 2015-025H
         monstr = "10"
         daystr = "01"
     else:   
-        date[1] = date[1].replace("?","")
         try:
             monstr = str(datetime.strptime(date[1], '%b').month).zfill(2)  
         except:
             sys.exit(date)
         if len(date) > 2: 
-            daystr = str(date[2].replace("?","")).zfill(2)
+            daystr = str(date[2]).zfill(2)
         elif date == ['2022', 'Apr']:
             # DISCOSweb puts reentry on Mar 31st. Setting as March 31st.
             daystr = "31"
@@ -53,14 +50,19 @@ def convert_time(date):
             monstr = "11"
         else:
             daystr = "01"
-    
-    datestr = yearstr+monstr+daystr
-        
+            
     if len(date) >= 4:    
-        time_utc = np.float64(int(date[3].replace("?","")[0:2]) + int(date[3].replace("?","")[2:4]) / 60)
+        hrstr   = date[3][0:2].zfill(2)
+        minstr  = date[3][2:4].zfill(2)
+        secstr  = date[3][5:7].zfill(2) if ":" in date[3] else "00"
     else:
-        time_utc = -1  
-    return datestr, time_utc
+        hrstr   = "00"
+        minstr  = "00"
+        secstr  = "00"          
+    datestr = f"{yearstr}-{monstr}-{daystr}T{hrstr}:{minstr}:{secstr}Z"
+    date_obj = pd.to_datetime(datestr, errors="coerce", utc=True)
+
+    return date_obj
     
 class build_reentry_list:
     
@@ -184,23 +186,19 @@ class build_reentry_list:
         non_geo_count = non_geo_mask.sum()
         geolocated_mass = ((self.df_reentry.loc[~non_geo_mask, "abl_mass"] + self.df_reentry.loc[~non_geo_mask, "other_mass"]).sum())
 
-        non_time_mask = self.df_reentry["time"] == -1
-        non_time_count = non_time_mask.sum()
-
         total_mass_array = self.df_reentry["abl_mass"] + self.df_reentry["other_mass"]
         total_mass = total_mass_array.sum()
         non_mass_mask = total_mass_array == 0
         non_mass_count = non_mass_mask.sum()
 
         geo_percent_all =  non_geo_count  / total_reentries * 100
-        time_percent_all = non_time_count / total_reentries * 100
         mass_percent_all = non_mass_count / total_reentries * 100
         geolocated_mass_percent = geolocated_mass / total_mass * 100
 
         data = {'Property':  ['Total Reentries', 'Total mass [Gg]','Non-geolocated Objects','Non-geolocated Objects [%]',
-                              'Non-timed Objects','Non-timed Objects [%]','Objects with no Mass','Objects with no Mass [%]','Geolocated Mass'],
+                              'Objects with no Mass','Objects with no Mass [%]','Geolocated Mass'],
                 'Value':     [int(total_reentries), total_mass*1e-6, int(non_geo_count), geo_percent_all,
-                              int(non_time_count), time_percent_all, int(non_mass_count), mass_percent_all, geolocated_mass_percent]}
+                              int(non_mass_count), mass_percent_all, geolocated_mass_percent]}
         
         df = pd.DataFrame(data)
         df_rounded = df.round(1)
@@ -443,7 +441,7 @@ class build_reentry_list:
 
         return lat, lon, location
     
-    def falcon_stage_lat_lon(self,datestr,jsr_id,dest,plname):
+    def falcon_stage_lat_lon(self,date_obj,jsr_id,dest,plname):
         
         """Set the geolocation for all Falcon 9 1st stages.
 
@@ -456,7 +454,7 @@ class build_reentry_list:
 
         # Find the ground landings in Raul's SpaceX Map
         if "LZ" in dest:
-            matching = self.ground_landings[self.ground_landings["Date"] == datestr].reset_index(drop=True)
+            matching = self.ground_landings[self.ground_landings["Date"].dt.date == date_obj.date()].reset_index(drop=True)
 
             # If its in the list of ground landings, then we can geolocate it.
             if matching.shape[0] == 1: 
@@ -483,8 +481,8 @@ class build_reentry_list:
                 raise ValueError(f"Problem geolocating Falcon Stage 1 landing- {jsr_id}.")
         else:
             # Find the ocean landings in Raul's SpaceX Map.
-            matching = self.ocean_landings[self.ocean_landings["Date"] == (datestr)].reset_index(drop=True)
-            if (matching.shape[0] == 1) or (datestr == "20220427"):
+            matching = self.ocean_landings[self.ocean_landings["Date"].dt.date == date_obj.date()].reset_index(drop=True)
+            if (matching.shape[0] == 1) or (date_obj.tz_convert(None).normalize() == pd.Timestamp("2022-04-27")):
                 # This is 27th April - typo in Raul's Space Map where second should be 2023. 
                 lat = matching["geometry"].y.iloc[0]
                 lon = matching["geometry"].x.iloc[0]
@@ -524,14 +522,14 @@ class build_reentry_list:
                 else:
                     raise ValueError(f'Falcon launch site not found - {lon_val} {lat_val}.')
             elif matching.shape[0] > 1:
-                print(matching,datestr)
+                print(matching,date_obj)
                 raise ValueError(f"Multiple ocean entries for Falcon Stage 1 landing- {jsr_id}.")
             else:
                 raise ValueError(f"Problem geolocating Falcon Stage 1 landing- {jsr_id}.") 
             
         return lat, lon 
     
-    def falcon_fairing_lat_lon(self,datestr,jsr_id):   
+    def falcon_fairing_lat_lon(self,date_obj,jsr_id):   
         
         """Set the geolocation for all Falcon 9 fairings.
 
@@ -544,7 +542,7 @@ class build_reentry_list:
 
         set_ocean = False
         if len(self.fairings) > 0:
-            matching = self.fairings[self.fairings["Date"] == datestr].reset_index(drop=True)
+            matching = self.fairings[self.fairings["Date"].dt.date == date_obj.date()].reset_index(drop=True)
             if matching.shape[0] == 1:
                 lat = matching["geometry"].y.iloc[0]
                 lon = matching["geometry"].x.iloc[0]
@@ -802,7 +800,7 @@ class build_reentry_list:
                 continue
 
             # Sort out the reentry time/date.
-            datestr, time_utc = convert_time(arrays["DDate"][i].split()) 
+            date_obj = convert_time(arrays["DDate"][i].split()) 
 
             # Create some variables for easier access.
             jsr_id      = self.convert_launch_tag(arrays["Piece"][i])
@@ -890,7 +888,7 @@ class build_reentry_list:
 
                 # If the first stage landed on a drone ship or landing zone, use the known location from Raul's SpaceX map.
                 if "LZ" in jsr_dest or jsr_status in ["L","LF"] or jsr_dest == "OCISLY":
-                    lat, lon = self.falcon_stage_lat_lon(datestr,jsr_id,jsr_dest, jsr_plname) 
+                    lat, lon = self.falcon_stage_lat_lon(date_obj,jsr_id,jsr_dest, jsr_plname) 
                     location = 5
 
                 # If the first stage was expended, then use the normal lat/lon conversion.
@@ -900,7 +898,7 @@ class build_reentry_list:
                     raise ValueError(f"Unexpected Falcon Stage 1 Status {jsr_status} {jsr_jcat}")
             
             elif ("Falcon 9 Fairing" in jsr_name) or ("Falcon Heavy Fairing" in jsr_name):    
-                lat, lon = self.falcon_fairing_lat_lon(datestr,jsr_id)
+                lat, lon = self.falcon_fairing_lat_lon(date_obj,jsr_id)
                 burnup = "Partial"
                 location = 5
 
@@ -927,8 +925,7 @@ class build_reentry_list:
                 "name"             : jsr_name,
                 "category"         : reentry_category,
                 "burnup"           : burnup,
-                "time"             : time_utc,
-                "datestr"          : datestr,
+                "date"             : date_obj,
                 "lat"              : lat,
                 "lon"              : lon,
                 "abl_mass"         : abl_mass,
@@ -1028,7 +1025,6 @@ class build_reentry_list:
 
         # Load in the launch list and only choose successful launches.     
         success_dsl  = self.dsl[~self.dsl["COSPAR_ID"].str[5].isin(["F", "U"])]
-        success_dsl = success_dsl.rename(columns={"Time(UTC)": "Time_UTC"})
 
         self.df_reentry = self.df_reentry.copy()
         self.df_reentry["_cospar_prefix"] = self.df_reentry["cospar_id_new"].str[:8]
@@ -1063,8 +1059,7 @@ class build_reentry_list:
                 "jcat"             : "N/A",
                 "burnup"           : "Complete",
                 "category"         : "S0",
-                "time"             : launch_row.Time_UTC,
-                "datestr"          : launch_row.Date,
+                "date"             : launch_row.Date,
                 "lat"              : launch_row.Latitude,
                 "lon"              : launch_row.Longitude,
                 "other_mass"       : 0,
@@ -1218,9 +1213,6 @@ class build_reentry_list:
 
         else:
             self.fairings = pd.DataFrame(columns=raul_data.columns)
-
-        for df in [self.ocean_landings, self.ground_landings, self.fairings]:
-            df["Date"] = df["Date"].dt.strftime("%Y%m%d")
                          
     def get_reentry_info(self):
 
@@ -1319,12 +1311,13 @@ class build_reentry_list:
             self.extract_jsr_info(file)
 
         column_types = {
-            **dict.fromkeys(["id", "jcat", "name", "category", "burnup", "datestr", "parent"], str),
-            **dict.fromkeys(["time", "lat", "lon", "abl_mass", "other_mass", "attached_abl_mass", "inc", "apogee"], float),
+            **dict.fromkeys(["id", "jcat", "name", "category", "burnup", "parent"], str),
+            **dict.fromkeys(["lat", "lon", "abl_mass", "other_mass", "attached_abl_mass", "inc", "apogee"], float),
             "location": int
         }
         
         self.df_reentry = pd.DataFrame(self.reentry_rows).astype(column_types).set_index("jcat")
+        self.df_reentry["date"] = pd.to_datetime(self.df_reentry["date"], utc=True).dt.tz_convert(None)
         self.df_reentry["cospar_id_new"] = self.df_reentry["id"].apply(self.convert_launch_tag)
         print("cargo")
         self.add_attached()        
@@ -1492,7 +1485,7 @@ class build_reentry_list:
         #        missing_time_count +=1                
         #        for count, launch_id in enumerate(self.dsl["COSPAR_ID"].values):
         #            if reentry["id"][:8] == launch_id:
-        #                if reentry["datestr"] == self.dsl["Date"].values[count]:
+        #                if reentry["date_obj"] == self.dsl["Date"].values[count]:
         #                    reentry["time"] = self.dsl["Time(UTC)"].values[count]
         #                    if np.isnan(reentry["abl_mass"]) or np.isnan(reentry["other_mass"]):
         #                        print(reentry["id"],reentry["abl_mass"],reentry["other_mass"])
@@ -1528,8 +1521,7 @@ class build_reentry_list:
             'COSPAR_ID'              : xr.DataArray(self.df_reentry["id"].to_numpy(),  dims=dims, attrs=dict(long_name="COSPAR_ID")),
             'Object_Name'            : xr.DataArray(self.df_reentry["name"].to_numpy(),  dims=dims, attrs=dict(long_name="Object Name")),
             'Category'               : xr.DataArray(self.df_reentry["category"].to_numpy(),  dims=dims, attrs=dict(long_name="Category")),
-            'Time (UTC)'             : xr.DataArray(self.df_reentry["time"].to_numpy(),  dims=dims, attrs=dict(long_name="Time (UTC)")),
-            'Date'                   : xr.DataArray(self.df_reentry["datestr"].to_numpy(),  dims=dims, attrs=dict(long_name="Date")),
+            'Date'                   : xr.DataArray(self.df_reentry["date"].to_numpy(),  dims=dims, attrs=dict(long_name="Date")),
             'Latitude'               : xr.DataArray(self.df_reentry["lat"].to_numpy(),  dims=dims, attrs=dict(long_name="Latitude", units="Degrees")),
             'Longitude'              : xr.DataArray(self.df_reentry["lon"].to_numpy(),  dims=dims, attrs=dict(long_name="Longitude", units="Degrees")),
             'Ablatable_Mass'         : xr.DataArray(self.df_reentry["Ablatable_Mass"].to_numpy(),  dims=dims, attrs=dict(long_name="Ablatable Mass", units="kg")),

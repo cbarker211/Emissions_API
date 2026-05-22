@@ -13,11 +13,9 @@
 
 # Import modules:
 import argparse
-from netCDF4 import Dataset # type: ignore
+import pstats
 import numpy as np
 import pandas as pd
-import geopandas as gpd
-import fiona
 import json
 import calendar
 import sys
@@ -29,14 +27,13 @@ from datetime import datetime
 from python_modules.distribute_emis_func import make_grid_LL, read_gc_box_height, get_ross_profiles, interp_prop_mass
 from python_modules.alt_emis_func import calculate_bc_ei, calculate_nox_ei, calculate_co_ei, calculate_cl_ei
 from python_modules.web_scrape_func import scrape_jsr
+
 class InputData:
     '''Read rocket launch and re-entry activity data.'''
     def __init__(self, launchfile: str,reentryfile: str, rocketinfofile: str, peifile: str):
 
         def open_file(filepath):
             ds = xr.open_dataset(filepath).to_dataframe().reset_index(drop=True)
-            ds = ds.rename(columns={"Time(UTC)": "Time_UTC", "Time (UTC)": "Time_UTC"})
-            ds["Date"] = pd.to_datetime(ds["Date"], format="%Y%m%d")
             return ds
 
         self.dsl  = open_file(launchfile)
@@ -54,9 +51,8 @@ class InputData:
 
         for row in falcon_df.itertuples(index=False):
             cospar_id = str(row.COSPAR_ID)
-                
-            df_launch = df_rcat[df_rcat["Launch_Tag"].str.contains(cospar_id, na=False)]
-            df_launch = df_launch[df_launch["Type"].str[0].isin(["R"])]
+            df_launch = df_rcat[df_rcat["Launch_Tag"].str.lower() == cospar_id.lower()]
+            df_launch = df_launch[df_launch["Type"].str.startswith("R")]
 
             def falcon_dest(stage):
                 stage_row = df_launch[df_launch["PLName"].str.contains(stage, case=False, na=False)]
@@ -220,7 +216,7 @@ class OutputEmis:
         #############################################
 
         # Build the ocean landing list for the year in question.
-        raul_data = gpd.read_file('./databases/reentry/General_SpaceX_Map_Raul.kml', driver='KML', layer = 2) # Falcon landing data.  
+        raul_data = pd.read_parquet('./databases/reentry/raul_map.parquet')
         ocean_landings = raul_data[
             (raul_data["Name"].str.contains("ASDS")) &
             (raul_data["Description"].str.contains("Landing -"))].copy()
@@ -253,16 +249,10 @@ class OutputEmis:
             for d in range(ndays):
 
                 # Find launches and reentries.
-                day_launch_mask = ( month_launch_mask &
-                    (np.array(input_data.dsl["Date"].dt.day)  == d+1) &
-                    (~np.isnan(np.array(input_data.dsl['Time_UTC'])))
-                )
+                day_launch_mask = month_launch_mask & (np.array(input_data.dsl["Date"].dt.day)  == d+1)
                 daily_launches_df = input_data.dsl[day_launch_mask].reset_index(drop=True).copy()
 
-                day_reentry_mask = ( month_reentry_mask &
-                    (np.array(input_data.dsre["Date"].dt.day) == d+1) &
-                    (~np.isnan(np.array(input_data.dsre['Time_UTC'])))
-                )                
+                day_reentry_mask = month_reentry_mask & (np.array(input_data.dsre["Date"].dt.day) == d+1)                
                 daily_reentries_df = input_data.dsre[day_reentry_mask].reset_index(drop=True).copy()
 
                 if len(daily_launches_df) + len(daily_reentries_df) == 0:
@@ -685,10 +675,8 @@ class OutputEmis:
             raise IndexError(f"No propellant mass found for {key}")
             
         launch_details = {
-            "date":      f"{self.year}-{self.strmon}-{self.strday}",
+            "date":      row.Date.strftime("%Y-%m-%dT%H:%M:%SZ"),
             "id":        row.COSPAR_ID,
-            "time":      row.Time_UTC,
-            "site":      "",
             "rocket":    row.Rocket_Name,
             "variant":   row.Rocket_Variant,
             "lat":       row.Latitude,
@@ -861,17 +849,17 @@ class OutputEmis:
                     # There is a typo in the database, a 2023 launch is listed as 2022.      
                     if (matching.shape[0] == 1) or (f"{self.year}-{self.strmon}-{self.strday}" == "2022-04-27"):
 
-                        falcon_lat = np.array(matching["geometry"].y)[0]
-                        falcon_lon = np.array(matching["geometry"].x)[0]
+                        falcon_lat = matching["Latitude"].iloc[0]
+                        falcon_lon = matching["Longitude"].iloc[0]
                         
                     # There are two launches on the same day.
                     elif row.COSPAR_ID in ["2022-124","2023-037"]:
-                        falcon_lat = np.array(matching["geometry"].y)[0]
-                        falcon_lon = np.array(matching["geometry"].x)[0]
+                        falcon_lat = matching["Latitude"].iloc[0]
+                        falcon_lon = matching["Longitude"].iloc[0]
                         
                     elif row.COSPAR_ID in ["2022-125","2023-038"]:
-                        falcon_lat = np.array(matching["geometry"].y)[1]
-                        falcon_lon = np.array(matching["geometry"].x)[1]
+                        falcon_lat = matching["Latitude"].iloc[1]
+                        falcon_lon = matching["Longitude"].iloc[1]
                         
                     elif matching.shape[0] == 0:
                         # The database hasn't been well updated for 2022, so lets just fill in based on most common geolocation for all other 2020-2022 launches.
@@ -1015,16 +1003,15 @@ class OutputEmis:
         '''Calculate the reentry emissions'''
 
         reentry_details = {
-            "date": f"{self.year}-{self.strmon}-{self.strday}",
-            "id": row.COSPAR_ID,
-            "time": row.Time_UTC,
+            "date":        row.Date.strftime("%Y-%m-%dT%H:%M:%SZ"),
+            "id":          row.COSPAR_ID,
             "reusability": "",
-            "name": row.Object_Name,
-            "category": row.Category, 
-            "smc": bool(row.Megaconstellation_Flag),
-            "location": int(row.Location_Constraint),
-            "burnup": row.Burnup, 
-            "emissions": {sp: 0 for sp in ["reentry_nox","reentry_al","reentry_bc","reentry_hcl","reentry_cl"]}
+            "name":        row.Object_Name,
+            "category":    row.Category, 
+            "smc":         bool(row.Megaconstellation_Flag),
+            "location":    int(row.Location_Constraint),
+            "burnup":      row.Burnup, 
+            "emissions":  {sp: 0 for sp in ["reentry_nox","reentry_al","reentry_bc","reentry_hcl","reentry_cl"]}
         }
 
         total_vertical_propellant = np.zeros((len(self.mid_alt[:,q,p]),10))
@@ -1142,7 +1129,13 @@ class OutputEmis:
             #self.falcon_kg_to_kgm2s = self.area[falcon_q,falcon_p]*TIMESTEP # TODO: Where do we calculate Falcon q and Falcon p
             
             # Format the time of the event.
-            time_index = int(row.Time_UTC*60*60)//TIMESTEP
+            seconds_since_midnight = (
+                row.Date.hour * 3600 +
+                row.Date.minute * 60 +
+                row.Date.second
+            )
+
+            time_index = seconds_since_midnight // TIMESTEP
             
             # Work out vertical distribution for launch or reentry emissions.
             if emis_type=='launch':
@@ -1252,15 +1245,14 @@ if __name__ == "__main__":
         # BECO, MECO, SEI1, SECO
         # B+1/2S, B+3S, B+4S, 2S, 3S, 4S 
         event_alts = [[66,55,29,0,0,0],
-                    [220,120,64,90,56,52],
-                    [229,120,64,103,61,59],
-                    [356,232,216,312,176,149]]
+                      [220,120,64,90,56,52],
+                      [229,120,64,103,61,59],
+                      [356,232,216,312,176,149]]
             
         ################
         # Import files.
         ################
         
-        fiona.drvsupport.supported_drivers['KML'] = 'rw' # type: ignore
         if start_year >= 1957 and final_year <= current_year -1:
             launch_path       = f'./databases/launch_activity_data_1957-{current_year-1}.nc'
             rocket_info_path  = f'./databases/rocket_attributes_1957-{current_year-1}.nc'
