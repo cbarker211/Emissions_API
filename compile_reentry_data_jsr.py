@@ -164,6 +164,7 @@ class build_reentry_list:
             "EAFB RW23":    (34.924, -117.892, 2),  # Edwards Air Force Base
             "EAFB RW04":    (34.924, -117.892, 2),  # Edwards Air Force Base
             "EAFB RW33":    (34.924, -117.892, 2),  # Edwards Air Force Base
+            "EAFB RW15":    (34.924, -117.892, 2),  # Edwards Air Force Base
             "Arkalyk":      (50.249, 66.902, 2),    # Arkalyk
             "Wisconsin":    (44.099, -87.658, 2),   # https://www.smithsonianmag.com/air-space-magazine/when-sputnik-crashed-wisconsin-180952388/
             "Uralsk W 130": (51.224, 51.373, 2),    # Uralsk
@@ -282,14 +283,19 @@ class build_reentry_list:
                 lat = round(np.random.uniform(-inc, inc),2)
                 lon = round(np.random.uniform(-180, 180),2)
                 location = 6
-        
-        # Political Region - 4
-        elif latlonstr in ["E USA","SE Hawaii","SE Arkalyk","Greenland","Saudi Ar.", "Irkutsk","Canary Is.", "B.Columbia",
-                           "Zimbabwe", "New Guinea", "Indonesia", "Zhongguo", "Russia", "Amur", "Orenburg", "USA", "I. Mongolia",
+
+        # Launch Site / Named Location - 2
+        elif latlonstr in ["Orenburg RZ", "110 km Orsk", "Woomera", "Orenburg", "Nr. Kustanai", "Irkutsk", "UTTR", "Tashkent",
+                           "VAFB RW30/12", "VAFB RW30/12", "VAFB RW12", "WSMR RW17", "GTsP-4"]:
+            location = 2
+
+        # Political Region - 3
+        elif latlonstr in ["E USA", "SE Hawaii", "SE Arkalyk", "Greenland", "Saudi Ar.", "Canary Is.", "B.Columbia",
+                           "Zimbabwe", "New Guinea", "Indonesia", "Zhongguo", "Russia", "Amur", "USA", "I. Mongolia",
                            "Brazil", "Bolivia", "Sichuan", "Uruguay", "Morocco", "Caribbean", "Hawaii", "Saudi", "Oregon", "Nova Scotia",
                            "Tibet", "Yukon", "Saudi Arabia", "Eastern US", "Argentina", "Mongolia", "UK", "Texas", "Spain", "Utah",
-                           "Nr. Kustanai", "Amur, Russia", "Australia", "Spitzbergen", "Tashkent", "Alaska","Eniwetok", "KB", "Tasmania",
-                           "Orenburg RZ", "Kaz", "Baja", "C. Africa", "UTTR", "Woomera", "RF"]:
+                           "Amur, Russia", "Australia", "Spitzbergen", "Alaska", "Eniwetok", "KB", "Tasmania",
+                           "Kaz", "Baja", "C. Africa", "RF"]:
             # RF is Russian Federation according to Jonathan.
             location = 3
 
@@ -429,12 +435,17 @@ class build_reentry_list:
             if len(latlonstr.split()) == 3 and len(latlonstr.split()[-1]) == 1:
                 latlonstr = latlonstr.split()[0] + " " + latlonstr.split()[1]
                 lat, lon, location = degree_coords(latlonstr)
+            
+            elif latlonstr == "IOR 90E 10S":
+                lat, lon, location = degree_coords("90E 10S")
 
             elif latlonstr.split()[0][-1] in ["E","W","S","N"]:
                 lat, lon, location = degree_coords(latlonstr)
 
-            elif len(latlonstr.split()) == 4: # Coordinates in degrees-minutes
+            elif len(latlonstr.split()) == 4 or latlonstr == "23 38N143 45W": # Coordinates in degrees-minutes
                 geolocation = latlonstr.split()
+                if latlonstr == "23 38N143 45W":
+                    geolocation = "23 38N 143 45W".split()
                 if geolocation[3][-1] in ["E","W","S","N"]: # Check its actually coordinates and not some long name.
                     location = 1
 
