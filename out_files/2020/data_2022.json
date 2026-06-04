@@ -979,24 +979,6 @@
         "reentries": [
             {
                 "date": "2022-01-17T00:00:00Z",
-                "id": "1996-017D",
-                "reusability": "",
-                "name": "deb PS4",
-                "category": "C",
-                "smc": false,
-                "location": 6,
-                "burnup": "Complete",
-                "emissions": {
-                    "NOx": 0.0,
-                    "Al2O3": 0.0,
-                    "BC": 0.0,
-                    "Cl": 0.0,
-                    "HCl": 0.0,
-                    "Unablated_Mass": 0.0
-                }
-            },
-            {
-                "date": "2022-01-17T00:00:00Z",
                 "id": "2022-004",
                 "reusability": "",
                 "name": "CZ-2D Stage 1",
@@ -1859,24 +1841,6 @@
         "launches": [],
         "reentries": [
             {
-                "date": "2022-01-28T00:00:00Z",
-                "id": "2004-029D",
-                "reusability": "",
-                "name": "deb Tan Ce 2",
-                "category": "C",
-                "smc": false,
-                "location": 6,
-                "burnup": "Complete",
-                "emissions": {
-                    "NOx": 0.0,
-                    "Al2O3": 0.0,
-                    "BC": 0.0,
-                    "Cl": 0.0,
-                    "HCl": 0.0,
-                    "Unablated_Mass": 0.0
-                }
-            },
-            {
                 "date": "2022-01-28T17:11:00Z",
                 "id": "2020-088U",
                 "reusability": "",
@@ -2648,24 +2612,6 @@
         ],
         "reentries": [
             {
-                "date": "2022-02-05T00:00:00Z",
-                "id": "1986-014J",
-                "reusability": "",
-                "name": "deb USA-18",
-                "category": "C",
-                "smc": false,
-                "location": 6,
-                "burnup": "Complete",
-                "emissions": {
-                    "NOx": 0.0,
-                    "Al2O3": 0.0,
-                    "BC": 0.0,
-                    "Cl": 0.0,
-                    "HCl": 0.0,
-                    "Unablated_Mass": 0.0
-                }
-            },
-            {
                 "date": "2022-02-05T07:25:00Z",
                 "id": "2022-011",
                 "reusability": "",
@@ -3433,7 +3379,7 @@
                 "name": "Falcon 9-031 Stage 2",
                 "category": "S2",
                 "smc": false,
-                "location": -1,
+                "location": 3,
                 "burnup": "Complete",
                 "emissions": {
                     "NOx": 1.96,
@@ -4892,24 +4838,6 @@
         "reentries": [
             {
                 "date": "2022-02-19T00:00:00Z",
-                "id": "2021-131D",
-                "reusability": "",
-                "name": "deb CZ-4C",
-                "category": "C",
-                "smc": false,
-                "location": 6,
-                "burnup": "Complete",
-                "emissions": {
-                    "NOx": 0.0004,
-                    "Al2O3": 0.00032,
-                    "BC": 4.1e-05,
-                    "Cl": 1.5e-05,
-                    "HCl": 8e-06,
-                    "Unablated_Mass": 0.00019999999999999996
-                }
-            },
-            {
-                "date": "2022-02-19T00:00:00Z",
                 "id": "2022-015",
                 "reusability": "",
                 "name": "Antares 2TRS2S1.16 Stage 1",
@@ -5140,29 +5068,6 @@
                     "Cl": 0.014062,
                     "HCl": 0.0075,
                     "Unablated_Mass": 0.9375
-                }
-            }
-        ]
-    },
-    "2022-02-22": {
-        "launches": [],
-        "reentries": [
-            {
-                "date": "2022-02-22T00:00:00Z",
-                "id": "2022-015C",
-                "reusability": "",
-                "name": "deb Antares A-16",
-                "category": "C",
-                "smc": false,
-                "location": 6,
-                "burnup": "Complete",
-                "emissions": {
-                    "NOx": 0.0,
-                    "Al2O3": 0.0,
-                    "BC": 0.0,
-                    "Cl": 0.0,
-                    "HCl": 0.0,
-                    "Unablated_Mass": 0.0
                 }
             }
         ]
@@ -7722,17 +7627,17 @@
                 "id": "1985-090B",
                 "reusability": "",
                 "name": "Vostok-2M (N91) Stage 3",
-                "category": "S3",
+                "category": "S2",
                 "smc": false,
                 "location": 1,
                 "burnup": "Complete",
                 "emissions": {
-                    "NOx": 0.0,
-                    "Al2O3": 0.0,
-                    "BC": 0.0,
-                    "Cl": 0.0,
-                    "HCl": 0.0,
-                    "Unablated_Mass": 0.0
+                    "NOx": 0.576,
+                    "Al2O3": 0.6552,
+                    "BC": 0.04176,
+                    "Cl": 0.01584,
+                    "HCl": 0.0072,
+                    "Unablated_Mass": 0.504
                 }
             },
             {
@@ -13359,7 +13264,7 @@
                 "name": "CZ-3B Y86 Stage 3",
                 "category": "S3",
                 "smc": false,
-                "location": -1,
+                "location": 3,
                 "burnup": "Complete",
                 "emissions": {
                     "NOx": 1.108,
@@ -13508,24 +13413,6 @@
             }
         ],
         "reentries": [
-            {
-                "date": "2022-05-13T00:00:00Z",
-                "id": "2021-092G",
-                "reusability": "",
-                "name": "deb Shenzhou-13 OM?",
-                "category": "C",
-                "smc": false,
-                "location": 6,
-                "burnup": "Complete",
-                "emissions": {
-                    "NOx": 0.0,
-                    "Al2O3": 0.0,
-                    "BC": 0.0,
-                    "Cl": 0.0,
-                    "HCl": 0.0,
-                    "Unablated_Mass": 0.0
-                }
-            },
             {
                 "date": "2022-05-13T00:00:00Z",
                 "id": "2022-F02",
@@ -14051,42 +13938,6 @@
                     "Cl": 0.00275,
                     "HCl": 0.00125,
                     "Unablated_Mass": 0.08750000000000001
-                }
-            },
-            {
-                "date": "2022-05-18T00:00:00Z",
-                "id": "2021-092D",
-                "reusability": "",
-                "name": "deb Shenzhou-13 OM?",
-                "category": "C",
-                "smc": false,
-                "location": 6,
-                "burnup": "Complete",
-                "emissions": {
-                    "NOx": 0.0,
-                    "Al2O3": 0.0,
-                    "BC": 0.0,
-                    "Cl": 0.0,
-                    "HCl": 0.0,
-                    "Unablated_Mass": 0.0
-                }
-            },
-            {
-                "date": "2022-05-18T00:00:00Z",
-                "id": "2021-092E",
-                "reusability": "",
-                "name": "deb Shenzhou-13 OM?",
-                "category": "C",
-                "smc": false,
-                "location": 6,
-                "burnup": "Complete",
-                "emissions": {
-                    "NOx": 0.0,
-                    "Al2O3": 0.0,
-                    "BC": 0.0,
-                    "Cl": 0.0,
-                    "HCl": 0.0,
-                    "Unablated_Mass": 0.0
                 }
             },
             {
@@ -14702,24 +14553,6 @@
         "reentries": [
             {
                 "date": "2022-05-21T00:00:00Z",
-                "id": "2014-087D",
-                "reusability": "",
-                "name": "deb Resurs-P No. 2",
-                "category": "C",
-                "smc": false,
-                "location": 6,
-                "burnup": "Complete",
-                "emissions": {
-                    "NOx": 0.0,
-                    "Al2O3": 0.0,
-                    "BC": 0.0,
-                    "Cl": 0.0,
-                    "HCl": 0.0,
-                    "Unablated_Mass": 0.0
-                }
-            },
-            {
-                "date": "2022-05-21T00:00:00Z",
                 "id": "2017-042AE",
                 "reusability": "",
                 "name": "Flock 2k-2",
@@ -15169,7 +15002,7 @@
                 "name": "Progress MS-18",
                 "category": "P",
                 "smc": false,
-                "location": -1,
+                "location": 4,
                 "burnup": "Complete",
                 "emissions": {
                     "NOx": 1.73,
@@ -15524,29 +15357,6 @@
             }
         ]
     },
-    "2022-06-04": {
-        "launches": [],
-        "reentries": [
-            {
-                "date": "2022-06-04T00:00:00Z",
-                "id": "2014-087C",
-                "reusability": "",
-                "name": "deb Resurs-P No. 2",
-                "category": "C",
-                "smc": false,
-                "location": 6,
-                "burnup": "Complete",
-                "emissions": {
-                    "NOx": 0.0,
-                    "Al2O3": 0.0,
-                    "BC": 0.0,
-                    "Cl": 0.0,
-                    "HCl": 0.0,
-                    "Unablated_Mass": 0.0
-                }
-            }
-        ]
-    },
     "2022-06-05": {
         "launches": [
             {
@@ -15891,24 +15701,6 @@
                     "HCl": 0.0004,
                     "Unablated_Mass": 0.0
                 }
-            },
-            {
-                "date": "2022-06-06T00:00:00Z",
-                "id": "1998-067TN",
-                "reusability": "",
-                "name": "EVA debris?",
-                "category": "C",
-                "smc": false,
-                "location": 6,
-                "burnup": "Complete",
-                "emissions": {
-                    "NOx": 0.0,
-                    "Al2O3": 0.0,
-                    "BC": 0.0,
-                    "Cl": 0.0,
-                    "HCl": 0.0,
-                    "Unablated_Mass": 0.0
-                }
             }
         ]
     },
@@ -15930,24 +15722,6 @@
                     "BC": 0.010168,
                     "Cl": 0.00372,
                     "HCl": 0.001984,
-                    "Unablated_Mass": 0.0
-                }
-            },
-            {
-                "date": "2022-06-07T00:00:00Z",
-                "id": "2021-092F",
-                "reusability": "",
-                "name": "deb Shenzhou-13 OM?",
-                "category": "C",
-                "smc": false,
-                "location": 6,
-                "burnup": "Complete",
-                "emissions": {
-                    "NOx": 0.0,
-                    "Al2O3": 0.0,
-                    "BC": 0.0,
-                    "Cl": 0.0,
-                    "HCl": 0.0,
                     "Unablated_Mass": 0.0
                 }
             },
@@ -19226,24 +19000,6 @@
                     "HCl": 8e-06,
                     "Unablated_Mass": 0.00019999999999999996
                 }
-            },
-            {
-                "date": "2022-07-05T00:00:00Z",
-                "id": "1998-067TL",
-                "reusability": "",
-                "name": "EVA-80 debris?",
-                "category": "C",
-                "smc": false,
-                "location": 6,
-                "burnup": "Complete",
-                "emissions": {
-                    "NOx": 0.0,
-                    "Al2O3": 0.0,
-                    "BC": 0.0,
-                    "Cl": 0.0,
-                    "HCl": 0.0,
-                    "Unablated_Mass": 0.0
-                }
             }
         ]
     },
@@ -22113,24 +21869,6 @@
                     "Cl": 0.0187,
                     "HCl": 0.0085,
                     "Unablated_Mass": 0.595
-                }
-            },
-            {
-                "date": "2022-08-01T00:00:00Z",
-                "id": "1987-043J",
-                "reusability": "",
-                "name": "deb USA 22",
-                "category": "C",
-                "smc": false,
-                "location": 6,
-                "burnup": "Complete",
-                "emissions": {
-                    "NOx": 0.2236,
-                    "Al2O3": 0.17888,
-                    "BC": 0.022919,
-                    "Cl": 0.008385,
-                    "HCl": 0.004472,
-                    "Unablated_Mass": 0.11179999999999997
                 }
             },
             {
@@ -32530,29 +32268,6 @@
             }
         ]
     },
-    "2022-10-19": {
-        "launches": [],
-        "reentries": [
-            {
-                "date": "2022-10-19T00:00:00Z",
-                "id": "2000-075F",
-                "reusability": "",
-                "name": "deb EO-1",
-                "category": "C",
-                "smc": false,
-                "location": 6,
-                "burnup": "Complete",
-                "emissions": {
-                    "NOx": 0.0,
-                    "Al2O3": 0.0,
-                    "BC": 0.0,
-                    "Cl": 0.0,
-                    "HCl": 0.0,
-                    "Unablated_Mass": 0.0
-                }
-            }
-        ]
-    },
     "2022-10-20": {
         "launches": [
             {
@@ -33128,7 +32843,7 @@
                 "name": "Volga 14S46 No. 8?",
                 "category": "S3",
                 "smc": false,
-                "location": -1,
+                "location": 4,
                 "burnup": "Complete",
                 "emissions": {
                     "NOx": 0.356,
@@ -34611,7 +34326,7 @@
                 "name": "Falcon 9 Stage 1 B1066",
                 "category": "S1",
                 "smc": false,
-                "location": -1,
+                "location": 4,
                 "burnup": "Complete",
                 "emissions": {
                     "NOx": 8.52,
@@ -36631,7 +36346,7 @@
                 "name": "Falcon 9 Stage 1 B1051.14",
                 "category": "S1",
                 "smc": false,
-                "location": -1,
+                "location": 4,
                 "burnup": "Complete",
                 "emissions": {
                     "NOx": 9.88,
@@ -38531,7 +38246,7 @@
                 "name": "Soyuz-2-1b No. 057 Blok-I",
                 "category": "S2",
                 "smc": false,
-                "location": -1,
+                "location": 4,
                 "burnup": "Complete",
                 "emissions": {
                     "NOx": 0.942,
@@ -42352,132 +42067,6 @@
                     "HCl": 0.000624,
                     "Unablated_Mass": 0.015599999999999996
                 }
-            },
-            {
-                "date": "2022-12-22T00:00:00Z",
-                "id": "2022-060H",
-                "reusability": "",
-                "name": "deb Shenzhou-14 OM?",
-                "category": "C",
-                "smc": false,
-                "location": 6,
-                "burnup": "Complete",
-                "emissions": {
-                    "NOx": 0.0,
-                    "Al2O3": 0.0,
-                    "BC": 0.0,
-                    "Cl": 0.0,
-                    "HCl": 0.0,
-                    "Unablated_Mass": 0.0
-                }
-            },
-            {
-                "date": "2022-12-22T00:00:00Z",
-                "id": "2022-060J",
-                "reusability": "",
-                "name": "deb Shenzhou-14 OM?",
-                "category": "C",
-                "smc": false,
-                "location": 6,
-                "burnup": "Complete",
-                "emissions": {
-                    "NOx": 0.0,
-                    "Al2O3": 0.0,
-                    "BC": 0.0,
-                    "Cl": 0.0,
-                    "HCl": 0.0,
-                    "Unablated_Mass": 0.0
-                }
-            },
-            {
-                "date": "2022-12-22T00:00:00Z",
-                "id": "2022-060K",
-                "reusability": "",
-                "name": "deb Shenzhou-14 OM?",
-                "category": "C",
-                "smc": false,
-                "location": 6,
-                "burnup": "Complete",
-                "emissions": {
-                    "NOx": 0.0,
-                    "Al2O3": 0.0,
-                    "BC": 0.0,
-                    "Cl": 0.0,
-                    "HCl": 0.0,
-                    "Unablated_Mass": 0.0
-                }
-            },
-            {
-                "date": "2022-12-22T00:00:00Z",
-                "id": "2022-060L",
-                "reusability": "",
-                "name": "deb Shenzhou-14 OM?",
-                "category": "C",
-                "smc": false,
-                "location": 6,
-                "burnup": "Complete",
-                "emissions": {
-                    "NOx": 0.0,
-                    "Al2O3": 0.0,
-                    "BC": 0.0,
-                    "Cl": 0.0,
-                    "HCl": 0.0,
-                    "Unablated_Mass": 0.0
-                }
-            },
-            {
-                "date": "2022-12-22T00:00:00Z",
-                "id": "2022-060M",
-                "reusability": "",
-                "name": "deb Shenzhou-14 OM?",
-                "category": "C",
-                "smc": false,
-                "location": 6,
-                "burnup": "Complete",
-                "emissions": {
-                    "NOx": 0.0,
-                    "Al2O3": 0.0,
-                    "BC": 0.0,
-                    "Cl": 0.0,
-                    "HCl": 0.0,
-                    "Unablated_Mass": 0.0
-                }
-            },
-            {
-                "date": "2022-12-22T00:00:00Z",
-                "id": "2022-060N",
-                "reusability": "",
-                "name": "deb Shenzhou-14 OM?",
-                "category": "C",
-                "smc": false,
-                "location": 6,
-                "burnup": "Complete",
-                "emissions": {
-                    "NOx": 0.0,
-                    "Al2O3": 0.0,
-                    "BC": 0.0,
-                    "Cl": 0.0,
-                    "HCl": 0.0,
-                    "Unablated_Mass": 0.0
-                }
-            },
-            {
-                "date": "2022-12-22T00:00:00Z",
-                "id": "2022-060P",
-                "reusability": "",
-                "name": "deb Shenzhou-14 OM?",
-                "category": "C",
-                "smc": false,
-                "location": 6,
-                "burnup": "Complete",
-                "emissions": {
-                    "NOx": 0.0,
-                    "Al2O3": 0.0,
-                    "BC": 0.0,
-                    "Cl": 0.0,
-                    "HCl": 0.0,
-                    "Unablated_Mass": 0.0
-                }
             }
         ]
     },
@@ -42489,17 +42078,17 @@
                 "id": "2007-049D",
                 "reusability": "",
                 "name": "Blok-2BL No. 50",
-                "category": "S4",
+                "category": "S3",
                 "smc": false,
                 "location": 1,
                 "burnup": "Complete",
                 "emissions": {
-                    "NOx": 0.0,
-                    "Al2O3": 0.0,
-                    "BC": 0.0,
-                    "Cl": 0.0,
-                    "HCl": 0.0,
-                    "Unablated_Mass": 0.0
+                    "NOx": 0.3608,
+                    "Al2O3": 0.41041,
+                    "BC": 0.026158,
+                    "Cl": 0.009922,
+                    "HCl": 0.00451,
+                    "Unablated_Mass": 0.3157
                 }
             },
             {

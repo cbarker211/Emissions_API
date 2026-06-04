@@ -68,29 +68,6 @@
             }
         ]
     },
-    "2010-01-14": {
-        "launches": [],
-        "reentries": [
-            {
-                "date": "2010-01-14T00:00:00Z",
-                "id": "1986-073E",
-                "reusability": "",
-                "name": "deb NOAA 10",
-                "category": "C",
-                "smc": false,
-                "location": 6,
-                "burnup": "Complete",
-                "emissions": {
-                    "NOx": 0.0,
-                    "Al2O3": 0.0,
-                    "BC": 0.0,
-                    "Cl": 0.0,
-                    "HCl": 0.0,
-                    "Unablated_Mass": 0.0
-                }
-            }
-        ]
-    },
     "2010-01-16": {
         "launches": [
             {
@@ -412,7 +389,7 @@
                 "name": "Proton-M 535-35 Stage 3",
                 "category": "S3",
                 "smc": false,
-                "location": -1,
+                "location": 4,
                 "burnup": "Complete",
                 "emissions": {
                     "NOx": 1.4,
@@ -1047,7 +1024,7 @@
                 "name": "Proton-M 535-32 Stage 3",
                 "category": "S3",
                 "smc": false,
-                "location": -1,
+                "location": 4,
                 "burnup": "Complete",
                 "emissions": {
                     "NOx": 1.4,
@@ -1188,7 +1165,7 @@
                 "name": "Delta 344",
                 "category": "S2",
                 "smc": false,
-                "location": -1,
+                "location": 3,
                 "burnup": "Complete",
                 "emissions": {
                     "NOx": 0.46,
@@ -1607,24 +1584,6 @@
         "reentries": [
             {
                 "date": "2010-03-05T00:00:00Z",
-                "id": "2010-007L",
-                "reusability": "",
-                "name": "deb 8S812",
-                "category": "C",
-                "smc": false,
-                "location": 6,
-                "burnup": "Complete",
-                "emissions": {
-                    "NOx": 0.0,
-                    "Al2O3": 0.0,
-                    "BC": 0.0,
-                    "Cl": 0.0,
-                    "HCl": 0.0,
-                    "Unablated_Mass": 0.0
-                }
-            },
-            {
-                "date": "2010-03-05T00:00:00Z",
                 "id": "2010-009",
                 "reusability": "",
                 "name": "CZ-4C Stage 1",
@@ -1693,52 +1652,6 @@
                     "Cl": 0.0135,
                     "HCl": 0.0072,
                     "Unablated_Mass": 0.63
-                }
-            }
-        ]
-    },
-    "2010-03-06": {
-        "launches": [],
-        "reentries": [
-            {
-                "date": "2010-03-06T00:00:00Z",
-                "id": "2010-007K",
-                "reusability": "",
-                "name": "deb 8S812",
-                "category": "C",
-                "smc": false,
-                "location": 6,
-                "burnup": "Complete",
-                "emissions": {
-                    "NOx": 0.0,
-                    "Al2O3": 0.0,
-                    "BC": 0.0,
-                    "Cl": 0.0,
-                    "HCl": 0.0,
-                    "Unablated_Mass": 0.0
-                }
-            }
-        ]
-    },
-    "2010-03-07": {
-        "launches": [],
-        "reentries": [
-            {
-                "date": "2010-03-07T00:00:00Z",
-                "id": "2010-007J",
-                "reusability": "",
-                "name": "deb 8S812",
-                "category": "C",
-                "smc": false,
-                "location": 6,
-                "burnup": "Complete",
-                "emissions": {
-                    "NOx": 0.0,
-                    "Al2O3": 0.0,
-                    "BC": 0.0,
-                    "Cl": 0.0,
-                    "HCl": 0.0,
-                    "Unablated_Mass": 0.0
                 }
             }
         ]
@@ -1943,7 +1856,7 @@
                 "name": "Proton-M 935-14 Stage 3",
                 "category": "S3",
                 "smc": false,
-                "location": -1,
+                "location": 4,
                 "burnup": "Complete",
                 "emissions": {
                     "NOx": 1.4,
@@ -2093,29 +2006,6 @@
                     "Cl": 1.5e-05,
                     "HCl": 8e-06,
                     "Unablated_Mass": 0.00019999999999999996
-                }
-            }
-        ]
-    },
-    "2010-04-01": {
-        "launches": [],
-        "reentries": [
-            {
-                "date": "2010-04-01T00:00:00Z",
-                "id": "1986-073F",
-                "reusability": "",
-                "name": "deb NOAA 10",
-                "category": "C",
-                "smc": false,
-                "location": 6,
-                "burnup": "Complete",
-                "emissions": {
-                    "NOx": 0.0,
-                    "Al2O3": 0.0,
-                    "BC": 0.0,
-                    "Cl": 0.0,
-                    "HCl": 0.0,
-                    "Unablated_Mass": 0.0
                 }
             }
         ]
@@ -2836,29 +2726,6 @@
             }
         ]
     },
-    "2010-04-18": {
-        "launches": [],
-        "reentries": [
-            {
-                "date": "2010-04-18T00:00:00Z",
-                "id": "2010-014C",
-                "reusability": "",
-                "name": "deb Kosmos-2462",
-                "category": "C",
-                "smc": false,
-                "location": 6,
-                "burnup": "Complete",
-                "emissions": {
-                    "NOx": 0.0,
-                    "Al2O3": 0.0,
-                    "BC": 0.0,
-                    "Cl": 0.0,
-                    "HCl": 0.0,
-                    "Unablated_Mass": 0.0
-                }
-            }
-        ]
-    },
     "2010-04-20": {
         "launches": [],
         "reentries": [
@@ -3148,7 +3015,7 @@
                 "name": "Proton-M 935-11 Stage 3",
                 "category": "S3",
                 "smc": false,
-                "location": -1,
+                "location": 4,
                 "burnup": "Complete",
                 "emissions": {
                     "NOx": 1.4,
@@ -3583,17 +3450,17 @@
                 "id": "1979-093B",
                 "reusability": "",
                 "name": "Vostok-2M (N66) Stage 3",
-                "category": "S3",
+                "category": "S2",
                 "smc": false,
                 "location": 6,
                 "burnup": "Complete",
                 "emissions": {
-                    "NOx": 0.0,
-                    "Al2O3": 0.0,
-                    "BC": 0.0,
-                    "Cl": 0.0,
-                    "HCl": 0.0,
-                    "Unablated_Mass": 0.0
+                    "NOx": 0.576,
+                    "Al2O3": 0.6552,
+                    "BC": 0.04176,
+                    "Cl": 0.01584,
+                    "HCl": 0.0072,
+                    "Unablated_Mass": 0.504
                 }
             }
         ]
@@ -4669,7 +4536,7 @@
                 "name": "Proton-M 935-12 Stage 3",
                 "category": "S3",
                 "smc": false,
-                "location": -1,
+                "location": 4,
                 "burnup": "Complete",
                 "emissions": {
                     "NOx": 1.4,
@@ -4958,7 +4825,7 @@
                 "name": "Hayabusa Return Capsule",
                 "category": "P",
                 "smc": false,
-                "location": -1,
+                "location": 3,
                 "burnup": "Partial",
                 "emissions": {
                     "NOx": 0.0035,
@@ -6321,7 +6188,7 @@
                 "name": "Proton-M 935-15 Stage 3",
                 "category": "S3",
                 "smc": false,
-                "location": -1,
+                "location": 4,
                 "burnup": "Complete",
                 "emissions": {
                     "NOx": 1.4,
@@ -6623,65 +6490,6 @@
                     "Cl": 0.00075,
                     "HCl": 0.0004,
                     "Unablated_Mass": 0.05
-                }
-            }
-        ]
-    },
-    "2010-07-20": {
-        "launches": [],
-        "reentries": [
-            {
-                "date": "2010-07-20T00:00:00Z",
-                "id": "2010-014D",
-                "reusability": "",
-                "name": "deb Kosmos-2462",
-                "category": "C",
-                "smc": false,
-                "location": 6,
-                "burnup": "Complete",
-                "emissions": {
-                    "NOx": 0.0,
-                    "Al2O3": 0.0,
-                    "BC": 0.0,
-                    "Cl": 0.0,
-                    "HCl": 0.0,
-                    "Unablated_Mass": 0.0
-                }
-            },
-            {
-                "date": "2010-07-20T00:00:00Z",
-                "id": "2010-014E",
-                "reusability": "",
-                "name": "deb Kosmos-2462",
-                "category": "C",
-                "smc": false,
-                "location": 6,
-                "burnup": "Complete",
-                "emissions": {
-                    "NOx": 0.0,
-                    "Al2O3": 0.0,
-                    "BC": 0.0,
-                    "Cl": 0.0,
-                    "HCl": 0.0,
-                    "Unablated_Mass": 0.0
-                }
-            },
-            {
-                "date": "2010-07-20T00:00:00Z",
-                "id": "2010-014F",
-                "reusability": "",
-                "name": "deb Kosmos-2462",
-                "category": "C",
-                "smc": false,
-                "location": 6,
-                "burnup": "Complete",
-                "emissions": {
-                    "NOx": 0.0,
-                    "Al2O3": 0.0,
-                    "BC": 0.0,
-                    "Cl": 0.0,
-                    "HCl": 0.0,
-                    "Unablated_Mass": 0.0
                 }
             }
         ]
@@ -7457,29 +7265,6 @@
             }
         ]
     },
-    "2010-08-19": {
-        "launches": [],
-        "reentries": [
-            {
-                "date": "2010-08-19T00:00:00Z",
-                "id": "2006-026A",
-                "reusability": "",
-                "name": "Kosmos-2421 main debris",
-                "category": "P",
-                "smc": false,
-                "location": 6,
-                "burnup": "Complete",
-                "emissions": {
-                    "NOx": 1.2,
-                    "Al2O3": 0.96,
-                    "BC": 0.123,
-                    "Cl": 0.045,
-                    "HCl": 0.024,
-                    "Unablated_Mass": 0.5999999999999999
-                }
-            }
-        ]
-    },
     "2010-08-24": {
         "launches": [
             {
@@ -7652,7 +7437,7 @@
                 "name": "Icesat",
                 "category": "P",
                 "smc": false,
-                "location": -1,
+                "location": 4,
                 "burnup": "Complete",
                 "emissions": {
                     "NOx": 0.3528,
@@ -8762,7 +8547,7 @@
                 "name": "Centaur AV-025",
                 "category": "S2",
                 "smc": false,
-                "location": -1,
+                "location": 4,
                 "burnup": "Complete",
                 "emissions": {
                     "NOx": 0.812,
@@ -10122,7 +9907,7 @@
                 "name": "Proton-M 935-16 Stage 3",
                 "category": "S3",
                 "smc": false,
-                "location": -1,
+                "location": 4,
                 "burnup": "Complete",
                 "emissions": {
                     "NOx": 1.4,
@@ -10284,7 +10069,7 @@
                 "name": "Fregat No. 1023",
                 "category": "S3",
                 "smc": false,
-                "location": -1,
+                "location": 4,
                 "burnup": "Complete",
                 "emissions": {
                     "NOx": 0.62,
@@ -11567,12 +11352,12 @@
                 "location": 6,
                 "burnup": "Complete",
                 "emissions": {
-                    "NOx": 0.0,
-                    "Al2O3": 0.0,
-                    "BC": 0.0,
-                    "Cl": 0.0,
-                    "HCl": 0.0,
-                    "Unablated_Mass": 0.0
+                    "NOx": 0.3512,
+                    "Al2O3": 0.18438,
+                    "BC": 0.035998,
+                    "Cl": 0.01317,
+                    "HCl": 0.007024,
+                    "Unablated_Mass": 0.6145999999999999
                 }
             },
             {
@@ -11585,12 +11370,12 @@
                 "location": 6,
                 "burnup": "Complete",
                 "emissions": {
-                    "NOx": 0.0,
-                    "Al2O3": 0.0,
-                    "BC": 0.0,
-                    "Cl": 0.0,
-                    "HCl": 0.0,
-                    "Unablated_Mass": 0.0
+                    "NOx": 0.3512,
+                    "Al2O3": 0.18438,
+                    "BC": 0.035998,
+                    "Cl": 0.01317,
+                    "HCl": 0.007024,
+                    "Unablated_Mass": 0.6145999999999999
                 }
             }
         ]
@@ -11672,7 +11457,7 @@
                 "name": "Proton-M 935-13 Stage 3",
                 "category": "S3",
                 "smc": false,
-                "location": -1,
+                "location": 4,
                 "burnup": "Complete",
                 "emissions": {
                     "NOx": 1.4,
@@ -11875,24 +11660,6 @@
         "reentries": [
             {
                 "date": "2010-11-20T00:00:00Z",
-                "id": "1998-067CA",
-                "reusability": "",
-                "name": "EVA debris",
-                "category": "C",
-                "smc": false,
-                "location": 6,
-                "burnup": "Complete",
-                "emissions": {
-                    "NOx": 0.0,
-                    "Al2O3": 0.0,
-                    "BC": 0.0,
-                    "Cl": 0.0,
-                    "HCl": 0.0,
-                    "Unablated_Mass": 0.0
-                }
-            },
-            {
-                "date": "2010-11-20T00:00:00Z",
                 "id": "2010-062",
                 "reusability": "",
                 "name": "SR119",
@@ -12035,24 +11802,6 @@
             }
         ],
         "reentries": [
-            {
-                "date": "2010-11-21T00:00:00Z",
-                "id": "2010-049E",
-                "reusability": "",
-                "name": "deb 11S510",
-                "category": "C",
-                "smc": false,
-                "location": 6,
-                "burnup": "Complete",
-                "emissions": {
-                    "NOx": 0.0,
-                    "Al2O3": 0.0,
-                    "BC": 0.0,
-                    "Cl": 0.0,
-                    "HCl": 0.0,
-                    "Unablated_Mass": 0.0
-                }
-            },
             {
                 "date": "2010-11-21T00:00:00Z",
                 "id": "2010-063",
@@ -12558,17 +12307,17 @@
                 "id": "1991-065D",
                 "reusability": "",
                 "name": "Blok-ML No. 338",
-                "category": "S4",
+                "category": "S3",
                 "smc": false,
                 "location": 6,
                 "burnup": "Complete",
                 "emissions": {
-                    "NOx": 0.0,
-                    "Al2O3": 0.0,
-                    "BC": 0.0,
-                    "Cl": 0.0,
-                    "HCl": 0.0,
-                    "Unablated_Mass": 0.0
+                    "NOx": 0.3996,
+                    "Al2O3": 0.454545,
+                    "BC": 0.028971,
+                    "Cl": 0.010989,
+                    "HCl": 0.004995,
+                    "Unablated_Mass": 0.34964999999999996
                 }
             }
         ]
@@ -12981,24 +12730,6 @@
                     "HCl": 0.00475,
                     "Unablated_Mass": 0.3325
                 }
-            },
-            {
-                "date": "2010-12-16T00:00:00Z",
-                "id": "1998-067CB",
-                "reusability": "",
-                "name": "EVA debris",
-                "category": "C",
-                "smc": false,
-                "location": 6,
-                "burnup": "Complete",
-                "emissions": {
-                    "NOx": 0.0,
-                    "Al2O3": 0.0,
-                    "BC": 0.0,
-                    "Cl": 0.0,
-                    "HCl": 0.0,
-                    "Unablated_Mass": 0.0
-                }
             }
         ]
     },
@@ -13273,7 +13004,7 @@
                 "name": "Proton-M 935-17 Stage 3",
                 "category": "S3",
                 "smc": false,
-                "location": -1,
+                "location": 4,
                 "burnup": "Complete",
                 "emissions": {
                     "NOx": 1.4,

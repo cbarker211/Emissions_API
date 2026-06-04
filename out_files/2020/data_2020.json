@@ -463,24 +463,6 @@
         "reentries": [
             {
                 "date": "2020-01-12T00:00:00Z",
-                "id": "2018-056J",
-                "reusability": "",
-                "name": "PRSS/PakTES debris",
-                "category": "C",
-                "smc": false,
-                "location": 6,
-                "burnup": "Complete",
-                "emissions": {
-                    "NOx": 0.0,
-                    "Al2O3": 0.0,
-                    "BC": 0.0,
-                    "Cl": 0.0,
-                    "HCl": 0.0,
-                    "Unablated_Mass": 0.0
-                }
-            },
-            {
-                "date": "2020-01-12T00:00:00Z",
                 "id": "2019-074BQ",
                 "reusability": "",
                 "name": "Starlink deployment rail",
@@ -599,7 +581,7 @@
                 "name": "CZ-2D Y58 Stage 2",
                 "category": "S2",
                 "smc": false,
-                "location": -1,
+                "location": 4,
                 "burnup": "Complete",
                 "emissions": {
                     "NOx": 1.6,
@@ -3831,7 +3813,7 @@
                 "name": "Soyuz-2-1b 58-145 Blok-I",
                 "category": "S2",
                 "smc": false,
-                "location": -1,
+                "location": 4,
                 "burnup": "Complete",
                 "emissions": {
                     "NOx": 0.942,
@@ -6768,7 +6750,7 @@
             },
             {
                 "date": "2020-05-08T05:39:00Z",
-                "id": "2020-027D",
+                "id": "2020-027A",
                 "reusability": "",
                 "name": "XZF Service Module",
                 "category": "C",
@@ -7930,24 +7912,6 @@
                 }
             },
             {
-                "date": "2020-05-30T00:00:00Z",
-                "id": "1998-067PR",
-                "reusability": "",
-                "name": "DebrisSat-2",
-                "category": "P",
-                "smc": false,
-                "location": 6,
-                "burnup": "Complete",
-                "emissions": {
-                    "NOx": 0.0012,
-                    "Al2O3": 0.00096,
-                    "BC": 0.000123,
-                    "Cl": 4.5e-05,
-                    "HCl": 2.4e-05,
-                    "Unablated_Mass": 0.0005999999999999998
-                }
-            },
-            {
                 "date": "2020-05-30T20:24:00Z",
                 "id": "2020-033",
                 "reusability": "",
@@ -8786,7 +8750,7 @@
                 "name": "CZ-2D Y52 Stage 2",
                 "category": "S2",
                 "smc": false,
-                "location": -1,
+                "location": 4,
                 "burnup": "Complete",
                 "emissions": {
                     "NOx": 1.6,
@@ -10111,7 +10075,7 @@
                 "name": "Progress MS-13",
                 "category": "P",
                 "smc": false,
-                "location": -1,
+                "location": 4,
                 "burnup": "Complete",
                 "emissions": {
                     "NOx": 1.73,
@@ -11701,29 +11665,6 @@
             }
         ]
     },
-    "2020-07-29": {
-        "launches": [],
-        "reentries": [
-            {
-                "date": "2020-07-29T00:00:00Z",
-                "id": "2019-059E",
-                "reusability": "",
-                "name": "deb CZ-4B?",
-                "category": "C",
-                "smc": false,
-                "location": 6,
-                "burnup": "Complete",
-                "emissions": {
-                    "NOx": 0.0,
-                    "Al2O3": 0.0,
-                    "BC": 0.0,
-                    "Cl": 0.0,
-                    "HCl": 0.0,
-                    "Unablated_Mass": 0.0
-                }
-            }
-        ]
-    },
     "2020-07-30": {
         "launches": [
             {
@@ -12869,7 +12810,7 @@
                 "name": "Kounotori 9 gouki",
                 "category": "P",
                 "smc": false,
-                "location": -1,
+                "location": 4,
                 "burnup": "Complete",
                 "emissions": {
                     "NOx": 3.402,
@@ -18399,7 +18340,7 @@
                 "name": "Falcon 9-098 Stage 2",
                 "category": "S2",
                 "smc": false,
-                "location": -1,
+                "location": 4,
                 "burnup": "Complete",
                 "emissions": {
                     "NOx": 1.7,
@@ -18645,7 +18586,7 @@
                 "name": "Gushenxing-1 Stage 4",
                 "category": "S4",
                 "smc": false,
-                "location": -1,
+                "location": 4,
                 "burnup": "Complete",
                 "emissions": {
                     "NOx": 0.0284,
@@ -19994,7 +19935,7 @@
                 "name": "Electron Stage 1",
                 "category": "S1",
                 "smc": false,
-                "location": 2,
+                "location": 4,
                 "burnup": "Partial",
                 "emissions": {
                     "NOx": 0.16625,
@@ -21238,7 +21179,7 @@
                 "name": "Fregat No. 112-502",
                 "category": "S3",
                 "smc": false,
-                "location": -1,
+                "location": 4,
                 "burnup": "Complete",
                 "emissions": {
                     "NOx": 0.4,

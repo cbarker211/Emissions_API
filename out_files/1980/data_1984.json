@@ -299,7 +299,7 @@
                 "name": "SRV Mission 1218-3",
                 "category": "P",
                 "smc": false,
-                "location": -1,
+                "location": 4,
                 "burnup": "Partial",
                 "emissions": {
                     "NOx": 0.11025,
@@ -895,17 +895,17 @@
                 "id": "1966-057B",
                 "reusability": "",
                 "name": "Vostok-2M (N05) Stage 3",
-                "category": "S3",
+                "category": "S2",
                 "smc": false,
                 "location": 6,
                 "burnup": "Complete",
                 "emissions": {
-                    "NOx": 0.0,
-                    "Al2O3": 0.0,
-                    "BC": 0.0,
-                    "Cl": 0.0,
-                    "HCl": 0.0,
-                    "Unablated_Mass": 0.0
+                    "NOx": 0.576,
+                    "Al2O3": 0.6552,
+                    "BC": 0.04176,
+                    "Cl": 0.01584,
+                    "HCl": 0.0072,
+                    "Unablated_Mass": 0.504
                 }
             },
             {
@@ -1188,12 +1188,12 @@
                 "location": 6,
                 "burnup": "Complete",
                 "emissions": {
-                    "NOx": 0.0,
-                    "Al2O3": 0.0,
-                    "BC": 0.0,
-                    "Cl": 0.0,
-                    "HCl": 0.0,
-                    "Unablated_Mass": 0.0
+                    "NOx": 0.3512,
+                    "Al2O3": 0.18438,
+                    "BC": 0.035998,
+                    "Cl": 0.01317,
+                    "HCl": 0.007024,
+                    "Unablated_Mass": 0.6145999999999999
                 }
             },
             {
@@ -1206,12 +1206,12 @@
                 "location": 6,
                 "burnup": "Complete",
                 "emissions": {
-                    "NOx": 0.0,
-                    "Al2O3": 0.0,
-                    "BC": 0.0,
-                    "Cl": 0.0,
-                    "HCl": 0.0,
-                    "Unablated_Mass": 0.0
+                    "NOx": 0.3512,
+                    "Al2O3": 0.18438,
+                    "BC": 0.035998,
+                    "Cl": 0.01317,
+                    "HCl": 0.007024,
+                    "Unablated_Mass": 0.6145999999999999
                 }
             }
         ]
@@ -1778,29 +1778,6 @@
             }
         ]
     },
-    "1984-01-30": {
-        "launches": [],
-        "reentries": [
-            {
-                "date": "1984-01-30T00:00:00Z",
-                "id": "1984-008C",
-                "reusability": "",
-                "name": "deb CZ-3",
-                "category": "C",
-                "smc": false,
-                "location": 6,
-                "burnup": "Complete",
-                "emissions": {
-                    "NOx": 0.0,
-                    "Al2O3": 0.0,
-                    "BC": 0.0,
-                    "Cl": 0.0,
-                    "HCl": 0.0,
-                    "Unablated_Mass": 0.0
-                }
-            }
-        ]
-    },
     "1984-01-31": {
         "launches": [
             {
@@ -2261,24 +2238,6 @@
             },
             {
                 "date": "1984-02-04T00:00:00Z",
-                "id": "1983-033F",
-                "reusability": "",
-                "name": "deb Rohini RS-D-2",
-                "category": "C",
-                "smc": false,
-                "location": 6,
-                "burnup": "Complete",
-                "emissions": {
-                    "NOx": 0.0,
-                    "Al2O3": 0.0,
-                    "BC": 0.0,
-                    "Cl": 0.0,
-                    "HCl": 0.0,
-                    "Unablated_Mass": 0.0
-                }
-            },
-            {
-                "date": "1984-02-04T00:00:00Z",
                 "id": "1983-123C",
                 "reusability": "",
                 "name": "BOZ",
@@ -2509,24 +2468,6 @@
                     "Cl": 0.01317,
                     "HCl": 0.007024,
                     "Unablated_Mass": 0.6145999999999999
-                }
-            },
-            {
-                "date": "1984-02-05T00:00:00Z",
-                "id": "1982-088A",
-                "reusability": "",
-                "name": "Kosmos-1405 main debris",
-                "category": "P",
-                "smc": false,
-                "location": 6,
-                "burnup": "Complete",
-                "emissions": {
-                    "NOx": 1.2,
-                    "Al2O3": 0.96,
-                    "BC": 0.123,
-                    "Cl": 0.045,
-                    "HCl": 0.024,
-                    "Unablated_Mass": 0.5999999999999999
                 }
             }
         ]
@@ -3353,24 +3294,6 @@
             }
         ],
         "reentries": [
-            {
-                "date": "1984-02-15T00:00:00Z",
-                "id": "1984-008D",
-                "reusability": "",
-                "name": "deb CZ-3",
-                "category": "C",
-                "smc": false,
-                "location": 6,
-                "burnup": "Complete",
-                "emissions": {
-                    "NOx": 0.0,
-                    "Al2O3": 0.0,
-                    "BC": 0.0,
-                    "Cl": 0.0,
-                    "HCl": 0.0,
-                    "Unablated_Mass": 0.0
-                }
-            },
             {
                 "date": "1984-02-15T00:00:00Z",
                 "id": "1984-016C",
@@ -4701,12 +4624,12 @@
                 "location": 6,
                 "burnup": "Complete",
                 "emissions": {
-                    "NOx": 0.0,
-                    "Al2O3": 0.0,
-                    "BC": 0.0,
-                    "Cl": 0.0,
-                    "HCl": 0.0,
-                    "Unablated_Mass": 0.0
+                    "NOx": 0.3512,
+                    "Al2O3": 0.18438,
+                    "BC": 0.035998,
+                    "Cl": 0.01317,
+                    "HCl": 0.007024,
+                    "Unablated_Mass": 0.6145999999999999
                 }
             },
             {
@@ -4719,12 +4642,12 @@
                 "location": 6,
                 "burnup": "Complete",
                 "emissions": {
-                    "NOx": 0.0,
-                    "Al2O3": 0.0,
-                    "BC": 0.0,
-                    "Cl": 0.0,
-                    "HCl": 0.0,
-                    "Unablated_Mass": 0.0
+                    "NOx": 0.3512,
+                    "Al2O3": 0.18438,
+                    "BC": 0.035998,
+                    "Cl": 0.01317,
+                    "HCl": 0.007024,
+                    "Unablated_Mass": 0.6145999999999999
                 }
             }
         ]
@@ -5528,24 +5451,6 @@
                     "HCl": 0.007024,
                     "Unablated_Mass": 0.6145999999999999
                 }
-            },
-            {
-                "date": "1984-03-07T00:00:00Z",
-                "id": "1982-038A",
-                "reusability": "",
-                "name": "Kosmos-1355 main debris",
-                "category": "P",
-                "smc": false,
-                "location": 6,
-                "burnup": "Complete",
-                "emissions": {
-                    "NOx": 1.2,
-                    "Al2O3": 0.96,
-                    "BC": 0.123,
-                    "Cl": 0.045,
-                    "HCl": 0.024,
-                    "Unablated_Mass": 0.5999999999999999
-                }
             }
         ]
     },
@@ -6152,7 +6057,7 @@
                 "name": "SRV Mission 1218-4",
                 "category": "P",
                 "smc": false,
-                "location": -1,
+                "location": 4,
                 "burnup": "Partial",
                 "emissions": {
                     "NOx": 0.11025,
@@ -10307,17 +10212,17 @@
                 "id": "1980-103",
                 "reusability": "",
                 "name": "Blok SO-L",
-                "category": "S4",
+                "category": "S3",
                 "smc": false,
                 "location": 6,
                 "burnup": "Complete",
                 "emissions": {
-                    "NOx": 0.0,
-                    "Al2O3": 0.0,
-                    "BC": 0.0,
-                    "Cl": 0.0,
-                    "HCl": 0.0,
-                    "Unablated_Mass": 0.0
+                    "NOx": 0.3996,
+                    "Al2O3": 0.454545,
+                    "BC": 0.028971,
+                    "Cl": 0.010989,
+                    "HCl": 0.004995,
+                    "Unablated_Mass": 0.34964999999999996
                 }
             }
         ]
@@ -10423,29 +10328,6 @@
                     "Cl": 0.0003,
                     "HCl": 0.00016,
                     "Unablated_Mass": 0.003999999999999999
-                }
-            }
-        ]
-    },
-    "1984-05-06": {
-        "launches": [],
-        "reentries": [
-            {
-                "date": "1984-05-06T00:00:00Z",
-                "id": "1983-091D",
-                "reusability": "",
-                "name": "deb Kosmos-1494",
-                "category": "C",
-                "smc": false,
-                "location": 6,
-                "burnup": "Complete",
-                "emissions": {
-                    "NOx": 0.0,
-                    "Al2O3": 0.0,
-                    "BC": 0.0,
-                    "Cl": 0.0,
-                    "HCl": 0.0,
-                    "Unablated_Mass": 0.0
                 }
             }
         ]
@@ -11084,29 +10966,6 @@
             }
         ]
     },
-    "1984-05-13": {
-        "launches": [],
-        "reentries": [
-            {
-                "date": "1984-05-13T00:00:00Z",
-                "id": "1982-033BE",
-                "reusability": "",
-                "name": "EVA debris",
-                "category": "C",
-                "smc": false,
-                "location": 6,
-                "burnup": "Complete",
-                "emissions": {
-                    "NOx": 0.0,
-                    "Al2O3": 0.0,
-                    "BC": 0.0,
-                    "Cl": 0.0,
-                    "HCl": 0.0,
-                    "Unablated_Mass": 0.0
-                }
-            }
-        ]
-    },
     "1984-05-14": {
         "launches": [
             {
@@ -11193,24 +11052,6 @@
                     "Cl": 0.02651,
                     "HCl": 0.01205,
                     "Unablated_Mass": 0.8435
-                }
-            },
-            {
-                "date": "1984-05-14T00:00:00Z",
-                "id": "1982-033BF",
-                "reusability": "",
-                "name": "EVA debris",
-                "category": "C",
-                "smc": false,
-                "location": 6,
-                "burnup": "Complete",
-                "emissions": {
-                    "NOx": 0.0,
-                    "Al2O3": 0.0,
-                    "BC": 0.0,
-                    "Cl": 0.0,
-                    "HCl": 0.0,
-                    "Unablated_Mass": 0.0
                 }
             },
             {
@@ -11452,24 +11293,6 @@
             }
         ],
         "reentries": [
-            {
-                "date": "1984-05-17T00:00:00Z",
-                "id": "1982-033BC",
-                "reusability": "",
-                "name": "D-7-3 EVA-1 debris",
-                "category": "C",
-                "smc": false,
-                "location": 6,
-                "burnup": "Complete",
-                "emissions": {
-                    "NOx": 0.0,
-                    "Al2O3": 0.0,
-                    "BC": 0.0,
-                    "Cl": 0.0,
-                    "HCl": 0.0,
-                    "Unablated_Mass": 0.0
-                }
-            },
             {
                 "date": "1984-05-17T00:00:00Z",
                 "id": "1984-044B",
@@ -12189,24 +12012,6 @@
         "reentries": [
             {
                 "date": "1984-05-24T00:00:00Z",
-                "id": "1982-033BH",
-                "reusability": "",
-                "name": "D-7-3 EVA-4 debris?",
-                "category": "C",
-                "smc": false,
-                "location": 6,
-                "burnup": "Complete",
-                "emissions": {
-                    "NOx": 0.0,
-                    "Al2O3": 0.0,
-                    "BC": 0.0,
-                    "Cl": 0.0,
-                    "HCl": 0.0,
-                    "Unablated_Mass": 0.0
-                }
-            },
-            {
-                "date": "1984-05-24T00:00:00Z",
                 "id": "1984-044C",
                 "reusability": "",
                 "name": "Blenda",
@@ -12539,24 +12344,6 @@
                 "id": "1984-014C",
                 "reusability": "",
                 "name": "Soyuz T-10 BO part",
-                "category": "C",
-                "smc": false,
-                "location": 6,
-                "burnup": "Complete",
-                "emissions": {
-                    "NOx": 0.0,
-                    "Al2O3": 0.0,
-                    "BC": 0.0,
-                    "Cl": 0.0,
-                    "HCl": 0.0,
-                    "Unablated_Mass": 0.0
-                }
-            },
-            {
-                "date": "1984-05-26T00:00:00Z",
-                "id": "1982-033BJ",
-                "reusability": "",
-                "name": "D-7-3 EVA-4 debris?",
                 "category": "C",
                 "smc": false,
                 "location": 6,
@@ -14165,12 +13952,12 @@
                 "location": 6,
                 "burnup": "Complete",
                 "emissions": {
-                    "NOx": 0.0,
-                    "Al2O3": 0.0,
-                    "BC": 0.0,
-                    "Cl": 0.0,
-                    "HCl": 0.0,
-                    "Unablated_Mass": 0.0
+                    "NOx": 0.3512,
+                    "Al2O3": 0.18438,
+                    "BC": 0.035998,
+                    "Cl": 0.01317,
+                    "HCl": 0.007024,
+                    "Unablated_Mass": 0.6145999999999999
                 }
             },
             {
@@ -14183,12 +13970,12 @@
                 "location": 6,
                 "burnup": "Complete",
                 "emissions": {
-                    "NOx": 0.0,
-                    "Al2O3": 0.0,
-                    "BC": 0.0,
-                    "Cl": 0.0,
-                    "HCl": 0.0,
-                    "Unablated_Mass": 0.0
+                    "NOx": 0.3512,
+                    "Al2O3": 0.18438,
+                    "BC": 0.035998,
+                    "Cl": 0.01317,
+                    "HCl": 0.007024,
+                    "Unablated_Mass": 0.6145999999999999
                 }
             }
         ]
@@ -14342,7 +14129,7 @@
                 "name": "SRV Mission 4354-1",
                 "category": "P",
                 "smc": false,
-                "location": -1,
+                "location": 4,
                 "burnup": "Partial",
                 "emissions": {
                     "NOx": 0.027475,
@@ -14941,24 +14728,6 @@
             },
             {
                 "date": "1984-06-16T00:00:00Z",
-                "id": "1982-033BD",
-                "reusability": "",
-                "name": "D-7-3 EVA-1 debris",
-                "category": "C",
-                "smc": false,
-                "location": 6,
-                "burnup": "Complete",
-                "emissions": {
-                    "NOx": 0.0,
-                    "Al2O3": 0.0,
-                    "BC": 0.0,
-                    "Cl": 0.0,
-                    "HCl": 0.0,
-                    "Unablated_Mass": 0.0
-                }
-            },
-            {
-                "date": "1984-06-16T00:00:00Z",
                 "id": "1984-058C",
                 "reusability": "",
                 "name": "Sensor cover",
@@ -15286,24 +15055,6 @@
             }
         ],
         "reentries": [
-            {
-                "date": "1984-06-21T00:00:00Z",
-                "id": "1982-033BG",
-                "reusability": "",
-                "name": "D-7-3 EVA-4 debris?",
-                "category": "C",
-                "smc": false,
-                "location": 6,
-                "burnup": "Complete",
-                "emissions": {
-                    "NOx": 0.0,
-                    "Al2O3": 0.0,
-                    "BC": 0.0,
-                    "Cl": 0.0,
-                    "HCl": 0.0,
-                    "Unablated_Mass": 0.0
-                }
-            },
             {
                 "date": "1984-06-21T00:00:00Z",
                 "id": "1984-062",
@@ -19873,12 +19624,12 @@
                 "location": 6,
                 "burnup": "Complete",
                 "emissions": {
-                    "NOx": 0.0,
-                    "Al2O3": 0.0,
-                    "BC": 0.0,
-                    "Cl": 0.0,
-                    "HCl": 0.0,
-                    "Unablated_Mass": 0.0
+                    "NOx": 0.3512,
+                    "Al2O3": 0.18438,
+                    "BC": 0.035998,
+                    "Cl": 0.01317,
+                    "HCl": 0.007024,
+                    "Unablated_Mass": 0.6145999999999999
                 }
             },
             {
@@ -19891,12 +19642,12 @@
                 "location": 6,
                 "burnup": "Complete",
                 "emissions": {
-                    "NOx": 0.0,
-                    "Al2O3": 0.0,
-                    "BC": 0.0,
-                    "Cl": 0.0,
-                    "HCl": 0.0,
-                    "Unablated_Mass": 0.0
+                    "NOx": 0.3512,
+                    "Al2O3": 0.18438,
+                    "BC": 0.035998,
+                    "Cl": 0.01317,
+                    "HCl": 0.007024,
+                    "Unablated_Mass": 0.6145999999999999
                 }
             }
         ]
@@ -20132,7 +19883,7 @@
                 "name": "SRV Mission 1219-1",
                 "category": "P",
                 "smc": false,
-                "location": -1,
+                "location": 4,
                 "burnup": "Partial",
                 "emissions": {
                     "NOx": 0.11025,
@@ -20721,29 +20472,6 @@
             }
         ]
     },
-    "1984-08-09": {
-        "launches": [],
-        "reentries": [
-            {
-                "date": "1984-08-09T00:00:00Z",
-                "id": "1982-033BV",
-                "reusability": "",
-                "name": "EVA debris",
-                "category": "C",
-                "smc": false,
-                "location": 6,
-                "burnup": "Complete",
-                "emissions": {
-                    "NOx": 0.0,
-                    "Al2O3": 0.0,
-                    "BC": 0.0,
-                    "Cl": 0.0,
-                    "HCl": 0.0,
-                    "Unablated_Mass": 0.0
-                }
-            }
-        ]
-    },
     "1984-08-10": {
         "launches": [
             {
@@ -21096,7 +20824,7 @@
                 "name": "SRV Mission 4354-2",
                 "category": "P",
                 "smc": false,
-                "location": -1,
+                "location": 4,
                 "burnup": "Partial",
                 "emissions": {
                     "NOx": 0.027475,
@@ -21112,24 +20840,6 @@
     "1984-08-12": {
         "launches": [],
         "reentries": [
-            {
-                "date": "1984-08-12T00:00:00Z",
-                "id": "1984-080D",
-                "reusability": "",
-                "name": "deb N-2 stage 2",
-                "category": "C",
-                "smc": false,
-                "location": 6,
-                "burnup": "Complete",
-                "emissions": {
-                    "NOx": 0.0,
-                    "Al2O3": 0.0,
-                    "BC": 0.0,
-                    "Cl": 0.0,
-                    "HCl": 0.0,
-                    "Unablated_Mass": 0.0
-                }
-            },
             {
                 "date": "1984-08-12T22:20:00Z",
                 "id": "1984-039A",
@@ -21936,12 +21646,12 @@
                 "location": 6,
                 "burnup": "Complete",
                 "emissions": {
-                    "NOx": 0.0,
-                    "Al2O3": 0.0,
-                    "BC": 0.0,
-                    "Cl": 0.0,
-                    "HCl": 0.0,
-                    "Unablated_Mass": 0.0
+                    "NOx": 0.3512,
+                    "Al2O3": 0.18438,
+                    "BC": 0.035998,
+                    "Cl": 0.01317,
+                    "HCl": 0.007024,
+                    "Unablated_Mass": 0.6145999999999999
                 }
             },
             {
@@ -21954,12 +21664,12 @@
                 "location": 6,
                 "burnup": "Complete",
                 "emissions": {
-                    "NOx": 0.0,
-                    "Al2O3": 0.0,
-                    "BC": 0.0,
-                    "Cl": 0.0,
-                    "HCl": 0.0,
-                    "Unablated_Mass": 0.0
+                    "NOx": 0.3512,
+                    "Al2O3": 0.18438,
+                    "BC": 0.035998,
+                    "Cl": 0.01317,
+                    "HCl": 0.007024,
+                    "Unablated_Mass": 0.6145999999999999
                 }
             }
         ]
@@ -23281,24 +22991,6 @@
                     "Cl": 0.039825,
                     "HCl": 0.02124,
                     "Unablated_Mass": 2.6550000000000002
-                }
-            },
-            {
-                "date": "1984-08-31T00:00:00Z",
-                "id": "1982-033CE",
-                "reusability": "",
-                "name": "EVA debris",
-                "category": "C",
-                "smc": false,
-                "location": 6,
-                "burnup": "Complete",
-                "emissions": {
-                    "NOx": 0.0,
-                    "Al2O3": 0.0,
-                    "BC": 0.0,
-                    "Cl": 0.0,
-                    "HCl": 0.0,
-                    "Unablated_Mass": 0.0
                 }
             },
             {
@@ -24882,29 +24574,6 @@
             }
         ]
     },
-    "1984-09-14": {
-        "launches": [],
-        "reentries": [
-            {
-                "date": "1984-09-14T00:00:00Z",
-                "id": "1982-033CD",
-                "reusability": "",
-                "name": "EVA debris",
-                "category": "C",
-                "smc": false,
-                "location": 6,
-                "burnup": "Complete",
-                "emissions": {
-                    "NOx": 0.0,
-                    "Al2O3": 0.0,
-                    "BC": 0.0,
-                    "Cl": 0.0,
-                    "HCl": 0.0,
-                    "Unablated_Mass": 0.0
-                }
-            }
-        ]
-    },
     "1984-09-15": {
         "launches": [],
         "reentries": [
@@ -25064,7 +24733,7 @@
                 "name": "FSW RV",
                 "category": "P",
                 "smc": false,
-                "location": -1,
+                "location": 3,
                 "burnup": "Partial",
                 "emissions": {
                     "NOx": 0.0742,
@@ -25473,12 +25142,12 @@
                 "location": 6,
                 "burnup": "Complete",
                 "emissions": {
-                    "NOx": 0.0,
-                    "Al2O3": 0.0,
-                    "BC": 0.0,
-                    "Cl": 0.0,
-                    "HCl": 0.0,
-                    "Unablated_Mass": 0.0
+                    "NOx": 0.3512,
+                    "Al2O3": 0.18438,
+                    "BC": 0.035998,
+                    "Cl": 0.01317,
+                    "HCl": 0.007024,
+                    "Unablated_Mass": 0.6145999999999999
                 }
             },
             {
@@ -25491,12 +25160,12 @@
                 "location": 6,
                 "burnup": "Complete",
                 "emissions": {
-                    "NOx": 0.0,
-                    "Al2O3": 0.0,
-                    "BC": 0.0,
-                    "Cl": 0.0,
-                    "HCl": 0.0,
-                    "Unablated_Mass": 0.0
+                    "NOx": 0.3512,
+                    "Al2O3": 0.18438,
+                    "BC": 0.035998,
+                    "Cl": 0.01317,
+                    "HCl": 0.007024,
+                    "Unablated_Mass": 0.6145999999999999
                 }
             }
         ]
@@ -25509,42 +25178,6 @@
                 "id": "1984-058H",
                 "reusability": "",
                 "name": "KDU part",
-                "category": "C",
-                "smc": false,
-                "location": 6,
-                "burnup": "Complete",
-                "emissions": {
-                    "NOx": 0.0,
-                    "Al2O3": 0.0,
-                    "BC": 0.0,
-                    "Cl": 0.0,
-                    "HCl": 0.0,
-                    "Unablated_Mass": 0.0
-                }
-            },
-            {
-                "date": "1984-09-22T00:00:00Z",
-                "id": "1982-033BX",
-                "reusability": "",
-                "name": "EVA debris",
-                "category": "C",
-                "smc": false,
-                "location": 6,
-                "burnup": "Complete",
-                "emissions": {
-                    "NOx": 0.0,
-                    "Al2O3": 0.0,
-                    "BC": 0.0,
-                    "Cl": 0.0,
-                    "HCl": 0.0,
-                    "Unablated_Mass": 0.0
-                }
-            },
-            {
-                "date": "1984-09-22T00:00:00Z",
-                "id": "1982-033CG",
-                "reusability": "",
-                "name": "EVA debris",
                 "category": "C",
                 "smc": false,
                 "location": 6,
@@ -25665,7 +25298,7 @@
                 "name": "SRV Mission 1219-2",
                 "category": "P",
                 "smc": false,
-                "location": -1,
+                "location": 4,
                 "burnup": "Partial",
                 "emissions": {
                     "NOx": 0.11025,
@@ -27457,24 +27090,6 @@
         "reentries": [
             {
                 "date": "1984-10-09T00:00:00Z",
-                "id": "1982-033BW",
-                "reusability": "",
-                "name": "EVA debris",
-                "category": "C",
-                "smc": false,
-                "location": 6,
-                "burnup": "Complete",
-                "emissions": {
-                    "NOx": 0.0,
-                    "Al2O3": 0.0,
-                    "BC": 0.0,
-                    "Cl": 0.0,
-                    "HCl": 0.0,
-                    "Unablated_Mass": 0.0
-                }
-            },
-            {
-                "date": "1984-10-09T00:00:00Z",
                 "id": "1984-096C",
                 "reusability": "",
                 "name": "BOZ",
@@ -27665,7 +27280,7 @@
                 "name": "SRV Mission 1219-3",
                 "category": "P",
                 "smc": false,
-                "location": -1,
+                "location": 4,
                 "burnup": "Partial",
                 "emissions": {
                     "NOx": 0.11025,
@@ -27902,24 +27517,6 @@
                 "id": "1984-040G",
                 "reusability": "",
                 "name": "KDU part",
-                "category": "C",
-                "smc": false,
-                "location": 6,
-                "burnup": "Complete",
-                "emissions": {
-                    "NOx": 0.0,
-                    "Al2O3": 0.0,
-                    "BC": 0.0,
-                    "Cl": 0.0,
-                    "HCl": 0.0,
-                    "Unablated_Mass": 0.0
-                }
-            },
-            {
-                "date": "1984-10-13T00:00:00Z",
-                "id": "1982-033BU",
-                "reusability": "",
-                "name": "EVA debris",
                 "category": "C",
                 "smc": false,
                 "location": 6,
@@ -29842,12 +29439,12 @@
                 "location": 6,
                 "burnup": "Complete",
                 "emissions": {
-                    "NOx": 0.0,
-                    "Al2O3": 0.0,
-                    "BC": 0.0,
-                    "Cl": 0.0,
-                    "HCl": 0.0,
-                    "Unablated_Mass": 0.0
+                    "NOx": 0.3512,
+                    "Al2O3": 0.18438,
+                    "BC": 0.035998,
+                    "Cl": 0.01317,
+                    "HCl": 0.007024,
+                    "Unablated_Mass": 0.6145999999999999
                 }
             },
             {
@@ -29860,12 +29457,12 @@
                 "location": 6,
                 "burnup": "Complete",
                 "emissions": {
-                    "NOx": 0.0,
-                    "Al2O3": 0.0,
-                    "BC": 0.0,
-                    "Cl": 0.0,
-                    "HCl": 0.0,
-                    "Unablated_Mass": 0.0
+                    "NOx": 0.3512,
+                    "Al2O3": 0.18438,
+                    "BC": 0.035998,
+                    "Cl": 0.01317,
+                    "HCl": 0.007024,
+                    "Unablated_Mass": 0.6145999999999999
                 }
             },
             {
@@ -31444,24 +31041,6 @@
         "reentries": [
             {
                 "date": "1984-12-06T00:00:00Z",
-                "id": "1982-033CF",
-                "reusability": "",
-                "name": "EVA debris",
-                "category": "C",
-                "smc": false,
-                "location": 6,
-                "burnup": "Complete",
-                "emissions": {
-                    "NOx": 0.0,
-                    "Al2O3": 0.0,
-                    "BC": 0.0,
-                    "Cl": 0.0,
-                    "HCl": 0.0,
-                    "Unablated_Mass": 0.0
-                }
-            },
-            {
-                "date": "1984-12-06T00:00:00Z",
                 "id": "1984-121C",
                 "reusability": "",
                 "name": "Sensor cover",
@@ -32446,7 +32025,7 @@
                 "name": "Kosmos-1614",
                 "category": "P",
                 "smc": false,
-                "location": -1,
+                "location": 4,
                 "burnup": "Partial",
                 "emissions": {
                     "NOx": 0.18795,
@@ -32552,60 +32131,6 @@
                 "id": "1982-033DV",
                 "reusability": "",
                 "name": "Garbage bag",
-                "category": "C",
-                "smc": false,
-                "location": 6,
-                "burnup": "Complete",
-                "emissions": {
-                    "NOx": 0.0,
-                    "Al2O3": 0.0,
-                    "BC": 0.0,
-                    "Cl": 0.0,
-                    "HCl": 0.0,
-                    "Unablated_Mass": 0.0
-                }
-            },
-            {
-                "date": "1984-12-20T00:00:00Z",
-                "id": "1984-124G",
-                "reusability": "",
-                "name": "deb BOZ",
-                "category": "C",
-                "smc": false,
-                "location": 6,
-                "burnup": "Complete",
-                "emissions": {
-                    "NOx": 0.0,
-                    "Al2O3": 0.0,
-                    "BC": 0.0,
-                    "Cl": 0.0,
-                    "HCl": 0.0,
-                    "Unablated_Mass": 0.0
-                }
-            },
-            {
-                "date": "1984-12-20T00:00:00Z",
-                "id": "1984-126C",
-                "reusability": "",
-                "name": "deb Kosmos-1614",
-                "category": "C",
-                "smc": false,
-                "location": 6,
-                "burnup": "Complete",
-                "emissions": {
-                    "NOx": 0.0,
-                    "Al2O3": 0.0,
-                    "BC": 0.0,
-                    "Cl": 0.0,
-                    "HCl": 0.0,
-                    "Unablated_Mass": 0.0
-                }
-            },
-            {
-                "date": "1984-12-20T00:00:00Z",
-                "id": "1984-126D",
-                "reusability": "",
-                "name": "deb Kosmos-1614",
                 "category": "C",
                 "smc": false,
                 "location": 6,

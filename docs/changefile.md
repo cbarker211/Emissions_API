@@ -1,5 +1,30 @@
 For a full list of changes, please visit https://github.com/cbarker211/Emissions_API
 
+# v2.6.0
+
+This updates adds launch emissions in atmospheric layers, fixes bugs, and streamlines the data.
+
+## Launches
+- Launch emissions now output in atmospheric layers (0-15, 15-50, 50-80, >80).
+- Fixed issue with Falcon Heavy emissions, which were previously included for boosters only and always included regardless of whether they landed or not.
+- Added booster propellant mass for Atlas D.
+- Added Chang Zheng 2C SM upper stage.
+
+## Re-entries
+- Removed re-entries where the object exploded in orbit, and re-entries with re-entry destinations of "lost" and "Z".
+- Removed some debris objects, most of which had zero mass anyway.
+- Three new re-entries added in 2021 and 2025.
+- Classified more objects as fairings where name includes "PLF", slightly decreasing emissions.
+- Sorted out stage classification for some upper stages which were incorrectly being assigned 0 mass.
+- Added Chang Zheng 2C SM upper stage.
+
+## QOL additions with no impact on emission totals
+- Minor QOL fixes to clean up the scripts, including removing discosweb related functions and removing unused packages.
+- Combined date and time fields into single datetime objects.
+- Raul data now loaded as a pandas dataframe.
+- Updated re-entries with a location of '-1'. This was used a placeholder to denote named regions where I needed to assign the geolocation.
+- OV1-7P re-classified as payload.
+
 # v2.5.0
 
 This major update includes an extension of re-entry emissions back to 1957. 

@@ -44,24 +44,6 @@
         "launches": [],
         "reentries": [
             {
-                "date": "2005-01-08T00:00:00Z",
-                "id": "1992-070F",
-                "reusability": "",
-                "name": "deb IRIS",
-                "category": "C",
-                "smc": false,
-                "location": 6,
-                "burnup": "Complete",
-                "emissions": {
-                    "NOx": 0.0,
-                    "Al2O3": 0.0,
-                    "BC": 0.0,
-                    "Cl": 0.0,
-                    "HCl": 0.0,
-                    "Unablated_Mass": 0.0
-                }
-            },
-            {
                 "date": "2005-01-08T19:45:00Z",
                 "id": "2004-038C",
                 "reusability": "",
@@ -400,12 +382,12 @@
                 "location": 6,
                 "burnup": "Complete",
                 "emissions": {
-                    "NOx": 0.0,
-                    "Al2O3": 0.0,
-                    "BC": 0.0,
-                    "Cl": 0.0,
-                    "HCl": 0.0,
-                    "Unablated_Mass": 0.0
+                    "NOx": 0.3512,
+                    "Al2O3": 0.18438,
+                    "BC": 0.035998,
+                    "Cl": 0.01317,
+                    "HCl": 0.007024,
+                    "Unablated_Mass": 0.6145999999999999
                 }
             },
             {
@@ -418,12 +400,12 @@
                 "location": 6,
                 "burnup": "Complete",
                 "emissions": {
-                    "NOx": 0.0,
-                    "Al2O3": 0.0,
-                    "BC": 0.0,
-                    "Cl": 0.0,
-                    "HCl": 0.0,
-                    "Unablated_Mass": 0.0
+                    "NOx": 0.3512,
+                    "Al2O3": 0.18438,
+                    "BC": 0.035998,
+                    "Cl": 0.01317,
+                    "HCl": 0.007024,
+                    "Unablated_Mass": 0.6145999999999999
                 }
             }
         ]
@@ -669,227 +651,6 @@
             }
         ]
     },
-    "2005-02-01": {
-        "launches": [],
-        "reentries": [
-            {
-                "date": "2005-02-01T00:00:00Z",
-                "id": "1998-067",
-                "reusability": "",
-                "name": "EVA debris (Rokviss cover)",
-                "category": "C",
-                "smc": false,
-                "location": 6,
-                "burnup": "Complete",
-                "emissions": {
-                    "NOx": 0.0004,
-                    "Al2O3": 0.00032,
-                    "BC": 4.1e-05,
-                    "Cl": 1.5e-05,
-                    "HCl": 8e-06,
-                    "Unablated_Mass": 0.00019999999999999996
-                }
-            },
-            {
-                "date": "2005-02-01T00:00:00Z",
-                "id": "1998-067",
-                "reusability": "",
-                "name": "EVA debris (Rokviss cover)",
-                "category": "C",
-                "smc": false,
-                "location": 6,
-                "burnup": "Complete",
-                "emissions": {
-                    "NOx": 0.0004,
-                    "Al2O3": 0.00032,
-                    "BC": 4.1e-05,
-                    "Cl": 1.5e-05,
-                    "HCl": 8e-06,
-                    "Unablated_Mass": 0.00019999999999999996
-                }
-            },
-            {
-                "date": "2005-02-01T00:00:00Z",
-                "id": "1998-067",
-                "reusability": "",
-                "name": "EVA debris (Rokviss cover)",
-                "category": "C",
-                "smc": false,
-                "location": 6,
-                "burnup": "Complete",
-                "emissions": {
-                    "NOx": 0.0004,
-                    "Al2O3": 0.00032,
-                    "BC": 4.1e-05,
-                    "Cl": 1.5e-05,
-                    "HCl": 8e-06,
-                    "Unablated_Mass": 0.00019999999999999996
-                }
-            },
-            {
-                "date": "2005-02-01T00:00:00Z",
-                "id": "1998-067",
-                "reusability": "",
-                "name": "EVA debris (Rokviss cover)",
-                "category": "C",
-                "smc": false,
-                "location": 6,
-                "burnup": "Complete",
-                "emissions": {
-                    "NOx": 0.0004,
-                    "Al2O3": 0.00032,
-                    "BC": 4.1e-05,
-                    "Cl": 1.5e-05,
-                    "HCl": 8e-06,
-                    "Unablated_Mass": 0.00019999999999999996
-                }
-            },
-            {
-                "date": "2005-02-01T00:00:00Z",
-                "id": "1998-067",
-                "reusability": "",
-                "name": "EVA debris (Rokviss cover)",
-                "category": "C",
-                "smc": false,
-                "location": 6,
-                "burnup": "Complete",
-                "emissions": {
-                    "NOx": 0.0004,
-                    "Al2O3": 0.00032,
-                    "BC": 4.1e-05,
-                    "Cl": 1.5e-05,
-                    "HCl": 8e-06,
-                    "Unablated_Mass": 0.00019999999999999996
-                }
-            },
-            {
-                "date": "2005-02-01T00:00:00Z",
-                "id": "1998-067",
-                "reusability": "",
-                "name": "EVA debris (Rokviss cover)",
-                "category": "C",
-                "smc": false,
-                "location": 6,
-                "burnup": "Complete",
-                "emissions": {
-                    "NOx": 0.0004,
-                    "Al2O3": 0.00032,
-                    "BC": 4.1e-05,
-                    "Cl": 1.5e-05,
-                    "HCl": 8e-06,
-                    "Unablated_Mass": 0.00019999999999999996
-                }
-            },
-            {
-                "date": "2005-02-01T00:00:00Z",
-                "id": "1998-067",
-                "reusability": "",
-                "name": "EVA debris (Rokviss cover)",
-                "category": "C",
-                "smc": false,
-                "location": 6,
-                "burnup": "Complete",
-                "emissions": {
-                    "NOx": 0.0004,
-                    "Al2O3": 0.00032,
-                    "BC": 4.1e-05,
-                    "Cl": 1.5e-05,
-                    "HCl": 8e-06,
-                    "Unablated_Mass": 0.00019999999999999996
-                }
-            },
-            {
-                "date": "2005-02-01T00:00:00Z",
-                "id": "1998-067",
-                "reusability": "",
-                "name": "EVA debris",
-                "category": "C",
-                "smc": false,
-                "location": 6,
-                "burnup": "Complete",
-                "emissions": {
-                    "NOx": 0.0004,
-                    "Al2O3": 0.00032,
-                    "BC": 4.1e-05,
-                    "Cl": 1.5e-05,
-                    "HCl": 8e-06,
-                    "Unablated_Mass": 0.00019999999999999996
-                }
-            },
-            {
-                "date": "2005-02-01T00:00:00Z",
-                "id": "1998-067",
-                "reusability": "",
-                "name": "EVA debris",
-                "category": "C",
-                "smc": false,
-                "location": 6,
-                "burnup": "Complete",
-                "emissions": {
-                    "NOx": 0.0004,
-                    "Al2O3": 0.00032,
-                    "BC": 4.1e-05,
-                    "Cl": 1.5e-05,
-                    "HCl": 8e-06,
-                    "Unablated_Mass": 0.00019999999999999996
-                }
-            },
-            {
-                "date": "2005-02-01T00:00:00Z",
-                "id": "1998-067",
-                "reusability": "",
-                "name": "EVA debris",
-                "category": "C",
-                "smc": false,
-                "location": 6,
-                "burnup": "Complete",
-                "emissions": {
-                    "NOx": 0.0004,
-                    "Al2O3": 0.00032,
-                    "BC": 4.1e-05,
-                    "Cl": 1.5e-05,
-                    "HCl": 8e-06,
-                    "Unablated_Mass": 0.00019999999999999996
-                }
-            },
-            {
-                "date": "2005-02-01T00:00:00Z",
-                "id": "1998-067",
-                "reusability": "",
-                "name": "EVA debris",
-                "category": "C",
-                "smc": false,
-                "location": 6,
-                "burnup": "Complete",
-                "emissions": {
-                    "NOx": 0.0004,
-                    "Al2O3": 0.00032,
-                    "BC": 4.1e-05,
-                    "Cl": 1.5e-05,
-                    "HCl": 8e-06,
-                    "Unablated_Mass": 0.00019999999999999996
-                }
-            },
-            {
-                "date": "2005-02-01T00:00:00Z",
-                "id": "1998-067",
-                "reusability": "",
-                "name": "EVA debris",
-                "category": "C",
-                "smc": false,
-                "location": 6,
-                "burnup": "Complete",
-                "emissions": {
-                    "NOx": 0.0004,
-                    "Al2O3": 0.00032,
-                    "BC": 4.1e-05,
-                    "Cl": 1.5e-05,
-                    "HCl": 8e-06,
-                    "Unablated_Mass": 0.00019999999999999996
-                }
-            }
-        ]
-    },
     "2005-02-03": {
         "launches": [
             {
@@ -1126,12 +887,12 @@
                 "location": 6,
                 "burnup": "Complete",
                 "emissions": {
-                    "NOx": 0.0,
-                    "Al2O3": 0.0,
-                    "BC": 0.0,
-                    "Cl": 0.0,
-                    "HCl": 0.0,
-                    "Unablated_Mass": 0.0
+                    "NOx": 0.3512,
+                    "Al2O3": 0.18438,
+                    "BC": 0.035998,
+                    "Cl": 0.01317,
+                    "HCl": 0.007024,
+                    "Unablated_Mass": 0.6145999999999999
                 }
             },
             {
@@ -1144,12 +905,12 @@
                 "location": 6,
                 "burnup": "Complete",
                 "emissions": {
-                    "NOx": 0.0,
-                    "Al2O3": 0.0,
-                    "BC": 0.0,
-                    "Cl": 0.0,
-                    "HCl": 0.0,
-                    "Unablated_Mass": 0.0
+                    "NOx": 0.3512,
+                    "Al2O3": 0.18438,
+                    "BC": 0.035998,
+                    "Cl": 0.01317,
+                    "HCl": 0.007024,
+                    "Unablated_Mass": 0.6145999999999999
                 }
             },
             {
@@ -1272,7 +1033,7 @@
                 "name": "Ariane 5 L521 EPC",
                 "category": "S1",
                 "smc": false,
-                "location": -1,
+                "location": 4,
                 "burnup": "Complete",
                 "emissions": {
                     "NOx": 5.88,
@@ -2331,17 +2092,17 @@
                 "id": "1991-053D",
                 "reusability": "",
                 "name": "Blok-ML 45-480",
-                "category": "S4",
+                "category": "S3",
                 "smc": false,
                 "location": 6,
                 "burnup": "Complete",
                 "emissions": {
-                    "NOx": 0.0,
-                    "Al2O3": 0.0,
-                    "BC": 0.0,
-                    "Cl": 0.0,
-                    "HCl": 0.0,
-                    "Unablated_Mass": 0.0
+                    "NOx": 0.3996,
+                    "Al2O3": 0.454545,
+                    "BC": 0.028971,
+                    "Cl": 0.010989,
+                    "HCl": 0.004995,
+                    "Unablated_Mass": 0.34964999999999996
                 }
             }
         ]
@@ -2602,66 +2363,7 @@
                 "date": "2005-04-01T00:00:00Z",
                 "id": "1998-067",
                 "reusability": "",
-                "name": "EVA debris (connector cap)",
-                "category": "C",
-                "smc": false,
-                "location": 6,
-                "burnup": "Complete",
-                "emissions": {
-                    "NOx": 0.0,
-                    "Al2O3": 0.0,
-                    "BC": 0.0,
-                    "Cl": 0.0,
-                    "HCl": 0.0,
-                    "Unablated_Mass": 0.0
-                }
-            },
-            {
-                "date": "2005-04-01T00:00:00Z",
-                "id": "1998-067",
-                "reusability": "",
-                "name": "EVA debris (connector cap)",
-                "category": "C",
-                "smc": false,
-                "location": 6,
-                "burnup": "Complete",
-                "emissions": {
-                    "NOx": 0.0,
-                    "Al2O3": 0.0,
-                    "BC": 0.0,
-                    "Cl": 0.0,
-                    "HCl": 0.0,
-                    "Unablated_Mass": 0.0
-                }
-            },
-            {
-                "date": "2005-04-01T00:00:00Z",
-                "id": "1998-067",
-                "reusability": "",
                 "name": "Cleaning towel",
-                "category": "C",
-                "smc": false,
-                "location": 6,
-                "burnup": "Complete",
-                "emissions": {
-                    "NOx": 0.0,
-                    "Al2O3": 0.0,
-                    "BC": 0.0,
-                    "Cl": 0.0,
-                    "HCl": 0.0,
-                    "Unablated_Mass": 0.0
-                }
-            }
-        ]
-    },
-    "2005-04-10": {
-        "launches": [],
-        "reentries": [
-            {
-                "date": "2005-04-10T00:00:00Z",
-                "id": "1998-067AF",
-                "reusability": "",
-                "name": "EVA debris (connector cap)",
                 "category": "C",
                 "smc": false,
                 "location": 6,
@@ -3905,12 +3607,12 @@
                 "location": 6,
                 "burnup": "Complete",
                 "emissions": {
-                    "NOx": 0.0,
-                    "Al2O3": 0.0,
-                    "BC": 0.0,
-                    "Cl": 0.0,
-                    "HCl": 0.0,
-                    "Unablated_Mass": 0.0
+                    "NOx": 0.3512,
+                    "Al2O3": 0.18438,
+                    "BC": 0.035998,
+                    "Cl": 0.01317,
+                    "HCl": 0.007024,
+                    "Unablated_Mass": 0.6145999999999999
                 }
             },
             {
@@ -3923,12 +3625,12 @@
                 "location": 6,
                 "burnup": "Complete",
                 "emissions": {
-                    "NOx": 0.0,
-                    "Al2O3": 0.0,
-                    "BC": 0.0,
-                    "Cl": 0.0,
-                    "HCl": 0.0,
-                    "Unablated_Mass": 0.0
+                    "NOx": 0.3512,
+                    "Al2O3": 0.18438,
+                    "BC": 0.035998,
+                    "Cl": 0.01317,
+                    "HCl": 0.007024,
+                    "Unablated_Mass": 0.6145999999999999
                 }
             }
         ]
@@ -4324,12 +4026,12 @@
                 "location": 6,
                 "burnup": "Complete",
                 "emissions": {
-                    "NOx": 0.0,
-                    "Al2O3": 0.0,
-                    "BC": 0.0,
-                    "Cl": 0.0,
-                    "HCl": 0.0,
-                    "Unablated_Mass": 0.0
+                    "NOx": 0.3512,
+                    "Al2O3": 0.18438,
+                    "BC": 0.035998,
+                    "Cl": 0.01317,
+                    "HCl": 0.007024,
+                    "Unablated_Mass": 0.6145999999999999
                 }
             },
             {
@@ -4342,12 +4044,12 @@
                 "location": 6,
                 "burnup": "Complete",
                 "emissions": {
-                    "NOx": 0.0,
-                    "Al2O3": 0.0,
-                    "BC": 0.0,
-                    "Cl": 0.0,
-                    "HCl": 0.0,
-                    "Unablated_Mass": 0.0
+                    "NOx": 0.3512,
+                    "Al2O3": 0.18438,
+                    "BC": 0.035998,
+                    "Cl": 0.01317,
+                    "HCl": 0.007024,
+                    "Unablated_Mass": 0.6145999999999999
                 }
             }
         ]
@@ -4716,29 +4418,6 @@
         "launches": [],
         "reentries": []
     },
-    "2005-06-13": {
-        "launches": [],
-        "reentries": [
-            {
-                "date": "2005-06-13T00:00:00Z",
-                "id": "2005-020C",
-                "reusability": "",
-                "name": "deb 11S510",
-                "category": "C",
-                "smc": false,
-                "location": 6,
-                "burnup": "Complete",
-                "emissions": {
-                    "NOx": 0.0,
-                    "Al2O3": 0.0,
-                    "BC": 0.0,
-                    "Cl": 0.0,
-                    "HCl": 0.0,
-                    "Unablated_Mass": 0.0
-                }
-            }
-        ]
-    },
     "2005-06-14": {
         "launches": [],
         "reentries": [
@@ -4862,7 +4541,7 @@
                 "name": "Foton-M No. 2",
                 "category": "P",
                 "smc": false,
-                "location": -1,
+                "location": 3,
                 "burnup": "Partial",
                 "emissions": {
                     "NOx": 0.440125,
@@ -5593,70 +5272,6 @@
             }
         ]
     },
-    "2005-06-30": {
-        "launches": [],
-        "reentries": [
-            {
-                "date": "2005-06-30T00:00:00Z",
-                "id": "2005-023D",
-                "reusability": "",
-                "name": "deb 8S812",
-                "category": "C",
-                "smc": false,
-                "location": 6,
-                "burnup": "Complete",
-                "emissions": {
-                    "NOx": 0.0,
-                    "Al2O3": 0.0,
-                    "BC": 0.0,
-                    "Cl": 0.0,
-                    "HCl": 0.0,
-                    "Unablated_Mass": 0.0
-                }
-            },
-            {
-                "date": "2005-06-30T00:00:00Z",
-                "id": "2005-023E",
-                "reusability": "",
-                "name": "deb 8S812",
-                "category": "C",
-                "smc": false,
-                "location": 6,
-                "burnup": "Complete",
-                "emissions": {
-                    "NOx": 0.0,
-                    "Al2O3": 0.0,
-                    "BC": 0.0,
-                    "Cl": 0.0,
-                    "HCl": 0.0,
-                    "Unablated_Mass": 0.0
-                }
-            }
-        ]
-    },
-    "2005-07-01": {
-        "launches": [],
-        "reentries": [
-            {
-                "date": "2005-07-01T00:00:00Z",
-                "id": "2005-023J",
-                "reusability": "",
-                "name": "deb 8S812",
-                "category": "C",
-                "smc": false,
-                "location": 6,
-                "burnup": "Complete",
-                "emissions": {
-                    "NOx": 0.0,
-                    "Al2O3": 0.0,
-                    "BC": 0.0,
-                    "Cl": 0.0,
-                    "HCl": 0.0,
-                    "Unablated_Mass": 0.0
-                }
-            }
-        ]
-    },
     "2005-07-02": {
         "launches": [],
         "reentries": [
@@ -5665,17 +5280,17 @@
                 "id": "1982-095D",
                 "reusability": "",
                 "name": "Blok-2BL 23-648",
-                "category": "S4",
+                "category": "S3",
                 "smc": false,
                 "location": 6,
                 "burnup": "Complete",
                 "emissions": {
-                    "NOx": 0.0,
-                    "Al2O3": 0.0,
-                    "BC": 0.0,
-                    "Cl": 0.0,
-                    "HCl": 0.0,
-                    "Unablated_Mass": 0.0
+                    "NOx": 0.3608,
+                    "Al2O3": 0.41041,
+                    "BC": 0.026158,
+                    "Cl": 0.009922,
+                    "HCl": 0.00451,
+                    "Unablated_Mass": 0.3157
                 }
             },
             {
@@ -6484,7 +6099,7 @@
                 "name": "Ariane 5 L523 EPC",
                 "category": "S1",
                 "smc": false,
-                "location": -1,
+                "location": 4,
                 "burnup": "Complete",
                 "emissions": {
                     "NOx": 5.08,
@@ -6934,29 +6549,6 @@
             }
         ]
     },
-    "2005-08-18": {
-        "launches": [],
-        "reentries": [
-            {
-                "date": "2005-08-18T00:00:00Z",
-                "id": "2005-017D",
-                "reusability": "",
-                "name": "deb PS4",
-                "category": "C",
-                "smc": false,
-                "location": 6,
-                "burnup": "Complete",
-                "emissions": {
-                    "NOx": 0.0,
-                    "Al2O3": 0.0,
-                    "BC": 0.0,
-                    "Cl": 0.0,
-                    "HCl": 0.0,
-                    "Unablated_Mass": 0.0
-                }
-            }
-        ]
-    },
     "2005-08-23": {
         "launches": [
             {
@@ -7260,7 +6852,7 @@
                 "name": "FSW-21 RV",
                 "category": "P",
                 "smc": false,
-                "location": -1,
+                "location": 3,
                 "burnup": "Partial",
                 "emissions": {
                     "NOx": 0.14875,
@@ -8130,7 +7722,7 @@
                 "name": "FSW-22 RV",
                 "category": "P",
                 "smc": false,
-                "location": -1,
+                "location": 3,
                 "burnup": "Partial",
                 "emissions": {
                     "NOx": 0.14875,
@@ -8606,12 +8198,12 @@
                 "location": 6,
                 "burnup": "Complete",
                 "emissions": {
-                    "NOx": 0.0,
-                    "Al2O3": 0.0,
-                    "BC": 0.0,
-                    "Cl": 0.0,
-                    "HCl": 0.0,
-                    "Unablated_Mass": 0.0
+                    "NOx": 0.3512,
+                    "Al2O3": 0.18438,
+                    "BC": 0.035998,
+                    "Cl": 0.01317,
+                    "HCl": 0.007024,
+                    "Unablated_Mass": 0.6145999999999999
                 }
             },
             {
@@ -8624,12 +8216,12 @@
                 "location": 6,
                 "burnup": "Complete",
                 "emissions": {
-                    "NOx": 0.0,
-                    "Al2O3": 0.0,
-                    "BC": 0.0,
-                    "Cl": 0.0,
-                    "HCl": 0.0,
-                    "Unablated_Mass": 0.0
+                    "NOx": 0.3512,
+                    "Al2O3": 0.18438,
+                    "BC": 0.035998,
+                    "Cl": 0.01317,
+                    "HCl": 0.007024,
+                    "Unablated_Mass": 0.6145999999999999
                 }
             }
         ]
@@ -8903,24 +8495,6 @@
     "2005-10-11": {
         "launches": [],
         "reentries": [
-            {
-                "date": "2005-10-11T00:00:00Z",
-                "id": "1973-098C",
-                "reusability": "",
-                "name": "deb Kosmos-614",
-                "category": "C",
-                "smc": false,
-                "location": 6,
-                "burnup": "Complete",
-                "emissions": {
-                    "NOx": 0.0,
-                    "Al2O3": 0.0,
-                    "BC": 0.0,
-                    "Cl": 0.0,
-                    "HCl": 0.0,
-                    "Unablated_Mass": 0.0
-                }
-            },
             {
                 "date": "2005-10-11T00:50:00Z",
                 "id": "2005-013",
@@ -9401,7 +8975,7 @@
                 "name": "Ariane 5 L524 EPC",
                 "category": "S1",
                 "smc": false,
-                "location": -1,
+                "location": 4,
                 "burnup": "Complete",
                 "emissions": {
                     "NOx": 5.08,
@@ -10290,7 +9864,7 @@
                 "name": "Soyuz-FG No. 010 Blok-I",
                 "category": "S2",
                 "smc": false,
-                "location": -1,
+                "location": 4,
                 "burnup": "Complete",
                 "emissions": {
                     "NOx": 0.964,
@@ -10742,17 +10316,17 @@
                 "id": "1986-103D",
                 "reusability": "",
                 "name": "Blok-ML",
-                "category": "S4",
+                "category": "S3",
                 "smc": false,
                 "location": 6,
                 "burnup": "Complete",
                 "emissions": {
-                    "NOx": 0.0,
-                    "Al2O3": 0.0,
-                    "BC": 0.0,
-                    "Cl": 0.0,
-                    "HCl": 0.0,
-                    "Unablated_Mass": 0.0
+                    "NOx": 0.3996,
+                    "Al2O3": 0.454545,
+                    "BC": 0.028971,
+                    "Cl": 0.010989,
+                    "HCl": 0.004995,
+                    "Unablated_Mass": 0.34964999999999996
                 }
             },
             {

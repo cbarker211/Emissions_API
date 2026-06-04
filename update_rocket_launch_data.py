@@ -613,6 +613,11 @@ def update_mass_info(temp_dict,name,variant):
             temp_dict[f"Stage3 Stage Mass"]      = 2500 # DW
             temp_dict[f"Stage3 Propellant Name"]  = "UDMH (Unsymmetrical Dimethyl Hydrazine)/N2O4"
             temp_dict[f"Stage3 Fuel Type"]        = "Hypergolic"
+        elif variant.startswith("SM"):
+            temp_dict[f"Stage3 Propellant Mass"]  = 138     # DW
+            temp_dict[f"Stage3 Stage Mass"]       = 550     # DW
+            temp_dict[f"Stage3 Propellant Name"]  = "HTPB"  # DW
+            temp_dict[f"Stage3 Fuel Type"]        = "Solid" # DW
     
     if name.startswith("Chang Zheng 2D"):
         # Chang Zheng 2D 

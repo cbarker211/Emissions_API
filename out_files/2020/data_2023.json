@@ -2439,7 +2439,7 @@
                 "name": "Falcon 9 Stage 1 B1070",
                 "category": "S1",
                 "smc": false,
-                "location": -1,
+                "location": 4,
                 "burnup": "Complete",
                 "emissions": {
                     "NOx": 8.52,
@@ -3809,24 +3809,6 @@
                     "Cl": 4.5e-05,
                     "HCl": 2.4e-05,
                     "Unablated_Mass": 0.0005999999999999998
-                }
-            },
-            {
-                "date": "2023-01-27T00:00:00Z",
-                "id": "2019-036U",
-                "reusability": "",
-                "name": "deb STP-2",
-                "category": "C",
-                "smc": false,
-                "location": 6,
-                "burnup": "Complete",
-                "emissions": {
-                    "NOx": 0.0,
-                    "Al2O3": 0.0,
-                    "BC": 0.0,
-                    "Cl": 0.0,
-                    "HCl": 0.0,
-                    "Unablated_Mass": 0.0
                 }
             },
             {
@@ -5530,24 +5512,6 @@
         "reentries": [
             {
                 "date": "2023-02-09T00:00:00Z",
-                "id": "2003-049G",
-                "reusability": "",
-                "name": "deb CZ-4B",
-                "category": "C",
-                "smc": false,
-                "location": 6,
-                "burnup": "Complete",
-                "emissions": {
-                    "NOx": 0.0,
-                    "Al2O3": 0.0,
-                    "BC": 0.0,
-                    "Cl": 0.0,
-                    "HCl": 0.0,
-                    "Unablated_Mass": 0.0
-                }
-            },
-            {
-                "date": "2023-02-09T00:00:00Z",
                 "id": "2017-077B",
                 "reusability": "",
                 "name": "CZ-2D Stage 2 retro cover",
@@ -6003,24 +5967,6 @@
         "reentries": [
             {
                 "date": "2023-02-12T00:00:00Z",
-                "id": "1966-025E",
-                "reusability": "",
-                "name": "deb OV1-5",
-                "category": "C",
-                "smc": false,
-                "location": 6,
-                "burnup": "Complete",
-                "emissions": {
-                    "NOx": 0.0,
-                    "Al2O3": 0.0,
-                    "BC": 0.0,
-                    "Cl": 0.0,
-                    "HCl": 0.0,
-                    "Unablated_Mass": 0.0
-                }
-            },
-            {
-                "date": "2023-02-12T00:00:00Z",
                 "id": "2017-008BM",
                 "reusability": "",
                 "name": "Flock 3p-43",
@@ -6297,24 +6243,6 @@
                     "Cl": 7e-05,
                     "HCl": 3.8e-05,
                     "Unablated_Mass": 0.0009399999999999999
-                }
-            },
-            {
-                "date": "2023-02-14T00:00:00Z",
-                "id": "1998-067TQ",
-                "reusability": "",
-                "name": "EVA debris?",
-                "category": "C",
-                "smc": false,
-                "location": 6,
-                "burnup": "Complete",
-                "emissions": {
-                    "NOx": 0.0,
-                    "Al2O3": 0.0,
-                    "BC": 0.0,
-                    "Cl": 0.0,
-                    "HCl": 0.0,
-                    "Unablated_Mass": 0.0
                 }
             }
         ]
@@ -6792,17 +6720,17 @@
                 "id": "1980-044B",
                 "reusability": "",
                 "name": "Vostok-2M (N71) Stage 3",
-                "category": "S3",
+                "category": "S2",
                 "smc": false,
                 "location": 1,
                 "burnup": "Complete",
                 "emissions": {
-                    "NOx": 0.0,
-                    "Al2O3": 0.0,
-                    "BC": 0.0,
-                    "Cl": 0.0,
-                    "HCl": 0.0,
-                    "Unablated_Mass": 0.0
+                    "NOx": 0.576,
+                    "Al2O3": 0.6552,
+                    "BC": 0.04176,
+                    "Cl": 0.01584,
+                    "HCl": 0.0072,
+                    "Unablated_Mass": 0.504
                 }
             },
             {
@@ -7986,24 +7914,6 @@
                     "BC": 0.010168,
                     "Cl": 0.00372,
                     "HCl": 0.001984,
-                    "Unablated_Mass": 0.0
-                }
-            },
-            {
-                "date": "2023-02-28T00:00:00Z",
-                "id": "1998-067UK",
-                "reusability": "",
-                "name": "JRMS debris?",
-                "category": "C",
-                "smc": false,
-                "location": 6,
-                "burnup": "Complete",
-                "emissions": {
-                    "NOx": 0.0,
-                    "Al2O3": 0.0,
-                    "BC": 0.0,
-                    "Cl": 0.0,
-                    "HCl": 0.0,
                     "Unablated_Mass": 0.0
                 }
             },
@@ -17566,7 +17476,7 @@
                 "name": "Falcon 9 Stage 1 B1052.8",
                 "category": "S0",
                 "smc": false,
-                "location": -1,
+                "location": 4,
                 "burnup": "Complete",
                 "emissions": {
                     "NOx": 7.9,
@@ -17584,7 +17494,7 @@
                 "name": "Falcon 9 Stage 1 B1053.3",
                 "category": "S0",
                 "smc": false,
-                "location": -1,
+                "location": 4,
                 "burnup": "Complete",
                 "emissions": {
                     "NOx": 7.9,
@@ -17602,7 +17512,7 @@
                 "name": "Falcon 9 Stage 1 B1068.1",
                 "category": "S1",
                 "smc": false,
-                "location": -1,
+                "location": 4,
                 "burnup": "Complete",
                 "emissions": {
                     "NOx": 8.52,
@@ -17620,7 +17530,7 @@
                 "name": "Falcon H Fairing FH-006",
                 "category": "C",
                 "smc": false,
-                "location": -1,
+                "location": 4,
                 "burnup": "Partial",
                 "emissions": {
                     "NOx": 0.164062,
@@ -17638,7 +17548,7 @@
                 "name": "Falcon H Fairing SN168-06?",
                 "category": "C",
                 "smc": false,
-                "location": -1,
+                "location": 4,
                 "burnup": "Partial",
                 "emissions": {
                     "NOx": 0.164062,
@@ -25318,24 +25228,6 @@
         "reentries": [
             {
                 "date": "2023-06-25T00:00:00Z",
-                "id": "2005-024H",
-                "reusability": "",
-                "name": "deb CZ-2D motor cover?",
-                "category": "C",
-                "smc": false,
-                "location": 6,
-                "burnup": "Complete",
-                "emissions": {
-                    "NOx": 0.0,
-                    "Al2O3": 0.0,
-                    "BC": 0.0,
-                    "Cl": 0.0,
-                    "HCl": 0.0,
-                    "Unablated_Mass": 0.0
-                }
-            },
-            {
-                "date": "2023-06-25T00:00:00Z",
                 "id": "2017-036Q",
                 "reusability": "",
                 "name": "Lemur-2-Lynsey-Symo",
@@ -29396,7 +29288,7 @@
                 "name": "Falcon 9 Stage 1 B1074.1",
                 "category": "S1",
                 "smc": false,
-                "location": -1,
+                "location": 4,
                 "burnup": "Complete",
                 "emissions": {
                     "NOx": 8.52,
@@ -29414,7 +29306,7 @@
                 "name": "Falcon H Fairing SN165-08",
                 "category": "C",
                 "smc": false,
-                "location": -1,
+                "location": 4,
                 "burnup": "Partial",
                 "emissions": {
                     "NOx": 0.164062,
@@ -29432,7 +29324,7 @@
                 "name": "Falcon H Fairing SN188-05?",
                 "category": "C",
                 "smc": false,
-                "location": -1,
+                "location": 4,
                 "burnup": "Partial",
                 "emissions": {
                     "NOx": 0.164062,
@@ -40064,24 +39956,6 @@
         "reentries": [
             {
                 "date": "2023-10-11T00:00:00Z",
-                "id": "1975-112C",
-                "reusability": "",
-                "name": "deb Kosmos-783",
-                "category": "C",
-                "smc": false,
-                "location": 6,
-                "burnup": "Complete",
-                "emissions": {
-                    "NOx": 0.0,
-                    "Al2O3": 0.0,
-                    "BC": 0.0,
-                    "Cl": 0.0,
-                    "HCl": 0.0,
-                    "Unablated_Mass": 0.0
-                }
-            },
-            {
-                "date": "2023-10-11T00:00:00Z",
                 "id": "2005-024F",
                 "reusability": "",
                 "name": "CZ-2D Stage 2 motor cover",
@@ -40554,7 +40428,7 @@
                 "name": "Falcon 9 Stage 1 B1079.1",
                 "category": "S1",
                 "smc": false,
-                "location": -1,
+                "location": 4,
                 "burnup": "Complete",
                 "emissions": {
                     "NOx": 8.52,
@@ -40572,7 +40446,7 @@
                 "name": "Falcon H Fairing SN201",
                 "category": "C",
                 "smc": false,
-                "location": -1,
+                "location": 4,
                 "burnup": "Partial",
                 "emissions": {
                     "NOx": 0.164062,
@@ -40590,7 +40464,7 @@
                 "name": "Falcon H Fairing SN200-01?",
                 "category": "C",
                 "smc": false,
-                "location": -1,
+                "location": 4,
                 "burnup": "Partial",
                 "emissions": {
                     "NOx": 0.164062,
@@ -50310,24 +50184,6 @@
         "reentries": [
             {
                 "date": "2023-12-19T00:00:00Z",
-                "id": "1970-086D",
-                "reusability": "",
-                "name": "deb Kosmos-372",
-                "category": "C",
-                "smc": false,
-                "location": 6,
-                "burnup": "Complete",
-                "emissions": {
-                    "NOx": 0.0,
-                    "Al2O3": 0.0,
-                    "BC": 0.0,
-                    "Cl": 0.0,
-                    "HCl": 0.0,
-                    "Unablated_Mass": 0.0
-                }
-            },
-            {
-                "date": "2023-12-19T00:00:00Z",
                 "id": "2015-077E",
                 "reusability": "",
                 "name": "Galassia",
@@ -52287,7 +52143,7 @@
                 "name": "Falcon 9 Stage 1 B1084.1",
                 "category": "S1",
                 "smc": false,
-                "location": -1,
+                "location": 4,
                 "burnup": "Complete",
                 "emissions": {
                     "NOx": 8.52,
@@ -52305,7 +52161,7 @@
                 "name": "Falcon H Fairing SNU02-01",
                 "category": "C",
                 "smc": false,
-                "location": -1,
+                "location": 4,
                 "burnup": "Partial",
                 "emissions": {
                     "NOx": 0.164062,
@@ -52323,7 +52179,7 @@
                 "name": "Falcon H Fairing FH-009",
                 "category": "C",
                 "smc": false,
-                "location": -1,
+                "location": 4,
                 "burnup": "Partial",
                 "emissions": {
                     "NOx": 0.164062,

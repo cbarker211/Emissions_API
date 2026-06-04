@@ -1336,7 +1336,7 @@
                 "name": "Progress MS-09",
                 "category": "P",
                 "smc": false,
-                "location": -1,
+                "location": 4,
                 "burnup": "Complete",
                 "emissions": {
                     "NOx": 1.73,
@@ -2450,24 +2450,6 @@
                     "HCl": 1.6e-05,
                     "Unablated_Mass": 0.0003999999999999999
                 }
-            },
-            {
-                "date": "2019-03-01T00:00:00Z",
-                "id": "1998-067PL",
-                "reusability": "",
-                "name": "EVA insulation deb (VKD-45)",
-                "category": "C",
-                "smc": false,
-                "location": 6,
-                "burnup": "Complete",
-                "emissions": {
-                    "NOx": 0.0,
-                    "Al2O3": 0.0,
-                    "BC": 0.0,
-                    "Cl": 0.0,
-                    "HCl": 0.0,
-                    "Unablated_Mass": 0.0
-                }
             }
         ]
     },
@@ -2541,24 +2523,6 @@
             }
         ],
         "reentries": [
-            {
-                "date": "2019-03-02T09:30:00Z",
-                "id": "1998-067PM",
-                "reusability": "",
-                "name": "DebrisSat-1/Net",
-                "category": "P",
-                "smc": false,
-                "location": 6,
-                "burnup": "Complete",
-                "emissions": {
-                    "NOx": 0.0012,
-                    "Al2O3": 0.00096,
-                    "BC": 0.000123,
-                    "Cl": 4.5e-05,
-                    "HCl": 2.4e-05,
-                    "Unablated_Mass": 0.0005999999999999998
-                }
-            },
             {
                 "date": "2019-03-02T19:23:00Z",
                 "id": "2017-051B",
@@ -2995,12 +2959,12 @@
                 "location": 1,
                 "burnup": "Complete",
                 "emissions": {
-                    "NOx": 0.0,
-                    "Al2O3": 0.0,
-                    "BC": 0.0,
-                    "Cl": 0.0,
-                    "HCl": 0.0,
-                    "Unablated_Mass": 0.0
+                    "NOx": 0.22,
+                    "Al2O3": 0.25025,
+                    "BC": 0.01595,
+                    "Cl": 0.00605,
+                    "HCl": 0.00275,
+                    "Unablated_Mass": 0.1925
                 }
             }
         ]
@@ -9133,7 +9097,7 @@
                 "name": "Soyuz-2-1b No. 053 Blok-I",
                 "category": "S2",
                 "smc": false,
-                "location": -1,
+                "location": 4,
                 "burnup": "Complete",
                 "emissions": {
                     "NOx": 0.942,
@@ -10634,29 +10598,6 @@
             }
         ]
     },
-    "2019-07-02": {
-        "launches": [],
-        "reentries": [
-            {
-                "date": "2019-07-02T00:00:00Z",
-                "id": "2019-037J",
-                "reusability": "",
-                "name": "deb Electron Stage 2",
-                "category": "C",
-                "smc": false,
-                "location": 6,
-                "burnup": "Complete",
-                "emissions": {
-                    "NOx": 0.0,
-                    "Al2O3": 0.0,
-                    "BC": 0.0,
-                    "Cl": 0.0,
-                    "HCl": 0.0,
-                    "Unablated_Mass": 0.0
-                }
-            }
-        ]
-    },
     "2019-07-03": {
         "launches": [],
         "reentries": [
@@ -11563,29 +11504,6 @@
             }
         ]
     },
-    "2019-07-21": {
-        "launches": [],
-        "reentries": [
-            {
-                "date": "2019-07-21T00:00:00Z",
-                "id": "2019-041C",
-                "reusability": "",
-                "name": "deb Soyuz MS-13",
-                "category": "C",
-                "smc": false,
-                "location": 6,
-                "burnup": "Complete",
-                "emissions": {
-                    "NOx": 0.0,
-                    "Al2O3": 0.0,
-                    "BC": 0.0,
-                    "Cl": 0.0,
-                    "HCl": 0.0,
-                    "Unablated_Mass": 0.0
-                }
-            }
-        ]
-    },
     "2019-07-22": {
         "launches": [
             {
@@ -11785,24 +11703,6 @@
                     "Cl": 0.00834,
                     "HCl": 0.004448,
                     "Unablated_Mass": 0.11119999999999998
-                }
-            },
-            {
-                "date": "2019-07-23T00:00:00Z",
-                "id": "2019-006A",
-                "reusability": "",
-                "name": "Microsat-R main debris",
-                "category": "P",
-                "smc": false,
-                "location": 6,
-                "burnup": "Complete",
-                "emissions": {
-                    "NOx": 0.296,
-                    "Al2O3": 0.2368,
-                    "BC": 0.03034,
-                    "Cl": 0.0111,
-                    "HCl": 0.00592,
-                    "Unablated_Mass": 0.14799999999999996
                 }
             }
         ]
@@ -12284,7 +12184,7 @@
                 "name": "Progress MS-11",
                 "category": "P",
                 "smc": false,
-                "location": -1,
+                "location": 4,
                 "burnup": "Complete",
                 "emissions": {
                     "NOx": 1.73,
@@ -12875,7 +12775,7 @@
                 "name": "Proton-M 935-64 Stage 3",
                 "category": "S3",
                 "smc": false,
-                "location": -1,
+                "location": 4,
                 "burnup": "Complete",
                 "emissions": {
                     "NOx": 1.4,
@@ -13211,7 +13111,7 @@
                 "name": "Falcon 9 Stage 1 B1047",
                 "category": "S1",
                 "smc": false,
-                "location": -1,
+                "location": 4,
                 "burnup": "Complete",
                 "emissions": {
                     "NOx": 9.88,
@@ -14523,17 +14423,17 @@
                 "id": "1998-054D",
                 "reusability": "",
                 "name": "Blok-ML 47-493",
-                "category": "S4",
+                "category": "S3",
                 "smc": false,
                 "location": 1,
                 "burnup": "Complete",
                 "emissions": {
-                    "NOx": 0.0,
-                    "Al2O3": 0.0,
-                    "BC": 0.0,
-                    "Cl": 0.0,
-                    "HCl": 0.0,
-                    "Unablated_Mass": 0.0
+                    "NOx": 0.3996,
+                    "Al2O3": 0.454545,
+                    "BC": 0.028971,
+                    "Cl": 0.010989,
+                    "HCl": 0.004995,
+                    "Unablated_Mass": 0.34964999999999996
                 }
             }
         ]
@@ -15170,24 +15070,6 @@
             }
         ],
         "reentries": [
-            {
-                "date": "2019-09-19T00:00:00Z",
-                "id": "1998-067QS",
-                "reusability": "",
-                "name": "EVA-55 debris?",
-                "category": "C",
-                "smc": false,
-                "location": 6,
-                "burnup": "Complete",
-                "emissions": {
-                    "NOx": 0.0,
-                    "Al2O3": 0.0,
-                    "BC": 0.0,
-                    "Cl": 0.0,
-                    "HCl": 0.0,
-                    "Unablated_Mass": 0.0
-                }
-            },
             {
                 "date": "2019-09-19T18:00:00Z",
                 "id": "2019-060B",
@@ -16071,7 +15953,7 @@
                 "name": "Soyuz-2-1b 72-176 Blok-I",
                 "category": "S2",
                 "smc": false,
-                "location": -1,
+                "location": 3,
                 "burnup": "Complete",
                 "emissions": {
                     "NOx": 0.942,
@@ -19553,7 +19435,7 @@
                 "name": "Progress MS-12",
                 "category": "P",
                 "smc": false,
-                "location": -1,
+                "location": 4,
                 "burnup": "Complete",
                 "emissions": {
                     "NOx": 1.73,
@@ -20594,7 +20476,7 @@
                 "name": "Soyuz-2-1b No. 046 Blok-I",
                 "category": "S2",
                 "smc": false,
-                "location": -1,
+                "location": 4,
                 "burnup": "Complete",
                 "emissions": {
                     "NOx": 0.942,
@@ -20931,29 +20813,6 @@
                     "BC": 0.004264,
                     "Cl": 0.00156,
                     "HCl": 0.000832,
-                    "Unablated_Mass": 0.0
-                }
-            }
-        ]
-    },
-    "2019-12-14": {
-        "launches": [],
-        "reentries": [
-            {
-                "date": "2019-12-14T00:00:00Z",
-                "id": "2019-069D",
-                "reusability": "",
-                "name": "deb Palisade?",
-                "category": "C",
-                "smc": false,
-                "location": 6,
-                "burnup": "Complete",
-                "emissions": {
-                    "NOx": 0.0,
-                    "Al2O3": 0.0,
-                    "BC": 0.0,
-                    "Cl": 0.0,
-                    "HCl": 0.0,
                     "Unablated_Mass": 0.0
                 }
             }

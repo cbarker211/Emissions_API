@@ -420,7 +420,7 @@
                 "name": "Fobos-Grunt MDU",
                 "category": "S3",
                 "smc": false,
-                "location": -1,
+                "location": 4,
                 "burnup": "Complete",
                 "emissions": {
                     "NOx": 0.6228,
@@ -806,17 +806,17 @@
                 "id": "2012-004B",
                 "reusability": "",
                 "name": "Soyuz-U-PVB No. 127 BLok-I",
-                "category": "S3",
+                "category": "S2",
                 "smc": false,
                 "location": 6,
                 "burnup": "Complete",
                 "emissions": {
-                    "NOx": 0.0,
-                    "Al2O3": 0.0,
-                    "BC": 0.0,
-                    "Cl": 0.0,
-                    "HCl": 0.0,
-                    "Unablated_Mass": 0.0
+                    "NOx": 0.964,
+                    "Al2O3": 1.09655,
+                    "BC": 0.06989,
+                    "Cl": 0.02651,
+                    "HCl": 0.01205,
+                    "Unablated_Mass": 0.8435
                 }
             }
         ]
@@ -1259,7 +1259,7 @@
                 "name": "Proton-M 935-24 Stage 3",
                 "category": "S3",
                 "smc": false,
-                "location": -1,
+                "location": 4,
                 "burnup": "Complete",
                 "emissions": {
                     "NOx": 1.4,
@@ -1386,24 +1386,6 @@
                     "Cl": 0.01958,
                     "HCl": 0.0089,
                     "Unablated_Mass": 0.623
-                }
-            },
-            {
-                "date": "2012-02-22T00:00:00Z",
-                "id": "1993-041F",
-                "reusability": "",
-                "name": "deb RADCAL",
-                "category": "C",
-                "smc": false,
-                "location": 6,
-                "burnup": "Complete",
-                "emissions": {
-                    "NOx": 0.0,
-                    "Al2O3": 0.0,
-                    "BC": 0.0,
-                    "Cl": 0.0,
-                    "HCl": 0.0,
-                    "Unablated_Mass": 0.0
                 }
             }
         ]
@@ -3433,17 +3415,17 @@
                 "id": "2001-050D",
                 "reusability": "",
                 "name": "Blok-ML 23-549",
-                "category": "S4",
+                "category": "S3",
                 "smc": false,
                 "location": 6,
                 "burnup": "Complete",
                 "emissions": {
-                    "NOx": 0.0,
-                    "Al2O3": 0.0,
-                    "BC": 0.0,
-                    "Cl": 0.0,
-                    "HCl": 0.0,
-                    "Unablated_Mass": 0.0
+                    "NOx": 0.3996,
+                    "Al2O3": 0.454545,
+                    "BC": 0.028971,
+                    "Cl": 0.010989,
+                    "HCl": 0.004995,
+                    "Unablated_Mass": 0.34964999999999996
                 }
             },
             {
@@ -6929,24 +6911,6 @@
                     "HCl": 8e-06,
                     "Unablated_Mass": 0.00019999999999999996
                 }
-            },
-            {
-                "date": "2012-06-18T00:00:00Z",
-                "id": "2012-032G",
-                "reusability": "",
-                "name": "deb CZ-2F?",
-                "category": "C",
-                "smc": false,
-                "location": 6,
-                "burnup": "Complete",
-                "emissions": {
-                    "NOx": 0.0,
-                    "Al2O3": 0.0,
-                    "BC": 0.0,
-                    "Cl": 0.0,
-                    "HCl": 0.0,
-                    "Unablated_Mass": 0.0
-                }
             }
         ]
     },
@@ -7585,24 +7549,6 @@
     "2012-07-07": {
         "launches": [],
         "reentries": [
-            {
-                "date": "2012-07-07T00:00:00Z",
-                "id": "1985-058C",
-                "reusability": "",
-                "name": "deb Kosmos-1666",
-                "category": "C",
-                "smc": false,
-                "location": 6,
-                "burnup": "Complete",
-                "emissions": {
-                    "NOx": 0.0,
-                    "Al2O3": 0.0,
-                    "BC": 0.0,
-                    "Cl": 0.0,
-                    "HCl": 0.0,
-                    "Unablated_Mass": 0.0
-                }
-            },
             {
                 "date": "2012-07-07T00:00:00Z",
                 "id": "2011-073B",
@@ -10843,24 +10789,6 @@
         "launches": [],
         "reentries": [
             {
-                "date": "2012-09-24T00:00:00Z",
-                "id": "1976-061D",
-                "reusability": "",
-                "name": "deb Kosmos-836? [UNID103]",
-                "category": "C",
-                "smc": false,
-                "location": 6,
-                "burnup": "Complete",
-                "emissions": {
-                    "NOx": 0.0,
-                    "Al2O3": 0.0,
-                    "BC": 0.0,
-                    "Cl": 0.0,
-                    "HCl": 0.0,
-                    "Unablated_Mass": 0.0
-                }
-            },
-            {
                 "date": "2012-09-24T17:03:00Z",
                 "id": "2012-024A",
                 "reusability": "",
@@ -11568,24 +11496,6 @@
                     "HCl": 0.014785,
                     "Unablated_Mass": 1.03495
                 }
-            },
-            {
-                "date": "2012-10-11T00:00:00Z",
-                "id": "2012-054E",
-                "reusability": "",
-                "name": "deb Dragon CRS-1",
-                "category": "C",
-                "smc": false,
-                "location": 6,
-                "burnup": "Complete",
-                "emissions": {
-                    "NOx": 0.0,
-                    "Al2O3": 0.0,
-                    "BC": 0.0,
-                    "Cl": 0.0,
-                    "HCl": 0.0,
-                    "Unablated_Mass": 0.0
-                }
             }
         ]
     },
@@ -11821,19 +11731,19 @@
                         0.060798,
                         0.393361,
                         0.338631,
-                        0.521392
+                        0.5236
                     ],
                     "CO": [
                         0.10252,
                         0.437297,
                         1.054933,
-                        2.248503
+                        2.273343
                     ],
                     "CO2": [
                         31.037476,
                         21.849296,
                         5.293174,
-                        7.16914
+                        7.19467
                     ],
                     "NOx": [
                         2.124573,
@@ -11845,31 +11755,31 @@
                         40.634806,
                         29.352695,
                         9.053007,
-                        13.938959
+                        14.011466
                     ],
                     "Al2O3": [
                         0.0,
                         0.0,
                         0.0,
-                        0.0
+                        0.045264
                     ],
                     "Cl": [
                         0.0,
                         0.0,
                         0.0,
-                        0.0
+                        0.007038
                     ],
                     "HCl": [
                         0.0,
                         0.0,
                         0.0,
-                        0.0
+                        0.009108
                     ],
                     "Cl2": [
                         0.0,
                         0.0,
                         0.0,
-                        0.0
+                        0.013662
                     ]
                 }
             },
@@ -12095,40 +12005,17 @@
                 "id": "1994-081D",
                 "reusability": "",
                 "name": "Blok-ML",
-                "category": "S4",
+                "category": "S3",
                 "smc": false,
                 "location": 6,
                 "burnup": "Complete",
                 "emissions": {
-                    "NOx": 0.0,
-                    "Al2O3": 0.0,
-                    "BC": 0.0,
-                    "Cl": 0.0,
-                    "HCl": 0.0,
-                    "Unablated_Mass": 0.0
-                }
-            }
-        ]
-    },
-    "2012-10-21": {
-        "launches": [],
-        "reentries": [
-            {
-                "date": "2012-10-21T00:00:00Z",
-                "id": "2008-021L",
-                "reusability": "",
-                "name": "deb PSLV",
-                "category": "C",
-                "smc": false,
-                "location": 6,
-                "burnup": "Complete",
-                "emissions": {
-                    "NOx": 0.0,
-                    "Al2O3": 0.0,
-                    "BC": 0.0,
-                    "Cl": 0.0,
-                    "HCl": 0.0,
-                    "Unablated_Mass": 0.0
+                    "NOx": 0.3996,
+                    "Al2O3": 0.454545,
+                    "BC": 0.028971,
+                    "Cl": 0.010989,
+                    "HCl": 0.004995,
+                    "Unablated_Mass": 0.34964999999999996
                 }
             }
         ]
@@ -12786,29 +12673,6 @@
             }
         ]
     },
-    "2012-11-01": {
-        "launches": [],
-        "reentries": [
-            {
-                "date": "2012-11-01T00:00:00Z",
-                "id": "2011-050D",
-                "reusability": "",
-                "name": "deb IGS O-4",
-                "category": "C",
-                "smc": false,
-                "location": 6,
-                "burnup": "Complete",
-                "emissions": {
-                    "NOx": 0.0,
-                    "Al2O3": 0.0,
-                    "BC": 0.0,
-                    "Cl": 0.0,
-                    "HCl": 0.0,
-                    "Unablated_Mass": 0.0
-                }
-            }
-        ]
-    },
     "2012-11-02": {
         "launches": [
             {
@@ -13008,29 +12872,6 @@
                     "Cl": 0.001678,
                     "HCl": 0.000763,
                     "Unablated_Mass": 0.0533925
-                }
-            }
-        ]
-    },
-    "2012-11-07": {
-        "launches": [],
-        "reentries": [
-            {
-                "date": "2012-11-07T00:00:00Z",
-                "id": "2004-029C",
-                "reusability": "",
-                "name": "deb Tan Ce 2",
-                "category": "C",
-                "smc": false,
-                "location": 6,
-                "burnup": "Complete",
-                "emissions": {
-                    "NOx": 0.0,
-                    "Al2O3": 0.0,
-                    "BC": 0.0,
-                    "Cl": 0.0,
-                    "HCl": 0.0,
-                    "Unablated_Mass": 0.0
                 }
             }
         ]

@@ -81,29 +81,6 @@
             }
         ]
     },
-    "2016-01-05": {
-        "launches": [],
-        "reentries": [
-            {
-                "date": "2016-01-05T00:00:00Z",
-                "id": "1983-072D",
-                "reusability": "",
-                "name": "SGS debris",
-                "category": "C",
-                "smc": false,
-                "location": 6,
-                "burnup": "Complete",
-                "emissions": {
-                    "NOx": 0.0,
-                    "Al2O3": 0.0,
-                    "BC": 0.0,
-                    "Cl": 0.0,
-                    "HCl": 0.0,
-                    "Unablated_Mass": 0.0
-                }
-            }
-        ]
-    },
     "2016-01-06": {
         "launches": [],
         "reentries": [
@@ -263,7 +240,7 @@
                 "name": "CZ-3B Y36 Stage 3",
                 "category": "S3",
                 "smc": false,
-                "location": -1,
+                "location": 3,
                 "burnup": "Complete",
                 "emissions": {
                     "NOx": 1.108,
@@ -497,7 +474,7 @@
                 "name": "Falcon 9-019 Stage 2",
                 "category": "S2",
                 "smc": false,
-                "location": -1,
+                "location": 4,
                 "burnup": "Complete",
                 "emissions": {
                     "NOx": 1.96,
@@ -1670,24 +1647,6 @@
         ],
         "reentries": [
             {
-                "date": "2016-02-07T00:00:00Z",
-                "id": "2007-055G",
-                "reusability": "",
-                "name": "deb Yaogan Weixing 3",
-                "category": "C",
-                "smc": false,
-                "location": 6,
-                "burnup": "Complete",
-                "emissions": {
-                    "NOx": 0.0,
-                    "Al2O3": 0.0,
-                    "BC": 0.0,
-                    "Cl": 0.0,
-                    "HCl": 0.0,
-                    "Unablated_Mass": 0.0
-                }
-            },
-            {
                 "date": "2016-02-07T07:15:00Z",
                 "id": "2011-066A",
                 "reusability": "",
@@ -2185,7 +2144,7 @@
                 "name": "UR-100NB",
                 "category": "S2",
                 "smc": false,
-                "location": -1,
+                "location": 3,
                 "burnup": "Complete",
                 "emissions": {
                     "NOx": 0.8,
@@ -2939,24 +2898,6 @@
                     "Cl": 0.021,
                     "HCl": 0.0112,
                     "Unablated_Mass": 0.27999999999999997
-                }
-            },
-            {
-                "date": "2016-03-10T00:00:00Z",
-                "id": "1998-067HR",
-                "reusability": "",
-                "name": "EVA debris (VKD-42)",
-                "category": "C",
-                "smc": false,
-                "location": 6,
-                "burnup": "Complete",
-                "emissions": {
-                    "NOx": 0.0,
-                    "Al2O3": 0.0,
-                    "BC": 0.0,
-                    "Cl": 0.0,
-                    "HCl": 0.0,
-                    "Unablated_Mass": 0.0
                 }
             },
             {
@@ -4570,29 +4511,6 @@
             }
         ]
     },
-    "2016-04-01": {
-        "launches": [],
-        "reentries": [
-            {
-                "date": "2016-04-01T00:00:00Z",
-                "id": "2013-030C",
-                "reusability": "",
-                "name": "deb Resurs-P No. 1",
-                "category": "C",
-                "smc": false,
-                "location": 6,
-                "burnup": "Complete",
-                "emissions": {
-                    "NOx": 0.0,
-                    "Al2O3": 0.0,
-                    "BC": 0.0,
-                    "Cl": 0.0,
-                    "HCl": 0.0,
-                    "Unablated_Mass": 0.0
-                }
-            }
-        ]
-    },
     "2016-04-03": {
         "launches": [],
         "reentries": [
@@ -4841,24 +4759,6 @@
         ],
         "reentries": [
             {
-                "date": "2016-04-08T00:00:00Z",
-                "id": "1991-086G",
-                "reusability": "",
-                "name": "deb Interkosmos-25",
-                "category": "C",
-                "smc": false,
-                "location": 6,
-                "burnup": "Complete",
-                "emissions": {
-                    "NOx": 0.0,
-                    "Al2O3": 0.0,
-                    "BC": 0.0,
-                    "Cl": 0.0,
-                    "HCl": 0.0,
-                    "Unablated_Mass": 0.0
-                }
-            },
-            {
                 "date": "2016-04-08T05:45:00Z",
                 "id": "2015-053B",
                 "reusability": "",
@@ -4937,7 +4837,7 @@
                 "name": "Progress M-29M",
                 "category": "P",
                 "smc": false,
-                "location": -1,
+                "location": 4,
                 "burnup": "Complete",
                 "emissions": {
                     "NOx": 1.73,
@@ -5281,7 +5181,7 @@
                 "name": "Fregat-M No. 133-08",
                 "category": "S3",
                 "smc": false,
-                "location": -1,
+                "location": 4,
                 "burnup": "Complete",
                 "emissions": {
                     "NOx": 0.4,
@@ -5435,17 +5335,17 @@
                 "id": "2016-026E",
                 "reusability": "",
                 "name": "Volga 14S46 No. 6",
-                "category": "S4",
+                "category": "S3",
                 "smc": false,
-                "location": -1,
+                "location": 4,
                 "burnup": "Complete",
                 "emissions": {
-                    "NOx": 0.0,
-                    "Al2O3": 0.0,
-                    "BC": 0.0,
-                    "Cl": 0.0,
-                    "HCl": 0.0,
-                    "Unablated_Mass": 0.0
+                    "NOx": 0.356,
+                    "Al2O3": 0.40495,
+                    "BC": 0.02581,
+                    "Cl": 0.00979,
+                    "HCl": 0.00445,
+                    "Unablated_Mass": 0.3115
                 }
             },
             {
@@ -6013,17 +5913,17 @@
                 "id": "1980-051B",
                 "reusability": "",
                 "name": "Vostok-2M (N72) Stage 3",
-                "category": "S3",
+                "category": "S2",
                 "smc": false,
                 "location": 1,
                 "burnup": "Complete",
                 "emissions": {
-                    "NOx": 0.0,
-                    "Al2O3": 0.0,
-                    "BC": 0.0,
-                    "Cl": 0.0,
-                    "HCl": 0.0,
-                    "Unablated_Mass": 0.0
+                    "NOx": 0.576,
+                    "Al2O3": 0.6552,
+                    "BC": 0.04176,
+                    "Cl": 0.01584,
+                    "HCl": 0.0072,
+                    "Unablated_Mass": 0.504
                 }
             }
         ]
@@ -7200,7 +7100,7 @@
                 "name": "Proton-M 937-01 Stage 3",
                 "category": "S3",
                 "smc": false,
-                "location": -1,
+                "location": 4,
                 "burnup": "Complete",
                 "emissions": {
                     "NOx": 1.4,
@@ -8781,7 +8681,7 @@
                 "name": "DFFC",
                 "category": "P",
                 "smc": false,
-                "location": -1,
+                "location": 3,
                 "burnup": "Partial",
                 "emissions": {
                     "NOx": 0.455,
@@ -8840,7 +8740,7 @@
                 "name": "Yuanzheng-1A Y1",
                 "category": "S3",
                 "smc": false,
-                "location": -1,
+                "location": 4,
                 "burnup": "Complete",
                 "emissions": {
                     "NOx": 1.28,
@@ -9729,7 +9629,7 @@
                 "name": "Falcon 9-027 Stage 2",
                 "category": "S2",
                 "smc": false,
-                "location": -1,
+                "location": 4,
                 "burnup": "Complete",
                 "emissions": {
                     "NOx": 1.96,
@@ -9788,7 +9688,7 @@
                 "name": "Soyuz-U-PVB No. 147 Blok-I",
                 "category": "S2",
                 "smc": false,
-                "location": -1,
+                "location": 3,
                 "burnup": "Complete",
                 "emissions": {
                     "NOx": 0.964,
@@ -9960,7 +9860,7 @@
                 "name": "CZ-7 Y1 Stage 2",
                 "category": "S2",
                 "smc": false,
-                "location": -1,
+                "location": 3,
                 "burnup": "Complete",
                 "emissions": {
                     "NOx": 2.3,
@@ -12177,7 +12077,7 @@
                 "name": "Vega AVUM VV07",
                 "category": "S4",
                 "smc": false,
-                "location": -1,
+                "location": 4,
                 "burnup": "Complete",
                 "emissions": {
                     "NOx": 0.2752,
@@ -12832,17 +12732,17 @@
                 "id": "1997-054D",
                 "reusability": "",
                 "name": "Blok-ML 16-492",
-                "category": "S4",
+                "category": "S3",
                 "smc": false,
                 "location": 6,
                 "burnup": "Complete",
                 "emissions": {
-                    "NOx": 0.0,
-                    "Al2O3": 0.0,
-                    "BC": 0.0,
-                    "Cl": 0.0,
-                    "HCl": 0.0,
-                    "Unablated_Mass": 0.0
+                    "NOx": 0.3996,
+                    "Al2O3": 0.454545,
+                    "BC": 0.028971,
+                    "Cl": 0.010989,
+                    "HCl": 0.004995,
+                    "Unablated_Mass": 0.34964999999999996
                 }
             }
         ]
@@ -12880,7 +12780,7 @@
                 "name": "Flock 2b-2",
                 "category": "P",
                 "smc": false,
-                "location": -1,
+                "location": 3,
                 "burnup": "Complete",
                 "emissions": {
                     "NOx": 0.002,
@@ -13109,17 +13009,17 @@
                 "id": "2004-005B",
                 "reusability": "",
                 "name": "Blok-ML",
-                "category": "S4",
+                "category": "S3",
                 "smc": false,
                 "location": 6,
                 "burnup": "Complete",
                 "emissions": {
-                    "NOx": 0.0,
-                    "Al2O3": 0.0,
-                    "BC": 0.0,
-                    "Cl": 0.0,
-                    "HCl": 0.0,
-                    "Unablated_Mass": 0.0
+                    "NOx": 0.3996,
+                    "Al2O3": 0.454545,
+                    "BC": 0.028971,
+                    "Cl": 0.010989,
+                    "HCl": 0.004995,
+                    "Unablated_Mass": 0.34964999999999996
                 }
             },
             {
@@ -15681,24 +15581,6 @@
                     "HCl": 3.2e-05,
                     "Unablated_Mass": 0.0007999999999999998
                 }
-            },
-            {
-                "date": "2016-11-23T00:00:00Z",
-                "id": "1998-067KD",
-                "reusability": "",
-                "name": "EVA-36 debris",
-                "category": "C",
-                "smc": false,
-                "location": 6,
-                "burnup": "Complete",
-                "emissions": {
-                    "NOx": 0.0,
-                    "Al2O3": 0.0,
-                    "BC": 0.0,
-                    "Cl": 0.0,
-                    "HCl": 0.0,
-                    "Unablated_Mass": 0.0
-                }
             }
         ]
     },
@@ -15744,24 +15626,6 @@
                     "Cl": 1.5e-05,
                     "HCl": 8e-06,
                     "Unablated_Mass": 0.00019999999999999996
-                }
-            },
-            {
-                "date": "2016-12-01T00:00:00Z",
-                "id": "1998-067KE",
-                "reusability": "",
-                "name": "EVA-37 debris?",
-                "category": "C",
-                "smc": false,
-                "location": 6,
-                "burnup": "Complete",
-                "emissions": {
-                    "NOx": 0.0,
-                    "Al2O3": 0.0,
-                    "BC": 0.0,
-                    "Cl": 0.0,
-                    "HCl": 0.0,
-                    "Unablated_Mass": 0.0
                 }
             }
         ]
@@ -15843,7 +15707,7 @@
                 "name": "Vega AVUM VV08",
                 "category": "S4",
                 "smc": false,
-                "location": -1,
+                "location": 4,
                 "burnup": "Complete",
                 "emissions": {
                     "NOx": 0.2752,
@@ -16346,7 +16210,7 @@
                 "name": "Delta 376",
                 "category": "S2",
                 "smc": false,
-                "location": -1,
+                "location": 4,
                 "burnup": "Complete",
                 "emissions": {
                     "NOx": 1.396,
@@ -17610,29 +17474,6 @@
             }
         ]
     },
-    "2016-12-27": {
-        "launches": [],
-        "reentries": [
-            {
-                "date": "2016-12-27T00:00:00Z",
-                "id": "1998-067KG",
-                "reusability": "",
-                "name": "EVA-37 debris?",
-                "category": "C",
-                "smc": false,
-                "location": 6,
-                "burnup": "Complete",
-                "emissions": {
-                    "NOx": 0.0,
-                    "Al2O3": 0.0,
-                    "BC": 0.0,
-                    "Cl": 0.0,
-                    "HCl": 0.0,
-                    "Unablated_Mass": 0.0
-                }
-            }
-        ]
-    },
     "2016-12-28": {
         "launches": [
             {
@@ -17755,29 +17596,6 @@
                     "Cl": 0.005625,
                     "HCl": 0.003,
                     "Unablated_Mass": 0.2625
-                }
-            }
-        ]
-    },
-    "2016-12-29": {
-        "launches": [],
-        "reentries": [
-            {
-                "date": "2016-12-29T00:00:00Z",
-                "id": "1998-067KF",
-                "reusability": "",
-                "name": "EVA-37 debris?",
-                "category": "C",
-                "smc": false,
-                "location": 6,
-                "burnup": "Complete",
-                "emissions": {
-                    "NOx": 0.0,
-                    "Al2O3": 0.0,
-                    "BC": 0.0,
-                    "Cl": 0.0,
-                    "HCl": 0.0,
-                    "Unablated_Mass": 0.0
                 }
             }
         ]

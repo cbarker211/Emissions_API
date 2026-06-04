@@ -774,7 +774,7 @@
                 "name": "Star 12",
                 "category": "C",
                 "smc": false,
-                "location": -1,
+                "location": 4,
                 "burnup": "Complete",
                 "emissions": {
                     "NOx": 0.004,
@@ -792,7 +792,7 @@
                 "name": "SRV 665",
                 "category": "P",
                 "smc": false,
-                "location": -1,
+                "location": 4,
                 "burnup": "Partial",
                 "emissions": {
                     "NOx": 0.027475,
@@ -1126,7 +1126,7 @@
                 "name": "SRV 666",
                 "category": "P",
                 "smc": false,
-                "location": -1,
+                "location": 4,
                 "burnup": "Partial",
                 "emissions": {
                     "NOx": 0.027475,
@@ -1149,7 +1149,7 @@
                 "name": "SRV Mission 4015",
                 "category": "P",
                 "smc": false,
-                "location": -1,
+                "location": 4,
                 "burnup": "Partial",
                 "emissions": {
                     "NOx": 0.027475,
@@ -1188,17 +1188,17 @@
                 "id": "1965-001B",
                 "reusability": "",
                 "name": "Vostok-2 (N23) Stage 3",
-                "category": "S3",
+                "category": "S2",
                 "smc": false,
                 "location": 6,
                 "burnup": "Complete",
                 "emissions": {
-                    "NOx": 0.0,
-                    "Al2O3": 0.0,
-                    "BC": 0.0,
-                    "Cl": 0.0,
-                    "HCl": 0.0,
-                    "Unablated_Mass": 0.0
+                    "NOx": 0.576,
+                    "Al2O3": 0.6552,
+                    "BC": 0.04176,
+                    "Cl": 0.01584,
+                    "HCl": 0.0072,
+                    "Unablated_Mass": 0.504
                 }
             },
             {
@@ -3839,7 +3839,7 @@
                 "name": "SRV Mission 4016",
                 "category": "P",
                 "smc": false,
-                "location": -1,
+                "location": 4,
                 "burnup": "Partial",
                 "emissions": {
                     "NOx": 0.027475,
@@ -5327,17 +5327,17 @@
                 "id": "1965-025B",
                 "reusability": "",
                 "name": "Vostok-2 (N24) Stage 3",
-                "category": "S3",
+                "category": "S2",
                 "smc": false,
                 "location": 6,
                 "burnup": "Complete",
                 "emissions": {
-                    "NOx": 0.0,
-                    "Al2O3": 0.0,
-                    "BC": 0.0,
-                    "Cl": 0.0,
-                    "HCl": 0.0,
-                    "Unablated_Mass": 0.0
+                    "NOx": 0.576,
+                    "Al2O3": 0.6552,
+                    "BC": 0.04176,
+                    "Cl": 0.01584,
+                    "HCl": 0.0072,
+                    "Unablated_Mass": 0.504
                 }
             }
         ]
@@ -6485,7 +6485,7 @@
                 "name": "SRV Mission 4017",
                 "category": "P",
                 "smc": false,
-                "location": -1,
+                "location": 4,
                 "burnup": "Partial",
                 "emissions": {
                     "NOx": 0.027475,
@@ -6611,7 +6611,7 @@
                 "name": "SRV 626",
                 "category": "P",
                 "smc": false,
-                "location": -1,
+                "location": 4,
                 "burnup": "Partial",
                 "emissions": {
                     "NOx": 0.027475,
@@ -7605,33 +7605,33 @@
                 "location": "Spaceport Florida Authority",
                 "emissions": {
                     "BC": [
-                        0.028677,
-                        0.210267,
-                        0.471104,
+                        0.04123,
+                        0.30231,
+                        0.592959,
                         0.72453
                     ],
                     "CO": [
-                        0.116211,
-                        0.564803,
-                        4.053474,
+                        0.167081,
+                        0.812041,
+                        4.730896,
                         10.472745
                     ],
                     "CO2": [
-                        36.857628,
-                        27.146434,
-                        17.971074,
+                        52.991802,
+                        39.0296,
+                        23.202429,
                         20.978423
                     ],
                     "NOx": [
-                        0.402925,
-                        0.002415,
+                        0.579303,
+                        0.003472,
                         0.0,
                         0.0
                     ],
                     "H2O": [
-                        13.991806,
-                        10.589689,
-                        9.194341,
+                        20.116623,
+                        15.225252,
+                        11.572532,
                         14.140349
                     ],
                     "Al2O3": [
@@ -7689,17 +7689,17 @@
                 "id": "1965-035B",
                 "reusability": "",
                 "name": "Vostok-2 (N25) Stage 3",
-                "category": "S3",
+                "category": "S2",
                 "smc": false,
                 "location": 6,
                 "burnup": "Complete",
                 "emissions": {
-                    "NOx": 0.0,
-                    "Al2O3": 0.0,
-                    "BC": 0.0,
-                    "Cl": 0.0,
-                    "HCl": 0.0,
-                    "Unablated_Mass": 0.0
+                    "NOx": 0.576,
+                    "Al2O3": 0.6552,
+                    "BC": 0.04176,
+                    "Cl": 0.01584,
+                    "HCl": 0.0072,
+                    "Unablated_Mass": 0.504
                 }
             },
             {
@@ -8235,7 +8235,7 @@
                 "name": "SRV 670",
                 "category": "P",
                 "smc": false,
-                "location": -1,
+                "location": 4,
                 "burnup": "Partial",
                 "emissions": {
                     "NOx": 0.027475,
@@ -8420,7 +8420,7 @@
                 "name": "SRV Mission 4018",
                 "category": "P",
                 "smc": false,
-                "location": -1,
+                "location": 4,
                 "burnup": "Partial",
                 "emissions": {
                     "NOx": 0.027475,
@@ -9349,7 +9349,7 @@
                 "name": "SRV 672",
                 "category": "P",
                 "smc": false,
-                "location": -1,
+                "location": 4,
                 "burnup": "Partial",
                 "emissions": {
                     "NOx": 0.027475,
@@ -9516,7 +9516,7 @@
                 "name": "SRV 673",
                 "category": "P",
                 "smc": false,
-                "location": -1,
+                "location": 4,
                 "burnup": "Partial",
                 "emissions": {
                     "NOx": 0.027475,
@@ -10242,7 +10242,7 @@
                 "name": "SRV Mission 4019",
                 "category": "P",
                 "smc": false,
-                "location": -1,
+                "location": 4,
                 "burnup": "Partial",
                 "emissions": {
                     "NOx": 0.027475,
@@ -10714,17 +10714,17 @@
                 "id": "1965-046B",
                 "reusability": "",
                 "name": "Vostok-2 (N26) Stage 3",
-                "category": "S3",
+                "category": "S2",
                 "smc": false,
                 "location": 6,
                 "burnup": "Complete",
                 "emissions": {
-                    "NOx": 0.0,
-                    "Al2O3": 0.0,
-                    "BC": 0.0,
-                    "Cl": 0.0,
-                    "HCl": 0.0,
-                    "Unablated_Mass": 0.0
+                    "NOx": 0.576,
+                    "Al2O3": 0.6552,
+                    "BC": 0.04176,
+                    "Cl": 0.01584,
+                    "HCl": 0.0072,
+                    "Unablated_Mass": 0.504
                 }
             }
         ]
@@ -11759,7 +11759,7 @@
                 "name": "SRV 664",
                 "category": "P",
                 "smc": false,
-                "location": -1,
+                "location": 4,
                 "burnup": "Partial",
                 "emissions": {
                     "NOx": 0.027475,
@@ -11818,7 +11818,7 @@
                 "name": "SRV 658",
                 "category": "P",
                 "smc": false,
-                "location": -1,
+                "location": 4,
                 "burnup": "Partial",
                 "emissions": {
                     "NOx": 0.027475,
@@ -12336,7 +12336,7 @@
                 "name": "SRV Mission 4021",
                 "category": "P",
                 "smc": false,
-                "location": -1,
+                "location": 4,
                 "burnup": "Partial",
                 "emissions": {
                     "NOx": 0.027475,
@@ -12704,12 +12704,12 @@
                 "location": 6,
                 "burnup": "Complete",
                 "emissions": {
-                    "NOx": 0.1732,
-                    "Al2O3": 0.13856,
-                    "BC": 0.017753,
-                    "Cl": 0.006495,
-                    "HCl": 0.003464,
-                    "Unablated_Mass": 0.08659999999999998
+                    "NOx": 0.3512,
+                    "Al2O3": 0.18438,
+                    "BC": 0.035998,
+                    "Cl": 0.01317,
+                    "HCl": 0.007024,
+                    "Unablated_Mass": 0.6145999999999999
                 }
             },
             {
@@ -12722,12 +12722,12 @@
                 "location": 6,
                 "burnup": "Complete",
                 "emissions": {
-                    "NOx": 0.1636,
-                    "Al2O3": 0.13088,
-                    "BC": 0.016769,
-                    "Cl": 0.006135,
-                    "HCl": 0.003272,
-                    "Unablated_Mass": 0.08179999999999998
+                    "NOx": 0.3512,
+                    "Al2O3": 0.18438,
+                    "BC": 0.035998,
+                    "Cl": 0.01317,
+                    "HCl": 0.007024,
+                    "Unablated_Mass": 0.6145999999999999
                 }
             },
             {
@@ -13981,17 +13981,17 @@
                 "id": "1965-066B",
                 "reusability": "",
                 "name": "Vostok-2 (N28) Stage 3",
-                "category": "S3",
+                "category": "S2",
                 "smc": false,
                 "location": 6,
                 "burnup": "Complete",
                 "emissions": {
-                    "NOx": 0.0,
-                    "Al2O3": 0.0,
-                    "BC": 0.0,
-                    "Cl": 0.0,
-                    "HCl": 0.0,
-                    "Unablated_Mass": 0.0
+                    "NOx": 0.576,
+                    "Al2O3": 0.6552,
+                    "BC": 0.04176,
+                    "Cl": 0.01584,
+                    "HCl": 0.0072,
+                    "Unablated_Mass": 0.504
                 }
             },
             {
@@ -15296,7 +15296,7 @@
                 "name": "SRV Mission 4022",
                 "category": "P",
                 "smc": false,
-                "location": -1,
+                "location": 4,
                 "burnup": "Partial",
                 "emissions": {
                     "NOx": 0.027475,
@@ -15466,33 +15466,33 @@
                 "location": "Vandenberg Space Force Base",
                 "emissions": {
                     "BC": [
-                        0.028677,
-                        0.210267,
-                        0.471104,
+                        0.04123,
+                        0.30231,
+                        0.592959,
                         0.72453
                     ],
                     "CO": [
-                        0.116211,
-                        0.564803,
-                        4.053474,
+                        0.167081,
+                        0.812041,
+                        4.730896,
                         10.472745
                     ],
                     "CO2": [
-                        36.857628,
-                        27.146434,
-                        17.971074,
+                        52.991802,
+                        39.0296,
+                        23.202429,
                         20.978423
                     ],
                     "NOx": [
-                        0.402925,
-                        0.002415,
+                        0.579303,
+                        0.003472,
                         0.0,
                         0.0
                     ],
                     "H2O": [
-                        13.991806,
-                        10.589689,
-                        9.194341,
+                        20.116623,
+                        15.225252,
+                        11.572532,
                         14.140349
                     ],
                     "Al2O3": [
@@ -17811,7 +17811,7 @@
                 "name": "SRV Mission 4023",
                 "category": "P",
                 "smc": false,
-                "location": -1,
+                "location": 4,
                 "burnup": "Partial",
                 "emissions": {
                     "NOx": 0.027475,
@@ -19409,29 +19409,6 @@
             }
         ]
     },
-    "1965-11-30": {
-        "launches": [],
-        "reentries": [
-            {
-                "date": "1965-11-30T00:00:00Z",
-                "id": "1963-046A",
-                "reusability": "",
-                "name": "IMP 1",
-                "category": "P",
-                "smc": false,
-                "location": -1,
-                "burnup": "Complete",
-                "emissions": {
-                    "NOx": 0.0252,
-                    "Al2O3": 0.02016,
-                    "BC": 0.002583,
-                    "Cl": 0.000945,
-                    "HCl": 0.000504,
-                    "Unablated_Mass": 0.012599999999999998
-                }
-            }
-        ]
-    },
     "1965-12-01": {
         "launches": [],
         "reentries": [
@@ -20912,12 +20889,12 @@
                 "location": 6,
                 "burnup": "Complete",
                 "emissions": {
-                    "NOx": 0.0,
-                    "Al2O3": 0.0,
-                    "BC": 0.0,
-                    "Cl": 0.0,
-                    "HCl": 0.0,
-                    "Unablated_Mass": 0.0
+                    "NOx": 0.3512,
+                    "Al2O3": 0.18438,
+                    "BC": 0.035998,
+                    "Cl": 0.01317,
+                    "HCl": 0.007024,
+                    "Unablated_Mass": 0.6145999999999999
                 }
             },
             {
@@ -20930,12 +20907,12 @@
                 "location": 6,
                 "burnup": "Complete",
                 "emissions": {
-                    "NOx": 0.0,
-                    "Al2O3": 0.0,
-                    "BC": 0.0,
-                    "Cl": 0.0,
-                    "HCl": 0.0,
-                    "Unablated_Mass": 0.0
+                    "NOx": 0.3512,
+                    "Al2O3": 0.18438,
+                    "BC": 0.035998,
+                    "Cl": 0.01317,
+                    "HCl": 0.007024,
+                    "Unablated_Mass": 0.6145999999999999
                 }
             }
         ]
@@ -22104,17 +22081,17 @@
                 "id": "1965-103B",
                 "reusability": "",
                 "name": "Vostok-2 (N30) Stage 3",
-                "category": "S3",
+                "category": "S2",
                 "smc": false,
                 "location": 6,
                 "burnup": "Complete",
                 "emissions": {
-                    "NOx": 0.0,
-                    "Al2O3": 0.0,
-                    "BC": 0.0,
-                    "Cl": 0.0,
-                    "HCl": 0.0,
-                    "Unablated_Mass": 0.0
+                    "NOx": 0.576,
+                    "Al2O3": 0.6552,
+                    "BC": 0.04176,
+                    "Cl": 0.01584,
+                    "HCl": 0.0072,
+                    "Unablated_Mass": 0.504
                 }
             },
             {

@@ -346,12 +346,12 @@
                 "location": 6,
                 "burnup": "Complete",
                 "emissions": {
-                    "NOx": 0.0,
-                    "Al2O3": 0.0,
-                    "BC": 0.0,
-                    "Cl": 0.0,
-                    "HCl": 0.0,
-                    "Unablated_Mass": 0.0
+                    "NOx": 0.3512,
+                    "Al2O3": 0.18438,
+                    "BC": 0.035998,
+                    "Cl": 0.01317,
+                    "HCl": 0.007024,
+                    "Unablated_Mass": 0.6145999999999999
                 }
             },
             {
@@ -364,12 +364,12 @@
                 "location": 6,
                 "burnup": "Complete",
                 "emissions": {
-                    "NOx": 0.0,
-                    "Al2O3": 0.0,
-                    "BC": 0.0,
-                    "Cl": 0.0,
-                    "HCl": 0.0,
-                    "Unablated_Mass": 0.0
+                    "NOx": 0.3512,
+                    "Al2O3": 0.18438,
+                    "BC": 0.035998,
+                    "Cl": 0.01317,
+                    "HCl": 0.007024,
+                    "Unablated_Mass": 0.6145999999999999
                 }
             }
         ]
@@ -1446,17 +1446,17 @@
                 "id": "1968-049B",
                 "reusability": "",
                 "name": "Vostok-2M (N10) Stage 3",
-                "category": "S3",
+                "category": "S2",
                 "smc": false,
                 "location": 6,
                 "burnup": "Complete",
                 "emissions": {
-                    "NOx": 0.0,
-                    "Al2O3": 0.0,
-                    "BC": 0.0,
-                    "Cl": 0.0,
-                    "HCl": 0.0,
-                    "Unablated_Mass": 0.0
+                    "NOx": 0.576,
+                    "Al2O3": 0.6552,
+                    "BC": 0.04176,
+                    "Cl": 0.01584,
+                    "HCl": 0.0072,
+                    "Unablated_Mass": 0.504
                 }
             }
         ]
@@ -1628,29 +1628,6 @@
             }
         ]
     },
-    "1991-02-04": {
-        "launches": [],
-        "reentries": [
-            {
-                "date": "1991-02-04T00:00:00Z",
-                "id": "1986-017CT",
-                "reusability": "",
-                "name": "EO-8 EVA-1 debris",
-                "category": "C",
-                "smc": false,
-                "location": 6,
-                "burnup": "Complete",
-                "emissions": {
-                    "NOx": 0.0,
-                    "Al2O3": 0.0,
-                    "BC": 0.0,
-                    "Cl": 0.0,
-                    "HCl": 0.0,
-                    "Unablated_Mass": 0.0
-                }
-            }
-        ]
-    },
     "1991-02-05": {
         "launches": [
             {
@@ -1721,24 +1698,6 @@
             }
         ],
         "reentries": [
-            {
-                "date": "1991-02-05T00:00:00Z",
-                "id": "1986-017CU",
-                "reusability": "",
-                "name": "EO-8 EVA-1 debris",
-                "category": "C",
-                "smc": false,
-                "location": 6,
-                "burnup": "Complete",
-                "emissions": {
-                    "NOx": 0.0,
-                    "Al2O3": 0.0,
-                    "BC": 0.0,
-                    "Cl": 0.0,
-                    "HCl": 0.0,
-                    "Unablated_Mass": 0.0
-                }
-            },
             {
                 "date": "1991-02-05T00:00:00Z",
                 "id": "1991-007",
@@ -1895,7 +1854,7 @@
                 "name": "Salyut-7",
                 "category": "P",
                 "smc": false,
-                "location": -1,
+                "location": 3,
                 "burnup": "Complete",
                 "emissions": {
                     "NOx": 16.9136,
@@ -2071,24 +2030,6 @@
                     "Cl": 7.5e-05,
                     "HCl": 4e-05,
                     "Unablated_Mass": 0.0009999999999999998
-                }
-            },
-            {
-                "date": "1991-02-08T00:00:00Z",
-                "id": "1991-008C",
-                "reusability": "",
-                "name": "deb Kosmos-2124",
-                "category": "C",
-                "smc": false,
-                "location": 6,
-                "burnup": "Complete",
-                "emissions": {
-                    "NOx": 0.0,
-                    "Al2O3": 0.0,
-                    "BC": 0.0,
-                    "Cl": 0.0,
-                    "HCl": 0.0,
-                    "Unablated_Mass": 0.0
                 }
             }
         ]
@@ -3153,29 +3094,6 @@
             }
         ]
     },
-    "1991-02-24": {
-        "launches": [],
-        "reentries": [
-            {
-                "date": "1991-02-24T00:00:00Z",
-                "id": "1986-017CY",
-                "reusability": "",
-                "name": "EO-8 EVA-2 debris (Strela)",
-                "category": "C",
-                "smc": false,
-                "location": 6,
-                "burnup": "Complete",
-                "emissions": {
-                    "NOx": 0.0,
-                    "Al2O3": 0.0,
-                    "BC": 0.0,
-                    "Cl": 0.0,
-                    "HCl": 0.0,
-                    "Unablated_Mass": 0.0
-                }
-            }
-        ]
-    },
     "1991-02-26": {
         "launches": [
             {
@@ -3510,24 +3428,6 @@
         "reentries": [
             {
                 "date": "1991-03-01T00:00:00Z",
-                "id": "1986-017CX",
-                "reusability": "",
-                "name": "EO-8 EVA-2 debris (Strela)",
-                "category": "C",
-                "smc": false,
-                "location": 6,
-                "burnup": "Complete",
-                "emissions": {
-                    "NOx": 0.0,
-                    "Al2O3": 0.0,
-                    "BC": 0.0,
-                    "Cl": 0.0,
-                    "HCl": 0.0,
-                    "Unablated_Mass": 0.0
-                }
-            },
-            {
-                "date": "1991-03-01T00:00:00Z",
                 "id": "1990-068",
                 "reusability": "",
                 "name": "Star 48 yo weight",
@@ -3750,24 +3650,6 @@
                     "Cl": 0.006555,
                     "HCl": 0.003496,
                     "Unablated_Mass": 0.08739999999999998
-                }
-            },
-            {
-                "date": "1991-03-05T00:00:00Z",
-                "id": "1986-017CW",
-                "reusability": "",
-                "name": "EO-8 EVA-2 debris (Strela)",
-                "category": "C",
-                "smc": false,
-                "location": 6,
-                "burnup": "Complete",
-                "emissions": {
-                    "NOx": 0.0,
-                    "Al2O3": 0.0,
-                    "BC": 0.0,
-                    "Cl": 0.0,
-                    "HCl": 0.0,
-                    "Unablated_Mass": 0.0
                 }
             }
         ]
@@ -4368,12 +4250,12 @@
                 "location": 6,
                 "burnup": "Complete",
                 "emissions": {
-                    "NOx": 0.0,
-                    "Al2O3": 0.0,
-                    "BC": 0.0,
-                    "Cl": 0.0,
-                    "HCl": 0.0,
-                    "Unablated_Mass": 0.0
+                    "NOx": 0.3512,
+                    "Al2O3": 0.18438,
+                    "BC": 0.035998,
+                    "Cl": 0.01317,
+                    "HCl": 0.007024,
+                    "Unablated_Mass": 0.6145999999999999
                 }
             },
             {
@@ -4386,12 +4268,12 @@
                 "location": 6,
                 "burnup": "Complete",
                 "emissions": {
-                    "NOx": 0.0,
-                    "Al2O3": 0.0,
-                    "BC": 0.0,
-                    "Cl": 0.0,
-                    "HCl": 0.0,
-                    "Unablated_Mass": 0.0
+                    "NOx": 0.3512,
+                    "Al2O3": 0.18438,
+                    "BC": 0.035998,
+                    "Cl": 0.01317,
+                    "HCl": 0.007024,
+                    "Unablated_Mass": 0.6145999999999999
                 }
             },
             {
@@ -4422,12 +4304,12 @@
                 "location": 6,
                 "burnup": "Complete",
                 "emissions": {
-                    "NOx": 0.0,
-                    "Al2O3": 0.0,
-                    "BC": 0.0,
-                    "Cl": 0.0,
-                    "HCl": 0.0,
-                    "Unablated_Mass": 0.0
+                    "NOx": 0.3512,
+                    "Al2O3": 0.18438,
+                    "BC": 0.035998,
+                    "Cl": 0.01317,
+                    "HCl": 0.007024,
+                    "Unablated_Mass": 0.6145999999999999
                 }
             },
             {
@@ -4440,12 +4322,12 @@
                 "location": 6,
                 "burnup": "Complete",
                 "emissions": {
-                    "NOx": 0.0,
-                    "Al2O3": 0.0,
-                    "BC": 0.0,
-                    "Cl": 0.0,
-                    "HCl": 0.0,
-                    "Unablated_Mass": 0.0
+                    "NOx": 0.3512,
+                    "Al2O3": 0.18438,
+                    "BC": 0.035998,
+                    "Cl": 0.01317,
+                    "HCl": 0.007024,
+                    "Unablated_Mass": 0.6145999999999999
                 }
             }
         ]
@@ -4787,24 +4669,6 @@
                     "Cl": 0.002288,
                     "HCl": 0.00104,
                     "Unablated_Mass": 0.0728
-                }
-            },
-            {
-                "date": "1991-03-18T00:00:00Z",
-                "id": "1986-017CV",
-                "reusability": "",
-                "name": "EO-8 EVA-2 debris (Strela)",
-                "category": "C",
-                "smc": false,
-                "location": 6,
-                "burnup": "Complete",
-                "emissions": {
-                    "NOx": 0.0,
-                    "Al2O3": 0.0,
-                    "BC": 0.0,
-                    "Cl": 0.0,
-                    "HCl": 0.0,
-                    "Unablated_Mass": 0.0
                 }
             }
         ]
@@ -5767,24 +5631,6 @@
     "1991-03-29": {
         "launches": [],
         "reentries": [
-            {
-                "date": "1991-03-29T00:00:00Z",
-                "id": "1991-022E",
-                "reusability": "",
-                "name": "deb Blok-I",
-                "category": "C",
-                "smc": false,
-                "location": 6,
-                "burnup": "Complete",
-                "emissions": {
-                    "NOx": 0.0,
-                    "Al2O3": 0.0,
-                    "BC": 0.0,
-                    "Cl": 0.0,
-                    "HCl": 0.0,
-                    "Unablated_Mass": 0.0
-                }
-            },
             {
                 "date": "1991-03-29T00:00:00Z",
                 "id": "1991-023B",
@@ -6899,12 +6745,12 @@
                 "location": 6,
                 "burnup": "Complete",
                 "emissions": {
-                    "NOx": 0.0,
-                    "Al2O3": 0.0,
-                    "BC": 0.0,
-                    "Cl": 0.0,
-                    "HCl": 0.0,
-                    "Unablated_Mass": 0.0
+                    "NOx": 0.3512,
+                    "Al2O3": 0.18438,
+                    "BC": 0.035998,
+                    "Cl": 0.01317,
+                    "HCl": 0.007024,
+                    "Unablated_Mass": 0.6145999999999999
                 }
             },
             {
@@ -6917,35 +6763,12 @@
                 "location": 6,
                 "burnup": "Complete",
                 "emissions": {
-                    "NOx": 0.0,
-                    "Al2O3": 0.0,
-                    "BC": 0.0,
-                    "Cl": 0.0,
-                    "HCl": 0.0,
-                    "Unablated_Mass": 0.0
-                }
-            }
-        ]
-    },
-    "1991-04-14": {
-        "launches": [],
-        "reentries": [
-            {
-                "date": "1991-04-14T00:00:00Z",
-                "id": "1984-056D",
-                "reusability": "",
-                "name": "deb Kosmos-1570",
-                "category": "C",
-                "smc": false,
-                "location": 6,
-                "burnup": "Complete",
-                "emissions": {
-                    "NOx": 0.0,
-                    "Al2O3": 0.0,
-                    "BC": 0.0,
-                    "Cl": 0.0,
-                    "HCl": 0.0,
-                    "Unablated_Mass": 0.0
+                    "NOx": 0.3512,
+                    "Al2O3": 0.18438,
+                    "BC": 0.035998,
+                    "Cl": 0.01317,
+                    "HCl": 0.007024,
+                    "Unablated_Mass": 0.6145999999999999
                 }
             }
         ]
@@ -9248,12 +9071,12 @@
                 "location": 6,
                 "burnup": "Complete",
                 "emissions": {
-                    "NOx": 0.0,
-                    "Al2O3": 0.0,
-                    "BC": 0.0,
-                    "Cl": 0.0,
-                    "HCl": 0.0,
-                    "Unablated_Mass": 0.0
+                    "NOx": 0.3512,
+                    "Al2O3": 0.18438,
+                    "BC": 0.035998,
+                    "Cl": 0.01317,
+                    "HCl": 0.007024,
+                    "Unablated_Mass": 0.6145999999999999
                 }
             },
             {
@@ -9266,12 +9089,12 @@
                 "location": 6,
                 "burnup": "Complete",
                 "emissions": {
-                    "NOx": 0.0,
-                    "Al2O3": 0.0,
-                    "BC": 0.0,
-                    "Cl": 0.0,
-                    "HCl": 0.0,
-                    "Unablated_Mass": 0.0
+                    "NOx": 0.3512,
+                    "Al2O3": 0.18438,
+                    "BC": 0.035998,
+                    "Cl": 0.01317,
+                    "HCl": 0.007024,
+                    "Unablated_Mass": 0.6145999999999999
                 }
             }
         ]
@@ -9346,24 +9169,6 @@
             }
         ],
         "reentries": [
-            {
-                "date": "1991-05-30T00:00:00Z",
-                "id": "1991-005C",
-                "reusability": "",
-                "name": "deb Kosmos-2122",
-                "category": "C",
-                "smc": false,
-                "location": 6,
-                "burnup": "Complete",
-                "emissions": {
-                    "NOx": 0.0,
-                    "Al2O3": 0.0,
-                    "BC": 0.0,
-                    "Cl": 0.0,
-                    "HCl": 0.0,
-                    "Unablated_Mass": 0.0
-                }
-            },
             {
                 "date": "1991-05-30T00:00:00Z",
                 "id": "1991-038",
@@ -9867,47 +9672,6 @@
             }
         ]
     },
-    "1991-06-07": {
-        "launches": [],
-        "reentries": [
-            {
-                "date": "1991-06-07T00:00:00Z",
-                "id": "1986-017DC",
-                "reusability": "",
-                "name": "EO-8 EVA-4 debris",
-                "category": "C",
-                "smc": false,
-                "location": 6,
-                "burnup": "Complete",
-                "emissions": {
-                    "NOx": 0.0,
-                    "Al2O3": 0.0,
-                    "BC": 0.0,
-                    "Cl": 0.0,
-                    "HCl": 0.0,
-                    "Unablated_Mass": 0.0
-                }
-            },
-            {
-                "date": "1991-06-07T00:00:00Z",
-                "id": "1986-017DG",
-                "reusability": "",
-                "name": "EVA debris",
-                "category": "C",
-                "smc": false,
-                "location": 6,
-                "burnup": "Complete",
-                "emissions": {
-                    "NOx": 0.0,
-                    "Al2O3": 0.0,
-                    "BC": 0.0,
-                    "Cl": 0.0,
-                    "HCl": 0.0,
-                    "Unablated_Mass": 0.0
-                }
-            }
-        ]
-    },
     "1991-06-08": {
         "launches": [],
         "reentries": [
@@ -9945,29 +9709,6 @@
                     "Cl": 0.00075,
                     "HCl": 0.0004,
                     "Unablated_Mass": 0.05
-                }
-            }
-        ]
-    },
-    "1991-06-09": {
-        "launches": [],
-        "reentries": [
-            {
-                "date": "1991-06-09T00:00:00Z",
-                "id": "1986-017DF",
-                "reusability": "",
-                "name": "EO-8 EVA-4 debris",
-                "category": "C",
-                "smc": false,
-                "location": 6,
-                "burnup": "Complete",
-                "emissions": {
-                    "NOx": 0.0,
-                    "Al2O3": 0.0,
-                    "BC": 0.0,
-                    "Cl": 0.0,
-                    "HCl": 0.0,
-                    "Unablated_Mass": 0.0
                 }
             }
         ]
@@ -10279,29 +10020,6 @@
                     "Cl": 1.54131,
                     "HCl": 0.822032,
                     "Unablated_Mass": 102.754
-                }
-            }
-        ]
-    },
-    "1991-06-15": {
-        "launches": [],
-        "reentries": [
-            {
-                "date": "1991-06-15T00:00:00Z",
-                "id": "1986-017DB",
-                "reusability": "",
-                "name": "EO-8 EVA-4 debris",
-                "category": "C",
-                "smc": false,
-                "location": 6,
-                "burnup": "Complete",
-                "emissions": {
-                    "NOx": 0.0,
-                    "Al2O3": 0.0,
-                    "BC": 0.0,
-                    "Cl": 0.0,
-                    "HCl": 0.0,
-                    "Unablated_Mass": 0.0
                 }
             }
         ]
@@ -10686,51 +10404,9 @@
             }
         ]
     },
-    "1991-06-24": {
-        "launches": [],
-        "reentries": [
-            {
-                "date": "1991-06-24T00:00:00Z",
-                "id": "1986-017DA",
-                "reusability": "",
-                "name": "EO-8 EVA-4 debris",
-                "category": "C",
-                "smc": false,
-                "location": 6,
-                "burnup": "Complete",
-                "emissions": {
-                    "NOx": 0.0,
-                    "Al2O3": 0.0,
-                    "BC": 0.0,
-                    "Cl": 0.0,
-                    "HCl": 0.0,
-                    "Unablated_Mass": 0.0
-                }
-            }
-        ]
-    },
     "1991-06-25": {
         "launches": [],
-        "reentries": [
-            {
-                "date": "1991-06-25T00:00:00Z",
-                "id": "1986-017DD",
-                "reusability": "",
-                "name": "EO-8 EVA-4 debris",
-                "category": "C",
-                "smc": false,
-                "location": 6,
-                "burnup": "Complete",
-                "emissions": {
-                    "NOx": 0.0,
-                    "Al2O3": 0.0,
-                    "BC": 0.0,
-                    "Cl": 0.0,
-                    "HCl": 0.0,
-                    "Unablated_Mass": 0.0
-                }
-            }
-        ]
+        "reentries": []
     },
     "1991-06-27": {
         "launches": [],
@@ -11696,12 +11372,12 @@
                 "location": 6,
                 "burnup": "Complete",
                 "emissions": {
-                    "NOx": 0.0,
-                    "Al2O3": 0.0,
-                    "BC": 0.0,
-                    "Cl": 0.0,
-                    "HCl": 0.0,
-                    "Unablated_Mass": 0.0
+                    "NOx": 0.3512,
+                    "Al2O3": 0.18438,
+                    "BC": 0.035998,
+                    "Cl": 0.01317,
+                    "HCl": 0.007024,
+                    "Unablated_Mass": 0.6145999999999999
                 }
             },
             {
@@ -11714,35 +11390,12 @@
                 "location": 6,
                 "burnup": "Complete",
                 "emissions": {
-                    "NOx": 0.0,
-                    "Al2O3": 0.0,
-                    "BC": 0.0,
-                    "Cl": 0.0,
-                    "HCl": 0.0,
-                    "Unablated_Mass": 0.0
-                }
-            }
-        ]
-    },
-    "1991-07-06": {
-        "launches": [],
-        "reentries": [
-            {
-                "date": "1991-07-06T00:00:00Z",
-                "id": "1986-017EE",
-                "reusability": "",
-                "name": "EO-9 EVA-1 debris",
-                "category": "C",
-                "smc": false,
-                "location": 6,
-                "burnup": "Complete",
-                "emissions": {
-                    "NOx": 0.0,
-                    "Al2O3": 0.0,
-                    "BC": 0.0,
-                    "Cl": 0.0,
-                    "HCl": 0.0,
-                    "Unablated_Mass": 0.0
+                    "NOx": 0.3512,
+                    "Al2O3": 0.18438,
+                    "BC": 0.035998,
+                    "Cl": 0.01317,
+                    "HCl": 0.007024,
+                    "Unablated_Mass": 0.6145999999999999
                 }
             }
         ]
@@ -14497,24 +14150,6 @@
             },
             {
                 "date": "1991-08-15T00:00:00Z",
-                "id": "1986-017EW",
-                "reusability": "",
-                "name": "EO-9 EVA-5 debris (Sofora)",
-                "category": "C",
-                "smc": false,
-                "location": 6,
-                "burnup": "Complete",
-                "emissions": {
-                    "NOx": 0.0,
-                    "Al2O3": 0.0,
-                    "BC": 0.0,
-                    "Cl": 0.0,
-                    "HCl": 0.0,
-                    "Unablated_Mass": 0.0
-                }
-            },
-            {
-                "date": "1991-08-15T00:00:00Z",
                 "id": "1991-052F",
                 "reusability": "",
                 "name": "KDU part",
@@ -14636,24 +14271,6 @@
                 "id": "1986-017DY",
                 "reusability": "",
                 "name": "Garbage bag",
-                "category": "C",
-                "smc": false,
-                "location": 6,
-                "burnup": "Complete",
-                "emissions": {
-                    "NOx": 0.0,
-                    "Al2O3": 0.0,
-                    "BC": 0.0,
-                    "Cl": 0.0,
-                    "HCl": 0.0,
-                    "Unablated_Mass": 0.0
-                }
-            },
-            {
-                "date": "1991-08-19T00:00:00Z",
-                "id": "1986-017EY",
-                "reusability": "",
-                "name": "EO-9 EVA-6 debris (Sofora)",
                 "category": "C",
                 "smc": false,
                 "location": 6,
@@ -14937,24 +14554,6 @@
             }
         ],
         "reentries": [
-            {
-                "date": "1991-08-21T00:00:00Z",
-                "id": "1986-017DH",
-                "reusability": "",
-                "name": "EO-8 EVA-4 debris",
-                "category": "C",
-                "smc": false,
-                "location": 6,
-                "burnup": "Complete",
-                "emissions": {
-                    "NOx": 0.0,
-                    "Al2O3": 0.0,
-                    "BC": 0.0,
-                    "Cl": 0.0,
-                    "HCl": 0.0,
-                    "Unablated_Mass": 0.0
-                }
-            },
             {
                 "date": "1991-08-21T00:00:00Z",
                 "id": "1986-017FH",
@@ -15381,24 +14980,6 @@
         "reentries": [
             {
                 "date": "1991-08-25T00:00:00Z",
-                "id": "1986-017CZ",
-                "reusability": "",
-                "name": "EO-8 EVA-4 debris",
-                "category": "C",
-                "smc": false,
-                "location": 6,
-                "burnup": "Complete",
-                "emissions": {
-                    "NOx": 0.0,
-                    "Al2O3": 0.0,
-                    "BC": 0.0,
-                    "Cl": 0.0,
-                    "HCl": 0.0,
-                    "Unablated_Mass": 0.0
-                }
-            },
-            {
-                "date": "1991-08-25T00:00:00Z",
                 "id": "1991-060",
                 "reusability": "",
                 "name": "Castor 2",
@@ -15587,12 +15168,12 @@
                 "location": 6,
                 "burnup": "Complete",
                 "emissions": {
-                    "NOx": 0.0,
-                    "Al2O3": 0.0,
-                    "BC": 0.0,
-                    "Cl": 0.0,
-                    "HCl": 0.0,
-                    "Unablated_Mass": 0.0
+                    "NOx": 0.3512,
+                    "Al2O3": 0.18438,
+                    "BC": 0.035998,
+                    "Cl": 0.01317,
+                    "HCl": 0.007024,
+                    "Unablated_Mass": 0.6145999999999999
                 }
             },
             {
@@ -15605,12 +15186,12 @@
                 "location": 6,
                 "burnup": "Complete",
                 "emissions": {
-                    "NOx": 0.0,
-                    "Al2O3": 0.0,
-                    "BC": 0.0,
-                    "Cl": 0.0,
-                    "HCl": 0.0,
-                    "Unablated_Mass": 0.0
+                    "NOx": 0.3512,
+                    "Al2O3": 0.18438,
+                    "BC": 0.035998,
+                    "Cl": 0.01317,
+                    "HCl": 0.007024,
+                    "Unablated_Mass": 0.6145999999999999
                 }
             }
         ]
@@ -15634,24 +15215,6 @@
                     "Cl": 0.0192,
                     "HCl": 0.01024,
                     "Unablated_Mass": 0.25599999999999995
-                }
-            },
-            {
-                "date": "1991-08-27T00:00:00Z",
-                "id": "1986-017EQ",
-                "reusability": "",
-                "name": "EO-9 EVA-3 debris (Sofora)",
-                "category": "C",
-                "smc": false,
-                "location": 6,
-                "burnup": "Complete",
-                "emissions": {
-                    "NOx": 0.0,
-                    "Al2O3": 0.0,
-                    "BC": 0.0,
-                    "Cl": 0.0,
-                    "HCl": 0.0,
-                    "Unablated_Mass": 0.0
                 }
             }
         ]
@@ -15767,24 +15330,6 @@
             }
         ],
         "reentries": [
-            {
-                "date": "1991-08-29T00:00:00Z",
-                "id": "1986-017ES",
-                "reusability": "",
-                "name": "EO-9 EVA-3 debris (Sofora)",
-                "category": "C",
-                "smc": false,
-                "location": 6,
-                "burnup": "Complete",
-                "emissions": {
-                    "NOx": 0.0,
-                    "Al2O3": 0.0,
-                    "BC": 0.0,
-                    "Cl": 0.0,
-                    "HCl": 0.0,
-                    "Unablated_Mass": 0.0
-                }
-            },
             {
                 "date": "1991-08-29T00:00:00Z",
                 "id": "1986-017FE",
@@ -16093,29 +15638,6 @@
             }
         ]
     },
-    "1991-08-31": {
-        "launches": [],
-        "reentries": [
-            {
-                "date": "1991-08-31T00:00:00Z",
-                "id": "1986-017EU",
-                "reusability": "",
-                "name": "EO-9 EVA-4 debris (Sofora)",
-                "category": "C",
-                "smc": false,
-                "location": 6,
-                "burnup": "Complete",
-                "emissions": {
-                    "NOx": 0.0,
-                    "Al2O3": 0.0,
-                    "BC": 0.0,
-                    "Cl": 0.0,
-                    "HCl": 0.0,
-                    "Unablated_Mass": 0.0
-                }
-            }
-        ]
-    },
     "1991-09-01": {
         "launches": [],
         "reentries": [
@@ -16135,24 +15657,6 @@
                     "Cl": 0.045,
                     "HCl": 0.024,
                     "Unablated_Mass": 0.5999999999999999
-                }
-            },
-            {
-                "date": "1991-09-01T00:00:00Z",
-                "id": "1986-017EK",
-                "reusability": "",
-                "name": "EO-9 EVA-2 debris",
-                "category": "C",
-                "smc": false,
-                "location": 6,
-                "burnup": "Complete",
-                "emissions": {
-                    "NOx": 0.0,
-                    "Al2O3": 0.0,
-                    "BC": 0.0,
-                    "Cl": 0.0,
-                    "HCl": 0.0,
-                    "Unablated_Mass": 0.0
                 }
             }
         ]
@@ -16244,24 +15748,6 @@
         "reentries": [
             {
                 "date": "1991-09-04T00:00:00Z",
-                "id": "1989-016P",
-                "reusability": "",
-                "name": "deb Akebono",
-                "category": "C",
-                "smc": false,
-                "location": 6,
-                "burnup": "Complete",
-                "emissions": {
-                    "NOx": 0.0,
-                    "Al2O3": 0.0,
-                    "BC": 0.0,
-                    "Cl": 0.0,
-                    "HCl": 0.0,
-                    "Unablated_Mass": 0.0
-                }
-            },
-            {
-                "date": "1991-09-04T00:00:00Z",
                 "id": "1989-098E",
                 "reusability": "",
                 "name": "DM2-23L SOZ-1",
@@ -16298,29 +15784,6 @@
             }
         ]
     },
-    "1991-09-06": {
-        "launches": [],
-        "reentries": [
-            {
-                "date": "1991-09-06T00:00:00Z",
-                "id": "1986-017ER",
-                "reusability": "",
-                "name": "EO-9 EVA-3 debris (Sofora)",
-                "category": "C",
-                "smc": false,
-                "location": 6,
-                "burnup": "Complete",
-                "emissions": {
-                    "NOx": 0.0,
-                    "Al2O3": 0.0,
-                    "BC": 0.0,
-                    "Cl": 0.0,
-                    "HCl": 0.0,
-                    "Unablated_Mass": 0.0
-                }
-            }
-        ]
-    },
     "1991-09-07": {
         "launches": [],
         "reentries": [
@@ -16340,24 +15803,6 @@
                     "Cl": 0.0009,
                     "HCl": 0.00048,
                     "Unablated_Mass": 0.011999999999999997
-                }
-            },
-            {
-                "date": "1991-09-07T00:00:00Z",
-                "id": "1986-017ET",
-                "reusability": "",
-                "name": "EO-9 EVA-4 debris (Sofora)",
-                "category": "C",
-                "smc": false,
-                "location": 6,
-                "burnup": "Complete",
-                "emissions": {
-                    "NOx": 0.0,
-                    "Al2O3": 0.0,
-                    "BC": 0.0,
-                    "Cl": 0.0,
-                    "HCl": 0.0,
-                    "Unablated_Mass": 0.0
                 }
             },
             {
@@ -16383,24 +15828,6 @@
     "1991-09-08": {
         "launches": [],
         "reentries": [
-            {
-                "date": "1991-09-08T00:00:00Z",
-                "id": "1968-017D",
-                "reusability": "",
-                "name": "deb Explorer 37",
-                "category": "C",
-                "smc": false,
-                "location": 6,
-                "burnup": "Complete",
-                "emissions": {
-                    "NOx": 0.0,
-                    "Al2O3": 0.0,
-                    "BC": 0.0,
-                    "Cl": 0.0,
-                    "HCl": 0.0,
-                    "Unablated_Mass": 0.0
-                }
-            },
             {
                 "date": "1991-09-08T00:00:00Z",
                 "id": "1986-017DW",
@@ -16441,24 +15868,6 @@
                     "HCl": 0.004995,
                     "Unablated_Mass": 0.34964999999999996
                 }
-            },
-            {
-                "date": "1991-09-09T00:00:00Z",
-                "id": "1986-017EL",
-                "reusability": "",
-                "name": "EO-9 EVA-2 debris",
-                "category": "C",
-                "smc": false,
-                "location": 6,
-                "burnup": "Complete",
-                "emissions": {
-                    "NOx": 0.0,
-                    "Al2O3": 0.0,
-                    "BC": 0.0,
-                    "Cl": 0.0,
-                    "HCl": 0.0,
-                    "Unablated_Mass": 0.0
-                }
             }
         ]
     },
@@ -16481,29 +15890,6 @@
                     "Cl": 0.0009,
                     "HCl": 0.00048,
                     "Unablated_Mass": 0.011999999999999997
-                }
-            }
-        ]
-    },
-    "1991-09-11": {
-        "launches": [],
-        "reentries": [
-            {
-                "date": "1991-09-11T00:00:00Z",
-                "id": "1986-017EP",
-                "reusability": "",
-                "name": "EO-9 EVA-3 debris (Sofora)",
-                "category": "C",
-                "smc": false,
-                "location": 6,
-                "burnup": "Complete",
-                "emissions": {
-                    "NOx": 0.0,
-                    "Al2O3": 0.0,
-                    "BC": 0.0,
-                    "Cl": 0.0,
-                    "HCl": 0.0,
-                    "Unablated_Mass": 0.0
                 }
             }
         ]
@@ -16840,24 +16226,6 @@
     "1991-09-15": {
         "launches": [],
         "reentries": [
-            {
-                "date": "1991-09-15T00:00:00Z",
-                "id": "1986-017EH",
-                "reusability": "",
-                "name": "EO-9 EVA-1 debris",
-                "category": "C",
-                "smc": false,
-                "location": 6,
-                "burnup": "Complete",
-                "emissions": {
-                    "NOx": 0.0,
-                    "Al2O3": 0.0,
-                    "BC": 0.0,
-                    "Cl": 0.0,
-                    "HCl": 0.0,
-                    "Unablated_Mass": 0.0
-                }
-            },
             {
                 "date": "1991-09-15T00:00:00Z",
                 "id": "1991-064D",
@@ -17474,29 +16842,6 @@
             }
         ]
     },
-    "1991-09-23": {
-        "launches": [],
-        "reentries": [
-            {
-                "date": "1991-09-23T00:00:00Z",
-                "id": "1986-017EG",
-                "reusability": "",
-                "name": "EO-9 EVA-1 debris",
-                "category": "C",
-                "smc": false,
-                "location": 6,
-                "burnup": "Complete",
-                "emissions": {
-                    "NOx": 0.0,
-                    "Al2O3": 0.0,
-                    "BC": 0.0,
-                    "Cl": 0.0,
-                    "HCl": 0.0,
-                    "Unablated_Mass": 0.0
-                }
-            }
-        ]
-    },
     "1991-09-25": {
         "launches": [],
         "reentries": [
@@ -17516,42 +16861,6 @@
                     "Cl": 0.00492,
                     "HCl": 0.002624,
                     "Unablated_Mass": 0.06559999999999998
-                }
-            },
-            {
-                "date": "1991-09-25T00:00:00Z",
-                "id": "1991-065G",
-                "reusability": "",
-                "name": "deb Blok-I",
-                "category": "C",
-                "smc": false,
-                "location": 6,
-                "burnup": "Complete",
-                "emissions": {
-                    "NOx": 0.0,
-                    "Al2O3": 0.0,
-                    "BC": 0.0,
-                    "Cl": 0.0,
-                    "HCl": 0.0,
-                    "Unablated_Mass": 0.0
-                }
-            },
-            {
-                "date": "1991-09-25T00:00:00Z",
-                "id": "1991-065H",
-                "reusability": "",
-                "name": "deb Blok-I",
-                "category": "C",
-                "smc": false,
-                "location": 6,
-                "burnup": "Complete",
-                "emissions": {
-                    "NOx": 0.0,
-                    "Al2O3": 0.0,
-                    "BC": 0.0,
-                    "Cl": 0.0,
-                    "HCl": 0.0,
-                    "Unablated_Mass": 0.0
                 }
             }
         ]
@@ -17714,47 +17023,6 @@
                     "Cl": 0.01317,
                     "HCl": 0.007024,
                     "Unablated_Mass": 0.6145999999999999
-                }
-            }
-        ]
-    },
-    "1991-09-27": {
-        "launches": [],
-        "reentries": [
-            {
-                "date": "1991-09-27T00:00:00Z",
-                "id": "1991-065E",
-                "reusability": "",
-                "name": "deb Blok-I",
-                "category": "C",
-                "smc": false,
-                "location": 6,
-                "burnup": "Complete",
-                "emissions": {
-                    "NOx": 0.0,
-                    "Al2O3": 0.0,
-                    "BC": 0.0,
-                    "Cl": 0.0,
-                    "HCl": 0.0,
-                    "Unablated_Mass": 0.0
-                }
-            },
-            {
-                "date": "1991-09-27T00:00:00Z",
-                "id": "1991-065F",
-                "reusability": "",
-                "name": "deb Blok-I",
-                "category": "C",
-                "smc": false,
-                "location": 6,
-                "burnup": "Complete",
-                "emissions": {
-                    "NOx": 0.0,
-                    "Al2O3": 0.0,
-                    "BC": 0.0,
-                    "Cl": 0.0,
-                    "HCl": 0.0,
-                    "Unablated_Mass": 0.0
                 }
             }
         ]
@@ -17942,24 +17210,6 @@
     "1991-09-30": {
         "launches": [],
         "reentries": [
-            {
-                "date": "1991-09-30T00:00:00Z",
-                "id": "1986-017FD",
-                "reusability": "",
-                "name": "EO-9 EVA-6 debris (Sofora)",
-                "category": "C",
-                "smc": false,
-                "location": 6,
-                "burnup": "Complete",
-                "emissions": {
-                    "NOx": 0.0,
-                    "Al2O3": 0.0,
-                    "BC": 0.0,
-                    "Cl": 0.0,
-                    "HCl": 0.0,
-                    "Unablated_Mass": 0.0
-                }
-            },
             {
                 "date": "1991-09-30T00:00:00Z",
                 "id": "1991-065B",
@@ -18296,24 +17546,6 @@
         "reentries": [
             {
                 "date": "1991-10-03T00:00:00Z",
-                "id": "1986-017FA",
-                "reusability": "",
-                "name": "EO-9 EVA-6 debris (Sofora)",
-                "category": "C",
-                "smc": false,
-                "location": 6,
-                "burnup": "Complete",
-                "emissions": {
-                    "NOx": 0.0,
-                    "Al2O3": 0.0,
-                    "BC": 0.0,
-                    "Cl": 0.0,
-                    "HCl": 0.0,
-                    "Unablated_Mass": 0.0
-                }
-            },
-            {
-                "date": "1991-10-03T00:00:00Z",
                 "id": "1991-069B",
                 "reusability": "",
                 "name": "Soyuz-U2 No. 054 Blok-I",
@@ -18526,52 +17758,6 @@
                     "Cl": 0.01317,
                     "HCl": 0.007024,
                     "Unablated_Mass": 0.6145999999999999
-                }
-            }
-        ]
-    },
-    "1991-10-05": {
-        "launches": [],
-        "reentries": [
-            {
-                "date": "1991-10-05T00:00:00Z",
-                "id": "1986-017EV",
-                "reusability": "",
-                "name": "EO-9 EVA-4 debris",
-                "category": "C",
-                "smc": false,
-                "location": 6,
-                "burnup": "Complete",
-                "emissions": {
-                    "NOx": 0.0,
-                    "Al2O3": 0.0,
-                    "BC": 0.0,
-                    "Cl": 0.0,
-                    "HCl": 0.0,
-                    "Unablated_Mass": 0.0
-                }
-            }
-        ]
-    },
-    "1991-10-07": {
-        "launches": [],
-        "reentries": [
-            {
-                "date": "1991-10-07T00:00:00Z",
-                "id": "1986-017FC",
-                "reusability": "",
-                "name": "EO-9 EVA-6 debris (Sofora)",
-                "category": "C",
-                "smc": false,
-                "location": 6,
-                "burnup": "Complete",
-                "emissions": {
-                    "NOx": 0.0,
-                    "Al2O3": 0.0,
-                    "BC": 0.0,
-                    "Cl": 0.0,
-                    "HCl": 0.0,
-                    "Unablated_Mass": 0.0
                 }
             }
         ]
@@ -19619,24 +18805,6 @@
             },
             {
                 "date": "1991-10-25T00:00:00Z",
-                "id": "1991-072C",
-                "reusability": "",
-                "name": "deb S3M",
-                "category": "C",
-                "smc": false,
-                "location": 6,
-                "burnup": "Complete",
-                "emissions": {
-                    "NOx": 0.0,
-                    "Al2O3": 0.0,
-                    "BC": 0.0,
-                    "Cl": 0.0,
-                    "HCl": 0.0,
-                    "Unablated_Mass": 0.0
-                }
-            },
-            {
-                "date": "1991-10-25T00:00:00Z",
                 "id": "1991-070C",
                 "reusability": "",
                 "name": "KBE part",
@@ -19717,17 +18885,17 @@
                 "id": "1967-039B",
                 "reusability": "",
                 "name": "Vostok-2M (N07) Stage 3",
-                "category": "S3",
+                "category": "S2",
                 "smc": false,
                 "location": 6,
                 "burnup": "Complete",
                 "emissions": {
-                    "NOx": 0.0,
-                    "Al2O3": 0.0,
-                    "BC": 0.0,
-                    "Cl": 0.0,
-                    "HCl": 0.0,
-                    "Unablated_Mass": 0.0
+                    "NOx": 0.576,
+                    "Al2O3": 0.6552,
+                    "BC": 0.04176,
+                    "Cl": 0.01584,
+                    "HCl": 0.0072,
+                    "Unablated_Mass": 0.504
                 }
             },
             {
@@ -20318,12 +19486,12 @@
                 "location": 6,
                 "burnup": "Complete",
                 "emissions": {
-                    "NOx": 0.0,
-                    "Al2O3": 0.0,
-                    "BC": 0.0,
-                    "Cl": 0.0,
-                    "HCl": 0.0,
-                    "Unablated_Mass": 0.0
+                    "NOx": 0.3512,
+                    "Al2O3": 0.18438,
+                    "BC": 0.035998,
+                    "Cl": 0.01317,
+                    "HCl": 0.007024,
+                    "Unablated_Mass": 0.6145999999999999
                 }
             },
             {
@@ -20336,12 +19504,12 @@
                 "location": 6,
                 "burnup": "Complete",
                 "emissions": {
-                    "NOx": 0.0,
-                    "Al2O3": 0.0,
-                    "BC": 0.0,
-                    "Cl": 0.0,
-                    "HCl": 0.0,
-                    "Unablated_Mass": 0.0
+                    "NOx": 0.3512,
+                    "Al2O3": 0.18438,
+                    "BC": 0.035998,
+                    "Cl": 0.01317,
+                    "HCl": 0.007024,
+                    "Unablated_Mass": 0.6145999999999999
                 }
             }
         ]
@@ -20365,29 +19533,6 @@
                     "Cl": 0.00975,
                     "HCl": 0.0052,
                     "Unablated_Mass": 0.12999999999999998
-                }
-            }
-        ]
-    },
-    "1991-11-11": {
-        "launches": [],
-        "reentries": [
-            {
-                "date": "1991-11-11T00:00:00Z",
-                "id": "1986-017DE",
-                "reusability": "",
-                "name": "EO-8 EVA-4 debris",
-                "category": "C",
-                "smc": false,
-                "location": 6,
-                "burnup": "Complete",
-                "emissions": {
-                    "NOx": 0.0,
-                    "Al2O3": 0.0,
-                    "BC": 0.0,
-                    "Cl": 0.0,
-                    "HCl": 0.0,
-                    "Unablated_Mass": 0.0
                 }
             }
         ]
@@ -21738,29 +20883,6 @@
             }
         ]
     },
-    "1991-12-03": {
-        "launches": [],
-        "reentries": [
-            {
-                "date": "1991-12-03T00:00:00Z",
-                "id": "1986-017FB",
-                "reusability": "",
-                "name": "EO-9 EVA-6 debris (Sofora)",
-                "category": "C",
-                "smc": false,
-                "location": 6,
-                "burnup": "Complete",
-                "emissions": {
-                    "NOx": 0.0,
-                    "Al2O3": 0.0,
-                    "BC": 0.0,
-                    "Cl": 0.0,
-                    "HCl": 0.0,
-                    "Unablated_Mass": 0.0
-                }
-            }
-        ]
-    },
     "1991-12-05": {
         "launches": [],
         "reentries": [
@@ -21959,12 +21081,12 @@
                 "location": 6,
                 "burnup": "Complete",
                 "emissions": {
-                    "NOx": 0.0,
-                    "Al2O3": 0.0,
-                    "BC": 0.0,
-                    "Cl": 0.0,
-                    "HCl": 0.0,
-                    "Unablated_Mass": 0.0
+                    "NOx": 0.3512,
+                    "Al2O3": 0.18438,
+                    "BC": 0.035998,
+                    "Cl": 0.01317,
+                    "HCl": 0.007024,
+                    "Unablated_Mass": 0.6145999999999999
                 }
             },
             {
@@ -21977,12 +21099,12 @@
                 "location": 6,
                 "burnup": "Complete",
                 "emissions": {
-                    "NOx": 0.0,
-                    "Al2O3": 0.0,
-                    "BC": 0.0,
-                    "Cl": 0.0,
-                    "HCl": 0.0,
-                    "Unablated_Mass": 0.0
+                    "NOx": 0.3512,
+                    "Al2O3": 0.18438,
+                    "BC": 0.035998,
+                    "Cl": 0.01317,
+                    "HCl": 0.007024,
+                    "Unablated_Mass": 0.6145999999999999
                 }
             }
         ]
@@ -22573,24 +21695,6 @@
         "reentries": [
             {
                 "date": "1991-12-18T00:00:00Z",
-                "id": "1986-017EX",
-                "reusability": "",
-                "name": "EO-9 EVA-5 debris (Sofora)",
-                "category": "C",
-                "smc": false,
-                "location": 6,
-                "burnup": "Complete",
-                "emissions": {
-                    "NOx": 0.0,
-                    "Al2O3": 0.0,
-                    "BC": 0.0,
-                    "Cl": 0.0,
-                    "HCl": 0.0,
-                    "Unablated_Mass": 0.0
-                }
-            },
-            {
-                "date": "1991-12-18T00:00:00Z",
                 "id": "1991-086",
                 "reusability": "",
                 "name": "11S691",
@@ -22738,17 +21842,17 @@
                 "id": "1967-102B",
                 "reusability": "",
                 "name": "Vostok-2M (N08) Stage 3",
-                "category": "S3",
+                "category": "S2",
                 "smc": false,
                 "location": 6,
                 "burnup": "Complete",
                 "emissions": {
-                    "NOx": 0.0,
-                    "Al2O3": 0.0,
-                    "BC": 0.0,
-                    "Cl": 0.0,
-                    "HCl": 0.0,
-                    "Unablated_Mass": 0.0
+                    "NOx": 0.576,
+                    "Al2O3": 0.6552,
+                    "BC": 0.04176,
+                    "Cl": 0.01584,
+                    "HCl": 0.0072,
+                    "Unablated_Mass": 0.504
                 }
             },
             {
@@ -22851,24 +21955,6 @@
     "1991-12-21": {
         "launches": [],
         "reentries": [
-            {
-                "date": "1991-12-21T00:00:00Z",
-                "id": "1967-045C",
-                "reusability": "",
-                "name": "deb Kosmos-158",
-                "category": "C",
-                "smc": false,
-                "location": 6,
-                "burnup": "Complete",
-                "emissions": {
-                    "NOx": 0.0,
-                    "Al2O3": 0.0,
-                    "BC": 0.0,
-                    "Cl": 0.0,
-                    "HCl": 0.0,
-                    "Unablated_Mass": 0.0
-                }
-            },
             {
                 "date": "1991-12-21T00:00:00Z",
                 "id": "1991-087B",

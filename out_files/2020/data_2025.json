@@ -3,6 +3,42 @@
         "launches": [],
         "reentries": [
             {
+                "date": "2025-01-01T00:00:00Z",
+                "id": "2013-072C",
+                "reusability": "",
+                "name": "FIREBIRD U2",
+                "category": "P",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "emissions": {
+                    "NOx": 0.0008,
+                    "Al2O3": 0.00064,
+                    "BC": 8.2e-05,
+                    "Cl": 3e-05,
+                    "HCl": 1.6e-05,
+                    "Unablated_Mass": 0.0003999999999999999
+                }
+            },
+            {
+                "date": "2025-01-01T00:00:00Z",
+                "id": "2020-007A",
+                "reusability": "",
+                "name": "USA 294",
+                "category": "P",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "emissions": {
+                    "NOx": 0.06,
+                    "Al2O3": 0.048,
+                    "BC": 0.00615,
+                    "Cl": 0.00225,
+                    "HCl": 0.0012,
+                    "Unablated_Mass": 0.029999999999999992
+                }
+            },
+            {
                 "date": "2025-01-01T02:40:00Z",
                 "id": "2020-025AH",
                 "reusability": "",
@@ -2899,24 +2935,6 @@
             }
         ],
         "reentries": [
-            {
-                "date": "2025-01-15T00:00:00Z",
-                "id": "1976-098D",
-                "reusability": "",
-                "name": "deb Kosmos-858? [UNID]",
-                "category": "C",
-                "smc": false,
-                "location": 6,
-                "burnup": "Complete",
-                "emissions": {
-                    "NOx": 0.0,
-                    "Al2O3": 0.0,
-                    "BC": 0.0,
-                    "Cl": 0.0,
-                    "HCl": 0.0,
-                    "Unablated_Mass": 0.0
-                }
-            },
             {
                 "date": "2025-01-15T08:57:00Z",
                 "id": "2016-083A",
@@ -12215,24 +12233,6 @@
         "reentries": [
             {
                 "date": "2025-02-28T00:00:00Z",
-                "id": "1972-104D",
-                "reusability": "",
-                "name": "deb Kosmos-540",
-                "category": "C",
-                "smc": false,
-                "location": 6,
-                "burnup": "Complete",
-                "emissions": {
-                    "NOx": 0.0,
-                    "Al2O3": 0.0,
-                    "BC": 0.0,
-                    "Cl": 0.0,
-                    "HCl": 0.0,
-                    "Unablated_Mass": 0.0
-                }
-            },
-            {
-                "date": "2025-02-28T00:00:00Z",
                 "id": "2018-111Y",
                 "reusability": "",
                 "name": "ICEYE mass simulator",
@@ -13422,7 +13422,7 @@
                 "name": "OTV-7 Service Module",
                 "category": "C",
                 "smc": false,
-                "location": -1,
+                "location": 4,
                 "burnup": "Complete",
                 "emissions": {
                     "NOx": 0.2,
@@ -16065,24 +16065,6 @@
             }
         ],
         "reentries": [
-            {
-                "date": "2025-03-18T00:00:00Z",
-                "id": "1972-043C",
-                "reusability": "",
-                "name": "deb Kosmos-494",
-                "category": "C",
-                "smc": false,
-                "location": 6,
-                "burnup": "Complete",
-                "emissions": {
-                    "NOx": 0.0,
-                    "Al2O3": 0.0,
-                    "BC": 0.0,
-                    "Cl": 0.0,
-                    "HCl": 0.0,
-                    "Unablated_Mass": 0.0
-                }
-            },
             {
                 "date": "2025-03-18T00:00:00Z",
                 "id": "2014-033AC",
@@ -20682,24 +20664,6 @@
                 }
             },
             {
-                "date": "2025-04-10T00:00:00Z",
-                "id": "1979-060C",
-                "reusability": "",
-                "name": "deb Kosmos-1110? [UNID]",
-                "category": "C",
-                "smc": false,
-                "location": 6,
-                "burnup": "Complete",
-                "emissions": {
-                    "NOx": 0.0,
-                    "Al2O3": 0.0,
-                    "BC": 0.0,
-                    "Cl": 0.0,
-                    "HCl": 0.0,
-                    "Unablated_Mass": 0.0
-                }
-            },
-            {
                 "date": "2025-04-10T22:12:00Z",
                 "id": "2017-075D",
                 "reusability": "",
@@ -22447,24 +22411,6 @@
     "2025-04-19": {
         "launches": [],
         "reentries": [
-            {
-                "date": "2025-04-19T00:00:00Z",
-                "id": "1966-025H",
-                "reusability": "",
-                "name": "deb OV1-5",
-                "category": "C",
-                "smc": false,
-                "location": 6,
-                "burnup": "Complete",
-                "emissions": {
-                    "NOx": 0.0,
-                    "Al2O3": 0.0,
-                    "BC": 0.0,
-                    "Cl": 0.0,
-                    "HCl": 0.0,
-                    "Unablated_Mass": 0.0
-                }
-            },
             {
                 "date": "2025-04-19T00:00:00Z",
                 "id": "2009-002B",
@@ -24640,17 +24586,17 @@
                 "id": "2025-086L",
                 "reusability": "",
                 "name": "Yuanzheng-2 Y3",
-                "category": "S3",
+                "category": "S2",
                 "smc": true,
                 "location": 1,
                 "burnup": "Complete",
                 "emissions": {
-                    "NOx": 0.0,
-                    "Al2O3": 0.0,
-                    "BC": 0.0,
-                    "Cl": 0.0,
-                    "HCl": 0.0,
-                    "Unablated_Mass": 0.0
+                    "NOx": 2.0,
+                    "Al2O3": 2.275,
+                    "BC": 0.145,
+                    "Cl": 0.055,
+                    "HCl": 0.025,
+                    "Unablated_Mass": 1.75
                 }
             },
             {
@@ -38939,12 +38885,12 @@
                 "location": 1,
                 "burnup": "Complete",
                 "emissions": {
-                    "NOx": 0.0,
-                    "Al2O3": 0.0,
-                    "BC": 0.0,
-                    "Cl": 0.0,
-                    "HCl": 0.0,
-                    "Unablated_Mass": 0.0
+                    "NOx": 0.22,
+                    "Al2O3": 0.25025,
+                    "BC": 0.01595,
+                    "Cl": 0.00605,
+                    "HCl": 0.00275,
+                    "Unablated_Mass": 0.1925
                 }
             },
             {
@@ -39055,24 +39001,6 @@
             }
         ],
         "reentries": [
-            {
-                "date": "2025-07-08T00:00:00Z",
-                "id": "1973-098D",
-                "reusability": "",
-                "name": "deb Kosmos-407? [UNID]",
-                "category": "C",
-                "smc": false,
-                "location": 6,
-                "burnup": "Complete",
-                "emissions": {
-                    "NOx": 0.0,
-                    "Al2O3": 0.0,
-                    "BC": 0.0,
-                    "Cl": 0.0,
-                    "HCl": 0.0,
-                    "Unablated_Mass": 0.0
-                }
-            },
             {
                 "date": "2025-07-08T00:00:00Z",
                 "id": "2019-038Q",
@@ -40624,24 +40552,6 @@
             }
         ],
         "reentries": [
-            {
-                "date": "2025-07-22T00:00:00Z",
-                "id": "1979-078C",
-                "reusability": "",
-                "name": "deb Kosmos-1125",
-                "category": "C",
-                "smc": false,
-                "location": 6,
-                "burnup": "Complete",
-                "emissions": {
-                    "NOx": 0.0,
-                    "Al2O3": 0.0,
-                    "BC": 0.0,
-                    "Cl": 0.0,
-                    "HCl": 0.0,
-                    "Unablated_Mass": 0.0
-                }
-            },
             {
                 "date": "2025-07-22T21:19:00Z",
                 "id": "2025-153",
@@ -44886,17 +44796,17 @@
                 "id": "2025-174L",
                 "reusability": "",
                 "name": "Yuanzheng-2 Y4",
-                "category": "S3",
+                "category": "S2",
                 "smc": true,
                 "location": 1,
                 "burnup": "Complete",
                 "emissions": {
-                    "NOx": 0.0,
-                    "Al2O3": 0.0,
-                    "BC": 0.0,
-                    "Cl": 0.0,
-                    "HCl": 0.0,
-                    "Unablated_Mass": 0.0
+                    "NOx": 2.0,
+                    "Al2O3": 2.275,
+                    "BC": 0.145,
+                    "Cl": 0.055,
+                    "HCl": 0.025,
+                    "Unablated_Mass": 1.75
                 }
             },
             {
@@ -64830,24 +64740,6 @@
         ],
         "reentries": [
             {
-                "date": "2025-11-15T00:00:00Z",
-                "id": "1991-086F",
-                "reusability": "",
-                "name": "deb IK-25?",
-                "category": "C",
-                "smc": false,
-                "location": 6,
-                "burnup": "Complete",
-                "emissions": {
-                    "NOx": 0.0,
-                    "Al2O3": 0.0,
-                    "BC": 0.0,
-                    "Cl": 0.0,
-                    "HCl": 0.0,
-                    "Unablated_Mass": 0.0
-                }
-            },
-            {
                 "date": "2025-11-15T10:55:00Z",
                 "id": "2019-074D",
                 "reusability": "",
@@ -71418,24 +71310,6 @@
     "2025-12-12": {
         "launches": [],
         "reentries": [
-            {
-                "date": "2025-12-12T00:00:00Z",
-                "id": "1982-001D",
-                "reusability": "",
-                "name": "deb Kosmos-1331",
-                "category": "C",
-                "smc": false,
-                "location": 6,
-                "burnup": "Complete",
-                "emissions": {
-                    "NOx": 0.0,
-                    "Al2O3": 0.0,
-                    "BC": 0.0,
-                    "Cl": 0.0,
-                    "HCl": 0.0,
-                    "Unablated_Mass": 0.0
-                }
-            },
             {
                 "date": "2025-12-12T00:00:00Z",
                 "id": "2022-101A",

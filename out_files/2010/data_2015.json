@@ -332,7 +332,7 @@
                 "name": "Falcon 9-014 Stage 2",
                 "category": "S2",
                 "smc": false,
-                "location": -1,
+                "location": 3,
                 "burnup": "Complete",
                 "emissions": {
                     "NOx": 1.96,
@@ -643,29 +643,6 @@
             }
         ]
     },
-    "2015-01-26": {
-        "launches": [],
-        "reentries": [
-            {
-                "date": "2015-01-26T00:00:00Z",
-                "id": "2014-041D",
-                "reusability": "",
-                "name": "deb Foton-M4",
-                "category": "C",
-                "smc": false,
-                "location": 6,
-                "burnup": "Complete",
-                "emissions": {
-                    "NOx": 0.0,
-                    "Al2O3": 0.0,
-                    "BC": 0.0,
-                    "Cl": 0.0,
-                    "HCl": 0.0,
-                    "Unablated_Mass": 0.0
-                }
-            }
-        ]
-    },
     "2015-01-27": {
         "launches": [],
         "reentries": [
@@ -802,7 +779,7 @@
                 "name": "Delta 370",
                 "category": "S2",
                 "smc": false,
-                "location": -1,
+                "location": 4,
                 "burnup": "Complete",
                 "emissions": {
                     "NOx": 0.38,
@@ -841,12 +818,12 @@
                 "location": 6,
                 "burnup": "Complete",
                 "emissions": {
-                    "NOx": 0.0,
-                    "Al2O3": 0.0,
-                    "BC": 0.0,
-                    "Cl": 0.0,
-                    "HCl": 0.0,
-                    "Unablated_Mass": 0.0
+                    "NOx": 0.3512,
+                    "Al2O3": 0.18438,
+                    "BC": 0.035998,
+                    "Cl": 0.01317,
+                    "HCl": 0.007024,
+                    "Unablated_Mass": 0.6145999999999999
                 }
             },
             {
@@ -859,12 +836,12 @@
                 "location": 6,
                 "burnup": "Complete",
                 "emissions": {
-                    "NOx": 0.0,
-                    "Al2O3": 0.0,
-                    "BC": 0.0,
-                    "Cl": 0.0,
-                    "HCl": 0.0,
-                    "Unablated_Mass": 0.0
+                    "NOx": 0.3512,
+                    "Al2O3": 0.18438,
+                    "BC": 0.035998,
+                    "Cl": 0.01317,
+                    "HCl": 0.007024,
+                    "Unablated_Mass": 0.6145999999999999
                 }
             }
         ]
@@ -1317,24 +1294,6 @@
         "launches": [],
         "reentries": [
             {
-                "date": "2015-02-04T00:00:00Z",
-                "id": "1959-007",
-                "reusability": "",
-                "name": "deb Vanguard 3",
-                "category": "C",
-                "smc": false,
-                "location": 6,
-                "burnup": "Complete",
-                "emissions": {
-                    "NOx": 0.0,
-                    "Al2O3": 0.0,
-                    "BC": 0.0,
-                    "Cl": 0.0,
-                    "HCl": 0.0,
-                    "Unablated_Mass": 0.0
-                }
-            },
-            {
                 "date": "2015-02-04T15:40:00Z",
                 "id": "2013-002C",
                 "reusability": "",
@@ -1350,29 +1309,6 @@
                     "Cl": 0.0341,
                     "HCl": 0.0155,
                     "Unablated_Mass": 1.085
-                }
-            }
-        ]
-    },
-    "2015-02-05": {
-        "launches": [],
-        "reentries": [
-            {
-                "date": "2015-02-05T00:00:00Z",
-                "id": "2015-004C",
-                "reusability": "",
-                "name": "deb IGS Radar-Spare",
-                "category": "C",
-                "smc": false,
-                "location": 6,
-                "burnup": "Complete",
-                "emissions": {
-                    "NOx": 0.0,
-                    "Al2O3": 0.0,
-                    "BC": 0.0,
-                    "Cl": 0.0,
-                    "HCl": 0.0,
-                    "Unablated_Mass": 0.0
                 }
             }
         ]
@@ -1743,7 +1679,7 @@
                 "name": "Georges Lemaitre",
                 "category": "P",
                 "smc": false,
-                "location": -1,
+                "location": 4,
                 "burnup": "Complete",
                 "emissions": {
                     "NOx": 5.32,
@@ -1759,24 +1695,6 @@
     "2015-02-16": {
         "launches": [],
         "reentries": [
-            {
-                "date": "2015-02-16T00:00:00Z",
-                "id": "2005-031K",
-                "reusability": "",
-                "name": "deb INDEX",
-                "category": "C",
-                "smc": false,
-                "location": 6,
-                "burnup": "Complete",
-                "emissions": {
-                    "NOx": 0.0,
-                    "Al2O3": 0.0,
-                    "BC": 0.0,
-                    "Cl": 0.0,
-                    "HCl": 0.0,
-                    "Unablated_Mass": 0.0
-                }
-            },
             {
                 "date": "2015-02-16T06:20:00Z",
                 "id": "2012-006J",
@@ -4267,17 +4185,17 @@
                 "id": "1986-078D",
                 "reusability": "",
                 "name": "Blok-2BL 11-668",
-                "category": "S4",
+                "category": "S3",
                 "smc": false,
                 "location": 6,
                 "burnup": "Complete",
                 "emissions": {
-                    "NOx": 0.0,
-                    "Al2O3": 0.0,
-                    "BC": 0.0,
-                    "Cl": 0.0,
-                    "HCl": 0.0,
-                    "Unablated_Mass": 0.0
+                    "NOx": 0.3608,
+                    "Al2O3": 0.41041,
+                    "BC": 0.026158,
+                    "Cl": 0.009922,
+                    "HCl": 0.00451,
+                    "Unablated_Mass": 0.3157
                 }
             },
             {
@@ -4837,17 +4755,17 @@
                 "id": "1980-093B",
                 "reusability": "",
                 "name": "Vostok-2M (N75) Stage 3",
-                "category": "S3",
+                "category": "S2",
                 "smc": false,
                 "location": 1,
                 "burnup": "Complete",
                 "emissions": {
-                    "NOx": 0.0,
-                    "Al2O3": 0.0,
-                    "BC": 0.0,
-                    "Cl": 0.0,
-                    "HCl": 0.0,
-                    "Unablated_Mass": 0.0
+                    "NOx": 0.576,
+                    "Al2O3": 0.6552,
+                    "BC": 0.04176,
+                    "Cl": 0.01584,
+                    "HCl": 0.0072,
+                    "Unablated_Mass": 0.504
                 }
             }
         ]
@@ -6272,7 +6190,7 @@
                 "name": "LightSail-1",
                 "category": "P",
                 "smc": false,
-                "location": -1,
+                "location": 4,
                 "burnup": "Complete",
                 "emissions": {
                     "NOx": 0.0016,
@@ -6327,29 +6245,6 @@
                     "Cl": 0.015,
                     "HCl": 0.008,
                     "Unablated_Mass": 0.19999999999999996
-                }
-            }
-        ]
-    },
-    "2015-06-20": {
-        "launches": [],
-        "reentries": [
-            {
-                "date": "2015-06-20T00:00:00Z",
-                "id": "1992-094C",
-                "reusability": "",
-                "name": "deb Kosmos-2228",
-                "category": "C",
-                "smc": false,
-                "location": 6,
-                "burnup": "Complete",
-                "emissions": {
-                    "NOx": 0.0,
-                    "Al2O3": 0.0,
-                    "BC": 0.0,
-                    "Cl": 0.0,
-                    "HCl": 0.0,
-                    "Unablated_Mass": 0.0
                 }
             }
         ]
@@ -6883,17 +6778,17 @@
                 "id": "1992-040D",
                 "reusability": "",
                 "name": "Blok-2BL",
-                "category": "S4",
+                "category": "S3",
                 "smc": false,
                 "location": 1,
                 "burnup": "Complete",
                 "emissions": {
-                    "NOx": 0.0,
-                    "Al2O3": 0.0,
-                    "BC": 0.0,
-                    "Cl": 0.0,
-                    "HCl": 0.0,
-                    "Unablated_Mass": 0.0
+                    "NOx": 0.3608,
+                    "Al2O3": 0.41041,
+                    "BC": 0.026158,
+                    "Cl": 0.009922,
+                    "HCl": 0.00451,
+                    "Unablated_Mass": 0.3157
                 }
             },
             {
@@ -6903,7 +6798,7 @@
                 "name": "Flock 1b-9",
                 "category": "P",
                 "smc": false,
-                "location": -1,
+                "location": 4,
                 "burnup": "Complete",
                 "emissions": {
                     "NOx": 0.0018,
@@ -6926,7 +6821,7 @@
                 "name": "Blok-L",
                 "category": "S3",
                 "smc": false,
-                "location": -1,
+                "location": 3,
                 "burnup": "Complete",
                 "emissions": {
                     "NOx": 0.3608,
@@ -7170,7 +7065,7 @@
                 "name": "Soyuz-U-PVB No. 142 Blok-I",
                 "category": "S2",
                 "smc": false,
-                "location": -1,
+                "location": 4,
                 "burnup": "Complete",
                 "emissions": {
                     "NOx": 0.964,
@@ -7527,7 +7422,7 @@
                 "name": "Gazodinamicheskiy Ekran",
                 "category": "C",
                 "smc": false,
-                "location": -1,
+                "location": 4,
                 "burnup": "Complete",
                 "emissions": {
                     "NOx": 0.02,
@@ -9635,7 +9530,7 @@
                 "name": "Kosmos-1315",
                 "category": "P",
                 "smc": false,
-                "location": -1,
+                "location": 3,
                 "burnup": "Complete",
                 "emissions": {
                     "NOx": 0.7,
@@ -10143,7 +10038,7 @@
                 "name": "Soyuz-FG No. 054 Blok-I",
                 "category": "S2",
                 "smc": false,
-                "location": -1,
+                "location": 4,
                 "burnup": "Complete",
                 "emissions": {
                     "NOx": 0.964,
@@ -10166,7 +10061,7 @@
                 "name": "Flock 1b-11",
                 "category": "P",
                 "smc": false,
-                "location": -1,
+                "location": 4,
                 "burnup": "Complete",
                 "emissions": {
                     "NOx": 0.0018,
@@ -11039,7 +10934,7 @@
                 "name": "Kosmos-2505",
                 "category": "P",
                 "smc": false,
-                "location": -1,
+                "location": 3,
                 "burnup": "Partial",
                 "emissions": {
                     "NOx": 0.55755,
@@ -11561,7 +11456,7 @@
                 "name": "Delta 340 Stage 3",
                 "category": "S3",
                 "smc": false,
-                "location": -1,
+                "location": 3,
                 "burnup": "Complete",
                 "emissions": {
                     "NOx": 0.0832,
@@ -12011,7 +11906,7 @@
                 "name": "Kounotori 5 gouki",
                 "category": "P",
                 "smc": false,
-                "location": -1,
+                "location": 4,
                 "burnup": "Complete",
                 "emissions": {
                     "NOx": 3.3884,
@@ -12592,7 +12487,7 @@
                 "name": "Soyuz-U-PVB No. 146 Blok-I",
                 "category": "S2",
                 "smc": false,
-                "location": -1,
+                "location": 4,
                 "burnup": "Complete",
                 "emissions": {
                     "NOx": 0.964,
@@ -13121,24 +13016,6 @@
             }
         ],
         "reentries": [
-            {
-                "date": "2015-10-16T00:00:00Z",
-                "id": "2011-066G",
-                "reusability": "",
-                "name": "deb CZ-4B",
-                "category": "C",
-                "smc": false,
-                "location": 6,
-                "burnup": "Complete",
-                "emissions": {
-                    "NOx": 0.0,
-                    "Al2O3": 0.0,
-                    "BC": 0.0,
-                    "Cl": 0.0,
-                    "HCl": 0.0,
-                    "Unablated_Mass": 0.0
-                }
-            },
             {
                 "date": "2015-10-16T08:00:00Z",
                 "id": "1998-067FX",
@@ -14305,7 +14182,7 @@
                 "name": "Hikoboshi",
                 "category": "P",
                 "smc": false,
-                "location": -1,
+                "location": 3,
                 "burnup": "Complete",
                 "emissions": {
                     "NOx": 1.1,
@@ -16271,7 +16148,7 @@
                 "name": "Proton-M 535-44 Stage 3",
                 "category": "S3",
                 "smc": false,
-                "location": -1,
+                "location": 4,
                 "burnup": "Complete",
                 "emissions": {
                     "NOx": 1.4,
@@ -17134,7 +17011,7 @@
                 "name": "Progress M-28M",
                 "category": "P",
                 "smc": false,
-                "location": -1,
+                "location": 4,
                 "burnup": "Complete",
                 "emissions": {
                     "NOx": 1.73,
@@ -17422,7 +17299,7 @@
                 "name": "Falcon 9-021 Stage 2",
                 "category": "S2",
                 "smc": false,
-                "location": -1,
+                "location": 4,
                 "burnup": "Complete",
                 "emissions": {
                     "NOx": 2.2244,

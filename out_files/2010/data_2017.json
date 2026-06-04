@@ -1181,7 +1181,7 @@
                 "name": "Progress MS-03",
                 "category": "P",
                 "smc": false,
-                "location": -1,
+                "location": 4,
                 "burnup": "Complete",
                 "emissions": {
                     "NOx": 1.5984,
@@ -1222,7 +1222,7 @@
                 "name": "Kounotori 6 gouki",
                 "category": "P",
                 "smc": false,
-                "location": -1,
+                "location": 4,
                 "burnup": "Complete",
                 "emissions": {
                     "NOx": 3.496,
@@ -1243,17 +1243,17 @@
                 "id": "1988-076D",
                 "reusability": "",
                 "name": "Blok-2BL No. 76",
-                "category": "S4",
+                "category": "S3",
                 "smc": false,
                 "location": 6,
                 "burnup": "Complete",
                 "emissions": {
-                    "NOx": 0.0,
-                    "Al2O3": 0.0,
-                    "BC": 0.0,
-                    "Cl": 0.0,
-                    "HCl": 0.0,
-                    "Unablated_Mass": 0.0
+                    "NOx": 0.3608,
+                    "Al2O3": 0.41041,
+                    "BC": 0.026158,
+                    "Cl": 0.009922,
+                    "HCl": 0.00451,
+                    "Unablated_Mass": 0.3157
                 }
             }
         ]
@@ -2535,7 +2535,7 @@
                 "name": "Vega AVUM VV09",
                 "category": "S4",
                 "smc": false,
-                "location": -1,
+                "location": 4,
                 "burnup": "Complete",
                 "emissions": {
                     "NOx": 0.2752,
@@ -2802,7 +2802,7 @@
                 "name": "Falcon 9 Stage 1 B1030",
                 "category": "S1",
                 "smc": false,
-                "location": -1,
+                "location": 4,
                 "burnup": "Complete",
                 "emissions": {
                     "NOx": 7.2,
@@ -3090,7 +3090,7 @@
                 "name": "Delta 377",
                 "category": "S2",
                 "smc": false,
-                "location": -1,
+                "location": 4,
                 "burnup": "Complete",
                 "emissions": {
                     "NOx": 1.396,
@@ -3799,7 +3799,7 @@
                 "name": "Centaur AV-070",
                 "category": "S2",
                 "smc": false,
-                "location": -1,
+                "location": 4,
                 "burnup": "Complete",
                 "emissions": {
                     "NOx": 0.812,
@@ -5165,7 +5165,7 @@
                 "name": "Falcon 9 Stage 1 B1034",
                 "category": "S1",
                 "smc": false,
-                "location": -1,
+                "location": 4,
                 "burnup": "Complete",
                 "emissions": {
                     "NOx": 7.2,
@@ -5291,7 +5291,7 @@
                 "name": "CZ-7 Y2 Stage 2",
                 "category": "S2",
                 "smc": false,
-                "location": -1,
+                "location": 3,
                 "burnup": "Complete",
                 "emissions": {
                     "NOx": 2.3,
@@ -6498,7 +6498,7 @@
                 "name": "Proton-M 935-61 Stage 3",
                 "category": "S3",
                 "smc": false,
-                "location": -1,
+                "location": 4,
                 "burnup": "Complete",
                 "emissions": {
                     "NOx": 1.4,
@@ -7789,7 +7789,7 @@
                 "name": "Volga 14S46 No. 3?",
                 "category": "S3",
                 "smc": false,
-                "location": -1,
+                "location": 4,
                 "burnup": "Complete",
                 "emissions": {
                     "NOx": 0.356,
@@ -8248,7 +8248,7 @@
                 "name": "Falcon 9 Stage 1 B1037",
                 "category": "S1",
                 "smc": false,
-                "location": -1,
+                "location": 4,
                 "burnup": "Complete",
                 "emissions": {
                     "NOx": 7.2,
@@ -8397,7 +8397,7 @@
                 "name": "Fregat No. 122-02",
                 "category": "S3",
                 "smc": false,
-                "location": -1,
+                "location": 4,
                 "burnup": "Complete",
                 "emissions": {
                     "NOx": 0.40188,
@@ -8610,7 +8610,7 @@
                 "name": "Progress MS-05",
                 "category": "P",
                 "smc": false,
-                "location": -1,
+                "location": 4,
                 "burnup": "Complete",
                 "emissions": {
                     "NOx": 1.6004,
@@ -9314,7 +9314,7 @@
                 "name": "Proton-M 935-59 Stage 3",
                 "category": "S3",
                 "smc": false,
-                "location": -1,
+                "location": 4,
                 "burnup": "Complete",
                 "emissions": {
                     "NOx": 1.4,
@@ -9859,7 +9859,7 @@
                 "name": "Falcon 9-041 Stage 2",
                 "category": "S2",
                 "smc": false,
-                "location": -1,
+                "location": 4,
                 "burnup": "Complete",
                 "emissions": {
                     "NOx": 1.96,
@@ -10326,24 +10326,6 @@
         "launches": [],
         "reentries": [
             {
-                "date": "2017-09-01T15:00:00Z",
-                "id": "2017-050F",
-                "reusability": "",
-                "name": "deb Minotaur IV",
-                "category": "C",
-                "smc": false,
-                "location": 6,
-                "burnup": "Complete",
-                "emissions": {
-                    "NOx": 0.0,
-                    "Al2O3": 0.0,
-                    "BC": 0.0,
-                    "Cl": 0.0,
-                    "HCl": 0.0,
-                    "Unablated_Mass": 0.0
-                }
-            },
-            {
                 "date": "2017-09-01T00:00:00Z",
                 "id": "1998-067",
                 "reusability": "",
@@ -10409,7 +10391,7 @@
                 "name": "InflateSail",
                 "category": "P",
                 "smc": false,
-                "location": -1,
+                "location": 3,
                 "burnup": "Complete",
                 "emissions": {
                     "NOx": 0.0016,
@@ -10720,7 +10702,7 @@
                 "name": "Proton-M 935-65 Stage 3",
                 "category": "S3",
                 "smc": false,
-                "location": -1,
+                "location": 4,
                 "burnup": "Complete",
                 "emissions": {
                     "NOx": 1.4,
@@ -11771,7 +11753,7 @@
                 "name": "Proton-M 937-02 Stage 3",
                 "category": "S3",
                 "smc": false,
-                "location": -1,
+                "location": 4,
                 "burnup": "Complete",
                 "emissions": {
                     "NOx": 1.4,
@@ -12889,7 +12871,7 @@
                 "name": "UR-100NB",
                 "category": "S2",
                 "smc": false,
-                "location": -1,
+                "location": 3,
                 "burnup": "Complete",
                 "emissions": {
                     "NOx": 0.8,
@@ -13399,29 +13381,6 @@
                     "Cl": 7.5e-05,
                     "HCl": 4e-05,
                     "Unablated_Mass": 0.0009999999999999998
-                }
-            }
-        ]
-    },
-    "2017-10-28": {
-        "launches": [],
-        "reentries": [
-            {
-                "date": "2017-10-28T00:00:00Z",
-                "id": "1998-067LG",
-                "reusability": "",
-                "name": "deb MBSU?",
-                "category": "C",
-                "smc": false,
-                "location": 6,
-                "burnup": "Complete",
-                "emissions": {
-                    "NOx": 0.0,
-                    "Al2O3": 0.0,
-                    "BC": 0.0,
-                    "Cl": 0.0,
-                    "HCl": 0.0,
-                    "Unablated_Mass": 0.0
                 }
             }
         ]
@@ -14089,7 +14048,7 @@
                 "name": "Vega AVUM VV11",
                 "category": "S4",
                 "smc": false,
-                "location": -1,
+                "location": 4,
                 "burnup": "Complete",
                 "emissions": {
                     "NOx": 0.2752,
@@ -14431,24 +14390,6 @@
         "reentries": [
             {
                 "date": "2017-11-14T00:00:00Z",
-                "id": "2017-071D",
-                "reusability": "",
-                "name": "deb Cygnus OA-8",
-                "category": "C",
-                "smc": false,
-                "location": 6,
-                "burnup": "Complete",
-                "emissions": {
-                    "NOx": 0.0,
-                    "Al2O3": 0.0,
-                    "BC": 0.0,
-                    "Cl": 0.0,
-                    "HCl": 0.0,
-                    "Unablated_Mass": 0.0
-                }
-            },
-            {
-                "date": "2017-11-14T00:00:00Z",
                 "id": "2017-072",
                 "reusability": "",
                 "name": "CZ-4C Stage 1",
@@ -14517,29 +14458,6 @@
                     "Cl": 0.0135,
                     "HCl": 0.0072,
                     "Unablated_Mass": 0.63
-                }
-            }
-        ]
-    },
-    "2017-11-15": {
-        "launches": [],
-        "reentries": [
-            {
-                "date": "2017-11-15T00:00:00Z",
-                "id": "2017-071C",
-                "reusability": "",
-                "name": "deb Cygnus OA-8",
-                "category": "C",
-                "smc": false,
-                "location": 6,
-                "burnup": "Complete",
-                "emissions": {
-                    "NOx": 0.0,
-                    "Al2O3": 0.0,
-                    "BC": 0.0,
-                    "Cl": 0.0,
-                    "HCl": 0.0,
-                    "Unablated_Mass": 0.0
                 }
             }
         ]
@@ -14822,12 +14740,12 @@
                 "location": 6,
                 "burnup": "Complete",
                 "emissions": {
-                    "NOx": 0.0,
-                    "Al2O3": 0.0,
-                    "BC": 0.0,
-                    "Cl": 0.0,
-                    "HCl": 0.0,
-                    "Unablated_Mass": 0.0
+                    "NOx": 0.3512,
+                    "Al2O3": 0.18438,
+                    "BC": 0.035998,
+                    "Cl": 0.01317,
+                    "HCl": 0.007024,
+                    "Unablated_Mass": 0.6145999999999999
                 }
             },
             {
@@ -14840,12 +14758,12 @@
                 "location": 6,
                 "burnup": "Complete",
                 "emissions": {
-                    "NOx": 0.0,
-                    "Al2O3": 0.0,
-                    "BC": 0.0,
-                    "Cl": 0.0,
-                    "HCl": 0.0,
-                    "Unablated_Mass": 0.0
+                    "NOx": 0.3512,
+                    "Al2O3": 0.18438,
+                    "BC": 0.035998,
+                    "Cl": 0.01317,
+                    "HCl": 0.007024,
+                    "Unablated_Mass": 0.6145999999999999
                 }
             }
         ]
@@ -16826,7 +16744,7 @@
                 "name": "Falcon 9 Stage 1 B1036",
                 "category": "S1",
                 "smc": false,
-                "location": -1,
+                "location": 4,
                 "burnup": "Complete",
                 "emissions": {
                     "NOx": 7.2,
@@ -17232,7 +17150,7 @@
                 "name": "Progress MS-06",
                 "category": "P",
                 "smc": false,
-                "location": -1,
+                "location": 4,
                 "burnup": "Complete",
                 "emissions": {
                     "NOx": 1.73,

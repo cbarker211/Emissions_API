@@ -2308,7 +2308,7 @@
                 "name": "Fregat No. 122-03",
                 "category": "S3",
                 "smc": false,
-                "location": -1,
+                "location": 4,
                 "burnup": "Complete",
                 "emissions": {
                     "NOx": 0.4012,
@@ -4819,17 +4819,17 @@
                 "id": "2001-030D",
                 "reusability": "",
                 "name": "Blok-ML 34-497",
-                "category": "S4",
+                "category": "S3",
                 "smc": false,
                 "location": 6,
                 "burnup": "Complete",
                 "emissions": {
-                    "NOx": 0.0,
-                    "Al2O3": 0.0,
-                    "BC": 0.0,
-                    "Cl": 0.0,
-                    "HCl": 0.0,
-                    "Unablated_Mass": 0.0
+                    "NOx": 0.3996,
+                    "Al2O3": 0.454545,
+                    "BC": 0.028971,
+                    "Cl": 0.010989,
+                    "HCl": 0.004995,
+                    "Unablated_Mass": 0.34964999999999996
                 }
             },
             {
@@ -5850,7 +5850,7 @@
                 "name": "Falcon 9 Stage 1 B1041",
                 "category": "S1",
                 "smc": false,
-                "location": -1,
+                "location": 4,
                 "burnup": "Complete",
                 "emissions": {
                     "NOx": 7.2,
@@ -6156,7 +6156,7 @@
                 "name": "Falcon 9 Stage 1 B1039.2",
                 "category": "S1",
                 "smc": false,
-                "location": -1,
+                "location": 4,
                 "burnup": "Complete",
                 "emissions": {
                     "NOx": 7.2,
@@ -6197,7 +6197,7 @@
                 "name": "Sylda 5A",
                 "category": "C",
                 "smc": false,
-                "location": -1,
+                "location": 3,
                 "burnup": "Complete",
                 "emissions": {
                     "NOx": 0.176,
@@ -7412,7 +7412,7 @@
                 "name": "Proton-M 935-62 Stage 3",
                 "category": "S3",
                 "smc": false,
-                "location": -1,
+                "location": 4,
                 "burnup": "Complete",
                 "emissions": {
                     "NOx": 1.4,
@@ -7556,7 +7556,7 @@
                 "name": "Flock 2e'-3",
                 "category": "P",
                 "smc": false,
-                "location": -1,
+                "location": 3,
                 "burnup": "Complete",
                 "emissions": {
                     "NOx": 0.002,
@@ -7710,7 +7710,7 @@
                 "name": "UR-100NB",
                 "category": "S2",
                 "smc": false,
-                "location": -1,
+                "location": 3,
                 "burnup": "Complete",
                 "emissions": {
                     "NOx": 0.8,
@@ -7926,7 +7926,7 @@
                 "name": "Progress MS-07",
                 "category": "P",
                 "smc": false,
-                "location": -1,
+                "location": 4,
                 "burnup": "Complete",
                 "emissions": {
                     "NOx": 1.73,
@@ -8312,17 +8312,17 @@
                 "id": "2002-059D",
                 "reusability": "",
                 "name": "Blok-2BL 12-623",
-                "category": "S4",
+                "category": "S3",
                 "smc": false,
                 "location": 1,
                 "burnup": "Complete",
                 "emissions": {
-                    "NOx": 0.0,
-                    "Al2O3": 0.0,
-                    "BC": 0.0,
-                    "Cl": 0.0,
-                    "HCl": 0.0,
-                    "Unablated_Mass": 0.0
+                    "NOx": 0.3608,
+                    "Al2O3": 0.41041,
+                    "BC": 0.026158,
+                    "Cl": 0.009922,
+                    "HCl": 0.00451,
+                    "Unablated_Mass": 0.3157
                 }
             },
             {
@@ -8784,7 +8784,7 @@
                 "name": "TechEdSat-6",
                 "category": "P",
                 "smc": false,
-                "location": -1,
+                "location": 4,
                 "burnup": "Complete",
                 "emissions": {
                     "NOx": 0.0016,
@@ -9185,7 +9185,7 @@
                 "name": "Falcon 9-056 Stage 2",
                 "category": "S2",
                 "smc": false,
-                "location": -1,
+                "location": 4,
                 "burnup": "Complete",
                 "emissions": {
                     "NOx": 2.36,
@@ -9203,7 +9203,7 @@
                 "name": "Falcon 9 Stage 1 B1043",
                 "category": "S1",
                 "smc": false,
-                "location": -1,
+                "location": 4,
                 "burnup": "Complete",
                 "emissions": {
                     "NOx": 7.2,
@@ -10791,7 +10791,7 @@
                 "name": "Falcon 9 Stage 1 B1045.2",
                 "category": "S1",
                 "smc": false,
-                "location": -1,
+                "location": 4,
                 "burnup": "Complete",
                 "emissions": {
                     "NOx": 7.2,
@@ -10884,19 +10884,19 @@
                         0.060798,
                         0.393361,
                         0.338631,
-                        0.521392
+                        0.5236
                     ],
                     "CO": [
                         0.10252,
                         0.437297,
                         1.054933,
-                        2.248503
+                        2.273343
                     ],
                     "CO2": [
                         31.037476,
                         21.849296,
                         5.293174,
-                        7.16914
+                        7.19467
                     ],
                     "NOx": [
                         2.124573,
@@ -10908,31 +10908,31 @@
                         40.634806,
                         29.352695,
                         9.053007,
-                        13.938959
+                        14.011466
                     ],
                     "Al2O3": [
                         0.0,
                         0.0,
                         0.0,
-                        0.0
+                        0.045264
                     ],
                     "Cl": [
                         0.0,
                         0.0,
                         0.0,
-                        0.0
+                        0.007038
                     ],
                     "HCl": [
                         0.0,
                         0.0,
                         0.0,
-                        0.0
+                        0.009108
                     ],
                     "Cl2": [
                         0.0,
                         0.0,
                         0.0,
-                        0.0
+                        0.013662
                     ]
                 }
             },
@@ -11957,7 +11957,7 @@
                 "name": "Iridium 41",
                 "category": "P",
                 "smc": false,
-                "location": -1,
+                "location": 4,
                 "burnup": "Complete",
                 "emissions": {
                     "NOx": 0.2224,
@@ -12584,52 +12584,6 @@
             }
         ]
     },
-    "2018-08-08": {
-        "launches": [],
-        "reentries": [
-            {
-                "date": "2018-08-08T00:00:00Z",
-                "id": "1998-067NN",
-                "reusability": "",
-                "name": "ISS deb",
-                "category": "C",
-                "smc": false,
-                "location": 6,
-                "burnup": "Complete",
-                "emissions": {
-                    "NOx": 0.012,
-                    "Al2O3": 0.0096,
-                    "BC": 0.00123,
-                    "Cl": 0.00045,
-                    "HCl": 0.00024,
-                    "Unablated_Mass": 0.005999999999999998
-                }
-            }
-        ]
-    },
-    "2018-08-11": {
-        "launches": [],
-        "reentries": [
-            {
-                "date": "2018-08-11T00:00:00Z",
-                "id": "2012-072C",
-                "reusability": "",
-                "name": "deb Kwangmyongsong-3 F2",
-                "category": "C",
-                "smc": false,
-                "location": 6,
-                "burnup": "Complete",
-                "emissions": {
-                    "NOx": 0.0,
-                    "Al2O3": 0.0,
-                    "BC": 0.0,
-                    "Cl": 0.0,
-                    "HCl": 0.0,
-                    "Unablated_Mass": 0.0
-                }
-            }
-        ]
-    },
     "2018-08-12": {
         "launches": [
             {
@@ -13033,7 +12987,7 @@
                 "name": "Vega AVUM VV12",
                 "category": "S4",
                 "smc": false,
-                "location": -1,
+                "location": 4,
                 "burnup": "Complete",
                 "emissions": {
                     "NOx": 0.2752,
@@ -13518,7 +13472,7 @@
                 "name": "Iridium 12",
                 "category": "P",
                 "smc": false,
-                "location": -1,
+                "location": 4,
                 "burnup": "Complete",
                 "emissions": {
                     "NOx": 0.2224,
@@ -13963,12 +13917,12 @@
                 "location": 6,
                 "burnup": "Complete",
                 "emissions": {
-                    "NOx": 0.0,
-                    "Al2O3": 0.0,
-                    "BC": 0.0,
-                    "Cl": 0.0,
-                    "HCl": 0.0,
-                    "Unablated_Mass": 0.0
+                    "NOx": 0.3512,
+                    "Al2O3": 0.18438,
+                    "BC": 0.035998,
+                    "Cl": 0.01317,
+                    "HCl": 0.007024,
+                    "Unablated_Mass": 0.6145999999999999
                 }
             },
             {
@@ -13981,12 +13935,12 @@
                 "location": 6,
                 "burnup": "Complete",
                 "emissions": {
-                    "NOx": 0.0,
-                    "Al2O3": 0.0,
-                    "BC": 0.0,
-                    "Cl": 0.0,
-                    "HCl": 0.0,
-                    "Unablated_Mass": 0.0
+                    "NOx": 0.3512,
+                    "Al2O3": 0.18438,
+                    "BC": 0.035998,
+                    "Cl": 0.01317,
+                    "HCl": 0.007024,
+                    "Unablated_Mass": 0.6145999999999999
                 }
             }
         ]
@@ -14793,29 +14747,6 @@
             }
         ]
     },
-    "2018-09-26": {
-        "launches": [],
-        "reentries": [
-            {
-                "date": "2018-09-26T00:00:00Z",
-                "id": "2017-036AJ",
-                "reusability": "",
-                "name": "deb PSLV",
-                "category": "C",
-                "smc": false,
-                "location": 6,
-                "burnup": "Complete",
-                "emissions": {
-                    "NOx": 0.0,
-                    "Al2O3": 0.0,
-                    "BC": 0.0,
-                    "Cl": 0.0,
-                    "HCl": 0.0,
-                    "Unablated_Mass": 0.0
-                }
-            }
-        ]
-    },
     "2018-09-29": {
         "launches": [
             {
@@ -15404,7 +15335,7 @@
                 "name": "Yuanzheng-1S Y1",
                 "category": "S3",
                 "smc": false,
-                "location": -1,
+                "location": 4,
                 "burnup": "Complete",
                 "emissions": {
                     "NOx": 1.0,
@@ -16599,7 +16530,7 @@
                 "name": "Falcon 9-045 Stage 2",
                 "category": "S2",
                 "smc": false,
-                "location": -1,
+                "location": 4,
                 "burnup": "Complete",
                 "emissions": {
                     "NOx": 1.96,
@@ -17228,7 +17159,7 @@
                 "name": "Soyuz-2-1b No. 036 Blok-I",
                 "category": "S2",
                 "smc": false,
-                "location": -1,
+                "location": 4,
                 "burnup": "Complete",
                 "emissions": {
                     "NOx": 0.942,
@@ -17472,7 +17403,7 @@
                 "name": "Iridium 83",
                 "category": "P",
                 "smc": false,
-                "location": -1,
+                "location": 3,
                 "burnup": "Complete",
                 "emissions": {
                     "NOx": 0.2224,
@@ -17991,7 +17922,7 @@
                 "name": "UPSat",
                 "category": "P",
                 "smc": false,
-                "location": -1,
+                "location": 4,
                 "burnup": "Complete",
                 "emissions": {
                     "NOx": 0.0008,
@@ -20259,24 +20190,6 @@
                 }
             },
             {
-                "date": "2018-12-05T00:00:00Z",
-                "id": "2018-101D",
-                "reusability": "",
-                "name": "deb CRS-16",
-                "category": "C",
-                "smc": true,
-                "location": 6,
-                "burnup": "Complete",
-                "emissions": {
-                    "NOx": 0.0,
-                    "Al2O3": 0.0,
-                    "BC": 0.0,
-                    "Cl": 0.0,
-                    "HCl": 0.0,
-                    "Unablated_Mass": 0.0
-                }
-            },
-            {
                 "date": "2018-12-05T19:15:00Z",
                 "id": "2018-101D",
                 "reusability": "",
@@ -20740,29 +20653,6 @@
                     "BC": 0.004264,
                     "Cl": 0.00156,
                     "HCl": 0.000832,
-                    "Unablated_Mass": 0.0
-                }
-            }
-        ]
-    },
-    "2018-12-12": {
-        "launches": [],
-        "reentries": [
-            {
-                "date": "2018-12-12T00:00:00Z",
-                "id": "2016-056C",
-                "reusability": "",
-                "name": "deb 'Ofeq-11",
-                "category": "C",
-                "smc": false,
-                "location": 6,
-                "burnup": "Complete",
-                "emissions": {
-                    "NOx": 0.0,
-                    "Al2O3": 0.0,
-                    "BC": 0.0,
-                    "Cl": 0.0,
-                    "HCl": 0.0,
                     "Unablated_Mass": 0.0
                 }
             }
@@ -21558,7 +21448,7 @@
                 "name": "Proton-M 935-63 Stage 3",
                 "category": "S3",
                 "smc": false,
-                "location": -1,
+                "location": 4,
                 "burnup": "Complete",
                 "emissions": {
                     "NOx": 1.4,

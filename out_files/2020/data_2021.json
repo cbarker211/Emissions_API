@@ -1982,7 +1982,7 @@
                 "name": "Progress MS-15",
                 "category": "P",
                 "smc": false,
-                "location": -1,
+                "location": 4,
                 "burnup": "Complete",
                 "emissions": {
                     "NOx": 1.73,
@@ -2327,24 +2327,6 @@
             }
         ],
         "reentries": [
-            {
-                "date": "2021-02-16T00:00:00Z",
-                "id": "2012-072D",
-                "reusability": "",
-                "name": "deb Kwangmyongsong-3 F2",
-                "category": "C",
-                "smc": false,
-                "location": 6,
-                "burnup": "Complete",
-                "emissions": {
-                    "NOx": 0.0,
-                    "Al2O3": 0.0,
-                    "BC": 0.0,
-                    "Cl": 0.0,
-                    "HCl": 0.0,
-                    "Unablated_Mass": 0.0
-                }
-            },
             {
                 "date": "2021-02-16T00:00:00Z",
                 "id": "2021-005BR",
@@ -4632,29 +4614,6 @@
             }
         ]
     },
-    "2021-03-16": {
-        "launches": [],
-        "reentries": [
-            {
-                "date": "2021-03-16T21:45:00Z",
-                "id": "1992-041C",
-                "reusability": "",
-                "name": "Ariane H10 V51 main deb",
-                "category": "S3",
-                "smc": false,
-                "location": -1,
-                "burnup": "Complete",
-                "emissions": {
-                    "NOx": 0.696,
-                    "Al2O3": 0.7917,
-                    "BC": 0.05046,
-                    "Cl": 0.01914,
-                    "HCl": 0.0087,
-                    "Unablated_Mass": 0.609
-                }
-            }
-        ]
-    },
     "2021-03-18": {
         "launches": [],
         "reentries": [
@@ -6920,17 +6879,17 @@
                 "id": "1998-027D",
                 "reusability": "",
                 "name": "Blok-ML 16-546",
-                "category": "S4",
+                "category": "S3",
                 "smc": false,
                 "location": 6,
                 "burnup": "Complete",
                 "emissions": {
-                    "NOx": 0.0,
-                    "Al2O3": 0.0,
-                    "BC": 0.0,
-                    "Cl": 0.0,
-                    "HCl": 0.0,
-                    "Unablated_Mass": 0.0
+                    "NOx": 0.3996,
+                    "Al2O3": 0.454545,
+                    "BC": 0.028971,
+                    "Cl": 0.010989,
+                    "HCl": 0.004995,
+                    "Unablated_Mass": 0.34964999999999996
                 }
             },
             {
@@ -8116,7 +8075,7 @@
                 "name": "Progress MS-14",
                 "category": "P",
                 "smc": false,
-                "location": -1,
+                "location": 4,
                 "burnup": "Complete",
                 "emissions": {
                     "NOx": 1.73,
@@ -8287,6 +8246,29 @@
                     "Cl": 0.0135,
                     "HCl": 0.0072,
                     "Unablated_Mass": 0.63
+                }
+            }
+        ]
+    },
+    "2021-05-01": {
+        "launches": [],
+        "reentries": [
+            {
+                "date": "2021-05-01T00:00:00Z",
+                "id": "1980-019A",
+                "reusability": "",
+                "name": "MSD-3 Insertion Motor",
+                "category": "C",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "emissions": {
+                    "NOx": 0.236,
+                    "Al2O3": 0.1888,
+                    "BC": 0.02419,
+                    "Cl": 0.00885,
+                    "HCl": 0.00472,
+                    "Unablated_Mass": 0.11799999999999998
                 }
             }
         ]
@@ -8984,7 +8966,7 @@
                 "name": "Electron Stage 1",
                 "category": "S1",
                 "smc": false,
-                "location": 2,
+                "location": 4,
                 "burnup": "Partial",
                 "emissions": {
                     "NOx": 0.16625,
@@ -9579,24 +9561,6 @@
                     "Cl": 0.0066,
                     "HCl": 0.00352,
                     "Unablated_Mass": 0.08799999999999998
-                }
-            },
-            {
-                "date": "2021-05-20T00:00:00Z",
-                "id": "1998-067QT",
-                "reusability": "",
-                "name": "AMS-02 Debris Shield",
-                "category": "C",
-                "smc": false,
-                "location": 6,
-                "burnup": "Complete",
-                "emissions": {
-                    "NOx": 0.0036,
-                    "Al2O3": 0.00288,
-                    "BC": 0.000369,
-                    "Cl": 0.000135,
-                    "HCl": 7.2e-05,
-                    "Unablated_Mass": 0.0017999999999999997
                 }
             }
         ]
@@ -11122,7 +11086,7 @@
                 "name": "CZ-2D Y54 Stage 2",
                 "category": "S2",
                 "smc": false,
-                "location": -1,
+                "location": 4,
                 "burnup": "Complete",
                 "emissions": {
                     "NOx": 1.6,
@@ -12350,17 +12314,17 @@
                 "id": "2008-062D",
                 "reusability": "",
                 "name": "Blok-2BL 13-626",
-                "category": "S4",
+                "category": "S3",
                 "smc": false,
                 "location": 6,
                 "burnup": "Complete",
                 "emissions": {
-                    "NOx": 0.0,
-                    "Al2O3": 0.0,
-                    "BC": 0.0,
-                    "Cl": 0.0,
-                    "HCl": 0.0,
-                    "Unablated_Mass": 0.0
+                    "NOx": 0.3608,
+                    "Al2O3": 0.41041,
+                    "BC": 0.026158,
+                    "Cl": 0.009922,
+                    "HCl": 0.00451,
+                    "Unablated_Mass": 0.3157
                 }
             }
         ]
@@ -13477,7 +13441,7 @@
                 "name": "S.S. Katherine Johnson",
                 "category": "P",
                 "smc": false,
-                "location": -1,
+                "location": 4,
                 "burnup": "Complete",
                 "emissions": {
                     "NOx": 1.48716,
@@ -13585,7 +13549,7 @@
                 "name": "CZ-2D Y74 Stage 2",
                 "category": "S2",
                 "smc": false,
-                "location": -1,
+                "location": 4,
                 "burnup": "Complete",
                 "emissions": {
                     "NOx": 1.6,
@@ -14702,7 +14666,7 @@
                 "name": "Pirs",
                 "category": "P",
                 "smc": false,
-                "location": -1,
+                "location": 4,
                 "burnup": "Complete",
                 "emissions": {
                     "NOx": 3.4988,
@@ -17229,7 +17193,7 @@
                 "name": "Yuanzheng-1S Y2",
                 "category": "S3",
                 "smc": true,
-                "location": -1,
+                "location": 3,
                 "burnup": "Complete",
                 "emissions": {
                     "NOx": 1.08,
@@ -20168,24 +20132,6 @@
         "launches": [],
         "reentries": [
             {
-                "date": "2021-10-04T00:00:00Z",
-                "id": "2021-079C",
-                "reusability": "",
-                "name": "deb GF5-02",
-                "category": "C",
-                "smc": false,
-                "location": 6,
-                "burnup": "Complete",
-                "emissions": {
-                    "NOx": 0.0,
-                    "Al2O3": 0.0,
-                    "BC": 0.0,
-                    "Cl": 0.0,
-                    "HCl": 0.0,
-                    "Unablated_Mass": 0.0
-                }
-            },
-            {
                 "date": "2021-10-04T21:16:00Z",
                 "id": "2021-085B",
                 "reusability": "",
@@ -21345,7 +21291,7 @@
                 "name": "Soyuz MS-18",
                 "category": "P",
                 "smc": false,
-                "location": -1,
+                "location": 3,
                 "burnup": "Partial",
                 "emissions": {
                     "NOx": 0.508025,
@@ -24014,7 +23960,7 @@
                 "name": "Electron Stage 1",
                 "category": "S1",
                 "smc": false,
-                "location": 2,
+                "location": 4,
                 "burnup": "Partial",
                 "emissions": {
                     "NOx": 0.16625,
@@ -25315,7 +25261,7 @@
                 "name": "Progress MS-17",
                 "category": "P",
                 "smc": false,
-                "location": -1,
+                "location": 4,
                 "burnup": "Complete",
                 "emissions": {
                     "NOx": 1.75,
@@ -27965,7 +27911,7 @@
                 "name": "S.S. Ellison Onizuka",
                 "category": "P",
                 "smc": false,
-                "location": -1,
+                "location": 4,
                 "burnup": "Complete",
                 "emissions": {
                     "NOx": 1.5556,
@@ -29222,7 +29168,7 @@
                 "name": "Progress M-UM PAO",
                 "category": "P",
                 "smc": false,
-                "location": -1,
+                "location": 4,
                 "burnup": "Complete",
                 "emissions": {
                     "NOx": 1.04,

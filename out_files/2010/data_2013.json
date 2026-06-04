@@ -22,29 +22,6 @@
             }
         ]
     },
-    "2013-01-12": {
-        "launches": [],
-        "reentries": [
-            {
-                "date": "2013-01-12T00:00:00Z",
-                "id": "2011-050C",
-                "reusability": "",
-                "name": "deb IGS O-4",
-                "category": "C",
-                "smc": false,
-                "location": 6,
-                "burnup": "Complete",
-                "emissions": {
-                    "NOx": 0.0,
-                    "Al2O3": 0.0,
-                    "BC": 0.0,
-                    "Cl": 0.0,
-                    "HCl": 0.0,
-                    "Unablated_Mass": 0.0
-                }
-            }
-        ]
-    },
     "2013-01-15": {
         "launches": [
             {
@@ -120,17 +97,17 @@
                 "id": "1993-049D",
                 "reusability": "",
                 "name": "Blok-ML 24-543",
-                "category": "S4",
+                "category": "S3",
                 "smc": false,
                 "location": 6,
                 "burnup": "Complete",
                 "emissions": {
-                    "NOx": 0.0,
-                    "Al2O3": 0.0,
-                    "BC": 0.0,
-                    "Cl": 0.0,
-                    "HCl": 0.0,
-                    "Unablated_Mass": 0.0
+                    "NOx": 0.3996,
+                    "Al2O3": 0.454545,
+                    "BC": 0.028971,
+                    "Cl": 0.010989,
+                    "HCl": 0.004995,
+                    "Unablated_Mass": 0.34964999999999996
                 }
             },
             {
@@ -425,7 +402,7 @@
                 "name": "Kosmos-1484",
                 "category": "P",
                 "smc": false,
-                "location": -1,
+                "location": 3,
                 "burnup": "Complete",
                 "emissions": {
                     "NOx": 0.6,
@@ -1117,24 +1094,6 @@
         "launches": [],
         "reentries": [
             {
-                "date": "2013-02-09T00:00:00Z",
-                "id": "2013-002G",
-                "reusability": "",
-                "name": "deb H-2A",
-                "category": "C",
-                "smc": false,
-                "location": 6,
-                "burnup": "Complete",
-                "emissions": {
-                    "NOx": 0.0,
-                    "Al2O3": 0.0,
-                    "BC": 0.0,
-                    "Cl": 0.0,
-                    "HCl": 0.0,
-                    "Unablated_Mass": 0.0
-                }
-            },
-            {
                 "date": "2013-02-09T17:05:00Z",
                 "id": "2012-042A",
                 "reusability": "",
@@ -1500,7 +1459,7 @@
                 "name": "Soyuz-U-PVB No. 137 Blok-I",
                 "category": "S2",
                 "smc": false,
-                "location": -1,
+                "location": 4,
                 "burnup": "Complete",
                 "emissions": {
                     "NOx": 0.964,
@@ -1685,7 +1644,7 @@
                 "name": "CZ-4B Y12 Stage 3",
                 "category": "S3",
                 "smc": false,
-                "location": -1,
+                "location": 3,
                 "burnup": "Complete",
                 "emissions": {
                     "NOx": 0.8,
@@ -2529,29 +2488,6 @@
                     "Cl": 0.02651,
                     "HCl": 0.01205,
                     "Unablated_Mass": 0.8435
-                }
-            }
-        ]
-    },
-    "2013-04-04": {
-        "launches": [],
-        "reentries": [
-            {
-                "date": "2013-04-04T00:00:00Z",
-                "id": "1991-001D",
-                "reusability": "",
-                "name": "deb Delta",
-                "category": "C",
-                "smc": false,
-                "location": 6,
-                "burnup": "Complete",
-                "emissions": {
-                    "NOx": 0.0,
-                    "Al2O3": 0.0,
-                    "BC": 0.0,
-                    "Cl": 0.0,
-                    "HCl": 0.0,
-                    "Unablated_Mass": 0.0
                 }
             }
         ]
@@ -4018,17 +3954,17 @@
                 "id": "1990-026D",
                 "reusability": "",
                 "name": "Blok-2BL No. 85",
-                "category": "S4",
+                "category": "S3",
                 "smc": false,
                 "location": 6,
                 "burnup": "Complete",
                 "emissions": {
-                    "NOx": 0.0,
-                    "Al2O3": 0.0,
-                    "BC": 0.0,
-                    "Cl": 0.0,
-                    "HCl": 0.0,
-                    "Unablated_Mass": 0.0
+                    "NOx": 0.3608,
+                    "Al2O3": 0.41041,
+                    "BC": 0.026158,
+                    "Cl": 0.009922,
+                    "HCl": 0.00451,
+                    "Unablated_Mass": 0.3157
                 }
             },
             {
@@ -5500,7 +5436,7 @@
                 "name": "Ariane 5 L592 EPS",
                 "category": "S2",
                 "smc": false,
-                "location": -1,
+                "location": 4,
                 "burnup": "Complete",
                 "emissions": {
                     "NOx": 1.14,
@@ -5719,17 +5655,17 @@
                 "id": "1981-058D",
                 "reusability": "",
                 "name": "Blok-2BL 55-642",
-                "category": "S4",
+                "category": "S3",
                 "smc": false,
                 "location": 6,
                 "burnup": "Complete",
                 "emissions": {
-                    "NOx": 0.0,
-                    "Al2O3": 0.0,
-                    "BC": 0.0,
-                    "Cl": 0.0,
-                    "HCl": 0.0,
-                    "Unablated_Mass": 0.0
+                    "NOx": 0.3608,
+                    "Al2O3": 0.41041,
+                    "BC": 0.026158,
+                    "Cl": 0.009922,
+                    "HCl": 0.00451,
+                    "Unablated_Mass": 0.3157
                 }
             }
         ]
@@ -7350,7 +7286,7 @@
                 "name": "Delta 114",
                 "category": "S2",
                 "smc": false,
-                "location": -1,
+                "location": 3,
                 "burnup": "Complete",
                 "emissions": {
                     "NOx": 0.338,
@@ -7440,7 +7376,7 @@
                 "name": "Geo-IK-2 No. 11",
                 "category": "P",
                 "smc": false,
-                "location": -1,
+                "location": 3,
                 "burnup": "Complete",
                 "emissions": {
                     "NOx": 0.36,
@@ -7515,17 +7451,17 @@
                 "id": "1996-045D",
                 "reusability": "",
                 "name": "Blok-ML 16-491",
-                "category": "S4",
+                "category": "S3",
                 "smc": false,
                 "location": 6,
                 "burnup": "Complete",
                 "emissions": {
-                    "NOx": 0.0,
-                    "Al2O3": 0.0,
-                    "BC": 0.0,
-                    "Cl": 0.0,
-                    "HCl": 0.0,
-                    "Unablated_Mass": 0.0
+                    "NOx": 0.3996,
+                    "Al2O3": 0.454545,
+                    "BC": 0.028971,
+                    "Cl": 0.010989,
+                    "HCl": 0.004995,
+                    "Unablated_Mass": 0.34964999999999996
                 }
             }
         ]
@@ -9624,52 +9560,6 @@
             }
         ]
     },
-    "2013-09-03": {
-        "launches": [],
-        "reentries": [
-            {
-                "date": "2013-09-03T00:00:00Z",
-                "id": "1998-067CX",
-                "reusability": "",
-                "name": "EVA debris",
-                "category": "C",
-                "smc": false,
-                "location": 6,
-                "burnup": "Complete",
-                "emissions": {
-                    "NOx": 0.0,
-                    "Al2O3": 0.0,
-                    "BC": 0.0,
-                    "Cl": 0.0,
-                    "HCl": 0.0,
-                    "Unablated_Mass": 0.0
-                }
-            }
-        ]
-    },
-    "2013-09-04": {
-        "launches": [],
-        "reentries": [
-            {
-                "date": "2013-09-04T00:00:00Z",
-                "id": "2002-032B",
-                "reusability": "",
-                "name": "deb NOAA 17",
-                "category": "C",
-                "smc": false,
-                "location": 6,
-                "burnup": "Complete",
-                "emissions": {
-                    "NOx": 0.0,
-                    "Al2O3": 0.0,
-                    "BC": 0.0,
-                    "Cl": 0.0,
-                    "HCl": 0.0,
-                    "Unablated_Mass": 0.0
-                }
-            }
-        ]
-    },
     "2013-09-07": {
         "launches": [
             {
@@ -9819,7 +9709,7 @@
                 "name": "Kounotori 4 gouki",
                 "category": "P",
                 "smc": false,
-                "location": -1,
+                "location": 4,
                 "burnup": "Complete",
                 "emissions": {
                     "NOx": 3.9716,
@@ -10241,17 +10131,17 @@
                 "id": "2003-029D",
                 "reusability": "",
                 "name": "Blok-2BL No. 625",
-                "category": "S4",
+                "category": "S3",
                 "smc": false,
                 "location": 6,
                 "burnup": "Complete",
                 "emissions": {
-                    "NOx": 0.0,
-                    "Al2O3": 0.0,
-                    "BC": 0.0,
-                    "Cl": 0.0,
-                    "HCl": 0.0,
-                    "Unablated_Mass": 0.0
+                    "NOx": 0.3608,
+                    "Al2O3": 0.41041,
+                    "BC": 0.026158,
+                    "Cl": 0.009922,
+                    "HCl": 0.00451,
+                    "Unablated_Mass": 0.3157
                 }
             }
         ]
@@ -11211,17 +11101,17 @@
                 "id": "2003-011D",
                 "reusability": "",
                 "name": "Blok-2BL 16-624",
-                "category": "S4",
+                "category": "S3",
                 "smc": false,
                 "location": 6,
                 "burnup": "Complete",
                 "emissions": {
-                    "NOx": 0.0,
-                    "Al2O3": 0.0,
-                    "BC": 0.0,
-                    "Cl": 0.0,
-                    "HCl": 0.0,
-                    "Unablated_Mass": 0.0
+                    "NOx": 0.3608,
+                    "Al2O3": 0.41041,
+                    "BC": 0.026158,
+                    "Cl": 0.009922,
+                    "HCl": 0.00451,
+                    "Unablated_Mass": 0.3157
                 }
             }
         ]
@@ -11428,7 +11318,7 @@
                 "name": "Falcon 9 Stage 1 V1.1",
                 "category": "S1",
                 "smc": false,
-                "location": 2,
+                "location": 4,
                 "burnup": "Complete",
                 "emissions": {
                     "NOx": 7.2,
@@ -11557,24 +11447,6 @@
     "2013-10-23": {
         "launches": [],
         "reentries": [
-            {
-                "date": "2013-10-23T00:00:00Z",
-                "id": "1998-067CZ",
-                "reusability": "",
-                "name": "EVA debris?",
-                "category": "C",
-                "smc": false,
-                "location": 6,
-                "burnup": "Complete",
-                "emissions": {
-                    "NOx": 0.0,
-                    "Al2O3": 0.0,
-                    "BC": 0.0,
-                    "Cl": 0.0,
-                    "HCl": 0.0,
-                    "Unablated_Mass": 0.0
-                }
-            },
             {
                 "date": "2013-10-23T18:16:00Z",
                 "id": "2013-051A",
@@ -12910,7 +12782,7 @@
                 "name": "Proton-M 535-41 Stage 3",
                 "category": "S3",
                 "smc": false,
-                "location": -1,
+                "location": 4,
                 "burnup": "Complete",
                 "emissions": {
                     "NOx": 1.4,
@@ -12931,17 +12803,17 @@
                 "id": "1978-045B",
                 "reusability": "",
                 "name": "Vostok-2M (N57) Stage 3",
-                "category": "S3",
+                "category": "S2",
                 "smc": false,
                 "location": 6,
                 "burnup": "Complete",
                 "emissions": {
-                    "NOx": 0.0,
-                    "Al2O3": 0.0,
-                    "BC": 0.0,
-                    "Cl": 0.0,
-                    "HCl": 0.0,
-                    "Unablated_Mass": 0.0
+                    "NOx": 0.576,
+                    "Al2O3": 0.6552,
+                    "BC": 0.04176,
+                    "Cl": 0.01584,
+                    "HCl": 0.0072,
+                    "Unablated_Mass": 0.504
                 }
             }
         ]
@@ -14805,29 +14677,6 @@
                     "Cl": 1.5e-05,
                     "HCl": 8e-06,
                     "Unablated_Mass": 0.00019999999999999996
-                }
-            }
-        ]
-    },
-    "2013-12-17": {
-        "launches": [],
-        "reentries": [
-            {
-                "date": "2013-12-17T00:00:00Z",
-                "id": "2007-020B",
-                "reusability": "",
-                "name": "deb Fregat",
-                "category": "C",
-                "smc": false,
-                "location": 6,
-                "burnup": "Complete",
-                "emissions": {
-                    "NOx": 0.0,
-                    "Al2O3": 0.0,
-                    "BC": 0.0,
-                    "Cl": 0.0,
-                    "HCl": 0.0,
-                    "Unablated_Mass": 0.0
                 }
             }
         ]

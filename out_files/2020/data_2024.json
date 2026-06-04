@@ -465,42 +465,6 @@
                 }
             },
             {
-                "date": "2024-01-03T00:00:00Z",
-                "id": "2022-132G",
-                "reusability": "",
-                "name": "deb CZ-2C?",
-                "category": "C",
-                "smc": false,
-                "location": 6,
-                "burnup": "Complete",
-                "emissions": {
-                    "NOx": 0.0,
-                    "Al2O3": 0.0,
-                    "BC": 0.0,
-                    "Cl": 0.0,
-                    "HCl": 0.0,
-                    "Unablated_Mass": 0.0
-                }
-            },
-            {
-                "date": "2024-01-03T00:00:00Z",
-                "id": "2023-199C",
-                "reusability": "",
-                "name": "deb SQ-1",
-                "category": "C",
-                "smc": false,
-                "location": 6,
-                "burnup": "Complete",
-                "emissions": {
-                    "NOx": 0.0,
-                    "Al2O3": 0.0,
-                    "BC": 0.0,
-                    "Cl": 0.0,
-                    "HCl": 0.0,
-                    "Unablated_Mass": 0.0
-                }
-            },
-            {
                 "date": "2024-01-03T05:37:00Z",
                 "id": "2024-002",
                 "reusability": "",
@@ -1297,24 +1261,6 @@
             }
         ],
         "reentries": [
-            {
-                "date": "2024-01-09T00:00:00Z",
-                "id": "1993-059G",
-                "reusability": "",
-                "name": "deb 11S772?",
-                "category": "C",
-                "smc": false,
-                "location": 6,
-                "burnup": "Complete",
-                "emissions": {
-                    "NOx": 0.0,
-                    "Al2O3": 0.0,
-                    "BC": 0.0,
-                    "Cl": 0.0,
-                    "HCl": 0.0,
-                    "Unablated_Mass": 0.0
-                }
-            },
             {
                 "date": "2024-01-09T00:00:00Z",
                 "id": "2017-036V",
@@ -4701,24 +4647,6 @@
         "reentries": [
             {
                 "date": "2024-02-02T00:00:00Z",
-                "id": "1978-019D",
-                "reusability": "",
-                "name": "deb Kosmos-990? [UNID]",
-                "category": "C",
-                "smc": false,
-                "location": 6,
-                "burnup": "Complete",
-                "emissions": {
-                    "NOx": 0.0,
-                    "Al2O3": 0.0,
-                    "BC": 0.0,
-                    "Cl": 0.0,
-                    "HCl": 0.0,
-                    "Unablated_Mass": 0.0
-                }
-            },
-            {
-                "date": "2024-02-02T00:00:00Z",
                 "id": "2013-015G",
                 "reusability": "",
                 "name": "BEESAT 2",
@@ -5069,24 +4997,6 @@
     "2024-02-07": {
         "launches": [],
         "reentries": [
-            {
-                "date": "2024-02-07T00:00:00Z",
-                "id": "1971-035C",
-                "reusability": "",
-                "name": "deb Kosmos-407",
-                "category": "C",
-                "smc": false,
-                "location": 6,
-                "burnup": "Complete",
-                "emissions": {
-                    "NOx": 0.0,
-                    "Al2O3": 0.0,
-                    "BC": 0.0,
-                    "Cl": 0.0,
-                    "HCl": 0.0,
-                    "Unablated_Mass": 0.0
-                }
-            },
             {
                 "date": "2024-02-07T00:00:00Z",
                 "id": "2018-004AC",
@@ -14716,17 +14626,17 @@
                 "id": "1970-113B",
                 "reusability": "",
                 "name": "Vostok-2M (N18) Stage 3",
-                "category": "S3",
+                "category": "S2",
                 "smc": false,
                 "location": 1,
                 "burnup": "Complete",
                 "emissions": {
-                    "NOx": 0.0,
-                    "Al2O3": 0.0,
-                    "BC": 0.0,
-                    "Cl": 0.0,
-                    "HCl": 0.0,
-                    "Unablated_Mass": 0.0
+                    "NOx": 0.576,
+                    "Al2O3": 0.6552,
+                    "BC": 0.04176,
+                    "Cl": 0.01584,
+                    "HCl": 0.0072,
+                    "Unablated_Mass": 0.504
                 }
             },
             {
@@ -15676,24 +15586,6 @@
             }
         ],
         "reentries": [
-            {
-                "date": "2024-04-11T00:00:00Z",
-                "id": "1993-041G",
-                "reusability": "",
-                "name": "deb RADCAL",
-                "category": "C",
-                "smc": false,
-                "location": 6,
-                "burnup": "Complete",
-                "emissions": {
-                    "NOx": 0.0,
-                    "Al2O3": 0.0,
-                    "BC": 0.0,
-                    "Cl": 0.0,
-                    "HCl": 0.0,
-                    "Unablated_Mass": 0.0
-                }
-            },
             {
                 "date": "2024-04-11T14:30:00Z",
                 "id": "2021-006CA",
@@ -18254,7 +18146,7 @@
                 "name": "Falcon 9 Stage 1 B1060.20",
                 "category": "S1",
                 "smc": false,
-                "location": -1,
+                "location": 4,
                 "burnup": "Complete",
                 "emissions": {
                     "NOx": 9.88,
@@ -23038,17 +22930,17 @@
                 "id": "1981-009D",
                 "reusability": "",
                 "name": "Blok-ML No. 148",
-                "category": "S4",
+                "category": "S3",
                 "smc": false,
                 "location": 1,
                 "burnup": "Complete",
                 "emissions": {
-                    "NOx": 0.0,
-                    "Al2O3": 0.0,
-                    "BC": 0.0,
-                    "Cl": 0.0,
-                    "HCl": 0.0,
-                    "Unablated_Mass": 0.0
+                    "NOx": 0.3996,
+                    "Al2O3": 0.454545,
+                    "BC": 0.028971,
+                    "Cl": 0.010989,
+                    "HCl": 0.004995,
+                    "Unablated_Mass": 0.34964999999999996
                 }
             },
             {
@@ -23903,7 +23795,7 @@
                 "name": "Progress MS-25",
                 "category": "P",
                 "smc": false,
-                "location": -1,
+                "location": 4,
                 "burnup": "Complete",
                 "emissions": {
                     "NOx": 1.73,
@@ -28508,7 +28400,7 @@
                 "name": "Falcon 9 Stage 1 B1087.1",
                 "category": "S1",
                 "smc": false,
-                "location": -1,
+                "location": 4,
                 "burnup": "Complete",
                 "emissions": {
                     "NOx": 8.52,
@@ -30396,24 +30288,6 @@
     "2024-07-07": {
         "launches": [],
         "reentries": [
-            {
-                "date": "2024-07-07T00:00:00Z",
-                "id": "1979-089D",
-                "reusability": "",
-                "name": "deb Kosmos-1140? [UNID]",
-                "category": "C",
-                "smc": false,
-                "location": 6,
-                "burnup": "Complete",
-                "emissions": {
-                    "NOx": 0.0,
-                    "Al2O3": 0.0,
-                    "BC": 0.0,
-                    "Cl": 0.0,
-                    "HCl": 0.0,
-                    "Unablated_Mass": 0.0
-                }
-            },
             {
                 "date": "2024-07-07T23:38:00Z",
                 "id": "2024-113P",
@@ -33615,17 +33489,17 @@
                 "id": "1985-049D",
                 "reusability": "",
                 "name": "Blok-2BL No. 60",
-                "category": "S4",
+                "category": "S3",
                 "smc": false,
                 "location": 1,
                 "burnup": "Complete",
                 "emissions": {
-                    "NOx": 0.0,
-                    "Al2O3": 0.0,
-                    "BC": 0.0,
-                    "Cl": 0.0,
-                    "HCl": 0.0,
-                    "Unablated_Mass": 0.0
+                    "NOx": 0.3608,
+                    "Al2O3": 0.41041,
+                    "BC": 0.026158,
+                    "Cl": 0.009922,
+                    "HCl": 0.00451,
+                    "Unablated_Mass": 0.3157
                 }
             },
             {
@@ -34485,24 +34359,6 @@
             }
         ],
         "reentries": [
-            {
-                "date": "2024-08-04T00:00:00Z",
-                "id": "2012-073D",
-                "reusability": "",
-                "name": "deb Gokturk-2",
-                "category": "C",
-                "smc": false,
-                "location": 6,
-                "burnup": "Complete",
-                "emissions": {
-                    "NOx": 0.0,
-                    "Al2O3": 0.0,
-                    "BC": 0.0,
-                    "Cl": 0.0,
-                    "HCl": 0.0,
-                    "Unablated_Mass": 0.0
-                }
-            },
             {
                 "date": "2024-08-04T04:42:00Z",
                 "id": "2020-062AY",
@@ -36347,7 +36203,7 @@
                 "name": "Progress MS-26",
                 "category": "P",
                 "smc": false,
-                "location": -1,
+                "location": 4,
                 "burnup": "Complete",
                 "emissions": {
                     "NOx": 1.73,
@@ -36363,24 +36219,6 @@
     "2024-08-14": {
         "launches": [],
         "reentries": [
-            {
-                "date": "2024-08-14T00:00:00Z",
-                "id": "2017-042CB",
-                "reusability": "",
-                "name": "deb Soyuz cluster",
-                "category": "C",
-                "smc": false,
-                "location": 6,
-                "burnup": "Complete",
-                "emissions": {
-                    "NOx": 0.0,
-                    "Al2O3": 0.0,
-                    "BC": 0.0,
-                    "Cl": 0.0,
-                    "HCl": 0.0,
-                    "Unablated_Mass": 0.0
-                }
-            },
             {
                 "date": "2024-08-14T00:00:00Z",
                 "id": "2019-089J",
@@ -38445,17 +38283,17 @@
                 "id": "1981-008B",
                 "reusability": "",
                 "name": "Vostok-2M (N76) Stage 3",
-                "category": "S3",
+                "category": "S2",
                 "smc": false,
                 "location": 1,
                 "burnup": "Complete",
                 "emissions": {
-                    "NOx": 0.0,
-                    "Al2O3": 0.0,
-                    "BC": 0.0,
-                    "Cl": 0.0,
-                    "HCl": 0.0,
-                    "Unablated_Mass": 0.0
+                    "NOx": 0.576,
+                    "Al2O3": 0.6552,
+                    "BC": 0.04176,
+                    "Cl": 0.01584,
+                    "HCl": 0.0072,
+                    "Unablated_Mass": 0.504
                 }
             },
             {
@@ -47593,7 +47431,7 @@
                 "name": "Falcon 9 Stage 1 B1064.6",
                 "category": "S0",
                 "smc": false,
-                "location": -1,
+                "location": 4,
                 "burnup": "Complete",
                 "emissions": {
                     "NOx": 7.9,
@@ -47611,7 +47449,7 @@
                 "name": "Falcon 9 Stage 1 B1065.6",
                 "category": "S0",
                 "smc": false,
-                "location": -1,
+                "location": 4,
                 "burnup": "Complete",
                 "emissions": {
                     "NOx": 7.9,
@@ -47629,7 +47467,7 @@
                 "name": "Falcon 9 Stage 1 B1089.1",
                 "category": "S1",
                 "smc": false,
-                "location": -1,
+                "location": 4,
                 "burnup": "Complete",
                 "emissions": {
                     "NOx": 8.52,
@@ -47647,7 +47485,7 @@
                 "name": "Falcon H Fairing SN215-01",
                 "category": "C",
                 "smc": false,
-                "location": -1,
+                "location": 4,
                 "burnup": "Partial",
                 "emissions": {
                     "NOx": 0.164062,
@@ -47665,7 +47503,7 @@
                 "name": "Falcon H Fairing SN218-01",
                 "category": "C",
                 "smc": false,
-                "location": -1,
+                "location": 4,
                 "burnup": "Partial",
                 "emissions": {
                     "NOx": 0.164062,
@@ -49662,17 +49500,17 @@
                 "id": "1970-037B",
                 "reusability": "",
                 "name": "Vostok-2M (N15) Stage 3",
-                "category": "S3",
+                "category": "S2",
                 "smc": false,
                 "location": 1,
                 "burnup": "Complete",
                 "emissions": {
-                    "NOx": 0.0,
-                    "Al2O3": 0.0,
-                    "BC": 0.0,
-                    "Cl": 0.0,
-                    "HCl": 0.0,
-                    "Unablated_Mass": 0.0
+                    "NOx": 0.576,
+                    "Al2O3": 0.6552,
+                    "BC": 0.04176,
+                    "Cl": 0.01584,
+                    "HCl": 0.0072,
+                    "Unablated_Mass": 0.504
                 }
             },
             {
@@ -50922,24 +50760,6 @@
         "launches": [],
         "reentries": [
             {
-                "date": "2024-11-01T00:00:00Z",
-                "id": "1979-078E",
-                "reusability": "",
-                "name": "deb Kosmos-1125? [UNID]",
-                "category": "C",
-                "smc": false,
-                "location": 6,
-                "burnup": "Complete",
-                "emissions": {
-                    "NOx": 0.0,
-                    "Al2O3": 0.0,
-                    "BC": 0.0,
-                    "Cl": 0.0,
-                    "HCl": 0.0,
-                    "Unablated_Mass": 0.0
-                }
-            },
-            {
                 "date": "2024-11-01T23:43:00Z",
                 "id": "2019-070B",
                 "reusability": "",
@@ -52131,24 +51951,6 @@
         "launches": [],
         "reentries": [
             {
-                "date": "2024-11-06T00:00:00Z",
-                "id": "1976-069C",
-                "reusability": "",
-                "name": "deb Kosmos-841",
-                "category": "C",
-                "smc": false,
-                "location": 6,
-                "burnup": "Complete",
-                "emissions": {
-                    "NOx": 0.0,
-                    "Al2O3": 0.0,
-                    "BC": 0.0,
-                    "Cl": 0.0,
-                    "HCl": 0.0,
-                    "Unablated_Mass": 0.0
-                }
-            },
-            {
                 "date": "2024-11-06T06:00:00Z",
                 "id": "2020-038AR",
                 "reusability": "",
@@ -52531,24 +52333,6 @@
     "2024-11-08": {
         "launches": [],
         "reentries": [
-            {
-                "date": "2024-11-08T00:00:00Z",
-                "id": "1970-103G",
-                "reusability": "",
-                "name": "deb SOZ?",
-                "category": "C",
-                "smc": false,
-                "location": 6,
-                "burnup": "Complete",
-                "emissions": {
-                    "NOx": 0.0,
-                    "Al2O3": 0.0,
-                    "BC": 0.0,
-                    "Cl": 0.0,
-                    "HCl": 0.0,
-                    "Unablated_Mass": 0.0
-                }
-            },
             {
                 "date": "2024-11-08T04:00:00Z",
                 "id": "2022-002C",
@@ -55025,7 +54809,7 @@
                 "name": "Starship Super Heavy",
                 "category": "S1",
                 "smc": false,
-                "location": -1,
+                "location": 4,
                 "burnup": "Complete",
                 "emissions": {
                     "NOx": 88.0,
@@ -55061,7 +54845,7 @@
                 "name": "Progress MS-27",
                 "category": "P",
                 "smc": false,
-                "location": -1,
+                "location": 4,
                 "burnup": "Complete",
                 "emissions": {
                     "NOx": 1.73,
@@ -56472,24 +56256,6 @@
             }
         ],
         "reentries": [
-            {
-                "date": "2024-11-27T00:00:00Z",
-                "id": "1993-041H",
-                "reusability": "",
-                "name": "deb RADCAL",
-                "category": "C",
-                "smc": false,
-                "location": 6,
-                "burnup": "Complete",
-                "emissions": {
-                    "NOx": 0.0,
-                    "Al2O3": 0.0,
-                    "BC": 0.0,
-                    "Cl": 0.0,
-                    "HCl": 0.0,
-                    "Unablated_Mass": 0.0
-                }
-            },
             {
                 "date": "2024-11-27T00:00:00Z",
                 "id": "2018-094D",
@@ -59839,24 +59605,6 @@
         "launches": [],
         "reentries": [
             {
-                "date": "2024-12-10T00:00:00Z",
-                "id": "1975-094D",
-                "reusability": "",
-                "name": "deb Kosmos-773",
-                "category": "C",
-                "smc": false,
-                "location": 6,
-                "burnup": "Complete",
-                "emissions": {
-                    "NOx": 0.0,
-                    "Al2O3": 0.0,
-                    "BC": 0.0,
-                    "Cl": 0.0,
-                    "HCl": 0.0,
-                    "Unablated_Mass": 0.0
-                }
-            },
-            {
                 "date": "2024-12-10T11:57:00Z",
                 "id": "2020-038BH",
                 "reusability": "",
@@ -60806,17 +60554,17 @@
                 "id": "2024-240L",
                 "reusability": "",
                 "name": "Yuanzheng-2 Y2",
-                "category": "S3",
+                "category": "S2",
                 "smc": true,
                 "location": 1,
                 "burnup": "Complete",
                 "emissions": {
-                    "NOx": 0.0,
-                    "Al2O3": 0.0,
-                    "BC": 0.0,
-                    "Cl": 0.0,
-                    "HCl": 0.0,
-                    "Unablated_Mass": 0.0
+                    "NOx": 2.0,
+                    "Al2O3": 2.275,
+                    "BC": 0.145,
+                    "Cl": 0.055,
+                    "HCl": 0.025,
+                    "Unablated_Mass": 1.75
                 }
             },
             {

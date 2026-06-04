@@ -359,33 +359,33 @@
                 "location": "Spaceport Florida Authority",
                 "emissions": {
                     "BC": [
-                        0.028677,
-                        0.210267,
-                        0.471104,
+                        0.04123,
+                        0.30231,
+                        0.592959,
                         0.72453
                     ],
                     "CO": [
-                        0.116211,
-                        0.564803,
-                        4.053474,
+                        0.167081,
+                        0.812041,
+                        4.730896,
                         10.472745
                     ],
                     "CO2": [
-                        36.857628,
-                        27.146434,
-                        17.971074,
+                        52.991802,
+                        39.0296,
+                        23.202429,
                         20.978423
                     ],
                     "NOx": [
-                        0.402925,
-                        0.002415,
+                        0.579303,
+                        0.003472,
                         0.0,
                         0.0
                     ],
                     "H2O": [
-                        13.991806,
-                        10.589689,
-                        9.194341,
+                        20.116623,
+                        15.225252,
+                        11.572532,
                         14.140349
                     ],
                     "Al2O3": [
@@ -2681,7 +2681,7 @@
                 "name": "Kosmos-4",
                 "category": "P",
                 "smc": false,
-                "location": -1,
+                "location": 3,
                 "burnup": "Partial",
                 "emissions": {
                     "NOx": 0.3675,
@@ -2928,33 +2928,33 @@
                 "location": "Spaceport Florida Authority",
                 "emissions": {
                     "BC": [
-                        0.028677,
-                        0.210267,
-                        0.471104,
+                        0.04123,
+                        0.30231,
+                        0.592959,
                         0.72453
                     ],
                     "CO": [
-                        0.116211,
-                        0.564803,
-                        4.053474,
+                        0.167081,
+                        0.812041,
+                        4.730896,
                         10.472745
                     ],
                     "CO2": [
-                        36.857628,
-                        27.146434,
-                        17.971074,
+                        52.991802,
+                        39.0296,
+                        23.202429,
                         20.978423
                     ],
                     "NOx": [
-                        0.402925,
-                        0.002415,
+                        0.579303,
+                        0.003472,
                         0.0,
                         0.0
                     ],
                     "H2O": [
-                        13.991806,
-                        10.589689,
-                        9.194341,
+                        20.116623,
+                        15.225252,
+                        11.572532,
                         14.140349
                     ],
                     "Al2O3": [
@@ -3698,17 +3698,17 @@
                 "id": "1962-014",
                 "reusability": "",
                 "name": "Vostok 8K72 No. 20 Stage 3",
-                "category": "S3",
+                "category": "S2",
                 "smc": false,
                 "location": 6,
                 "burnup": "Complete",
                 "emissions": {
-                    "NOx": 0.0,
-                    "Al2O3": 0.0,
-                    "BC": 0.0,
-                    "Cl": 0.0,
-                    "HCl": 0.0,
-                    "Unablated_Mass": 0.0
+                    "NOx": 0.576,
+                    "Al2O3": 0.6552,
+                    "BC": 0.04176,
+                    "Cl": 0.01584,
+                    "HCl": 0.0072,
+                    "Unablated_Mass": 0.504
                 }
             },
             {
@@ -4651,52 +4651,6 @@
             }
         ]
     },
-    "1962-07-12": {
-        "launches": [],
-        "reentries": [
-            {
-                "date": "1962-07-12T00:00:00Z",
-                "id": "1962-024",
-                "reusability": "",
-                "name": "deb USAF satellite/Agena B",
-                "category": "C",
-                "smc": false,
-                "location": 6,
-                "burnup": "Complete",
-                "emissions": {
-                    "NOx": 0.0,
-                    "Al2O3": 0.0,
-                    "BC": 0.0,
-                    "Cl": 0.0,
-                    "HCl": 0.0,
-                    "Unablated_Mass": 0.0
-                }
-            }
-        ]
-    },
-    "1962-07-14": {
-        "launches": [],
-        "reentries": [
-            {
-                "date": "1962-07-14T00:00:00Z",
-                "id": "1962-024",
-                "reusability": "",
-                "name": "deb USAF satellite/Agena B",
-                "category": "C",
-                "smc": false,
-                "location": 6,
-                "burnup": "Complete",
-                "emissions": {
-                    "NOx": 0.0,
-                    "Al2O3": 0.0,
-                    "BC": 0.0,
-                    "Cl": 0.0,
-                    "HCl": 0.0,
-                    "Unablated_Mass": 0.0
-                }
-            }
-        ]
-    },
     "1962-07-18": {
         "launches": [
             {
@@ -5360,7 +5314,7 @@
                 "name": "Star 12",
                 "category": "C",
                 "smc": false,
-                "location": -1,
+                "location": 4,
                 "burnup": "Complete",
                 "emissions": {
                     "NOx": 0.004,
@@ -5396,7 +5350,7 @@
                 "name": "Priborniy otsek",
                 "category": "C",
                 "smc": false,
-                "location": -1,
+                "location": 3,
                 "burnup": "Complete",
                 "emissions": {
                     "NOx": 1.04,
@@ -5653,7 +5607,7 @@
                 "name": "Star 12",
                 "category": "C",
                 "smc": false,
-                "location": -1,
+                "location": 4,
                 "burnup": "Complete",
                 "emissions": {
                     "NOx": 0.004,
@@ -5721,24 +5675,6 @@
                     "Cl": 0.00924,
                     "HCl": 0.0042,
                     "Unablated_Mass": 0.294
-                }
-            },
-            {
-                "date": "1962-08-08T00:00:00Z",
-                "id": "1962-034",
-                "reusability": "",
-                "name": "deb USAF satellite/Agena D",
-                "category": "C",
-                "smc": false,
-                "location": 6,
-                "burnup": "Complete",
-                "emissions": {
-                    "NOx": 0.0,
-                    "Al2O3": 0.0,
-                    "BC": 0.0,
-                    "Cl": 0.0,
-                    "HCl": 0.0,
-                    "Unablated_Mass": 0.0
                 }
             }
         ]
@@ -6165,17 +6101,17 @@
                 "id": "1962-036",
                 "reusability": "",
                 "name": "Vostok 8K72 No. 23 Stage 3",
-                "category": "S3",
+                "category": "S2",
                 "smc": false,
                 "location": 6,
                 "burnup": "Complete",
                 "emissions": {
-                    "NOx": 0.0,
-                    "Al2O3": 0.0,
-                    "BC": 0.0,
-                    "Cl": 0.0,
-                    "HCl": 0.0,
-                    "Unablated_Mass": 0.0
+                    "NOx": 0.576,
+                    "Al2O3": 0.6552,
+                    "BC": 0.04176,
+                    "Cl": 0.01584,
+                    "HCl": 0.0072,
+                    "Unablated_Mass": 0.504
                 }
             },
             {
@@ -6183,17 +6119,17 @@
                 "id": "1962-037",
                 "reusability": "",
                 "name": "Vostok 8K72 No. 22 Stage 3",
-                "category": "S3",
+                "category": "S2",
                 "smc": false,
                 "location": 6,
                 "burnup": "Complete",
                 "emissions": {
-                    "NOx": 0.0,
-                    "Al2O3": 0.0,
-                    "BC": 0.0,
-                    "Cl": 0.0,
-                    "HCl": 0.0,
-                    "Unablated_Mass": 0.0
+                    "NOx": 0.576,
+                    "Al2O3": 0.6552,
+                    "BC": 0.04176,
+                    "Cl": 0.01584,
+                    "HCl": 0.0072,
+                    "Unablated_Mass": 0.504
                 }
             },
             {
@@ -6427,17 +6363,17 @@
                 "id": "1962-033",
                 "reusability": "",
                 "name": "Vostok-2 (N02) Stage 3",
-                "category": "S3",
+                "category": "S2",
                 "smc": false,
                 "location": 6,
                 "burnup": "Complete",
                 "emissions": {
-                    "NOx": 0.0,
-                    "Al2O3": 0.0,
-                    "BC": 0.0,
-                    "Cl": 0.0,
-                    "HCl": 0.0,
-                    "Unablated_Mass": 0.0
+                    "NOx": 0.576,
+                    "Al2O3": 0.6552,
+                    "BC": 0.04176,
+                    "Cl": 0.01584,
+                    "HCl": 0.0072,
+                    "Unablated_Mass": 0.504
                 }
             }
         ]
@@ -8861,33 +8797,33 @@
                 "location": "Spaceport Florida Authority",
                 "emissions": {
                     "BC": [
-                        0.028677,
-                        0.210267,
-                        0.471104,
+                        0.04123,
+                        0.30231,
+                        0.592959,
                         0.72453
                     ],
                     "CO": [
-                        0.116211,
-                        0.564803,
-                        4.053474,
+                        0.167081,
+                        0.812041,
+                        4.730896,
                         10.472745
                     ],
                     "CO2": [
-                        36.857628,
-                        27.146434,
-                        17.971074,
+                        52.991802,
+                        39.0296,
+                        23.202429,
                         20.978423
                     ],
                     "NOx": [
-                        0.402925,
-                        0.002415,
+                        0.579303,
+                        0.003472,
                         0.0,
                         0.0
                     ],
                     "H2O": [
-                        13.991806,
-                        10.589689,
-                        9.194341,
+                        20.116623,
+                        15.225252,
+                        11.572532,
                         14.140349
                     ],
                     "Al2O3": [
@@ -10965,17 +10901,17 @@
                 "id": "1962-054",
                 "reusability": "",
                 "name": "Vostok-2 (N04) Stage 3",
-                "category": "S3",
+                "category": "S2",
                 "smc": false,
                 "location": 6,
                 "burnup": "Complete",
                 "emissions": {
-                    "NOx": 0.0,
-                    "Al2O3": 0.0,
-                    "BC": 0.0,
-                    "Cl": 0.0,
-                    "HCl": 0.0,
-                    "Unablated_Mass": 0.0
+                    "NOx": 0.576,
+                    "Al2O3": 0.6552,
+                    "BC": 0.04176,
+                    "Cl": 0.01584,
+                    "HCl": 0.0072,
+                    "Unablated_Mass": 0.504
                 }
             },
             {
@@ -11198,7 +11134,7 @@
                 "name": "Agena B 2405",
                 "category": "S2",
                 "smc": false,
-                "location": -1,
+                "location": 4,
                 "burnup": "Complete",
                 "emissions": {
                     "NOx": 0.4624,
@@ -11216,7 +11152,7 @@
                 "name": "FTV 2405 RV",
                 "category": "P",
                 "smc": false,
-                "location": -1,
+                "location": 4,
                 "burnup": "Complete",
                 "emissions": {
                     "NOx": 0.24,
@@ -12463,17 +12399,17 @@
                 "id": "1962-048",
                 "reusability": "",
                 "name": "Vostok-2 (N03) Stage 3",
-                "category": "S3",
+                "category": "S2",
                 "smc": false,
                 "location": 6,
                 "burnup": "Complete",
                 "emissions": {
-                    "NOx": 0.0,
-                    "Al2O3": 0.0,
-                    "BC": 0.0,
-                    "Cl": 0.0,
-                    "HCl": 0.0,
-                    "Unablated_Mass": 0.0
+                    "NOx": 0.576,
+                    "Al2O3": 0.6552,
+                    "BC": 0.04176,
+                    "Cl": 0.01584,
+                    "HCl": 0.0072,
+                    "Unablated_Mass": 0.504
                 }
             },
             {

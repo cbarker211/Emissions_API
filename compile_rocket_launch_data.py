@@ -427,7 +427,6 @@ class import_launches:
                     f"Stage{j} Fuel Type":       "",
                     f"Stage{j} Propellant Mass": 0,
                     f"Stage{j} Stage Mass":      0,
-                    f"Stage{j} Propellant Name": 0,
                 })
 
             # First find the vehicle and its stages in the vehicles databases.
@@ -502,10 +501,12 @@ class import_launches:
                 # Going to use a constant mass ratio when we have the launch mass but not the dry.
                 # For the MG-18 stage (Thor MG-18, Scout X-2M, Scout X-3M), this is within the range of other scout 4th stages (10-33).
                 # https://www.planet4589.org/space/book/lv/engines/kick/WIDELYUSEDMOTORS.html 'high-mass ratio'
-                # TODO: Should ask Martin Ross and Jonathan McDowell about these, are these values reasonable? Different values for each stage?
+                # Jonathan McDowell said this is a reasonable estimate.
                 if launch_mass is not None and dry_mass is None:
                     #print(name,variant)
                     dry_mass = launch_mass / 10
+                elif name == "Atlas D" and stage_number == 0:
+                    launch_mass = dry_mass * 10 
                 
                 # These are fixed later in update_mass_info, so suppress warnings here.
                 if name not in ["Angara-1.2","Diamant A","Diamant B","Diamant BP4","Electron","Kuaizhou","Kuaizhou-1A","Lambda 4S","Juno II","Jupiter C",
