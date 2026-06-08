@@ -252,10 +252,15 @@ class OutputEmis:
             #Loop over all days:
             for d in range(ndays):
 
-                # Find launches and reentries.
+                # Find launches.
                 day_launch_mask = month_launch_mask & (np.array(input_data.dsl["Date"].dt.day)  == d+1)
                 daily_launches_df = input_data.dsl[day_launch_mask].reset_index(drop=True).copy()
 
+                # Skip failed launches before 2020.
+                if self.year < 2020:
+                    daily_launches_df = daily_launches_df[daily_launches_df["COSPAR_ID"].str[5] != "F"].copy()
+
+                # Find re-entries.
                 day_reentry_mask = month_reentry_mask & (np.array(input_data.dsre["Date"].dt.day) == d+1)                
                 daily_reentries_df = input_data.dsre[day_reentry_mask].reset_index(drop=True).copy()
 
@@ -263,8 +268,6 @@ class OutputEmis:
                     continue
 
                 self.strday = str(d+1).zfill(2) # Process day data
-                #if not np.any(day_launch_mask) and not np.any(day_reentry_mask):
-                #    continue  # skip to next day
                 
                 self.bot_alt = bot_alt_3d + np.zeros((LEVELS, self.nlat, self.nlon))
                 self.mid_alt = mid_alt_3d + np.zeros((LEVELS, self.nlat, self.nlon))
@@ -769,8 +772,8 @@ class OutputEmis:
         # Most failures are for upper stages, and so can be treated as normal here.
         # Full information is provided in source_info/failed_launch_info.txt.
                     
-        # Skip launches where the launch failed close to the launch pad, and all failed launches before 2020.
-        if row.COSPAR_ID in ['2020-F04','2021-F04','2023-F02','2024-F01'] or (row.COSPAR_ID[5] == "F" and self.year < 2020):
+        # Skip launches where the launch failed close to the launch pad.
+        if row.COSPAR_ID in ['2020-F04','2021-F04','2023-F02','2024-F01']:
             self.csv_count += 3
             return
         
