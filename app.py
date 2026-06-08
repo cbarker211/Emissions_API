@@ -41,7 +41,7 @@ def get_launches():
     # Filter the launches data based on the date range
     filtered_data = []
     for event_date, date_str, events in events_data:
-        if (not start_date or event_date >= start_date) and (not end_date or event_date <= end_date):
+        if (not start_date or event_date >= start_date) and (not end_date or event_date <= end_date) and events["launches"]:
             filtered_data.append({"date": date_str, "launches": events["launches"]})
 
     return jsonify(filtered_data)
@@ -63,7 +63,7 @@ def get_reentries():
     # Filter the reentries data based on the date range
     filtered_data = []
     for event_date, date_str, events in events_data:
-        if (not start_date or event_date >= start_date) and (not end_date or event_date <= end_date):
+        if (not start_date or event_date >= start_date) and (not end_date or event_date <= end_date) and events["reentries"]:
             filtered_data.append({"date": date_str, "reentries": events["reentries"]})
 
     return jsonify(filtered_data)
