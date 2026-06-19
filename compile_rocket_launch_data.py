@@ -360,13 +360,13 @@ class import_launches:
         ds['Latitude'].attrs['units']  = "Degrees"
              
         #Save to file and close the dataset     
-        ds.to_netcdf(f'./databases/launch_activity_data_{self.start_year}-{self.final_year}.nc')
+        ds.to_netcdf(f'./databases/launch_activity_data.nc')
         ds.close()
 
     def get_rocket_info(self):
         
         self.unique_rocket_list,vehicle_ids = [], []
-        with xr.open_dataset(f'./databases/launch_activity_data_{self.start_year}-{self.final_year}.nc', decode_times=False) as ds:
+        with xr.open_dataset(f'./databases/launch_activity_data.nc', decode_times=False) as ds:
             vehicle_names = ds['Rocket_Name'].values
             vehicle_variants = ds['Rocket_Variant'].values
 
@@ -623,8 +623,7 @@ class import_launches:
         ds = xr.Dataset(data_vars)
         
         #Save to file and close the DataSet     
-        #ds.to_netcdf(f'./databases/rocket_attributes_{self.start_year}-{self.final_year}_noupdate.nc')
-        ds.to_netcdf(f'./databases/rocket_attributes_{self.start_year}-{self.final_year}.nc')
+        ds.to_netcdf(f'./databases/rocket_attributes.nc')
         ds.close()
                          
 if __name__ == "__main__":
@@ -633,6 +632,8 @@ if __name__ == "__main__":
     Call each of the functions using import_launches._function_
     e.g. import_launches.launches_per_year(start_year,end_year)
     """         
+
+    current_year = (datetime.now().year)
     
     # Set up the arguments for each function.
     parser = argparse.ArgumentParser()
@@ -641,19 +642,12 @@ if __name__ == "__main__":
     parser.add_argument('-sli',  "--save_launch_info",         action='store_true',                                 help='Save launch info.')
     parser.add_argument('-ri',   "--rocket_info",              action='store_true',                                 help='Get rocket info.')
     parser.add_argument('-sri',  "--save_rocket_info",         action='store_true',                                 help='Save launch info.')
-    parser.add_argument('-sy',   "--start_year",               default = "1957", choices=str(np.arange(1957,2026)), help='Start Year (1957-2025).')
-    parser.add_argument('-fy',   "--final_year",               default = "2025", choices=str(np.arange(1942,2026)), help='Final Year (1957-2025).')
     args = parser.parse_args()
     
-    # Sort out the year range.
-    start_year = int(args.start_year)
-    final_year = int(args.final_year)
-    if start_year > final_year:
-        final_year = start_year + 1
-    print(f"Processing from year {start_year} to {final_year}.")  
+    print(f"Processing from year 1957 to {current_year}.")  
     
     #Loop over all years and run functions depending on input arguments.
-    LaunchData = import_launches(start_year,final_year)   
+    LaunchData = import_launches(1957,current_year-1)   
     if args.yearly_launches == True:
         LaunchData.get_launch_list()
 
