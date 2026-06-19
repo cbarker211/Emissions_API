@@ -10989,7 +10989,7 @@
                 "name": "Starship Super Heavy",
                 "category": "S1",
                 "smc": false,
-                "location": 6,
+                "location": 1,
                 "burnup": "Complete",
                 "emissions": {
                     "NOx": 88.0,
@@ -25815,14 +25815,14 @@
                 "category": "P",
                 "smc": false,
                 "location": 1,
-                "burnup": "Complete",
+                "burnup": "Partial",
                 "emissions": {
-                    "NOx": 48.0,
-                    "Al2O3": 38.4,
+                    "NOx": 21.0,
+                    "Al2O3": 0.0,
                     "BC": 4.92,
                     "Cl": 1.8,
                     "HCl": 0.96,
-                    "Unablated_Mass": 23.999999999999996
+                    "Unablated_Mass": 120.0
                 }
             },
             {
@@ -39055,6 +39055,24 @@
                 }
             },
             {
+                "date": "2024-08-28T07:56:22Z",
+                "id": "2024-152",
+                "reusability": "",
+                "name": "Falcon 9 Stage 1 B1062.23",
+                "category": "S1",
+                "smc": true,
+                "location": 5,
+                "burnup": "Partial",
+                "emissions": {
+                    "NOx": 4.3225,
+                    "Al2O3": 0.0,
+                    "BC": 0.0,
+                    "Cl": 0.0,
+                    "HCl": 0.0,
+                    "Unablated_Mass": 24.7
+                }
+            },
+            {
                 "date": "2024-08-28T00:00:00Z",
                 "id": "2024-152",
                 "reusability": "",
@@ -47270,14 +47288,14 @@
                 "category": "P",
                 "smc": false,
                 "location": 1,
-                "burnup": "Complete",
+                "burnup": "Partial",
                 "emissions": {
-                    "NOx": 48.0,
-                    "Al2O3": 38.4,
+                    "NOx": 21.0,
+                    "Al2O3": 0.0,
                     "BC": 4.92,
                     "Cl": 1.8,
                     "HCl": 0.96,
-                    "Unablated_Mass": 23.999999999999996
+                    "Unablated_Mass": 120.0
                 }
             },
             {
@@ -54792,14 +54810,14 @@
                 "category": "P",
                 "smc": false,
                 "location": 1,
-                "burnup": "Complete",
+                "burnup": "Partial",
                 "emissions": {
-                    "NOx": 48.0,
-                    "Al2O3": 38.4,
+                    "NOx": 21.0,
+                    "Al2O3": 0.0,
                     "BC": 4.92,
                     "Cl": 1.8,
                     "HCl": 0.96,
-                    "Unablated_Mass": 23.999999999999996
+                    "Unablated_Mass": 120.0
                 }
             },
             {
@@ -54809,7 +54827,7 @@
                 "name": "Starship Super Heavy",
                 "category": "S1",
                 "smc": false,
-                "location": 4,
+                "location": 1,
                 "burnup": "Complete",
                 "emissions": {
                     "NOx": 88.0,

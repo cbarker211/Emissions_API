@@ -21838,6 +21838,24 @@
         "launches": [],
         "reentries": [
             {
+                "date": "1968-11-17T14:12:00Z",
+                "id": "1968-101A",
+                "reusability": "",
+                "name": "Zond-6",
+                "category": "P",
+                "smc": false,
+                "location": 3,
+                "burnup": "Partial",
+                "emissions": {
+                    "NOx": 0.49,
+                    "Al2O3": 0.0,
+                    "BC": 0.1148,
+                    "Cl": 0.042,
+                    "HCl": 0.0224,
+                    "Unablated_Mass": 2.8000000000000003
+                }
+            },
+            {
                 "date": "1968-11-17T13:58:00Z",
                 "id": "1968-101",
                 "reusability": "",

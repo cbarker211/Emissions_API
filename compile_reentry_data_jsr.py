@@ -818,7 +818,7 @@ class build_reentry_list:
         ################################################
 
         subset = jsr_data[
-            (jsr_data["Status"].isin(["R","R?","D","L","L?","S","F","AF","AS"])) &            # Only include specific statuses (see https://planet4589.org/space/gcat/web/intro/phases.html)       
+            (jsr_data["Status"].isin(["R","R?","D","L","L?","LF","S","F","AF","AS"])) &       # Only include specific statuses (see https://planet4589.org/space/gcat/web/intro/phases.html)       
             (~jsr_data["#JCAT"].isin(["L80508","L80509","L80510"])) &                         # Skipping 2021-F07, GCAT lists apogee as 100km, but it actually failed around 30 km and reached a height of 50 km.
             (jsr_data["DYear"].between(self.start_year, self.final_year)) &                   # This time range only.
             ((jsr_data["Apogee"] >= 50) | (jsr_data["Apogee"] < 0)) &                         # Apogee above 50 km, or below 0. This makes sure to include objects in lprcat returning from space.
@@ -861,7 +861,7 @@ class build_reentry_list:
             
             burnup = "Complete"
             # Set the burnup as partial for all objects landing or splashing down at the surface.
-            if jsr_status == "L":
+            if jsr_status in ["L","L?","LF"]:
                 burnup = "Partial"
             # NOTE: Need to manually check for Electron booster recoveries if they ever restart recoveries.
             # TODO: Need to add Blue Origin reusable first stages.
@@ -1264,8 +1264,8 @@ class build_reentry_list:
             - fixes any geolocations on grid border (180E) 
         """
 
-        self.dsr = xr.open_dataset(f"./databases/rocket_attributes_{self.start_year}-{self.final_year}.nc", decode_times=False).to_dataframe().reset_index()
-        self.dsl = xr.open_dataset(f"./databases/launch_activity_data_{self.start_year}-{self.final_year}.nc", decode_times=False).to_dataframe().reset_index()
+        self.dsr = xr.open_dataset(f"./databases/rocket_attributes.nc", decode_times=False).to_dataframe().reset_index()
+        self.dsl = xr.open_dataset(f"./databases/launch_activity_data.nc", decode_times=False).to_dataframe().reset_index()
         self.import_raul_spacex_map() #(https://t.co/RAsQ9NDmEr)
 
         self.cospar_to_rocket = (self.dsl.set_index("COSPAR_ID")["Rocket_Name"].to_dict())
@@ -1550,7 +1550,8 @@ class build_reentry_list:
         })
              
         #Save to file and close the DataSet  
-        ds.to_netcdf(f'./databases/reentry_activity_data_{self.start_year}-{self.final_year}.nc')
+        ds.to_netcdf(f'./databases/reentry_activity_data.nc')
+        ds.to_dataframe().sort_values("COSPAR_ID").to_csv("./databases/reentry_activity_data.csv", index=False)
         ds.close()
         
 if __name__ == "__main__":  
@@ -1560,20 +1561,15 @@ if __name__ == "__main__":
     parser.add_argument('-sv', "--save_reentry_info", action='store_true', help='Save reentry info.')
     parser.add_argument('-usegpd', "--use_geopandas", action='store_true', help='Load in geopandas dataframes.')
     parser.add_argument('-sy', "--start_year", default = "1957", choices=str(np.arange(1957,2026)), help='Start Year.')
-    parser.add_argument('-fy', "--final_year", default = "2025", choices=str(np.arange(1957,2026)), help='Final Year.')
     args = parser.parse_args()
     use_gpd = args.use_geopandas
-    
-    # Sort out the year range.
-    start_year = int(args.start_year)
-    final_year = int(args.final_year)
-    if start_year > final_year:
-        final_year = start_year + 1
-    print(f"Processing from year {start_year} to {final_year}.")
+
+    current_year = (datetime.now().year)
+    print(f"Processing from 1957 to {current_year}.")
     
     # Compile the reentry data
     def run_full_pipeline():
-        Data = build_reentry_list(start_year, final_year)
+        Data = build_reentry_list(1957, current_year-1)
         Data.get_reentry_info()
         if args.save_reentry_info == True:
             Data.reentry_info_to_netcdf()

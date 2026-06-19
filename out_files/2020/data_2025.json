@@ -31797,14 +31797,14 @@
                 "category": "P",
                 "smc": true,
                 "location": 1,
-                "burnup": "Complete",
+                "burnup": "Partial",
                 "emissions": {
-                    "NOx": 48.0,
-                    "Al2O3": 48.0,
+                    "NOx": 21.0,
+                    "Al2O3": 0.0,
                     "BC": 4.92,
                     "Cl": 1.8,
                     "HCl": 0.96,
-                    "Unablated_Mass": 0.0
+                    "Unablated_Mass": 120.0
                 }
             },
             {
@@ -47983,7 +47983,7 @@
                 "name": "Starship Super Heavy",
                 "category": "S1",
                 "smc": true,
-                "location": 2,
+                "location": 1,
                 "burnup": "Complete",
                 "emissions": {
                     "NOx": 88.0,
@@ -48521,6 +48521,24 @@
     "2025-08-29": {
         "launches": [],
         "reentries": [
+            {
+                "date": "2025-08-29T00:00:00Z",
+                "id": "2024-024D",
+                "reusability": "",
+                "name": "Xingyi Lianxin Shou xing",
+                "category": "P",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "emissions": {
+                    "NOx": 0.01,
+                    "Al2O3": 0.008,
+                    "BC": 0.001025,
+                    "Cl": 0.000375,
+                    "HCl": 0.0002,
+                    "Unablated_Mass": 0.004999999999999999
+                }
+            },
             {
                 "date": "2025-08-29T00:00:00Z",
                 "id": "2024-024F",
@@ -57236,7 +57254,7 @@
                 "name": "Starship Super Heavy",
                 "category": "S1",
                 "smc": true,
-                "location": 6,
+                "location": 1,
                 "burnup": "Complete",
                 "emissions": {
                     "NOx": 88.0,
@@ -73251,6 +73269,78 @@
                     "Cl": 0.0105,
                     "HCl": 0.0056,
                     "Unablated_Mass": 0.0
+                }
+            },
+            {
+                "date": "2025-12-20T00:00:00Z",
+                "id": "2025-306",
+                "reusability": "",
+                "name": "CZ-5 Booster",
+                "category": "S0",
+                "smc": false,
+                "location": 2,
+                "burnup": "Complete",
+                "emissions": {
+                    "NOx": 4.9,
+                    "Al2O3": 2.5725,
+                    "BC": 0.0,
+                    "Cl": 0.0,
+                    "HCl": 0.0,
+                    "Unablated_Mass": 8.575000000000001
+                }
+            },
+            {
+                "date": "2025-12-20T00:00:00Z",
+                "id": "2025-306",
+                "reusability": "",
+                "name": "CZ-5 Booster",
+                "category": "S0",
+                "smc": false,
+                "location": 2,
+                "burnup": "Complete",
+                "emissions": {
+                    "NOx": 4.9,
+                    "Al2O3": 2.5725,
+                    "BC": 0.0,
+                    "Cl": 0.0,
+                    "HCl": 0.0,
+                    "Unablated_Mass": 8.575000000000001
+                }
+            },
+            {
+                "date": "2025-12-20T00:00:00Z",
+                "id": "2025-306",
+                "reusability": "",
+                "name": "CZ-5 Booster",
+                "category": "S0",
+                "smc": false,
+                "location": 2,
+                "burnup": "Complete",
+                "emissions": {
+                    "NOx": 4.9,
+                    "Al2O3": 2.5725,
+                    "BC": 0.0,
+                    "Cl": 0.0,
+                    "HCl": 0.0,
+                    "Unablated_Mass": 8.575000000000001
+                }
+            },
+            {
+                "date": "2025-12-20T00:00:00Z",
+                "id": "2025-306",
+                "reusability": "",
+                "name": "CZ-5 Booster",
+                "category": "S0",
+                "smc": false,
+                "location": 2,
+                "burnup": "Complete",
+                "emissions": {
+                    "NOx": 4.9,
+                    "Al2O3": 2.5725,
+                    "BC": 0.0,
+                    "Cl": 0.0,
+                    "HCl": 0.0,
+                    "Unablated_Mass": 8.575000000000001
                 }
             },
             {

@@ -8531,14 +8531,14 @@
                 "category": "P",
                 "smc": false,
                 "location": 1,
-                "burnup": "Complete",
+                "burnup": "Partial",
                 "emissions": {
-                    "NOx": 0.002,
-                    "Al2O3": 0.0016,
+                    "NOx": 0.000875,
+                    "Al2O3": 0.0,
                     "BC": 0.000205,
                     "Cl": 7.5e-05,
                     "HCl": 4e-05,
-                    "Unablated_Mass": 0.0009999999999999998
+                    "Unablated_Mass": 0.005
                 }
             },
             {

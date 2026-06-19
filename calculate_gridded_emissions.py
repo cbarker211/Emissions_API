@@ -1301,12 +1301,9 @@ if __name__ == "__main__":
         # Import files.
         ################
         
-        if start_year >= 1957 and final_year <= current_year -1:
-            launch_path       = f'./databases/launch_activity_data_1957-{current_year-1}.nc'
-            rocket_info_path  = f'./databases/rocket_attributes_1957-{current_year-1}.nc'
-            reentry_path  = f'./databases/reentry_activity_data_1957-{current_year-1}.nc'
-        else: 
-            raise ImportError(f"Error: Unsupported time range for {start_year}-{final_year}")
+        launch_path       = f'./databases/launch_activity_data.nc'
+        rocket_info_path  = f'./databases/rocket_attributes.nc'
+        reentry_path  = f'./databases/reentry_activity_data.nc'
 
         pei_path          = './input_files/primary_emission_indices.csv'  
         global input_data

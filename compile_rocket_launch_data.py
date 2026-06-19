@@ -360,7 +360,8 @@ class import_launches:
         ds['Latitude'].attrs['units']  = "Degrees"
              
         #Save to file and close the dataset     
-        ds.to_netcdf(f'./databases/launch_activity_data.nc')
+        ds.to_netcdf("./databases/launch_activity_data.nc")
+        ds.to_dataframe().sort_values("COSPAR_ID").to_csv("./databases/launch_activity_data.csv", index=False)
         ds.close()
 
     def get_rocket_info(self):
@@ -624,6 +625,7 @@ class import_launches:
         
         #Save to file and close the DataSet     
         ds.to_netcdf(f'./databases/rocket_attributes.nc')
+        ds.to_dataframe().sort_values(["Rocket_Name", "Rocket_Variant"]).to_csv("./databases/rocket_attributes.csv", index=False)
         ds.close()
                          
 if __name__ == "__main__":
@@ -644,7 +646,7 @@ if __name__ == "__main__":
     parser.add_argument('-sri',  "--save_rocket_info",         action='store_true',                                 help='Save launch info.')
     args = parser.parse_args()
     
-    print(f"Processing from year 1957 to {current_year}.")  
+    print(f"Processing from 1957 to {current_year}.")  
     
     #Loop over all years and run functions depending on input arguments.
     LaunchData = import_launches(1957,current_year-1)   

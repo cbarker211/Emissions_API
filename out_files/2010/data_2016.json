@@ -2572,6 +2572,24 @@
         ],
         "reentries": [
             {
+                "date": "2016-03-04T23:44:00Z",
+                "id": "2016-013",
+                "reusability": "",
+                "name": "Falcon 9 Stage 1 FT",
+                "category": "S1",
+                "smc": false,
+                "location": 5,
+                "burnup": "Partial",
+                "emissions": {
+                    "NOx": 3.15,
+                    "Al2O3": 0.0,
+                    "BC": 0.0,
+                    "Cl": 0.0,
+                    "HCl": 0.0,
+                    "Unablated_Mass": 18.0
+                }
+            },
+            {
                 "date": "2016-03-04T00:00:00Z",
                 "id": "2016-013",
                 "reusability": "",
