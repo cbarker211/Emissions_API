@@ -17,6 +17,18 @@ def update_mass_info(temp_dict,name,variant):
     #   Cons: GCAT also has missing information, and would need to be cross-referenced with other sources anyway.
 
     # TODO: Instead of manually setting the fields for the proxies, we could apply it somewhere else.
+    ''' Perhaps this should be a YAML/TOML field like: 
+        Antares 230:
+        notes: |
+                Stage1 second-stage solid prop has a typo in DISCOSweb; value there
+                is for Castor 30B. This vehicle uses Castor 30XL (~2x prop).
+                https://www.northropgrumman.com/wp-content/uploads/CASTOR-Motor-Series.pdf
+            sources: [DISCOSweb, SLR, Sp101, CASTOR-docs]
+            stage1: {prop: 242200, mass: 19700, src: "avg(SLR,DW)"}
+            stage2: {prop: 24924, mass: 1392, src: "CASTOR docs"}
+            fairing: {mass: 971, src: "avg(Sp101=970, SLR=972)"}
+  '''
+
      
     if name in ["Angara A5","Angara A5/Persei","Angara A5/Orion"]:
         # https://web.archive.org/web/20220406013831/http://www.spacelaunchreport.com/angara.html
@@ -79,7 +91,7 @@ def update_mass_info(temp_dict,name,variant):
         temp_dict[f"Stage2 Stage Mass"]         = 4540      # Manual / SLR
         if name == "Ariane 5ECA":
             temp_dict[f"Stage2 Propellant Mass"]    = 14900     # Manual
-        elif name == "Ariane5ECA+":
+        elif name == "Ariane 5ECA+":
             temp_dict[f"Stage2 Propellant Mass"]    = 15260     # SLR for ESC-D
         temp_dict[f"Fairing Mass"]              = 2675      # Manual        
     
@@ -1342,6 +1354,8 @@ def update_mass_info(temp_dict,name,variant):
         else:
             temp_dict[f"Fairing Mass"] = 1000 # NB
     
+        # TODO: Sort out Soyuz-5
+    
     if name in ["Taurus 3110","Taurus 3210","Minotaur-C 3210"]:
         # Stage 2 - Orion 50SXLG
         # https://cdn.northropgrumman.com/-/media/wp-content/uploads/Orion-Motor-Series.pdf?v=1.0.0
@@ -1371,6 +1385,8 @@ def update_mass_info(temp_dict,name,variant):
         temp_dict[f"Stage1 Stage Mass"]         = 950
         temp_dict[f"Stage2 Stage Mass"]         = 250
         temp_dict[f"Stage3 Stage Mass"]         = 40 
+
+    # TODO: Sort out Tianlong-3.
 
     if name == "Vega":            
         # Manual - https://www.arianespace.com/wp-content/uploads/2018/05/Vega-Users-Manual_Issue-04_April-2014.pdf
@@ -1417,6 +1433,8 @@ def update_mass_info(temp_dict,name,variant):
         temp_dict[f"Stage3 Stage Mass"]         = 1433   # Vega-C
         temp_dict[f"Stage4 Stage Mass"]         = 698    # Vega-C
         temp_dict[f"Fairing Mass"]              = 860    # Vega-C
+
+    # TODO: Need to deal with boosters for Lijian-2.
 
     if "Zhuque-2" in name:    
         # See excel file for comparison details. Best represented by Antares 230.

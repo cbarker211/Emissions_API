@@ -594,7 +594,7 @@ class OutputEmis:
             vertical_profile = self.fine_grid_mass_stages[stage]
 
         if np.sum(1e-2 * vertical_profile) > 1.01:
-            raise ValueError("Error with Stage {stage}. Propellant distribution exceeds unity.")
+            raise ValueError(f"Error with Stage {stage}. Propellant distribution exceeds unity.")
 
         seg_slice = slice(start_ind, stop_ind)
         seg_mid_alts_km = self.fine_grid_mid_alt[seg_slice] * 1e-3  # km
@@ -866,18 +866,17 @@ class OutputEmis:
                         
         # Check whether there is a booster:
         if stages[0]:
-            vert_emis_dict = self.calc_emis(None,
-                        self.booster_alt_index,
-                        vert_emis_dict,
-                        0,
-                        launch_tuple)
+            vert_emis_dict = self.calc_emis(None,self.booster_alt_index,vert_emis_dict,0,launch_tuple)
                 
         # Every rocket has a first stage.
         vert_emis_dict = self.calc_emis(self.fei_alt_index, self.MECO_alt_index, vert_emis_dict, 1, launch_tuple, )
         
         # Check whether there is a second stage:
-        if stages[2] and self.sei_alt_index != None:
-            vert_emis_dict = self.calc_emis(self.sei_alt_index, self.seco_alt_index, vert_emis_dict, 2, launch_tuple)
+        if stages[2]:
+            if self.sei_alt_index != None:
+                vert_emis_dict = self.calc_emis(self.sei_alt_index, self.seco_alt_index, vert_emis_dict, 2, launch_tuple)
+            else:
+                self.prop_above[2] = 100
             
         # TODO: This section needs to be tweaked if wanting to run for different vertical heights above 80km.
         # Check for more rockets that have third stage emissions within model.    
@@ -889,7 +888,7 @@ class OutputEmis:
         if row.Rocket_Name in ["Falcon 9","Falcon Heavy"]:
 
             landing_info = input_data.falcon_landing_dict[row.COSPAR_ID]
-
+            is_expendable = False
             if row.Rocket_Name == "Falcon Heavy":
                 is_expendable = landing_info.get('left') == 'expended' or landing_info.get('right') == 'expended'
 
@@ -1002,7 +1001,7 @@ class OutputEmis:
                         []] # Stage5 
             if stages[stage_no] and prop_above > 0 and row.COSPAR_ID not in skip_ids[stage_no]:
                 if 100 - np.sum(self.fine_grid_mass_stages[stage_no]) > 100:
-                    sys.exit(f"Error with Stage{stage_no} emissions above model.")
+                    raise ValueError(f"Error with Stage{stage_no} emissions above model.")
 
                 if stage_no == 2 and row.COSPAR_ID == "2022-F03":
                     included = 240/315*100 - (100-self.prop_above[2])
@@ -1018,7 +1017,7 @@ class OutputEmis:
             return emis_dict_above               
         
         emis_dict_above = prepare_emis_above(0,self.prop_above[0], emis_dict_above)
-        emis_dict_above = prepare_emis_above(1,self.prop_above[1] - self.prop_above[5], emis_dict_above)
+        emis_dict_above = prepare_emis_above(1,self.prop_above[1], emis_dict_above)
         emis_dict_above = prepare_emis_above(2,self.prop_above[2], emis_dict_above)
         emis_dict_above = prepare_emis_above(3,100, emis_dict_above)
         emis_dict_above = prepare_emis_above(4,100, emis_dict_above)
@@ -1244,8 +1243,8 @@ if __name__ == "__main__":
     parser.add_argument('-fm', "--final_month", default = "12", choices=str(np.arange(1,13)), help='Final Month.')
     parser.add_argument('-sd', "--start_dataset", default = "3", choices=str(np.arange(1,4)), help='Dataset. 1=Non-SMC, 2=SMC, 3=All')
     parser.add_argument('-fd', "--final_dataset", default = "3", choices=str(np.arange(1,4)), help='Dataset. 1=Non-SMC, 2=SMC, 3=All')
-    parser.add_argument('-sy', "--start_year", default = "1957", choices=str(np.arange(1957,current_year)), help='Start Year.')
-    parser.add_argument('-fy', "--final_year", default = "2025", choices=str(np.arange(1957,current_year)), help='Final Year.')
+    parser.add_argument('-sy', "--start_year", default = "1957", choices=str(np.arange(1957,current_year+1)), help='Start Year.')
+    parser.add_argument('-fy', "--final_year", default = "2026", choices=str(np.arange(1957,current_year+1)), help='Final Year.')
     args = parser.parse_args()
 
     ######################################   

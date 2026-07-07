@@ -1,5 +1,16 @@
 For a full list of changes, please visit https://github.com/cbarker211/Emissions_API
 
+# v2.6.1
+
+This update fixes missing 2nd stage emissions above the model.
+
+## Launches 
+- Bug fix for Ariane 5ECA+ stage 2 propellant mass.
+- Fixed a bug where stage 2 emissions above the model where missing if SEI was above 100 km.
+
+## QOL
+- Minor tweaks to future-proof scripts.
+
 # v2.6.0
 
 This updates adds launch emissions in atmospheric layers, fixes bugs, and streamlines the data.

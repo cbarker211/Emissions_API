@@ -20,7 +20,10 @@ def convert_time(date):
     Returns:
         date_obj(pandas datetime):  The date in YYYY-MM-DDTHH:MM:SSZ format.
     """   
-    date = [s.replace("?", "") for s in date]
+    if "May15" in date:
+        date = [date[0], date[1][:3], date[1][3:], date[2]]
+    else: 
+        date = [s.replace("?", "") for s in date]
     yearstr=str(date[0])
     if len(date) == 1:
         yearstr = yearstr.replace("s","")
@@ -117,7 +120,7 @@ class build_reentry_list:
             }
         else:
             self.shapefile_map = dict.fromkeys(["Gujarat","Kazakhstan","KRZ","Kaz.","Mexico","S Africa","N Zealand","China","Gulf",
-                                                "Indian O""Indian Ocean","Indian O.","IOR","S POR","S Pacific","S Pac.",
+                                                "Indian O","Indian Ocean","Indian O.","IOR","S POR","S Pacific","S Pac.",
                                                 "N Atlantic","S AOR","S Atl"])
 
         self.provided_coords = {
@@ -236,7 +239,7 @@ class build_reentry_list:
         """Set the geolocation for all items that are not Falcon 9 fairings/1st stage.
 
         Args:
-            latlonstr (str)     : The 
+            latlonstr (str)     : The dest field from GCAT.
             inc (np.float64)    : The orbital inclination of the object.
             stage (int)         : The category of the object.
             apogee (int)        : The apogee of the object.
@@ -803,7 +806,7 @@ class build_reentry_list:
 
         if inc_eff == 0 and jsr_id[5] not in ["F","U"]:
             # TODO: Sort failed launches.
-            raise ValueError(f"Inclination still empty for {jsr_id}.")
+            print(f"Warning: Inclination still empty for {jsr_id}.")
         return inc_eff 
          
     def extract_jsr_info(self, file):
@@ -900,9 +903,8 @@ class build_reentry_list:
                 # This seems to be a payload but is listed as a second stage.
                 if jsr_name == "OV1-7P":
                     reentry_category = "P"
-
-                if len(reentry_category) == 1:
-                    print(jsr_type)
+                elif len(reentry_category) == 1:
+                    print(jsr_id,jsr_type)
             else:
                 reentry_category = jsr_type[0]
 
@@ -1526,17 +1528,17 @@ class build_reentry_list:
         """This saves the reentry information as a NetCDF file for later processing for GEOS-Chem.
         """        
         #Set up the dimensions of the netcdf file.
-        dims = ('reentries')
+        dims = 'reentries'
     
         self.df_reentry["Ablatable_Mass"] = self.df_reentry["abl_mass"] + self.df_reentry["attached_abl_mass"]
             
         #Create the DataArrays.
 
         ds = xr.Dataset({
-            'COSPAR_ID'              : xr.DataArray(self.df_reentry["id"].to_numpy(),  dims=dims, attrs=dict(long_name="COSPAR_ID")),
-            'Object_Name'            : xr.DataArray(self.df_reentry["name"].to_numpy(),  dims=dims, attrs=dict(long_name="Object Name")),
-            'Category'               : xr.DataArray(self.df_reentry["category"].to_numpy(),  dims=dims, attrs=dict(long_name="Category")),
             'Date'                   : xr.DataArray(self.df_reentry["date"].to_numpy(),  dims=dims, attrs=dict(long_name="Date")),
+            'COSPAR_ID'              : xr.DataArray(self.df_reentry["id"].to_numpy(),  dims=dims, attrs=dict(long_name="COSPAR_ID")),
+            'Category'               : xr.DataArray(self.df_reentry["category"].to_numpy(),  dims=dims, attrs=dict(long_name="Category")),
+            'Object_Name'            : xr.DataArray(self.df_reentry["name"].to_numpy(),  dims=dims, attrs=dict(long_name="Object Name")),
             'Latitude'               : xr.DataArray(self.df_reentry["lat"].to_numpy(),  dims=dims, attrs=dict(long_name="Latitude", units="Degrees")),
             'Longitude'              : xr.DataArray(self.df_reentry["lon"].to_numpy(),  dims=dims, attrs=dict(long_name="Longitude", units="Degrees")),
             'Ablatable_Mass'         : xr.DataArray(self.df_reentry["Ablatable_Mass"].to_numpy(),  dims=dims, attrs=dict(long_name="Ablatable Mass", units="kg")),
@@ -1551,7 +1553,7 @@ class build_reentry_list:
              
         #Save to file and close the DataSet  
         ds.to_netcdf(f'./databases/reentry_activity_data.nc')
-        ds.to_dataframe().sort_values("COSPAR_ID").to_csv("./databases/reentry_activity_data.csv", index=False)
+        ds.to_dataframe().sort_values(["Date","COSPAR_ID","Category","Object_Name"]).to_csv("./databases/reentry_activity_data.csv", index=False)
         ds.close()
         
 if __name__ == "__main__":  

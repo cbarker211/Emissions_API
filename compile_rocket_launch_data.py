@@ -27,21 +27,6 @@ class import_launches:
         self.final_year = final_year
         self.session = requests.Session()
 
-    def server_loop(self,urlpath,params,message):
-
-        while True:
-            response = server_request(params,urlpath)
-            if response.ok:
-                return(response.json())
-            elif response.status_code == 429:
-                response_error_handler(response,message)
-                continue
-            else:
-                response_error_handler(response,"")
-                break
-            
-        return None
-        
     def get_launch_list(self): 
         """
         Retrieve launch information for a given year range and store it in self.full_launch_list.
@@ -331,7 +316,7 @@ class import_launches:
             print("No launch data to save.")
             return
 
-        dims = ('launches',)
+        dims = 'launches'
 
         def get_field(field):
             values = [launch[field] for launch in self.launches]
@@ -510,7 +495,7 @@ class import_launches:
                     launch_mass = dry_mass * 10 
                 
                 # These are fixed later in update_mass_info, so suppress warnings here.
-                if name not in ["Angara-1.2","Diamant A","Diamant B","Diamant BP4","Electron","Kuaizhou","Kuaizhou-1A","Lambda 4S","Juno II","Jupiter C",
+                if name not in ["Angara-1.2","Diamant A","Diamant B","Diamant BP.4","Electron","Kuaizhou","Kuaizhou-1A","Lambda 4S","Juno II","Jupiter C",
                                 "Chang Zheng 11","Chang Zheng 2C/YZ-1S","Chang Zheng 2B/YZ-3","Chang Zheng 3B/YZ-1","Chang Zheng 3C/YZ-1","Chang Zheng 2D/YZ-3",
                                 "Chang Zheng 5/YZ-2","Chang Zheng 5B/YZ-2","Chang Zheng 6","Chang Zheng 7/YZ-1A", "Chang Zheng 12", "Chang Zheng 12A",
                                 "Minotaur-C 3210","Nuri","Safir","Shuang Quxian 1","Simorgh","Strela","Taurus 3110","Taurus 3210", "Scout F-1"]:
@@ -578,7 +563,7 @@ class import_launches:
         Recommended to ignore if you don't need this.
         """        
         #Set up the dimensions of the netcdf file.
-        dims = ('rockets')
+        dims = 'rockets'
 
         def safe_mass(val):
             return float(val or 0.0)
