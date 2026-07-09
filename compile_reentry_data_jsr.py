@@ -1553,7 +1553,7 @@ class build_reentry_list:
              
         #Save to file and close the DataSet  
         ds.to_netcdf(f'./databases/reentry_activity_data.nc')
-        ds.to_dataframe().sort_values(["Date","COSPAR_ID","Category","Object_Name"]).to_csv("./databases/reentry_activity_data.csv", index=False)
+        ds.to_dataframe().drop(columns=["Latitude", "Longitude"]).sort_values(["Date","COSPAR_ID","Category","Object_Name"]).to_csv("./databases/reentry_activity_data.csv", index=False)
         ds.close()
         
 if __name__ == "__main__":  

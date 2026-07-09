@@ -187,8 +187,8 @@ class import_launches:
                 date = row["Launch_Date"].split()
                 date = [s.replace("?", "") for s in date]
                 yearstr = str(date[0])
-                monstr  = str(datetime.strptime(date[1], '%b').month).zfill(2) if len(date) > 1 else "01"
-                daystr  = date[2].zfill(2) if len(date) > 2 else "01"
+                monstr  = str(datetime.strptime(date[1], '%b').month).zfill(2)
+                daystr  = date[2].zfill(2)
                 if len(date) >= 4:
                     hrstr   = date[3][0:2].zfill(2)
                     minstr  = date[3][2:4].zfill(2)
@@ -203,23 +203,6 @@ class import_launches:
                 df_site = df_sites[df_sites["#Site"] == row["Launch_Site"].replace("?", "")]
 
                 def sort_sitenames(site):
-                    site_map = {
-                        "Centre Spatial Guyanais, Kourou, Guyane Francaise": "Guiana Space Center (Kourou)",
-                        "Satish Dhawan Space Ctr, Sriharikota, Andhra Pradesh, India": "Sriharikota Space Center",
-                        "Rocket Lab Launch Complex 1, Onenui Station, Mahia Peninsula": "Rocket Lab Launch Complex 1, Mahia Peninsula",
-                        "Wenchang Space Center, Hainan": "Wenchang Satellite Launch Center",
-                        "Xichang Space Center (Songlin), Sichuan, China": "Xichang Satellite Launch Center",
-                        "Tanegashima Space Center, Tanegashima, Nippon": "Tanegashima Space Center",
-                        "Naro Space Center (Naro Uju Senteo),Oenaro I,GoHeung, Jeollanam-do,Korea": "Naro Space Center",
-                        "Israeli Air Force Test Range, Palmachim Beach, Israel": "Yavne Launch Facility (Palmachim)",
-                        "Huang Hai CZ-11 launch zone": "China Sea Launch",
-                        "NASA John F. Kennedy Space Center, Florida": "Kennedy Space Center (ETR)",
-                        "Semnan missile launch site, Iran": "Semnan",
-                        "Taiyuan weixing fashe zhongxin": "Taiyuan SLC (Wuzhai)",
-                        "Sohae Launch Site, Tongch'ang-dong, Pyongang-bukdo (N Pyongan Prov), N Korea": "Sohae Satellite Launching Station",
-                        "Jiuquan Space Center, Nei Monggol Zizhiqu, China": "Jiuquan SLC (Shuang Cheng Tzu)",
-                        "Imam Reza Space Ctr, Damghan (Shahroud), Iran (Dasht-E-Kabir?)": "Shahroud Missile Test Site",
-                    }
 
                     # Handle groups of equivalent site names
                     group_map = {
@@ -267,10 +250,6 @@ class import_launches:
                             "53-y Nauchno-Issledovatelskiy Ispitatelniy Poligon,"
                         ]
                     }
-
-                    # Direct lookup
-                    if site in site_map:
-                        return site_map[site]
 
                     # Group lookup
                     for normalized, variants in group_map.items():
