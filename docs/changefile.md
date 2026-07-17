@@ -1,15 +1,26 @@
 For a full list of changes, please visit https://github.com/cbarker211/Emissions_API
 
-# v2.6.1
+# v2.7.0
 
 This update fixes missing 2nd stage emissions above the model.
+
+## Rockets
+- Proton-M now has Phase I, II, III, IV variants.
 
 ## Launches 
 - Bug fix for Ariane 5ECA+ stage 2 propellant mass.
 - Fixed a bug where stage 2 emissions above the model where missing if SEI was above 100 km.
+- Cleaned up launch filtering to be more consistent with GCAT. Now including orbital and deep space launch codes only. This removes several non-orbital 19xx-U0x launches.
+- Now using the megaconstellation flag from the group column in GCAT, instead of manually filtering using payload names. This has meant removing Lynk as a megaconstellation and adding Starshield. Updated assignment for Xingwang (and other Chinese constellations) and US SDA. 
+- Now including NOTS EV1 as this is a spy satellite, not an anti-satellite weapon. 
+
+## Re-entries
+- Re-entries with L, LF, L? now counted as partial burnup on re-entry.
 
 ## QOL
-- Minor tweaks to future-proof scripts.
+- Removed old databases. 
+- Changed site names to stop renaming to DISCOSweb names.
+- Renamed Spaceport Florida Authority to Cape Canaveral and Mid-Atlantic Regional Spaceport to Wallops Island.
 
 # v2.6.0
 

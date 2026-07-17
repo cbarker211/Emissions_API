@@ -6,6 +6,7 @@ import pandas as pd
 import requests
 from tqdm import tqdm
 import sys
+from io import StringIO
 
 from python_modules.web_scrape_func import server_request, response_error_handler, scrape_jsr
 from update_rocket_launch_data import update_mass_info
@@ -99,16 +100,19 @@ class import_launches:
         df       = scrape_jsr("https://planet4589.org/space/gcat/tsv/launch/launch.tsv",self.session)
         df_sites = scrape_jsr("https://planet4589.org/space/gcat/tsv/tables/sites.tsv",self.session)
 
-        jsr_data_dict = {}
-        # satcat (main database), auxcat (should be in main but isn't), lcat (suborbital stages/objects). 
-        # rcat (lower stages and fairings), ecat (capsules from ISS / crewed missions), ftocat (failed launches).
-        files = ["satcat","auxcat","lcat","rcat","ecat","ftocat"]
-        for file in files:
-            url = "https://planet4589.org/space/gcat/tsv/cat/" + file + ".tsv"
-            catalog = scrape_jsr(url,self.session)
-            catalog = catalog[catalog["Type"].str[0].isin(["P","C","S","X","Z"])] # P = Payload, C = Component, S = Suborbital payload, X = Catalog entry that has been deleted, Z = Spurious catalog entry.
-            catalog = catalog[catalog["Name"].str.lower().str.contains("starlink|tintin|oneweb|yinhe|lynk|e-space|protosat-1|kuiper|tranche|ronghe|digui|hulianwang|qianfan|lingxi|whdw", na=False)]
-            jsr_data_dict[file] = catalog
+        # Download and save Jonathan's bespoke launch list.
+        barker_url = "https://planet4589.org/space/supporting/barker/launch/barker.launch.csv"
+        response = self.session.get(barker_url)
+        if response.status_code == 200:
+                csv_data = StringIO(response.text)
+                df_barker = pd.read_csv(csv_data, delimiter=",", dtype=object, skiprows=[1])
+                df_barker["Date"] = pd.to_datetime(df_barker["Date"], errors="coerce", format="mixed")
+                df_barker = df_barker[df_barker["Date"].dt.year < 2026]
+                for col in df_barker.select_dtypes(include="object"):
+                    if col != "Megaconstellation_Flag":
+                        df_barker[col] = df_barker[col].str.strip()
+                df_barker = df_barker.drop(columns=["Longitude","Latitude","SiteGroup","Site","Pad"])
+                df_barker.to_csv("/home/ucfacb0/Emission_Inventory/Emissions_API/databases/barker_launch.csv", index=False)
 
         # Filter the launches to remove unwanted entries.
         df.drop(0, inplace=True)
@@ -147,27 +151,13 @@ class import_launches:
             return f"{year}-{str(number).zfill(3)}"          
 
         df['#Launch_Tag'] = df['#Launch_Tag'].apply(convert_launch_tag)
+        df = df[df["LaunchCode"].str.startswith(("O", "D"), na=False)] # Include only orbital and deep space missions.
+        df = df[df["LaunchCode"].str[1] != ("E")]                      # No pad explosions.
 
-        df = df[~df["#Launch_Tag"].str.contains("A")]   # No endoatmospheric.
-        df = df[~df["#Launch_Tag"].str.contains("C")]   # No 'not a launch'.
-        df = df[~df["#Launch_Tag"].str.contains("E")]   # No pad explosions.
-        df = df[~df["#Launch_Tag"].str.contains("S")]   # No suborbital.
-        df = df[~df["#Launch_Tag"].str.contains("Y")]   # No suborbital (obselete old notation)
-        df = df[~df["#Launch_Tag"].str.contains("M")]   # No mesosphere.
-        df = df[~df["#Launch_Tag"].str.contains("W")]   # No mesosphere (obselete old notation)
-        df = df[~df["LaunchCode"].str.startswith("X")]  # No launches from another planetary body or satellite.   
-        df = df[~df["LaunchCode"].str.startswith("M")]  # No military launches. 
-        df = df[~df["LaunchCode"].str.startswith("H")]  # No high-altitude sounding rockets.
-        df = df[~df["LV_Type"].str.contains("Aerobee|R-UNK|Trailblazer", na=False)] # Skip sounding rockets.
-        df = df[~df["LV_Type"].str.contains("NOTS EV1", na=False)] # These were failed launches from an expendable launch system / anti-satellite weapon.
-        df = df[~df["#Launch_Tag"].str.contains("2013-U01", na=False)] # Skip sounding rockets.
+        # Skip some military-related launches.
         df = df[~df["#Launch_Tag"].str.contains("2021-U01", na=False)] # Skip military launches.
 
         df = df.reset_index()
-        
-        # Filter for apogees above 50 km. Doesn't look like this is necessary.
-        #df.loc[df["Apogee"].str.strip() == "-", "Apogee"] = 0
-        #df = df[df["Apogee"].astype(int) >= 50] # No pad explosions
         
         print("Found",len(df),"launches from JSR for the years",self.start_year,"to",self.final_year)
 
@@ -175,16 +165,8 @@ class import_launches:
         # Extract the required launch activity data and convert to a dict.
         ####################################################################
 
-        mcs_tags = set()
-        for file in files:
-            catalog = jsr_data_dict[file]
-            mcs_tags.update(catalog["Launch_Tag"].dropna().str.strip())
-
-        def process_launches(df, df_sites):
-            launches = []
-            for n, row in tqdm(df.iterrows(), total=len(df), desc="Processing rows"):
+        def convert_date(date):
                 
-                date = row["Launch_Date"].split()
                 date = [s.replace("?", "") for s in date]
                 yearstr = str(date[0])
                 monstr  = str(datetime.strptime(date[1], '%b').month).zfill(2)
@@ -199,9 +181,16 @@ class import_launches:
                     secstr  = "00"
                 datestr = f"{yearstr}-{monstr}-{daystr}T{hrstr}:{minstr}:{secstr}Z"
                 date_obj = pd.to_datetime(datestr, errors="coerce", utc=True)
+           
+                return date_obj
 
+        def process_launches(df):
+            launches = []
+            for n, row in tqdm(df.iterrows(), total=len(df), desc="Processing rows"):
+                
                 df_site = df_sites[df_sites["#Site"] == row["Launch_Site"].replace("?", "")]
-
+                site_row = df_site.iloc[0]
+                    
                 def sort_sitenames(site):
 
                     # Handle groups of equivalent site names
@@ -210,7 +199,7 @@ class import_launches:
                             "Kodiak Launch Complex, Kodiak Island, Alaska",
                             "Pacific Spaceport Complex Alaska, Kodiak Island, Alaska",
                         ],
-                        "Spaceport Florida Authority": [
+                        "Cape Canaveral": [
                             "Spaceport Florida, Cape Canaveral",
                             "Space Florida, Cape Canaveral",
                             "Cape Canaveral Air Station, Florida"
@@ -226,7 +215,7 @@ class import_launches:
                             "South Vandenberg AFB, California",
                             "Naval Missile Facility, Point Arguello, California"
                         ],
-                        "Mid-Atlantic Regional Spaceport": [
+                        "Wallops Island": [
                             "Mid-Atlantic Regional Spaceport, Wallops Island, Virginia",
                             "Wallops Flight Facility, Wallops Island, Virginia",
                             "Wallops Island Main Base, NASA Wallops Flight Facility, Chincoteague, Virginia"
@@ -259,33 +248,34 @@ class import_launches:
                     # Default: return unchanged
                     return site
                 
-                # Look in the payload catalogs to find which launches contain megaconstellations.
-                mcs_flag = row["#Launch_Tag"].strip() in mcs_tags
+                # Use the group megaconstellation flag to classify megaconstellation launches.
+                if " " in row["Group"]:
+                    idx = row["Group"].index(" ")
+                    char = row["Group"][idx + 1]
+                    if char.lower() == "m":
+                        mcs_flag = True
+                else:
+                    mcs_flag = False
 
                 if row["Variant"] == "?":
                     variant = "-"
                 else:
                     variant = row["Variant"]
 
-                name = row["LV_Type"]
-
-                if "Proton-M" in name and date_obj >= pd.Timestamp("2007-07-07", tz="UTC"):
-                    variant = "Enhanced"
-
                 launches.append({
                     "COSPAR_ID":              row["#Launch_Tag"].strip(),
-                    "Date":                   date_obj,
+                    "Date":                   convert_date(row["Launch_Date"].split()),
                     "Site":                   sort_sitenames(df_site["Name"].values[0]),
-                    "Latitude":               float(df_site["Latitude"].values[0].strip()),
-                    "Longitude":              float(df_site["Longitude"].values[0].strip()),
-                    "Rocket_Name":            name,
+                    "Latitude":               float(site_row['Latitude'].strip()),
+                    "Longitude":              float(site_row['Longitude'].strip()),
+                    "Rocket_Name":            row["LV_Type"],
                     "Rocket_Variant":         variant.replace("?",""),
                     "Megaconstellation_Flag": mcs_flag
                 })
 
             return launches
 
-        self.launches = process_launches(df, df_sites) 
+        self.launches = process_launches(df) 
    
     def launch_info_to_netcdf(self):
         """This saves the launch information as a NetCDF file for later processing for GEOS-Chem.
@@ -325,7 +315,10 @@ class import_launches:
              
         #Save to file and close the dataset     
         ds.to_netcdf("./databases/launch_activity_data.nc")
-        ds.to_dataframe().sort_values("COSPAR_ID").to_csv("./databases/launch_activity_data.csv", index=False)
+        df_out = ds.to_dataframe().sort_values("COSPAR_ID")
+        df_out.to_csv("./databases/launch_activity_data.csv", index=False)
+        df_out = df_out.drop(columns=["Longitude", "Latitude", "Site"])
+        df_out.to_csv("./databases/comparison.csv", index=False)
         ds.close()
 
     def get_rocket_info(self):
