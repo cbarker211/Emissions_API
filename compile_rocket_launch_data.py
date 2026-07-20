@@ -7,13 +7,7 @@ import requests
 from tqdm import tqdm
 import sys
 from io import StringIO
-
-from python_modules.web_scrape_func import server_request, response_error_handler, scrape_jsr
 from update_rocket_launch_data import update_mass_info
-
-""" Script to request data from the DISCOSweb database. 
-NB: Each request is limited to 30 results, and there is a maximum limit of requests in a certain timeframe (20 requests per 60s).
-To solve this, the script makes multiple requests over different filters, and automatically calculates the time required to wait."""
 
 class import_launches:
     
@@ -28,68 +22,22 @@ class import_launches:
         self.final_year = final_year
         self.session = requests.Session()
 
-    def get_launch_list(self): 
-        """
-        Retrieve launch information for a given year range and store it in self.full_launch_list.
-
-        This function fetches launch data between self.start_year and self.final_year (inclusive),
-        handling pagination and rate limits automatically. It also removes irrelevant launches
-        (e.g., Chang'e 5 ascender) and reports the number of successes and failures.
-
-        Args:
-            year (int): The year to get launches for.
-        """        
-        
-        #Initialize variables.
-        self.full_launch_list = []
-        start_epoch = f'{str(self.start_year)}-01-01'
-        end_epoch = f'{str(self.final_year+1)}-01-01'
-        
-        # Fetch all pages of launch activity data.
-        page_number = 1
-        while True:
-            params={
-                    'filter': f"ge(epoch,epoch:'{start_epoch}')&lt(epoch,epoch:'{end_epoch}')", # launches bteween start_epoch and end_epoch
-                    'sort' : 'epoch', # sort by epoch
-                    'page[number]' : page_number 
-                }
-
-            response = server_request(params, '/launches')
+    def scrape_jsr(self,url,session):
+        # Function to web scrape data and convert to a pandas DataFrame.
+        response = session.get(url)
+        if response.status_code == 200:
             
-            # If the response is ok, extract the data and check if we need to request another page.
-            if response.ok: 
-                data = response.json().get("data", [])           
-                self.full_launch_list.extend(data)
-                
-                # If the page has less than 30 items, its the last one.
-                if len(data) < 30:
-                    break
-                page_number += 1
-                    
-            elif response.status_code == 429:
-                message = ""
-                response_error_handler(response,message)
-                continue
-            else:
-                response_error_handler(response,"")
-                    
-        # Skip Chang'e 5 launch (this was from the moon and eventually 'crashed' back onto the moon to avoid space debris, so is irrelevant for this inventory).
-        self.full_launch_list = [launch for launch in self.full_launch_list if launch["attributes"]["cosparLaunchNo"] != "2020-F11"]
-        
-        #This section simply goes through each launch and counts the numbers of successes and failures.
-        #It then prints the totals to the screen. Can be switched off if not needed.    
-        launch_success = 0
-        launch_failure = 0
-        for launch in self.full_launch_list:
-            if launch["attributes"]["failure"] == True:
-                launch_failure+=1
-            elif launch["attributes"]["failure"] == False:
-                launch_success+=1
-            else:
-                print("Error: Launch not recorded as success or failure.")         
-        print(f'\nFrom {self.start_year} to {self.final_year}, there were {launch_success} successful launches and {launch_failure} unsuccessful launches.')
-
-        return self.full_launch_list
+            filename = url.split("/")[-1]  # Use the last part of the URL as filename
+            with open(f"gcat/{filename}", "w", encoding="utf-8") as f:
+                f.write(response.text)
+            
+            # Convert the content to a file-like object for pandas
+            tsv_data = StringIO(response.text)
+            # Load the data into a pandas DataFrame
+            df = pd.read_csv(tsv_data, delimiter="\t", dtype=object, low_memory=False)
+        else:
+            raise ImportError(f"Failed to fetch from JSR URL: {url}", response.status_code)
+        return df
 
     def get_launch_info(self):
         
@@ -97,8 +45,8 @@ class import_launches:
         # Web scrape the launch data from Jonathan McDowell's JSR website.
         ####################################################################
 
-        df       = scrape_jsr("https://planet4589.org/space/gcat/tsv/launch/launch.tsv",self.session)
-        df_sites = scrape_jsr("https://planet4589.org/space/gcat/tsv/tables/sites.tsv",self.session)
+        df       = self.scrape_jsr("https://planet4589.org/space/gcat/tsv/launch/launch.tsv",self.session)
+        df_sites = self.scrape_jsr("https://planet4589.org/space/gcat/tsv/tables/sites.tsv",self.session)
 
         # Download and save Jonathan's bespoke launch list.
         barker_url = "https://planet4589.org/space/supporting/barker/launch/barker.launch.csv"
@@ -111,7 +59,7 @@ class import_launches:
                 for col in df_barker.select_dtypes(include="object"):
                     if col != "Megaconstellation_Flag":
                         df_barker[col] = df_barker[col].str.strip()
-                df_barker = df_barker.drop(columns=["Longitude","Latitude","SiteGroup","Site","Pad"])
+                df_barker = df_barker.drop(columns=["Longitude","Latitude","SiteGroup","Site","Pad","LaunchTypeCode","LaunchSuccessCode"])
                 df_barker.to_csv("/home/ucfacb0/Emission_Inventory/Emissions_API/databases/barker_launch.csv", index=False)
 
         # Filter the launches to remove unwanted entries.
@@ -151,8 +99,8 @@ class import_launches:
             return f"{year}-{str(number).zfill(3)}"          
 
         df['#Launch_Tag'] = df['#Launch_Tag'].apply(convert_launch_tag)
-        df = df[df["LaunchCode"].str.startswith(("O", "D"), na=False)] # Include only orbital and deep space missions.
-        df = df[df["LaunchCode"].str[1] != ("E")]                      # No pad explosions.
+        df = df[df["LaunchCode"].str.startswith(("O", "D", "N"), na=False)] # Include only orbital, near-orbital and deep space missions.
+        df = df[~df["LaunchCode"].str[1].isin(["E", "A"])]                  # No pad explosions or pad aborts.
 
         # Skip some military-related launches.
         df = df[~df["#Launch_Tag"].str.contains("2021-U01", na=False)] # Skip military launches.
@@ -323,24 +271,13 @@ class import_launches:
 
     def get_rocket_info(self):
         
-        self.unique_rocket_list,vehicle_ids = [], []
+        self.unique_rocket_list = []
         with xr.open_dataset(f'./databases/launch_activity_data.nc', decode_times=False) as ds:
             vehicle_names = ds['Rocket_Name'].values
             vehicle_variants = ds['Rocket_Variant'].values
 
         vehicles_combined = np.array(list(zip(vehicle_names, vehicle_variants)))
         unique_vehicle_names = np.unique(vehicles_combined, axis=0)
-
-        # Map rocket names to proxy names
-        proxy_map = {"Astra Rocket 3":     "Electron",
-                     "Ceres-1":            "Shavit 2",
-                     "Long March (CZ) 11": "Minotaur 1",
-                     "Jielong-3":          "Epsilon-2 CLPS",
-                     "Zhongke 1A":         "Vega C",
-                     "Long March (CZ) 6A": "Long March (CZ) 7A",
-                     "Kuaizhou-11":        "Long March (CZ) 6",
-                     "Zhuque-1":           "Super Strypi",
-                     "Zhuque-2":           "Antares 230"}
 
         # Load in the stage event altitude data from the file.
         stage_alt_dict = {}
@@ -366,16 +303,16 @@ class import_launches:
         }
 
         df_vehicles, df_stages, df_engines = pd.DataFrame(), pd.DataFrame(), pd.DataFrame()
-        df_vehicles = scrape_jsr("https://planet4589.org/space/gcat/tsv/tables/lvs.tsv",self.session) 
-        df_stages   = scrape_jsr("https://planet4589.org/space/gcat/tsv/tables/stages.tsv",self.session)
-        df_engines  = scrape_jsr("https://planet4589.org/space/gcat/tsv/tables/engines.tsv",self.session)
+        df_vehicles = self.scrape_jsr("https://planet4589.org/space/gcat/tsv/tables/lvs.tsv",self.session) 
+        df_stages   = self.scrape_jsr("https://planet4589.org/space/gcat/tsv/tables/stages.tsv",self.session)
+        df_engines  = self.scrape_jsr("https://planet4589.org/space/gcat/tsv/tables/engines.tsv",self.session)
 
         #Loop over all rockets, and pull the information for each.
         for i, (name, variant) in enumerate(unique_vehicle_names):
 
             #Set up the arrays to hold the rocket info.
             temp_dict = {
-                "proxy":                   proxy_map.get(name, ""),
+                "proxy":                   "",
                 "Booster Number":          0,
                 "Fairing Mass":            0,
             }
@@ -390,12 +327,7 @@ class import_launches:
             # First find the vehicle and its stages in the vehicles databases.
             temp_dict["name"] = name
             temp_dict["variant"] = variant
-
-            # This is because Proton-M Enhanced is only listed under the name Proton-M in JSR.
-            if "Proton-M" in name and variant == "Enhanced":
-                df_vehicle = df_vehicles[(df_vehicles["#LV_Name"] == name)].reset_index()
-            else:
-                df_vehicle = df_vehicles[(df_vehicles["#LV_Name"] == name) & (df_vehicles["LV_Variant"] == variant)].reset_index()
+            df_vehicle = df_vehicles[(df_vehicles["#LV_Name"] == name) & (df_vehicles["LV_Variant"] == variant)].reset_index()
 
             # Then loop over all stages to extract mass information. 
             for i, row in df_vehicle.iterrows():
@@ -447,32 +379,44 @@ class import_launches:
                 launch_mass = df_stage["Launch_Mass"].values[0]
                 dry_mass    = None if dry_mass    == '-' or pd.isna(dry_mass)    else float(dry_mass)
                 launch_mass = None if launch_mass == '-' or pd.isna(launch_mass) else float(launch_mass)*1000
-                if stage_number > 0 and int(row["Multiplicity"]) != 1 and name not in ["Conestoga 1620"]:
+                if stage_number > 0 and int(row["Multiplicity"]) != 1 and name not in ["Conestoga 1620", "NOTS EV1"]:
+                    # NOTS EV1 is air-launched, and just has multiple engines on first and second stages.
+                    # Conestoga 1620 is modular so has multiples for 1st and 2nd stages.
                     print(f'Potential booster found for {name} {variant} - stage {stage_number} x {int(row["Multiplicity"])}')
                 if stage_number == 0:
                     temp_dict["Booster Number"] = int(row["Multiplicity"])
                 if dry_mass != None:
                     dry_mass    = dry_mass * int(row["Multiplicity"])
                 if launch_mass != None:
-                    launch_mass = launch_mass * int(row["Multiplicity"])                           
+                    launch_mass = launch_mass * int(row["Multiplicity"])   
                 
                 # Going to use a constant mass ratio when we have the launch mass but not the dry.
-                # For the MG-18 stage (Thor MG-18, Scout X-2M, Scout X-3M), this is within the range of other scout 4th stages (10-33).
-                # https://www.planet4589.org/space/book/lv/engines/kick/WIDELYUSEDMOTORS.html 'high-mass ratio'
                 # Jonathan McDowell said this is a reasonable estimate.
                 if launch_mass is not None and dry_mass is None:
                     #print(name,variant)
                     dry_mass = launch_mass / 10
-                elif name == "Atlas D" and stage_number == 0:
+                elif row["Stage_Name"] in ["Atlas Booster","Atlas B Booster","Atlas D Booster","Atlas E/F Booster"]:
+                    # For some reason, the launch and dry mass are equal for these stages.
                     launch_mass = dry_mass * 10 
+                elif row["Stage_Name"] in ["NOTS 8in","NOTS 3in Sph."]:
+                    # These have a zero launch mass.
+                    launch_mass = dry_mass * 10 
+                elif launch_mass == dry_mass and not (launch_mass is None or launch_mass == 0):
+                    print(f'Warning: Launch Mass is equal to Dry Mass for {row["Stage_Name"]} - {launch_mass}')
                 
                 # These are fixed later in update_mass_info, so suppress warnings here.
-                if name not in ["Angara-1.2","Diamant A","Diamant B","Diamant BP.4","Electron","Kuaizhou","Kuaizhou-1A","Lambda 4S","Juno II","Jupiter C",
-                                "Chang Zheng 11","Chang Zheng 2C/YZ-1S","Chang Zheng 2B/YZ-3","Chang Zheng 3B/YZ-1","Chang Zheng 3C/YZ-1","Chang Zheng 2D/YZ-3",
-                                "Chang Zheng 5/YZ-2","Chang Zheng 5B/YZ-2","Chang Zheng 6","Chang Zheng 7/YZ-1A", "Chang Zheng 12", "Chang Zheng 12A",
-                                "Minotaur-C 3210","Nuri","Safir","Shuang Quxian 1","Simorgh","Strela","Taurus 3110","Taurus 3210", "Scout F-1"]:
+                if (name not in ["Angara-1.2","Chang Zheng 2C/YZ-1S","Chang Zheng 12","Chang Zheng 12A","Strela","Nuri","Juno II","Jupiter C"] 
+                    and row["Stage_Name"] not in [
+                        "YZ-1",   # Using DW.
+                        "YZ-1A",  # Using DW.
+                        "YZ-1S",  # Using DW.
+                        "YZ-2",   # Using DW.
+                        "YZ-3",   # DW dry and wet are equal, so basing off YZ-1S
+                        "CZ-K2-3" # Using NB.
+                        ]): 
+                    
                     if not dry_mass:
-                        print(f"Missing dry mass for Rocket: {name,variant}, Stage: {stage_number} - {row['Stage_Name']}")
+                        print(f"Missing dry mass for Rocket:    {name,variant}, Stage: {stage_number} - {row['Stage_Name']}")
                     if not launch_mass:
                         print(f"Missing launch mass for Rocket: {name,variant}, Stage: {stage_number} - {row['Stage_Name']}")
 
@@ -501,6 +445,8 @@ class import_launches:
                         print("Missing fuel type", df_engine["Group"].values[0],name,variant,stage_number) 
                         fuel_type = None
                 elif name in ["Yinli-1","Jielong-3","Lijian-1"]:
+                    # These catch when the engine is not in the database but the propellant type is known from other sources.
+                    # Its the ZK-1A and YL-1 engines.
                     fuel_type = "Solid"
                 else:
                     print(f"Warning: Found {len(df_engine)} engines for stage {row['Stage_Name']} of {name,variant}.")
@@ -596,7 +542,6 @@ if __name__ == "__main__":
     
     # Set up the arguments for each function.
     parser = argparse.ArgumentParser()
-    parser.add_argument('-yl',   "--yearly_launches",          action='store_true',                                 help="Get yearly launches.")
     parser.add_argument('-li',   "--launch_info",              action='store_true',                                 help='Get launch info.')
     parser.add_argument('-sli',  "--save_launch_info",         action='store_true',                                 help='Save launch info.')
     parser.add_argument('-ri',   "--rocket_info",              action='store_true',                                 help='Get rocket info.')
@@ -607,8 +552,6 @@ if __name__ == "__main__":
     
     #Loop over all years and run functions depending on input arguments.
     LaunchData = import_launches(1957,current_year-1)   
-    if args.yearly_launches == True:
-        LaunchData.get_launch_list()
 
     if args.launch_info == True:
         LaunchData.get_launch_info()

@@ -2,15 +2,58 @@ For a full list of changes, please visit https://github.com/cbarker211/Emissions
 
 # v2.7.0
 
-This update fixes missing 2nd stage emissions above the model.
+This update fixes missing 2nd stage emissions above the model, streamlines the launch selection criteria and rocket cross-checking process, ...
 
 ## Rockets
-- Proton-M now has Phase I, II, III, IV variants.
+- Stopped using proxy rockets where mass is available in GCAT.
+    - launch mass only in GCAT
+        - ADD TV2
+        - Astra Rocket 3.x
+        - Chang Zheng 11
+        - Cheonlima-1
+        - Gushenxing 1
+        - Jielong-3
+        - Kuaizhou-11
+        - Lijian-1
+        - NK Kerolox LV
+        - Qaem-100
+        - RS1
+        - Tianlong-2
+        - Yinli-1
+    - launch + dry mass in GCAT
+        - Chang Zheng 6A
+        - Chang Zheng 6C
+        - H3-22S
+        - Terran 1
+        - Zhuque-2
+        - Zhuque-2E
+- Still using proxy where no launch and dry mass is available for any stage.
+    - CZ-12 (Falcon 9 FT5)
+- Several rockets were still using DW, even with GCAT info available:
+    - Firefly Alpha
+    - Kuaizhou, Kuaizhou-1 and Kuaizhou-1A
+    - Shuang Quxian 1
+    - SSLV stage masses
+    - Atlas V N22
+- Other updates:
+    - Updated Epsilon upper stage details for 2PBS and - variants. Removed upper stage from 2 variant following GCAT.
+    - Qased information was previously obtained from SLR (S1+S3) and NB (S2), but S3 was misassigned.
+        - GCAT has launch+dry mass for S1+S2, and launch mass for S3. Switching to using GCAT.
+    - Ariane 6 booster information updated.
+    - Fixed Vulcan Centaur VC4S booster number.
+    - Atlas booster propellant masses added for older boosters where launch = dry mass.
+    - Scout F-1 upper stage information now from GCAT instead of Encyclopedia Astronautica.
+    - Set NOTS EV1 4th and 5th stages to dry_mass * 10 (launch_mass was zero). These never fired anyway, it always failed at a previous stage. 
+    - Proton-M/Briz-M now has Phase I, II, III, IV variants in GCAT, all with launch and dry mass. 
+        - Therefore switching to use GCAT data for all Proton vehicles. 
+        - 8S811 stage dry mass changed in GCAT by 50 kg, used in UR and Proton vehicles. 
+        - Updated launch event altitudes to accommodate the new variants.
+    - Added variant-specific stage 2 and stage 3 data for GSLV Mk II.
 
 ## Launches 
 - Bug fix for Ariane 5ECA+ stage 2 propellant mass.
 - Fixed a bug where stage 2 emissions above the model where missing if SEI was above 100 km.
-- Cleaned up launch filtering to be more consistent with GCAT. Now including orbital and deep space launch codes only. This removes several non-orbital 19xx-U0x launches.
+- Cleaned up launch filtering to be more consistent with GCAT. Now including orbital, near-orbital and deep space launch codes only. This removes several non-orbital 19xx-U0x launches.
 - Now using the megaconstellation flag from the group column in GCAT, instead of manually filtering using payload names. This has meant removing Lynk as a megaconstellation and adding Starshield. Updated assignment for Xingwang (and other Chinese constellations) and US SDA. 
 - Now including NOTS EV1 as this is a spy satellite, not an anti-satellite weapon. 
 
