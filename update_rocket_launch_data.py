@@ -752,6 +752,11 @@ def update_mass_info(temp_dict,name,variant):
         temp_dict[f"Stage2 Stage Mass"]      = 416
         temp_dict[f"Stage3 Stage Mass"]      = 108 
     
+    if "Proton-M" in name:
+        # Fairing masses:
+        # Sp101    :  2000 (Briz-M Proton), 1600 (Briz-M Angara A5), 2000 (DM-03)
+        temp_dict[f"Fairing Mass"]           = 2000 
+
     if name == "Safir":
         # https://web.archive.org/web/20220411235210/http://www.spacelaunchreport.com/safir.html
         temp_dict[f"Stage1 Propellant Mass"] = 18200 # SLR

@@ -1375,7 +1375,7 @@ class build_reentry_list:
         if duplicate_jcat_list:
             raise ValueError(f"Duplicates: {duplicate_jcat_list}")            
         
-        # Add missing stages and check the Aerospace Corp and DISCOSweb databases.
+        # Add missing stages.
         print("Looking for missing rocket stages.")
         self.add_missing_stages()
 
