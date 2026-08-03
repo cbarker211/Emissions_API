@@ -1,5 +1,5 @@
 #Name	Manufacturer	Family	Alt_Name	Oxidizer	Fuel	Mass	MFlag	Impulse	ImpFlag	Thrust	TFlag	Isp	IspFlag	Duration	DurFlag	Chambers	Date	Usage	Group
-# Updated 2026 Jul 17 2010:28
+# Updated 2026 Aug  2 2028:38
 #
 # Solid propellant engines
 #
@@ -683,6 +683,8 @@ Dorado	WRE	-	-	-	 Solid	     139.3 	 	     173 	 	      42.00 	 	-	 	   4.3 	 	 
 BE-3B1	HERC	BE-3	Alcyone	-	 Solid	     138.0 	 	     269 	 	      34.20 	 	-	 	   7.8 	 	  1	-	Alcyone	Solid
 TE-307	THKE	Apache	-	-	 Solid	     135.0 	 	     167 	 	      21.10 	 	-	 	   6.0 	 	  1	1961	Apache	Solid
 Star 17A	THKE	-	TE-M-521-5	-	 CTPB/AP/Al	     125.5 	 	     320 	 	      16.00 	 	286.7 	 	  19.4 	 	  1	-	Star 17A	Solid
+CZ-2 SM	CALT	-	-	-	 Solid	     125.0 	 	-	 	       0.74 	 	-	 	-	 	  1	-	SM	Solid
+CZ-2 SMA	CALT	-	-	-	 Solid	     125.0 	 	-	 	       0.74 	 	-	 	-	 	  1	-	SM	Solid
 Vela	WRE	-	-	-	 Solid	     118.0 	 	     133 	 	      26.70 	 	-	 	   5.0 	 	  1	1964	Aero High [2]	Solid
 Cygnus 20	THKE	-	20" SM	-	 Solid	     118.0 	 	-	 	      30.00 	 	-	 	   8.5 	 	  1	1959	20" SM	Solid
 Kiva 5.5KS6100	RPI	-	-	-	 Solid	     107.0 	 	     149 	 	      27.00 	 	-	 	   5.5 	 	  1	-	Kiva	Solid
@@ -1122,7 +1124,7 @@ RDMT-400	NIIM	RDMT-100	-	N2O4	 UDMH	-	 	-	 	       0.40 	 	255.0 	 	-	 	  1	-	-	
 DMT-600	KHMM?	RDMT-100	-	N2O4	 UDMH	-	 	-	 	       0.60 	 	301.0 	 	-	 	  1	-	-	NTO/UDMH
 PDV-ASAT	DRDO	-	-	N2O4	 UDMH	-	 	-	 	-	 	-	 	-	 	  1	2019	PDV Mk II St 3	NTO/UDMH
 S5.120	ISAEV	-	-	N2O4	 UDMH	-	 	-	 	-	 	304.0 	 	-	 	  1	-	Argon (Zenit-6U)	NTO/UDMH
-Raman-2	SKYRT	-	-	N2O4	 UDMH	-	 	-	 	       0.85 	 	-	 	-	 	  1	-	-	NTO/UDMH
+Raman-2	SKYRT	-	-	N2O4	 MMH	-	 	-	 	       1.46 	 	-	 	-	 	  1	-	-	NTO/UDMH
 OS-M St 4	LYK	-	-	N2O4	 UDMH	-	 	-	 	-	 	-	 	-	 	  1	2019	OS-M1	NTO/UDMH
 RD-869	YUZH	-	-	N2O4	 UDMH	-	 	-	 	       2.45 	 	315.5 	 	-	 	  1	2012	Pre Vega	NTO/UDMH
 RD-843	YUZH	-	-	N2O4	 UDMH	-	 	-	 	       2.45 	 	315.5 	 	-	 	  1	2012	Vega [4] mdot=0.792	NTO/UDMH

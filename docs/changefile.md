@@ -41,7 +41,6 @@ This update fixes missing 2nd stage emissions above the model, streamlines the l
         - GCAT has launch+dry mass for S1+S2, and launch mass for S3. Switching to using GCAT.
     - Ariane 6 booster information updated.
     - Fixed Vulcan Centaur VC4S booster number.
-    - Atlas booster propellant masses added for older boosters where launch = dry mass.
     - Scout F-1 upper stage information now from GCAT instead of Encyclopedia Astronautica.
     - Set NOTS EV1 4th and 5th stages to dry_mass * 10 (launch_mass was zero). These never fired anyway, it always failed at a previous stage. 
     - Proton-M/Briz-M now has Phase I, II, III, IV variants in GCAT, all with launch and dry mass. 
@@ -49,6 +48,8 @@ This update fixes missing 2nd stage emissions above the model, streamlines the l
         - 8S811 stage dry mass changed in GCAT by 50 kg, used in UR and Proton vehicles. 
         - Updated launch event altitudes to accommodate the new variants.
     - Added variant-specific stage 2 and stage 3 data for GSLV Mk II.
+    - GCAT now lists the SM/SMA third stage / payload dispenser as an actual stage, not a component. Therefore we switch to using GCAT info instead of DW.
+    - Confirmed that H-II (2S) -1 stage is correct, so now including emissions from this. It is essentially a second set of boosters burning a separate propellant type.
 
 ## Launches 
 - Bug fix for Ariane 5ECA+ stage 2 propellant mass.

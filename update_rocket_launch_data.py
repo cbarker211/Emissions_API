@@ -444,10 +444,8 @@ def update_mass_info(temp_dict,name,variant):
             # No info available from GCAT, SLR or Sp101. DISCOSweb dry mass matches JSR reentry data, so keeping DW values.
             temp_dict[f"Stage3 Propellant Mass"] = 1350 # DW
             temp_dict[f"Stage3 Stage Mass"]      = 2500 # DW
-        elif variant.startswith("SM"):
-            temp_dict[f"Stage3 Propellant Mass"] = 138     # DW
-            temp_dict[f"Stage3 Stage Mass"]      = 550     # DW
-            temp_dict[f"Stage3 Fuel Type"]       = "Solid" # DW
+        
+        # GCAT has data for the SM/SMA stages now. 
     
     if name.startswith("Chang Zheng 2D"):
         # Chang Zheng 2D 

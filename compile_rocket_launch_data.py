@@ -307,7 +307,7 @@ class import_launches:
         df_vehicles = self.scrape_jsr("https://planet4589.org/space/gcat/tsv/tables/lvs.tsv",self.session) 
         df_stages   = self.scrape_jsr("https://planet4589.org/space/gcat/tsv/tables/stages.tsv",self.session)
         df_engines  = self.scrape_jsr("https://planet4589.org/space/gcat/tsv/tables/engines.tsv",self.session)
-
+        count,count2 = 0,0
         #Loop over all rockets, and pull the information for each.
         for i, (name, variant) in enumerate(unique_vehicle_names):
 
@@ -333,10 +333,14 @@ class import_launches:
             # Then loop over all stages to extract mass information. 
             for i, row in df_vehicle.iterrows():
 
-                # Get the stage number and skip fairings and payloads as the mass isn't in JSR.
+                # Get the stage number.
                 stage_number = row['Stage_No'].strip()
+
+                # Skip fairings and payloads
                 if stage_number in ["F","P"]:
                     continue
+
+                # We treat these first stages as boosters, so we need to adjust the stage number for these rockets.
                 if name.startswith(("Soyuz", "Conestoga 1620", "Polyot", "Molniya 8K78", "Sputnik","Voskhod","Vostok", "Space Shuttle", "SLS Block 1")) and name != "Soyuz-2-1V":
                     stage_number = int(stage_number) - 1
                 else:
@@ -350,7 +354,7 @@ class import_launches:
                 if (name.startswith("Proton-K/") or name.startswith("Proton-M/D") or name.startswith("UR-500K/")) and stage_number == 5:
                     stage_number = 4
                 
-                # Fix Saturn V.
+                # Skip interstage of Saturn V.
                 if name.startswith("Saturn V"):
                     if stage_number == 2:
                         continue # Skip the interstage.
@@ -360,8 +364,7 @@ class import_launches:
                 # Find the stage in the stages database.
                 df_stage = df_stages[df_stages["#Stage_Name"] == row["Stage_Name"]]
                 if len(df_stage) != 1:
-                    print(f"Warning: Found {len(df_stage)} stages for stage {row['Stage_Name']} of {name}.")
-                    continue
+                    raise ValueError(f"Warning: Found {len(df_stage)} stages for stage {row['Stage_Name']} of {name}.")
 
                 # Skip air-launched first stages - these are aircraft.
                 if df_stage["Stage_Family"].values[0].strip() == "Air":
@@ -369,11 +372,9 @@ class import_launches:
                     continue
 
                 if stage_number > 5: 
-                    print("Too many stages for",name,variant,stage_number,"-",row["Stage_Name"])
-                    pass
-                
-                if name == "H-II" and variant == "(2S)" and stage_number < 0:
-                    continue # This rocket has two boosters but for some reason its duplicated in JSR.
+                    raise ValueError("Too many stages for",name,variant,stage_number,"-",row["Stage_Name"])
+                elif stage_number < 0:
+                    print("Negative stage number for",name,variant,stage_number,"-",row["Stage_Name"])
 
                 # Get the dry mass and wet mass and handle.
                 dry_mass    = df_stage["Dry_Mass"].values[0]
@@ -391,14 +392,20 @@ class import_launches:
                 if launch_mass != None:
                     launch_mass = launch_mass * int(row["Multiplicity"])   
                 
+                if launch_mass is not None and dry_mass is None:
+                    count+=1
+                else:
+                    count2+=1 
+                
                 # Going to use a constant mass ratio when we have the launch mass but not the dry.
                 # Jonathan McDowell said this is a reasonable estimate.
                 if launch_mass is not None and dry_mass is None:
                     #print(name,variant)
                     dry_mass = launch_mass / 10
                 elif row["Stage_Name"] in ["Atlas Booster","Atlas B Booster","Atlas D Booster","Atlas E/F Booster"]:
-                    # For some reason, the launch and dry mass are equal for these stages.
-                    launch_mass = dry_mass * 10 
+                    # Atlas boosters were fed propellant from the main stage, so they essentially have zero propellant mass (dry mass = launch mass in GCAT).
+                    # We shall include them as a stage with zero propellant mass, as we need the dry mass for the re-entry emissions.
+                    pass
                 elif row["Stage_Name"] in ["NOTS 8in","NOTS 3in Sph."]:
                     # These have a zero launch mass.
                     launch_mass = dry_mass * 10 
@@ -475,6 +482,7 @@ class import_launches:
 
             # Update the rocket list.   
             self.unique_rocket_list.append(temp_dict) 
+        print(f"Used launch/dry mass ratio for {count}/{count+count2} stages.")
         
     def rocket_info_to_netcdf(self):
         """

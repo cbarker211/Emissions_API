@@ -1,5 +1,5 @@
 #Stage_Name	Stage_Family	Stage_Manufacturer	Stage_Alt_Name	Length	Diameter	Launch_Mass	Dry_Mass	Thrust	Duration	Engine	NEng
-# Updated 2026 Jul 17 2010:28
+# Updated 2026 Aug  2 2028:38
 -	Unknown             	-	Dummy	-	-	-	       0 	       0.0 	   0.0 	-	 0
 ?	Unknown             	-	-	-	-	-	-	-	-	-	-
 N-1 Blok-A	N-1                 	OKB1	N-1 Blok A	 30.0 	14.00 	1870.0 	  130000 	   45300.0 	 110.0 	NK-15	30
@@ -291,6 +291,8 @@ YZ-3	YZ-1                	SAST	YZ-3	  5.0 	 3.00 	   0.0 	       0 	       0.0 	
 374BL01B-A	Blok-A              	OKB1	Blok A	 28.0 	 2.95 	 105.4 	    6875 	    1009.4 	 286.0 	RD-108A	 1
 Soyuz-2-1V 132KS	Blok-A              	PROG	-	 26.9 	 2.95 	 129.0 	    9300 	    1754.0 	 292.1 	NK-33A	 1
 IUS SRM-2	Orbus6              	UTC	Orbus 6E	  2.1 	 2.90 	   3.9 	    1005 	      76.5 	 104.0 	Orbus 6E	 1
+CZ-2C SM	SMA	CALT	-	  1.5 	 2.90 	   0.7 	     550 	       0.7 	   0.0 	CZ-2 SM	 1
+CZ-2C SMA	SMA	CALT	-	  1.5 	 2.90 	   0.7 	     550 	       0.7 	   0.0 	CZ-2 SMA	 1
 CZ-4 Stage 3	L14                 	SAST	L14-YF40	  1.9 	 2.90 	  15.2 	    1000 	      98.1 	 303.0 	YF-40	 1
 CZ-4B Stage 3	L14                 	SAST	L14-YF40	  1.9 	 2.90 	  15.2 	    1000 	      98.1 	 303.0 	YF-40	 1
 CZ-4C Stage 3	L14                 	SAST	L14-YF40	  1.9 	 2.90 	  15.2 	    1000 	      98.1 	 303.0 	YF-40A	 1
@@ -838,7 +840,7 @@ Temp	Temp                	MIT	-	 12.4 	 1.01 	  11.9 	     120 	-	-	9M76	 1
 Temp-S	Temp                	MIT	-	 12.4 	 1.01 	  11.9 	     120 	-	-	9M76B	 1
 Electron Stage 3	Electron            	RLABN	-	  0.5 	 1.40 	   1.0 	-	-	-	Curie	 1
 Photon Lunar	Electron            	RLABN	-	  1.0 	 1.40 	   2.0 	-	-	-	HyperCurie	 1
-Vikram-1 S4	VikramS4	SKYRT	-	  1.0 	 1.00 	   1.0 	-	-	-	Raman-2	 4
+Vikram-1 OAM	VikramS4	SKYRT	-	  1.0 	 1.00 	   1.0 	-	       1.5 	-	Raman-2	 1
 Start	Start               	MITT	-	  2.6 	 1.00 	   1.0 	     300 	     100.0 	  53.0 	Start	 1
 DS	DS                  	MITT	-	  0.5 	 1.00 	   0.5 	      50 	-	 250.0 	DS	 1
 Orion LAS	Orion.LAS           	OSCC	-	 10.0 	 1.00 	   6.0 	-	-	-	Orion LAS-AM	 1
