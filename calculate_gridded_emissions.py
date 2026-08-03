@@ -23,10 +23,10 @@ import requests
 import xarray as xr
 import cProfile
 from datetime import datetime
+from io import StringIO
 
 from python_modules.distribute_emis_func import make_grid_LL, read_gc_box_height, get_ross_profiles, interp_prop_mass
 from python_modules.alt_emis_func import calculate_bc_ei, calculate_nox_ei, calculate_co_ei, calculate_cl_ei
-from python_modules.web_scrape_func import scrape_jsr
 
 class InputData:
     '''Read rocket launch and re-entry activity data.'''
@@ -41,11 +41,28 @@ class InputData:
         self.dsre = open_file(reentryfile)
         self.dsr = xr.open_dataset(rocketinfofile).to_dataframe().reset_index(drop=True)
         self.define_pei(peifile)
+
+    def scrape_jsr(self,url,session):
+        # Function to web scrape data and convert to a pandas DataFrame.
+        response = session.get(url)
+        if response.status_code == 200:
+            
+            filename = url.split("/")[-1]  # Use the last part of the URL as filename
+            with open(f"gcat/{filename}", "w", encoding="utf-8") as f:
+                f.write(response.text)
+            
+            # Convert the content to a file-like object for pandas
+            tsv_data = StringIO(response.text)
+            # Load the data into a pandas DataFrame
+            df = pd.read_csv(tsv_data, delimiter="\t", dtype=object, low_memory=False)
+        else:
+            raise ImportError(f"Failed to fetch from JSR URL: {url}", response.status_code)
+        return df 
     
     def handle_falcon_landings(self):    
 
         session = requests.Session() 
-        df_rcat = scrape_jsr("https://planet4589.org/space/gcat/tsv/cat/rcat.tsv",session)
+        df_rcat = self.scrape_jsr("https://planet4589.org/space/gcat/tsv/cat/rcat.tsv",session)
         self.falcon_landing_dict = {}
         falcon_df = self.dsl[self.dsl["Rocket_Name"].isin(["Falcon 9", "Falcon Heavy"])].copy()
 

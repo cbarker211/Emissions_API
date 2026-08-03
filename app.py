@@ -68,10 +68,6 @@ def get_reentries():
 
     return jsonify(filtered_data)
 
-@app.route('/api/test')
-def test():
-    return {"hello": "world"}
-
 if __name__ == "__main__":
     app.run()
 

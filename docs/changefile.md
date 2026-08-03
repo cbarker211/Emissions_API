@@ -53,7 +53,7 @@ This update fixes missing 2nd stage emissions above the model, streamlines the l
 ## Launches 
 - Bug fix for Ariane 5ECA+ stage 2 propellant mass.
 - Fixed a bug where stage 2 emissions above the model where missing if SEI was above 100 km.
-- Cleaned up launch filtering to be more consistent with GCAT. Now including orbital, near-orbital and deep space launch codes only. This removes several non-orbital 19xx-U0x launches.
+- Cleaned up launch filtering to be more consistent with GCAT. Now including orbital, near-orbital and deep space launch codes only. This removes several non-orbital 19xx-U0x launches. Removed launches which exploded or were aborted at (or close to) the pad.
 - Now using the megaconstellation flag from the group column in GCAT, instead of manually filtering using payload names. This has meant removing Lynk as a megaconstellation and adding Starshield. Updated assignment for Xingwang (and other Chinese constellations) and US SDA. 
 - Now including NOTS EV1 as this is a spy satellite, not an anti-satellite weapon. 
 

@@ -59,7 +59,7 @@ class import_launches:
                 for col in df_barker.select_dtypes(include="object"):
                     if col != "Megaconstellation_Flag":
                         df_barker[col] = df_barker[col].str.strip()
-                df_barker = df_barker.drop(columns=["Longitude","Latitude","SiteGroup","Site","Pad","LaunchTypeCode","LaunchSuccessCode"])
+                df_barker = df_barker.drop(columns=["Longitude","Latitude","SiteGroup","Site","Pad","LaunchTypeCode","LaunchSuccessCode","InsertionPerigee","InsertionApogee","InsertionInc","Azimuth"])
                 df_barker.to_csv("/home/ucfacb0/Emission_Inventory/Emissions_API/databases/barker_launch.csv", index=False)
 
         # Filter the launches to remove unwanted entries.
@@ -100,7 +100,8 @@ class import_launches:
 
         df['#Launch_Tag'] = df['#Launch_Tag'].apply(convert_launch_tag)
         df = df[df["LaunchCode"].str.startswith(("O", "D", "N"), na=False)] # Include only orbital, near-orbital and deep space missions.
-        df = df[~df["LaunchCode"].str[1].isin(["E", "A"])]                  # No pad explosions or pad aborts.
+        df = df[~df["LaunchCode"].str[1].isin(["E", "A"])]                  # No pad explosions or pad aborts at the pad.
+        df = df[~df["FailCode"].str.startswith("PE")]                       # No explosions near the pad.
 
         # Skip some military-related launches.
         df = df[~df["#Launch_Tag"].str.contains("2021-U01", na=False)] # Skip military launches.
@@ -282,7 +283,7 @@ class import_launches:
         # Load in the stage event altitude data from the file.
         stage_alt_dict = {}
         stage_alt_rockets = np.genfromtxt("./input_files/launch_event_altitudes.csv",dtype=str,skip_header=1,usecols=[0,1],delimiter=",")
-        stage_alt_data = np.genfromtxt("./input_files/launch_event_altitudes.csv",dtype=np.float64,skip_header=1,usecols=[2,3,4,5],delimiter=",")
+        stage_alt_data    = np.genfromtxt("./input_files/launch_event_altitudes.csv",dtype=np.float64,skip_header=1,usecols=[2,3,4,5],delimiter=",")
 
         stages = ["BECO", "MECO", "SEI1", "SECO"]
         for (name, variant), row in zip(stage_alt_rockets, stage_alt_data):
