@@ -633,7 +633,7 @@
                 "lat": 28.46,
                 "lon": -80.54,
                 "smc": false,
-                "location": "Spaceport Florida Authority",
+                "location": "Cape Canaveral",
                 "emissions": {
                     "BC": [
                         0.020759,
@@ -1507,7 +1507,7 @@
                 "lat": 28.46,
                 "lon": -80.54,
                 "smc": false,
-                "location": "Spaceport Florida Authority",
+                "location": "Cape Canaveral",
                 "emissions": {
                     "BC": [
                         0.020759,
@@ -2342,7 +2342,7 @@
                 "lat": 28.46,
                 "lon": -80.54,
                 "smc": false,
-                "location": "Spaceport Florida Authority",
+                "location": "Cape Canaveral",
                 "emissions": {
                     "BC": [
                         0.020759,
@@ -2671,36 +2671,36 @@
                 "lat": 28.46,
                 "lon": -80.54,
                 "smc": false,
-                "location": "Spaceport Florida Authority",
+                "location": "Cape Canaveral",
                 "emissions": {
                     "BC": [
-                        0.04123,
-                        0.30231,
-                        0.592959,
+                        0.028677,
+                        0.210267,
+                        0.471104,
                         0.72453
                     ],
                     "CO": [
-                        0.167081,
-                        0.812041,
-                        4.730896,
+                        0.116211,
+                        0.564803,
+                        4.053474,
                         10.472745
                     ],
                     "CO2": [
-                        52.991802,
-                        39.0296,
-                        23.202429,
+                        36.857628,
+                        27.146434,
+                        17.971074,
                         20.978423
                     ],
                     "NOx": [
-                        0.579303,
-                        0.003472,
+                        0.402925,
+                        0.002415,
                         0.0,
                         0.0
                     ],
                     "H2O": [
-                        20.116623,
-                        15.225252,
-                        11.572532,
+                        13.991806,
+                        10.589689,
+                        9.194341,
                         14.140349
                     ],
                     "Al2O3": [
@@ -4376,7 +4376,7 @@
                 "lat": 28.46,
                 "lon": -80.54,
                 "smc": false,
-                "location": "Spaceport Florida Authority",
+                "location": "Cape Canaveral",
                 "emissions": {
                     "BC": [
                         0.020759,
@@ -4682,7 +4682,7 @@
                 "lat": 37.83,
                 "lon": -75.48,
                 "smc": false,
-                "location": "Mid-Atlantic Regional Spaceport",
+                "location": "Wallops Island",
                 "emissions": {
                     "BC": [
                         0.003376,
@@ -5593,7 +5593,7 @@
                 "lat": 28.46,
                 "lon": -80.54,
                 "smc": false,
-                "location": "Spaceport Florida Authority",
+                "location": "Cape Canaveral",
                 "emissions": {
                     "BC": [
                         0.020759,
@@ -5769,74 +5769,7 @@
         ]
     },
     "1963-07-30": {
-        "launches": [
-            {
-                "date": "1963-07-30T16:16:08Z",
-                "id": "1963-U01",
-                "rocket": "Blue Scout Jr",
-                "variant": "-",
-                "lat": 28.46,
-                "lon": -80.54,
-                "smc": false,
-                "location": "Spaceport Florida Authority",
-                "emissions": {
-                    "BC": [
-                        0.001214,
-                        0.008905,
-                        0.005986,
-                        0.016944
-                    ],
-                    "CO": [
-                        0.002402,
-                        0.011675,
-                        0.029527,
-                        0.190624
-                    ],
-                    "CO2": [
-                        0.885575,
-                        0.65476,
-                        0.128949,
-                        0.195919
-                    ],
-                    "NOx": [
-                        0.023463,
-                        0.000141,
-                        0.0,
-                        0.0
-                    ],
-                    "H2O": [
-                        0.997029,
-                        0.754601,
-                        0.196573,
-                        0.556425
-                    ],
-                    "Al2O3": [
-                        0.622416,
-                        0.471075,
-                        0.122715,
-                        0.34736
-                    ],
-                    "Cl": [
-                        0.002622,
-                        0.036934,
-                        0.019262,
-                        0.05401
-                    ],
-                    "HCl": [
-                        0.37253,
-                        0.143569,
-                        0.024824,
-                        0.069896
-                    ],
-                    "Cl2": [
-                        0.036629,
-                        0.131153,
-                        0.0371,
-                        0.104843
-                    ]
-                }
-            }
-        ],
+        "launches": [],
         "reentries": [
             {
                 "date": "1963-07-30T00:00:00Z",
@@ -7100,7 +7033,7 @@
                 "lat": 28.46,
                 "lon": -80.54,
                 "smc": false,
-                "location": "Spaceport Florida Authority",
+                "location": "Cape Canaveral",
                 "emissions": {
                     "BC": [
                         0.028677,
@@ -8593,6 +8526,29 @@
             }
         ]
     },
+    "1963-11-26": {
+        "launches": [],
+        "reentries": [
+            {
+                "date": "1963-11-26T00:00:00Z",
+                "id": "1962-018",
+                "reusability": "",
+                "name": "Agena B 1126",
+                "category": "S2",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "emissions": {
+                    "NOx": 0.3,
+                    "Al2O3": 0.34125,
+                    "BC": 0.02175,
+                    "Cl": 0.00825,
+                    "HCl": 0.00375,
+                    "Unablated_Mass": 0.2625
+                }
+            }
+        ]
+    },
     "1963-11-27": {
         "launches": [
             {
@@ -8603,7 +8559,7 @@
                 "lat": 28.46,
                 "lon": -80.54,
                 "smc": false,
-                "location": "Spaceport Florida Authority",
+                "location": "Cape Canaveral",
                 "emissions": {
                     "BC": [
                         0.020759,
@@ -8669,7 +8625,7 @@
                 "lat": 28.46,
                 "lon": -80.54,
                 "smc": false,
-                "location": "Spaceport Florida Authority",
+                "location": "Cape Canaveral",
                 "emissions": {
                     "BC": [
                         0.028677,
@@ -9793,7 +9749,7 @@
                 "lat": 28.46,
                 "lon": -80.54,
                 "smc": false,
-                "location": "Spaceport Florida Authority",
+                "location": "Cape Canaveral",
                 "emissions": {
                     "BC": [
                         0.020759,

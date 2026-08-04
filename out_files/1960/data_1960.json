@@ -73,7 +73,7 @@
                 "lat": 28.46,
                 "lon": -80.54,
                 "smc": false,
-                "location": "Spaceport Florida Authority",
+                "location": "Cape Canaveral",
                 "emissions": {
                     "BC": [
                         0.021224,
@@ -217,7 +217,7 @@
                 "lat": 28.46,
                 "lon": -80.54,
                 "smc": false,
-                "location": "Spaceport Florida Authority",
+                "location": "Cape Canaveral",
                 "emissions": {
                     "BC": [
                         0.021224,
@@ -402,7 +402,7 @@
                 "lat": 28.46,
                 "lon": -80.54,
                 "smc": false,
-                "location": "Spaceport Florida Authority",
+                "location": "Cape Canaveral",
                 "emissions": {
                     "BC": [
                         0.015318,
@@ -969,7 +969,7 @@
                 "lat": 28.46,
                 "lon": -80.54,
                 "smc": false,
-                "location": "Spaceport Florida Authority",
+                "location": "Cape Canaveral",
                 "emissions": {
                     "BC": [
                         0.028677,
@@ -1077,7 +1077,7 @@
                 "lat": 28.46,
                 "lon": -80.54,
                 "smc": false,
-                "location": "Spaceport Florida Authority",
+                "location": "Cape Canaveral",
                 "emissions": {
                     "BC": [
                         0.015318,
@@ -1375,7 +1375,7 @@
                 "lat": 28.46,
                 "lon": -80.54,
                 "smc": false,
-                "location": "Spaceport Florida Authority",
+                "location": "Cape Canaveral",
                 "emissions": {
                     "BC": [
                         0.021224,
@@ -2028,77 +2028,6 @@
             }
         ]
     },
-    "1960-09-21": {
-        "launches": [
-            {
-                "date": "1960-09-21T13:01:53Z",
-                "id": "1960-U02",
-                "rocket": "Blue Scout Jr",
-                "variant": "-",
-                "lat": 28.46,
-                "lon": -80.54,
-                "smc": false,
-                "location": "Spaceport Florida Authority",
-                "emissions": {
-                    "BC": [
-                        0.001214,
-                        0.008905,
-                        0.005986,
-                        0.016944
-                    ],
-                    "CO": [
-                        0.002402,
-                        0.011675,
-                        0.029527,
-                        0.190624
-                    ],
-                    "CO2": [
-                        0.885575,
-                        0.65476,
-                        0.128949,
-                        0.195919
-                    ],
-                    "NOx": [
-                        0.023463,
-                        0.000141,
-                        0.0,
-                        0.0
-                    ],
-                    "H2O": [
-                        0.997029,
-                        0.754601,
-                        0.196573,
-                        0.556425
-                    ],
-                    "Al2O3": [
-                        0.622416,
-                        0.471075,
-                        0.122715,
-                        0.34736
-                    ],
-                    "Cl": [
-                        0.002622,
-                        0.036934,
-                        0.019262,
-                        0.05401
-                    ],
-                    "HCl": [
-                        0.37253,
-                        0.143569,
-                        0.024824,
-                        0.069896
-                    ],
-                    "Cl2": [
-                        0.036629,
-                        0.131153,
-                        0.0371,
-                        0.104843
-                    ]
-                }
-            }
-        ],
-        "reentries": []
-    },
     "1960-09-23": {
         "launches": [],
         "reentries": [
@@ -2225,72 +2154,6 @@
     "1960-10-04": {
         "launches": [
             {
-                "date": "1960-10-04T15:23:00Z",
-                "id": "1960-U03",
-                "rocket": "Scout X-1",
-                "variant": "-",
-                "lat": 37.83,
-                "lon": -75.48,
-                "smc": false,
-                "location": "Mid-Atlantic Regional Spaceport",
-                "emissions": {
-                    "BC": [
-                        0.003376,
-                        0.024758,
-                        0.02027,
-                        0.057877
-                    ],
-                    "CO": [
-                        0.006679,
-                        0.032459,
-                        0.103422,
-                        0.651115
-                    ],
-                    "CO2": [
-                        2.462091,
-                        1.820374,
-                        0.431236,
-                        0.669202
-                    ],
-                    "NOx": [
-                        0.065232,
-                        0.000391,
-                        0.0,
-                        0.0
-                    ],
-                    "H2O": [
-                        2.771957,
-                        2.097954,
-                        0.665622,
-                        1.900579
-                    ],
-                    "Al2O3": [
-                        1.730453,
-                        1.309692,
-                        0.415529,
-                        1.186477
-                    ],
-                    "Cl": [
-                        0.007289,
-                        0.102684,
-                        0.065224,
-                        0.184483
-                    ],
-                    "HCl": [
-                        1.035715,
-                        0.399153,
-                        0.084053,
-                        0.238742
-                    ],
-                    "Cl2": [
-                        0.101838,
-                        0.364634,
-                        0.12563,
-                        0.358113
-                    ]
-                }
-            },
-            {
                 "date": "1960-10-04T17:50:00Z",
                 "id": "1960-013",
                 "rocket": "Thor Ablestar",
@@ -2298,7 +2161,7 @@
                 "lat": 28.46,
                 "lon": -80.54,
                 "smc": false,
-                "location": "Spaceport Florida Authority",
+                "location": "Cape Canaveral",
                 "emissions": {
                     "BC": [
                         0.015318,
@@ -2447,7 +2310,7 @@
                 "lat": 28.46,
                 "lon": -80.54,
                 "smc": false,
-                "location": "Spaceport Florida Authority",
+                "location": "Cape Canaveral",
                 "emissions": {
                     "BC": [
                         0.023941,
@@ -2740,7 +2603,7 @@
                 "lat": 28.46,
                 "lon": -80.54,
                 "smc": false,
-                "location": "Spaceport Florida Authority",
+                "location": "Cape Canaveral",
                 "emissions": {
                     "BC": [
                         0.021224,
@@ -3223,7 +3086,67 @@
                 }
             }
         ],
-        "reentries": []
+        "reentries": [
+            {
+                "date": "1960-12-07T00:00:00Z",
+                "id": "1960-018",
+                "reusability": "",
+                "name": "Thor DM-21 296",
+                "category": "S1",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "emissions": {
+                    "NOx": 1.25,
+                    "Al2O3": 0.65625,
+                    "BC": 0.0,
+                    "Cl": 0.0,
+                    "HCl": 0.0,
+                    "Unablated_Mass": 2.1875
+                }
+            }
+        ]
+    },
+    "1960-12-10": {
+        "launches": [],
+        "reentries": [
+            {
+                "date": "1960-12-10T23:20:00Z",
+                "id": "1960-018",
+                "reusability": "",
+                "name": "Star 12",
+                "category": "C",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "emissions": {
+                    "NOx": 0.004,
+                    "Al2O3": 0.0032,
+                    "BC": 0.00041,
+                    "Cl": 0.00015,
+                    "HCl": 8e-05,
+                    "Unablated_Mass": 0.0019999999999999996
+                }
+            },
+            {
+                "date": "1960-12-10T23:44:00Z",
+                "id": "1960-018",
+                "reusability": "",
+                "name": "SRV 508",
+                "category": "P",
+                "smc": false,
+                "location": 1,
+                "burnup": "Partial",
+                "emissions": {
+                    "NOx": 0.027475,
+                    "Al2O3": 0.0,
+                    "BC": 0.006437,
+                    "Cl": 0.002355,
+                    "HCl": 0.001256,
+                    "Unablated_Mass": 0.157
+                }
+            }
+        ]
     },
     "1960-12-20": {
         "launches": [
