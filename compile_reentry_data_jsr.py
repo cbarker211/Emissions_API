@@ -13,59 +13,6 @@ from cProfile import Profile
 from pstats import Stats
 from tqdm import tqdm
 
-def convert_time(date):
-    
-    """Converts the "DDate" listing from GCAT to day, month, and time strings.
-
-    Returns:
-        date_obj(pandas datetime):  The date in YYYY-MM-DDTHH:MM:SSZ format.
-    """   
-    if "May15" in date:
-        date = [date[0], date[1][:3], date[1][3:], date[2]]
-    else: 
-        date = [s.replace("?", "") for s in date]
-    yearstr=str(date[0])
-    if len(date) == 1:
-        yearstr = yearstr.replace("s","")
-        monstr = "01"   
-        daystr = "01"
-    elif date[1] == "Q3": # 1995-005A
-        monstr = "07"
-        daystr = "01"  
-    elif date[1] == "Q4": # 2015-025H
-        monstr = "10"
-        daystr = "01"
-    else:   
-        try:
-            monstr = str(datetime.strptime(date[1], '%b').month).zfill(2)  
-        except:
-            sys.exit(date)
-        if len(date) > 2: 
-            daystr = str(date[2]).zfill(2)
-        elif date == ['2022', 'Apr']:
-            # DISCOSweb puts reentry on Mar 31st. Setting as March 31st.
-            daystr = "31"
-            monstr = "03"
-        elif date == ['2022', 'Dec']:
-            # DISCOSweb puts reentry on Nov 30th. Setting as Nov 30th.
-            daystr = "30"
-            monstr = "11"
-        else:
-            daystr = "01"
-            
-    if len(date) >= 4:    
-        hrstr   = date[3][0:2].zfill(2)
-        minstr  = date[3][2:4].zfill(2)
-        secstr  = date[3][5:7].zfill(2) if ":" in date[3] else "00"
-    else:
-        hrstr   = "00"
-        minstr  = "00"
-        secstr  = "00"          
-    datestr = f"{yearstr}-{monstr}-{daystr}T{hrstr}:{minstr}:{secstr}Z"
-    date_obj = pd.to_datetime(datestr, errors="coerce", utc=True)
-
-    return date_obj
-    
 class build_reentry_list:
     
     def __init__(self, start_year, final_year):
@@ -79,6 +26,7 @@ class build_reentry_list:
         self.final_year = final_year
         self.session = requests.Session()
         self.latlonerror = []
+        self.missing_time_count = 0
         
         # Import the shapefiles.
         if use_gpd == True:
@@ -119,9 +67,27 @@ class build_reentry_list:
                 "S Atl":        (self.loaded_shapefiles["Atlantic"][self.loaded_shapefiles["Atlantic"]["name"] == "South Atlantic Ocean"], 4),
             }
         else:
-            self.shapefile_map = dict.fromkeys(["Gujarat","Kazakhstan","KRZ","Kaz.","Mexico","S Africa","N Zealand","China","Gulf",
-                                                "Indian O","Indian Ocean","Indian O.","IOR","S POR","S Pacific","S Pac.",
-                                                "N Atlantic","S AOR","S Atl"])
+            self.shapefile_map = {
+                "Gujarat":      (None, 3),
+                "Kazakhstan":   (None, 3),
+                "KRZ":          (None, 3),
+                "Kaz.":         (None, 3),
+                "Mexico":       (None, 3),
+                "S Africa":     (None, 3),
+                "N Zealand":    (None, 3),
+                "China":        (None, 3),
+                "Gulf":         (None, 4),
+                "Indian O":     (None, 4),
+                "Indian Ocean": (None, 4),
+                "Indian O.":    (None, 4),
+                "IOR":          (None, 4),
+                "S POR":        (None, 4),
+                "S Pacific":    (None, 4),
+                "S Pac.":       (None, 4),
+                "N Atlantic":   (None, 4),
+                "S AOR":        (None, 4),
+                "S Atl":        (None, 4),
+            }
 
         self.provided_coords = {
             "GM 86.2W 29.7N": (29.7, -86.2, 1),     # Gulf of Mexico named coordinates.
@@ -173,7 +139,50 @@ class build_reentry_list:
             "Uralsk W 130": (51.224, 51.373, 2),    # Uralsk
             "Kustanai":     (53.2, 63.62, 2),       # Kostanay
         }
-            
+
+    def convert_time(self, date):
+    
+        """Converts the "DDate" listing from GCAT to day, month, and time strings.
+
+        Returns:
+            date_obj(pandas datetime):  The date in YYYY-MM-DDTHH:MM:SSZ format.
+        """   
+        date = [s.replace("?", "") for s in date]
+        yearstr=str(date[0])
+        if len(date) == 1:
+            yearstr = yearstr.replace("s","")
+            monstr = "01"   
+            daystr = "01"
+        elif date[1] == "Q3": # 1995-005A
+            monstr = "07"
+            daystr = "01"  
+        elif date[1] == "Q4": # 2015-025H
+            monstr = "10"
+            daystr = "01"
+        else:   
+            try:
+                monstr = str(datetime.strptime(date[1], '%b').month).zfill(2)  
+            except:
+                sys.exit(date)
+            if len(date) > 2: 
+                daystr = str(date[2]).zfill(2)
+            else:
+                daystr = "01"
+                
+        if len(date) >= 4:    
+            hrstr   = date[3][0:2].zfill(2)
+            minstr  = date[3][2:4].zfill(2)
+            secstr  = date[3][5:7].zfill(2) if ":" in date[3] else "00"
+        else:
+            self.missing_time_count += 1
+            hrstr   = "00"
+            minstr  = "00"
+            secstr  = "00"          
+        datestr = f"{yearstr}-{monstr}-{daystr}T{hrstr}:{minstr}:{secstr}Z"
+        date_obj = pd.to_datetime(datestr, errors="coerce", utc=True, format="%Y-%m-%dT%H:%M:%SZ")
+
+        return date_obj       
+
     def print_stats(self):
         """Print out statistics about the database at the end of the program.
         """        
@@ -206,9 +215,9 @@ class build_reentry_list:
 
         # Example dictionary mapping codes to orders
         code_to_order = {"ALP": 1, "BET": 2, "GAM": 3, "DEL": 4, "EPS": 5, "ZET": 6, "ETA": 7,
-                            "THE": 8, "IOT": 9, "KAP": 10, "LAM": 11, "MU": 12, "NU": 13, "XI": 14,
-                            "OMI": 15, "PI": 16, "RHO": 17, "SIG": 18, "TAU": 19, "UPS": 20,
-                            "PHI": 21, "CHI": 22, "PSI": 23, "OME": 24}
+                         "THE": 8, "IOT": 9, "KAP": 10, "LAM": 11, "MU": 12, "NU": 13, "XI": 14,
+                         "OMI": 15, "PI": 16, "RHO": 17, "SIG": 18, "TAU": 19, "UPS": 20,
+                         "PHI": 21, "CHI": 22, "PSI": 23, "OME": 24}
         
         tag = str(tag).strip()
         if '-' in tag:
@@ -313,7 +322,10 @@ class build_reentry_list:
         
         elif latlonstr in self.shapefile_map:
             region, location = self.shapefile_map[latlonstr]
-            lat, lon = sample_within_region(region, lat_range=(-inc, inc))
+            if use_gpd == False:
+                pass
+            else:
+                lat, lon = sample_within_region(region, lat_range=(-inc, inc))
 
             #elif latlonstr == "Ocean":
             # This is some Electron and Falcon 9 re-entries. 
@@ -821,14 +833,14 @@ class build_reentry_list:
         ################################################
 
         subset = jsr_data[
-            (jsr_data["Status"].isin(["R","R?","D","L","L?","LF","S","F","AF","AS"])) &       # Only include specific statuses (see https://planet4589.org/space/gcat/web/intro/phases.html)       
-            (~jsr_data["#JCAT"].isin(["L80508","L80509","L80510"])) &                         # Skipping 2021-F07, GCAT lists apogee as 100km, but it actually failed around 30 km and reached a height of 50 km.
-            (jsr_data["DYear"].between(self.start_year, self.final_year)) &                   # This time range only.
-            ((jsr_data["Apogee"] >= 50) | (jsr_data["Apogee"] < 0)) &                         # Apogee above 50 km, or below 0. This makes sure to include objects in lprcat returning from space.
-            ((jsr_data["Status"] != "AS") | (jsr_data["Piece"].str[5:6].isin(["F","U"]))) &   # Only include AS re-entries if they are part of a failed or uncategorized launch.
-            (jsr_data["Dest"] != "Exploded") &                                                # Skip objects that exploded in orbit, as we can't accurately estimate the emissions.
-            (jsr_data["Dest"] != "Z") &                                                       # Skip duplicate objects.
-            (jsr_data["Dest"].str.lower() != "lost")                                          # Jonathan said this means the same as the OX status tag.
+            (jsr_data["Status"].isin(["R","R?","D","L","L?","LF","S","F","AF","AS"])) &     # Only include specific statuses (see https://planet4589.org/space/gcat/web/intro/phases.html)       
+            (~jsr_data["#JCAT"].isin(["L80508","L80509","L80510"])) &                       # Skipping 2021-F07, GCAT lists apogee as 100km, but it actually failed around 30 km and reached a height of 50 km.
+            (jsr_data["DYear"].between(self.start_year, self.final_year)) &                 # This time range only.
+            ((jsr_data["Apogee"] >= 50) | (jsr_data["Apogee"] < 0)) &                       # Apogee above 50 km, or below 0. This makes sure to include objects in lprcat returning from space.
+            ((jsr_data["Status"] != "AS") | (jsr_data["Piece"].str[5:6].isin(["F","U"]))) & # Only include AS re-entries if they are part of a failed or uncategorized launch.
+            (jsr_data["Dest"] != "Exploded") &                                              # Skip objects that exploded in orbit, as we can't accurately estimate the emissions.
+            (jsr_data["Dest"] != "Z") &                                                     # Skip duplicate objects.
+            (jsr_data["Dest"].str.lower() != "lost")                                        # Jonathan said this means the same as the OX status tag.
         ]
 
         # Ignore failed launches pre-2020.
@@ -842,11 +854,8 @@ class build_reentry_list:
         # Now loop over the list and format into a dictionary.
         for i in tqdm(range(len(arrays["Piece"])), total=len(subset), desc=f"Processing {file}"):
 
-            if arrays["Piece"][i] == "2026-087":
-                continue
-
             # Sort out the reentry time/date.
-            date_obj = convert_time(arrays["DDate"][i].split()) 
+            date_obj = self.convert_time(arrays["DDate"][i].split()) 
 
             # Create some variables for easier access.
             jsr_id      = self.convert_launch_tag(arrays["Piece"][i])
@@ -866,8 +875,6 @@ class build_reentry_list:
             # Set the burnup as partial for all objects landing or splashing down at the surface.
             if jsr_status in ["L","L?","LF"]:
                 burnup = "Partial"
-            # NOTE: Need to manually check for Electron booster recoveries if they ever restart recoveries.
-            # TODO: Need to add Blue Origin reusable first stages.
             elif (jsr_name == "Electron Stage 1") and jsr_id in ["2019-084","2020-007","2020-085","2021-F02","2021-106",
                                                                  "2022-047","2022-147","2023-041","2023-100","2023-126","2024-022"]:
                     burnup = "Partial"
@@ -900,11 +907,8 @@ class build_reentry_list:
                 elif any(name in jsr_name for name in ["Blok-L", "Fregat", "Volga", "Blok-ML", "Blok SO-L", "Blok-MVL", "Blok-2BL"]):
                     reentry_category = "S3"
 
-                # This seems to be a payload but is listed as a second stage.
-                if jsr_name == "OV1-7P":
-                    reentry_category = "P"
-                elif len(reentry_category) == 1:
-                    print(jsr_id,jsr_type)
+                if len(reentry_category) == 1:
+                    raise ValueError(f"Unknown reentry category for {jsr_id} - {jsr_type}")
             else:
                 reentry_category = jsr_type[0]
 
@@ -1278,6 +1282,7 @@ class build_reentry_list:
         # rcat (lower stages and fairings), lprcat (several objects returning from space).
         # deepcat (several objects returning from space), ecat (capsules from ISS / crewed missions). 
         # ftocat (failed launches).
+        # There is nothing relevant for this inventory in hcocat, tmpcat and csocat.
         self.jsr_data_dict = {}
         for file in files:
             url = "https://planet4589.org/space/gcat/tsv/cat/" + file + ".tsv"
@@ -1293,33 +1298,27 @@ class build_reentry_list:
                 tsv_data = StringIO(response.text)
                 # Load the data into a pandas DataFrame
                 df = pd.read_csv(tsv_data, delimiter="\t", dtype=object, skiprows=[1])
-                
-                # TODO: Will have to add more sounding rockets here.
-                sounding_rockets  = ["1961-U02","1962-U02","1964-U01","1964-U05","1965-U03","1966-U05","1966-U07","1967-U01","2013-U01"]
 
-                # Cut down the size of the dataframe.
-                df = df[
-                      (df["Primary"] == "Earth")                       # Only objects whose primary body is Earth.
-                    & (df["Piece"].notna())                            # No NaN pieces.
-                    & (df["Piece"] != "UNK")                           # No unknown pieces.
-                    & (~df["Type"].str[0].isin(["Z","D", "S"]))        # No spurious, suborbital or debris objects.
-                    & (df["Piece"].str[5:6] != "S")                    # No suborbital launches (mainly military rockets).
-                    & (~df["Name"].str.contains("Hwasong"))            # Skipping North Korea ICBM.
-                    & (df["Piece"] != "2021-U01")                      # Skipping Chinese military tests.
-                    & (~df["Name"].str.lower().str.contains("debris")) # Skipping debris objects.
-                    & (~df["Name"].str.contains("deb"))                # Skipping debris objects.
-                    & (~df["Piece"].isin(sounding_rockets))            # Skipping sounding rockets (Trailblazer).
-                ]
+                # Strip whitespace from the '#jcat' column to ensure consistent formatting
+                df["#JCAT"] = df["#JCAT"].str.strip()
 
                 # Convert the tags with the old notation and exclude items from launches we ignore.
+                df = df[df["Piece"] != "UNK"] # Remove UNK before converting.
                 df["Converted_Tag"] = df["Piece"].apply(self.convert_launch_tag)
-                df = df[~df["Converted_Tag"].str[5].isin(["A","C","E","S","Y","M","W"])]
+                df = df[df["Converted_Tag"].str[:8].isin(self.dsl["COSPAR_ID"])]
 
-                # Set the Apogee and Inc column to numeric, replacing errors with 0.
+                # Cut down the size of the dataframe.
+                df = df[(df["Primary"] == "Earth")                       # Only objects whose primary body is Earth.
+                      & (~df["Type"].str[0].isin(["Z","D"]))             # No spurious or debris objects.
+                      & (~df["Name"].str.lower().str.contains("debris")) # Skipping debris objects.
+                      & (~df["Name"].str.contains("deb"))                # Skipping debris objects.
+                ]
+
+                # TODO: Have asked Jonathan about the suborbital payload objects and debris objects.
+
+                # Sort out the Apogee, Inc, and DYear columns. 
                 df["Apogee"] = pd.to_numeric(df["Apogee"].astype(str).str.rstrip("?"), errors="coerce").fillna(0).astype(int)
                 df["Inc"]    = pd.to_numeric(df["Inc"], errors="coerce").fillna(0).astype(np.float64)
-
-                # Create a year column, with errors as NaN.
                 df["DYear"]  = pd.to_numeric(df["DDate"].astype(str).str[0:4],errors="coerce")
                                                                                     
                 self.jsr_data_dict[file] = df
@@ -1352,9 +1351,8 @@ class build_reentry_list:
         # Add each file sequentially. 
         ##############################
         
-        # There is nothing relevant for this inventory in hcocat, tmpcat and csocat.
         self.reentry_rows = []
-        for file in ["satcat","auxcat","lcat","rcat","lprcat","deepcat","ecat","ftocat"]:
+        for file in files:
             self.extract_jsr_info(file)
 
         column_types = {
@@ -1376,8 +1374,8 @@ class build_reentry_list:
             raise ValueError(f"Duplicates: {duplicate_jcat_list}")            
         
         # Add missing stages.
-        print("Looking for missing rocket stages.")
-        self.add_missing_stages()
+        #print("Looking for missing rocket stages.")
+        #self.add_missing_stages()
 
         print(f"Need to convert lat/lon for the following locations:")
         print(list(set(self.latlonerror)))
@@ -1402,8 +1400,7 @@ class build_reentry_list:
             self.df_reentry["name"].str.lower().str.contains("fairing", case=False, na=False) |
             self.df_reentry["name"].str.lower().str.contains("plf", case=False, na=False)
         )
-        is_payload_comp = self.df_reentry["category"].isin(["C", "P"])
-        is_stage        = self.df_reentry["category"].str[0].eq("S")
+        is_payload_comp = self.df_reentry["category"].isin(["C", "P", "S"])
         is_lower_stage  = self.df_reentry["category"].isin(["S0", "S1"])
         is_upper_stage  = self.df_reentry["category"].isin(["S2", "S3", "S4", "S5"])
         is_complete     = self.df_reentry["burnup"] == "Complete"
@@ -1416,7 +1413,7 @@ class build_reentry_list:
 
         # Aluminium percentage
         self.df_reentry.loc[is_payload_comp, "alu_per"] = 0.4 # https://doi.org/10.1016/j.asr.2020.10.036 (40% Al)
-        self.df_reentry.loc[is_fairing | is_stage, "alu_per"] = 0.7 # https://dspace.mit.edu/handle/1721.1/151443 (70% Al)
+        self.df_reentry.loc[is_fairing | is_lower_stage | is_upper_stage, "alu_per"]  = 0.7 # https://dspace.mit.edu/handle/1721.1/151443 (70% Al)
         
         # Ablation degree
         self.df_reentry.loc[is_complete & is_payload_comp & smc.eq(True), "abl_deg"]  = 1.0  # https://doi.org/10.1016/j.asr.2020.10.036 (0% survivability)
@@ -1494,7 +1491,8 @@ class build_reentry_list:
         # TODO: Sort out timings.
         #time_update_mass_1, time_update_count_1 = 0,0     
         #time_update_mass_2, time_update_count_2 = 0,0  
-        #missing_time_count = 0 
+        print(self.missing_time_count)
+        missing_time_count = 0 
         #
         #for idx, row in self.df_reentry.iterrows():
         #    
@@ -1575,9 +1573,6 @@ if __name__ == "__main__":
         Data.get_reentry_info()
         if args.save_reentry_info == True:
             Data.reentry_info_to_netcdf()
-        
-    # Missing latest May 27th 2025 starship failure.
-    # Add Tranche, Ronghe, Digui, Hulianwang, Qianfan eventually when they reenter.
     
     profiler = Profile()
     profiler.enable()

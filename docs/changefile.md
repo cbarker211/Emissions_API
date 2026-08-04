@@ -59,7 +59,12 @@ This update fixes missing 2nd stage emissions above the model, streamlines the l
 - Now including NOTS EV1 as this is a spy satellite, not an anti-satellite weapon. 
 
 ## Re-entries
+- Some small changes to re-entry dry mass from changes to rocket database.
 - Re-entries with L, LF, L? now counted as partial burnup on re-entry.
+- Reconfigured re-entries to include only objects from launches in the launch database.
+- Added re-entries with "S" (suborbital) type, as long as the apogee is still above 50 km. We include discarded stages, so should include other objects.
+- Fixed a bug where launch tags containing 'S' for suborbital also removed some tags with YYYY SIG for the older pre-COSPAR identification. Added these objects back.
+- No longer adding missing rocket stages.
 
 ## QOL
 - Removed old databases. 
