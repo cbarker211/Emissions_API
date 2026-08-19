@@ -620,16 +620,27 @@ def update_mass_info(temp_dict,name,variant):
         # It features the same first stage and side boosters as the original but includes a newly designed 
         # 3.35-meter-diameter hydrogen-oxygen second stage, allowing a wider, 5.2-meter-diameter payload fairing.      
     
-    if name.startswith("Chang Zheng 12"):
+    if name == "Chang Zheng 12":
         
         # No other information available for 12, 12A or 12B.
-        # Approximating using Falcon 9 FT5.
-        temp_dict[f"Stage1 Propellant Mass"]    = (418700+411000) / 2
-        temp_dict[f"Stage2 Propellant Mass"]    = (111500+107500) / 2
-        temp_dict[f"Stage1 Stage Mass"]         = (27200+22200) / 2
-        temp_dict[f"Stage2 Stage Mass"]         = (4500+4000) / 2
-        temp_dict[f"Fairing Mass"]              = (2000+1750) / 2 # Average of SLR/Sp101
-        temp_dict["proxy"]                      = "Falcon 9 FT5"
+        # Approximating using Falcon 9 FT5 (see find_proxy.ipynb).
+        temp_dict[f"Stage1 Propellant Mass"] = (418700+411000) / 2 # SLR/Sp101
+        temp_dict[f"Stage2 Propellant Mass"] = (111500+107500) / 2 # SLR/Sp101
+        temp_dict[f"Stage1 Stage Mass"]      = (27200+22200) / 2   # SLR/Sp101
+        temp_dict[f"Stage2 Stage Mass"]      = (4500+4000) / 2     # SLR/Sp101
+        temp_dict[f"Fairing Mass"]           = (2000+1750) / 2     # SLR/Sp101
+        temp_dict["proxy"]                   = "Falcon 9 FT5"
+
+    if name == "Chang Zheng 12A":
+        
+        # No other information available for 12, 12A or 12B.
+        # Approximating using Zhuque-2E (see find_proxy.ipynb).
+        temp_dict[f"Stage1 Propellant Mass"] = 135000.0 # GCAT
+        temp_dict[f"Stage2 Propellant Mass"] = 45000.0  # GCAT
+        temp_dict[f"Stage1 Stage Mass"]      = 15000.0  # GCAT
+        temp_dict[f"Stage2 Stage Mass"]      = 5000.0   # GCAT
+        temp_dict[f"Fairing Mass"]           = 1756     # GCAT
+        temp_dict["proxy"]                   = "Zhuque-2E"
         
     if name in ["Minotaur I"]:
         # Prop masses:
