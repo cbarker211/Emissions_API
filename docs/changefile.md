@@ -1,8 +1,8 @@
 For a full list of changes, please visit https://github.com/cbarker211/Emissions_API
 
-# v2.7.0
+# v3.0.0
 
-This update fixes missing 2nd stage emissions above the model, streamlines the launch selection criteria and rocket cross-checking process, ...
+This major update contains a range of changes to make the data more consistent with GCAT and reliable across the space age.
 
 ## Rockets
 - Stopped using proxy rockets where mass is available in GCAT.
@@ -29,6 +29,7 @@ This update fixes missing 2nd stage emissions above the model, streamlines the l
         - Zhuque-2E
 - Still using proxy where no launch and dry mass is available for any stage.
     - CZ-12 (Falcon 9 FT5)
+    - CZ-12A (Zhuque-2E)
 - Several rockets were still using DW, even with GCAT info available:
     - Firefly Alpha
     - Kuaizhou, Kuaizhou-1 and Kuaizhou-1A
@@ -55,16 +56,18 @@ This update fixes missing 2nd stage emissions above the model, streamlines the l
 - Bug fix for Ariane 5ECA+ stage 2 propellant mass.
 - Fixed a bug where stage 2 emissions above the model where missing if SEI was above 100 km.
 - Cleaned up launch filtering to be more consistent with GCAT. Now including orbital, near-orbital and deep space launch codes only. This removes several non-orbital 19xx-U0x launches. Removed launches which exploded or were aborted at (or close to) the pad.
-- Now using the megaconstellation flag from the group column in GCAT, instead of manually filtering using payload names. This has meant removing Lynk as a megaconstellation and adding Starshield. Updated assignment for Xingwang (and other Chinese constellations) and US SDA. 
-- Now including NOTS EV1 as this is a spy satellite, not an anti-satellite weapon. 
+- Now using the megaconstellation flag from the group column in GCAT, instead of manually filtering using payload names. This has meant removing Lynk as a megaconstellation and adding Starshield. Updated assignment for Xingwang (and other Chinese constellations) and US SDA. 3rd Yinhe launch (2023-104) removed as SMC, as unclear if this is part of the constellation.
+- Now including NOTS EV1 as this is a spy satellite, not an anti-satellite weapon.
+- Extracting launch organization data. 
 
 ## Re-entries
-- Some small changes to re-entry dry mass from changes to rocket database.
-- Re-entries with L, LF, L? now counted as partial burnup on re-entry.
+- Changes to re-entry dry mass due to changes to rocket database.
 - Reconfigured re-entries to include only objects from launches in the launch database.
+- Re-entries with L, LF, L? now counted as partial burnup on re-entry.
 - Added re-entries with "S" (suborbital) type, as long as the apogee is still above 50 km. We include discarded stages, so should include other objects.
 - Fixed a bug where launch tags containing 'S' for suborbital also removed some tags with YYYY SIG for the older pre-COSPAR identification. Added these objects back.
 - No longer adding missing rocket stages.
+- 2023-104 removed as SMC.
 
 ## QOL
 - Removed old databases. 

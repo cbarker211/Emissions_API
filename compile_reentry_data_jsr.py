@@ -483,8 +483,8 @@ class build_reentry_list:
                     elif "S" in lat_data[-1]:
                         lat = np.float64((lat_data[0]) + str(np.float64(lat_data[1].replace("S",""))/60))*-1
 
-        else:
-            print(jsr_id, jsr_name, latlonstr)
+        #else:
+        #    print(jsr_id, jsr_name, latlonstr)
 
         if lat is None or lon is None:
             self.latlonerror.append(latlonstr)
@@ -838,10 +838,16 @@ class build_reentry_list:
             (jsr_data["DYear"].between(self.start_year, self.final_year)) &                 # This time range only.
             ((jsr_data["Apogee"] >= 50) | (jsr_data["Apogee"] < 0)) &                       # Apogee above 50 km, or below 0. This makes sure to include objects in lprcat returning from space.
             ((jsr_data["Status"] != "AS") | (jsr_data["Piece"].str[5:6].isin(["F","U"]))) & # Only include AS re-entries if they are part of a failed or uncategorized launch.
-            (jsr_data["Dest"] != "Exploded") &                                              # Skip objects that exploded in orbit, as we can't accurately estimate the emissions.
             (jsr_data["Dest"] != "Z") &                                                     # Skip duplicate objects.
             (jsr_data["Dest"].str.lower() != "lost")                                        # Jonathan said this means the same as the OX status tag.
         ]
+
+        #s1 = len(subset)
+        subset = subset[(subset["Dest"] != "Exploded")] # Skip objects that exploded in orbit, as we can't accurately estimate the emissions.
+        #s2 = len(subset)
+        #print(f"{s1-s2} exploded objects removed.")
+
+        # TODO: Have asked Jonathan about the suborbital payload objects with missing mass.
 
         # Ignore failed launches pre-2020.
         mask = ~(subset["Piece"].str[5].isin(["F", "U"]) & (subset["DYear"] < 2020))          
@@ -1314,8 +1320,6 @@ class build_reentry_list:
                       & (~df["Name"].str.contains("deb"))                # Skipping debris objects.
                 ]
 
-                # TODO: Have asked Jonathan about the suborbital payload objects and debris objects.
-
                 # Sort out the Apogee, Inc, and DYear columns. 
                 df["Apogee"] = pd.to_numeric(df["Apogee"].astype(str).str.rstrip("?"), errors="coerce").fillna(0).astype(int)
                 df["Inc"]    = pd.to_numeric(df["Inc"], errors="coerce").fillna(0).astype(np.float64)
@@ -1488,7 +1492,7 @@ class build_reentry_list:
         # Also set to midnight if the reentry is from a launch in a previous year.
         # When the reentry is on the same day, set it to the launch time.
 
-        # TODO: Sort out timings.
+        # TODO: Add timings for objects with missing time info but reentering on the same day as launch.
         #time_update_mass_1, time_update_count_1 = 0,0     
         #time_update_mass_2, time_update_count_2 = 0,0  
         print(self.missing_time_count)
