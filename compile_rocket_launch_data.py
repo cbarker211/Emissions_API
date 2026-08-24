@@ -47,6 +47,7 @@ class import_launches:
 
         df       = self.scrape_jsr("https://planet4589.org/space/gcat/tsv/launch/launch.tsv",self.session)
         df_sites = self.scrape_jsr("https://planet4589.org/space/gcat/tsv/tables/sites.tsv",self.session)
+        df_orgs = self.scrape_jsr("https://planet4589.org/space/gcat/tsv/tables/orgs.tsv",self.session)
 
         # Download and save Jonathan's bespoke launch list.
         barker_url = "https://planet4589.org/space/supporting/barker/launch/barker.launch.csv"
@@ -211,6 +212,19 @@ class import_launches:
                 else:
                     variant = row["Variant"]
 
+                if "/" in row["Agency"]:
+                    agency_code = row["Agency"].split("/")[0].replace("?", "").strip()
+                else:
+                    agency_code = row["Agency"].replace("?", "").strip()
+
+                df_org = df_orgs[df_orgs["#Code"] == agency_code]
+                
+                if len(df_org) != 1:
+                    print(f"Warning: Found {len(df_org)} organizations for code {row['Agency']}.")
+                    org_name = row["Agency"].strip()
+                else:
+                    org_name = df_org.iloc[0]["ShortName"].strip() 
+
                 launches.append({
                     "COSPAR_ID":              row["#Launch_Tag"].strip(),
                     "Date":                   convert_date(row["Launch_Date"].split()),
@@ -219,7 +233,8 @@ class import_launches:
                     "Longitude":              float(site_row['Longitude'].strip()),
                     "Rocket_Name":            row["LV_Type"],
                     "Rocket_Variant":         variant.replace("?",""),
-                    "Megaconstellation_Flag": mcs_flag
+                    "Megaconstellation_Flag": mcs_flag,
+                    "Agency":                 org_name        
                 })
 
             return launches
@@ -242,12 +257,12 @@ class import_launches:
             if field == "Date":
                 values = np.array([v.tz_convert(None) for v in values], dtype="datetime64[ns]")
             
-            elif field in ["COSPAR_ID", "Site", "Rocket_Name", "Rocket_Variant"]:
+            elif field in ["COSPAR_ID","Site","Rocket_Name","Rocket_Variant","Agency"]:
                 values = np.array(values, dtype=str)
 
             return values
 
-        fields = ["COSPAR_ID","Date","Longitude","Latitude","Site","Rocket_Name","Rocket_Variant","Megaconstellation_Flag"]
+        fields = ["COSPAR_ID","Date","Longitude","Latitude","Site","Rocket_Name","Rocket_Variant","Megaconstellation_Flag","Agency"]
 
         # Create DataArrays dynamically
         data_arrays = {}
@@ -266,7 +281,7 @@ class import_launches:
         ds.to_netcdf("./databases/launch_activity_data.nc")
         df_out = ds.to_dataframe().sort_values("COSPAR_ID")
         df_out.to_csv("./databases/launch_activity_data.csv", index=False)
-        df_out = df_out.drop(columns=["Longitude", "Latitude", "Site"])
+        df_out = df_out.drop(columns=["Longitude", "Latitude", "Site", "Agency"])
         df_out.to_csv("./databases/comparison.csv", index=False)
         ds.close()
 
