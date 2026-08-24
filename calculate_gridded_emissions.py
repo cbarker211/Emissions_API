@@ -509,7 +509,6 @@ class OutputEmis:
         ###########
         # Stage 1
         ###########  
-        # TODO: Needs reworking if running for different model ceilings above 80km.            
         self.fei_alt_index = np.searchsorted(self.fine_grid_top_alt, fei_alt*1e3)
         self.MECO_alt_index = get_alt_index(stage_alt_meco, self.fine_grid_top_alt, self.fine_grid_bot_alt)
         if stage_alt_meco * 1e3 > self.fine_grid_top_alt[-1]:
@@ -568,6 +567,7 @@ class OutputEmis:
         ##################
            
         # TODO: Need to add first stage emissions for Falcon Heavy for three launches in 2018-2019.
+        # TODO: Need to add emissions for reusuable first stage of Blue Origin New Glenn.
             
         add_landing_emis = False
         # Finally create an extra stage just for the landing emissions of Falcon 9 v1.2. 
@@ -783,8 +783,7 @@ class OutputEmis:
         # Deal with failed launches.
         ############################################
 
-        # TODO: Needs reworking if running for different model ceilings above 80km.
-        # TODO: Decide what to do with failed launches in general.
+        # TODO: Decide what to do with failed launches in general, should make it so its relevant up to 100 km (fine grid).
         
         # Most failures are for upper stages, and so can be treated as normal here.
         # Full information is provided in source_info/failed_launch_info.txt.
@@ -895,8 +894,7 @@ class OutputEmis:
             else:
                 self.prop_above[2] = 100
             
-        # TODO: This section needs to be tweaked if wanting to run for different vertical heights above 80km.
-        # Check for more rockets that have third stage emissions within model.    
+        # TODO: Check for more rockets that have third stage emissions below 100 km.
         # Add third stage emissions for Minotaur 1.
         if row.Rocket_Name == "Minotaur 1":
             vert_emis_dict = self.calc_emis(self.TEI_alt_index, None, vert_emis_dict, 3, launch_tuple)
@@ -1161,9 +1159,8 @@ class OutputEmis:
         #Loop over each launch/reentry.
         for row in df.itertuples():
             
-            # TODO: Add this back in when re-entries are readded.
-            #if pd.isna(row.COSPAR_ID) or pd.isna(row.Longitude) or pd.isna(row.Latitude):
-            #    raise ValueError(f"{row.COSPAR_ID} {row.Longitude} {row.Latitude}")
+            if pd.isna(row.COSPAR_ID) or pd.isna(row.Longitude) or pd.isna(row.Latitude):
+                raise ValueError(f"{row.COSPAR_ID} {row.Longitude} {row.Latitude}")
             
             ################
             # Setup grid.

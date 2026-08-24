@@ -847,8 +847,6 @@ class build_reentry_list:
         #s2 = len(subset)
         #print(f"{s1-s2} exploded objects removed.")
 
-        # TODO: Have asked Jonathan about the suborbital payload objects with missing mass.
-
         # Ignore failed launches pre-2020.
         mask = ~(subset["Piece"].str[5].isin(["F", "U"]) & (subset["DYear"] < 2020))          
         subset = subset[mask]
