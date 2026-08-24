@@ -762,6 +762,7 @@ class OutputEmis:
             "lon":       row.Longitude,
             "smc":       bool(row.Megaconstellation_Flag),
             "location":  row.Site,
+            "agency":    row.Agency,
         }
         
         ############################################
@@ -1078,6 +1079,7 @@ class OutputEmis:
             "smc":         bool(row.Megaconstellation_Flag),
             "location":    int(row.Location_Constraint),
             "burnup":      row.Burnup, 
+            "mass":        row.Ablatable_Mass + row.Other_Mass,
             "emissions":  {sp: 0 for sp in ["reentry_nox","reentry_al","reentry_bc","reentry_hcl","reentry_cl"]}
         }
 

@@ -10,6 +10,7 @@
                 "lon": 63.0,
                 "smc": false,
                 "location": "Baikonur Cosmodrome (Tyuratam)",
+                "agency": "MVS",
                 "emissions": {
                     "BC": [
                         0.038427,
@@ -78,6 +79,7 @@
                 "smc": false,
                 "location": 2,
                 "burnup": "Complete",
+                "mass": 850.0,
                 "emissions": {
                     "NOx": 0.34,
                     "Al2O3": 0.1785,
@@ -96,6 +98,7 @@
                 "smc": false,
                 "location": 2,
                 "burnup": "Complete",
+                "mass": 850.0,
                 "emissions": {
                     "NOx": 0.34,
                     "Al2O3": 0.1785,
@@ -114,6 +117,7 @@
                 "smc": false,
                 "location": 2,
                 "burnup": "Complete",
+                "mass": 850.0,
                 "emissions": {
                     "NOx": 0.34,
                     "Al2O3": 0.1785,
@@ -132,6 +136,7 @@
                 "smc": false,
                 "location": 2,
                 "burnup": "Complete",
+                "mass": 850.0,
                 "emissions": {
                     "NOx": 0.34,
                     "Al2O3": 0.1785,
@@ -150,6 +155,7 @@
                 "smc": false,
                 "location": 6,
                 "burnup": "Complete",
+                "mass": 7495.0,
                 "emissions": {
                     "NOx": 2.998,
                     "Al2O3": 1.57395,
@@ -168,6 +174,7 @@
                 "smc": false,
                 "location": 6,
                 "burnup": "Complete",
+                "mass": 878.0,
                 "emissions": {
                     "NOx": 0.3512,
                     "Al2O3": 0.18438,
@@ -191,6 +198,7 @@
                 "smc": false,
                 "location": 6,
                 "burnup": "Complete",
+                "mass": 3918.0,
                 "emissions": {
                     "NOx": 1.5672,
                     "Al2O3": 0.82278,
@@ -213,6 +221,7 @@
                 "lon": -80.54,
                 "smc": false,
                 "location": "Cape Canaveral",
+                "agency": "NRL",
                 "emissions": {
                     "BC": [
                         0.003201,
@@ -281,6 +290,7 @@
                 "smc": false,
                 "location": 6,
                 "burnup": "Complete",
+                "mass": 811.0,
                 "emissions": {
                     "NOx": 0.3244,
                     "Al2O3": 0.17031,
@@ -299,6 +309,7 @@
                 "smc": false,
                 "location": 6,
                 "burnup": "Complete",
+                "mass": 429.0,
                 "emissions": {
                     "NOx": 0.1716,
                     "Al2O3": 0.195195,
@@ -317,6 +328,7 @@
                 "smc": false,
                 "location": 6,
                 "burnup": "Complete",
+                "mass": 878.0,
                 "emissions": {
                     "NOx": 0.3512,
                     "Al2O3": 0.18438,
@@ -339,6 +351,7 @@
                 "lon": -120.62,
                 "smc": false,
                 "location": "Vandenberg Space Force Base",
+                "agency": "USAF BMD",
                 "emissions": {
                     "BC": [
                         0.015661,
@@ -407,6 +420,7 @@
                 "smc": false,
                 "location": 6,
                 "burnup": "Complete",
+                "mass": 3125.0,
                 "emissions": {
                     "NOx": 1.25,
                     "Al2O3": 0.65625,
@@ -429,6 +443,7 @@
                 "lon": -80.54,
                 "smc": false,
                 "location": "Cape Canaveral",
+                "agency": "ABMA",
                 "emissions": {
                     "BC": [
                         0.023941,
@@ -497,6 +512,7 @@
                 "smc": false,
                 "location": 6,
                 "burnup": "Complete",
+                "mass": 5443.0,
                 "emissions": {
                     "NOx": 2.1772,
                     "Al2O3": 1.14303,
@@ -515,6 +531,7 @@
                 "smc": false,
                 "location": 6,
                 "burnup": "Complete",
+                "mass": 231.0,
                 "emissions": {
                     "NOx": 0.0924,
                     "Al2O3": 0.105105,
@@ -533,6 +550,7 @@
                 "smc": false,
                 "location": 6,
                 "burnup": "Complete",
+                "mass": 63.0,
                 "emissions": {
                     "NOx": 0.0252,
                     "Al2O3": 0.028665,
@@ -551,6 +569,7 @@
                 "smc": false,
                 "location": 6,
                 "burnup": "Complete",
+                "mass": 878.0,
                 "emissions": {
                     "NOx": 0.3512,
                     "Al2O3": 0.18438,
@@ -574,6 +593,7 @@
                 "smc": false,
                 "location": 6,
                 "burnup": "Complete",
+                "mass": 478.0,
                 "emissions": {
                     "NOx": 0.1912,
                     "Al2O3": 0.21749,
@@ -596,6 +616,7 @@
                 "lon": -120.62,
                 "smc": false,
                 "location": "Vandenberg Space Force Base",
+                "agency": "USAF BMD",
                 "emissions": {
                     "BC": [
                         0.015661,
@@ -664,6 +685,7 @@
                 "smc": false,
                 "location": 6,
                 "burnup": "Complete",
+                "mass": 3125.0,
                 "emissions": {
                     "NOx": 1.25,
                     "Al2O3": 0.65625,
@@ -687,6 +709,7 @@
                 "smc": false,
                 "location": 6,
                 "burnup": "Complete",
+                "mass": 5.0,
                 "emissions": {
                     "NOx": 0.002,
                     "Al2O3": 0.0016,
@@ -705,6 +728,7 @@
                 "smc": false,
                 "location": 3,
                 "burnup": "Partial",
+                "mass": 71.0,
                 "emissions": {
                     "NOx": 0.012425,
                     "Al2O3": 0.0,
@@ -728,6 +752,7 @@
                 "smc": false,
                 "location": 6,
                 "burnup": "Complete",
+                "mass": 510.0,
                 "emissions": {
                     "NOx": 0.204,
                     "Al2O3": 0.23205,
@@ -750,6 +775,7 @@
                 "lon": -120.62,
                 "smc": false,
                 "location": "Vandenberg Space Force Base",
+                "agency": "USAF BMD",
                 "emissions": {
                     "BC": [
                         0.015661,
@@ -821,6 +847,7 @@
                 "lon": -80.54,
                 "smc": false,
                 "location": "Cape Canaveral",
+                "agency": "USAF BMD",
                 "emissions": {
                     "BC": [
                         0.021224,
@@ -889,6 +916,7 @@
                 "smc": false,
                 "location": 6,
                 "burnup": "Complete",
+                "mass": 429.0,
                 "emissions": {
                     "NOx": 0.1716,
                     "Al2O3": 0.195195,
@@ -907,6 +935,7 @@
                 "smc": false,
                 "location": 6,
                 "burnup": "Complete",
+                "mass": 3125.0,
                 "emissions": {
                     "NOx": 1.25,
                     "Al2O3": 0.65625,
@@ -925,6 +954,7 @@
                 "smc": false,
                 "location": 6,
                 "burnup": "Complete",
+                "mass": 878.0,
                 "emissions": {
                     "NOx": 0.3512,
                     "Al2O3": 0.18438,
@@ -943,6 +973,7 @@
                 "smc": false,
                 "location": 6,
                 "burnup": "Complete",
+                "mass": 878.0,
                 "emissions": {
                     "NOx": 0.3512,
                     "Al2O3": 0.18438,
@@ -965,6 +996,7 @@
                 "lon": -120.62,
                 "smc": false,
                 "location": "Vandenberg Space Force Base",
+                "agency": "USAF BMD",
                 "emissions": {
                     "BC": [
                         0.015661,
@@ -1033,6 +1065,7 @@
                 "smc": false,
                 "location": 6,
                 "burnup": "Complete",
+                "mass": 3125.0,
                 "emissions": {
                     "NOx": 1.25,
                     "Al2O3": 0.65625,
@@ -1055,6 +1088,7 @@
                 "lon": -120.62,
                 "smc": false,
                 "location": "Vandenberg Space Force Base",
+                "agency": "USAF BMD",
                 "emissions": {
                     "BC": [
                         0.015661,
@@ -1123,6 +1157,7 @@
                 "smc": false,
                 "location": 6,
                 "burnup": "Complete",
+                "mass": 3125.0,
                 "emissions": {
                     "NOx": 1.25,
                     "Al2O3": 0.65625,
@@ -1146,6 +1181,7 @@
                 "smc": false,
                 "location": 6,
                 "burnup": "Complete",
+                "mass": 5.0,
                 "emissions": {
                     "NOx": 0.002,
                     "Al2O3": 0.0016,
@@ -1164,6 +1200,7 @@
                 "smc": false,
                 "location": 1,
                 "burnup": "Partial",
+                "mass": 71.0,
                 "emissions": {
                     "NOx": 0.012425,
                     "Al2O3": 0.0,
@@ -1186,6 +1223,7 @@
                 "lon": 63.0,
                 "smc": false,
                 "location": "Baikonur Cosmodrome (Tyuratam)",
+                "agency": "MVS",
                 "emissions": {
                     "BC": [
                         0.038427,
@@ -1254,6 +1292,7 @@
                 "smc": false,
                 "location": 2,
                 "burnup": "Complete",
+                "mass": 850.0,
                 "emissions": {
                     "NOx": 0.34,
                     "Al2O3": 0.1785,
@@ -1272,6 +1311,7 @@
                 "smc": false,
                 "location": 2,
                 "burnup": "Complete",
+                "mass": 850.0,
                 "emissions": {
                     "NOx": 0.34,
                     "Al2O3": 0.1785,
@@ -1290,6 +1330,7 @@
                 "smc": false,
                 "location": 2,
                 "burnup": "Complete",
+                "mass": 850.0,
                 "emissions": {
                     "NOx": 0.34,
                     "Al2O3": 0.1785,
@@ -1308,6 +1349,7 @@
                 "smc": false,
                 "location": 2,
                 "burnup": "Complete",
+                "mass": 850.0,
                 "emissions": {
                     "NOx": 0.34,
                     "Al2O3": 0.1785,
@@ -1326,6 +1368,7 @@
                 "smc": false,
                 "location": 6,
                 "burnup": "Complete",
+                "mass": 7495.0,
                 "emissions": {
                     "NOx": 2.998,
                     "Al2O3": 1.57395,
@@ -1344,6 +1387,7 @@
                 "smc": false,
                 "location": 6,
                 "burnup": "Complete",
+                "mass": 878.0,
                 "emissions": {
                     "NOx": 0.3512,
                     "Al2O3": 0.18438,
@@ -1366,6 +1410,7 @@
                 "lon": -80.54,
                 "smc": false,
                 "location": "Cape Canaveral",
+                "agency": "NRL",
                 "emissions": {
                     "BC": [
                         0.003201,
@@ -1434,6 +1479,7 @@
                 "smc": false,
                 "location": 6,
                 "burnup": "Complete",
+                "mass": 811.0,
                 "emissions": {
                     "NOx": 0.3244,
                     "Al2O3": 0.17031,
@@ -1452,6 +1498,7 @@
                 "smc": false,
                 "location": 6,
                 "burnup": "Complete",
+                "mass": 429.0,
                 "emissions": {
                     "NOx": 0.1716,
                     "Al2O3": 0.195195,
@@ -1470,6 +1517,7 @@
                 "smc": false,
                 "location": 6,
                 "burnup": "Complete",
+                "mass": 878.0,
                 "emissions": {
                     "NOx": 0.3512,
                     "Al2O3": 0.18438,
@@ -1493,6 +1541,7 @@
                 "smc": false,
                 "location": 6,
                 "burnup": "Complete",
+                "mass": 540.0,
                 "emissions": {
                     "NOx": 0.216,
                     "Al2O3": 0.2457,
@@ -1515,6 +1564,7 @@
                 "lon": 63.0,
                 "smc": false,
                 "location": "Baikonur Cosmodrome (Tyuratam)",
+                "agency": "MVS",
                 "emissions": {
                     "BC": [
                         0.038427,
@@ -1583,6 +1633,7 @@
                 "smc": false,
                 "location": 2,
                 "burnup": "Complete",
+                "mass": 850.0,
                 "emissions": {
                     "NOx": 0.34,
                     "Al2O3": 0.1785,
@@ -1601,6 +1652,7 @@
                 "smc": false,
                 "location": 2,
                 "burnup": "Complete",
+                "mass": 850.0,
                 "emissions": {
                     "NOx": 0.34,
                     "Al2O3": 0.1785,
@@ -1619,6 +1671,7 @@
                 "smc": false,
                 "location": 2,
                 "burnup": "Complete",
+                "mass": 850.0,
                 "emissions": {
                     "NOx": 0.34,
                     "Al2O3": 0.1785,
@@ -1637,6 +1690,7 @@
                 "smc": false,
                 "location": 2,
                 "burnup": "Complete",
+                "mass": 850.0,
                 "emissions": {
                     "NOx": 0.34,
                     "Al2O3": 0.1785,
@@ -1655,6 +1709,7 @@
                 "smc": false,
                 "location": 6,
                 "burnup": "Complete",
+                "mass": 7495.0,
                 "emissions": {
                     "NOx": 2.998,
                     "Al2O3": 1.57395,
@@ -1673,6 +1728,7 @@
                 "smc": false,
                 "location": 6,
                 "burnup": "Complete",
+                "mass": 878.0,
                 "emissions": {
                     "NOx": 0.3512,
                     "Al2O3": 0.18438,
@@ -1695,6 +1751,7 @@
                 "lon": -80.54,
                 "smc": false,
                 "location": "Cape Canaveral",
+                "agency": "ABMA",
                 "emissions": {
                     "BC": [
                         0.023941,
@@ -1763,6 +1820,7 @@
                 "smc": false,
                 "location": 6,
                 "burnup": "Complete",
+                "mass": 5443.0,
                 "emissions": {
                     "NOx": 2.1772,
                     "Al2O3": 1.14303,
@@ -1781,6 +1839,7 @@
                 "smc": false,
                 "location": 6,
                 "burnup": "Complete",
+                "mass": 231.0,
                 "emissions": {
                     "NOx": 0.0924,
                     "Al2O3": 0.105105,
@@ -1799,6 +1858,7 @@
                 "smc": false,
                 "location": 6,
                 "burnup": "Complete",
+                "mass": 63.0,
                 "emissions": {
                     "NOx": 0.0252,
                     "Al2O3": 0.028665,
@@ -1817,6 +1877,7 @@
                 "smc": false,
                 "location": 6,
                 "burnup": "Complete",
+                "mass": 878.0,
                 "emissions": {
                     "NOx": 0.3512,
                     "Al2O3": 0.18438,
@@ -1840,6 +1901,7 @@
                 "smc": false,
                 "location": 6,
                 "burnup": "Complete",
+                "mass": 532.0,
                 "emissions": {
                     "NOx": 0.2128,
                     "Al2O3": 0.24206,
@@ -1863,6 +1925,7 @@
                 "smc": false,
                 "location": 6,
                 "burnup": "Complete",
+                "mass": 33.0,
                 "emissions": {
                     "NOx": 0.0132,
                     "Al2O3": 0.015015,
@@ -1885,6 +1948,7 @@
                 "lon": -120.62,
                 "smc": false,
                 "location": "Vandenberg Space Force Base",
+                "agency": "USAF BMD",
                 "emissions": {
                     "BC": [
                         0.015661,
@@ -1953,6 +2017,7 @@
                 "smc": false,
                 "location": 6,
                 "burnup": "Complete",
+                "mass": 3125.0,
                 "emissions": {
                     "NOx": 1.25,
                     "Al2O3": 0.65625,
@@ -1975,6 +2040,7 @@
                 "lon": -120.62,
                 "smc": false,
                 "location": "Vandenberg Space Force Base",
+                "agency": "USAF BMD",
                 "emissions": {
                     "BC": [
                         0.015661,
@@ -2043,6 +2109,7 @@
                 "smc": false,
                 "location": 6,
                 "burnup": "Complete",
+                "mass": 3125.0,
                 "emissions": {
                     "NOx": 1.25,
                     "Al2O3": 0.65625,
@@ -2066,6 +2133,7 @@
                 "smc": false,
                 "location": 6,
                 "burnup": "Complete",
+                "mass": 5.0,
                 "emissions": {
                     "NOx": 0.002,
                     "Al2O3": 0.0016,
@@ -2084,6 +2152,7 @@
                 "smc": false,
                 "location": 1,
                 "burnup": "Partial",
+                "mass": 71.0,
                 "emissions": {
                     "NOx": 0.012425,
                     "Al2O3": 0.0,
@@ -2107,6 +2176,7 @@
                 "smc": false,
                 "location": 6,
                 "burnup": "Complete",
+                "mass": 718.0,
                 "emissions": {
                     "NOx": 0.2872,
                     "Al2O3": 0.32669,
