@@ -132,6 +132,7 @@ class OutputEmis:
         self.total_landing_prop = 0
         self.prop_in_grid_total = 0
         self.prop_above_total = 0
+        self.reentry_mass_total = 0
         self.model_alt = MODEL_ALT
         events_data = {}
         self.csv_count = 0
@@ -575,7 +576,7 @@ class OutputEmis:
             add_landing_emis = True
         elif launch_rocket == "Falcon Heavy":
             landing_info = input_data.falcon_landing_dict[launch_id]
-            if all(landing_info.get(k) != "expended" for k in ("left", "right")):
+            if all(landing_info.get(k) != "expended" for k in ("left", "right", "center")):
                     add_landing_emis = True
 
         if add_landing_emis: 
@@ -1070,6 +1071,9 @@ class OutputEmis:
     def reentry_emis(self,row,q,p,time_index):
         '''Calculate the reentry emissions'''
 
+        total_reentry_mass = (row.Ablatable_Mass + row.Other_Mass) * 1e-3
+        self.reentry_mass_total += total_reentry_mass
+
         reentry_details = {
             "date":        row.Date.strftime("%Y-%m-%dT%H:%M:%SZ"),
             "id":          row.COSPAR_ID,
@@ -1079,7 +1083,7 @@ class OutputEmis:
             "smc":         bool(row.Megaconstellation_Flag),
             "location":    int(row.Location_Constraint),
             "burnup":      row.Burnup, 
-            "mass":        row.Ablatable_Mass + row.Other_Mass,
+            "mass":        total_reentry_mass,
             "emissions":  {sp: 0 for sp in ["reentry_nox","reentry_al","reentry_bc","reentry_hcl","reentry_cl"]}
         }
 
@@ -1230,18 +1234,21 @@ def check_total_emissions(year,dataset,res,levels,emis_data):
                                         'NOx (Total)',
                                         'Total Emis',
                                         'Total Prop',
+                                        'Total Mass',
                                         'Surviving Mass'],
             'Emissions in Grid [Gg]':   [*(emis_data.emis_in_grid * 1e-3).tolist(),
                                         np.sum(emis_data.emis_in_grid[6:9]*1e-3) + np.sum(emis_data.emis_in_grid[12:]*1e-3),
                                         emis_data.emis_in_grid[3]*1e-3 + emis_data.emis_in_grid[9]*1e-3,
                                         total_emis_in_grid,
                                         emis_data.prop_in_grid_total * 1e-6,
+                                        emis_data.reentry_mass_total * 1e-3,
                                         emis_data.mass_survive_total * 1e-3],
             'Emissions Above Grid [Gg]':[*(emis_data.emis_above * 1e-3).tolist(),
                                         np.sum(emis_data.emis_above[6:9]*1e-3) + np.sum(emis_data.emis_above[12:]*1e-3),
                                         emis_data.emis_above[3]*1e-3 + emis_data.emis_above[9]*1e-3,
                                         total_emis_above,
                                         emis_data.prop_above_total * 1e-6,
+                                        0.0,
                                         emis_data.mass_survive_total * 1e-3]}
     df = pd.DataFrame(data)
     df_rounded = df.round(9)
