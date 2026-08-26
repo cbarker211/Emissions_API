@@ -1,5 +1,5 @@
 #Code	UCode	StateCode	Type	Class	TStart	TStop	ShortName	Name	Location	Longitude	Latitude	Error	Parent	ShortEName	EName	UName
-# Updated 2026 Aug 22 1716:32
+# Updated 2026 Aug 26 1034:34
 EARTH	EARTH	EARTH	AP	C	-	-	Earth	Earth	Earth	-	-	0.0200 	-	Earth (Terra)	Earth	Earth
 LUNA	LUNA	LUNA	AP	C	-	-	Luna	Luna	Luna	-	-	0.0200 	-	Moon	Moon	Luna
 SSYS	SSYS	SSYS	AP	C	-	-	Solar System	Solar System natural celestial objects	Sol	-	-	0.0200 	-	Solar System	Solar System natural celestial objects	Solar System
@@ -1902,6 +1902,7 @@ JHU	JHU	US	PL/S	A	1876	-	JHU	Johns Hopkins Univ.	Baltimore, Maryland	    -76.620
 JIG	JIG	CN	O/PL	B	1958	-	Jigang Jituan	Jigang Jituan YG	Jinan, Shandong	    117.0500 	   36.6800 	0.0200 	-	-	Jigang Group	济钢集团有限公司
 JIGU	JIGU	CN	O/PL	B	-	-	Jiguang Xingtong	Beijing Jiguang Xingtong Keji YG	Beijing	    116.3800 	   39.9200 	0.0200 	CN	-	Aurora Star Tech Co. Ltd.	北京极光星通科技有限公司
 JIHUA	JIHUA	CN	O/PL	C	2017	-	Jihua Lab	Jihua Shiyan Shi	Foshan, Guandong	    113.0900 	   23.0200 	0.0200 	-	-	Jihua Laboratory	季华实验室
+JINGQH	JINGQH	CN	O	A	2025?	-	Jing'an	Jing'an qu qingshaonian huodong zhongxin	Jing'an, Shanghai	    121.4400 	   31.2300 	0.0200 	-	-	Jing'an District Youth Activity Center	静安区青少年活动中心
 JIT	JIT	IN	O/PL	A	2011	-	Jeppiaar	Jeppiaar Institute of Technology	Kunnam, Tamil Nadu	     79.8700 	   12.8900 	0.0200 	-	-	-	Jeppiaar Institute of Technology
 JIUT	JIUT	CN	O/PL	B	2017?	-	Jiutian	Beijing Jiutian Weixing Keji Fazhan YG	Beijing	    116.3800 	   39.9200 	0.0200 	-	-	Beijing Jiutian Satellite Tech Development Co Ltd.	北京九天微星科技发展有限公司
 JIUTS	JIUTS	CN	O/PL	B	2016 Nov	-	Jiutian Shanghai	Jiutian Weixing (Shanghai) hangtiang keji YG	Shanghai	    121.1300 	   31.1500 	0.0200 	-	-	Shanghai Commsat Tech Dev Co Ltd.	九天微星 (上海)航天科 技有限公司
@@ -3531,6 +3532,7 @@ THKE	THKE	US	LV/PL/E	B	1947	2001	Thiokol/TE	Thiokol-Elkton	Elkton, Maryland	    
 THKU	THKU	US	LV/PL/E	B	1957	2001	Thiokol/UT	Thiokol Wasatch Div/Air Force Plant 78	Brigham City/Promontory, Utah	   -112.5500 	   41.6200 	0.0200 	THK	-	-	Thiokol Wasatch Div/Air Force Plant 78
 THKX	THKX	US	LV/PL/E	B	1949	1996	TX	Thiokol/Huntsville	Huntsville, Alabama	    -86.6500 	   34.6800 	0.0200 	THK	-	-	Thiokol/Huntsville
 THKXM	THKXM	US	LV/E	B	1952	1971	Thiokol/TX	Thiokol Longhorn Division	Marshall, Texas	    -94.3700 	   32.5500 	0.0200 	THK	-	-	Thiokol Longhorn Division
+THUI	THUI	CN	O	B	2026 Jun	-	Tianhui Shuju	Guangxi Tianhui Shuji Keji YG	Dongxing, Guangxi	    107.9700 	   21.5500 	0.0200 	-	Tianhui Data	Tianhu Data Tech. Co. Ltd.	广西天绘数据科技有限公司
 THUMB	THUMB	MX	PL	B	2015	-	Thumbsat	ThumbSat Mexico S.A. de C.V	Tijuana	   -117.0300 	   32.5200 	0.0200 	-	-	-	ThumbSat México S.A. de C.V.
 THUR	THUR	UAE	O	B	1997	2018 Apr	Thuraya	Thuraya Satellite	Abu Dhabi	     54.3700 	   24.4700 	0.0200 	-	-	Thuraya Satellite	Thuraya Satellite
 THURY	THUR	UAE	-	B	2018 Apr	-	Yahsat Thuraya	Thuraya Satellite (Yahsat)	Abu Dhabi	     54.3700 	   24.4700 	0.0200 	ALYAH	-	Thuraya Satellite	Thuraya Satellite (Yahsat)
@@ -4078,7 +4080,7 @@ ZHIX	ZHIX	CN	PL	B	2018 May 10	-	SMART	Beijing Zhixing Kongjian Keji YG	Beijing:C
 ZHK	ZHK	CN	O	B	-	-	Zhiyu Hangyu	Zhiyi Hangyu (Beijing) Keji YG	Beijing	    116.5000 	   40.1000 	0.0200 	-	-	Zhiyi Aerospace (Beijing) Technology Co. Ltd	知一航宇（北京）科技有限公司
 ZHKO	ZHKO	CN	O	B	-	-	Zhihuo Kongjian	Ningbo Zhihui Kongjian Jishu YG	Ningbo	    121.6200 	   29.8600 	0.0200 	-	-	Zhihui Space	宁波智晖空间技术有限公司
 ZHONG	ZHONG	CN	O	A	1924	-	Zhongda	Zhongshan Daxue	Shenzhen	    113.9000 	   22.8000 	0.0500 	-	-	Sun Yat-sen University	中山大学
-ZHSH	ZHSH	CN	O/LA	B	2025	-	Zhongguo Shanghuo	Zhongguo hangtian keji jituan shangye huojian YG	Shanghai:Minghan	    121.3800 	   31.1100 	0.0200 	CASC	CCOM	CASC Commercial Rocket YG	中国航天科技集团商业火箭有限公司
+ZHSH	ZHSH	CN	O/LA	B	2025	-	Zhongguo Shanghuo	Zhongguo hangtian keji jituan shangye huojian YG	Shanghai:Minghan	    121.3800 	   31.1100 	0.0200 	CASC	CACL	CASC Commercial Rocket YG	中国航天科技集团商业火箭有限公司
 ZHSW	ZHSW	CN	O	B	2024 Sep	-	ZH Shangye WX.	Zhongguo hangtian keji jituan shangye weixing YG	Shanghai     han	    121.3800 	   31.1100 	0.0200 	CASC	-	CASC Commercial Satellite YG	中国航天科技集团商业卫星有限公司
 ZHUORB	ZHUORB	CN	O/PL	B	2015?	-	Zhuhai Orbita	Zhuhai Orbita Kongzhi gongcheng gufen youxian gongsi	Zhuhai, Guangdong	    113.5700 	   22.2800 	0.0200 	-	-	Zhuhai Orbital Control Engineering Ltd	珠海欧比特控制工程股份有限公司
 ZHWK	ZHWK	CN	O	B	-	-	Zhongke Weixing	Zhongke Weixing Keji Jituan YG	Jinan, Shandong	    117.0200 	   36.6700 	0.0200 	-	-	CAS Satellite Tech. Group Co. Ltd.	中科卫星科技集团有限公司

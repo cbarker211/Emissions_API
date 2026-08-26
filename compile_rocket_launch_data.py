@@ -328,9 +328,11 @@ class import_launches:
 
             #Set up the arrays to hold the rocket info.
             temp_dict = {
-                "proxy":                   "",
-                "Booster Number":          0,
-                "Fairing Mass":            0,
+                "proxy":          "",
+                "Booster Number": 0,
+                "Fairing Mass":   0,
+                "name":           name,
+                "variant":        variant,
             }
 
             for j in range(-1,6):
@@ -341,8 +343,6 @@ class import_launches:
                 })
 
             # First find the vehicle and its stages in the vehicles databases.
-            temp_dict["name"] = name
-            temp_dict["variant"] = variant
             df_vehicle = df_vehicles[(df_vehicles["#LV_Name"] == name) & (df_vehicles["LV_Variant"] == variant)].reset_index()
 
             # Then loop over all stages to extract mass information. 
@@ -350,41 +350,20 @@ class import_launches:
 
                 # Get the stage number.
                 stage_number = row['Stage_No'].strip()
-
-                # Skip fairings and payloads
-                if stage_number in ["F","P"]:
+                if stage_number in ["F","P","C","A"]: # Skip fairings, payloads, components (interstages), air launches. 
                     continue
-
-                # We treat these first stages as boosters, so we need to adjust the stage number for these rockets.
-                if name.startswith(("Soyuz", "Conestoga 1620", "Polyot", "Molniya 8K78", "Sputnik","Voskhod","Vostok", "Space Shuttle", "SLS Block 1")) and name != "Soyuz-2-1V":
-                    stage_number = int(stage_number) - 1
                 else:
                     stage_number = int(stage_number)
 
-                # Skip adapters, ullage motors, kick motors (Start, Proton-M/DM-03 and Molniya 8K78).
-                if row["Stage_Name"] in ["Perekhodnik","SOZ","BOZ","DS"]:
+                # Skip kick motors (Start).
+                if row["Stage_Name"] in ["DS"]:
+                    print(name, variant, row["Stage_Name"])
                     continue
-                if "Molniya 8K78" in name and stage_number == 4:
-                    stage_number = 3
-                if (name.startswith("Proton-K/") or name.startswith("Proton-M/D") or name.startswith("UR-500K/")) and stage_number == 5:
-                    stage_number = 4
-                
-                # Skip interstage of Saturn V.
-                if name.startswith("Saturn V"):
-                    if stage_number == 2:
-                        continue # Skip the interstage.
-                    if stage_number in [3,4]:
-                        stage_number = stage_number-1
                 
                 # Find the stage in the stages database.
                 df_stage = df_stages[df_stages["#Stage_Name"] == row["Stage_Name"]]
                 if len(df_stage) != 1:
                     raise ValueError(f"Warning: Found {len(df_stage)} stages for stage {row['Stage_Name']} of {name}.")
-
-                # Skip air-launched first stages - these are aircraft.
-                if df_stage["Stage_Family"].values[0].strip() == "Air":
-                    print("Air-launched - ",name,variant,stage_number,"-",row["Stage_Name"])
-                    continue
 
                 if stage_number > 5: 
                     raise ValueError("Too many stages for",name,variant,stage_number,"-",row["Stage_Name"])
@@ -392,8 +371,9 @@ class import_launches:
                     print("Negative stage number for",name,variant,stage_number,"-",row["Stage_Name"])
 
                 # Get the dry mass and wet mass and handle.
-                dry_mass    = df_stage["Dry_Mass"].values[0]
-                launch_mass = df_stage["Launch_Mass"].values[0]
+                dry_mass    = df_stage["Dry_Mass"].values[0].replace("?","").strip()
+                if dry_mass == "8-": dry_mass = "8"
+                launch_mass = df_stage["Launch_Mass"].values[0].replace("?","").strip()
                 dry_mass    = None if dry_mass    == '-' or pd.isna(dry_mass)    else float(dry_mass)
                 launch_mass = None if launch_mass == '-' or pd.isna(launch_mass) else float(launch_mass)*1000
                 if stage_number > 0 and int(row["Multiplicity"]) != 1 and name not in ["Conestoga 1620", "NOTS EV1"]:

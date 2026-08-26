@@ -1,5 +1,5 @@
 #Name	Manufacturer	Family	Alt_Name	Oxidizer	Fuel	Mass	MFlag	Impulse	ImpFlag	Thrust	TFlag	Isp	IspFlag	Duration	DurFlag	Chambers	Date	Usage	Group
-# Updated 2026 Aug 18 2326:16
+# Updated 2026 Aug 26 1034:34
 #
 # Solid propellant engines
 #
@@ -27,6 +27,7 @@ H-II SRB	NISST	NASDA	-	-	 HTPB	   70400.0 	 	-	 	    1550.00 	s	273.0 	 	  94.0 
 3D65	YUZH	-	-	-	 Solid	   53700.0 	 	-	 	    2060.00 	 	-	 	-	 	  1	-	R-39 [1]	Solid
 15D206	YUZH	-	-	-	 Solid	   53700.0 	 	-	 	    2060.00 	 	-	 	-	 	  1	-	RT-23 [1]	Solid
 GEM-63XL	NGISH	-	-	-	 HTPB	   53400.0 	 	-	 	    2026.00 	 	275.0 	?	  84.0 	 	  1	2020	GEM-63XL	Solid
+ZK-1A-1	ARMT	-	SP70	-	 HTPB	   50000.0 	 	-	 	    2067.00 	 	-	 	-	 	  1	2022	ZK-1A [1]	Solid
 GEM-63	OATKH	-	-	-	 HTPB	   49300.0 	 	-	 	    1663.00 	 	275.0 	?	  94.0 	 	  1	2015	GEM-63	Solid
 Castor 120	THKU	MX	-	-	 HTPB	   53100.0 	 	-	 	    1604.00 	 	280.0 	 	  83.4 	 	  1	1995	Athena [1]	Solid
 SR118	THKU	MX	TU-904	-	 HTPB	   48625.0 	 	-	 	    1711.00 	 	281.4 	 	  78.8 	 	  1	1983 Jun 17	Peacekeeper [1]	Solid
@@ -38,16 +39,19 @@ D-5-1	THKU/HERC	-	-	-	 Solid	   39100.0 	 	-	 	-	 	-	 	  64.0 	 	  1	-	Trident I
 M-25	NISST	Mu	-	-	 HTPB BP-204J	   38000.0 	 	-	 	    1240.00 	 	288.0 	?	  71.0 	 	  1	1995	Mu V [2]	Solid
 Zefiro-40C	AVIO	-	-	-	 HTPB-2013	   39270.0 	 	  103600 	 	    1120.00 	 	293.5 	 	  92.9 	 	  1	2017	Vega-C [2]	Solid
 Ceres-2 M1	XIDO	-	-	-	 HTPB	   38000.0 	?	-	 	-	 	-	 	-	 	  1	-	GSX2 [1]	Solid
+ZK-1A-2	ARMT	-	-	-	 HTPB	   35000.0 	 	-	 	    1081.00 	 	-	 	-	 	  1	2022	ZK-1A [1]	Solid
 CZ-6A Booster	ARMT?	-	-	-	 Solid	   35000.0 	?	-	 	    1200.00 	?	-	 	-	 	  1	2020	Chang Zheng 6A	Solid
 DF-31-1	ARMT	-	-	-	 Solid	   35000.0 	?	-	 	-	 	-	 	-	 	  1	-	DF-31 [1]	Solid
 DF-41-1	ARMT	-	-	-	 Solid	   35000.0 	?	-	 	-	 	-	 	-	 	  1	-	DF-31 [1]	Solid
 15D23P	ARSL	RT-2	-	-	 Solid	   34550.0 	 	-	 	     981.00 	 	-	 	  75.4 	 	  1	-	RT-2P [1]	Solid
+YL-1-1	ARMT	-	-	-	 HTPB	   35000.0 	 	-	 	    2550.00 	 	-	 	-	 	  1	2022	YL-1 [0]	Solid
 15D23	ARSL	RT-2	-	-	 Solid	   34550.0 	 	-	 	     893.00 	 	-	 	  75.4 	 	  1	-	RT-2 [1]	Solid
 M-24	NISST	Mu	-	-	 HTPB BP-204J	   34000.0 	 	-	 	    1246.00 	 	288.0 	 	  71.0 	 	  1	1995	Mu V [2]	Solid
 M-13	NISST	Mu	-	-	 CTPB	   33407.0 	 	-	 	     954.00 	 	239.0 	 	  70.0 	 	  1	1977	Mu 3H [1]	Solid
 Agni III	DRDO	Agni3	-	-	 HTPB/AP/Al	   33000.0 	 	-	 	    1040.00 	 	237.0 	s	  75.0 	 	  1	2006	Agni 3 [1]	Solid
 Kalam-1200	SKYRT	-	-	-	 Solid	   32000.0 	 	-	 	    1200.00 	 	-	 	 108.0 	 	  1	-	Vikram-1	Solid
 MSBS 501	G2P/SNECPS	-	-	-	 Solid	   30000.0 	?	-	 	     900.00 	 	-	 	  60.0 	 	  1	-	MSBS M51 [1]	Solid
+YL-1-0	ARMT	-	-	-	 HTPB	   30000.0 	 	-	 	    1500.00 	 	-	 	-	 	  1	2022	YL-1 [0]	Solid
 SR119	AJSP	MX Stage 2	-	-	 HTPB	   27669.0 	 	-	 	    1365.00 	 	304.0 	 	  54.0 	 	  1	1983 Jun 17	Peacekeeper [2]	Solid
 Castor 30XL	THKU	-	-	-	 Solid	   27400.0 	?	   58000 	?	     350.00 	 	-	 	 166.0 	 	  1	-	Taurus 2 [2]	Solid
 M-10	NISST	Mu	-	-	 Solid	   26555.0 	 	-	 	     737.00 	 	219.0 	 	  61.0 	 	  1	1970	Mu 4S [1]	Solid
@@ -65,6 +69,8 @@ TU-122-ATK	ATKP	Minuteman	M55E1	-	 PBAN	   23240.0 	 	-	 	     891.00 	 	-	 	  6
 SEP 401	SEP	401	-	-	 Butalane	   22500.0 	 	-	 	     900.00 	 	-	 	  60.0 	 	  1	1980 Nov 18	MSBS M4 [1]	Solid
 LEO-46	AJSP	-	-	-	 HTPB	   22102.0 	 	   56360 	 	    1265.40 	 	-	 	  76.0 	 	  1	2015	Super Strypi [1]	Solid
 Rafe	IRGC	-	-	-	 Solid	   20000.0 	?	-	 	-	 	-	 	-	 	  1	-	Qaem-100 [1]	Solid
+ZK-1A-3	ARMT	-	-	-	 HTPB	   20000.0 	 	-	 	     439.00 	 	-	 	-	 	  1	2022	ZK-1A [1]	Solid
+YL-1-2	ARMT	-	-	-	 HTPB	   20000.0 	?	-	 	    2000.00 	 	-	 	-	 	  1	2022	YL-1 [0]	Solid
 GEM-46	ATKH	GEM	-	-	 HTPB	   19040.0 	 	   45730 	?	     608.10 	 	274.0 	 	  75.2 	 	  1	-	Delta III SRB	Solid
 DF-26-1	ARMT	-	-	-	 Solid	   19000.0 	?	-	 	-	 	239.7 	 	  65.0 	 	  1	-	DF-26 [1]	Solid
 DF-27-1	ARMT	-	-	-	 Solid	   19000.0 	?	-	 	-	 	239.7 	 	  65.0 	 	  1	-	DF-26 [1]	Solid
@@ -240,6 +246,7 @@ LRAShM S2	DRDO	-	-	-	 Solid	    4000.0 	 	-	 	-	 	-	 	   0.0 	 	  1	-	LRAShM [2]
 Zolfaghar	IRGC	Zulfiqa	-	-	 Solid	    4000.0 	 	-	 	-	 	-	 	-	 	  1	2021	Zolfaghar	Solid
 P4	SEP	Rita I	P-4	-	 Isolane	    4000.0 	 	   12000 	 	     176.00 	 	-	 	  65.0 	 	  1	1966 May	MSBS M1 [2]	Solid
 Ceres-1 M3	XIDO	-	-	-	 Solid	    4000.0 	?	-	 	      86.00 	 	287.0 	 	  69.0 	 	  1	2020	GS-1 [3]	Solid
+WYH Motor	NCSIST	-	-	-	 Solid	    4000.0 	?	-	 	-	 	-	 	-	 	  1	-	-	Solid
 Hyunmoo 1	ADD	-	-	-	 Solid	    4000.0 	?	-	 	-	 	-	 	-	 	  1	-	-	Solid
 Hyunmoo-2B	ADD	-	-	-	 Solid	    4000.0 	?	-	 	-	 	-	 	-	 	  1	-	-	Solid
 ADD-SLV-1	ADD	-	-	-	 Solid	    4000.0 	?	-	 	-	 	-	 	-	 	  1	-	-	Solid
@@ -319,6 +326,7 @@ RSA-3-3	HOUW	-	-	-	 Solid	    2048.0 	 	-	 	      59.00 	 	298.0 	 	  94.0 	 	  
 GF-02	BWYIC	-	-	-	 Solid	    2050.0 	 	    4500 	 	      29.00 	 	253.9 	 	  38.0 	 	  1	1970	CZ-1 [3]	Solid
 M57A1	HERC	M57	M57A1	-	 CMDB	    2030.0 	 	    4485 	 	      76.00 	 	276.0 	 	  59.0 	 	  4	1961 Feb  1	Minuteman 1A [3]	Solid
 JL3-4	ARMT	-	-	-	 HTPB	    2000.0 	?	-	 	      78.00 	 	-	 	-	 	  1	2022	JL-3[4]	Solid
+ZK-1A-4	ARMT	-	-	-	 HTPB	    2000.0 	?	-	 	      78.00 	 	-	 	-	 	  1	2022	ZK-1A [4]	Solid
 ADD-SLV-3	ADD	-	-	-	 Solid	    2000.0 	?	-	 	-	 	-	 	-	 	  1	-	-	Solid
 SPARK	HERAK?	-	-	-	 Solid	    2000.0 	?	-	 	-	 	-	 	-	 	  1	-	-	Solid
 Salman	IRGC	-	-	-	 Solid	    2000.0 	?	-	 	-	 	-	 	-	 	  1	-	Qased [2]	Solid
@@ -420,6 +428,7 @@ Hyperbola-1 M4	HEXI	-	-	-	 BHT	    1050.0 	 	-	 	      60.00 	 	290.0 	 	-	 	  1
 Hyperbola-1B M4	HEXI	-	-	-	 BHT	    1050.0 	 	-	 	      60.00 	 	290.0 	 	-	 	  1	2019	Hyperbola-1 [4]	Solid
 Star 37C	THKE	TE-364	TE-M-364-18	-	 Solid	    1047.0 	 	    2708 	 	-	 	285.5 	 	-	 	  1	-	Star 37C	Solid
 Raven 8	RPEW	Raven	-	-	 AP	    1018.0 	 	-	 	      50.00 	 	209.5 	 	  35.0 	 	  1	-	Skylark	Solid
+YL-1-3	ARMT	-	-	-	 HTPB	    1000.0 	?	-	 	       0.00 	 	-	 	-	 	  1	2022	YL-1 [3]	Solid
 LPC-415	LPC	-	SRAM	-	 Solid	    1000.0 	?	-	 	-	 	-	 	-	 	  1	1969	SRAM	Solid
 Start	MITT	Topol	-	-	 Solid	    1000.0 	 	-	 	     100.00 	 	295.0 	 	 207.0 	 	  1	-	Start-1 [4]	Solid
 Hyunmoo SLV4	ADD	-	-	-	 Solid	    1000.0 	?	-	 	-	 	-	 	   0.0 	 	  1	2022	Hyunmoo SLV [4]	Solid
@@ -907,6 +916,7 @@ Lelien 1B	TISPACE	-	-	N2O	 SBR	-	 	    1028 	 	      19.60 	 	-	 	-	 	  1	2019	H
 HTR	NAMMO	-	-	LOX	 Solid	-	 	     520 	?	      26.00 	 	202.0 	 	  20.0 	 	  1	2007	HTR	Hybrid
 SF-1000	SPFOR	-	-	N2O	 Paraffin	-	 	    1100 	 	      28.00 	?	211.5 	 	  39.0 	 	  1	2026	PERUN	Hybrid
 FWUM	NAMMO	-	-	H2O2	 HTPB	-	 	-	 	      30.00 	 	-	 	  35.0 	 	  1	2018	Nucleus	Hybrid
+SEBIT	INNOSP	-	-	LOX	 Paraffin	-	 	       0 	 	       0.00 	 	325.0 	 	 270.0 	 	  1	2025	SEBIT	Hybrid
 Hyper	INNOSP	-	-	LOX	 Paraffin	-	 	       0 	 	       0.00 	 	325.0 	 	 270.0 	 	  1	2025	Hanbit NANO	Hybrid
 HyPLOX75	HYIMP	-	-	LOX	 Paraffin	-	 	-	 	      75.00 	 	321.0 	 	  72.0 	 	  1	2023	SR75	Hybrid
 RM-1	SCAL/SPDEV	-	-	N2O	 HTPB	-	 	    7200 	?	      90.00 	?	-	 	  80.0 	 	  1	2003	SS1	Hybrid
