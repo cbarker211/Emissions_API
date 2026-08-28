@@ -1,5 +1,5 @@
 #Name	Manufacturer	Family	Alt_Name	Oxidizer	Fuel	Mass	MFlag	Impulse	ImpFlag	Thrust	TFlag	Isp	IspFlag	Duration	DurFlag	Chambers	Date	Usage	Group
-# Updated 2026 Aug 26 1034:34
+# Updated 2026 Aug 27 2256:44
 #
 # Solid propellant engines
 #
@@ -1386,6 +1386,8 @@ NK-21	NKE	NK	-	LOX	 Kero	-	 	-	 	     402.00 	 	353.0 	 	 370.0 	 	  1	1969 Feb	
 NK-31	NKE	NK	-	LOX	 Kero	-	 	-	 	     402.00 	 	-	 	 400.0 	 	  1	-	N-1 St3 rev	LOX/Kero
 Merlin 1C-Vac	SPXTX	-	-	LOX	 Kero	-	 	-	 	     427.00 	 	342.0 	 	 169.0 	 	  1	-	Falcon 9 [1]	LOX/Kero
 NK-19	NKE	NK	-	LOX	 Kero	-	 	-	 	     445.00 	 	353.0 	 	 443.0 	 	  1	1969 Feb	Blok G	LOX/Kero
+CQ-50	XIDO	-	-	LOX	 Kero	-	 	-	 	     500.00 	 	265.0 	 	-	 	  1	2026	Pallas 1	LOX/Kero
+CQ-50v	XIDO	-	-	LOX	 Kero	-	 	-	 	     600.00 	 	330.0 	 	-	 	  1	2026	Pallas 1	LOX/Kero
 G-38	RDYNE	-	LR83-NA1	LOX	 Kero	-	 	-	 	     534.00 	 	282.0 	 	-	 	  1	1956	Navaho	LOX/Kero
 Merlin 1C+	SPXTX	-	-	LOX	 Kero	-	 	-	 	     572.00 	 	304.0 	 	 169.0 	 	  1	-	Falcon 1e [1]	LOX/Kero
 RD-0124MS	KBKHA	-	-	LOX	 Kero Napthyl	-	 	-	 	     588.60 	 	359.0 	 	-	 	  1	2026	Soyuz-5 St 2	LOX/Kero

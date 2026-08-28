@@ -59,6 +59,7 @@ This major update contains a range of changes to make the data more consistent w
 - Now using the megaconstellation flag from the group column in GCAT, instead of manually filtering using payload names. This has meant removing Lynk as a megaconstellation and adding Starshield. Updated assignment for Xingwang (and other Chinese constellations) and US SDA. 3rd Yinhe launch (2023-104) removed as SMC, as unclear if this is part of the constellation.
 - Now including NOTS EV1 as this is a spy satellite, not an anti-satellite weapon.
 - Extracting launch organization data. 
+- 2024 Simorgh launch changed to "3" variant.
 
 ## Re-entries
 - Changes to re-entry dry mass due to changes to rocket database.

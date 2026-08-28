@@ -576,7 +576,7 @@ class OutputEmis:
             add_landing_emis = True
         elif launch_rocket == "Falcon Heavy":
             landing_info = input_data.falcon_landing_dict[launch_id]
-            if all(landing_info.get(k) != "expended" for k in ("left", "right", "center")):
+            if any(landing_info.get(k) != "expended" for k in ("left", "right", "center")):
                     add_landing_emis = True
 
         if add_landing_emis: 

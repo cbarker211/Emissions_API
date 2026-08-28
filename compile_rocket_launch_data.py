@@ -11,15 +11,8 @@ from update_rocket_launch_data import update_mass_info
 
 class import_launches:
     
-    def __init__(self,start_year,final_year):
-        """This function sets up the class.
-
-        Args:
-            year (_type_): The year.
-        """        
-        
-        self.start_year = start_year
-        self.final_year = final_year
+    def __init__(self):
+        """This function sets up the class."""
         self.session = requests.Session()
 
     def scrape_jsr(self,url,session):
@@ -63,10 +56,6 @@ class import_launches:
                 df_barker = df_barker.drop(columns=["Longitude","Latitude","SiteGroup","Site","Pad","LaunchTypeCode","LaunchSuccessCode","InsertionPerigee","InsertionApogee","InsertionInc","Azimuth"])
                 df_barker.to_csv("/home/ucfacb0/Emission_Inventory/Emissions_API/databases/barker_launch.csv", index=False)
 
-        # Filter the launches to remove unwanted entries.
-        df.drop(0, inplace=True)
-        df = df[df["#Launch_Tag"].str[:4].astype(int).between(self.start_year, self.final_year)]
-
         # Example dictionary mapping codes to orders
         code_to_order = {
             "ALP": 1, "BET": 2, "GAM": 3, "DEL": 4, "EPS": 5, "ZET": 6, "ETA": 7,
@@ -99,40 +88,43 @@ class import_launches:
             number = code_to_order.get(greek_letter, 0) +mult*24
             return f"{year}-{str(number).zfill(3)}"          
 
-        df['#Launch_Tag'] = df['#Launch_Tag'].apply(convert_launch_tag)
+        def convert_date(date):
+            
+            date = [s.replace("?", "") for s in date]
+            yearstr = str(date[0])
+            monstr  = str(datetime.strptime(date[1], '%b').month).zfill(2)
+            try:
+                daystr  = date[2].zfill(2)
+            except:
+                raise ValueError(f"Error converting date: {date}. Check the input format.")
+            if len(date) >= 4:
+                hrstr   = date[3][0:2].zfill(2)
+                minstr  = date[3][2:4].zfill(2)
+                secstr  = date[3][5:7].zfill(2) if ":" in date[3] else "00"
+            else:
+                hrstr   = "00"
+                minstr  = "00"
+                secstr  = "00"
+            datestr = f"{yearstr}-{monstr}-{daystr}T{hrstr}:{minstr}:{secstr}Z"
+            date_obj = pd.to_datetime(datestr, errors="coerce", utc=True)
+
+            return date_obj
+        
+        df.drop(0, inplace=True)                                            # Remove the initial NaN row.
+        df['#Launch_Tag'] = df['#Launch_Tag'].apply(convert_launch_tag)     # Convert the launch tag to a standard format.
         df = df[df["LaunchCode"].str.startswith(("O", "D", "N"), na=False)] # Include only orbital, near-orbital and deep space missions.
         df = df[~df["LaunchCode"].str[1].isin(["E", "A"])]                  # No pad explosions or pad aborts at the pad.
         df = df[~df["FailCode"].str.startswith("PE")]                       # No explosions near the pad.
+        df = df[~df["#Launch_Tag"].str.contains("2021-U01", na=False)]      # Skip military launches.
 
-        # Skip some military-related launches.
-        df = df[~df["#Launch_Tag"].str.contains("2021-U01", na=False)] # Skip military launches.
-
+        df["LaunchDate"] = df["Launch_Date"].apply(lambda x: convert_date(str(x).split()))
+        df = df[df["LaunchDate"] < pd.Timestamp("2026-01-01", tz="UTC")]    # Only include launches before 2026.
         df = df.reset_index()
-        
-        print("Found",len(df),"launches from JSR for the years",self.start_year,"to",self.final_year)
+        print("Found",len(df),"launches from GCAT.")
 
         ####################################################################
         # Extract the required launch activity data and convert to a dict.
         ####################################################################
-
-        def convert_date(date):
-                
-                date = [s.replace("?", "") for s in date]
-                yearstr = str(date[0])
-                monstr  = str(datetime.strptime(date[1], '%b').month).zfill(2)
-                daystr  = date[2].zfill(2)
-                if len(date) >= 4:
-                    hrstr   = date[3][0:2].zfill(2)
-                    minstr  = date[3][2:4].zfill(2)
-                    secstr  = date[3][5:7].zfill(2) if ":" in date[3] else "00"
-                else:
-                    hrstr   = "00"
-                    minstr  = "00"
-                    secstr  = "00"
-                datestr = f"{yearstr}-{monstr}-{daystr}T{hrstr}:{minstr}:{secstr}Z"
-                date_obj = pd.to_datetime(datestr, errors="coerce", utc=True)
-           
-                return date_obj
 
         def process_launches(df):
             launches = []
@@ -355,9 +347,8 @@ class import_launches:
                 else:
                     stage_number = int(stage_number)
 
-                # Skip kick motors (Start).
+                # Skip Post-Boost Propulsion System (Start rocket, uses N2).
                 if row["Stage_Name"] in ["DS"]:
-                    print(name, variant, row["Stage_Name"])
                     continue
                 
                 # Find the stage in the stages database.
@@ -372,7 +363,9 @@ class import_launches:
 
                 # Get the dry mass and wet mass and handle.
                 dry_mass    = df_stage["Dry_Mass"].values[0].replace("?","").strip()
-                if dry_mass == "8-": dry_mass = "8"
+                if dry_mass == "8-": 
+                    print(name,variant)
+                    dry_mass = "8"
                 launch_mass = df_stage["Launch_Mass"].values[0].replace("?","").strip()
                 dry_mass    = None if dry_mass    == '-' or pd.isna(dry_mass)    else float(dry_mass)
                 launch_mass = None if launch_mass == '-' or pd.isna(launch_mass) else float(launch_mass)*1000
@@ -555,7 +548,7 @@ if __name__ == "__main__":
     print(f"Processing from 1957 to {current_year}.")  
     
     #Loop over all years and run functions depending on input arguments.
-    LaunchData = import_launches(1957,current_year-1)   
+    LaunchData = import_launches()   
 
     if args.launch_info == True:
         LaunchData.get_launch_info()
