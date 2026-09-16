@@ -4,14 +4,13 @@ import xarray as xr
 import pandas as pd
 from datetime import datetime
 import sys
-import random
 import geopandas as gpd
-from shapely.geometry import Point, Polygon, shape, box
 import requests
 from io import StringIO
 from cProfile import Profile
 from pstats import Stats
 from tqdm import tqdm
+from collections import Counter
 
 class build_reentry_list:
     
@@ -47,51 +46,134 @@ class build_reentry_list:
 
             self.shapefile_map = {
                 "Gujarat":      (self.loaded_shapefiles["States"][self.loaded_shapefiles["States"]["name_en"] == "Gujarat"], 3),
+                "Orenburg":     (self.loaded_shapefiles["States"][self.loaded_shapefiles["States"]["name_en"] == "Orenburg"], 3),
+                "Orenburg RZ":  (self.loaded_shapefiles["States"][self.loaded_shapefiles["States"]["name_en"] == "Orenburg"], 3),
+                "B.Columbia":   (self.loaded_shapefiles["States"][self.loaded_shapefiles["States"]["name_en"] == "British Columbia"], 3),
+                "Amur":         (self.loaded_shapefiles["States"][self.loaded_shapefiles["States"]["name_en"] == "Amur"], 3),
+                "Amur, Russia": (self.loaded_shapefiles["States"][self.loaded_shapefiles["States"]["name_en"] == "Amur"], 3),
+                "Utah":         (self.loaded_shapefiles["States"][self.loaded_shapefiles["States"]["name_en"] == "Utah"], 3),
+                "Nova Scotia":  (self.loaded_shapefiles["States"][self.loaded_shapefiles["States"]["name_en"] == "Nova Scotia"], 3),
+                "Texas":        (self.loaded_shapefiles["States"][self.loaded_shapefiles["States"]["name_en"] == "Texas"], 3),
+                "Tasmania":     (self.loaded_shapefiles["States"][self.loaded_shapefiles["States"]["name_en"] == "Tasmania"], 3),
+                "Oregon":       (self.loaded_shapefiles["States"][self.loaded_shapefiles["States"]["name_en"] == "Oregon"], 3),
+                "Yukon":        (self.loaded_shapefiles["States"][self.loaded_shapefiles["States"]["name_en"] == "Yukon"], 3),
+                "Sichuan":      (self.loaded_shapefiles["States"][self.loaded_shapefiles["States"]["name_en"] == "Sichuan"], 3),
+                "I. Mongolia":  (self.loaded_shapefiles["States"][self.loaded_shapefiles["States"]["name_en"] == "Inner Mongolia"], 3),
+                "Hawaii":       (self.loaded_shapefiles["States"][self.loaded_shapefiles["States"]["name_en"] == "Hawaii"], 3),
+                "SE Hawaii":    (self.loaded_shapefiles["States"][self.loaded_shapefiles["States"]["name_en"] == "Hawaii"], 3),
+                "Tibet":        (self.loaded_shapefiles["States"][self.loaded_shapefiles["States"]["name_en"] == "Tibet"], 3),
+                "Alaska":       (self.loaded_shapefiles["States"][self.loaded_shapefiles["States"]["name_en"] == "Alaska"], 3),
                 "Kazakhstan":   (self.loaded_shapefiles["Countries"][self.loaded_shapefiles["Countries"]["NAME"] == "Kazakhstan"], 3),
                 "KRZ":          (self.loaded_shapefiles["Countries"][self.loaded_shapefiles["Countries"]["NAME"] == "Kazakhstan"], 3),
                 "Kaz.":         (self.loaded_shapefiles["Countries"][self.loaded_shapefiles["Countries"]["NAME"] == "Kazakhstan"], 3),
+                "Kaz":          (self.loaded_shapefiles["Countries"][self.loaded_shapefiles["Countries"]["NAME"] == "Kazakhstan"], 3),
                 "Mexico":       (self.loaded_shapefiles["Countries"][self.loaded_shapefiles["Countries"]["NAME"] == "Mexico"], 3),
                 "S Africa":     (self.loaded_shapefiles["Countries"][self.loaded_shapefiles["Countries"]["NAME"] == "South Africa"], 3),
                 "N Zealand":    (self.loaded_shapefiles["Countries"][self.loaded_shapefiles["Countries"]["NAME"] == "New Zealand"], 3),
                 "China":        (self.loaded_shapefiles["Countries"][self.loaded_shapefiles["Countries"]["NAME"] == "China"], 3),
+                "Zhongguo":     (self.loaded_shapefiles["Countries"][self.loaded_shapefiles["Countries"]["NAME"] == "China"], 3),
+                "Greenland":    (self.loaded_shapefiles["Countries"][self.loaded_shapefiles["Countries"]["NAME"] == "Greenland"], 3),
+                "Saudi Ar.":    (self.loaded_shapefiles["Countries"][self.loaded_shapefiles["Countries"]["NAME"] == "Saudi Arabia"], 3),
+                "Saudi":        (self.loaded_shapefiles["Countries"][self.loaded_shapefiles["Countries"]["NAME"] == "Saudi Arabia"], 3),
+                "Saudi Arabia": (self.loaded_shapefiles["Countries"][self.loaded_shapefiles["Countries"]["NAME"] == "Saudi Arabia"], 3),
+                "Zimbabwe":     (self.loaded_shapefiles["Countries"][self.loaded_shapefiles["Countries"]["NAME"] == "Zimbabwe"], 3),
+                "Indonesia":    (self.loaded_shapefiles["Countries"][self.loaded_shapefiles["Countries"]["NAME"] == "Indonesia"], 3),
+                "Russia":       (self.loaded_shapefiles["Countries"][self.loaded_shapefiles["Countries"]["NAME"] == "Russia"], 3),
+                "RF":           (self.loaded_shapefiles["Countries"][self.loaded_shapefiles["Countries"]["NAME"] == "Russia"], 3),
+                "USA":          (self.loaded_shapefiles["Countries"][self.loaded_shapefiles["Countries"]["NAME"] == "United States of America"], 3),
+                "Morocco":      (self.loaded_shapefiles["Countries"][self.loaded_shapefiles["Countries"]["NAME"] == "Morocco"], 3),
+                "Uruguay":      (self.loaded_shapefiles["Countries"][self.loaded_shapefiles["Countries"]["NAME"] == "Uruguay"], 3),
+                "Bolivia":      (self.loaded_shapefiles["Countries"][self.loaded_shapefiles["Countries"]["NAME"] == "Bolivia"], 3),
+                "Brazil":       (self.loaded_shapefiles["Countries"][self.loaded_shapefiles["Countries"]["NAME"] == "Brazil"], 3),
+                "Mongolia":     (self.loaded_shapefiles["Countries"][self.loaded_shapefiles["Countries"]["NAME"] == "Mongolia"], 3),
+                "Australia":    (self.loaded_shapefiles["Countries"][self.loaded_shapefiles["Countries"]["NAME"] == "Australia"], 3),
+                "Spain":        (self.loaded_shapefiles["Countries"][self.loaded_shapefiles["Countries"]["NAME"] == "Spain"], 3),
+                "UK":           (self.loaded_shapefiles["Countries"][self.loaded_shapefiles["Countries"]["NAME"] == "United Kingdom"], 3),
+                "Argentina":    (self.loaded_shapefiles["Countries"][self.loaded_shapefiles["Countries"]["NAME"] == "Argentina"], 3),                
                 "Gulf":         (self.loaded_shapefiles["Gulf of Mexico"][self.loaded_shapefiles["Gulf of Mexico"]["name"] == "Gulf of Mexico"], 4),
                 "Indian O":     (self.loaded_shapefiles["Indian Ocean"][self.loaded_shapefiles["Indian Ocean"]["name"] == "Indian Ocean"], 4),
                 "Indian Ocean": (self.loaded_shapefiles["Indian Ocean"][self.loaded_shapefiles["Indian Ocean"]["name"] == "Indian Ocean"], 4),
                 "Indian O.":    (self.loaded_shapefiles["Indian Ocean"][self.loaded_shapefiles["Indian Ocean"]["name"] == "Indian Ocean"], 4),
                 "IOR":          (self.loaded_shapefiles["Indian Ocean"][self.loaded_shapefiles["Indian Ocean"]["name"] == "Indian Ocean"], 4), 
+                "Bay of Bengal":(self.loaded_shapefiles["Indian Ocean"][self.loaded_shapefiles["Indian Ocean"]["name"] == "Bay of Bengal"], 4),
+                "N Pacific":    (self.loaded_shapefiles["Pacific"][self.loaded_shapefiles["Pacific"]["name"] == "North Pacific Ocean"], 4),
                 "S POR":        (self.loaded_shapefiles["Pacific"][self.loaded_shapefiles["Pacific"]["name"] == "South Pacific Ocean"], 4),
                 "S Pacific":    (self.loaded_shapefiles["Pacific"][self.loaded_shapefiles["Pacific"]["name"] == "South Pacific Ocean"], 4),
                 "S Pac.":       (self.loaded_shapefiles["Pacific"][self.loaded_shapefiles["Pacific"]["name"] == "South Pacific Ocean"], 4),
+                "Philipp.Sea":  (self.loaded_shapefiles["Pacific"][self.loaded_shapefiles["Pacific"]["name"] == "Philippine Sea"], 4),
+                "S of Tasmania":(self.loaded_shapefiles["Pacific"][self.loaded_shapefiles["Pacific"]["name"] == "Tasman Sea"], 4),
                 "N Atlantic":   (self.loaded_shapefiles["Atlantic"][self.loaded_shapefiles["Atlantic"]["name"] == "North Atlantic Ocean"], 4),
                 "S AOR":        (self.loaded_shapefiles["Atlantic"][self.loaded_shapefiles["Atlantic"]["name"] == "South Atlantic Ocean"], 4),
                 "S Atl":        (self.loaded_shapefiles["Atlantic"][self.loaded_shapefiles["Atlantic"]["name"] == "South Atlantic Ocean"], 4),
+                "G of Guinea":  (self.loaded_shapefiles["Atlantic"][self.loaded_shapefiles["Atlantic"]["name"] == "Gulf of Guinea"], 4),
             }
         else:
             self.shapefile_map = {
                 "Gujarat":      (None, 3),
+                "Orenburg":     (None, 3),
+                "Orenburg RZ":  (None, 3),
+                "B.Columbia":   (None, 3),
+                "Amur":         (None, 3),
+                "Amur, Russia": (None, 3),
+                "Utah":         (None, 3),
+                "Nova Scotia":  (None, 3),
+                "Texas":        (None, 3),
+                "Tasmania":     (None, 3),
+                "Oregon":       (None, 3),
+                "Yukon":        (None, 3),
+                "Sichuan":      (None, 3),
+                "I. Mongolia":  (None, 3),
+                "Hawaii":       (None, 3),
+                "SE Hawaii":    (None, 3),
+                "Tibet":        (None, 3),
+                "Alaska":       (None, 3),
                 "Kazakhstan":   (None, 3),
                 "KRZ":          (None, 3),
                 "Kaz.":         (None, 3),
+                "Kaz":          (None, 3),
                 "Mexico":       (None, 3),
                 "S Africa":     (None, 3),
                 "N Zealand":    (None, 3),
                 "China":        (None, 3),
+                "Zhongguo":     (None, 3),
+                "Greenland":    (None, 3),
+                "Saudi Ar.":    (None, 3),
+                "Saudi":        (None, 3),
+                "Saudi Arabia": (None, 3),
+                "Zimbabwe":     (None, 3),
+                "Indonesia":    (None, 3),
+                "Russia":       (None, 3),
+                "RF":           (None, 3),
+                "USA":          (None, 3),
+                "Morocco":      (None, 3),
+                "Uruguay":      (None, 3),
+                "Bolivia":      (None, 3),
+                "Brazil":       (None, 3),
+                "Mongolia":     (None, 3),
+                "Australia":    (None, 3),
+                "Spain":        (None, 3),
+                "UK":           (None, 3),
+                "Argentina":    (None, 3),
                 "Gulf":         (None, 4),
                 "Indian O":     (None, 4),
                 "Indian Ocean": (None, 4),
                 "Indian O.":    (None, 4),
                 "IOR":          (None, 4),
                 "S POR":        (None, 4),
+                "N Pacific":    (None, 4),
                 "S Pacific":    (None, 4),
                 "S Pac.":       (None, 4),
                 "N Atlantic":   (None, 4),
                 "S AOR":        (None, 4),
                 "S Atl":        (None, 4),
+                "Bay of Bengal":(None, 4),
+                "Philipp.Sea":  (None, 4),
+                "S of Tasmania":(None, 4),
+                "G of Guinea":  (None, 4),
             }
 
         self.provided_coords = {
             "GM 86.2W 29.7N": (29.7, -86.2, 1),     # Gulf of Mexico named coordinates.
-            "32W 1E": (1, -32, 1),                  # Mistake in GCAT.
             "Alashan": (38.833, 105.95, 2),         # Landing expected east of Jiuquan launch site (this was actually launched from Wenchang).
                                                         # Assuming that Alashan refers to Helen Shan Mountain (new name for Alashan Mountain).
                                                         # https://space.skyrocket.de/doc_sdat/rcs-fc-sc.htm
@@ -109,36 +191,80 @@ class build_reentry_list:
                                                         # Runway 05/22 at Lop Nor air base in Xinjiang (https://planet4589.org/space/gcat/data/tables/lp.html).
                                                         # https://www.seradata.com/china-launches-own-mini-spaceplane-reusable-spacecraft-using-long-march-2f 
                                                         # https://twitter.com/planet4589/status/1302486141090885632
-            "Lop Nor": (40.78, 89.27, 2),           # Same as LORNOR. 
-            "VSFB RW30/12": (34.7, -120.6, 2),      # Vandenberg Space Force Base, California, USA
+            "Lop Nor": (40.78, 89.27, 2),           # Same as LOPNOR. 
             "Koonibba": (-31.886, 133.449, 2),      # Australian Test Range
             "Jacklyn": (27.888, -74.153, 2),        # https://x.com/spaceOFFSHORE/status/1878177979974775139/photo/1
-            "STB OLP1": (25.996, -97.154, 2),       # Starbase in Texas.
-            "WSSH": (33.238, -106.346, 2),          # White Sands Missile Range in New Mexico.
-            "Splash": (-36.57, 177.63, 2),          # This is the Electron failed helicopter stage 1 recovery in May 22.
+            "WSSH":         (32.95, -106.41, 2),    
+            "WSMR RW17":    (32.40, -106.53, 2),    # White Sands Missile Range from sites.tsv
+            "Splash":       (-36.57, 177.63, 2),    # This is the Electron failed helicopter stage 1 recovery in May 22.
                                                         # https://www.youtube.com/watch?v=BY0CXlOeWHI "Several hundred kilometers from the launch site."
                                                         # Using inclination of 94 degrees (wiki), and distance of 300km.
-            "KSC RW33": (28.61, -80.69, 2),         # Kennedy Space Center Shuttle Landing Facility  
-            "KSC RW15": (28.61, -80.69, 2),         # Kennedy Space Center Shuttle Landing Facility                                 
-            "KSC SLF": (28.61, -80.69, 2),          # https://www.world-airport-codes.com/united-states/nasa-shuttle-landing-facility-69738.html
+            "KSC RW33":     (28.61, -80.69, 2),     # Kennedy Space Center Shuttle Landing Facility  
+            "KSC RW15":     (28.61, -80.69, 2),     # Kennedy Space Center Shuttle Landing Facility                                 
+            "KSC SLF":      (28.61, -80.69, 2),     # https://www.world-airport-codes.com/united-states/nasa-shuttle-landing-facility-69738.html
                                                         # https://www.spaceforce.mil/News/Article/3217077/x-37b-orbital-test-vehicle-concludes-sixth-successful-mission/
-            "S Pole": (-90.0, 0.0, 2),              # South Pole (obviously...)
-            "Africa": (16.4, 18.6, 2),              # Pioneer 3 re-entered over Africa
+            "S Pole":       (-90.0, 0.0, 2),        # South Pole (obviously...)
+            "Africa":       (16.4, 18.6, 2),        # Pioneer 3 re-entered over Africa
                                                         # https://web.archive.org/web/20200410070534/https://nssdc.gsfc.nasa.gov/nmc/spacecraft/display.action?id=1958-008A
             "Akmolinsk SW": (50.218, 69.910, 2),    # Kosmos 10 "Landed 150 km SW of Akmolinsk." https://www.orbitalfocus.uk/Diaries/Zenit/Zenit-2.php
-            "EAFB RW22":    (34.924, -117.892, 2),  # Edwards Air Force Base
-            "EAFB RW05R":   (34.924, -117.892, 2),  # Edwards Air Force Base
-            "EAFB RW04L":   (34.924, -117.892, 2),  # Edwards Air Force Base
-            "EAFB RW17":    (34.924, -117.892, 2),  # Edwards Air Force Base
-            "EAFB RW23":    (34.924, -117.892, 2),  # Edwards Air Force Base
-            "EAFB RW04":    (34.924, -117.892, 2),  # Edwards Air Force Base
-            "EAFB RW33":    (34.924, -117.892, 2),  # Edwards Air Force Base
-            "EAFB RW15":    (34.924, -117.892, 2),  # Edwards Air Force Base
             "Arkalyk":      (50.249, 66.902, 2),    # Arkalyk
             "Wisconsin":    (44.099, -87.658, 2),   # https://www.smithsonianmag.com/air-space-magazine/when-sputnik-crashed-wisconsin-180952388/
             "Uralsk W 130": (51.224, 51.373, 2),    # Uralsk
             "Kustanai":     (53.2, 63.62, 2),       # Kostanay
+            "Nr. Kustanai": (53.2, 63.62, 2),       # Kostanay
+            "110 km Orsk":  (52.28, 61.14, 2),      # Landing of German Mirka satellite.
+                                                        # https://www.esa.int/ESA_Multimedia/Images/1998/01/Foton-11_interface_tests9, 200 km south-east of Kustenay.
+                                                        # Distance between Kustenay to Orsk is ~415 km. 
+                                                        # http://www.astronautix.com/m/mirka.html, landed in Kazakhstan. 
+                                                        # Setting to 200 km SE of Kustenay.
+            "Woomera":      (-30.93, 136.50, 2),   # Woomera Instrumented Range from sites.tsv   
+            "Irkutsk":      (52.29, 104.29, 2),
+            "UTTR":         (41, -113.25, 2),      # Utah Test and Training Range
+            "Tashkent":     (41.31, 69.28, 2),     # Tashkent, Uzbekistan
+            "GTsP-4":       (48.5000, 45.8000, 2), # Kapustin Yar, coords from sites.tsv
         }
+
+        self.site_codes = {
+            "VAFB": "V",
+            "VSFB": "V",
+            "EAFB": "EAFB",
+            "STB": "STB",
+        }
+
+        self.OCEAN_REGION_BOUNDS = {
+            "Atlantic":      ("Atlantic",      -180, 180, None, None),
+            "AO":            ("Atlantic",      -180, 180, None, None),
+            "AOR":           ("Atlantic",      -180, 180, None, None),
+            "SW AOR":        ("Atlantic",      -180, 0,   None, 0),
+            "Pacific":       ("Pacific",       -180, 180, None, None),
+            "PO":            ("Pacific",       -180, 180, None, None),
+            "POR":           ("Pacific",       -180, 180, None, None),
+            "POR SEA":       ("Pacific",       -180, 180, None, None),
+            "POR MAR":       ("Pacific",       -180, 180, None, None),
+            "POR (Sank)":    ("Pacific",       -180, 180, None, None),
+            "POR (Sea)":     ("Pacific",       -180, 180, None, None),
+            "E Pacific":     ("Pacific",       -180, 0,   None, None), # lon boundary is at 180W/E
+            "SE Pacific":    ("Pacific",       -180, 0,   None,    0),
+            "W POR":         ("Pacific",       0,    180, None, None),
+            "SW POR":        ("Pacific",       0,    180, None,    0),
+            "NE RU/NW POR":  ("Pacific",       0,    180, 0,    None),
+            "SE IOR":        ("Indian Ocean",  80,   180, None, 0),   # lon boundary is at 80E
+            "SW IOR":        ("Indian Ocean",  0,    80,  None, 0),   # lon boundary is at 80E
+        }
+
+        url = "https://planet4589.org/space/gcat/tsv/tables/lp.tsv"
+        response = self.session.get(url)
+        if response.status_code == 200:
+
+            # Save the file so we can search and track updates.
+            filename = url.split("/")[-1]  # Use the last part of the URL as filename
+            with open(f"gcat/{filename}", "w", encoding="utf-8") as f:
+                f.write(response.text)
+
+            # Convert the content to a file-like object for pandas
+            tsv_data = StringIO(response.text)
+            # Load the data into a pandas DataFrame
+            self.lp_data = pd.read_csv(tsv_data, delimiter="\t", dtype=object, skiprows=[1])
 
     def convert_time(self, date):
     
@@ -265,22 +391,26 @@ class build_reentry_list:
                                 4 - Ocean/Continent
                                 5 - Falcon Reusable
                                 6 - Inclination Bounded Random
-                                7 - Non-bounded Random
         """        
         
         lat, lon, location = None, None, -1
 
-        def sample_within_region(region, lat_range=(-inc, inc)):
+        def sample_within_region(region, lat_range=(-inc, inc), lon_range=(-180, 180)):
 
-            while True:
-                coords = region.sample_points(1).get_coordinates()
-                lon, lat = coords["x"].values[0], coords["y"].values[0]
-                if lat_range[0] <= lat <= lat_range[1]:
-                    break   
+            band = region.clip((lon_range[0], lat_range[0], lon_range[1], lat_range[1]))
+            coords = band.sample_points(1).get_coordinates()
+            lon, lat = coords["x"].values[0], coords["y"].values[0]
             return lat, lon
+        
+        if latlonstr in self.shapefile_map:
+            region, location = self.shapefile_map[latlonstr]
+            if use_gpd == False:
+                pass
+            else:
+                lat, lon = sample_within_region(region, lat_range=(-inc, inc))
 
         # Missing location - 6
-        if latlonstr in ["-","","LEO", "CLO"]:
+        elif latlonstr in ["-","","LEO", "CLO"]:
             
             # If this object didn't go above 100 km and is a lower stage, then set the re-entry coordinates to the launch site.
             # This assumes the objects haven't travelled far from the launch site before re-entering (usually <400 km).
@@ -296,36 +426,41 @@ class build_reentry_list:
                 lon = round(np.random.uniform(-180, 180),2)
                 location = 6
 
-        # Launch Site / Named Location - 2
-        elif latlonstr in ["Orenburg RZ", "110 km Orsk", "Woomera", "Orenburg", "Nr. Kustanai", "Irkutsk", "UTTR", "Tashkent",
-                           "VAFB RW30/12", "VAFB RW30/12", "VAFB RW12", "WSMR RW17", "GTsP-4"]:
-            location = 2
-
         # Political Region - 3
-        elif latlonstr in ["E USA", "SE Hawaii", "SE Arkalyk", "Greenland", "Saudi Ar.", "Canary Is.", "B.Columbia",
-                           "Zimbabwe", "New Guinea", "Indonesia", "Zhongguo", "Russia", "Amur", "USA", "I. Mongolia",
-                           "Brazil", "Bolivia", "Sichuan", "Uruguay", "Morocco", "Caribbean", "Hawaii", "Saudi", "Oregon", "Nova Scotia",
-                           "Tibet", "Yukon", "Saudi Arabia", "Eastern US", "Argentina", "Mongolia", "UK", "Texas", "Spain", "Utah",
-                           "Amur, Russia", "Australia", "Spitzbergen", "Alaska", "Eniwetok", "KB", "Tasmania",
-                           "Kaz", "Baja", "C. Africa", "RF"]:
-            # RF is Russian Federation according to Jonathan.
+        elif latlonstr in ["E USA", "SE Arkalyk", "Canary Is.", "New Guinea", "Caribbean", 
+                           "Eastern US", "Spitzbergen", "Eniwetok", "KB", "Baja", "C. Africa"]:
             location = 3
 
         # Ocean/Continent - 4 
-        elif latlonstr in ["S Ocean","S Oc.","S OCean","Antarctic", "Arctic",
-                           "Pacific","PO","E Pacific","POR","SW POR","SE Pacific","W POR","NE RU/NW POR","SW POR","N Pacific",
-                           "SE IOR","SW IOR","Atlantic","SW AOR","AOR","AO",
-                           "S of Aus","S of Austr.","S of S Afr.", "S of Tasmania", "Aral Sea", "Europe", "Black Sea",
-                           "Bay of Bengal", "Barents", "Philipp.Sea", "IOR/SO",
-                           "POR SEA", "POR MAR", "POR (Sank)", "POR (Sea)", "G of Guinea", "Ocean"]:
+        elif latlonstr in self.OCEAN_REGION_BOUNDS:
             location = 4
-        
-        elif latlonstr in self.shapefile_map:
-            region, location = self.shapefile_map[latlonstr]
             if use_gpd == False:
                 pass
             else:
-                lat, lon = sample_within_region(region, lat_range=(-inc, inc))
+                region_key, lon_min, lon_max, lat_min, lat_max = self.OCEAN_REGION_BOUNDS[latlonstr]
+                lat_min = max(-inc, lat_min) if lat_min is not None else -inc
+                lat_max = min( inc, lat_max) if lat_max is not None else  inc
+                band = self.loaded_shapefiles[region_key].clip((lon_min, lat_min, lon_max, lat_max))
+                coords = band.sample_points(1).get_coordinates()
+                lon, lat = coords["x"].values[0], coords["y"].values[0]
+
+        elif latlonstr in ["S Ocean", "S Oc.", "S OCean", "Antarctic", "Arctic",              # Polar
+                           "S of Aus", "S of Austr.","S of S Afr.", "Aral Sea", "Europe",     # Other
+                           "Black Sea",  "Barents", "IOR/SO", "Ocean"]:                       # Other
+            location = 4
+
+            # Polar
+            if latlonstr in ["Antarctic", "Arctic", "S Ocean","S Oc.","S OCean"]:
+                lon = round(np.random.uniform(-180, 180), 2)
+            
+                if latlonstr in ["S Ocean","S Oc.","S OCean"]:
+                    # For these objects in auxcat, the inclination is 51.65-74, outside of the general definition of the southern ocean (<60S).
+                    # Therefore we will just set the lat to the inclination.
+                    lat = -inc
+                elif latlonstr == "Antarctic":
+                    lat = round(np.random.uniform(-90, min(-60, -inc)), 2)
+                else:  # Arctic
+                    lat = round(np.random.uniform(max(66, inc), 90), 2)
 
             #elif latlonstr == "Ocean":
             # This is some Electron and Falcon 9 re-entries. 
@@ -336,77 +471,18 @@ class build_reentry_list:
             #   south of the launch site will move in to secure the first stage and hoist it onto a ship for return to New Zealand.
             # Geolocating 400km south of launch site.
 
-        #elif latlonstr in ["Antarctic", "Arctic", "S Ocean","S Oc.","S OCean"]:
-        #    location = 4
-        #    lon = round(np.random.uniform(-180, 180), 2)
-        #
-        #    if latlonstr in ["S Ocean","S Oc.","S OCean"]:
-        #        # For these objects in auxcat, the inclination is 51.65-74, outside of the general definition of the southern ocean (<60S).
-        #        # Therefore we will just set the lat to the inclination.
-        #        lat = -inc
-        #    elif latlonstr == "Antarctic":
-        #        lat = round(np.random.uniform(-90, min(-60, -inc)), 2)
-        #    else:  # Arctic
-        #        lat = round(np.random.uniform(max(66, inc), 90), 2)
-        #    coordinate = Point(lon, lat)
-        #
-        #
-        #elif latlonstr in ["Pacific", "PO", "POR","E Pacific"]:
-        #
-        #    PACIFIC_BOUNDS = {
-        #        "Pacific":      (-180,  180, None, None),
-        #        "PO":           (-180,  180, None, None),
-        #        "POR":          (-180,  180, None, None),
-        #        "E Pacific":    (-180,  -60, None, None),
-        #        "SW POR":       (-180,    0, None,    0),  # southern: lat_max = 0
-        #        "SE Pacific":   (-180,  -60, None,    0),  # southern: lat_max = 0
-        #        "W POR":        (-180,    0, None, None),
-        #        "N Pacific":    (-180,  180,    0, None),  # northern: lat_min = 0
-        #        "NE RU/NW POR": (-180,    0,    0, None),  # northern: lat_min = 0
-        #    }
-        #            
-        #    location = 4
-        #    lon_min, lon_max, elat_min, elat_max = PACIFIC_BOUNDS[latlonstr]
-        #    lat_min = max(-inc, elat_min) if elat_min is not None else -inc
-        #    lat_max = min( inc, elat_max) if elat_max is not None else  inc
-        #    coords = self.loaded_shapefiles["Pacific"].clip(box(lon_min, lat_min, lon_max, lat_max)).sample_points(1).get_coordinates()
-        #    lon, lat = coords["x"].values[0], coords["y"].values[0]
-        #
-        #elif latlonstr in ["AO","Atlantic"]: 
-        #    location = 4 
-        #    while True:
-        #        random_location = self.loaded_shapefiles["Atlantic"].sample_points(1).get_coordinates()
-        #        lon = random_location["x"].values[0]
-        #        lat = random_location["y"].values[0]
-        #        if -inc <= lat <= inc:
-        #            break
-        #elif latlonstr in ["S of Tasmania"]:
-        #    location = 4
-        #    lon_lat_list = [[153.23, -30.02],[146.83, -43.64],[166.00, -50.92], [167.53, -47.29],
-        #                    [168.14, -46.85], [168.85, -46.66], [174.28, -41.72], [175.28, -41.62], [173.01, -34.39]]
-        #    tasman_sea_geom = Polygon(lon_lat_list)
-        #    tasman_sea = gpd.GeoDataFrame(index=[0], crs='epsg:4326', geometry=[tasman_sea_geom])
-        #    while True:
-        #        lat = round(np.random.uniform(-inc, inc),2)
-        #        lon = round(np.random.uniform(-180, 180),2)
-        #        coordinate = Point(lon,lat)
-        #        if tasman_sea.geometry.contains(coordinate).any():
-        #            break 
-        #elif latlonstr in ["SE IOR","SW IOR"]:
-        #    location = 4
-        #    region, location = self.shapefile_map[latlonstr]
-        #    while True:
-        #        coords = region.sample_points(1).get_coordinates()
-        #        lon, lat = coords["x"].values[0], coords["y"].values[0]
-        #        if (-inc <= lat <= 77) and (-30 <= lon <= 180):
-        #            break
-
-        ##########################################################
         # Lat/Lon Provided, Launch Site, or Named Location - 1-2
-        ##########################################################
-                
         elif latlonstr in self.provided_coords:
             lat, lon, location = self.provided_coords[latlonstr]
+
+        elif latlonstr.split()[0] in self.site_codes:
+            location = 2
+            match = self.lp_data[
+                (self.lp_data["#Site"] == self.site_codes[latlonstr.split()[0]]) &
+                (self.lp_data["Code"] == latlonstr.split()[1])
+            ]
+            lat = match["Latitude"].item()
+            lon = match["Longitude"].item()
 
         elif any(char.isdigit() for char in latlonstr):
 
@@ -457,10 +533,8 @@ class build_reentry_list:
             elif latlonstr.split()[0][-1] in ["E","W","S","N"]:
                 lat, lon, location = degree_coords(latlonstr)
 
-            elif len(latlonstr.split()) == 4 or latlonstr == "23 38N143 45W": # Coordinates in degrees-minutes
+            elif len(latlonstr.split()) == 4: # Coordinates in degrees-minutes
                 geolocation = latlonstr.split()
-                if latlonstr == "23 38N143 45W":
-                    geolocation = "23 38N 143 45W".split()
                 if geolocation[3][-1] in ["E","W","S","N"]: # Check its actually coordinates and not some long name.
                     location = 1
 
@@ -483,13 +557,8 @@ class build_reentry_list:
                     elif "S" in lat_data[-1]:
                         lat = np.float64((lat_data[0]) + str(np.float64(lat_data[1].replace("S",""))/60))*-1
 
-        #else:
-        #    print(jsr_id, jsr_name, latlonstr)
-
-        if lat is None or lon is None:
+        if lat is None or lon is None or location == -1:
             self.latlonerror.append(latlonstr)
-            lat = 0
-            lon = 0
         else:
             lat = np.float64(lat)
             lon = np.float64(lon)
@@ -961,10 +1030,6 @@ class build_reentry_list:
                 abl_mass = np.float64(jsr_drymass)
                 other_mass = 0
             
-            # Check for items with a missing geolocation (should have been dealt with already so this is just a sanity check).    
-            if use_gpd == True and lat is None and lon is None:
-                print(f"No location for {jsr_id}, dest = {jsr_dest}")
-            
             # Set up the dictionary.                      
             self.reentry_rows.append({
                 "id"               : jsr_id,
@@ -1379,8 +1444,10 @@ class build_reentry_list:
         #print("Looking for missing rocket stages.")
         #self.add_missing_stages()
 
-        print(f"Need to convert lat/lon for the following locations:")
-        print(list(set(self.latlonerror)))
+        print(f"Need to convert lat/lon for the following {len(self.latlonerror)} locations:")
+        counts = Counter(self.latlonerror)
+        for loc, n in counts.most_common():
+            print(f"{n:5d}  {loc}")
 
         ########################
         # Final adjustments.

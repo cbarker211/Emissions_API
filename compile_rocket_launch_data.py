@@ -363,9 +363,6 @@ class import_launches:
 
                 # Get the dry mass and wet mass and handle.
                 dry_mass    = df_stage["Dry_Mass"].values[0].replace("?","").strip()
-                if dry_mass == "8-": 
-                    print(name,variant)
-                    dry_mass = "8"
                 launch_mass = df_stage["Launch_Mass"].values[0].replace("?","").strip()
                 dry_mass    = None if dry_mass    == '-' or pd.isna(dry_mass)    else float(dry_mass)
                 launch_mass = None if launch_mass == '-' or pd.isna(launch_mass) else float(launch_mass)*1000
