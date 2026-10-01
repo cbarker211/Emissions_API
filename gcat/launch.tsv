@@ -1,5 +1,5 @@
 #Launch_Tag	Launch_JD	Launch_Date	LV_Type	Variant	Fairing	Flight_ID	Flight	Mission	FlightCode	Platform	Launch_Site	Launch_Pad	Ascent_Site	Ascent_Pad	Perigee	Apogee	Apoflag	Inc	Azimuth	Range	RangeFlag	Dest	OrbMass	OrbPay	Agency	LaunchCode	FailCode	Group	Category	LTCite	Cite	Notes
-# Updated 2026 Sep 15 1940:00
+# Updated 2026 Sep 28 2217:28
 1942-A01  	2430523.95 	1942 Jun 13 1052	A-4	-	-	2	-	-	-	-	HVP	P7	-	-	      -	      1	 	-	   -	    -	 	-	   0.000 	   0.000 	WEHR	MF  	U	-	Test	TTaylor	-	-
 1942-A02  	2430587.97 	1942 Aug 16 1115	A-4	-	-	3	-	-	-	-	HVP	P7	-	-	      -	     11	 	-	   -	    -	 	-	   0.000 	   0.000 	WEHR	MF  	U	-	Test	Stuhlinger	RocketTeam	-
 1942-S01  	2430636.12 	1942 Oct  3 1458	A-4	-	-	4	-	-	-	-	HVP	P7	-	-	      -	     85	 	-	   -	    -	 	-	   0.000 	   0.000 	WEHR	MS  	-	-	Test	Stuhlinger	AE1961A	-
@@ -71065,7 +71065,7 @@
 2011-S67  	2455919.16 	2011 Dec 23 1550	Bulava	-	-	-	3M30 LKI-19	6 BB	-	K-535	BELA	-	-	-	      -	   1000	?	-	   -	    -	 	Kura	   0.000 	   0.000 	VMF	MS  	-	-	R&D?	anik_nsf	russianforces.org	-
 2011-S68  	2455923.00 	2011 Dec 27 1200:00	UR-100NU 15A35P	-	-	511-6552-249	15A35P LKI-7	15Yu70/102E Proekt 4202	Yu-70 No. 7 (30801)	-	GIK-5	LC132/30	-	-	      -	   1000	?	-	   -	    -	 	Kura	   0.000 	   0.000 	RVSNR	MS  	-	-	OT	russianforces.org	-	-
 2011-080 	2455924.21 	2011 Dec 28 1709:02	Soyuz-2-1A	Fregat	-	B 15000-007/1027	Globalstar	Globalstar 2-5	ST24	-	GIK-5	LC31	-	-	      -	   1422	 	-	   -	    -	 	-	   0.000 	   4.290 	STSM	OS  	-	CO	Sat LEO D	nasaspaceflight.com	NK1202-43	-
-2012-S97  	2455926.50 	2012	Chang Zheng 2C	?	-	-	-	Reentry test	-	-	TYSC	LC9	-	-	      -	      -	 	-	   -	    -	 	-	   0.000 	   0.000 	CALT	MS  	-	-	Reentry test	nasaspaceflight.com	-	-
+2012-S97  	2455926.50 	2012	Chang Zheng 2C	?	-	-	-	Reentry test	-	-	TYSC	LC9	-	-	      -	    200	?	-	   -	    -	 	-	   0.000 	   0.000 	CALT	MS  	-	-	Reentry test	nasaspaceflight.com	-	-
 2012-S96  	2455926.50 	2012	Hyunmoo-2A	?	-	-	-	-	-	-	ANHU	LP1?	-	-	      -	    150	?	-	   -	  500	?	-	   0.000 	   0.000 	ADD	MS  	-	-	Test	Wire	-	-
 2012-001 	2455935.64 	2012 Jan  9 0317:10	Chang Zheng 4B	-	-	Y26	ZY-3	ziyuan san hao	-	-	TYSC	LC9	-	-	    493	    503	 	 97.5 	   -	    -	 	-	   0.000 	   2.678 	SAST	OS  	-	G	Sat SSO L 4	nasaspaceflight.com	xinhuanet.com	-
 2012-S01  	2455938.06 	2012 Jan 11 1325:00	Terrier Imp Malemute	2	-	NASA 12.074GT	-	-	-	-	WI	-	-	-	      -	    261	 	-	   -	    -	 	-	   0.000 	   0.000 	GSFC	SS  	-	WFF/Hall	Test	www.wff.nasa.gov	-	-
@@ -71102,7 +71102,7 @@
 2012-A12  	2456015.50 	2012 Mar 29	FTB	-	-	15	-	-	-	-	CLBI	-	-	-	      -	     32	 	-	   -	    -	 	-	   0.000 	   0.000 	AEB	AS  	-	-	Test	brazilianspace.blog	-	-
 2012-S17  	2456015.50 	2012 Mar 29	Terrier Orion	?	-	PAC target	-	-	-	-	WS	-	-	-	      -	     80	?	-	   -	    -	 	-	   0.000 	   0.000 	MDA	MS  	-	-	Target	raytheon.com	-	-
 2012-012 	2456016.74 	2012 Mar 30 0549:32	Proton-K/DM-2	-	-	410-18/117L	Kosmos-2479	Oko-1 No. 7128	-	-	GIK-5	LC81/24	-	-	      -	  36059	 	-	   -	    -	 	-	   0.000 	   3.492 	KHRU	OS  	-	G	Sat GEO OO 3	NK1205-24	-	-
-2012-013 	2456017.94 	2012 Mar 31 1027:04	Chang Zheng 3B	G2	-	Y22	Apstar 7	Apstar7	-	-	XSC	LC2	-	-	      -	  50126	 	-	   -	    -	 	-	   0.000 	   4.000 	CALT	OS  	-	G	Sat STO O	nasaspaceflight.com	xinhuanet.com	-
+2012-013 	2456017.94 	2012 Mar 31 1027:04	Chang Zheng 3B	G2	-	Y22	Apstar 7	Apstar7	-	-	XSC	LC2	-	-	    187	    350	?	 28.5 	   -	    -	 	-	   0.000 	   4.000 	CALT	OS  	-	G	Sat STO O	nasaspaceflight.com	xinhuanet.com	-
 2012-014 	2456021.47 	2012 Apr  3 2312:57	Delta 4M+(5,2)	-	-	D4-19/D359	USA 234	TOPAZ 2?	NROL-25 ELECTRA	-	VS	SLC6	-	-	    180	   1107	 	123.0 	   -	    -	 	-	   0.000 	   7.000 	ULAB	OS  	-	CG/G	Sat LEO D	Wire	-	-
 2012-S16  	2456023.10 	2012 Apr  5 1418	SpaceLoft XL	-	-	SpaceLoft SL-6	-	-	-	-	SPAM	VLA LC1	-	-	      -	    117	 	-	   -	    -	 	-	   0.000 	   0.000 	UPAE	SS  	-	UPAE/AFORS/	Tech	Wire	-	-
 2012-F01  	2456030.44 	2012 Apr 12 2238:55	Unha-3	-	-	3	Kwangmyongsong-3	-	-	-	SOHAE	LC1	-	-	  -6200	    151	 	 88.4 	   -	    -	 	-	   0.000 	   0.100 	KCST	OF  	S1	G	Sat SSO O	Wire	-	Details uncertain
@@ -71116,13 +71116,13 @@
 2012-016 	2456041.43 	2012 Apr 23 2218:13	Proton-M/Briz-M	III	-	935-27/99529	Yahsat-1B	Yahsat 1B	-	-	GIK-5	LC200/39	-	-	      -	  35849	 	-	   -	    -	 	-	   0.000 	   7.050 	ILSK	OS  	-	CO	Sat GTO SO 1	coopi.krunichev.ru	-	-
 2012-S19  	2456042.50 	2012 Apr 25	Shaheen 1A	-	-	Hatf IV	-	-	-	-	SOM?	-	-	-	      -	    100	?	-	   -	    -	 	-	   0.000 	   0.000 	NESCOMN	MS  	-	-	Test	Wire	-	-
 2012-017 	2456043.51 	2012 Apr 26 0017	PSLV-XL	-	-	PSLV-C19	RISAT-1	RISAT-1	-	-	SHAR	FLP	-	-	      -	    550	 	-	   -	    -	 	-	   0.000 	   1.858 	ISRO	OS  	-	G	Sat SSO O	Wire	-	-
-2012-018 	2456047.37 	2012 Apr 29 2050:03	Chang Zheng 3B	G1	-	Y14	Beidou DW12/13	di shier ke beidou-2 w.	-	-	XSC	LC2	-	-	      -	  21755	 	-	   -	    -	 	-	   0.000 	   4.700 	CALT	OS  	-	G	Sat MTO O 1	nasaspaceflight.com	xinhuanet.com	-
+2012-018 	2456047.37 	2012 Apr 29 2050:03	Chang Zheng 3B	G1	-	Y14	Beidou DW12/13	di shier ke beidou-2 w.	-	-	XSC	LC2	-	-	    200	    350	?	 55.0 	   -	    -	 	-	   0.000 	   4.700 	CALT	OS  	-	G	Sat MTO O 1	nasaspaceflight.com	xinhuanet.com	-
 2012-A02  	2456048.50 	2012 May  1	Terrier Terrier Oriole	-	-	-	HiFire 2	-	-	-	KAU	-	-	-	      -	     43	 	-	   -	    -	 	-	   0.000 	   0.000 	AFRL	AS  	-	AFRL/DSTO/NASA/	Hypersonic	www.vcstar.com	AWST120514-15	-
 2012-019 	2456052.28 	2012 May  4 1842	Atlas V 531	-	-	AV-031	AEHF 2	AEHF SV-2	-	-	CC	SLC41	-	-	    185	    901	 	 27.5 	   -	    -	 	-	   0.000 	   6.200 	ULAL	OS  	-	CG/G	Sat STO O	Wire	-	-
-2012-020 	2456053.80 	2012 May  6 0710:05	Chang Zheng 2D	-	-	Y17	Tianhui 1-02	tianhui yi hao 02 xing	-	-	JQ	LC603	-	-	      -	    851	 	-	   -	    -	 	-	   0.000 	   1.000 	SAST	OS  	-	G	Sat SSO O 4	nasaspaceflight.com	xinhuanet.com	-
+2012-020 	2456053.80 	2012 May  6 0710:05	Chang Zheng 2D	-	-	Y17	Tianhui 1-02	tianhui yi hao 02 xing	-	-	JQ	LC603	-	-	    493	    504	 	 97.4 	   -	    -	 	-	   0.000 	   1.000 	SAST	OS  	-	G	Sat SSO O 4	nasaspaceflight.com	xinhuanet.com	-
 2012-S20  	2456057.76 	2012 May 10 0618	Terrier Improved Orion	-	-	Aegis FTM16E2a Targ	ARAV-A	-	-	-	KAU	-	-	-	      -	    100	?	-	   -	    -	 	-	   0.000 	   0.000 	MDA	MS  	-	-	Target	mda.mil	-	-
 2012-S21  	2456057.76 	2012 May 10 0620?	SM-3-IB	-	-	Aegis FTM-16 E2A	Stellar Vengeance	-	-	CG-70	KAU	POA	-	-	      -	    100	?	-	   -	    -	 	-	   0.000 	   0.000 	USNAEG	MS  	-	-	Interceptor	mda.mil	-	-
-2012-021 	2456057.80 	2012 May 10 0706:04	Chang Zheng 4B	-	-	Y12	Yaogan 14	yaogan weixing shisi hao	-	-	TYSC	LC9	-	-	      -	    732	 	-	   -	    -	 	-	   0.000 	   3.009 	SAST	OS  	-	G	Sat SSO L 4	nasaspaceflight.com	xinhuanet.com	-
+2012-021 	2456057.80 	2012 May 10 0706:04	Chang Zheng 4B	-	-	Y12	Yaogan 14	yaogan weixing shisi hao	-	-	TYSC	LC9	-	-	    470	    474	 	 97.2 	   -	    -	 	-	   0.000 	   3.009 	SAST	OS  	-	G	Sat SSO L 4	nasaspaceflight.com	xinhuanet.com	-
 2012-022 	2456062.63 	2012 May 15 0301:23	Soyuz-FG	-	-	L 15000-041	Soyuz TMA-04M	Soyuz 11F732A47 No. 705	ISS 30S	-	GIK-5	LC1	-	-	      -	    429	 	-	   -	    -	 	-	   0.000 	   7.100 	FKA	OS  	-	G	Sat ISS O	spaceflightnow.com	-	-
 2012-023 	2456063.43 	2012 May 15 2213	Ariane 5ECA	-	-	VA206 (562)	JCSAT 13/Vinasat 2	JCSAT 13	-	-	CSG	ELA3	-	-	      -	  53476	 	-	   -	    -	 	-	   0.000 	   7.932 	AE	OS  	-	CO	Sat GTO SO 1	Wire	-	-
 2012-024 	2456065.09 	2012 May 17 1405:00	Soyuz-U-PVB	-	-	780-31 -229 131	Kosmos-2480	Kobal't-M	-	-	GIK-1	LC16/2	-	-	      -	    305	 	-	   -	    -	 	-	   0.000 	   6.635 	VVKO	OS  	-	G	Sat LEO O	nasaspaceflight.com	-	-
@@ -71132,14 +71132,14 @@
 2012-027 	2456069.82 	2012 May 22 0744:38	Falcon 9	-	-	003/B0005?   F003	Dragon C2	Dragon C102	-	-	CC	LC40	-	-	      -	    453	 	-	   -	    -	 	-	   0.000 	   7.379 	SPX	OS  	-	CX	Sat ISS O	Wire	-	-
 2012-F02  	2456070.50 	2012 May 23?	Safir	-	-	-	Fajr	Fajr	-	-	SEM	SAF	-	-	  -6370	     40	?	 55.0 	   -	    -	 	-	   0.000 	   0.050 	IRSA	OF  	UX	G	Sat LEO O	JaneIntellRev	-	Unconfirmed
 2012-S22  	2456070.76 	2012 May 23 0615:00	Rubezh	-	-	2TL	15Zh67 LKI-2	6 BB	-	-	GNIIP	LC167	-	-	      -	   1000	?	-	   -	    -	 	Kura	   0.000 	   0.000 	RVSNR	MS  	-	-	R&D	russianforces.org	-	-
-2012-028 	2456074.16 	2012 May 26 1556:04	Chang Zheng 3B	G3	-	Y17	Zhongxing 2A	Shentong-2?	-	-	XSC	LC2	-	-	      -	  35831	 	-	   -	    -	 	-	   0.000 	   5.000 	CALT	OS  	-	G	Sat GTO O	nasaspaceflight.com	xinhuanet.com	-
-2012-029 	2456076.81 	2012 May 29 0731:05	Chang Zheng 4C	-	-	Y10	Yaogan 15	yaogan weixing shiwuhao	-	-	TYSC	LC9	-	-	      -	   1340	 	-	   -	    -	 	-	   0.000 	   1.040 	SAST	OS  	-	G	Sat SSO L 4	nasaspaceflight.com	xinhuanet.com	-
+2012-028 	2456074.16 	2012 May 26 1556:04	Chang Zheng 3B	G3	-	Y17	Zhongxing 2A	Shentong-2?	-	-	XSC	LC2	-	-	    207	    350	?	 28.5 	   -	    -	 	-	   0.000 	   5.000 	CALT	OS  	-	G	Sat GTO O	nasaspaceflight.com	xinhuanet.com	-
+2012-029 	2456076.81 	2012 May 29 0731:05	Chang Zheng 4C	-	-	Y10	Yaogan 15	yaogan weixing shiwuhao	-	-	TYSC	LC9	-	-	    180	   1206	 	100.1 	   -	    -	 	-	   0.000 	   1.040 	SAST	OS  	-	G	Sat SSO L 4	nasaspaceflight.com	xinhuanet.com	-
 2012-A14  	2456077.20 	2012 May 29 1650	FTB	-	-	17	-	-	-	-	ALCA	UL	-	-	      -	     32	 	-	   -	    -	 	-	   0.000 	   0.000 	AEB	AS  	-	-	Test	brazilianspace.blog	-	-
 2012-S90  	2456078.50 	2012 May 31	MR-30	-	-	-	R&D	-	-	-	GTsP-4	-	-	-	      -	    300	?	-	   -	    -	 	-	   0.000 	   0.000 	RGMS	SS  	-	RGMS/	Test	Wire	-	-
 2012-030 	2456079.72 	2012 Jun  1 0522:59	Zenit-3SL	-	-	SL33/DM SL-32L	SL45 Intelsat IS-19	Intelsat IS-19	70102-304	ODYSSEY	KLA	-	-	-	      -	  35870	 	-	   -	    -	 	-	   0.000 	   5.540 	ELUS	OS  	-	CO/C	Sat GTO O	NK1208-28	-	-
 2012-S28  	2456086.24 	2012 Jun  7 1739	Topol'-E	-	-	-	15Zh58E GCh-5	3 x 3G32 BB	-	-	GTsMP-4	LC107	-	-	      -	   1000	?	-	   -	    -	 	Balkash	   0.000 	   0.000 	RVSNR	MS  	-	-	OT	novosti-kosmonavtiki	-	-
 2012-031 	2456092.17 	2012 Jun 13 1600:42	Pegasus XL	-	-	F41	NuSTAR	NuSTAR	-	L-1011	KMR	RW06/24	KMR	LP3	      -	    636	 	-	   -	    -	 	-	   0.000 	   0.360 	OSC	OS  	-	CG/G	Sat LEO O	Wire	-	-
-2012-032 	2456094.94 	2012 Jun 16 1037:25	Chang Zheng 2F	G	-	Y9	Shenzhou 9	shenzhou jiu fanhui cang	-	-	JQ	LC921	-	-	      -	    498	 	-	   -	    -	 	-	   0.000 	   9.928 	CALT	OS  	-	G	Sat LSS O 4	nasaspaceflight.com	xinhuanet.com	-
+2012-032 	2456094.94 	2012 Jun 16 1037:25	Chang Zheng 2F	G	-	Y9	Shenzhou 9	shenzhou jiu fanhui cang	-	-	JQ	LC921	-	-	    202	    313	 	 42.7 	   -	    -	 	-	   0.000 	   9.928 	CALT	OS  	-	G	Sat LSS O 4	nasaspaceflight.com	xinhuanet.com	-
 2012-033 	2456099.02 	2012 Jun 20 1228	Atlas V 401	-	-	AV-023	USA 236	QUASAR 17?	NROL-38 DRAKE	-	CC	SLC41	-	-	    180	   1080	 	 27.0 	   -	    -	 	-	   0.000 	   4.300 	ULAL	OS  	-	CG/G	Sat GTO D	Wire	-	-
 2012-S29  	2456099.94 	2012 Jun 21 1040	Terrier Mk 12 Imp Orion	-	-	NASA 41.101UO	RockOn	-	-	-	WI	LA2 MRL	-	-	      -	    117	 	-	   -	    -	 	-	   0.000 	   0.000 	GSFC	SS  	-	WFF/Koehler	Tech	wff.nasa.gov	-	-
 2012-A15  	2456100.25 	2012 Jun 21 1800	FTB	-	-	18	-	-	-	-	CLBI	-	-	-	      -	     32	 	-	   -	    -	 	-	   0.000 	   0.000 	AEB	AS  	-	-	Test	brazilianspace.blog	-	-
@@ -71170,7 +71170,7 @@
 2012-S39  	2456131.96 	2012 Jul 23 1101	Black Brant XI	-	-	NASA 39.011NR	IRVE-III	-	-	-	WI	LA2 ARC	-	-	      -	    458	 	-	   -	    -	 	-	   0.000 	   0.000 	GSFC	SS  	-	LARCN/Cheatwood	Reentry test	www.wff.nasa.gov	-	-
 2012-S44  	2456132.50 	2012 Jul 24	DF-41	-	-	DF-41	-	-	-	-	TYSC	-	-	-	      -	   1000	?	-	   -	    -	 	-	   0.000 	   0.000 	PLA2AC	MS  	-	-	Test	freebeacon.com	-	-
 2012-S40  	2456133.30 	2012 Jul 24 1917	Black Brant IX	-	-	NASA 36.263US	DFS	-	-	-	WS	-	-	-	      -	    324	 	-	   -	    -	 	-	   0.000 	   0.000 	GSFC	SS  	-	USCLA/Judge	Solar EUV	www.nasa.gov	-	-
-2012-040 	2456134.15 	2012 Jul 25 1543:04	Chang Zheng 3C	-	-	Y9	Tian Lian-1-03	tianlian yihao 03 xing	-	-	XSC	LC2	-	-	      -	  42663	 	-	   -	    -	 	-	   0.000 	   2.462 	CALT	OS  	-	G	Sat GTO O	nasaspaceflight.com	xinhuanet.com	-
+2012-040 	2456134.15 	2012 Jul 25 1543:04	Chang Zheng 3C	-	-	Y9	Tian Lian-1-03	tianlian yihao 03 xing	-	-	XSC	LC2	-	-	    200	    350	?	 28.5 	   -	    -	 	-	   0.000 	   2.462 	CALT	OS  	-	G	Sat GTO O	nasaspaceflight.com	xinhuanet.com	-
 2012-041 	2456136.57 	2012 Jul 28 0135:34	Rokot	-	-	492-6391-835/72515	Gonets-M Blok 11/Kosmos	Gonets-M No. 13,15	-	-	GIK-1	LC133/3	-	-	      -	   1515	 	-	   -	    -	 	-	   0.000 	   0.850 	KVR	OS  	-	G	Sat SSO L	nasaspaceflight.com	-	-
 2012-042 	2456141.32 	2012 Aug  1 1935:13	Soyuz-U-PVB	-	-	L 15000-134	Progress M-16M	Progress 7K-TGM No.416	ISS 48P	-	GIK-5	LC1	-	-	      -	    429	 	-	   -	    -	 	-	   0.000 	   9.937 	FKA	OS  	-	G	Sat ISS O	spaceflightnow.com	NK1210-20	-
 2012-A06  	2456141.50 	2012 Aug  2	Spaceship Two	-	-	VSS Enterprise	WK2-91/GF20	-	-	WK2	MHV	RW12/30	MHV	LP3	      -	     15	 	-	   -	    -	 	MHV	   0.000 	   0.000 	SCAL	YS  	-	SCAL/Stucky,Nichols	Glide  8:00	scaled.com	-	-
@@ -71184,7 +71184,7 @@
 2012-A07  	2456154.27 	2012 Aug 14 1835	X-51A	-	-	3	-	-	-	B-52H-050	EAFB	RW04/22	WTR	LP10	      -	     16	?	-	   -	    -	 	-	   0.000 	   0.000 	AFRLRZ	AF  	U	AFRLRZ/DARPA/	Hypersonic Scramjet	Wire	-	-
 2012-S49  	2456155.50 	2012 Aug 16	JL-2	-	-	-	-	-	-	T094	BOHAI	-	-	-	      -	   1000	?	-	   -	    -	 	-	   0.000 	   0.000 	PLA2AC	MS  	-	-	Test	nasaspaceflight.com	-	-
 2012-045 	2456158.79 	2012 Aug 19 0654:59	Zenit-3SL	-	-	SL34/DM SL-33L	SL49 Intelsat IS-21	Intelsat IS-21	70202-404	ODYSSEY	KLA	-	-	-	      -	  35936	 	-	   -	    -	 	-	   0.000 	   5.984 	ELUS	OS  	-	CO/C	Sat GTO O	spaceflightnow.com	NK1210-44	-
-2012-S50  	2456159.50 	2012 Aug 20	Dong Feng 5A	-	-	-	-	-	-	-	TYSC	-	-	-	      -	   1000	?	-	   -	    -	 	-	   0.000 	   0.000 	PLA2AC	MS  	-	-	Test	freebeacon.com	-	-
+2012-S50  	2456159.50 	2012 Aug 20	Dong Feng 5A	-	-	-	-	-	-	-	TYSC	-	-	-	      0	   1000	?	-	   -	    -	 	-	   0.000 	   0.000 	PLA2AC	MS  	-	-	Test	freebeacon.com	-	-
 2012-S76  	2456164.73 	2012 Aug 25 0534	Prithvi 2	-	-	-	Test	-	-	-	CHAN	IC3	-	-	      -	    100	?	-	   -	    -	 	-	   0.000 	   0.000 	ISFC	MS  	-	-	Test	Ulrich/Wire	-	-
 2012-S51  	2456169.50 	2012 Aug 30	DF-31	-	-	DF-31A?	-	-	-	-	TYSC	-	-	-	      -	   1000	?	-	   -	    -	 	-	   0.000 	   0.000 	PLA2AC	MS  	-	-	Test	freebeacon.com	-	-
 2012-046 	2456169.84 	2012 Aug 30 0805:27	Atlas V 401	-	-	AV-032	RBSP A/B	RBSP-A	-	-	CC	SLC41	-	-	    167	    600	 	 25.5 	   -	    -	 	-	   0.000 	   1.315 	ULAL	OS  	-	CG/G	Sat GTO D	Wire	-	-
@@ -71195,7 +71195,7 @@
 2012-S46  	2456184.02 	2012 Sep 13 1230	Juno	-	-	3?/MBRV-3?	PAC-3 Target	-	-	-	FW	LC96	-	-	      -	    100	?	-	   -	    -	 	-	   0.000 	   0.000 	MDA	MS  	-	-	Target	spaceref.com	-	-
 2012-048 	2456184.40 	2012 Sep 13 2139:00	Atlas V 401	-	-	AV-033	USA 238/OUTSAT	INTRUDER 10	NROL-36 ROSIE	-	VS	SLC3E	-	-	    511	   1051	 	 64.5 	   -	    -	 	-	   0.000 	   2.078 	ULAL	OS  	-	CG/G	Sat LEO L	Wire	-	-
 2012-049 	2456188.19 	2012 Sep 17 1628:40	Soyuz-2-1A	Fregat	-	L 15000-012/1037	Metop B	METOP B	ST25	-	GIK-5	LC31	-	-	      -	    822	 	-	   -	    -	 	-	   0.000 	   4.086 	STSM	OS  	-	G	Sat SSO D	nasaspaceflight.com	-	-
-2012-050 	2456189.30 	2012 Sep 18 1910:04	Chang Zheng 3B	G1	-	Y15	Beidou DW14/15	14 ke beidou daohang wei	-	-	XSC	LC2	-	-	      -	  21674	 	-	   -	    -	 	-	   0.000 	   4.600 	CALT	OS  	-	G	Sat MTO O 1	nasaspaceflight.com	xinhuanet.com	-
+2012-050 	2456189.30 	2012 Sep 18 1910:04	Chang Zheng 3B	G1	-	Y15	Beidou DW14/15	14 ke beidou daohang wei	-	-	XSC	LC2	-	-	    197	    350	?	 55.0 	   -	    -	 	-	   0.000 	   4.600 	CALT	OS  	-	G	Sat MTO O 1	nasaspaceflight.com	xinhuanet.com	-
 2012-A17  	2456189.50 	2012 Sep 19	FTB	-	-	20	-	-	-	-	CLBI	-	-	-	      -	     32	 	-	   -	    -	 	-	   0.000 	   0.000 	AEB	AS  	-	-	Test	brazilianspace.blog	-	-
 2012-S48  	2456189.76 	2012 Sep 19 0618	Agni 4	-	-	Agni II Prime	Agni RV?	-	-	-	CHAN	IC4	-	-	      -	    900	?	-	   -	    -	 	-	   0.000 	   0.000 	IDRDL	MS  	-	-	Test	thehindu.com	-	-
 2012-S57  	2456191.33 	2012 Sep 20 1950	Agni 3	-	-	-	-	-	-	-	CHAN	IC4	-	-	      -	    500	 	-	   -	    -	 	-	   0.000 	   0.000 	ISFC	MS  	-	-	Test	Wire	-	-
@@ -71205,14 +71205,14 @@
 2012-S53  	2456192.96 	2012 Sep 22 1100:00	Talos Terrier Oriole	-	-	NASA 12.075GT	TATEOR/Dummy Nihka	SRPO Diagnostic/APRA	-	-	WI	LA1 AML	-	-	      -	    269	 	-	   -	    -	 	-	   0.000 	   0.000 	GSFC	SS  	-	WFF/USAF/Brodell	Test	www.wff.nasa.gov	-	-
 2012-A18  	2456198.22 	2012 Sep 27 1711	FTB	-	-	21	-	-	-	-	ALCA	UL	-	-	      -	     32	 	-	   -	    -	 	-	   0.000 	   0.000 	AEB	AS  	-	-	Test	brazilianspace.blog	-	-
 2012-051 	2456199.39 	2012 Sep 28 2118:07	Ariane 5ECA	-	-	VA209 (565)	Astra 2F/GSAT-10	Astra 2F	-	-	CSG	ELA3	-	-	      -	  35948	 	-	   -	    -	 	-	   0.000 	   9.808 	AE	OS  	-	CO/OG+C	Sat GTO SO 1	Wire	-	-
-2012-052 	2456199.68 	2012 Sep 29 0412:05	Chang Zheng 2D	-	-	Y16	VRSS-1	VRSS-1	-	-	JQ	LC603	-	-	      -	    984	 	-	   -	    -	 	-	   0.000 	   0.880 	SAST	OS  	-	G	Sat SSO O 4	nasaspaceflight.com	xinhuanet.com	-
+2012-052 	2456199.68 	2012 Sep 29 0412:05	Chang Zheng 2D	-	-	Y16	VRSS-1	VRSS-1	-	-	JQ	LC603	-	-	    619	    654	 	 98.0 	   -	    -	 	-	   0.000 	   0.880 	SAST	OS  	-	G	Sat SSO O 4	nasaspaceflight.com	xinhuanet.com	-
 2012-S55  	2456204.65 	2012 Oct  4 0337	Prithvi 2	-	-	-	Test	-	-	-	CHAN	IC3	-	-	      -	    100	?	-	   -	    -	 	-	   0.000 	   0.000 	ISFC	MS  	-	-	Test	economictimes.com	thehindu.com	-
 2012-053 	2456205.01 	2012 Oct  4 1210:00	Delta 4M+(4,2)	-	-	D4-21/D361	GPS IIF SV-3	GPS SVN 65	-	-	CC	SLC37B	-	-	    163	    394	 	 41.6 	   -	    -	 	-	   0.000 	   1.630 	ULAB	OS  	-	CG/G	Sat MEO O	Wire	-	-
 2012-S56  	2456205.75 	2012 Oct  5 0555	Dhanush	-	-	-	Test	-	-	INS-P51?	CHAN	SEA	-	-	      -	    100	?	-	   -	    -	 	-	   0.000 	   0.000 	ISFC	MS  	-	-	Test	thehindu.com	-	-
 2012-A27  	2456206.50 	2012 Oct  6	STIG-B	-	-	1	-	-	-	-	SPAM	VLA LC1	-	-	      -	      1	?	-	   -	    -	 	-	   0.000 	   0.000 	ARMAD	SF  	U	ARMAD/	Test	armadilloaerospace.	-	-
 2012-054 	2456208.52 	2012 Oct  8 0035:07	Falcon 9	-	-	004/B0006?   F004	Dragon CRS-1	Dragon C103	-	-	CC	LC40	-	-	      -	    426	 	-	   -	    -	 	-	   0.000 	   8.249 	SPX	OS85  	S2R	CX	Sat ISS O	Wire	-	S1 engine out stopped S2R
 2012-055 	2456213.26 	2012 Oct 12 1815:00	Soyuz-ST-B	Fregat	-	I 15000-002/1031	Galileo IOV-3/4	Galileo FM3	VS03/SZ09	-	CSG	ELS	-	-	      -	  23727	 	-	   -	    -	 	-	   0.000 	   1.400 	AE	OS  	-	CO/G	Sat MEO SO	www.esa.int	-	-
-2012-056 	2456214.64 	2012 Oct 14 0325:05	Chang Zheng 2C	SMA	-	Y2	SJ-9A/B	shi jian liuhao A weixin	-	-	TYSC	LC9	-	-	      -	    891	 	-	   -	    -	 	-	   0.000 	   1.113 	CALT	OS  	-	G	Sat SSO LL 4	nasaspaceflight.com	xinhuanet.com	-
+2012-056 	2456214.64 	2012 Oct 14 0325:05	Chang Zheng 2C	SMA	-	Y2	SJ-9A/B	shi jian liuhao A weixin	-	-	TYSC	LC9	-	-	    255	    674	 	 98.0 	   -	    -	 	-	   0.000 	   1.113 	CALT	OS  	-	G	Sat SSO LL 4	nasaspaceflight.com	xinhuanet.com	-
 2012-057 	2456214.86 	2012 Oct 14 0837:00	Proton-M/Briz-M	III	-	935-26/99534	Intelsat IS-23	IS-23	-	-	GIK-5	LC81/24	-	-	      -	  42130	 	-	   -	    -	 	-	   0.000 	   4.200 	ILSK	OS  	-	CO	Sat GEO SO 1	coopi.krunichev.ru	-	-
 2012-A19  	2456216.83 	2012 Oct 16 0801	PRS-1	-	-	53T6	UBP	-	-	-	BALKH	LC35	-	-	      -	     40	?	-	   -	    -	 	-	   0.000 	   0.000 	PRO	MS  	-	-	Op Test	russianforces.org	-	-
 2012-S59  	2456219.88 	2012 Oct 19 0912	Topol'	-	-	110	15Zh58 UBP-39	MGCh 15F581/AA88	Zaryad'e-2-58	-	GNIIP	LC169	-	-	      -	   1000	?	-	   -	    -	 	Kura	   0.000 	   0.000 	RVSNR	MS  	-	-	OT	russianforces.org	-	-
@@ -71225,7 +71225,7 @@
 2012-S60  	2456225.50 	2012 Oct 25?	E-LRALT	-	-	FTI-01	FTI-01 THAAD Target	-	-	C-17	HICK	RW08R/26L	WAKE	LP1	      -	    300	?	-	   -	    -	 	-	   0.000 	   0.000 	MDA/COLE	MS  	-	-	Target	www.mda.mil	-	-
 2012-S67  	2456225.50 	2012 Oct 25?	THAAD	-	-	THAAD FTI-01	-	-	-	-	KMR	Meck	-	-	      -	    100	?	-	   -	    -	 	-	   0.000 	   0.000 	MDATH	MS  	-	-	ABM Test	www.mda.mil	-	-
 2012-S61  	2456225.50 	2012 Oct 25?	Terrier Oriole	-	-	FTI-01 Aegis Target	ARAV-B	-	-	-	WAKE	-	-	-	      -	    100	?	-	   -	    -	 	-	   0.000 	   0.000 	MDA	MS  	-	-	Target	www.mda.mil	-	-
-2012-059 	2456226.15 	2012 Oct 25 1533:04	Chang Zheng 3C	-	-	Y10	Beidou DW16	di 16 ke beidou d.weixin	-	-	XSC	LC2	-	-	      -	  35902	 	-	   -	    -	 	-	   0.000 	   3.060 	CALT	OS  	-	G	Sat GTO O	nasaspaceflight.com	xinhuanet.com	-
+2012-059 	2456226.15 	2012 Oct 25 1533:04	Chang Zheng 3C	-	-	Y10	Beidou DW16	di 16 ke beidou d.weixin	-	-	XSC	LC2	-	-	    167	    350	?	 28.5 	   -	    -	 	-	   0.000 	   3.060 	CALT	OS  	-	G	Sat GTO O	nasaspaceflight.com	xinhuanet.com	-
 2012-060 	2456231.82 	2012 Oct 31 0741:18	Soyuz-U-PVB	-	-	L 15000-136	Progress M-17M	Progress 7K-TGM No. 417	ISS 49P	-	GIK-5	LC1	-	-	      -	    424	 	-	   -	    -	 	-	   0.000 	   9.687 	FKA	OS  	-	G	Sat ISS O	spaceflightnow.com	-	-
 2012-A21  	2456232.21 	2012 Oct 31 1703	FTB	-	-	22	-	-	-	-	ALCA	UL	-	-	      -	     32	 	-	   -	    -	 	-	   0.000 	   0.000 	AEB	AS  	-	-	Test	brazilianspace.blog	-	-
 2012-A22  	2456232.50 	2012 Nov  1	Grasshopper	-	-	B0002?	-	-	-	-	SPXMCG	-	-	-	      -	      0	 	-	   -	    -	 	-	   0.000 	   0.000 	SPX	AS  	-	-	Test	spacex.com	-	5m hop
@@ -71238,14 +71238,14 @@
 2012-S66  	2456245.96 	2012 Nov 14 1107:01	Minuteman 3	-	-	-	Mk 12/21 RV?	GT206GM	GLORY TRIP 206GM	-	V	LF10	-	-	      -	   1300	?	-	   -	    -	 	KMR	   0.000 	   0.000 	AFGSC	MS  	-	341MW/	Op Test	vandenberg.af.mil	-	-
 2012-063 	2456245.99 	2012 Nov 14 1142:46	Soyuz-2-1A	Fregat	-	770-46 -267 016/1034	Meridian No. 16L	Meridian No. 16L	-	-	GIK-1	LC43/4	-	-	      -	  39740	 	-	   -	    -	 	-	   0.000 	   2.100 	VVKO	OS  	-	G	Sat MOL SO	NK1301-26	nasaspaceflight.com	-
 2012-M01  	2456247.95 	2012 Nov 16 1045	Improved Orion	-	-	SSC REXUS 11	EURO REXUS 11	-	-	-	ESR	-	-	-	      -	     79	 	-	   -	    -	 	-	   0.000 	   0.000 	EUROL	SS  	-	EUROL/	Tech	www.ssc.se	-	-
-2012-064 	2456250.45 	2012 Nov 18 2253:05	Chang Zheng 2C	b	-	Y17	HJ-1C	huan jing yihao C weixin	-	-	TYSC	LC9	-	-	      -	    743	 	-	   -	    -	 	-	   0.000 	   1.180 	CALT	OS  	-	G	Sat SSO O 4	nasaspaceflight.com	xinhuanet.com	-
+2012-064 	2456250.45 	2012 Nov 18 2253:05	Chang Zheng 2C	b	-	Y17	HJ-1C	huan jing yihao C weixin	-	-	TYSC	LC9	-	-	    489	    503	 	 97.4 	   -	    -	 	-	   0.000 	   1.180 	CALT	OS  	-	G	Sat SSO O 4	nasaspaceflight.com	xinhuanet.com	-
 2012-065 	2456252.27 	2012 Nov 20 1831:00	Proton-M/Briz-M	III	-	935-33/99528	Echostar 16	Echostar 16	-	-	GIK-5	LC200/39	-	-	      -	  35810	 	-	   -	    -	 	-	   0.000 	   7.650 	ILSK	OS  	-	CO	Sat GTO SO 1	coopi.krunichev.ru	-	-
 2012-S68  	2456252.96 	2012 Nov 21 1055:13	Black Brant IX	-	-	NASA 36.260UG	IMAGER	-	-	-	WS	-	-	-	      -	    291	 	-	   -	    -	 	-	   0.000 	   0.000 	GSFC	SS  	-	UMAL/BU/Cook,Danowski	UV Astron	www.nasa.gov	-	-
 2012-M02  	2456254.81 	2012 Nov 23 0722	Prithvi	-	-	-	AAD Target	-	-	-	CHAN	IC3	-	-	      -	     50	?	-	   -	    -	 	-	   0.000 	   0.000 	IDRDL	MS  	-	-	Target	Wire	-	-
 2012-A24  	2456254.81 	2012 Nov 23 0725?	AAD	-	-	-	AAD Interceptor	-	-	-	CHAN	IC4	-	-	      -	     15	 	-	   -	    -	 	-	   0.000 	   0.000 	IDRDL	MS  	-	-	Interceptor	Wire	-	-
-2012-066 	2456256.67 	2012 Nov 25 0406:04	Chang Zheng 4C	-	-	Y9	Yaogan 16	yaogan weixing shiliu ha	-	-	JQ	LC603  ?	-	-	      -	   1364	 	-	   -	    -	 	-	   0.000 	   1.500 	SAST	OS  	-	G	Sat LEO L	nasaspaceflight.com	xinhuanet.com	-
+2012-066 	2456256.67 	2012 Nov 25 0406:04	Chang Zheng 4C	-	-	Y9	Yaogan 16	yaogan weixing shiliu ha	-	-	JQ	LC603  ?	-	-	    180	   1106	 	 63.4 	   -	    -	 	-	   0.000 	   1.500 	SAST	OS  	-	G	Sat LEO L	nasaspaceflight.com	xinhuanet.com	-
 2012-S70  	2456256.97 	2012 Nov 25 1120	Nike Improved Orion	-	-	-	DLR MAPHEUS-3	-	-	-	ESR	-	-	-	      -	    145	 	-	   -	    -	 	-	   0.000 	   0.000 	SSC/DLR	SS  	-	DLR/Kolbe,Kargl,Sperl	Microgravity	www.ssc.se	-	-
-2012-067 	2456258.93 	2012 Nov 27 1013:03	Chang Zheng 3B	G2	-	Y24	Zhongxing 12	zhongxing shier hao weix	-	-	XSC	LC2	-	-	      -	  50233	 	-	   -	    -	 	-	   0.000 	   5.054 	CALT	OS  	-	G	Sat STO O	nasaspaceflight.com	xinhuanet.com	-
+2012-067 	2456258.93 	2012 Nov 27 1013:03	Chang Zheng 3B	G2	-	Y24	Zhongxing 12	zhongxing shier hao weix	-	-	XSC	LC2	-	-	    290	    350	?	 28.5 	   -	    -	 	-	   0.000 	   5.054 	CALT	OS  	-	G	Sat STO O	nasaspaceflight.com	xinhuanet.com	-
 2012-S71  	2456259.50 	2012 Nov 28	Ghauri	-	-	Hatf-V	[1300 km?] Arab.Sea	-	-	-	TILLA?	-	-	-	      -	    400	?	-	   -	    -	 	Arab.Sea	   0.000 	   0.000 	PKAFSC	MS  	-	-	Test	nasaspaceflight.com	-	-
 2012-M03  	2456261.24 	2012 Nov 29 1752	FTI	-	-	8	-	-	-	-	ALCA	UL	-	-	      -	     52	 	-	   -	    -	 	-	   0.000 	   0.000 	AEB	AS  	-	-	Test	brazilianspace.blog	-	-
 2012-S88  	2456261.50 	2012 Nov 30	DF-31	-	-	DF-31A?	-	-	-	-	TYSC	-	-	-	      -	   1000	?	-	   -	    -	 	-	   0.000 	   0.000 	PLA2AC	MS  	-	-	Test	freebeacon.com	-	-
@@ -71264,7 +71264,7 @@
 2012-S69  	2456274.72 	2012 Dec 13 0520	Black Brant IX	-	-	NASA 36.283UH	DXL/STORM	-	-	-	WS	-	-	-	      -	    257	?	-	   -	    -	 	-	   0.000 	   0.000 	GSFC	SS  	-	UMIAMI/Galeazzi	XR Astron	www.nasa.gov	-	-
 2012-A25  	2456278.50 	2012 Dec 17	Grasshopper	-	-	B0002?	-	-	-	-	SPXMCG	-	-	-	      -	      0	 	-	   -	    -	 	-	   0.000 	   0.000 	SPX	AS  	-	-	Test	spacex.com	-	40m hop
 2012-S73  	2456278.79 	2012 Dec 17 0700:00	S-520	-	-	S-520-28	Microgravity/Dust nuc	-	-	-	USC	K	-	-	      -	    312	 	-	   -	    -	 	-	   0.000 	   0.000 	JAXA	SS  	-	TOK/TOKAI/HOKK/Kimura	Microgravity/Physics	jaxa.jp	-	-
-2012-073 	2456280.18 	2012 Dec 18 1613:05	Chang Zheng 2D	-	-	Y22	Gokturk-2	GK-2	-	-	JQ	LC603  ?	-	-	      -	    697	 	-	   -	    -	 	-	   0.000 	   0.450 	SAST	OS  	-	G	Sat SSO P	nasaspaceflight.com	xinhuanet.com	-
+2012-073 	2456280.18 	2012 Dec 18 1613:05	Chang Zheng 2D	-	-	Y22	Gokturk-2	GK-2	-	-	JQ	LC603  ?	-	-	    670	    690	 	 98.2 	   -	    -	 	-	   0.000 	   0.450 	SAST	OS  	-	G	Sat SSO P	nasaspaceflight.com	xinhuanet.com	-
 2012-A26  	2456280.50 	2012 Dec 19	Spaceship Two	-	-	VSS Enterprise	WK2-109/GF23	-	-	WK2	MHV	RW12/30	MHV	LP3	      -	     15	 	-	   -	    -	 	MHV	   0.000 	   0.000 	SCAL	YS  	-	SCAL/Stucky,Alsbury	Glide  13:24	scaled.com	-	-
 2012-074 	2456281.01 	2012 Dec 19 1212:35	Soyuz-FG	-	-	L 15000-040	Soyuz TMA-07M	Soyuz 11F732A47 No. 704A	ISS 33S	-	GIK-5	LC1	-	-	      -	    422	 	-	   -	    -	 	-	   0.000 	   7.100 	FKA	OS  	-	G	Sat ISS O	spaceflightnow.com	-	-
 2012-075 	2456281.41 	2012 Dec 19 2149:07	Ariane 5ECA	-	-	VA211 (567)	Skynet 5D/Mexsat-B	Skynet 5D	-	-	CSG	ELA3	-	-	      -	  35971	 	-	   -	    -	 	-	   0.000 	   8.218 	AE	OS  	-	CO	Sat GTO SO 1	Wire	-	-
@@ -71336,7 +71336,7 @@
 2013-016 	2456404.38 	2013 Apr 21 2100:00	Antares 110	-	-	2TRS2S1.2  (1)	Cygnus Mass Sim	A-ONE	70101-402	-	MARS	Pad 0A	-	-	      -	    278	 	-	   -	    -	 	-	   0.000 	   3.808 	OSC	OS  	-	CX/C	Sat ISS O	Wire	-	-
 2013-S27  	2456406.23 	2013 Apr 23 1730	Black Brant IX	-	-	NASA 36.269GS	EUNIS 3	-	-	-	WS	-	-	-	      -	    320	?	-	   -	    -	 	-	   0.000 	   0.000 	GSFC	SS  	-	GSFC/Rabin	Solar EUV	www.nasa.gov	-	-
 2013-017 	2456406.93 	2013 Apr 24 1012:16	Soyuz-U-PVB	-	-	L 15000-138	Progress M-19M	Progress 7K-TGM No. 419	ISS 51P	-	GIK-5	LC1	-	-	      -	    456	 	-	   -	    -	 	-	   0.000 	   9.656 	FKA	OS  	-	G	Sat ISS O	spaceflightnow.com	NK1306-18	-
-2013-018 	2456408.68 	2013 Apr 26 0413	Chang Zheng 2D	-	-	Y18	GaoFen 1	GF-1	-	-	JQ	LC603  ?	-	-	      -	    664	 	-	   -	    -	 	-	   0.000 	   1.070 	SAST	OS  	-	G	Sat SSO O	nasaspaceflight.com	xinhuanet.com	-
+2013-018 	2456408.68 	2013 Apr 26 0413	Chang Zheng 2D	-	-	Y18	GaoFen 1	GF-1	-	-	JQ	LC603  ?	-	-	    636	    663	 	 98.4 	   -	    -	 	-	   0.000 	   1.070 	SAST	OS  	-	G	Sat SSO O	nasaspaceflight.com	xinhuanet.com	-
 2013-019 	2456408.72 	2013 Apr 26 0523:41	Soyuz-2-1B	Fregat	-	780-31- 220 021/1047	Glonass-M47	Uragan-M No. 747	-	-	GIK-1	LC43/4	-	-	      -	  19745	 	-	   -	    -	 	-	   0.000 	   1.450 	VVKO	OS  	-	G	Sat MEO SO	nasaspaceflight.com	NK1306-50	-
 2013-A07  	2456412.12 	2013 Apr 29 1447	Spaceship Two	-	-	VSS Enterprise	WK2-115/PF01	-	-	WK2	MHV	RW12/30	MHV	LP3	      -	     17	 	-	   -	    -	 	MHV	   0.000 	   0.000 	SCAL	YS  	-	SCAL/Stucky,Alsbury	       13       /0:16	scaled.com	-	-
 2013-S29  	2456413.82 	2013 May  1 0738	Terrier Improved Orion	-	-	NASA 41.100DR	MOSC 1A	-	-	-	KMR	RN	-	-	      -	    185	 	-	   -	    -	 	-	   0.000 	   0.000 	GSFC	SS  	-	AFRL/Caton	Active plasma  Sm	www.nasa.gov	-	-
@@ -75104,7 +75104,7 @@
 2025-063 	2460761.42 	2025 Mar 26 2211:40	Falcon 9	FT5	-	453/B1063.24 F453	Starlink-245	Starlink Group 11-7	V2MO 11-7  (27 Ku)	-	VSFBS	SLC4E	-	-	      -	      -	 	-	   -	    -	 	-	   0.000 	  15.500 	SPX	OS  	-	C M	Sat LEO D	SpaceX	-	-
 2025-S15  	2460763.90 	2025 Mar 29 0930	Terrier Imp Malemute	-	-	NASA 46.035UE	AWESOME 3	-	-	-	PF	LC2	-	-	      -	    170	?	-	   -	    -	 	-	   0.000 	   0.000 	GSFC	SS  	-	UAF/Conde	Auroral	www.nasa.gov	-	-
 2025-064 	2460764.17 	2025 Mar 29 1605	Chang Zheng 7A	-	-	Y11	TJS 16	TJS 16	-	-	WEN	LC201	-	-	    180	    300	?	 19.7 	   -	    -	 	-	   0.000 	   5.000 	CALT	OS  	-	G	Sat GTO O	nasaspaceflight.com	-	-
-2025-F04  	2460764.94 	2025 Mar 30 1030	Spectrum	-	-	1	Going Full Spectrum	-	-	-	AND	ISAR	-	-	      -	      1	 	-	   -	    -	 	-	   0.000 	   0.000 	ISAR	OF  	S1G	C	Sat	youtube.com	-	Lost attitude
+2025-F04  	2460764.94 	2025 Mar 30 1030	Spectrum	-	-	1	Going Full Spectrum	-	-	-	AND	ISAR	-	-	  -6378	      1	 	 97.4 	   -	    -	 	-	   0.000 	   0.000 	ISAR	OF  	S1G	C	Sat SSO O	youtube.com	-	Lost attitude
 2025-065 	2460766.33 	2025 Mar 31 1952:50	Falcon 9	FT5	-	457/B1080.17 F454	Starlink-246	Starlink Group 6-80	V2MO 6-80  (28 Ku)	-	CC	LC40	-	-	      -	      -	 	-	   -	    -	 	-	   0.000 	  16.500 	SPX	OS  	-	C M	Sat LEO D	nasaspaceflight.com	-	-
 2025-066 	2460766.57 	2025 Apr  1 0146	Falcon 9	FT5	-	455/B1085.6  F455	Fram-2	Dragon C207.4	-	-	KSC	LC39A	-	-	      -	      -	 	-	   -	    -	 	-	   0.000 	  16.000 	SPX	OS  	-	CX	Sat LEO D	Wire	-	-
 2025-067 	2460766.67 	2025 Apr  1 0400	Chang Zheng 2D	-	-	Y78	WHJSW 06	WHJSW 06	-	-	JQ	LC43/94	-	-	    447	    457	 	 55.0 	   -	    -	 	-	   0.000 	   1.000 	SAST	OS  	-	G m	Sat LEO O	nasaspaceflight.com	-	-
@@ -75774,7 +75774,7 @@
 2026-S219  	2461133.50 	2026 Apr  3	Kheibar Shekan	?	-	-	Vadeh Sadegh 4 Moj 93	-	-	-	IRAN	-	-	-	      -	    300	?	-	   -	 2000	 	Israel	   0.000 	   0.000 	IR	MS  	-	-	Weapon	Wire	-	-
 2026-S218  	2461133.50 	2026 Apr  3	Khorramshahr	-	-	-	Vadeh Sadegh 4 Moj 92	Khorramshahr-4	-	-	IRAN	-	-	-	      -	    300	?	-	   -	 1000	 	Israel?	   0.000 	   0.000 	IR	MS  	-	-	Weapon	Wire	-	-                2026 Mar 13
 2026-F05  	2461133.68 	2026 Apr  3 0417:19	Tianlong-3	-	-	Y1	-	-	-	-	JQ	LC120B	-	-	      -	     40	?	-	   -	    -	 	-	   0.000 	  10.000 	TIANB	OF  	S1P	C	Sat LEO O	Wire	-	Stage 1 fail?
-2026-071 	2461133.77 	2026 Apr  3 0628	Soyuz-2-1A	Fregat	-	-            111-102	Meridian No. 21L?	Meridian No. 21L?	-	-	GIK-1	LC43/4	-	-	     15	    204	 	 62.8 	   -	    -	 	-	   0.000 	   2.000 	VVKO	OS  	-	G	Sat MOL SO	nasaspaceflight.com	-	-
+2026-071 	2461133.77 	2026 Apr  3 0628	Soyuz-2-1A	Fregat	-	780-21-119/  111-102	Meridian No. 21L?	Meridian No. 21L?	-	-	GIK-1	LC43/4	-	-	     15	    204	 	 62.8 	   -	    -	 	-	   0.000 	   2.000 	VVKO	OS  	-	G	Sat MOL SO	nasaspaceflight.com	-	-
 2026-S221  	2461134.50 	2026 Apr  4	Kheibar Shekan	-	-	-	Vadeh Sadegh 4 Moj 94	-	-	-	IRAN	-	-	-	      -	    300	?	-	   -	 2000	 	Israel	   0.000 	   0.000 	IR	MS  	-	-	Weapon	Wire	-	-
 2026-S224  	2461134.50 	2026 Apr  4	Kheibar Shekan	-	-	-	Vadeh Sadegh 4 Moj 95	-	-	-	IRAN	-	-	-	      -	    300	?	-	   -	 2000	 	Gulf reg.	   0.000 	   0.000 	IR	MS  	-	-	Weapon	Wire	-	-
 2026-S220  	2461134.50 	2026 Apr  4	Emad	-	-	-	Vadeh Sadegh 4 Moj 94	-	-	-	IRAN	-	-	-	      -	    400	?	-	   -	 1700	?	Israel	   0.000 	   0.000 	IR	MS  	-	-	Weapon	Wire	-	-
@@ -75812,7 +75812,7 @@
 2026-090 	2461153.85 	2026 Apr 23 0829	Angara-1.2	-	-	71608?/7L?	Kosmos (x4)	OO MKA 7-10	-	-	GIK-1	LC35/1	-	-	    318	    336	 	 96.6 	   -	    -	 	-	   0.000 	   1.000 	KHRU	OS  	-	G	Sat SSO SD	Wire	-	-
 2026-091 	2461154.77 	2026 Apr 24 0635	Chang Zheng 2D	-	-	Y109	WHJSW 9-1 to 9-4	WHJSW 9	-	-	XSC	LC3	-	-	    501	    553	 	 55.0 	   -	    -	 	-	   0.000 	   2.000 	SAST	OS  	-	G M	Sat LEO D	nasaspaceflight.com	-	-
 2026-092 	2461156.01 	2026 Apr 25 1215	Chang Zheng 6	-	-	Y15	PRSC-EO3	PRSC-EO3	-	-	TYSC	LC16	-	-	    543	    550	 	 38.0 	   -	    -	 	-	   0.000 	   2.000 	SAST	OS  	-	G	Sat SSO D	nasaspaceflight.com	-	-
-2026-093 	2461156.43 	2026 Apr 25 2221:47	Soyuz-2-1A	-	-	-	Progress MS-34	Progress 7K-TGM No. 464	ISS 95P	-	GIK-5	LC31	-	-	    184	    217	 	 51.7 	   -	    -	 	-	   0.000 	   7.500 	FKA	OS  	-	G	Sat ISS O	spaceflightnow.com	-	-
+2026-093 	2461156.43 	2026 Apr 25 2221:47	Soyuz-2-1A	-	-	K 15000-080?	Progress MS-34	Progress 7K-TGM No. 464	ISS 95P	-	GIK-5	LC31	-	-	    184	    217	 	 51.7 	   -	    -	 	-	   0.000 	   7.500 	FKA	OS  	-	G	Sat ISS O	spaceflightnow.com	-	-
 2026-094 	2461157.11 	2026 Apr 26 1437:09	Falcon 9	FT5	-	xxx/B1088.15 F633	Starlink-385	Starlink Group 17-16	V2MO 17-16 (25 Ku)	-	VSFBS	SLC4E	-	-	      -	      -	 	-	   -	    -	 	-	   0.000 	  14.400 	SPX	OS  	-	C M	Sat SSO D	SpaceX	-	-
 2026-095 	2461158.54 	2026 Apr 28 0053:30	Atlas V 551	G	-	AV-112	Amazon Leo LA-06	LA-06	-	-	CC	SLC41	-	-	    451	    464	 	 51.9 	   -	    -	 	-	   0.000 	  17.000 	ULAL	OS  	-	C M	Sat LEO D	Wire	-	-
 2026-096 	2461160.09 	2026 Apr 29 1413:00	Falcon Heavy	-	-	012/B1098.1	Viasat 3F3	Viasat 3F3	B1075.22,B1072.2	-	KSC	LC39A	-	-	      -	      -	 	-	   -	    -	 	-	   0.000 	   6.000 	SPX	OS  	-	C	Sat GTO O	Wire	-	-
@@ -75874,7 +75874,7 @@
 2026-134 	2461206.66 	2026 Jun 15 0344	Lijian-1	-	-	Y14	Jilin-1 GF07	-	-	-	JQ	LC130	-	-	      -	      -	 	-	   -	    -	 	-	   0.000 	   0.800 	ZKYT	OS  	-	C	Sat SSO O	nasaspaceflight.com	-	-
 2026-135 	2461207.15 	2026 Jun 15 1534:35	Falcon 9	FT5	-	xxx/B1093.14 F652	Starlink-401	Starlink Group 17-54	V2MO 17-54 (24 Ku)	-	VSFBS	SLC4E	-	-	      -	      -	 	-	   -	    -	 	-	   0.000 	  13.800 	SPX	OS  	-	C M	Sat SSO D	SpaceX	-	-
 2026-136 	2461207.91 	2026 Jun 16 0945	Chang Zheng 3B	-	-	Y116	Shi Jian 31	SJ-31 (TJS-26?)	-	-	XSC	LC2	-	-	    120	    200	 	 63.4 	   -	    -	 	-	   0.000 	   4.000 	CALT	OS  	-	G	Sat MOL O	nasaspaceflight.com	-	-
-2026-137 	2461208.61 	2026 Jun 17 0244	Chang Zheng 12	-	-	Y7	WHDW 22	WHDW 22	-	-	HCSLS	LC2	-	-	    180	    929	 	 50.0 	   -	    -	 	-	   0.000 	   2.000 	SAST	OS  	-	G M	Sat LEO P	nasaspaceflight.com	xinhuanet.com	-
+2026-137 	2461208.61 	2026 Jun 17 0244	Chang Zheng 12	-	-	Y7	WHDW 22	WHDW 22	-	-	HCSLS	LC2	-	-	    180	    929	 	 50.0 	   -	    -	 	-	   0.000 	   2.000 	ZHSH/SAST	OS  	-	G M	Sat LEO P	nasaspaceflight.com	xinhuanet.com	-
 2026-138 	2461208.67 	2026 Jun 17 0358	Kuaizhou-11	-	-	Y13	Weili Kongjian 05	Centispace 05	-	-	JQ	LC43/95?	-	-	    833	    847	 	 55.1 	   -	    -	 	-	   0.000 	   0.500 	EXPACE	OS  	-	CO	Sat LEO D	nasaspaceflight.com	-	-
 2026-139 	2461208.78 	2026 Jun 17 0639:00	Falcon 9	FT5	-	xxx/B1077.29 F653	BlueBird 8-10	Bluebird 8 to 10	-	-	CC	LC40	-	-	      -	      -	 	-	   -	    -	 	-	   0.000 	  17.600 	SPX	OS  	-	C	Sat LEO D	SpaceX	-	-
 2026-140 	2461209.02 	2026 Jun 17 1221:52	Ariane 64	1	-	VA269 (L6009)	Amazon LE-03	Amazon LE-03	-	-	CSG	ELA4	-	-	    150	    457	 	 51.8 	   -	    -	 	-	   0.000 	  20.000 	AE	OS  	-	CO M	Sat LEO D	youtube/arianespace	-	-
@@ -75911,9 +75911,9 @@
 2026-165 	2461241.24 	2026 Jul 19 1750?	Soyuz-2-1B	-	-	-	Rassvet-3 G2	Rassvet-3 G2	-	-	GIK-1	LC43/4	-	-	    288	    324	 	 82.3 	   -	    -	 	-	   0.000 	   5.930 	FKA	OS  	-	G	Sat LEO O	TLE	nasaspaceflight.com	-
 2026-166 	2461243.12 	2026 Jul 21 1449:34	Falcon 9	FT5	-	xxx/B1082.23 F668	Starlink-411	Starlink Group 17-39	V2MO 17-39 (24 Ku)	-	VSFBS	SLC4E	-	-	      -	      -	 	-	   -	    -	 	-	   0.000 	  13.800 	SPX	OS  	-	C M	Sat SSO D	SpaceX	-	-
 2026-167 	2461243.39 	2026 Jul 21 2115	Falcon 9	FT5	-	xxx/B1069.32 F669	MRV-1/MEP-1/2/3	MRV/MEP	-	-	CC	LC40	-	-	      -	      -	 	-	   -	    -	 	-	   0.000 	   4.500 	SPX	OS  	-	C	Sat GTO O	SpaceX	-	-
-2026-168 	2461243.62 	2026 Jul 22 0254	Yinli-1	-	-	Y4	Dongpo/ZDG-3	-	-	DFHT	ECS	LP1	-	-	      -	      -	 	-	   -	    -	 	-	   0.000 	   0.800 	DFK	OS  	-	C	Sat SSO O	nasaspaceflight.com	-	-
+2026-168 	2461243.62 	2026 Jul 22 0254	Yinli-1	-	-	Y4	Dongpo/ZDG-3	-	-	DFHT	ECS	LP1	-	-	    525	    551	 	 97.5 	   -	    -	 	-	   0.000 	   0.800 	DFK	OS  	-	C	Sat SSO O	nasaspaceflight.com	-	-
 2026-169 	2461245.00 	2026 Jul 23 1200	Chang Zheng 3B	G3	-	Y118	Tianlian 2-06	Tianlian 2-06	-	-	XSC	LC2	-	-	    180	    215	 	 27.0 	   -	    -	 	-	   0.000 	   5.000 	CALT	OS  	-	G	Sat GTO O	nasaspaceflight.com	-	-
-2026-170 	2461245.48 	2026 Jul 23 2333	Lijian-1	-	-	Y15	Xiguang	-	-	-	JQ	LC130	-	-	      -	      -	 	-	   -	    -	 	-	   0.000 	   0.800 	ZKYT	OS  	-	C	Sat SSO O	nasaspaceflight.com	-	-
+2026-170 	2461245.48 	2026 Jul 23 2333	Lijian-1	-	-	Y15	Xiguang	-	-	-	JQ	LC130	-	-	    534	    553	 	 97.5 	   -	    -	 	-	   0.000 	   0.800 	ZKYT	OS  	-	C	Sat SSO O	nasaspaceflight.com	-	-
 2026-U04  	2461246.45 	2026 Jul 24 2251:00	Starship V3	-	-	B20/S40	Starship Flight 13	Ship 40	-	-	STB	OLP2	-	-	      8	    195	 	 26.5 	   -	    -	 	-	   0.000 	 120.000 	SPX	OS  	-	C M	Sat LEO S	nasaspaceflight.com	-	-
 2026-171 	2461247.16 	2026 Jul 25 1551:21	Falcon 9	FT5	-	xxx/B1100.8  F670	Starlink-412	Starlink Group 17-51	V2MO 17-51 (24 Ku)	-	VSFBS	SLC4E	-	-	      -	      -	 	-	   -	    -	 	-	   0.000 	  13.800 	SPX	OS  	-	C M	Sat SSO D	SpaceX	-	-
 2026-172 	2461250.99 	2026 Jul 29 1150	Chang Zheng 7A	-	-	Y29	Tianlian 3-01	Tianlian 3-01	-	-	WEN	LC201	-	-	    180	    300	?	 15.4 	   -	    -	 	-	   0.000 	   5.000 	CALT	OS  	-	G	Sat GTO O	nasaspaceflight.com	-	-
@@ -75931,11 +75931,11 @@
 2026-183 	2461264.17 	2026 Aug 11 1558:26	Falcon 9	FT5	-	xxx/B1085.18 F676	Starlink-416	Starlink Group 10-19	V2MO 10-19 (29 Ku)	-	CC	LC40	-	-	    143	    251	 	 53.2 	   -	    -	 	-	   0.000 	  16.700 	SPX	OS  	-	C M	Sat LEO D	SpaceX	-	-
 2026-184 	2461264.70 	2026 Aug 12 0446:47	Falcon 9	FT5	-	xxx/B1103.5  F677	Starlink-417	Starlink Group 17-49	V2MO 17-49 (24 Ku)	-	VSFBS	SLC4E	-	-	    134	    271	 	 97.3 	   -	    -	 	-	   0.000 	  13.800 	SPX	OS  	-	C M	Sat SSO D	SpaceX	-	-
 2026-185 	2461268.55 	2026 Aug 16 0112:14	Falcon 9	FT5	-	xxx/B1090.14 F678	Globalstar 2R-1	Globalstar 2R-1	-	-	CC	LC40	-	-	    159	    684	 	 52.0 	   -	    -	 	-	   0.000 	   6.800 	SPX	OS  	-	C	Sat LEO D	nasaspaceflight.com	-	-
-2026-186 	2461268.58 	2026 Aug 16 0150:45	Falcon 9	FT5	-	xxx/B1088.18 F679	USSF-366	SBST R-1	-	-	VSFBS	SLC4E	-	-	      -	      -	 	-	   -	    -	 	-	   0.000 	  16.000 	SPX	OS  	-	CX/G	Sat LEO D	nasaspaceflight.com	-	-
-2026-187 	2461268.67 	2026 Aug 16 0410:01	Chang Zheng 12	-	-	Y8	WHDW 24	WHDW 24	-	-	HCSLS	LC2	-	-	    180	    929	 	 50.0 	   -	    -	 	-	   0.000 	   2.000 	SAST	OS  	-	G M	Sat LEO P	nasaspaceflight.com	xinhuanet.com	-
+2026-186 	2461268.58 	2026 Aug 16 0150:45	Falcon 9	FT5	-	xxx/B1088.18 F679	USSF-366	SBST R-1	-	-	VSFBS	SLC4E	-	-	    300	    300	?	 70.0 	   -	    -	 	-	   0.000 	  16.000 	SPX	OS  	-	CX/G	Sat LEO D	nasaspaceflight.com	-	-
+2026-187 	2461268.67 	2026 Aug 16 0410:01	Chang Zheng 12	-	-	Y8	WHDW 24	WHDW 24	-	-	HCSLS	LC2	-	-	    180	    929	 	 50.0 	   -	    -	 	-	   0.000 	   2.000 	ZHSH/SAST	OS  	-	G M	Sat LEO P	nasaspaceflight.com	xinhuanet.com	-
 2026-188 	2461269.63 	2026 Aug 17 0302	Chang Zheng 2C	-	-	Y68	SEO	SEO	-	-	TYSC	LC9	-	-	    487	    505	 	 97.4 	   -	    -	 	-	   0.000 	   2.000 	CALT	OS  	-	G	Sat SSO O	nasaspaceflight.com	-	-
 2026-A05  	2461271.42 	2026 Aug 18 2200?	WYH	-	-	1	Weixing Yunzai Huojian	-	-	-	JP	-	-	-	      -	      1	?	-	   -	    -	 	-	   0.000 	   0.000 	NCSIST	SF  	-	-	Test	Wire	-	-
-2026-189 	2461271.48 	2026 Aug 18 2335:20	Zhuque-3	-	-	Y2	Honghu-3	-	-	-	JQ	LC43/96B	-	-	    402	    524	 	 55.0 	   -	    -	 	-	   0.000 	   0.500 	LANDSP	OS  	-	C	Sat SSO O	nasaspaceflight.com	-	-
+2026-189 	2461271.48 	2026 Aug 18 2335:20	Zhuque-3	-	-	Y2	Honghu-3	-	-	-	JQ	LC43/96B	-	-	    402	    524	 	 55.0 	   -	    -	 	-	   0.000 	   0.500 	LANDSP	OS  	-	C	Sat LEO D	nasaspaceflight.com	-	-
 2026-190 	2461271.67 	2026 Aug 19 0401:07	Falcon 9	FT5	-	xxx/B1097.12 F680	Starlink-418	Starlink Group 17-50	V2MO 17-50 (24 Ku)	-	VSFBS	SLC4E	-	-	    134	    271	 	 97.3 	   -	    -	 	-	   0.000 	  13.800 	SPX	OS  	-	C M	Sat SSO D	SpaceX	-	-
 2026-A04  	2461272.31 	2026 Aug 19 1930	SEBIT	-	-	1	Test	-	-	-	ALCA	HAN	-	-	      -	      1	?	-	   -	    -	 	-	   0.000 	   0.000 	INNOSP	SF  	-	-	Test	Wire	-	-
 2026-S249  	2461272.84 	2026 Aug 20 0804	KN-25	?	-	-	-	-	-	-	SUNAN?	-	-	-	      -	     90	 	-	   -	  320	 	-	   0.000 	   0.000 	KPA	MS  	-	-	Test	Wire	-	-
@@ -75951,22 +75951,40 @@
 2026-191 	2461273.04 	2026 Aug 20 1304:45	Electron	-	-	93	The Lighting God Defends	QPS-SAR-18	-	-	MAHIA	LC1B	-	-	    259	    589	 	 42.0 	   -	    -	 	-	   0.000 	   0.120 	RLABN	OS  	-	C	Sat LEO OO	Wire	-	-
 2026-192 	2461274.13 	2026 Aug 21 1514:22	Falcon 9	FT5	-	xxx/B1078.30 F681	Starlink-419	Starlink Group 10-39	V2MO 10-39 (29 Ku)	-	CC	LC40	-	-	    143	    251	 	 53.2 	   -	    -	 	-	   0.000 	  16.700 	SPX	OS  	-	C M	Sat LEO D	SpaceX	-	-
 2026-193 	2461274.81 	2026 Aug 22 0725:16	Falcon 9	FT5	-	xxx/B1100.9  F682	Starlink-420	Starlink Group 15-20	V2MO 15-20 (27 Ku)	-	VSFBS	SLC4E	-	-	    135	    262	 	 70.0 	   -	    -	 	-	   0.000 	  15.500 	SPX	OS  	-	C M	Sat LEO D	SpaceX	-	-
-2026-194 	2461276.90 	2026 Aug 24 0940	Soyuz-2-1B	Fregat	-	-	Kosmos-2619?	Glonass	-	-	GIK-1	LC43/3?	-	-	     56	    222	 	 64.8 	   -	    -	 	-	   0.000 	   5.930 	FKA	OS  	-	G	Sat MEO SO	nasaspaceflight.com	-	-
+2026-194 	2461276.61 	2026 Aug 24 0240	Soyuz-2-1B	Fregat	-	-            112-19	Kosmos-2619	Glonass	-	-	GIK-1	LC43/3	-	-	     56	    222	 	 64.8 	   -	    -	 	-	   0.000 	   5.930 	FKA	OS  	-	G	Sat MEO SO	nasaspaceflight.com	-	-
 2026-195 	2461277.64 	2026 Aug 25 0321:54	Chang Zheng 6C	-	-	Y1	ZK-14/15	ZK-14/15	-	-	TYSC	LC9A	-	-	    530	    544	 	 97.5 	   -	    -	 	-	   0.000 	   0.150 	ZHSH/SAST	OS  	-	G/C	Sat SSO L	xinhuanet.com	-	-
 2026-196 	2461277.90 	2026 Aug 25 0933:38	Falcon 9	FT5	-	xxx/B1067.37 F683	Starlink-421	Starlink Group 10-49	V2MO 10-49 (29 Ku)	-	CC	LC40	-	-	    143	    251	 	 53.2 	   -	    -	 	-	   0.000 	  16.700 	SPX	OS  	-	C M	Sat LEO D	SpaceX	-	-
 2026-197 	2461278.90 	2026 Aug 26 0935:11	Falcon 9	FT5	-	xxx/B1082.24 F684	Starlink-422	Starlink Group 15-22	V2MO 15-22 (27 Ku)	-	VSFBS	SLC4E	-	-	    135	    270	 	 70.0 	   -	    -	 	-	   0.000 	  15.500 	SPX	OS  	-	C M	Sat LEO D	SpaceX	-	-
 2026-S259  	2461279.50 	2026 Aug 27	Yars	-	-	-	15Zh55M?	BB	-	-	GNIIP	LC167	-	-	      -	   1000	?	-	   -	    -	 	Kura	   0.000 	   0.000 	RVSNR	MS  	-	-	OT	russianforces.org	-	-
 2026-198 	2461280.34 	2026 Aug 27 2011:00	Ariane 62	-	-	VA270 (L6008)	MTG-I2	MTG-I2	-	-	CSG	ELA4	-	-	    249	  35650	 	  6.0 	   -	    -	 	-	   0.000 	   3.800 	AE	OS  	-	CO/G	Sat GTO O	youtube/arianespace	-	-
-2026-199 	2461282.98 	2026 Aug 30 1125:49	Falcon Heavy	-	-	013/B1105.1  -	Roman Space Telescope	NGRST	B1072.3,B1104.1	-	KSC	LC39A	-	-	    182	    183	 	 33.6 	   -	    -	 	-	   0.000 	   9.253 	SPX	DS  	-	CX/G	Sat EEO O	Wire	-	-
+2026-199 	2461282.98 	2026 Aug 30 1125:49	Falcon Heavy	-	-	013/B1105.1	Roman Space Telescope	NGRST	B1072.3,B1104.1	-	KSC	LC39A	-	-	    182	    183	 	 33.6 	   -	    -	 	-	   0.000 	   9.253 	SPX	DS  	-	CX/G	Sat EEO E	Wire	-	-
 2026-U05  	2461284.58 	2026 Sep  1 0200:16	Zhishenxing-1	-	-	Y1	Pallas-1 Test	-	-	-	JQ	LC-P1	-	-	    100	    200	?	 97.4 	   -	    -	 	-	   0.000 	   1.000 	XIDO	OS  	-	C	Sat SSO O	nasaspaceflight.com	-	-
 2026-200 	2461285.86 	2026 Sep  2 0842:12	Falcon 9	FT5	-	xxx/B1063.35 F685	Starlink-423	Starlink Group 15-23	V2MO 15-23 (27 Ku)	-	VSFBS	SLC4E	-	-	    135	    271	 	 70.0 	   -	    -	 	-	   0.000 	  15.500 	SPX	OS  	-	C M	Sat LEO D	SpaceX	-	-
 2026-201 	2461286.00 	2026 Sep  2 1201	Electron	-	-	94	Owl Around the World	StriX-9	-	-	MAHIA	LC1B	-	-	    219	    585	 	 38.1 	   -	    -	 	-	   0.000 	   0.150 	RLABN	OS  	-	C	Sat LEO OO	Wire	-	-
 2026-202 	2461287.39 	2026 Sep  3 2125	GSLV Mk II	c	-	GSLV-F17	EOS-05	GISAT-1A	-	-	SHAR	SLP	-	-	    152	  30967	 	 19.3 	   -	    -	 	-	   0.000 	   2.400 	ISRO/NSIL	OS  	-	CO/G	Sat GTO O	Wire	-	-
-2026-203 	2461289.34 	2026 Sep  5 2012:00	Spectrum	-	-	2	Onward and Upward	-	-	-	AND	ISAR	-	-	    180	    500	 	  7.4 	   -	    -	 	-	   0.021 	   0.000 	ISAR	OS  	-	C	Sat	youtube.com	-	-
+2026-203 	2461289.34 	2026 Sep  5 2012:00	Spectrum	-	-	2	Onward and Upward	-	-	-	AND	ISAR	-	-	    180	    500	 	 97.4 	   -	    -	 	-	   0.021 	   0.000 	ISAR	OS  	-	C	Sat SSO O	youtube.com	-	-
 2026-204 	2461290.10 	2026 Sep  6 1426:54	Falcon 9	FT5	-	xxx/B1088.19 F686	Starlink-424	Starlink Group 15-24	V2MO 15-24 (27 Ku)	-	VSFBS	SLC4E	-	-	    135	    271	 	 70.0 	   -	    -	 	-	   0.000 	  15.500 	SPX	OS  	-	C M	Sat LEO D	SpaceX	-	-
-2026-205 	2461293.88 	2026 Sep 10 0900	Chang Zheng 4B	-	-	Y78?	YG53/YG56	YG53/YG56	-	-	JQ	LC43/94	-	-	      -	      -	 	-	   -	    -	 	-	   0.000 	   2.000 	SAST	OS  	-	G	Sat LEO L	nasaspaceflight.com	-	-
-2026-206 	2461294.15 	2026 Sep 10 1542:30	Falcon 9	FT5	-	xxx/B1081.27 F687	USSF-153	SBST R-2	-	-	VSFBS	SLC4E	-	-	      -	      -	 	-	   -	    -	 	-	   0.000 	  16.000 	SPX	OS  	-	CX/G	Sat LEO D	nasaspaceflight.com	-	-
-2026-207 	2461294.64 	2026 Sep 11 0328	Electron	-	-	95	Happily Ever Faster	BlackSky Gen3-5	-	-	MAHIA	LC1A	-	-	      -	      -	 	-	   -	    -	 	-	   0.000 	   0.138 	RLABN	OS  	-	C	Sat LEO OO	Wire	-	-
-2026-208 	2461297.28 	2026 Sep 13 1849:00	Falcon 9	FT5	-	xxx/B1080.29 F688	O3b mPOWER 11/13	O3b mPOWER 11/13	-	-	CC	LC40	-	-	      -	      -	 	-	   -	    -	 	-	   0.000 	   5.100 	SPX	OS  	-	C	Sat MEO O	nasaspaceflight.com	-	-
-2026-209 	2461298.56 	2026 Sep 15 0121:07	Vega C	-	-	VV30	Sentinel-3C/Flex	Sentinel-3C/Flex	-	-	CSG	ZLV	-	-	      -	      -	 	-	   -	    -	 	-	   0.000 	   1.540 	AVIO	OS  	-	G	Sat SSO D	spaceflightnow.com	-	-
-2026-210 	2461298.77 	2026 Sep 15 0626	Zhuque-2E	2	-	Y7	Qianfan Digui 19	Qianfan Digui 19	-	-	JQ	LC43/96A	-	-	      -	      -	 	-	   -	    -	 	-	   0.000 	   2.670 	LANDSP	OS  	-	C M	Sat LEO O	nasaspaceflight.com	-	-
+2026-205 	2461293.88 	2026 Sep 10 0900	Chang Zheng 4B	-	-	Y78?	YG53/YG56	YG53/YG56	-	-	JQ	LC43/94	-	-	    514	    523	 	 45.0 	   -	    -	 	-	   0.000 	   2.000 	SAST	OS  	-	G	Sat LEO L	nasaspaceflight.com	-	-
+2026-206 	2461294.15 	2026 Sep 10 1542:30	Falcon 9	FT5	-	xxx/B1081.27 F687	USSF-153	SBST R-2	-	-	VSFBS	SLC4E	-	-	    300	    300	?	 70.0 	   -	    -	 	-	   0.000 	  16.000 	SPX	OS  	-	CX/G	Sat LEO D	nasaspaceflight.com	-	-
+2026-207 	2461294.64 	2026 Sep 11 0328	Electron	-	-	95	Happily Ever Faster	BlackSky Gen3-5	-	-	MAHIA	LC1A	-	-	    193	    492	 	 36.1 	   -	    -	 	-	   0.000 	   0.138 	RLABN	OS  	-	C	Sat LEO OO	Wire	-	-
+2026-208 	2461297.28 	2026 Sep 13 1849:00	Falcon 9	FT5	-	xxx/B1080.29 F688	O3b mPOWER 11/13	O3b mPOWER 11/13	-	-	CC	LC40	-	-	    140	    641	 	 16.9 	   -	    -	 	-	   0.000 	   5.100 	SPX	OS  	-	C	Sat MEO O	nasaspaceflight.com	-	-
+2026-209 	2461298.56 	2026 Sep 15 0121:07	Vega C	-	-	VV30	Sentinel-3C/Flex	Sentinel-3C/Flex	-	-	CSG	ZLV	-	-	    224	    830	 	 98.6 	   -	    -	 	-	   0.000 	   1.540 	AVIO	OS  	-	G	Sat SSO D	spaceflightnow.com	-	-
+2026-210 	2461298.77 	2026 Sep 15 0626	Zhuque-2E	2	-	Y7	Qianfan Digui 19	Qianfan Digui 19	-	-	JQ	LC43/96A	-	-	    150	    907	 	 89.0 	   -	    -	 	-	   0.000 	   2.670 	LANDSP	OS  	-	C M	Sat LEO O	nasaspaceflight.com	-	-
+2026-211 	2461299.42 	2026 Sep 15 2200	Yinli-1	-	-	Y3	Qianfan Digui 26	-	-	DFHT	ECS	LP2	-	-	    781	    788	 	 89.0 	   -	    -	 	-	   0.000 	   2.400 	DFK	OS  	-	C M	Sat LEO L	nasaspaceflight.com	-	-
+2026-212 	2461300.07 	2026 Sep 16 1333:53	Soyuz-2-1B	-	-	-	Progress M-35	Progress 7K-TGM No. 465	ISS 96P	-	GIK-5	LC31	-	-	    187	    223	 	 51.7 	   -	    -	 	-	   0.000 	   7.500 	FKA	OS  	-	G	Sat ISS O	spaceflightnow.com	-	-
+2026-A06  	2461300.24 	2026 Sep 16 1750?	Spaceship Two	-	-	VSS Unity	WK2-xxx/VG-034	Glide 11	N202VG-034	WK2	SPAM	RW16/34	SPAM	-	      -	     15	?	-	   -	    -	 	SPAM	   0.000 	   0.000 	VGX	YS  	-	VGX/Sturckow,Edgell	-	twitter.com	-	-
+2026-213 	2461300.52 	2026 Sep 17 0032	Chang Zheng 12	-	-	Y9	WHDW 25	WHDW 25	-	-	HCSLS	LC2	-	-	    180	    929	 	 50.0 	   -	    -	 	-	   0.000 	   2.000 	ZHSH/SAST	OS  	-	G M	Sat LEO P	nasaspaceflight.com	xinhuanet.com	-
+2026-214 	2461300.56 	2026 Sep 17 0129:18	Falcon 9	FT5	-	xxx/B1097.13 F689	USSF-259	SBST TH-1	-	-	VSFBS	SLC4E	-	-	    300	    300	?	 80.0 	   -	    -	 	-	   0.000 	  16.000 	SPX	OS  	-	CX/G	Sat LEO D	nasaspaceflight.com	-	-
+2026-215 	2461300.61 	2026 Sep 17 0240	Kuaizhou-11	-	-	Y3	Tianyi-51/52	Tianyi-51/52	-	-	JQ	LC43/95?	-	-	    498	    502	 	 55.0 	   -	    -	 	-	   0.000 	   0.500 	EXPACE	OS  	-	CO	Sat LEO D	nasaspaceflight.com	-	-
+2026-216 	2461301.20 	2026 Sep 17 1650?	Soyuz-2-1B	Fregat	-	-	Kosmos-2620	Glonass	-	-	GIK-1	LC43/3	-	-	     56	    222	 	 64.8 	   -	    -	 	-	   0.000 	   5.930 	FKA	OS  	-	G	Sat MEO SO	nasaspaceflight.com	-	-
+2026-217 	2461302.64 	2026 Sep 19 0322	Electron	-	-	96	Owl by the Dozen	StriX-10	-	-	MAHIA	LC1B	-	-	    174	    572	 	 38.2 	   -	    -	 	-	   0.000 	   0.150 	RLABN	OS  	-	C	Sat LEO OO	Wire	-	-
+2026-218 	2461302.95 	2026 Sep 19 1050	Chang Zheng 2D	-	-	Y104	Hongtu 2-13/16	PIESAT 2-13 to 16	-	-	JQ	LC43/94	-	-	    518	    533	 	 97.5 	   -	    -	 	-	   0.000 	   1.200 	SAST	OS  	-	G	Sat SSO L	nasaspaceflight.com	-	-
+2026-219 	2461303.57 	2026 Sep 20 0147:00	Falcon 9	FT5	-	xxx/B1093.17 F690	Starlink-425	Starlink Group 15-27	V2MO 15-27 (27 Ku)	-	VSFBS	SLC4E	-	-	    135	    271	 	 70.0 	   -	    -	 	-	   0.000 	  15.500 	SPX	OS  	-	C M	Sat LEO D	SpaceX	-	-
+2026-220 	2461303.67 	2026 Sep 20 0403	Lijian-1	-	-	Y18	Pengcheng	-	-	-	JQ	LC130	-	-	    525	    543	 	 97.5 	   -	    -	 	-	   0.000 	   1.850 	ZKYT	OS  	-	C	Sat SSO L	nasaspaceflight.com	-	-
+2026-M10  	2461303.75 	2026 Sep 20 0600	Hwasong-11Ma-1	-	-	Hypersonic RV	-	-	-	-	WONSAN	-	-	-	      -	     60	 	-	   -	  450	 	-	   0.000 	   0.000 	KPA	MS  	-	-	Test	Wire	-	-
+2026-M11  	2461303.87 	2026 Sep 20 0850	Hwasong-11Ma-1	-	-	Hypersonic RV	-	-	-	-	WONSAN	-	-	-	      -	     70	 	-	   -	  908	 	-	   0.000 	   0.000 	KPA	MS  	-	-	Test	Wire	-	-
+2026-221 	2461307.06 	2026 Sep 23 1332	Chang Zheng 8A	-	-	Y11?	WHDW 26	WHDW 26	-	-	HCSLS	LC1	-	-	    150	   1108	 	 50.0 	   -	    -	 	-	   0.000 	   6.000 	CALT	OS  	-	G M	Sat LEO O	nasaspaceflight.com	-	-
+2026-222 	2461307.87 	2026 Sep 24 0846	Chang Zheng 6A	-	-	Yxx	Yaogan 40-04	Yaogan 40-04	-	-	TYSC	LC9A	-	-	    150	    810	 	 86.0 	   -	    -	 	-	   0.000 	   2.000 	SAST	OS  	-	G	Sat LEO O	nasaspaceflight.com	-	-
+2026-223 	2461309.53 	2026 Sep 26 0039	Electron	-	-	97	Owlright,Owlright,Owlr.	StriX-12	-	-	MAHIA	LC1B	-	-	    171	    518	?	 37.9 	   -	    -	 	-	   0.000 	   0.150 	RLABN	OS  	-	C	Sat LEO OO	Wire	-	-
+2026-224 	2461310.08 	2026 Sep 26 1400	Falcon 9	FT5	-	xxx/B1100.10 F691	USSF-385	SBST R-3	-	-	VSFBS	SLC4E	-	-	    300	    300	?	 70.0 	   -	    -	 	-	   0.000 	  16.000 	SPX	OS  	-	CX/G	Sat LEO D	nasaspaceflight.com	-	-
+2026-225 	2461312.03 	2026 Sep 28 1248:59	Starship V3	-	-	B21/S41	Starship Flight 14	Ship 41	Starlink Group 31-1	-	STB	OLP2	-	-	    -40	    278	 	 30.5 	   -	    -	 	-	   0.000 	 120.000 	SPX	OS  	-	C M	Sat LEO D	nasaspaceflight.com	-	-

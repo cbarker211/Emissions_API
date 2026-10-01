@@ -11,6 +11,8 @@ from cProfile import Profile
 from pstats import Stats
 from tqdm import tqdm
 from collections import Counter
+import warnings
+warnings.filterwarnings("ignore", message="Geometry is in a geographic CRS")
 
 class build_reentry_list:
     
@@ -26,17 +28,120 @@ class build_reentry_list:
         self.session = requests.Session()
         self.latlonerror = []
         self.missing_time_count = 0
+
+        self.region_specs = {
+            "Gujarat":      ("States","name_en","Gujarat", 3),
+            "Orenburg":     ("States","name_en","Orenburg", 3),
+            "Orenburg RZ":  ("States","name_en","Orenburg", 3),
+            "B.Columbia":   ("States","name_en","British Columbia", 3),
+            "Amur":         ("States","name_en","Amur", 3),
+            "Amur, Russia": ("States","name_en","Amur", 3),
+            "Utah":         ("States","name_en","Utah", 3),
+            "Nova Scotia":  ("States","name_en","Nova Scotia", 3),
+            "Texas":        ("States","name_en","Texas", 3),
+            "Tasmania":     ("States","name_en","Tasmania", 3),
+            "Oregon":       ("States","name_en","Oregon", 3),
+            "Yukon":        ("States","name_en","Yukon", 3),
+            "Sichuan":      ("States","name_en","Sichuan", 3),
+            "I. Mongolia":  ("States","name_en","Inner Mongolia", 3),
+            "Hawaii":       ("States","name_en","Hawaii", 3),
+            "SE Hawaii":    ("States","name_en","Hawaii", 3),
+            "Tibet":        ("States","name_en","Tibet", 3),
+            "Alaska":       ("States","name_en","Alaska", 3),
+            "Baja":         ("Mexico","st_name",["Baja California Norte","Baja California Sur"], 3),
+            "Kazakhstan":   ("Countries","NAME","Kazakhstan", 3),
+            "KRZ":          ("Countries","NAME","Kazakhstan", 3),
+            "Kaz.":         ("Countries","NAME","Kazakhstan", 3),
+            "Kaz":          ("Countries","NAME","Kazakhstan", 3),
+            "Mexico":       ("Countries","NAME","Mexico", 3),
+            "S Africa":     ("Countries","NAME","South Africa", 3),
+            "N Zealand":    ("Countries","NAME","New Zealand", 3),
+            "China":        ("Countries","NAME","China", 3),
+            "Zhongguo":     ("Countries","NAME","China", 3),
+            "Greenland":    ("Countries","NAME","Greenland", 3),
+            "Saudi Ar.":    ("Countries","NAME","Saudi Arabia", 3),
+            "Saudi":        ("Countries","NAME","Saudi Arabia", 3),
+            "Saudi Arabia": ("Countries","NAME","Saudi Arabia", 3),
+            "Zimbabwe":     ("Countries","NAME","Zimbabwe", 3),
+            "Indonesia":    ("Countries","NAME","Indonesia", 3),
+            "Russia":       ("Countries","NAME","Russia", 3),
+            "RF":           ("Countries","NAME","Russia", 3),
+            "USA":          ("Countries","NAME","United States of America", 3),
+            "Morocco":      ("Countries","NAME","Morocco", 3),
+            "Uruguay":      ("Countries","NAME","Uruguay", 3),
+            "Bolivia":      ("Countries","NAME","Bolivia", 3),
+            "Brazil":       ("Countries","NAME","Brazil", 3),
+            "Mongolia":     ("Countries","NAME","Mongolia", 3),
+            "Australia":    ("Countries","NAME","Australia", 3),
+            "Spain":        ("Countries","NAME","Spain", 3),
+            "UK":           ("Countries","NAME","United Kingdom", 3),
+            "Argentina":    ("Countries","NAME","Argentina", 3),  
+            "Eastern US":   ("Countries", "NAME", "United States of America", 3, (-90, 24, -66, 50)),
+            "E USA":        ("Countries", "NAME", "United States of America", 3, (-90, 24, -66, 50)), 
+            "New Guinea":   ("Countries", "NAME", ["Papua New Guinea", "Indonesia"], 4, (130.5, -11, 151, 0)), 
+            "Spitzbergen":  ("Countries", "NAME", "Norway", 3, (10, 74, 35, 81)),
+            "C. Africa":    ("Countries", "SUBREGION", "Middle Africa", 3),
+            "Africa":       ("Countries", "CONTINENT", "Africa", 4),
+            "Europe":       ("Countries", "CONTINENT", "Europe", 4, (-25, 34, 45, 72)),
+            "Gulf":         ("Gulf of Mexico","name","Gulf of Mexico", 4),
+            "Indian O":     ("Indian Ocean","name","Indian Ocean", 4),
+            "Indian Ocean": ("Indian Ocean","name","Indian Ocean", 4),
+            "Indian O.":    ("Indian Ocean","name","Indian Ocean", 4),
+            "IOR":          ("Indian Ocean","name","Indian Ocean", 4), 
+            "Bay of Bengal":("Indian Ocean","name","Bay of Bengal", 4),
+            "Pacific":      ("Pacific",  None, None, 4),
+            "PO":           ("Pacific",  None, None, 4),
+            "POR":          ("Pacific",  None, None, 4),
+            "POR SEA":      ("Pacific",  None, None, 4),
+            "POR MAR":      ("Pacific",  None, None, 4),
+            "POR (Sank)":   ("Pacific",  None, None, 4),
+            "POR (Sea)":    ("Pacific",  None, None, 4),
+            "N Pacific":    ("Pacific","name","North Pacific Ocean", 4),
+            "S POR":        ("Pacific","name","South Pacific Ocean", 4),
+            "S Pacific":    ("Pacific","name","South Pacific Ocean", 4),
+            "S Pac.":       ("Pacific","name","South Pacific Ocean", 4),
+            "Philipp.Sea":  ("Pacific","name","Philippine Sea", 4),
+            "S of Tasmania":("Pacific","name","Tasman Sea", 4),
+            "Atlantic":     ("Atlantic", None, None, 4),
+            "AO":           ("Atlantic", None, None, 4),
+            "AOR":          ("Atlantic", None, None, 4),
+            "N Atlantic":   ("Atlantic","name","North Atlantic Ocean", 4),
+            "S AOR":        ("Atlantic","name","South Atlantic Ocean", 4),
+            "S Atl":        ("Atlantic","name","South Atlantic Ocean", 4),
+            "G of Guinea":  ("Atlantic","name","Gulf of Guinea", 4),
+            "Caribbean":    ("Atlantic","name","Caribbean Sea", 4),
+            "Black Sea":    ("Black Sea","name","Black Sea", 4),
+            "Aral Sea":     ("Aral Sea","name","Aral Sea", 4),
+            "Barents":      ("Barentz Sea","name","Barentsz Sea", 4),
+            "SW AOR":       ("Atlantic",     None, None, 4, (-180, -90,   0,   0)),
+            "E Pacific":    ("Pacific",      None, None, 4, (-180, -90,   0,  90)),  # lon boundary is at 180W/E
+            "SE Pacific":   ("Pacific",      None, None, 4, (-180, -90,   0,   0)),
+            "W POR":        ("Pacific",      None, None, 4, (   0, -90, 180,  90)),
+            "SW POR":       ("Pacific",      None, None, 4, (   0, -90, 180,   0)),
+            "NE RU/NW POR": ("Pacific",      None, None, 4, (   0,   0, 180,  90)),
+            "SE IOR":       ("Indian Ocean", None, None, 4, (  80, -90, 180,   0)),  # lon boundary is at 80E
+            "SW IOR":       ("Indian Ocean", None, None, 4, (   0, -90,  80,   0)),  # lon boundary is at 80E
+            "S of Aus":     ("Indian Ocean", None, None, 4, ( 113, -90, 147, -35)),
+            "S of Austr.":  ("Indian Ocean", None, None, 4, ( 113, -90, 147, -35)),
+            "S of S Afr.":  ("Indian Ocean", None, None, 4, (  20, -90,  35, -35)),
+            "IOR/SO":       ("Indian Ocean", None, None, 4, (  20, -90, 147, -40)),
+        }
         
         # Import the shapefiles.
         if use_gpd == True:
 
             shapefiles = {
-                "Gulf of Mexico": "./databases/reentry/iho/gulf_of_mexico/iho.shp",
-                "Indian Ocean":   "./databases/reentry/iho/indian_ocean/iho.shp",
-                "Pacific":        "./databases/reentry/iho/pacific/iho.shp",
-                "Atlantic":       "./databases/reentry/iho/atlantic/iho.shp",
-                "Countries":      "./databases/reentry/ne_110m_admin_0_countries/ne_110m_admin_0_countries.shp",
-                "States":         "./databases/reentry/ne_50m_admin_1_states_provinces/ne_50m_admin_1_states_provinces.shp"
+                "Pacific":        "./databases/reentry/shapefiles/pacific/iho.shp",
+                "Atlantic":       "./databases/reentry/shapefiles/atlantic/iho.shp",
+                "Gulf of Mexico": "./databases/reentry/shapefiles/gulf_of_mexico/iho.shp",
+                "Indian Ocean":   "./databases/reentry/shapefiles/indian_ocean/iho.shp",
+                "Southern":       "./databases/reentry/shapefiles/southern/iho.shp",
+                "Black Sea":      "./databases/reentry/shapefiles/black_sea/iho.shp",
+                "Aral Sea":       "./databases/reentry/shapefiles/aral_sea/worldlakes.shp",
+                "Barentz Sea":    "./databases/reentry/shapefiles/barentsz_sea/iho.shp",
+                "Countries":      "./databases/reentry/shapefiles/ne_50m_admin_0_countries/ne_50m_admin_0_countries.shp",
+                "States":         "./databases/reentry/shapefiles/ne_50m_admin_1_states_provinces/ne_50m_admin_1_states_provinces.shp",
+                "Mexico":         "./databases/reentry/shapefiles/mexico_states/mexico_states.shp",
             }
 
             self.loaded_shapefiles = {}
@@ -44,156 +149,42 @@ class build_reentry_list:
                 gdf = gpd.read_file(path, engine="pyogrio")
                 self.loaded_shapefiles[name] = gdf
 
-            self.shapefile_map = {
-                "Gujarat":      (self.loaded_shapefiles["States"][self.loaded_shapefiles["States"]["name_en"] == "Gujarat"], 3),
-                "Orenburg":     (self.loaded_shapefiles["States"][self.loaded_shapefiles["States"]["name_en"] == "Orenburg"], 3),
-                "Orenburg RZ":  (self.loaded_shapefiles["States"][self.loaded_shapefiles["States"]["name_en"] == "Orenburg"], 3),
-                "B.Columbia":   (self.loaded_shapefiles["States"][self.loaded_shapefiles["States"]["name_en"] == "British Columbia"], 3),
-                "Amur":         (self.loaded_shapefiles["States"][self.loaded_shapefiles["States"]["name_en"] == "Amur"], 3),
-                "Amur, Russia": (self.loaded_shapefiles["States"][self.loaded_shapefiles["States"]["name_en"] == "Amur"], 3),
-                "Utah":         (self.loaded_shapefiles["States"][self.loaded_shapefiles["States"]["name_en"] == "Utah"], 3),
-                "Nova Scotia":  (self.loaded_shapefiles["States"][self.loaded_shapefiles["States"]["name_en"] == "Nova Scotia"], 3),
-                "Texas":        (self.loaded_shapefiles["States"][self.loaded_shapefiles["States"]["name_en"] == "Texas"], 3),
-                "Tasmania":     (self.loaded_shapefiles["States"][self.loaded_shapefiles["States"]["name_en"] == "Tasmania"], 3),
-                "Oregon":       (self.loaded_shapefiles["States"][self.loaded_shapefiles["States"]["name_en"] == "Oregon"], 3),
-                "Yukon":        (self.loaded_shapefiles["States"][self.loaded_shapefiles["States"]["name_en"] == "Yukon"], 3),
-                "Sichuan":      (self.loaded_shapefiles["States"][self.loaded_shapefiles["States"]["name_en"] == "Sichuan"], 3),
-                "I. Mongolia":  (self.loaded_shapefiles["States"][self.loaded_shapefiles["States"]["name_en"] == "Inner Mongolia"], 3),
-                "Hawaii":       (self.loaded_shapefiles["States"][self.loaded_shapefiles["States"]["name_en"] == "Hawaii"], 3),
-                "SE Hawaii":    (self.loaded_shapefiles["States"][self.loaded_shapefiles["States"]["name_en"] == "Hawaii"], 3),
-                "Tibet":        (self.loaded_shapefiles["States"][self.loaded_shapefiles["States"]["name_en"] == "Tibet"], 3),
-                "Alaska":       (self.loaded_shapefiles["States"][self.loaded_shapefiles["States"]["name_en"] == "Alaska"], 3),
-                "Kazakhstan":   (self.loaded_shapefiles["Countries"][self.loaded_shapefiles["Countries"]["NAME"] == "Kazakhstan"], 3),
-                "KRZ":          (self.loaded_shapefiles["Countries"][self.loaded_shapefiles["Countries"]["NAME"] == "Kazakhstan"], 3),
-                "Kaz.":         (self.loaded_shapefiles["Countries"][self.loaded_shapefiles["Countries"]["NAME"] == "Kazakhstan"], 3),
-                "Kaz":          (self.loaded_shapefiles["Countries"][self.loaded_shapefiles["Countries"]["NAME"] == "Kazakhstan"], 3),
-                "Mexico":       (self.loaded_shapefiles["Countries"][self.loaded_shapefiles["Countries"]["NAME"] == "Mexico"], 3),
-                "S Africa":     (self.loaded_shapefiles["Countries"][self.loaded_shapefiles["Countries"]["NAME"] == "South Africa"], 3),
-                "N Zealand":    (self.loaded_shapefiles["Countries"][self.loaded_shapefiles["Countries"]["NAME"] == "New Zealand"], 3),
-                "China":        (self.loaded_shapefiles["Countries"][self.loaded_shapefiles["Countries"]["NAME"] == "China"], 3),
-                "Zhongguo":     (self.loaded_shapefiles["Countries"][self.loaded_shapefiles["Countries"]["NAME"] == "China"], 3),
-                "Greenland":    (self.loaded_shapefiles["Countries"][self.loaded_shapefiles["Countries"]["NAME"] == "Greenland"], 3),
-                "Saudi Ar.":    (self.loaded_shapefiles["Countries"][self.loaded_shapefiles["Countries"]["NAME"] == "Saudi Arabia"], 3),
-                "Saudi":        (self.loaded_shapefiles["Countries"][self.loaded_shapefiles["Countries"]["NAME"] == "Saudi Arabia"], 3),
-                "Saudi Arabia": (self.loaded_shapefiles["Countries"][self.loaded_shapefiles["Countries"]["NAME"] == "Saudi Arabia"], 3),
-                "Zimbabwe":     (self.loaded_shapefiles["Countries"][self.loaded_shapefiles["Countries"]["NAME"] == "Zimbabwe"], 3),
-                "Indonesia":    (self.loaded_shapefiles["Countries"][self.loaded_shapefiles["Countries"]["NAME"] == "Indonesia"], 3),
-                "Russia":       (self.loaded_shapefiles["Countries"][self.loaded_shapefiles["Countries"]["NAME"] == "Russia"], 3),
-                "RF":           (self.loaded_shapefiles["Countries"][self.loaded_shapefiles["Countries"]["NAME"] == "Russia"], 3),
-                "USA":          (self.loaded_shapefiles["Countries"][self.loaded_shapefiles["Countries"]["NAME"] == "United States of America"], 3),
-                "Morocco":      (self.loaded_shapefiles["Countries"][self.loaded_shapefiles["Countries"]["NAME"] == "Morocco"], 3),
-                "Uruguay":      (self.loaded_shapefiles["Countries"][self.loaded_shapefiles["Countries"]["NAME"] == "Uruguay"], 3),
-                "Bolivia":      (self.loaded_shapefiles["Countries"][self.loaded_shapefiles["Countries"]["NAME"] == "Bolivia"], 3),
-                "Brazil":       (self.loaded_shapefiles["Countries"][self.loaded_shapefiles["Countries"]["NAME"] == "Brazil"], 3),
-                "Mongolia":     (self.loaded_shapefiles["Countries"][self.loaded_shapefiles["Countries"]["NAME"] == "Mongolia"], 3),
-                "Australia":    (self.loaded_shapefiles["Countries"][self.loaded_shapefiles["Countries"]["NAME"] == "Australia"], 3),
-                "Spain":        (self.loaded_shapefiles["Countries"][self.loaded_shapefiles["Countries"]["NAME"] == "Spain"], 3),
-                "UK":           (self.loaded_shapefiles["Countries"][self.loaded_shapefiles["Countries"]["NAME"] == "United Kingdom"], 3),
-                "Argentina":    (self.loaded_shapefiles["Countries"][self.loaded_shapefiles["Countries"]["NAME"] == "Argentina"], 3),                
-                "Gulf":         (self.loaded_shapefiles["Gulf of Mexico"][self.loaded_shapefiles["Gulf of Mexico"]["name"] == "Gulf of Mexico"], 4),
-                "Indian O":     (self.loaded_shapefiles["Indian Ocean"][self.loaded_shapefiles["Indian Ocean"]["name"] == "Indian Ocean"], 4),
-                "Indian Ocean": (self.loaded_shapefiles["Indian Ocean"][self.loaded_shapefiles["Indian Ocean"]["name"] == "Indian Ocean"], 4),
-                "Indian O.":    (self.loaded_shapefiles["Indian Ocean"][self.loaded_shapefiles["Indian Ocean"]["name"] == "Indian Ocean"], 4),
-                "IOR":          (self.loaded_shapefiles["Indian Ocean"][self.loaded_shapefiles["Indian Ocean"]["name"] == "Indian Ocean"], 4), 
-                "Bay of Bengal":(self.loaded_shapefiles["Indian Ocean"][self.loaded_shapefiles["Indian Ocean"]["name"] == "Bay of Bengal"], 4),
-                "N Pacific":    (self.loaded_shapefiles["Pacific"][self.loaded_shapefiles["Pacific"]["name"] == "North Pacific Ocean"], 4),
-                "S POR":        (self.loaded_shapefiles["Pacific"][self.loaded_shapefiles["Pacific"]["name"] == "South Pacific Ocean"], 4),
-                "S Pacific":    (self.loaded_shapefiles["Pacific"][self.loaded_shapefiles["Pacific"]["name"] == "South Pacific Ocean"], 4),
-                "S Pac.":       (self.loaded_shapefiles["Pacific"][self.loaded_shapefiles["Pacific"]["name"] == "South Pacific Ocean"], 4),
-                "Philipp.Sea":  (self.loaded_shapefiles["Pacific"][self.loaded_shapefiles["Pacific"]["name"] == "Philippine Sea"], 4),
-                "S of Tasmania":(self.loaded_shapefiles["Pacific"][self.loaded_shapefiles["Pacific"]["name"] == "Tasman Sea"], 4),
-                "N Atlantic":   (self.loaded_shapefiles["Atlantic"][self.loaded_shapefiles["Atlantic"]["name"] == "North Atlantic Ocean"], 4),
-                "S AOR":        (self.loaded_shapefiles["Atlantic"][self.loaded_shapefiles["Atlantic"]["name"] == "South Atlantic Ocean"], 4),
-                "S Atl":        (self.loaded_shapefiles["Atlantic"][self.loaded_shapefiles["Atlantic"]["name"] == "South Atlantic Ocean"], 4),
-                "G of Guinea":  (self.loaded_shapefiles["Atlantic"][self.loaded_shapefiles["Atlantic"]["name"] == "Gulf of Guinea"], 4),
-            }
-        else:
-            self.shapefile_map = {
-                "Gujarat":      (None, 3),
-                "Orenburg":     (None, 3),
-                "Orenburg RZ":  (None, 3),
-                "B.Columbia":   (None, 3),
-                "Amur":         (None, 3),
-                "Amur, Russia": (None, 3),
-                "Utah":         (None, 3),
-                "Nova Scotia":  (None, 3),
-                "Texas":        (None, 3),
-                "Tasmania":     (None, 3),
-                "Oregon":       (None, 3),
-                "Yukon":        (None, 3),
-                "Sichuan":      (None, 3),
-                "I. Mongolia":  (None, 3),
-                "Hawaii":       (None, 3),
-                "SE Hawaii":    (None, 3),
-                "Tibet":        (None, 3),
-                "Alaska":       (None, 3),
-                "Kazakhstan":   (None, 3),
-                "KRZ":          (None, 3),
-                "Kaz.":         (None, 3),
-                "Kaz":          (None, 3),
-                "Mexico":       (None, 3),
-                "S Africa":     (None, 3),
-                "N Zealand":    (None, 3),
-                "China":        (None, 3),
-                "Zhongguo":     (None, 3),
-                "Greenland":    (None, 3),
-                "Saudi Ar.":    (None, 3),
-                "Saudi":        (None, 3),
-                "Saudi Arabia": (None, 3),
-                "Zimbabwe":     (None, 3),
-                "Indonesia":    (None, 3),
-                "Russia":       (None, 3),
-                "RF":           (None, 3),
-                "USA":          (None, 3),
-                "Morocco":      (None, 3),
-                "Uruguay":      (None, 3),
-                "Bolivia":      (None, 3),
-                "Brazil":       (None, 3),
-                "Mongolia":     (None, 3),
-                "Australia":    (None, 3),
-                "Spain":        (None, 3),
-                "UK":           (None, 3),
-                "Argentina":    (None, 3),
-                "Gulf":         (None, 4),
-                "Indian O":     (None, 4),
-                "Indian Ocean": (None, 4),
-                "Indian O.":    (None, 4),
-                "IOR":          (None, 4),
-                "S POR":        (None, 4),
-                "N Pacific":    (None, 4),
-                "S Pacific":    (None, 4),
-                "S Pac.":       (None, 4),
-                "N Atlantic":   (None, 4),
-                "S AOR":        (None, 4),
-                "S Atl":        (None, 4),
-                "Bay of Bengal":(None, 4),
-                "Philipp.Sea":  (None, 4),
-                "S of Tasmania":(None, 4),
-                "G of Guinea":  (None, 4),
-            }
+            def build_geom(layer, col, val, _loc, bbox=None):
+                gdf = self.loaded_shapefiles[layer]
+                if col is not None:
+                    gdf = gdf[gdf[col].isin(val if isinstance(val, list) else [val])]
+                if bbox:
+                    gdf = gdf.clip(bbox)
+                return gdf
 
+            self.region_geoms = {k: build_geom(*spec) for k, spec in self.region_specs.items()}
+
+            empty = [k for k, g in self.region_geoms.items() if g.empty or g.geometry.is_empty.all()]
+            if empty:
+                raise ValueError(f"No geometry matched for: {empty}")
+        
         self.provided_coords = {
             "GM 86.2W 29.7N": (29.7, -86.2, 1),     # Gulf of Mexico named coordinates.
-            "Alashan": (38.833, 105.95, 2),         # Landing expected east of Jiuquan launch site (this was actually launched from Wenchang).
+            "Alashan":      (38.833, 105.95, 2),    # Landing expected east of Jiuquan launch site (this was actually launched from Wenchang).
                                                         # Assuming that Alashan refers to Helen Shan Mountain (new name for Alashan Mountain).
                                                         # https://space.skyrocket.de/doc_sdat/rcs-fc-sc.htm
                                                         # https://planet4589.org/space/jsr/news.778
                                                         # https://www.peakbagger.com/peak.aspx?pid=10693
                                                         # https://www.nasaspaceflight.com/2020/05/china-next-generation-crew-capsule/
-            "Jiuquan": (41.3, 100.3, 2),            # This refers to the Chinese launch center, sources say it landed 'in the desert near Jiuquan', and 'in China’s Inner Mongolia autonomous region'.
+            "Jiuquan":      (41.3, 100.3, 2),       # This refers to the Chinese launch center, sources say it landed 'in the desert near Jiuquan', and 'in China’s Inner Mongolia autonomous region'.
                                                         # Using lat/lon for Jiuquan launch site.
                                                         # https://discosweb.esoc.esa.int/launch-sites/21
                                                         # https://nssdc.gsfc.nasa.gov/nmc/spacecraft/display.action?id=2020-027A
                                                         # https://space.skyrocket.de/doc_sdat/xzf-sc.htm 
                                                         # https://spaceflightnow.com/2020/05/08/chinas-next-generation-crew-spacecraft-lands-after-unpiloted-test-flight/ 
-            "Dongfeng": (41.3, 100.3, 2),           # Same as Jiuquan.
-            "LOPNOR RW05": (40.78, 89.27, 2),       # Reported test flight of a Chinese reusable experimental spacecraft.
+            "Dongfeng":     (41.3, 100.3, 2),       # Same as Jiuquan.
+            "LOPNOR RW05":  (40.78, 89.27, 2),      # Reported test flight of a Chinese reusable experimental spacecraft.
                                                         # Runway 05/22 at Lop Nor air base in Xinjiang (https://planet4589.org/space/gcat/data/tables/lp.html).
                                                         # https://www.seradata.com/china-launches-own-mini-spaceplane-reusable-spacecraft-using-long-march-2f 
                                                         # https://twitter.com/planet4589/status/1302486141090885632
-            "Lop Nor": (40.78, 89.27, 2),           # Same as LOPNOR. 
-            "Koonibba": (-31.886, 133.449, 2),      # Australian Test Range
-            "Jacklyn": (27.888, -74.153, 2),        # https://x.com/spaceOFFSHORE/status/1878177979974775139/photo/1
+            "Lop Nor":      (40.78, 89.27, 2),      # Same as LOPNOR. 
+            "Koonibba":     (-31.886, 133.449, 2),  # Australian Test Range
+            "Jacklyn":      (27.888, -74.153, 2),   # https://x.com/spaceOFFSHORE/status/1878177979974775139/photo/1
             "WSSH":         (32.95, -106.41, 2),    
             "WSMR RW17":    (32.40, -106.53, 2),    # White Sands Missile Range from sites.tsv
             "Splash":       (-36.57, 177.63, 2),    # This is the Electron failed helicopter stage 1 recovery in May 22.
@@ -204,10 +195,9 @@ class build_reentry_list:
             "KSC SLF":      (28.61, -80.69, 2),     # https://www.world-airport-codes.com/united-states/nasa-shuttle-landing-facility-69738.html
                                                         # https://www.spaceforce.mil/News/Article/3217077/x-37b-orbital-test-vehicle-concludes-sixth-successful-mission/
             "S Pole":       (-90.0, 0.0, 2),        # South Pole (obviously...)
-            "Africa":       (16.4, 18.6, 2),        # Pioneer 3 re-entered over Africa
-                                                        # https://web.archive.org/web/20200410070534/https://nssdc.gsfc.nasa.gov/nmc/spacecraft/display.action?id=1958-008A
             "Akmolinsk SW": (50.218, 69.910, 2),    # Kosmos 10 "Landed 150 km SW of Akmolinsk." https://www.orbitalfocus.uk/Diaries/Zenit/Zenit-2.php
             "Arkalyk":      (50.249, 66.902, 2),    # Arkalyk
+            "SE Arkalyk":   (49.61, 67.90, 2),      # 100 km SE of Arkalyk
             "Wisconsin":    (44.099, -87.658, 2),   # https://www.smithsonianmag.com/air-space-magazine/when-sputnik-crashed-wisconsin-180952388/
             "Uralsk W 130": (51.224, 51.373, 2),    # Uralsk
             "Kustanai":     (53.2, 63.62, 2),       # Kostanay
@@ -221,7 +211,10 @@ class build_reentry_list:
             "Irkutsk":      (52.29, 104.29, 2),
             "UTTR":         (41, -113.25, 2),      # Utah Test and Training Range
             "Tashkent":     (41.31, 69.28, 2),     # Tashkent, Uzbekistan
-            "GTsP-4":       (48.5000, 45.8000, 2), # Kapustin Yar, coords from sites.tsv
+            "GTsP-4":       (48.50, 45.80, 2),     # Kapustin Yar, coords from sites.tsv
+            "Eniwetok":     (11.50 , 162.25, 2),   # Enewetak Atoll, coords from sites.tsv
+            "Canary Is.":   (28.3, -15.6, 2),
+            "KB":           (46.0, 63.0, 2),       # Not sure why this is KB, but this is the group for GIK-5 / NIIP-5 at Baikonur.
         }
 
         self.site_codes = {
@@ -229,27 +222,6 @@ class build_reentry_list:
             "VSFB": "V",
             "EAFB": "EAFB",
             "STB": "STB",
-        }
-
-        self.OCEAN_REGION_BOUNDS = {
-            "Atlantic":      ("Atlantic",      -180, 180, None, None),
-            "AO":            ("Atlantic",      -180, 180, None, None),
-            "AOR":           ("Atlantic",      -180, 180, None, None),
-            "SW AOR":        ("Atlantic",      -180, 0,   None, 0),
-            "Pacific":       ("Pacific",       -180, 180, None, None),
-            "PO":            ("Pacific",       -180, 180, None, None),
-            "POR":           ("Pacific",       -180, 180, None, None),
-            "POR SEA":       ("Pacific",       -180, 180, None, None),
-            "POR MAR":       ("Pacific",       -180, 180, None, None),
-            "POR (Sank)":    ("Pacific",       -180, 180, None, None),
-            "POR (Sea)":     ("Pacific",       -180, 180, None, None),
-            "E Pacific":     ("Pacific",       -180, 0,   None, None), # lon boundary is at 180W/E
-            "SE Pacific":    ("Pacific",       -180, 0,   None,    0),
-            "W POR":         ("Pacific",       0,    180, None, None),
-            "SW POR":        ("Pacific",       0,    180, None,    0),
-            "NE RU/NW POR":  ("Pacific",       0,    180, 0,    None),
-            "SE IOR":        ("Indian Ocean",  80,   180, None, 0),   # lon boundary is at 80E
-            "SW IOR":        ("Indian Ocean",  0,    80,  None, 0),   # lon boundary is at 80E
         }
 
         url = "https://planet4589.org/space/gcat/tsv/tables/lp.tsv"
@@ -314,23 +286,19 @@ class build_reentry_list:
         """        
 
         total_reentries = len(self.df_reentry)
-        non_geo_mask = self.df_reentry["lat"].isna() & self.df_reentry["lon"].isna()
-        non_geo_count = non_geo_mask.sum()
-        geolocated_mass = ((self.df_reentry.loc[~non_geo_mask, "abl_mass"] + self.df_reentry.loc[~non_geo_mask, "other_mass"]).sum())
+        non_geo_count = len(self.latlonerror)
+        geo_percent_all =  non_geo_count  / total_reentries * 100
 
         total_mass_array = self.df_reentry["abl_mass"] + self.df_reentry["other_mass"]
         total_mass = total_mass_array.sum()
         non_mass_mask = total_mass_array == 0
         non_mass_count = non_mass_mask.sum()
-
-        geo_percent_all =  non_geo_count  / total_reentries * 100
         mass_percent_all = non_mass_count / total_reentries * 100
-        geolocated_mass_percent = geolocated_mass / total_mass * 100
 
         data = {'Property':  ['Total Reentries', 'Total mass [Gg]','Non-geolocated Objects','Non-geolocated Objects [%]',
-                              'Objects with no Mass','Objects with no Mass [%]','Geolocated Mass'],
+                              'Objects with no Mass','Objects with no Mass [%]'],
                 'Value':     [int(total_reentries), total_mass*1e-6, int(non_geo_count), geo_percent_all,
-                              int(non_mass_count), mass_percent_all, geolocated_mass_percent]}
+                              int(non_mass_count), mass_percent_all]}
         
         df = pd.DataFrame(data)
         df_rounded = df.round(1)
@@ -387,8 +355,8 @@ class build_reentry_list:
             location(int) : A toggle for whether the location was
                                 1 - Lat/Lon Provided
                                 2 - Launch Site / Named Location
-                                3 - Political Region
-                                4 - Ocean/Continent
+                                3 - Political Region (Country, State, Province)
+                                4 - Natural Region (Ocean, Landmass, Continent)
                                 5 - Falcon Reusable
                                 6 - Inclination Bounded Random
         """        
@@ -398,16 +366,19 @@ class build_reentry_list:
         def sample_within_region(region, lat_range=(-inc, inc), lon_range=(-180, 180)):
 
             band = region.clip((lon_range[0], lat_range[0], lon_range[1], lat_range[1]))
-            coords = band.sample_points(1).get_coordinates()
+            if band.empty or band.geometry.is_empty.all():
+                print(f"Inc band misses region: {jsr_id} {jsr_name} {latlonstr} inc={inc}")
+                band = region
+
+            row = band.sample(1, weights=band.area)
+            coords = row.sample_points(1).get_coordinates()
             lon, lat = coords["x"].values[0], coords["y"].values[0]
             return lat, lon
         
-        if latlonstr in self.shapefile_map:
-            region, location = self.shapefile_map[latlonstr]
-            if use_gpd == False:
-                pass
-            else:
-                lat, lon = sample_within_region(region, lat_range=(-inc, inc))
+        if latlonstr in self.region_specs:
+            location = self.region_specs[latlonstr][3] # Get the location tag.
+            if use_gpd:
+                lat, lon = sample_within_region(self.region_geoms[latlonstr], lat_range=(-inc, inc))
 
         # Missing location - 6
         elif latlonstr in ["-","","LEO", "CLO"]:
@@ -426,27 +397,8 @@ class build_reentry_list:
                 lon = round(np.random.uniform(-180, 180),2)
                 location = 6
 
-        # Political Region - 3
-        elif latlonstr in ["E USA", "SE Arkalyk", "Canary Is.", "New Guinea", "Caribbean", 
-                           "Eastern US", "Spitzbergen", "Eniwetok", "KB", "Baja", "C. Africa"]:
-            location = 3
-
-        # Ocean/Continent - 4 
-        elif latlonstr in self.OCEAN_REGION_BOUNDS:
-            location = 4
-            if use_gpd == False:
-                pass
-            else:
-                region_key, lon_min, lon_max, lat_min, lat_max = self.OCEAN_REGION_BOUNDS[latlonstr]
-                lat_min = max(-inc, lat_min) if lat_min is not None else -inc
-                lat_max = min( inc, lat_max) if lat_max is not None else  inc
-                band = self.loaded_shapefiles[region_key].clip((lon_min, lat_min, lon_max, lat_max))
-                coords = band.sample_points(1).get_coordinates()
-                lon, lat = coords["x"].values[0], coords["y"].values[0]
-
-        elif latlonstr in ["S Ocean", "S Oc.", "S OCean", "Antarctic", "Arctic",              # Polar
-                           "S of Aus", "S of Austr.","S of S Afr.", "Aral Sea", "Europe",     # Other
-                           "Black Sea",  "Barents", "IOR/SO", "Ocean"]:                       # Other
+        # Natural Region - 4
+        elif latlonstr in ["S Ocean", "S Oc.", "S OCean", "Antarctic", "Arctic", "Ocean"]:
             location = 4
 
             # Polar
@@ -459,17 +411,32 @@ class build_reentry_list:
                     lat = -inc
                 elif latlonstr == "Antarctic":
                     lat = round(np.random.uniform(-90, min(-60, -inc)), 2)
-                else:  # Arctic
+                elif latlonstr == "Arctic":
                     lat = round(np.random.uniform(max(66, inc), 90), 2)
 
-            #elif latlonstr == "Ocean":
-            # This is some Electron and Falcon 9 re-entries. 
-            # "Ocean": (-42.86, 177.87, 2),
-            # Electron Stage 1 (rcat) is occasionally recovered in the ocean.
-            # From https://spaceflightnow.com/2020/11/05/rocket-lab-to-attempt-booster-recovery-on-next-mission/:
-            #   Recovery vessels stationed near the booster’s splashdown zone around 250 miles (400 kilometers) 
-            #   south of the launch site will move in to secure the first stage and hoist it onto a ship for return to New Zealand.
-            # Geolocating 400km south of launch site.
+            # Ocean landings (Electron and Falcon 9)
+            elif latlonstr == "Ocean":
+
+                if jsr_name == "Electron Stage 1":
+                    # Electron Stage 1 (rcat) is occasionally recovered in the ocean.
+                    # From https://spaceflightnow.com/2020/11/05/rocket-lab-to-attempt-booster-recovery-on-next-mission/:
+                    # Recovery vessels stationed near the booster’s splashdown zone around 250 miles (400 kilometers) 
+                    # south of the launch site will move in to secure the first stage and hoist it onto a ship for return to New Zealand.
+                    # Geolocating 400km south of launch site.
+                    lat, lon = -42.86, 177.87
+
+                elif jsr_name == "Falcon 9 Stage 1 V1.1":
+                    # Setting to the same coords as used in the other falcon functions.
+                    site_idx = np.where(self.dsl["COSPAR_ID"] == jsr_id)[0]
+                    site_name = self.dsl["Site"].values[site_idx[0]]
+                    # Kennedy Space Center (ETR)
+                    if site_name == "Cape Canaveral":
+                        lat = 34
+                        lon = -75  
+                    # Vandenberg
+                    elif site_name == "Vandenberg Space Force Base":
+                        lat = 30
+                        lon = -120
 
         # Lat/Lon Provided, Launch Site, or Named Location - 1-2
         elif latlonstr in self.provided_coords:
@@ -557,8 +524,12 @@ class build_reentry_list:
                     elif "S" in lat_data[-1]:
                         lat = np.float64((lat_data[0]) + str(np.float64(lat_data[1].replace("S",""))/60))*-1
 
+        if lat == 0.0 and lon == 0.0:
+            print("Re-entry location is 0.0")
         if lat is None or lon is None or location == -1:
             self.latlonerror.append(latlonstr)
+            lat = 0.0
+            lon = 0.0
         else:
             lat = np.float64(lat)
             lon = np.float64(lon)

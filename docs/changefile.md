@@ -60,6 +60,7 @@ This major update contains a range of changes to make the data more consistent w
 - Now including NOTS EV1 as this is a spy satellite, not an anti-satellite weapon.
 - Extracting launch organization data. 
 - 2024 Simorgh launch changed to "3" variant.
+- Now using the NOx emission profile derived from SABRE measurements in Barker (2026).
 
 ## Re-entries
 - Changes to re-entry dry mass due to changes to rocket database.

@@ -38,7 +38,7 @@ def calculate_nox_ei(height):
     ei_sec_nox = np.zeros_like(height)
 
     for i, h in enumerate(height):
-        ei_sec_nox[i] = 33 * np.exp((-0.26)*h)
+        ei_sec_nox[i] = 33 * np.exp((-0.15)*h)
     
     return ei_sec_nox 
 

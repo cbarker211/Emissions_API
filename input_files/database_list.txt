@@ -1,22 +1,10 @@
 All databases are in the databases/ folder.
 Generated here:
-    - launch_activity_data_2020-2022.nc
-    - reentry_activity_data_2020-2022.nc
-    - rocket_attributes_2020-2022.nc
-    - reentry/DISCOSweb/discosweb_reentries_2020-2022.nc
-Online databases:
-    - reentry/General_SpaceX_Map_Raul.kml               https://www.google.com/maps/d/viewer?mid=1wvgFIPuOmI8da9EIB88tHo9vamo&ll=35.65567513480002%2C-102.24070473358057&z=4 
-    - reentry/AerospaceCorp/AerospaceCorp_Reentries.csv https://aerospace.org/reentries 
-    - reentry/GOaS_v1_20211214                          https://www.marineregions.org/sources.php#goas
-    - reentry/ne_110m_admin_0_countries                 https://www.naturalearthdata.com/downloads/110m-cultural-vectors/110m-admin-0-countries/ 
-    - reentry/ne_50m_admin_1_states_provinces           https://www.naturalearthdata.com/downloads/10m-cultural-vectors/10m-admin-1-states-provinces/ 
-Imported from website:
-    - GCAT
-        - https://planet4589.org/space/gcat/data/cat/auxcat.html
-        - https://planet4589.org/space/gcat/data/cat/deepcat.html 
-        - https://planet4589.org/space/gcat/data/cat/ecat.html 
-        - https://planet4589.org/space/gcat/data/cat/ftocat.html 
-        - https://planet4589.org/space/gcat/data/cat/lcat.html
-        - https://planet4589.org/space/gcat/data/cat/lprcat.html
-        - https://planet4589.org/space/gcat/data/cat/rcat.html 
-        - https://planet4589.org/space/gcat/data/cat/satcat.html
+    - launch_activity_data.nc
+    - reentry_activity_data.nc
+    - rocket_attributes.nc
+Online databases downloaded for offline use:
+    - reentry/reentry/raul_map.parquet                  https://www.google.com/maps/d/viewer?mid=1wvgFIPuOmI8da9EIB88tHo9vamo&ll=35.65567513480002%2C-102.24070473358057&z=4 
+    - reentry/shapefiles                                shapefiles from https://www.marineregions.org and https://www.naturalearthdata.com
+Online databases imported during runtime: 
+    - GCAT                                              https://planet4589.org/space/gcat/web/launch/index.html

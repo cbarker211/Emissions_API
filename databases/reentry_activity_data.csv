@@ -44,7 +44,7 @@ Date,COSPAR_ID,Category,Object_Name,Ablatable_Mass,Ablation_Degree,Percent_Alumi
 1958-12-06 00:00:00,1958-008,S2,Cluster 11 Assembly 2,231.0,0.65,0.7,0.0,False,6,442.0,Complete
 1958-12-06 00:00:00,1958-008,S3,Cluster 11 Assembly 3,63.0,0.65,0.7,0.0,False,6,442.0,Complete
 1958-12-07 00:00:00,1958-008,S4,Cluster 11 Assembly 4,21.0,0.65,0.7,0.0,False,6,102200.0,Complete
-1958-12-07 19:52:00,1958-008,P,Pioneer III,6.0,0.8,0.4,0.0,False,2,102200.0,Complete
+1958-12-07 19:52:00,1958-008,P,Pioneer III,6.0,0.8,0.4,0.0,False,4,102200.0,Complete
 1958-12-18 00:00:00,1958-006,S0,Atlas Booster,3500.0,0.3,0.7,0.0,False,6,120.0,Complete
 1959-01-02 00:00:00,1959-012,C,Luna Fairing,878.0,0.3,0.7,0.0,False,6,120.0,Complete
 1959-01-02 00:00:00,1959-012,S0,8K71B,850.0,0.3,0.7,0.0,False,2,60.0,Complete
@@ -5655,7 +5655,7 @@ Date,COSPAR_ID,Category,Object_Name,Ablatable_Mass,Ablation_Degree,Percent_Alumi
 1969-11-23 00:00:00,1969-100B,S2,Voskhod (N111) Blok-I,2350.0,0.65,0.7,0.0,False,6,306.0,Complete
 1969-11-23 06:38:00,1969-100,C,Priborniy otsek,3050.0,0.8,0.4,0.0,False,6,241.0,Complete
 1969-11-23 06:53:00,1969-100A,P,Kosmos-310,2200.0,0.0,0.4,0.0,False,6,331.0,Partial
-1969-11-23 09:52:00,1969-083A,P,Boreas,85.0,0.8,0.4,0.0,False,3,378.0,Complete
+1969-11-23 09:52:00,1969-083A,P,Boreas,85.0,0.8,0.4,0.0,False,2,378.0,Complete
 1969-11-24 00:00:00,1969-102,C,11K63 Fairing,878.0,0.3,0.7,0.0,False,6,100.0,Complete
 1969-11-24 00:00:00,1969-102,C,11K63 Fairing,878.0,0.3,0.7,0.0,False,6,100.0,Complete
 1969-11-24 00:00:00,1969-102,S1,R-12,4810.0,0.3,0.7,0.0,False,2,100.0,Complete
@@ -7674,7 +7674,7 @@ Date,COSPAR_ID,Category,Object_Name,Ablatable_Mass,Ablation_Degree,Percent_Alumi
 1972-04-11 00:00:00,1972-028,C,11K63 Fairing,878.0,0.3,0.7,0.0,False,6,100.0,Complete
 1972-04-11 00:00:00,1972-028,C,11K63 Fairing,878.0,0.3,0.7,0.0,False,6,100.0,Complete
 1972-04-11 00:00:00,1972-028,S1,R-12,4810.0,0.3,0.7,0.0,False,2,100.0,Complete
-1972-04-11 00:57:00,1972-016A,S3,Agena D,3176.0,0.65,0.7,0.0,False,3,415.0,Complete
+1972-04-11 00:57:00,1972-016A,S3,Agena D,3176.0,0.65,0.7,0.0,False,2,415.0,Complete
 1972-04-11 10:24:00,1972-027,C,Priborniy otsek,2650.0,0.8,0.4,0.0,False,6,203.0,Complete
 1972-04-11 10:39:00,1972-027A,P,Interkosmos-6,2886.0,0.0,0.4,0.0,False,6,244.0,Partial
 1972-04-12 00:00:00,1972-024C,C,Sensor cover,0.0,0.8,0.4,0.0,False,6,275.0,Complete
@@ -17112,7 +17112,7 @@ Date,COSPAR_ID,Category,Object_Name,Ablatable_Mass,Ablation_Degree,Percent_Alumi
 1981-06-09 00:00:00,1981-054,S0,11S59G,3915.0,0.3,0.7,0.0,False,2,75.0,Complete
 1981-06-09 00:00:00,1981-054,S0,11S59V,3915.0,0.3,0.7,0.0,False,2,75.0,Complete
 1981-06-09 00:00:00,1981-054,S1,11S59A,6875.0,0.3,0.7,0.0,False,6,200.0,Complete
-1981-06-10 13:57:00,1975-107A,P,AE-E,552.0,0.8,0.4,0.0,False,3,2819.0,Complete
+1981-06-10 13:57:00,1975-107A,P,AE-E,552.0,0.8,0.4,0.0,False,4,2819.0,Complete
 1981-06-11 00:00:00,1977-097DA,C,Garbage bag,0.0,0.8,0.4,0.0,False,6,334.0,Complete
 1981-06-11 00:00:00,1981-048D,C,KDU,140.0,0.8,0.4,0.0,False,6,213.0,Complete
 1981-06-12 00:00:00,1977-097CY,C,Garbage bag,0.0,0.8,0.4,0.0,False,6,336.0,Complete
@@ -19751,7 +19751,7 @@ Date,COSPAR_ID,Category,Object_Name,Ablatable_Mass,Ablation_Degree,Percent_Alumi
 1983-08-21 00:00:00,1983-086E,C,CZ-2C sep motor cover?,1.0,0.8,0.4,0.0,False,6,334.0,Complete
 1983-08-21 22:22:00,1983-032A,S3,Agena D,3150.0,0.65,0.7,0.0,False,1,308.0,Complete
 1983-08-22 10:24:00,1983-013,C,Kosmos-1443 VA BSO,250.0,0.8,0.4,0.0,False,6,346.0,Complete
-1983-08-22 11:02:00,1983-013,P,Kosmos-1443 VA,3800.0,0.0,0.4,0.0,False,3,347.0,Partial
+1983-08-22 11:02:00,1983-013,P,Kosmos-1443 VA,3800.0,0.0,0.4,0.0,False,2,347.0,Partial
 1983-08-23 00:00:00,1983-087,C,11S514 Fairing,878.0,0.3,0.7,0.0,False,6,150.0,Complete
 1983-08-23 00:00:00,1983-087,C,11S514 Fairing,878.0,0.3,0.7,0.0,False,6,150.0,Complete
 1983-08-23 00:00:00,1983-087,S0,11S59B,3915.0,0.3,0.7,0.0,False,2,75.0,Complete
@@ -25552,7 +25552,7 @@ Date,COSPAR_ID,Category,Object_Name,Ablatable_Mass,Ablation_Degree,Percent_Alumi
 1988-11-15 00:00:00,1988-100,S0,Energiya Blok 11K25.30A,33900.0,0.3,0.7,0.0,False,2,75.0,Complete
 1988-11-15 00:00:00,1988-100,S0,Energiya Blok 11K25.40A,33900.0,0.3,0.7,0.0,False,2,75.0,Complete
 1988-11-15 03:47:00,1988-100,S1,Energiya Blok Ts,80000.0,0.3,0.7,0.0,False,6,154.0,Complete
-1988-11-15 06:24:00,1988-100A,P,Buran OK-1K,86550.0,0.0,0.4,0.0,False,3,255.0,Partial
+1988-11-15 06:24:00,1988-100A,P,Buran OK-1K,86550.0,0.0,0.4,0.0,False,2,255.0,Partial
 1988-11-16 00:00:00,1988-094G,C,KDU part,0.0,0.8,0.4,0.0,False,6,616.0,Complete
 1988-11-17 00:00:00,1986-021A,P,Kosmos-1735,3000.0,0.8,0.4,0.0,False,6,418.0,Complete
 1988-11-18 00:00:00,1988-101,C,11K69 Fairing,878.0,0.3,0.7,0.0,False,6,70.0,Complete
@@ -25694,7 +25694,7 @@ Date,COSPAR_ID,Category,Object_Name,Ablatable_Mass,Ablation_Degree,Percent_Alumi
 1988-12-25 00:00:00,1988-114,S0,11S59V,3915.0,0.3,0.7,0.0,False,2,75.0,Complete
 1988-12-25 00:00:00,1988-114,S1,11S59A,6875.0,0.3,0.7,0.0,False,6,175.0,Complete
 1988-12-26 00:00:00,1987-086A,P,Kosmos-1890,3000.0,0.8,0.4,0.0,False,6,417.0,Complete
-1988-12-26 14:39:00,1984-015A,P,Ohzora,207.0,0.8,0.4,0.0,False,3,858.0,Complete
+1988-12-26 14:39:00,1984-015A,P,Ohzora,207.0,0.8,0.4,0.0,False,4,858.0,Complete
 1988-12-27 00:00:00,1988-114B,S2,Soyuz-U2 No. 29 Blok-I,2410.0,0.65,0.7,0.0,False,6,154.0,Complete
 1988-12-28 00:00:00,1986-017BA,C,Garbage bag,0.0,0.8,0.4,0.0,False,6,355.0,Complete
 1988-12-28 00:00:00,1988-107H,C,KDU,140.0,0.8,0.4,0.0,False,6,239.0,Complete
@@ -49632,7 +49632,7 @@ Date,COSPAR_ID,Category,Object_Name,Ablatable_Mass,Ablation_Degree,Percent_Alumi
 2023-07-14 00:00:00,2023-098,S0,GSOM-S200,31150.0,0.3,0.7,0.0,False,2,100.0,Complete
 2023-07-14 00:00:00,2023-098,S0,GSOM-S200,31150.0,0.3,0.7,0.0,False,2,100.0,Complete
 2023-07-14 00:00:00,2023-098,S1,GSLV-3 Stage 1,10100.0,0.3,0.7,0.0,False,6,126.0,Complete
-2023-07-15 00:00:00,1998-067VO,C,VKD-59 Cleaning towel?,0.0,0.8,0.4,0.0,False,6,401.0,Complete
+2023-07-15 00:00:00,1998-067VP,C,VKD-59 Cleaning towel?,0.0,0.8,0.4,0.0,False,6,401.0,Complete
 2023-07-15 00:00:00,2019-018C,P,Flock 4a-2,5.7,0.8,0.4,0.0,False,6,510.0,Complete
 2023-07-15 00:00:00,2019-038B,P,MTCube,1.0,0.8,0.4,0.0,False,6,546.0,Complete
 2023-07-15 00:00:00,2020-051B,P,Longxia yan X shexian tance,50.0,0.8,0.4,0.0,False,6,498.0,Complete
@@ -50093,7 +50093,7 @@ Date,COSPAR_ID,Category,Object_Name,Ablatable_Mass,Ablation_Degree,Percent_Alumi
 2023-10-09 11:59:00,2018-104C,S3,Electron 4 Kick Stage,40.0,0.65,0.7,0.0,False,1,510.0,Complete
 2023-10-11 00:00:00,1998-067UW,P,SPORT,10.0,0.8,0.4,0.0,False,6,417.0,Complete
 2023-10-11 00:00:00,1998-067VD,P,AuroraSat,2.0,0.8,0.4,0.0,False,6,420.0,Complete
-2023-10-11 00:00:00,1998-067VY,C,RSPI-M shroud bundle,0.0,0.8,0.4,0.0,False,6,415.0,Complete
+2023-10-11 00:00:00,1998-067VZ,C,RSPI-M shroud bundle,0.0,0.8,0.4,0.0,False,6,415.0,Complete
 2023-10-11 00:00:00,2005-024F,C,CZ-2D Stage 2 motor cover,1.0,0.8,0.4,0.0,False,6,836.0,Complete
 2023-10-11 00:00:00,2017-036Z,P,SUCHAI,1.0,0.8,0.4,0.0,False,6,512.0,Complete
 2023-10-11 00:00:00,2020-079C,P,Cora,37.0,0.8,0.4,0.0,False,6,478.0,Complete
@@ -50240,7 +50240,7 @@ Date,COSPAR_ID,Category,Object_Name,Ablatable_Mass,Ablation_Degree,Percent_Alumi
 2023-11-06 00:00:00,2021-006CP,P,Flock 4s-2,5.7,1.0,0.4,0.0,True,6,535.0,Complete
 2023-11-06 09:39:00,2022-171B,S2,CZ-2D Y80 Stage 2,4100.0,0.65,0.7,0.0,False,1,501.0,Complete
 2023-11-06 21:47:00,2022-118C,S4,KZ-1A Y14 Stage 4,200.0,0.65,0.7,0.0,False,1,678.0,Complete
-2023-11-07 00:00:00,1998-067VS,P,RADSAT-SK,2.0,0.8,0.4,0.0,False,6,416.0,Complete
+2023-11-07 00:00:00,1998-067VT,P,RADSAT-SK,2.0,0.8,0.4,0.0,False,6,416.0,Complete
 2023-11-08 00:00:00,2022-026M,P,SpaceBEE NZ-11,0.284,0.8,0.4,0.0,False,6,543.0,Complete
 2023-11-08 00:00:00,2023-171,C,Falcon 9 Fairing F9-273,937.5,0.0,0.7,0.0,True,5,125.0,Partial
 2023-11-08 00:00:00,2023-171,C,Falcon 9 Fairing F9-273,937.5,0.0,0.7,0.0,True,5,125.0,Partial
@@ -50271,7 +50271,7 @@ Date,COSPAR_ID,Category,Object_Name,Ablatable_Mass,Ablation_Degree,Percent_Alumi
 2023-11-11 05:53:00,2017-074D,S3,CZ-6 Y2 Stage 3,520.0,0.65,0.7,0.0,False,1,533.0,Complete
 2023-11-11 18:56:24,2023-174,S1,Falcon 9 Stage 1 B1071.12,24700.0,0.0,0.7,0.0,False,5,230.0,Partial
 2023-11-11 21:09:00,2023-174,S2,Falcon 9-272 Stage 2,4758.0,0.65,0.7,0.0,False,1,526.0,Complete
-2023-11-12 00:00:00,1998-067VZ,C,VKD-61 Cleaning towel,0.0,0.8,0.4,0.0,False,6,418.0,Complete
+2023-11-12 00:00:00,1998-067WA,C,VKD-61 Cleaning towel,0.0,0.8,0.4,0.0,False,6,418.0,Complete
 2023-11-12 00:00:00,2023-175,C,Falcon 9 Fairing SN165-09,937.5,0.0,0.7,0.0,False,5,125.0,Partial
 2023-11-12 00:00:00,2023-175,C,Falcon 9 Fairing SN188-08?,937.5,0.0,0.7,0.0,False,5,125.0,Partial
 2023-11-12 07:41:00,2020-025BF,P,Starlink 1343,248.0,1.0,0.4,0.0,True,1,358.0,Complete
@@ -50282,7 +50282,7 @@ Date,COSPAR_ID,Category,Object_Name,Ablatable_Mass,Ablation_Degree,Percent_Alumi
 2023-11-14 00:00:00,2022-047AK,P,AuroraSat 1,2.0,1.0,0.4,0.0,True,6,533.0,Complete
 2023-11-14 10:05:00,2020-019F,P,Starlink 1317,248.0,1.0,0.4,0.0,True,1,332.0,Complete
 2023-11-14 13:07:00,2020-055AF,P,Starlink 1561,248.0,1.0,0.4,0.0,True,1,402.0,Complete
-2023-11-15 00:00:00,1998-067WB,C,VKD-61 Cleaning towel,0.0,0.8,0.4,0.0,False,6,393.0,Complete
+2023-11-15 00:00:00,1998-067WC,C,VKD-61 Cleaning towel,0.0,0.8,0.4,0.0,False,6,393.0,Complete
 2023-11-15 00:00:00,2017-008BC,P,Lemur-2-Mia-Grace,4.6,0.8,0.4,0.0,False,6,507.0,Complete
 2023-11-15 00:00:00,2018-004AJ,P,CICERO-7,10.0,0.8,0.4,0.0,False,6,504.0,Complete
 2023-11-15 00:00:00,2022-002BB,P,SATLLA-2A,0.5,0.8,0.4,0.0,False,6,535.0,Complete
@@ -50353,7 +50353,7 @@ Date,COSPAR_ID,Category,Object_Name,Ablatable_Mass,Ablation_Degree,Percent_Alumi
 2023-11-29 11:40:00,2023-071A,P,Progress MS-23,4325.0,0.8,0.4,0.0,False,1,420.0,Complete
 2023-11-29 14:40:00,2020-055AQ,P,Starlink 1515,248.0,1.0,0.4,0.0,True,1,402.0,Complete
 2023-11-29 20:00:00,2020-057T,P,Starlink 1638,248.0,1.0,0.4,0.0,True,6,356.0,Complete
-2023-12-01 00:00:00,1998-067VV,P,ESSENCE,4.0,0.8,0.4,0.0,False,6,416.0,Complete
+2023-12-01 00:00:00,1998-067VW,P,ESSENCE,4.0,0.8,0.4,0.0,False,6,416.0,Complete
 2023-12-01 00:00:00,2017-008BV,P,PEASSS,3.0,0.8,0.4,0.0,False,6,504.0,Complete
 2023-12-01 00:00:00,2023-184,C,Progress Fairing,500.0,0.3,0.7,0.0,False,6,175.0,Complete
 2023-12-01 00:00:00,2023-184,C,Progress Fairing,500.0,0.3,0.7,0.0,False,6,175.0,Complete
@@ -50407,7 +50407,7 @@ Date,COSPAR_ID,Category,Object_Name,Ablatable_Mass,Ablation_Degree,Percent_Alumi
 2023-12-07 07:24:00,2023-191,S2,Falcon 9-281 Stage 2,4250.0,0.65,0.7,0.0,True,1,291.0,Complete
 2023-12-07 09:11:00,2022-074C,S2,LauncherOne R06 Stage 2,200.0,0.65,0.7,0.0,False,1,494.0,Complete
 2023-12-07 21:27:00,2020-019Y,P,Starlink 1264,248.0,1.0,0.4,0.0,True,1,347.0,Complete
-2023-12-08 00:00:00,1998-067VW,P,Maya-5,1.0,0.8,0.4,0.0,False,6,416.0,Complete
+2023-12-08 00:00:00,1998-067VX,P,Maya-5,1.0,0.8,0.4,0.0,False,6,416.0,Complete
 2023-12-08 00:00:00,2020-061AV,P,Lemur-2-SchmidtFall,4.6,0.8,0.4,0.0,False,6,538.0,Complete
 2023-12-08 00:00:00,2020-077A,P,Flock 4e'-1,5.7,0.8,0.4,0.0,False,6,527.0,Complete
 2023-12-08 00:00:00,2021-033G,P,Qilu-4,100.0,0.8,0.4,0.0,False,6,510.0,Complete
@@ -50424,7 +50424,7 @@ Date,COSPAR_ID,Category,Object_Name,Ablatable_Mass,Ablation_Degree,Percent_Alumi
 2023-12-10 00:00:00,2023-194,C,3.35-m Fairing,375.0,0.3,0.7,0.0,False,6,120.0,Complete
 2023-12-10 00:00:00,2023-194,S1,CZ-2D Stage 1,9500.0,0.3,0.7,0.0,False,6,120.0,Complete
 2023-12-10 20:20:00,2017-015B,S2,H-2A F33 Stage 2,3100.0,0.65,0.7,0.0,False,1,497.0,Complete
-2023-12-12 00:00:00,1998-067VX,P,Maya-6,1.0,0.8,0.4,0.0,False,6,416.0,Complete
+2023-12-12 00:00:00,1998-067VY,P,Maya-6,1.0,0.8,0.4,0.0,False,6,416.0,Complete
 2023-12-12 00:00:00,2020-061AU,P,Flock 4v-4,5.7,0.8,0.4,0.0,False,6,535.0,Complete
 2023-12-12 00:00:00,2020-077C,P,Flock 4e'-9,5.7,0.8,0.4,0.0,False,6,526.0,Complete
 2023-12-13 00:00:00,2022-026W,P,SpaceBEE NZ-12,0.284,0.8,0.4,0.0,False,6,543.0,Complete
@@ -50612,7 +50612,7 @@ Date,COSPAR_ID,Category,Object_Name,Ablatable_Mass,Ablation_Degree,Percent_Alumi
 2024-01-09 00:00:00,2024-007,C,CZ-2C fairing half,400.0,0.3,0.7,0.0,False,6,150.0,Complete
 2024-01-09 00:00:00,2024-007,S1,CZ-2C Stage 1,10000.0,0.3,0.7,0.0,False,2,100.0,Complete
 2024-01-09 19:22:00,2023-110A,P,S.S. Laurel Clark,3892.0,0.8,0.4,0.0,False,1,386.0,Complete
-2024-01-10 00:00:00,1998-067VQ,P,SC-ODIN,4.0,0.8,0.4,0.0,False,6,417.0,Complete
+2024-01-10 00:00:00,1998-067VR,P,SC-ODIN,4.0,0.8,0.4,0.0,False,6,417.0,Complete
 2024-01-10 00:00:00,2020-098B,S3,Electron 17 Kick Stage,40.0,0.65,0.7,0.0,False,6,511.0,Complete
 2024-01-11 00:00:00,2012-064B,P,Fengniao 1A,160.0,0.8,0.4,0.0,False,6,499.0,Complete
 2024-01-11 00:00:00,2021-018Y,P,Starlink 2390,248.0,1.0,0.4,0.0,True,6,278.0,Complete
@@ -50707,7 +50707,7 @@ Date,COSPAR_ID,Category,Object_Name,Ablatable_Mass,Ablation_Degree,Percent_Alumi
 2024-01-29 03:21:00,2024-019,S2,Falcon 9-293 Stage 2,4250.0,0.65,0.7,0.0,True,1,291.0,Complete
 2024-01-29 06:05:38,2024-020,S1,Falcon 9 Stage 1 B1075.9,24700.0,0.0,0.7,0.0,True,5,200.0,Partial
 2024-01-29 07:48:00,2024-020,S2,Falcon 9-294 Stage 2,4250.0,0.65,0.7,0.0,True,1,294.0,Complete
-2024-01-30 00:00:00,1998-067VT,P,Ukpik-1,2.0,0.8,0.4,0.0,False,6,417.0,Complete
+2024-01-30 00:00:00,1998-067VU,P,Ukpik-1,2.0,0.8,0.4,0.0,False,6,417.0,Complete
 2024-01-30 00:00:00,2019-081F,P,Flock 4p-11,5.7,0.8,0.4,0.0,False,6,516.0,Complete
 2024-01-30 00:00:00,2020-057BS,P,SkySat C19,110.0,1.0,0.4,0.0,True,6,355.0,Complete
 2024-01-30 00:00:00,2020-085D,P,Te Waka Amiorangi o Aotearoa,1.0,0.8,0.4,0.0,False,6,509.0,Complete
@@ -50717,7 +50717,7 @@ Date,COSPAR_ID,Category,Object_Name,Ablatable_Mass,Ablation_Degree,Percent_Alumi
 2024-01-30 00:00:00,2024-021,C,Falcon 9 Fairing SNU05-01?,937.5,0.0,0.7,0.0,False,5,125.0,Partial
 2024-01-30 17:15:00,2024-021,S1,Falcon 9 Stage 1 B1077.10,24700.0,0.0,0.7,0.0,False,5,200.0,Partial
 2024-01-30 18:21:00,2024-021B,S2,Falcon 9-296 Stage 2,4250.0,0.65,0.7,0.0,False,1,251.0,Complete
-2024-01-31 00:00:00,1998-067VR,P,Iris,4.0,0.8,0.4,0.0,False,6,417.0,Complete
+2024-01-31 00:00:00,1998-067VS,P,Iris,4.0,0.8,0.4,0.0,False,6,417.0,Complete
 2024-01-31 00:00:00,2015-030C,C,CZ-4B sep motor cover?,1.0,0.8,0.4,0.0,False,6,462.0,Complete
 2024-01-31 00:00:00,2024-022,C,Electron Fairing,22.0,0.3,0.7,0.0,False,6,100.0,Complete
 2024-01-31 00:00:00,2024-022,C,Electron Fairing,22.0,0.3,0.7,0.0,False,6,100.0,Complete
@@ -50754,7 +50754,7 @@ Date,COSPAR_ID,Category,Object_Name,Ablatable_Mass,Ablation_Degree,Percent_Alumi
 2024-02-09 09:49:00,2021-033K,S3,CZ-6 Y5 Stage 3,520.0,0.65,0.7,0.0,False,1,552.0,Complete
 2024-02-09 13:30:00,2024-014A,P,Axiom Ax-3,9500.0,0.0,0.4,0.0,False,1,296.0,Partial
 2024-02-09 23:12:00,2024-022F,S2,Electron 43 Stage 2,250.0,0.65,0.7,0.0,False,1,527.0,Complete
-2024-02-10 00:00:00,1998-067VU,P,Moonlighter,4.0,0.8,0.4,0.0,False,6,417.0,Complete
+2024-02-10 00:00:00,1998-067VV,P,Moonlighter,4.0,0.8,0.4,0.0,False,6,417.0,Complete
 2024-02-10 00:00:00,2017-068G,C,Upper Bulkhead,35.0,0.8,0.4,0.0,False,6,526.0,Complete
 2024-02-10 00:00:00,2018-004D,P,ICEYE-X1,70.0,0.8,0.4,0.0,False,6,506.0,Complete
 2024-02-10 00:00:00,2018-104N,P,TOMSAT Eagle Scout,5.03,0.8,0.4,0.0,False,6,511.0,Complete
@@ -51053,7 +51053,7 @@ Date,COSPAR_ID,Category,Object_Name,Ablatable_Mass,Ablation_Degree,Percent_Alumi
 2024-03-28 00:00:00,2022-002BZ,P,Flock 4x-33,5.7,0.8,0.4,0.0,False,6,535.0,Complete
 2024-03-28 00:00:00,2022-096E,P,Monitor-1,5.0,0.8,0.4,0.0,False,6,494.0,Complete
 2024-03-28 06:00:00,2019-074S,P,Starlink 1024,248.0,1.0,0.4,0.0,True,6,302.0,Complete
-2024-03-29 00:00:00,1998-067WA,P,Parus-MGTU,1.75,0.8,0.4,0.0,False,6,418.0,Complete
+2024-03-29 00:00:00,1998-067WB,P,Parus-MGTU,1.75,0.8,0.4,0.0,False,6,418.0,Complete
 2024-03-30 00:00:00,2020-061BE,P,Flock 4v-15,5.7,0.8,0.4,0.0,False,6,520.0,Complete
 2024-03-30 00:00:00,2021-023A,P,Veery Hatchling v0.2,1.0,0.8,0.4,0.0,False,6,558.0,Complete
 2024-03-30 00:00:00,2021-058H,P,Gunsmoke-J 4,4.0,0.8,0.4,0.0,False,6,521.0,Complete
@@ -51169,7 +51169,7 @@ Date,COSPAR_ID,Category,Object_Name,Ablatable_Mass,Ablation_Degree,Percent_Alumi
 2024-04-15 03:04:00,2022-141AS,P,Starlink 5234,290.0,1.0,0.4,0.0,True,1,336.0,Complete
 2024-04-15 05:03:00,2016-026B,P,Aist 2D,530.0,0.8,0.4,0.0,False,1,485.0,Complete
 2024-04-15 05:04:00,2024-072,S2,CZ-2D Y97 Stage 2,4000.0,0.65,0.7,0.0,False,1,503.0,Complete
-2024-04-15 20:30:00,1998-067WE,P,Clark-Sat-1,1.0,0.8,0.4,0.0,False,6,414.0,Complete
+2024-04-15 20:30:00,1998-067WF,P,Clark-Sat-1,1.0,0.8,0.4,0.0,False,6,414.0,Complete
 2024-04-16 00:00:00,2017-036X,P,Diamond Blue,4.0,0.8,0.4,0.0,False,6,511.0,Complete
 2024-04-17 00:00:00,2024-073,C,Falcon 9 Fairing F9-325,937.5,0.0,0.7,0.0,True,5,125.0,Partial
 2024-04-17 00:00:00,2024-073,C,Falcon 9 Fairing SN168-09?,937.5,0.0,0.7,0.0,True,5,125.0,Partial
@@ -51643,7 +51643,7 @@ Date,COSPAR_ID,Category,Object_Name,Ablatable_Mass,Ablation_Degree,Percent_Alumi
 2024-06-25 21:34:11,2024-119,S0,Falcon 9 Stage 1 B1086.1,19750.0,0.0,0.7,0.0,False,5,119.0,Partial
 2024-06-25 21:36:00,2024-119,S1,Falcon 9 Stage 1 B1087.1,21300.0,0.3,0.7,0.0,False,4,119.0,Complete
 2024-06-25 23:23:00,2017-006B,S3,Fregat-MT No. 133-07,1000.0,0.65,0.7,0.0,False,1,34542.0,Complete
-2024-06-26 00:00:00,1998-067WC,C,Crew Lock bag,14.0,0.8,0.4,0.0,False,6,416.0,Complete
+2024-06-26 00:00:00,1998-067WD,C,Crew Lock bag,14.0,0.8,0.4,0.0,False,6,416.0,Complete
 2024-06-26 00:00:00,2023-174CR,P,PICO-01H004,0.5,0.8,0.4,0.0,False,6,526.0,Complete
 2024-06-26 00:00:00,2023-174CT,P,PICO-01I002,0.5,0.8,0.4,0.0,False,6,525.0,Complete
 2024-06-26 00:00:00,2023-174DA,P,Unicorn-2K,0.75,0.8,0.4,0.0,False,6,531.0,Complete
@@ -51675,7 +51675,7 @@ Date,COSPAR_ID,Category,Object_Name,Ablatable_Mass,Ablation_Degree,Percent_Alumi
 2024-06-29 00:00:00,2024-122,S0,CZ-7 Booster,6000.0,0.3,0.7,0.0,False,6,120.0,Complete
 2024-06-29 00:00:00,2024-122,S1,CZ-7 Stage 1,12250.0,0.3,0.7,0.0,False,6,120.0,Complete
 2024-06-29 00:00:00,2024-122,S2,CZ-7A Y8 Stage 2,5750.0,0.65,0.7,0.0,False,6,200.0,Complete
-2024-06-29 01:35:11,1998-067WD,P,BEAK,5.0,0.8,0.4,0.0,False,6,414.0,Complete
+2024-06-29 01:35:11,1998-067WE,P,BEAK,5.0,0.8,0.4,0.0,False,6,414.0,Complete
 2024-06-29 03:22:13,2024-121,S1,Falcon 9 Stage 1 B1081.8,24700.0,0.0,0.7,0.0,True,5,200.0,Partial
 2024-06-29 05:13:00,2024-121,S2,Falcon 9-347 Stage 2,4250.0,0.65,0.7,0.0,True,1,350.0,Complete
 2024-06-29 08:15:00,2013-059B,S2,CZ-2C Y28 Stage 2,4000.0,0.65,0.7,0.0,False,1,571.0,Complete
@@ -51849,7 +51849,7 @@ Date,COSPAR_ID,Category,Object_Name,Ablatable_Mass,Ablation_Degree,Percent_Alumi
 2024-07-30 00:00:00,2024-134,S0,GEM-63,5100.0,0.3,0.7,0.0,False,2,75.0,Complete
 2024-07-30 00:00:00,2024-134,S0,GEM-63,5100.0,0.3,0.7,0.0,False,2,75.0,Complete
 2024-07-30 00:00:00,2024-134,S1,Atlas V 551 AV-101,21351.0,0.3,0.7,0.0,False,6,188.0,Complete
-2024-08-01 00:00:00,1998-067WK,P,QMSAT,2.0,0.8,0.4,0.0,False,6,412.0,Complete
+2024-08-01 00:00:00,1998-067WL,P,QMSAT,2.0,0.8,0.4,0.0,False,6,412.0,Complete
 2024-08-01 00:00:00,2022-033R,P,Sally Ride,38.5,0.8,0.4,0.0,False,6,509.0,Complete
 2024-08-01 00:00:00,2023-103A,P,Taian,25.0,0.8,0.4,0.0,False,6,502.0,Complete
 2024-08-01 00:00:00,2024-135,C,CZ-3B Fairing,750.0,0.3,0.7,0.0,False,6,170.0,Complete
@@ -51934,7 +51934,7 @@ Date,COSPAR_ID,Category,Object_Name,Ablatable_Mass,Ablation_Degree,Percent_Alumi
 2024-08-10 12:50:00,2020-062AV,P,Starlink 1658,248.0,1.0,0.4,0.0,True,1,334.0,Complete
 2024-08-10 12:58:13,2024-141,S1,Falcon 9 Stage 1 B1067.21,24700.0,0.0,0.7,0.0,True,5,200.0,Partial
 2024-08-10 15:22:00,2024-141,S2,Falcon 9-366 Stage 2,4250.0,0.65,0.7,0.0,True,1,296.0,Complete
-2024-08-11 00:00:00,1998-067WH,P,Kashiwa,1.0,0.8,0.4,0.0,False,6,416.0,Complete
+2024-08-11 00:00:00,1998-067WJ,P,Kashiwa,1.0,0.8,0.4,0.0,False,6,416.0,Complete
 2024-08-11 00:00:00,2011-061B,P,DICE-1,2.0,0.8,0.4,0.0,False,6,815.0,Complete
 2024-08-11 00:00:00,2014-029E,P,SPROUT,7.1,0.8,0.4,0.0,False,6,628.0,Complete
 2024-08-11 00:00:00,2020-061AS,P,Hamarik,1.0,0.8,0.4,0.0,False,6,535.0,Complete
@@ -52022,7 +52022,7 @@ Date,COSPAR_ID,Category,Object_Name,Ablatable_Mass,Ablation_Degree,Percent_Alumi
 2024-08-19 00:00:00,2021-006DU,P,Flock 4s-14,5.7,1.0,0.4,0.0,True,6,535.0,Complete
 2024-08-19 14:38:00,2007-015A,P,AIM,192.0,0.8,0.4,0.0,False,1,600.0,Complete
 2024-08-19 18:12:00,2023-138Q,P,Starlink 30417,700.0,1.0,0.4,0.0,True,1,292.0,Complete
-2024-08-20 00:00:00,1998-067WF,P,MicroOrbiter-1,1.0,0.8,0.4,0.0,False,6,415.0,Complete
+2024-08-20 00:00:00,1998-067WG,P,MicroOrbiter-1,1.0,0.8,0.4,0.0,False,6,415.0,Complete
 2024-08-20 00:00:00,2021-073B,P,RADCUBE,4.0,0.8,0.4,0.0,False,6,563.0,Complete
 2024-08-20 00:00:00,2022-002AJ,P,Flock 4x-25,5.7,0.8,0.4,0.0,False,6,535.0,Complete
 2024-08-20 00:00:00,2022-047AB,P,MyRadar 1,0.25,1.0,0.4,0.0,True,6,535.0,Complete
@@ -52091,8 +52091,8 @@ Date,COSPAR_ID,Category,Object_Name,Ablatable_Mass,Ablation_Degree,Percent_Alumi
 2024-08-28 10:12:00,1992-039B,S2,Delta 211,950.0,0.65,0.7,0.0,False,1,724.0,Complete
 2024-08-28 10:19:00,2024-152,S2,Falcon 9-371 Stage 2,4250.0,0.65,0.7,0.0,True,1,298.0,Complete
 2024-08-28 15:00:00,2022-136U,P,Starlink 5223,290.0,1.0,0.4,0.0,True,6,333.0,Complete
-2024-08-29 00:00:00,1998-067WP,P,VIOLET,2.0,0.8,0.4,0.0,False,6,410.0,Complete
-2024-08-29 00:00:00,1998-067WQ,P,Big Red Sat 1,1.0,0.8,0.4,0.0,False,6,410.0,Complete
+2024-08-29 00:00:00,1998-067WQ,P,VIOLET,2.0,0.8,0.4,0.0,False,6,410.0,Complete
+2024-08-29 00:00:00,1998-067WR,P,Big Red Sat 1,1.0,0.8,0.4,0.0,False,6,410.0,Complete
 2024-08-29 00:00:00,2018-083G,P,Tianqi Xingzuo 1-01,8.0,0.8,0.4,0.0,False,6,522.0,Complete
 2024-08-29 00:00:00,2020-035BE,P,Starlink 1421,248.0,1.0,0.4,0.0,True,6,365.0,Complete
 2024-08-29 00:00:00,2023-026Q,P,Starlink 30047,700.0,1.0,0.4,0.0,True,6,372.0,Complete
@@ -52245,9 +52245,9 @@ Date,COSPAR_ID,Category,Object_Name,Ablatable_Mass,Ablation_Degree,Percent_Alumi
 2024-09-16 00:00:00,2022-002AA,P,ICEYE-X16,80.0,0.8,0.4,0.0,False,6,535.0,Complete
 2024-09-16 00:00:00,2022-002AW,P,Flock 4x-13,5.7,0.8,0.4,0.0,False,6,535.0,Complete
 2024-09-16 00:00:00,2023-001CS,P,SpaceBEE-160,0.284,0.8,0.4,0.0,False,6,537.0,Complete
-2024-09-17 00:00:00,1998-067WG,P,CURTIS,5.0,0.8,0.4,0.0,False,6,414.0,Complete
-2024-09-17 00:00:00,1998-067WJ,P,Killick-1,2.0,0.8,0.4,0.0,False,6,413.0,Complete
-2024-09-17 00:00:00,1998-067WM,P,BurstCube,12.0,0.8,0.4,0.0,False,6,416.0,Complete
+2024-09-17 00:00:00,1998-067WH,P,CURTIS,5.0,0.8,0.4,0.0,False,6,414.0,Complete
+2024-09-17 00:00:00,1998-067WK,P,Killick-1,2.0,0.8,0.4,0.0,False,6,413.0,Complete
+2024-09-17 00:00:00,1998-067WN,P,BurstCube,12.0,0.8,0.4,0.0,False,6,416.0,Complete
 2024-09-17 00:00:00,2021-006EE,P,Flock 4s-30,5.7,1.0,0.4,0.0,True,6,535.0,Complete
 2024-09-17 00:00:00,2024-166,C,Angara Fairing,327.5,0.3,0.7,0.0,False,6,189.0,Complete
 2024-09-17 00:00:00,2024-166,C,Angara Fairing,327.5,0.3,0.7,0.0,False,6,189.0,Complete
@@ -52341,7 +52341,7 @@ Date,COSPAR_ID,Category,Object_Name,Ablatable_Mass,Ablation_Degree,Percent_Alumi
 2024-09-27 00:00:00,2024-177,C,SJ Fairing,375.0,0.3,0.7,0.0,False,6,120.0,Complete
 2024-09-27 00:00:00,2024-177,C,SJ Fairing,375.0,0.3,0.7,0.0,False,6,120.0,Complete
 2024-09-27 00:00:00,2024-177,S1,CZ-2D Stage 1,9500.0,0.3,0.7,0.0,False,2,100.0,Complete
-2024-09-28 00:00:00,1998-067WN,P,SNoOPI,12.0,0.8,0.4,0.0,False,6,412.0,Complete
+2024-09-28 00:00:00,1998-067WP,P,SNoOPI,12.0,0.8,0.4,0.0,False,6,412.0,Complete
 2024-09-28 17:24:59,2024-178,S1,Falcon 9 Stage 1 B1085.2,24700.0,0.0,0.7,0.0,False,5,120.0,Partial
 2024-09-28 18:10:00,2024-178,S2,Falcon 9-379 Stage 2,4250.0,0.65,0.7,0.0,False,1,206.0,Complete
 2024-09-29 00:00:00,2020-061J,P,TRISAT,4.0,0.8,0.4,0.0,False,6,535.0,Complete
@@ -52358,7 +52358,7 @@ Date,COSPAR_ID,Category,Object_Name,Ablatable_Mass,Ablation_Degree,Percent_Alumi
 2024-10-01 00:00:00,2022-057L,P,Centauri 5,10.0,0.8,0.4,0.0,False,6,535.0,Complete
 2024-10-02 00:00:00,2018-040D,P,Guiyang-1,69.0,0.8,0.4,0.0,False,6,512.0,Complete
 2024-10-02 00:00:00,2023-084AR,P,MISR-A-1,10.0,0.8,0.4,0.0,False,6,535.0,Complete
-2024-10-02 00:00:00,2023-104D,C,CZ-2D sep motor cover?,1.0,0.8,0.4,0.0,False,6,504.0,Complete
+2024-10-02 00:00:00,2023-104D,C,CZ-2D payload adapter,50.0,0.8,0.4,0.0,False,6,504.0,Complete
 2024-10-02 10:15:00,2024-172F,S2,Electron 53 Stage 2,250.0,0.65,0.7,0.0,False,6,621.0,Complete
 2024-10-02 19:30:00,2019-074A,P,Starlink 1007,248.0,1.0,0.4,0.0,True,6,300.0,Complete
 2024-10-03 00:00:00,2019-089A,P,NANOVA,4.0,0.8,0.4,0.0,False,6,576.0,Complete
@@ -52481,7 +52481,7 @@ Date,COSPAR_ID,Category,Object_Name,Ablatable_Mass,Ablation_Degree,Percent_Alumi
 2024-10-20 05:20:56,2024-188,S1,Falcon 9 Stage 1 B1082.7,24700.0,0.0,0.7,0.0,True,5,230.0,Partial
 2024-10-20 07:38:00,2024-188,S2,Falcon 9-384 Stage 2,4710.0,0.65,0.7,0.0,True,1,595.0,Complete
 2024-10-21 00:00:00,2021-006DE,P,Flock 4s-28,5.7,1.0,0.4,0.0,True,6,534.0,Complete
-2024-10-22 00:00:00,1998-067WV,P,Wisseed Sat,1.0,0.8,0.4,0.0,False,6,420.0,Complete
+2024-10-22 00:00:00,1998-067WW,P,Wisseed Sat,1.0,0.8,0.4,0.0,False,6,420.0,Complete
 2024-10-22 00:00:00,2024-189,C,Fairing,750.0,0.3,0.7,0.0,False,6,120.0,Complete
 2024-10-22 00:00:00,2024-189,C,Fairing,750.0,0.3,0.7,0.0,False,6,120.0,Complete
 2024-10-22 00:00:00,2024-189,S1,CZ-6 Stage 1,7530.0,0.3,0.7,0.0,False,6,120.0,Complete
@@ -52618,8 +52618,8 @@ Date,COSPAR_ID,Category,Object_Name,Ablatable_Mass,Ablation_Degree,Percent_Alumi
 2024-11-07 20:27:18,2024-202,S1,Falcon 9 Stage 1 B1085.3,24700.0,0.0,0.7,0.0,True,5,200.0,Partial
 2024-11-07 22:34:00,2024-202,S2,Falcon 9-395 Stage 2,4250.0,0.65,0.7,0.0,True,1,290.0,Complete
 2024-11-07 23:40:00,2024-194D,S2,CZ-2F Y19 Stage 2,5500.0,0.65,0.7,0.0,False,6,343.0,Complete
-2024-11-08 00:00:00,1998-067WS,P,Binar-4,1.0,0.8,0.4,0.0,False,6,423.0,Complete
-2024-11-08 00:00:00,1998-067WX,P,Binar-3,1.0,0.8,0.4,0.0,False,6,421.0,Complete
+2024-11-08 00:00:00,1998-067WT,P,Binar-4,1.0,0.8,0.4,0.0,False,6,423.0,Complete
+2024-11-08 00:00:00,1998-067WY,P,Binar-3,1.0,0.8,0.4,0.0,False,6,421.0,Complete
 2024-11-08 00:00:00,2023-084AZ,P,SpaceBEE-172,0.284,0.8,0.4,0.0,False,6,534.0,Complete
 2024-11-08 00:00:00,2023-084BF,P,SpaceBEE-175,0.284,0.8,0.4,0.0,False,6,535.0,Complete
 2024-11-08 04:00:00,2022-002C,P,Umbra-02,60.0,0.8,0.4,0.0,False,6,535.0,Complete
@@ -52660,7 +52660,7 @@ Date,COSPAR_ID,Category,Object_Name,Ablatable_Mass,Ablation_Degree,Percent_Alumi
 2024-11-13 00:00:00,2024-208,C,CZ-4B Y1 3.35m Fairing,900.0,0.3,0.7,0.0,False,6,100.0,Complete
 2024-11-13 00:00:00,2024-208,S1,CZ-4B Stage 1,9500.0,0.3,0.7,0.0,False,2,100.0,Complete
 2024-11-13 00:00:00,2024-208,S2,CZ-4B Stage 2,4000.0,0.65,0.7,0.0,False,6,300.0,Complete
-2024-11-14 00:00:00,1998-067WW,P,Binar-2,1.0,0.8,0.4,0.0,False,6,422.0,Complete
+2024-11-14 00:00:00,1998-067WX,P,Binar-2,1.0,0.8,0.4,0.0,False,6,422.0,Complete
 2024-11-14 00:00:00,2018-040A,P,Qingkeda 1,50.0,0.8,0.4,0.0,False,6,511.0,Complete
 2024-11-14 00:00:00,2023-084BD,P,SpaceBEE-170,0.284,0.8,0.4,0.0,False,6,535.0,Complete
 2024-11-14 00:00:00,2024-209,C,Falcon 9 Fairing F9-396,937.5,0.0,0.7,0.0,True,5,125.0,Partial
@@ -52795,8 +52795,8 @@ Date,COSPAR_ID,Category,Object_Name,Ablatable_Mass,Ablation_Degree,Percent_Alumi
 2024-12-01 00:00:00,2022-158H,P,Astrocast-0303,4.5,0.8,0.4,0.0,False,6,514.0,Complete
 2024-12-02 00:00:00,2021-022M,P,SAMSON 3,12.0,0.8,0.4,0.0,False,6,561.0,Complete
 2024-12-02 02:05:00,2020-074R,P,Starlink 1923,248.0,1.0,0.4,0.0,True,1,269.0,Complete
-2024-12-03 00:00:00,1998-067WU,P,SAKURA,1.0,0.8,0.4,0.0,False,6,422.0,Complete
-2024-12-03 00:00:00,1998-067XA,P,DORA,4.0,0.8,0.4,0.0,False,6,420.0,Complete
+2024-12-03 00:00:00,1998-067WV,P,SAKURA,1.0,0.8,0.4,0.0,False,6,422.0,Complete
+2024-12-03 00:00:00,1998-067XB,P,DORA,4.0,0.8,0.4,0.0,False,6,420.0,Complete
 2024-12-03 00:00:00,2012-012D,S4,Blok DM-2 No. 117L,2440.0,0.65,0.7,0.0,False,6,35889.0,Complete
 2024-12-03 00:00:00,2022-057G,P,Planetum-1,1.0,0.8,0.4,0.0,False,6,535.0,Complete
 2024-12-03 00:00:00,2023-084BL,P,Skykraft 3B,50.0,0.8,0.4,0.0,False,6,535.0,Complete
@@ -52889,7 +52889,7 @@ Date,COSPAR_ID,Category,Object_Name,Ablatable_Mass,Ablation_Degree,Percent_Alumi
 2024-12-10 00:00:00,2023-081Y,P,LJ-1 Payload B17,42.0,0.8,0.4,0.0,False,6,511.0,Complete
 2024-12-10 11:57:00,2020-038BH,P,Starlink 1512,248.0,1.0,0.4,0.0,True,1,359.0,Complete
 2024-12-10 23:05:00,2023-017B,S2,Falcon 9-203 Stage 2,4250.0,0.65,0.7,0.0,False,1,59478.0,Complete
-2024-12-11 00:00:00,1998-067WT,P,Emma,1.0,0.8,0.4,0.0,False,6,422.0,Complete
+2024-12-11 00:00:00,1998-067WU,P,Emma,1.0,0.8,0.4,0.0,False,6,422.0,Complete
 2024-12-11 00:00:00,2016-040D,P,Claire,25.0,0.8,0.4,0.0,False,6,511.0,Complete
 2024-12-11 00:00:00,2023-081S,P,LJ-1 Payload B12,42.0,0.8,0.4,0.0,False,6,511.0,Complete
 2024-12-11 00:00:00,2023-084AM,P,MuSat-1,59.0,0.8,0.4,0.0,False,6,535.0,Complete
@@ -52928,7 +52928,7 @@ Date,COSPAR_ID,Category,Object_Name,Ablatable_Mass,Ablation_Degree,Percent_Alumi
 2024-12-16 12:12:00,2024-240L,S2,Yuanzheng-2 Y2,5000.0,0.65,0.7,0.0,True,1,1110.0,Complete
 2024-12-16 19:46:00,2024-241,S2,CZ-2D Y99 Stage 2,4000.0,0.65,0.7,0.0,False,1,533.0,Complete
 2024-12-16 20:17:00,2022-049AG,P,Starlink 3842,220.0,1.0,0.4,0.0,True,6,317.0,Complete
-2024-12-17 00:00:00,1998-067WL,P,HyTI,12.0,0.8,0.4,0.0,False,6,413.0,Complete
+2024-12-17 00:00:00,1998-067WM,P,HyTI,12.0,0.8,0.4,0.0,False,6,413.0,Complete
 2024-12-17 00:00:00,2014-033AG,P,Flock 1c-8,4.25,0.8,0.4,0.0,False,6,624.0,Complete
 2024-12-17 00:00:00,2020-068R,P,Lemur-2-DayWzaGoodDay,4.6,0.8,0.4,0.0,False,6,568.0,Complete
 2024-12-17 00:00:00,2022-057Z,P,ICEYE-X24,80.0,0.8,0.4,0.0,False,6,535.0,Complete
@@ -52957,7 +52957,7 @@ Date,COSPAR_ID,Category,Object_Name,Ablatable_Mass,Ablation_Degree,Percent_Alumi
 2024-12-17 18:30:00,2021-082AS,P,Starlink 3074,275.0,1.0,0.4,0.0,True,6,333.0,Complete
 2024-12-17 18:39:00,2024-200A,P,Dragon CRS-31,9000.0,0.0,0.4,130.0,False,1,419.0,Partial
 2024-12-17 21:07:00,2024-244,S1,Falcon 9 Stage 1 B1090.1,24700.0,0.0,0.7,0.0,False,5,200.0,Partial
-2024-12-18 00:00:00,1998-067WY,P,SaganSat0,1.0,0.8,0.4,0.0,False,6,423.0,Complete
+2024-12-18 00:00:00,1998-067WZ,P,SaganSat0,1.0,0.8,0.4,0.0,False,6,423.0,Complete
 2024-12-18 00:00:00,2023-081Q,P,LJ-1 Payload B10,42.0,0.8,0.4,0.0,False,6,511.0,Complete
 2024-12-18 00:00:00,2024-F04,C,Kairos Fairing Half,878.0,0.3,0.7,0.0,False,6,100.0,Complete
 2024-12-18 00:00:00,2024-F04,C,Kairos Fairing Half,878.0,0.3,0.7,0.0,False,6,100.0,Complete
@@ -53203,7 +53203,7 @@ Date,COSPAR_ID,Category,Object_Name,Ablatable_Mass,Ablation_Degree,Percent_Alumi
 2025-01-13 22:37:00,2022-101H,P,Starlink 4488,290.0,1.0,0.4,0.0,True,1,337.0,Complete
 2025-01-13 22:46:00,2021-021AF,P,Starlink 2349,248.0,1.0,0.4,0.0,True,6,285.0,Complete
 2025-01-13 23:50:00,2020-073AT,P,Starlink 1813,248.0,1.0,0.4,0.0,True,6,316.0,Complete
-2025-01-14 00:00:00,1998-067WZ,P,CySat 1,4.0,0.8,0.4,0.0,False,6,421.0,Complete
+2025-01-14 00:00:00,1998-067XA,P,CySat 1,4.0,0.8,0.4,0.0,False,6,421.0,Complete
 2025-01-14 00:00:00,2018-099BN,P,SpaceBEE 6,1.0,0.8,0.4,0.0,False,6,589.0,Complete
 2025-01-14 00:00:00,2020-061R,P,AMICal-Sat,2.0,0.8,0.4,0.0,False,6,535.0,Complete
 2025-01-14 00:00:00,2022-072D,P,SCOOB-I,3.0,0.8,0.4,0.0,False,6,572.0,Complete
@@ -53602,7 +53602,7 @@ Date,COSPAR_ID,Category,Object_Name,Ablatable_Mass,Ablation_Degree,Percent_Alumi
 2025-02-27 14:20:00,2025-009BF,P,W-2,55.0,0.8,0.4,0.0,False,1,518.0,Complete
 2025-02-27 14:32:00,2025-009,P,W-2 Reentry Vehicle,120.0,0.0,0.4,0.0,False,2,893.0,Partial
 2025-02-27 23:15:00,2020-074C,P,Starlink 1865,248.0,1.0,0.4,0.0,True,1,269.0,Complete
-2025-02-28 00:00:00,1998-067XB,P,Yodaka,10.0,0.8,0.4,0.0,False,6,418.0,Complete
+2025-02-28 00:00:00,1998-067XC,P,Yodaka,10.0,0.8,0.4,0.0,False,6,418.0,Complete
 2025-02-28 00:00:00,2018-111Y,P,ICEYE mass simulator,80.0,0.8,0.4,0.0,False,6,508.0,Complete
 2025-02-28 00:00:00,2022-002BU,P,MDASat-1b,3.0,0.8,0.4,0.0,False,6,535.0,Complete
 2025-02-28 00:00:00,2023-007F,P,Jilin-1 Mofang 02A04,18.0,0.8,0.4,0.0,False,6,494.0,Complete
@@ -53630,7 +53630,7 @@ Date,COSPAR_ID,Category,Object_Name,Ablatable_Mass,Ablation_Degree,Percent_Alumi
 2025-03-03 18:00:00,2021-021AB,P,Starlink 2344,248.0,1.0,0.4,0.0,True,1,284.0,Complete
 2025-03-03 18:30:00,2021-021F,P,Starlink 2310,248.0,1.0,0.4,0.0,True,6,285.0,Complete
 2025-03-03 20:59:00,2020-062AR,P,Starlink 1763,248.0,1.0,0.4,0.0,True,1,329.0,Complete
-2025-03-04 00:00:00,1998-067XF,P,Onglaisat,10.0,0.8,0.4,0.0,False,6,418.0,Complete
+2025-03-04 00:00:00,1998-067XG,P,Onglaisat,10.0,0.8,0.4,0.0,False,6,418.0,Complete
 2025-03-04 00:00:00,2023-001BR,P,EYE,10.0,0.8,0.4,0.0,False,6,537.0,Complete
 2025-03-04 00:00:00,2023-193B,P,Honghu-1,50.0,0.8,0.4,0.0,False,6,461.0,Complete
 2025-03-04 01:00:00,2021-012AX,P,Starlink 2056,248.0,1.0,0.4,0.0,True,6,280.0,Complete
@@ -53677,7 +53677,7 @@ Date,COSPAR_ID,Category,Object_Name,Ablatable_Mass,Ablation_Degree,Percent_Alumi
 2025-03-09 22:52:00,2024-156G,S3,CZ-4B Y73 Stage 3,2000.0,0.65,0.7,0.0,False,1,505.0,Complete
 2025-03-10 03:30:00,2022-084AL,P,Starlink 4354,275.0,1.0,0.4,0.0,True,6,319.0,Complete
 2025-03-10 15:00:00,2024-012R,P,Starlink 31173,700.0,1.0,0.4,0.0,True,6,290.0,Complete
-2025-03-11 00:00:00,1998-067XD,P,LignoSat,1.0,0.8,0.4,0.0,False,6,419.0,Complete
+2025-03-11 00:00:00,1998-067XE,P,LignoSat,1.0,0.8,0.4,0.0,False,6,419.0,Complete
 2025-03-11 00:00:00,2020-068E,P,Yarilo-1,2.0,0.8,0.4,0.0,False,6,567.0,Complete
 2025-03-11 00:00:00,2022-167C,P,Fengtai Shaonian 2,10.5,0.8,0.4,0.0,False,6,547.0,Complete
 2025-03-11 00:00:00,2025-046,C,CZ-8 Fairing,1250.0,0.3,0.7,0.0,True,6,120.0,Complete
@@ -53877,8 +53877,8 @@ Date,COSPAR_ID,Category,Object_Name,Ablatable_Mass,Ablation_Degree,Percent_Alumi
 2025-04-03 00:00:00,2025-068,S2,CZ-6 Stage 2,1490.0,0.65,0.7,0.0,False,6,120.0,Complete
 2025-04-03 03:00:00,2025-068,S3,CZ-6 Y14 Stage 3,520.0,0.65,0.7,0.0,False,1,795.0,Complete
 2025-04-03 07:30:00,2023-013AJ,P,Starlink 5648,290.0,1.0,0.4,0.0,True,1,335.0,Complete
-2025-04-04 00:00:00,1998-067XC,P,DENDEN-01,1.0,0.8,0.4,0.0,False,6,419.0,Complete
-2025-04-04 00:00:00,1998-067XE,P,Yomogi,1.0,0.8,0.4,0.0,False,6,419.0,Complete
+2025-04-04 00:00:00,1998-067XD,P,DENDEN-01,1.0,0.8,0.4,0.0,False,6,419.0,Complete
+2025-04-04 00:00:00,1998-067XF,P,Yomogi,1.0,0.8,0.4,0.0,False,6,419.0,Complete
 2025-04-04 00:00:00,2018-111M,P,Lemur-2-NatalieMurray,4.6,0.8,0.4,0.0,False,6,586.0,Complete
 2025-04-04 00:00:00,2021-023C,P,RAAF M2 A,10.0,0.8,0.4,0.0,False,6,559.0,Complete
 2025-04-04 00:00:00,2023-174BP,P,KAFASAT,4.0,0.8,0.4,0.0,False,6,528.0,Complete
@@ -53933,7 +53933,7 @@ Date,COSPAR_ID,Category,Object_Name,Ablatable_Mass,Ablation_Degree,Percent_Alumi
 2025-04-09 18:30:00,2025-050B,S2,Electron 61 Stage 2,250.0,0.65,0.7,0.0,False,1,572.0,Complete
 2025-04-09 22:08:00,2021-024BM,P,Starlink 2295,248.0,1.0,0.4,0.0,True,1,291.0,Complete
 2025-04-10 00:00:00,1979-077D,S3,Blok-L,902.0,0.65,0.7,0.0,False,6,40068.0,Complete
-2025-04-10 00:00:00,1998-067XG,C,VKD-63 jettison bundle,0.0,0.8,0.4,0.0,False,6,419.0,Complete
+2025-04-10 00:00:00,1998-067XH,C,VKD-63 jettison bundle,0.0,0.8,0.4,0.0,False,6,419.0,Complete
 2025-04-10 00:00:00,2021-035D,P,Naxing-4A,20.0,0.8,0.4,0.0,False,6,385.0,Complete
 2025-04-10 00:00:00,2023-174BG,P,Flock 4q-32,5.7,0.8,0.4,0.0,False,6,529.0,Complete
 2025-04-10 00:00:00,2025-073,C,CZ-3B Fairing,750.0,0.3,0.7,0.0,False,6,170.0,Complete
@@ -55728,7 +55728,7 @@ Date,COSPAR_ID,Category,Object_Name,Ablatable_Mass,Ablation_Degree,Percent_Alumi
 2025-12-02 19:28:00,1987-088A,P,Kosmos-1892,1750.0,0.8,0.4,0.0,False,1,665.0,Complete
 2025-12-02 21:07:00,2023-021AE,P,Starlink 5326,290.0,1.0,0.4,0.0,True,1,316.0,Complete
 2025-12-02 22:27:17,2025-281,S1,Falcon 9 Stage 1 B1077.25,24700.0,0.0,0.7,0.0,True,5,200.0,Partial
-2025-12-03 00:00:00,1998-067XJ,P,ASC,1.0,0.8,0.4,0.0,False,6,411.0,Complete
+2025-12-03 00:00:00,1998-067XK,P,ASC,1.0,0.8,0.4,0.0,False,6,411.0,Complete
 2025-12-03 00:00:00,2008-021E,P,COMPASS-1,1.0,0.8,0.4,0.0,False,6,635.0,Complete
 2025-12-03 00:00:00,2016-067G,P,Prometheus 2.1,2.0,0.8,0.4,0.0,False,6,582.0,Complete
 2025-12-03 00:00:00,2016-067H,P,Prometheus 2.3,2.0,0.8,0.4,0.0,False,6,583.0,Complete

@@ -311,6 +311,7 @@ class import_launches:
         }
 
         df_vehicles, df_stages, df_engines = pd.DataFrame(), pd.DataFrame(), pd.DataFrame()
+        _ = self.scrape_jsr("https://planet4589.org/space/gcat/tsv/tables/lv.tsv",self.session) 
         df_vehicles = self.scrape_jsr("https://planet4589.org/space/gcat/tsv/tables/lvs.tsv",self.session) 
         df_stages   = self.scrape_jsr("https://planet4589.org/space/gcat/tsv/tables/stages.tsv",self.session)
         df_engines  = self.scrape_jsr("https://planet4589.org/space/gcat/tsv/tables/engines.tsv",self.session)

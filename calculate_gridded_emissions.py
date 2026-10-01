@@ -1165,8 +1165,12 @@ class OutputEmis:
         #Loop over each launch/reentry.
         for row in df.itertuples():
             
-            if pd.isna(row.COSPAR_ID) or pd.isna(row.Longitude) or pd.isna(row.Latitude):
-                raise ValueError(f"{row.COSPAR_ID} {row.Longitude} {row.Latitude}")
+            if pd.isna(row.Longitude) or pd.isna(row.Latitude):
+                row.Longitude = 0.0
+                row.Latitude = 0.0
+            
+            if pd.isna(row.COSPAR_ID):
+                raise ValueError(row.COSPAR_ID)
             
             ################
             # Setup grid.

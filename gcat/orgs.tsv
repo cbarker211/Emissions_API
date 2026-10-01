@@ -1,5 +1,5 @@
 #Code	UCode	StateCode	Type	Class	TStart	TStop	ShortName	Name	Location	Longitude	Latitude	Error	Parent	ShortEName	EName	UName
-# Updated 2026 Sep 15 1939:34
+# Updated 2026 Sep 28 2217:00
 EARTH	EARTH	EARTH	AP	C	-	-	Earth	Earth	Earth	-	-	0.0200 	-	Earth (Terra)	Earth	Earth
 LUNA	LUNA	LUNA	AP	C	-	-	Luna	Luna	Luna	-	-	0.0200 	-	Moon	Moon	Luna
 SSYS	SSYS	SSYS	AP	C	-	-	Solar System	Solar System natural celestial objects	Sol	-	-	0.0200 	-	Solar System	Solar System natural celestial objects	Solar System
@@ -960,6 +960,7 @@ CHUNG	CHUNG	TW	-	B	1996	-	Chunghwa Tel	Chunghwa Telecom  (Chung-hua Tien-hsin)	T
 CHRMI	CHRMI	US	LV	B	1962	1975	Chrysler-MAF	Chrysler Operations, NASA Michoud Assembly Facility	Michoud, Louisiana	    -89.9200 	   30.0200 	0.0200 	-	-	-	Chrysler Operations, NASA Michoud Assembly Facility
 CHRY	CHRY	US	LV/PL	B	1952	1970s?	Chrysler	Chrysler Michigan Ordnance Missile Plant	Detroit:Sterling Heights, Michigan	    -83.0300 	   42.5800 	0.0200 	-	-	-	Chrysler Michigan Ordnance Missile Plant
 CHSW	CHSW	CN	O	B	-	-	Chengdu SWYJ	Chengdu shi weixing yingyong jishu zhongix	Chengdu	    104.0600 	   30.6600 	0.0200 	-	-	Chengdu Satellite Application Tech Center	成都市卫星应用技术中心
+CHZS	CHZS	CN	O	B	2025?	-	Chaozhisuan	Chaozhisuan (Beijing) keji YG	Beijing	    116.3000 	   39.9600 	0.0200 	-	Supercomputing	Supercomputing Tech Co Ltd.	超智算（北京）科技有限公司scd
 CIA	CIA	US	O/PL	D	1947 Jul 26	-	CIA	Central Intelligence Agency, USA	Langley, Virginia	    -77.1600 	   38.9500 	0.0200 	-	-	-	Central Intelligence Agency, USA
 CIAB	CIAB	US	-	D	1965	1992 Dec 31	CIA DST OD&E	CIA Office of Development and Engineering, Dir of Sci.Tech. (NRO Program B)	Langley, Virginia	    -77.1600 	   38.9500 	0.0200 	NRO	-	-	CIA Office of Development and Engineering, Dir of Sci.Tech. (NRO Program B)
 CIAG	CIAG	CN	-	C	1966 Jan	1968	IAG	Yingyong diqui wulisuo	Beijing?  (beceame CSSAR)	    116.3800 	   39.9200 	0.0200 	-	-	Institute for Applied Geophysics	应用地球物理所
@@ -2805,6 +2806,7 @@ PATIN	PATIN	T	O	B	2020?	2024	Patriot Info	Patriot Infovention	Bangkok	    100.52
 PATRAS	PATRAS	GR	O/PL	A	1968	-	U Patras	Panepistimio Patron	Patras	     21.7300 	   38.2500 	0.0200 	-	-	University of Patras	Πανεπιστήμιο Πατρών
 PAU	PAU	PK	O/PL	A	2002	-	Air University	Air Force University (Jaa Fazayia)	Islamabad	     73.0200 	   33.7100 	0.0200 	-	-	-	جامعہ فضایہ
 PAVKH	PAVKH	RU	LV/E	B	-	-	Pavlograd	Pavlograd Khimmash	Pavlograd	     35.8700 	   48.5200 	0.0200 	-	-	-	Завод "химмаш" Павлоград
+PENCH	PENCH	CN	O	A	2018 Mar	-	Pencheng	Pencheng Shiyan Shi	Shenzhen	    113.9400 	   22.5200 	0.0200 	-	-	Pengcheng Laboratory	鹏城实验室
 PEND	ICO	US	-	B	2011 Jul	-	Pendrell	Pendrell Corp.	Kirkland, Washington	   -122.1900 	   47.6900 	0.0200 	-	-	-	Pendrell Corp.
 PEOSS	PEOSS	US	P	D	-	-	USN PEO SS	USN Program Executive Office for Space Systems	San Diego, California	   -117.1600 	   32.7200 	0.0200 	SPAWAR	-	-	USN Program Executive Office for Space Systems
 PER	PER	ID	O	B	1974	1991	Perumtel	PT Perusahaan Umum Telekomunikasi (PT Perumtel)	Jakarta	    106.8200 	   -6.2000 	0.0200 	-	-	-	PT Perusahaan Umum Telekomunikasi (PT Perumtel)
@@ -4009,12 +4011,14 @@ XIAMT	XIAMT	CN	O	B	-	-	Xiamen Tianwei	Xiamen Tianwei Keji YG	Xiamen, Fujian	    
 XIDA	XIDA	CN	O/PL	A	1928	-	Xida	Guangxi Daxue	Nanning, Guangxi	    108.2800 	   22.8400 	0.0200 	-	Guangxi U	Guangxi University	广西大学
 XIDI	XIDI	CN	O/PL	A	1931	-	Xidian	Xian Dianzi Keji Daxue	Xi'an, Shaanxi	    108.9500 	   34.2700 	0.0200 	-	-	Xian University of Electronic Science and Tech.	西安电子科技大学
 XIDO	XIDO	CN	LA/LV	B	2015?	-	Xinghe Dongli	Xinghe Dongli (Beijing) kongjian keji YG	Beijing	    116.3800 	   39.9200 	0.0200 	-	Galactic Energy	Galactic Energy Co.	星河动力（北京）空间科技有限公司
+XINAN	XINAN	CN	O	B	-	-	Xinanxian	Xinanxian (Beijing) keji jituan YG	Beijing	    116.3800 	   39.9200 	0.0200 	-	Nufront	Nufront Technology Group Co. Ltd.	新岸线（北京）科技集团有限公司
 XINGH	XINGH	CN	O	B	2013	-	Xinghuan Keji	Xinghuan Keji	Shanghai	    121.5000 	   31.2500 	0.1000 	-	-	Transwarp Technology (Shanghai) Co. Ltd.	星环科技
 XINGMU	XINGMU	CN	O/PL	B	2024 Feb	-	Xingmu Tanyu	Zhejiang Xingmu Tanyu Keji YG	Zhuji, Zhejiang	    120.2200 	   29.7200 	0.0200 	-	-	Xingmu Tanyu Tech Co.	浙江星目探宇科技有限公司
 XINWEI	XINWEI	CN	-	B	-	-	Xinwei Telecom	Xinwei tongxin jishu gufen youxian gongsi	Beijing	    116.3800 	   39.9200 	0.0200 	-	-	-	信威通信技术股份有限公司
 XIOPM	XIOPM	CN	-	C	-	-	XIOPM	Xi'an guangxe jingmi jixie yanjiu suo	Xi'an, Shaanxi	    108.9500 	   34.2700 	0.0200 	-	-	Xian Institute of Optics and Precision Mechanics	西安光学精密机械研究所
 XIYW	TIANMU	CN	O/PL	B	2020?	2023	Xiyong Weidian	Xiyong Weidian Yuan, CASIC	Xiyong, Chongqing	    106.3500 	   29.6200 	0.0200 	CASIC	-	CASIC, Xiyong Microelectronics Park	西永微电园
 XJRY	XJRY	CN	O/LA/LV/E	B	2016 Oct	-	Xingye Rongyao	Beijing xingji rongyao kongjian keji youxian gongsi	Beijing	    116.3800 	   39.9200 	0.0200 	-	iSpace	Beijing Interstellar Glory Space Tech. Co. Ltd.	北京星际荣耀空间科技有限公司
+XLT	XLT	CN	O	B	2025?	-	Xinglianti	Xinglianti Wuxi Hangtian Keji YG	Wuxi	    120.0600 	   31.5500 	0.0200 	-	-	Starlink (Wuxi) Aerospace Tech Co. Ltd.	星联体(无锡)航天科技有限公司
 XMR	XMR	US	O	B	1988	2008 Jul	XM Radio	XM Satellite Radio Holdings (XM)	Washington, DC	    -77.0200 	   38.9000 	0.0200 	-	-	-	XM Satellite Radio Holdings (XM)
 XMRS	XMR	US	-	B	2008 Jul	-	XM Radio	XM Satellite Radio Holdings (Sirius XM)	Washington, DC	    -77.0200 	   38.9000 	0.0200 	SIRX	-	-	XM Satellite Radio Holdings (Sirius XM)
 XONA	XONA	US	O	B	2019	-	Xona	Xona Space Systems	San Francisco:Burlingame, California	   -122.3500 	   37.5900 	0.0200 	-	-	Xona Space Systems	Xona Space Systems
@@ -4092,13 +4096,16 @@ ZJUNI	ZJUNI	CN	O	B	2020	-	ZJUNI-SAT	Zhongxing zhilian	Hangzhou, Zhejiang	    120
 ZKRG	ZKRG	CN	PL	B	-	-	Zhongke Ruige	Zhongke Ruige (Yantai) Jishu Fuwu YZG	Yantai	    121.4500 	   37.4600 	0.0200 	-	-	Zhongke Ruige (Yantai) Technology Service Co., Ltd	中科睿格（烟台）技术服务有限责任公司
 ZKXK	ZKXK	CN	O	B	2020 Sep	-	Zhongke Xingqiao	Quanzhou Zhongke Xingqiao Kongjian Jishu YG	Quanzhou	    118.6800 	   24.8700 	0.0200 	-	-	Zhongke Xingqiao Aerospace Tech Co. Ltd	泉州中科星桥空天技术有限公司
 ZKXR	ZKXR	CN	O/PL	B	2018 May	-	Zhongke Xingrui	Zhongke Xingrui keji (Beijing) YG	Beijing:Haidian	    116.3000 	   39.9600 	0.0200 	-	-	Zhongke Xingrui (Starwiz)	中科星睿科技（北京）有限公司
-ZKYT	ZKYT	CN	O	B	2018	-	Zhongke TJ YG	Beijing Zhongke Tansuo Jishu YG	Beijing:Haidian	    116.3000 	   39.9600 	0.0200 	-	CAS Space	Beijing Zhongke Aerospace Exploration Tech. Co. Ltd.	北京中科宇航探索技术有限公司
+ZKYB	ZKYB	CN	O	B	2018	-	Zhongke YJ	Beijing Zhongke Yuhang Jishu YG	Beijing:Haidian	    116.3000 	   39.9600 	0.0200 	ZKYT	CAS Space	Beijing CAS Space Tech Co. Ltd.	北京中科宇航技术有限公司
+ZKYT	ZKYT	CN	O	B	2018	2022 Jun	Zhongke TJ YG	Beijing Zhongke Yuhang Tansuo Jishu YG	Beijing:Haidian	    116.3000 	   39.9600 	0.0200 	-	CAS Space	Beijing CAS Space Exploration Tech. Co. Ltd.	北京中科宇航探索技术有限公司
+ZKYTG	ZKYT	CN	O	B	2022 Jun	-	Zhongke TJ YG	Guangzhou Zhongke Yuhang Tansuo Jishu YG	Nansha, Guangzhou	    113.6100 	   22.8400 	0.0200 	-	CAS Space	Guangzhou CAS Space Exploratio Tech Co. Ltd.	广州中科宇航探索技术有限公司
 ZINGSA	ZINGSA	ZW	O	C	2018	-	ZINGSA	Zimbabwe National Geospatial and Space Agency	Harare	     31.0500 	  -17.8300 	0.0200 	ZW	-	-	Zimbabwe National Geospatial and Space Agency
 ZRWC	ZRWC	CN	O	B	-	-	Zhongguancun R.	Zhongguancun ruichen weixing chuangxin yingyong yanjiuyuan	Beijing:Haidian	    116.3000 	   39.9600 	0.0200 	-	-	Zhongguancun Ruichen Sat. Innovation App. Research Inst.	中关村睿宸卫星创新应用研究院
 ZSU	ZSU	UA	LA	D	1991	-	ZSU	Zbroini Syly Ukrainy	Kyiv	     30.5200 	   50.4500 	0.0200 	-	-	-	Збройні сили України
 ZVEZ	ZVEZ	SU	PL	B	1952	-	Zvezda	NPP Zvezda	Tomilino, Moskov. Oblast	     37.9500 	   55.6500 	0.0200 	MOM	Zvezda	Zvezda (Star)	ОАО «НПП «Звезда»
 ZWO	ZWO	NL	LS	C	1950	1988	ZWO	Organisatie voor Zuiver-Wetenschappelijk Onderzoek	's-Gravenhage	      4.3200 	   52.0800 	0.0200 	-	-	Organization for Pure Scientific Research	Organisatie voor Zuiver-Wetenschappelijk Onderzoek
 ZLZB	ZZB	CN	LA	D	2016 Jan  1	2024 Apr	PLA SSF	ZRJ Zhanlue Zhichi Budui	Beijing	    116.3800 	   39.9200 	0.0200 	PLA	-	Strategic Support Troops	战略支持部队
+ZTAIX	ZTAIX	CN	O	B	2024?	-	Taikong Xingji	Zhuzhou Taikong Xingji Weixing Keji YG	Zhuzhou, Hunan	    113.1300 	   27.8300 	0.0200 	-	-	Zhuzhou Space Interstellar Sat.Tech.Co.Ltd	株洲太空星际卫星科技有限公司
 ZTZM	ZTZM	BY	O	B	2009	-	ZTZM	Zavod Tochnoi Elektromekhaniki	Minsk	     27.5700 	   53.9000 	0.0200 	-	PEMF	Precision Electromechanics Factory	Завод точной электромеханики
 ZXHK	ZXHK	CN	O	B	-	-	Zhongke Xiguang	Xi'an zhongke xiguang hangtian keji YG	Xi'an	    108.9500 	   34.2700 	0.0200 	-	Xiopm Space	Zhongke Xiguang Aerospace Tech Co. Ltd.	西安中科西光航天科技有限公司
 ZXKJ	ZXKJ	CN	O	B	-	-	ZXKJ	Zhongxing kongjian yaogan (jiangsu) weixing jishu fuwu YG	Yizheng	    119.1900 	   32.2800 	0.0200 	-	-	China Sat space remote sensing (Jiangsu) SatTech Co Ltd	中星空间遥感（江苏）卫星技术服务有限公司
