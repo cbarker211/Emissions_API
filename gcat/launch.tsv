@@ -1,5 +1,5 @@
 #Launch_Tag	Launch_JD	Launch_Date	LV_Type	Variant	Fairing	Flight_ID	Flight	Mission	FlightCode	Platform	Launch_Site	Launch_Pad	Ascent_Site	Ascent_Pad	Perigee	Apogee	Apoflag	Inc	Azimuth	Range	RangeFlag	Dest	OrbMass	OrbPay	Agency	LaunchCode	FailCode	Group	Category	LTCite	Cite	Notes
-# Updated 2026 Sep 28 2217:28
+# Updated 2026 Oct  2 2147:05
 1942-A01  	2430523.95 	1942 Jun 13 1052	A-4	-	-	2	-	-	-	-	HVP	P7	-	-	      -	      1	 	-	   -	    -	 	-	   0.000 	   0.000 	WEHR	MF  	U	-	Test	TTaylor	-	-
 1942-A02  	2430587.97 	1942 Aug 16 1115	A-4	-	-	3	-	-	-	-	HVP	P7	-	-	      -	     11	 	-	   -	    -	 	-	   0.000 	   0.000 	WEHR	MF  	U	-	Test	Stuhlinger	RocketTeam	-
 1942-S01  	2430636.12 	1942 Oct  3 1458	A-4	-	-	4	-	-	-	-	HVP	P7	-	-	      -	     85	 	-	   -	    -	 	-	   0.000 	   0.000 	WEHR	MS  	-	-	Test	Stuhlinger	AE1961A	-
@@ -74469,7 +74469,7 @@
 2023-101 	2460145.64 	2023 Jul 20 0320	Kuaizhou-1A	-	-	Y22	Tianmu-1 07-10	-	-	-	JQ	LC43/95A	-	-	    516	    529	 	 97.4 	   -	    -	 	-	   0.000 	   0.200 	EXPACE	OS  	-	C	Sat SSO P	nasaspaceflight.com	-	-
 2023-102 	2460145.67 	2023 Jul 20 0409:30	Falcon 9	FT5	-	241/B1071.10 F241	Starlink-95	Starlink Group 6-15	V2M  6-15 (15 Ku)	-	VSFBS	SLC4E	-	-	      -	      -	 	-	   -	    -	 	-	   0.000 	  11.250 	SPX	OS  	-	C M	Sat LEO D	Wire	-	-
 2023-103 	2460147.71 	2023 Jul 22 0507	Gushenxing 1	1	-	Y6	Lemon Tree	QK-1/XSD-16	-	-	JQ	LC43/95A	-	-	    485	    502	 	 96.6 	   -	    -	 	-	   0.000 	   0.225 	XIDO	OS  	-	C	Sat SSO P	nasaspaceflight.com	-	-
-2023-104 	2460148.62 	2023 Jul 23 0250:13	Chang Zheng 2D	-	-	Y91	Lingxi-03/Sixiang	Sixiang	-	-	TYSC	LC9	-	-	    486	    503	 	 97.4 	   -	    -	 	-	   0.000 	   0.600 	SAST	OS  	-	G	Sat SSO D	ST/SG/SER.E/1237	nasaspaceflight.com	-
+2023-104 	2460148.62 	2023 Jul 23 0250:13	Chang Zheng 2D	-	-	Y91	Lingxi-03/Sixiang	Sixiang	-	-	TYSC	LC9	-	-	    486	    503	 	 97.4 	   -	    -	 	-	   0.000 	   0.600 	SAST	OS  	-	G m	Sat SSO D	ST/SG/SER.E/1237	nasaspaceflight.com	-
 2023-105 	2460149.54 	2023 Jul 24 0050:30	Falcon 9	FT5	-	242/B1076.6  F242	Starlink-96	Starlink Group 6-6	V2M  6-6  (22 Ku)	-	CC	LC40	-	-	      -	      -	 	-	   -	    -	 	-	   0.000 	  16.500 	SPX	OS  	-	C M	Sat LEO D	Wire	-	-
 2023-S32  	2460150.12 	2023 Jul 24 1454	KN-25	?	-	-	-	-	-	-	SUNAN?	-	-	-	      -	    100	 	-	   -	  350	 	-	   0.000 	   0.000 	KPA	MS  	-	-	Test	Wire	-	-
 2023-S33  	2460150.12 	2023 Jul 24 1459	KN-25	?	-	-	-	-	-	-	SUNAN?	-	-	-	      -	    100	 	-	   -	  400	 	-	   0.000 	   0.000 	KPA	MS  	-	-	Test	Wire	-	-
@@ -75392,7 +75392,7 @@
 2025-245 	2460978.19 	2025 Oct 29 1635:20	Falcon 9	FT5	-	558/B1083.15 F556	Starlink-321	Starlink Group 10-37	V2MO 10-37 (29 Ku)	-	CC	LC40	-	-	      -	      -	 	-	   -	    -	 	-	   0.000 	  16.700 	SPX	OS  	-	C M	Sat LEO D	celestrak.org	-	-
 2025-246 	2460980.16 	2025 Oct 31 1544:46	Chang Zheng 2F	G	-	Y21	Shenzhou 21	Shenzhou 21	-	-	JQ	LC43/91	-	-	    196	    337	 	 41.4 	   -	    -	 	-	   0.000 	   9.945 	CALT	OS  	-	G	Sat LSS O	nasaspaceflight.com	-	-
 2025-247 	2460980.36 	2025 Oct 31 2041:10	Falcon 9	FT5	-	559/B1063.29 F557	Starlink-322	Starlink Group 11-23	V2MO 11-23 (28 Ku)	-	VSFBS	SLC4E	-	-	      -	      -	 	-	   -	    -	 	-	   0.000 	  16.100 	SPX	OS  	-	C M	Sat LEO D	SpaceX	-	-
-2025-248 	2460981.72 	2025 Nov  2 0509:59	Falcon 9	FT5	-	560/B1091.3  F558	Bandwagon-4	Bandwagon-4	-	-	CC	LC40	-	-	      -	      -	 	-	   -	    -	 	-	   0.000 	   2.000 	SPX	OS  	-	C/OG	Sat LEO D	SpaceX	-	-
+2025-248 	2460981.72 	2025 Nov  2 0509:59	Falcon 9	FT5	-	560/B1091.3  F558	Bandwagon-4	Bandwagon-4	-	-	CC	LC40	-	-	      -	      -	 	-	   -	    -	 	-	   0.000 	   2.000 	SPX	OS  	-	C/OG m	Sat LEO D	SpaceX	-	-
 2025-249 	2460982.00 	2025 Nov  2 1156	LVM3	-	-	LVM3-M5	CMS-03	GSAT-7R	-	-	SHAR	SLP	-	-	    161	  25269	 	 21.4 	   -	    -	 	-	   0.000 	   4.400 	ISRO	OS  	-	G	Sat GTO O	Wire	-	-
 2025-250 	2460982.66 	2025 Nov  3 0347	Chang Zheng 7A	-	-	Y13	Yaogan 46	Yaogan 46	-	-	WEN	LC201	-	-	    171	   7410	 	 20.0 	   -	    -	 	-	   0.000 	   5.000 	CALT	OS  	-	G	Sat GTO O	nasaspaceflight.com	-	-
 2025-251 	2460984.38 	2025 Nov  4 2102	Ariane 62	-	-	VA265 (L6005)	Sentinel-1D	Sentinel-1D	-	-	CSG	ELA4	-	-	    636	    696	 	 98.1 	   -	    -	 	-	   0.000 	   2.184 	AE	OS  	-	G	Sat SSO D	Wire	-	-
@@ -75984,7 +75984,11 @@
 2026-M10  	2461303.75 	2026 Sep 20 0600	Hwasong-11Ma-1	-	-	Hypersonic RV	-	-	-	-	WONSAN	-	-	-	      -	     60	 	-	   -	  450	 	-	   0.000 	   0.000 	KPA	MS  	-	-	Test	Wire	-	-
 2026-M11  	2461303.87 	2026 Sep 20 0850	Hwasong-11Ma-1	-	-	Hypersonic RV	-	-	-	-	WONSAN	-	-	-	      -	     70	 	-	   -	  908	 	-	   0.000 	   0.000 	KPA	MS  	-	-	Test	Wire	-	-
 2026-221 	2461307.06 	2026 Sep 23 1332	Chang Zheng 8A	-	-	Y11?	WHDW 26	WHDW 26	-	-	HCSLS	LC1	-	-	    150	   1108	 	 50.0 	   -	    -	 	-	   0.000 	   6.000 	CALT	OS  	-	G M	Sat LEO O	nasaspaceflight.com	-	-
-2026-222 	2461307.87 	2026 Sep 24 0846	Chang Zheng 6A	-	-	Yxx	Yaogan 40-04	Yaogan 40-04	-	-	TYSC	LC9A	-	-	    150	    810	 	 86.0 	   -	    -	 	-	   0.000 	   2.000 	SAST	OS  	-	G	Sat LEO O	nasaspaceflight.com	-	-
+2026-222 	2461307.87 	2026 Sep 24 0846	Chang Zheng 6A	-	-	Y13	Yaogan 40-04	Yaogan 40-04	-	-	TYSC	LC9A	-	-	    150	    810	 	 86.0 	   -	    -	 	-	   0.000 	   2.000 	SAST	OS  	-	G	Sat LEO O	nasaspaceflight.com	-	-
 2026-223 	2461309.53 	2026 Sep 26 0039	Electron	-	-	97	Owlright,Owlright,Owlr.	StriX-12	-	-	MAHIA	LC1B	-	-	    171	    518	?	 37.9 	   -	    -	 	-	   0.000 	   0.150 	RLABN	OS  	-	C	Sat LEO OO	Wire	-	-
 2026-224 	2461310.08 	2026 Sep 26 1400	Falcon 9	FT5	-	xxx/B1100.10 F691	USSF-385	SBST R-3	-	-	VSFBS	SLC4E	-	-	    300	    300	?	 70.0 	   -	    -	 	-	   0.000 	  16.000 	SPX	OS  	-	CX/G	Sat LEO D	nasaspaceflight.com	-	-
 2026-225 	2461312.03 	2026 Sep 28 1248:59	Starship V3	-	-	B21/S41	Starship Flight 14	Ship 41	Starlink Group 31-1	-	STB	OLP2	-	-	    -40	    278	 	 30.5 	   -	    -	 	-	   0.000 	 120.000 	SPX	OS  	-	C M	Sat LEO D	nasaspaceflight.com	-	-
+2026-S260  	2461314.79 	2026 Oct  1 0651	Red Kite/IM	-	-	MAPHEUS 17	DLR MAPHEUS 17	-	-	-	ESR	S	-	-	      -	    291	 	-	   -	    -	 	-	   0.000 	   0.000 	DLR	SS  	-	DLR/	Micrograv	sscspace.com	-	-
+2026-226 	2461315.13 	2026 Oct  1 1510:06	Falcon 9	FT5	-	xxx/B1101.3  F692	Dragon Crew-13	Dragon C213.2	-	-	CC	LC40	-	-	      -	      -	 	-	   -	    -	 	-	   0.000 	  13.055 	SPX	OS  	-	CX	Sat ISS D	Wire	-	-
+2026-227 	2461315.27 	2026 Oct  1 1832:00	Falcon 9	FT5	-	xxx/B1082.25 F693	Transporter-18	Transporter-18	-	-	VSFBS	SLC4E	-	-	      -	      -	 	-	   -	    -	 	-	   0.000 	   5.000 	SPX	OS  	-	C	Sat LEO D	SpaceX	-	-
+2026-228 	2461315.66 	2026 Oct  2 0354:00	Falcon Heavy	-	-	014/B1106.1	USA	NROL-97	-	-	KSC	LC39A	-	-	      -	      -	 	-	   -	    -	 	-	   0.000 	   5.000 	SPX	OS  	-	CX/G	Sat GEO O	SpaceX	-	-

@@ -27,7 +27,6 @@ class build_reentry_list:
         self.final_year = final_year
         self.session = requests.Session()
         self.latlonerror = []
-        self.missing_time_count = 0
 
         self.region_specs = {
             "Gujarat":      ("States","name_en","Gujarat", 3),
@@ -272,7 +271,6 @@ class build_reentry_list:
             minstr  = date[3][2:4].zfill(2)
             secstr  = date[3][5:7].zfill(2) if ":" in date[3] else "00"
         else:
-            self.missing_time_count += 1
             hrstr   = "00"
             minstr  = "00"
             secstr  = "00"          
@@ -515,14 +513,14 @@ class build_reentry_list:
                         raise ValueError(f"Can't find lon/lat coords for {jsr_id} - {latlonstr}.")
                     
                     if "W" in lon_data[-1]:
-                        lon = np.float64((lon_data[0]) + str(np.float64(lon_data[1].replace("W",""))/60))*-1
+                        lon = -(np.float64(lon_data[0]) + np.float64(lon_data[1].replace("W",""))/60)
                     elif "E" in lon_data[-1]:
-                        lon = np.float64((lon_data[0]) + str(np.float64(lon_data[1].replace("E",""))/60))
+                        lon =   np.float64(lon_data[0]) + np.float64(lon_data[1].replace("E",""))/60
                         
                     if "N" in lat_data[-1]:
-                        lat = np.float64((lat_data[0]) + str(np.float64(lat_data[1].replace("N",""))/60))
+                        lat =   np.float64(lat_data[0]) + np.float64(lat_data[1].replace("N",""))/60
                     elif "S" in lat_data[-1]:
-                        lat = np.float64((lat_data[0]) + str(np.float64(lat_data[1].replace("S",""))/60))*-1
+                        lat = -(np.float64(lat_data[0]) + np.float64(lat_data[1].replace("S",""))/60)
 
         if lat == 0.0 and lon == 0.0:
             print("Re-entry location is 0.0")
@@ -899,7 +897,10 @@ class build_reentry_list:
         for i in tqdm(range(len(arrays["Piece"])), total=len(subset), desc=f"Processing {file}"):
 
             # Sort out the reentry time/date.
-            date_obj = self.convert_time(arrays["DDate"][i].split()) 
+            ddate_parts = arrays["DDate"][i].split()
+            date_obj = self.convert_time(ddate_parts)
+            time_known = len(ddate_parts) >= 4   # has HHMM
+            day_known  = len(ddate_parts) >= 3   # has DD
 
             # Create some variables for easier access.
             jsr_id      = self.convert_launch_tag(arrays["Piece"][i])
@@ -993,7 +994,7 @@ class build_reentry_list:
                 lat, lon, location = self.convert_lat_lon(jsr_dest.replace("?",""), inc_eff, reentry_category, jsr_apogee, jsr_id, jsr_name)
             
             # Sort the mass.    
-            # # TODO: Sort failed launches back to 1957. We can do this using the 8th character of the Type column.
+            # # TODO: Sort failed launches.
             # This apparently lists which stage was responsible for the failure of the launch.
             if jsr_id[5:6] in ["F","U"]:
                 abl_mass, other_mass = self.failed_launch_mass(jsr_id, jsr_name, reentry_category,jsr_drymass)
@@ -1017,7 +1018,9 @@ class build_reentry_list:
                 "location"         : location,
                 "inc"              : jsr_inc,
                 "apogee"           : jsr_apogee,
-                "parent"           : jsr_parent
+                "parent"           : jsr_parent,
+                "time_known"       : time_known,
+                "day_known"        : day_known,
             })
             
     def add_attached(self):
@@ -1311,7 +1314,7 @@ class build_reentry_list:
         """
 
         self.dsr = xr.open_dataset(f"./databases/rocket_attributes.nc", decode_times=False).to_dataframe().reset_index()
-        self.dsl = xr.open_dataset(f"./databases/launch_activity_data.nc", decode_times=False).to_dataframe().reset_index()
+        self.dsl = xr.open_dataset(f"./databases/launch_activity_data.nc").to_dataframe().reset_index()
         self.import_raul_spacex_map() #(https://t.co/RAsQ9NDmEr)
 
         self.cospar_to_rocket = (self.dsl.set_index("COSPAR_ID")["Rocket_Name"].to_dict())
@@ -1378,7 +1381,7 @@ class build_reentry_list:
             combined_jsr["Inc"] = combined_jsr["Inc"].astype(np.float64)
             combined_jsr["Prefix"] = combined_jsr["Converted_Tag"].str[:8]
             combined_jsr["Inc_eff"] = np.where(combined_jsr["Inc"] > 90,180.0 - combined_jsr["Inc"],combined_jsr["Inc"])
-            combined_jsr = combined_jsr.groupby("Prefix")["Inc"].max().to_dict()
+            combined_jsr = combined_jsr.groupby("Prefix")["Inc_eff"].max().to_dict()
             
             return combined_jsr
 
@@ -1396,7 +1399,9 @@ class build_reentry_list:
         column_types = {
             **dict.fromkeys(["id", "jcat", "name", "category", "burnup", "parent"], str),
             **dict.fromkeys(["lat", "lon", "abl_mass", "other_mass", "attached_abl_mass", "inc", "apogee"], float),
-            "location": int
+            "location": int,
+            "time_known": bool,
+            "day_known": bool,
         }
         
         self.df_reentry = pd.DataFrame(self.reentry_rows).astype(column_types).set_index("jcat")
@@ -1435,11 +1440,19 @@ class build_reentry_list:
 
         print("Setting ablation information.")
 
+        NOT_LV_FAIRING = ["s-12 experiment fairing", # Gemini experiment fairing
+                    "nose fairing",            # Gemini spacecraft fairing
+                    "horizon sensor fairing",  # Gemini spacecraft fairing
+                    "kosmos-316",              # Spacecraft object, not part of the 11K69 fairing.
+                    "kosmos-1867"              # Spacecraft object, not part of the 11K69 fairing.
+                    ]
+
+        def is_lv_fairing(name):
+            name = name.lower()
+            return ("fairing" in name or "plf" in name) and not any(s in name for s in NOT_LV_FAIRING)
+
         # Precompute reusable masks
-        is_fairing = (
-            self.df_reentry["name"].str.lower().str.contains("fairing", case=False, na=False) |
-            self.df_reentry["name"].str.lower().str.contains("plf", case=False, na=False)
-        )
+        is_fairing      = self.df_reentry["name"].map(is_lv_fairing)
         is_payload_comp = self.df_reentry["category"].isin(["C", "P", "S"])
         is_lower_stage  = self.df_reentry["category"].isin(["S0", "S1"])
         is_upper_stage  = self.df_reentry["category"].isin(["S2", "S3", "S4", "S5"])
@@ -1494,10 +1507,19 @@ class build_reentry_list:
         # Precompute rocket lookup: (Rocket_Name, Rocket_Variant) -> row
         dsr_lookup = self.dsr.set_index(["Rocket_Name", "Rocket_Variant"]).to_dict("index")
 
+        # Number of fairing pieces per launch, counted from the full GCAT catalogues.
+        all_cat   = pd.concat(self.jsr_data_dict.values(), ignore_index=True).drop_duplicates("#JCAT")
+        all_cat = all_cat[all_cat["Dest"] != "Z"]
+        fair_cat  = all_cat[all_cat["Name"].map(is_lv_fairing)].copy()
+        fair_cat["prefix"]  = fair_cat["Converted_Tag"].str[:8]
+        fair_cat["DryMass"] = pd.to_numeric(fair_cat["DryMass"], errors="coerce").fillna(0)
+        n_fairing = fair_cat.groupby("prefix").size().to_dict()
+        n_fairing_no_gcat = fair_cat[fair_cat["DryMass"] == 0].groupby("prefix").size().to_dict()
+
         for idx, row in self.df_reentry.iterrows():
             
             # Is this a stage or fairing from a successful launch?
-            if (row["category"].startswith("S") or "fairing" in row["name"].lower() or "plf" in row["name"].lower()) and row["id"][5] != "F":
+            if (row["category"].startswith("S") or is_lv_fairing(row["name"])) and row["id"][5] not in ["F","U"]:
 
                 rocket_tuple = dsl_lookup.get(row["id"][:8])
                 rocket_row = dsr_lookup.get(rocket_tuple)
@@ -1507,8 +1529,14 @@ class build_reentry_list:
                     self.df_reentry.loc[idx, "abl_mass"] = rocket_row[f"Stage{row['category'][1]}_StageMass"] / int(rocket_row["Booster_No"])
                 elif row["category"] in ["S1", "S2", "S3", "S4", "S5"]:
                     self.df_reentry.loc[idx, "abl_mass"] = rocket_row[f"Stage{row['category'][1]}_StageMass"]
-                elif "fairing" in row["name"].lower() or "plf" in row["name"].lower():
-                   self.df_reentry.loc[idx, "abl_mass"] = rocket_row["Fairing_Mass"] / 2
+
+                # For fairings, use values set in update_rocket_launch_data, then use GCAT, then use default.    
+                elif is_lv_fairing(row["name"]):
+                    prefix = row["id"][:8]
+                    if rocket_row["Fairing_Mass"] != 1756:
+                        self.df_reentry.loc[idx, "abl_mass"] = rocket_row["Fairing_Mass"] / n_fairing.get(prefix, 2)
+                    elif row["abl_mass"] == 0:
+                        self.df_reentry.loc[idx, "abl_mass"] = 1756 / n_fairing_no_gcat.get(prefix, 2)
 
         ############################
         # Clean up individual cases.
@@ -1524,41 +1552,28 @@ class build_reentry_list:
         # Object 2013-009J (PSLV upper Dual Launch Adapter (DLA-U)) has this mass on DW.
         self.df_reentry.loc[self.df_reentry["name"].eq("DLA-U"), "abl_mass"] = 100 
 
-        # Set time to midnight whenever the reentry is occurs on a different day than the launch and no time info is available.
-        # Also set to midnight if the reentry is from a launch in a previous year.
-        # When the reentry is on the same day, set it to the launch time.
+        # Fixing skylab fairing section with no mass.
+        self.df_reentry.loc[self.df_reentry["name"].eq("Skylab Fairing section"), "abl_mass"] = 2950.0
 
-        # TODO: Add timings for objects with missing time info but reentering on the same day as launch.
-        #time_update_mass_1, time_update_count_1 = 0,0     
-        #time_update_mass_2, time_update_count_2 = 0,0  
-        print(self.missing_time_count)
-        missing_time_count = 0 
-        #
-        #for idx, row in self.df_reentry.iterrows():
-        #    
-        #    if row["time"] == -1:  
-        #        missing_time_count +=1                
-        #        for count, launch_id in enumerate(self.dsl["COSPAR_ID"].values):
-        #            if reentry["id"][:8] == launch_id:
-        #                if reentry["date_obj"] == self.dsl["Date"].values[count]:
-        #                    reentry["time"] = self.dsl["Time(UTC)"].values[count]
-        #                    if np.isnan(reentry["abl_mass"]) or np.isnan(reentry["other_mass"]):
-        #                        print(reentry["id"],reentry["abl_mass"],reentry["other_mass"])
-        #                    time_update_mass_1 += (reentry["abl_mass"] +reentry["other_mass"])
-        #                    time_update_count_1 += 1
-        #                else:    
-        #                    reentry["time"] = 0
-        #                    time_update_mass_2 += (reentry["abl_mass"] +reentry["other_mass"])
-        #                    time_update_count_2 += 1
-        #                    
-        #    if reentry["time"] == -1:
-        #        reentry["time"] = 0
-        #        time_update_mass_2 += (reentry["abl_mass"] +reentry["other_mass"])
-        #        time_update_count_2 += 1
-        #
-        #print(f"Time set to launch:   {int(time_update_mass_1)},{int(time_update_count_1)}")
-        #print(f"Time set to midnight: {int(time_update_mass_2)},{int(time_update_count_2)}")
-        #print(f"Time missing:         {missing_time_count}")
+        print("Setting missing reentry times.")
+
+        launch_dt = self.dsl.set_index("COSPAR_ID")["Date"]
+        launch_time = self.df_reentry["id"].str[:8].map(launch_dt)
+        total_mass  = self.df_reentry["abl_mass"] + self.df_reentry["other_mass"]
+        missing     = ~self.df_reentry["time_known"]
+        same_day    = (~self.df_reentry["time_known"] &
+                       self.df_reentry["day_known"] &
+                       (launch_time.dt.normalize() == self.df_reentry["date"].dt.normalize()))
+        
+        # If the re-entry is on a different day to the launch, the time is set to midnight (done in convert_time).
+        midnight    = missing & ~same_day
+
+        # If the re-entry is on the same day as the launch, set the time to the launch time. 
+        self.df_reentry.loc[same_day, "date"] = launch_time[same_day]
+
+        print(f"Time missing:         {int(missing.sum())}")
+        print(f"Time set to launch:   {int(total_mass[same_day].sum())},{int(same_day.sum())}")
+        print(f"Time set to midnight: {int(total_mass[midnight].sum())},{int(midnight.sum())}")
         
         self.print_stats()
         

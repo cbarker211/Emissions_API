@@ -549,25 +549,10 @@ class OutputEmis:
                 seco_percent = 100.0
             self.fine_grid_mass_stages[2] = normalize_mass(self.fine_grid_mass[self.sei_alt_index:self.seco_alt_index].copy(), seco_percent)
             
-        ###########
-        # Stage 3
-        ###########
-                
-        # TODO: Add TEI for all rockets to check if any other rocket third stages start below 100 km.        
-        # Calculate third stage emissions for Minotaur 1 only.    
-        if launch_rocket == "Minotaur 1":
-            # Minotaur 1 third stage ignition occurs below the model boundary, so we can need to add some of the stage 3 emissions.
-            self.TEI_alt_index = np.searchsorted(self.fine_grid_top_alt, 73.47*1e3, side='right')
-            # Now interpolate the cumulative mass to optimise what percentage of propellant is within GEOS-Chem.
-            tei_mass = np.interp(73.47,self.ross_alt_edge, self.ross_cumulative_mass)
-            tei_percent = (self.prop_in_fine_grid - tei_mass) / (100.0 - tei_mass) * 100.0
-            self.fine_grid_mass_stages[3] = normalize_mass(self.fine_grid_mass[self.TEI_alt_index:].copy(), tei_percent)
-         
         ##################
         # Falcon Reusable
         ##################
            
-        # TODO: Need to add first stage emissions for Falcon Heavy for three launches in 2018-2019.
         # TODO: Need to add emissions for reusuable first stage of Blue Origin New Glenn.
             
         add_landing_emis = False
@@ -577,7 +562,7 @@ class OutputEmis:
         elif launch_rocket == "Falcon Heavy":
             landing_info = input_data.falcon_landing_dict[launch_id]
             if any(landing_info.get(k) != "expended" for k in ("left", "right", "center")):
-                    add_landing_emis = True
+                add_landing_emis = True
 
         if add_landing_emis: 
             # When 5.6% is used in the boostback burn, this is typically above 100 km, so we don't need to include it here. 
@@ -785,7 +770,8 @@ class OutputEmis:
         # Deal with failed launches.
         ############################################
 
-        # TODO: Decide what to do with failed launches in general, should make it so its relevant up to 100 km (fine grid).
+        # TODO: Sort failed launches. 
+        # Decide what to do with failed launches in general, should make it so its relevant up to 100 km (fine grid).
         
         # Most failures are for upper stages, and so can be treated as normal here.
         # Full information is provided in source_info/failed_launch_info.txt.
@@ -896,12 +882,7 @@ class OutputEmis:
             else:
                 self.prop_above[2] = 100
             
-        # TODO: Check for more rockets that have third stage emissions below 100 km.
-        # Add third stage emissions for Minotaur 1.
-        if row.Rocket_Name == "Minotaur 1":
-            vert_emis_dict = self.calc_emis(self.TEI_alt_index, None, vert_emis_dict, 3, launch_tuple)
-            
-        # If the rocket is a Falcon 9, then add the landing emissions. Kerosene, so no Al2O3 or Cly. 
+        # If the rocket is a SpaceX Falcon 9 or Heavy, then add the landing emissions. Kerosene, so no Al2O3 or Cly. 
         if row.Rocket_Name in ["Falcon 9","Falcon Heavy"]:
 
             landing_info = input_data.falcon_landing_dict[row.COSPAR_ID]
@@ -909,17 +890,25 @@ class OutputEmis:
             if row.Rocket_Name == "Falcon Heavy":
                 is_expendable = landing_info.get('left') == 'expended' or landing_info.get('right') == 'expended'
 
+            # If the Falcon 9 first stage or Falcon Heavy boosters are expended, then we don't need to add any landing emissions.
             if row.Rocket_Name == "Falcon 9" and landing_info == "expended":
                 pass
             elif row.Rocket_Name == "Falcon Heavy" and is_expendable:
                 pass
-            else:
-                falcon_p, falcon_q = None, None
 
-                if input_data.falcon_landing_dict[row.COSPAR_ID] == "ground":
-                    falcon_p = p
-                    falcon_q = q           
+            # Otherwise, add the landing emissions.
+            else:
+                
+                # By default, assume the emissions are placed at the launch site.
+                falcon_p, falcon_q = p, q
+
+                if row.Rocket_Name == "Falcon 9":
+                    needs_ocean = landing_info == "ocean"
                 else:
+                    needs_ocean = landing_info["center"] == "ocean"
+
+                # If the landing is in the ocean, then place the emissions there.
+                if needs_ocean:
                     matching = self.ocean_landings[self.ocean_landings["Date"].isin([f"{self.year}-{self.strmon}-{self.strday}"])].reset_index(drop=True)
                     # There is a typo in the database, a 2023 launch is listed as 2022.      
                     if (matching.shape[0] == 1) or (f"{self.year}-{self.strmon}-{self.strday}" == "2022-04-27"):
@@ -969,7 +958,6 @@ class OutputEmis:
                 # TODO: This section needs to be tweaked if wanting to run for different vertical heights above 80km.
                 # Should implement the boostback burn if the vertical height is increased to 100 km.
 
-                landing_info = input_data.falcon_landing_dict[row.COSPAR_ID]
                 falcon_tuple = (time_index, falcon_q, falcon_p, pei_indices, prop_masses, True) 
 
                 if row.Rocket_Name == "Falcon 9":
@@ -981,8 +969,9 @@ class OutputEmis:
 
                     # Boosters
                     if all(landing_info.get(k) != "expended" for k in ("left", "right")):
-                        vert_emis_dict = self.calc_emis(self.entry_bot, self.entry_top+1, vert_emis_dict, 0, falcon_tuple)
-                        vert_emis_dict = self.calc_emis(None, self.landing_top+1, vert_emis_dict, 0, falcon_tuple)
+                        ground_tuple = (time_index, q, p, pei_indices, prop_masses, True)
+                        vert_emis_dict = self.calc_emis(self.entry_bot, self.entry_top+1, vert_emis_dict, 0, ground_tuple)
+                        vert_emis_dict = self.calc_emis(None, self.landing_top+1, vert_emis_dict, 0, ground_tuple)
 
                     # Center
                     if landing_info.get("center") != "expended":
@@ -1024,8 +1013,6 @@ class OutputEmis:
                     included = 240/315*100 - (100-self.prop_above[2])
                 elif stage_no == 3 and row.COSPAR_ID == "2021-F09":
                     included = 475/521*100
-                elif stage_no == 3 and row.Rocket_Name == "Minotaur 1":
-                    included = self.prop_above[3]
                 else:
                     included = prop_above
         

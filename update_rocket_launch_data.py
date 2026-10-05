@@ -92,6 +92,9 @@ def update_mass_info(temp_dict,name,variant):
             temp_dict[f"Stage0 Stage Mass"]        = 11000  * int(temp_dict[f"Booster Number"]) # ESA
             temp_dict[f"Stage0 Propellant Mass"]   = 156000 * int(temp_dict[f"Booster Number"]) # ESA
     
+        # https://www.ariane.group/en/space-transportation/ariane-6/
+        # Text gives BECO=60km, MECO/SEI=270km, 
+    
     if name[:7] == "Atlas V":
         # Booster propellant and stage mass changed on November 13th 2020 when updated from AJ-60A to GEM63.  
         # https://web.archive.org/web/20180918143456/http://www.northropgrumman.com/Capabilities/GEM/Documents/GEM_63_GEM_63XL.pdf  
@@ -138,6 +141,8 @@ def update_mass_info(temp_dict,name,variant):
             
     if name in ["Antares 230","Antares 230+"]:
         
+        # https://cdn.northropgrumman.com/-/media/Project/Northrop-Grumman/ngc/space/antares/Antares-Users-Guide.pdf
+        
         # Prop masses:
         # DISCOSweb: 242000, 12837
         # SLR      : 242400, 23100 
@@ -152,8 +157,8 @@ def update_mass_info(temp_dict,name,variant):
         # Looking at user manuals, this value is also wrong, it seems to be for the Castor 30B second stage.
         # This vehicle uses the Castor 30XL, which has double the propellant mass.
         # https://www.northropgrumman.com/wp-content/uploads/CASTOR-Motor-Series.pdf Had to convert LBM to kg.
-        temp_dict[f"Stage1 Propellant Mass"] = (242400+242000) / 2
-        temp_dict[f"Stage1 Stage Mass"]      = (18800+20600)   / 2
+        temp_dict[f"Stage1 Propellant Mass"] = 239300 # Users Guide
+        temp_dict[f"Stage1 Stage Mass"]      = (18800+20600) / 2 # SLR/Sp101
         temp_dict[f"Stage2 Propellant Mass"] = 24924 # CASTOR documentation
         temp_dict[f"Stage2 Stage Mass"]      = 1392  # CASTOR documentation
         # Fairing mass:
@@ -185,6 +190,13 @@ def update_mass_info(temp_dict,name,variant):
         temp_dict[f"Stage1 Stage Mass"]       = (28000+26400) / 2   # SLR/Sp101
         temp_dict[f"Stage2 Stage Mass"]       = (3350+3490) / 2     # SLR/Sp101
         temp_dict[f"Fairing Mass"]            = 3550                # SLR
+
+        # https://www.ulalaunch.com/docs/default-source/rockets/delta-iv-user%27s-guide.pdf 
+        # Delta 4H uses LEO
+        # Delta 4M uses GTO
+        # Delta 4M+(5,2) uses GTO
+        # Delta 4M+(5,4) uses LEO
+        # Delta 4M+(4,2) assumed to be same as Delta 4M+(5,2).
 
     if name.startswith("Diamant"):
         # https://www.russianspaceweb.com/diamant.html
@@ -345,23 +357,37 @@ def update_mass_info(temp_dict,name,variant):
             temp_dict[f"Stage3 Propellant Mass"]  = 14996  # SLR
             temp_dict[f"Stage3 Stage Mass"]       = 2601   # SLR
         
-    if name in ["GSLV Mk III","LVM3"]:        
-        # Prop masses:
-        # DISCOSweb: 205000 (one), 115400 (W-D), 27700 (W-D)
-        # SLR      : 205000 (one), 116000,       28600
-        # Sp101    : 206690 (one), 115000,       28000
+    if name in ["GSLV Mk III","LVM3"]:    
+
+        # https://www.isro.gov.in/media_isro/image/media/Missions/GSLV-MK/GSAT19/more/pdf/GSLV_Mark_III_D1.pdf - D1 (GTO)
+        # 205, 116, 28      31, 9, 5
+
+        # https://www.isro.gov.in/media_isro/image/media/Missions/GSLV-MK/GSAT29/more/pdf/GSLV%20Mk%20III%20-%20D2%20.pdf - D2 (GTO)
+        # 205, 116, 28.6    31, 9.8, 4.4
+
+        # https://www.isro.gov.in/media_isro/pdf/Missions/LVM3/LVM3_M3_OneWeb_India2_Brochure_V9.pdf - M3 (LEO)
+        # 202.6, 115.9, 28.55
+
+        # https://www.isro.gov.in/media_isro/pdf/Missions/LVM3/LVM3M4_Chandrayaan3_brochure.pdf - M4 (EPO)
+        # 204.5, 115.8, 28.6
+
+        # https://www.isro.gov.in/media_isro/pdf/CMS-03-LVM3M5_Brochure.pdf - M5 (GTO)
+        # 204.5, 115.9, 28.6
         
-        # Stage masses:
-        # DISCOSweb: 31000 (one), 9600,  5300
-        # SLR      : 31000 (one), 9600,  4700
-        # Sp101    : 31300 (one), 10600, 5000
-        
-        temp_dict[f"Stage0 Propellant Mass"] = (206690+205000)
-        temp_dict[f"Stage1 Propellant Mass"] = 115500
-        temp_dict[f"Stage2 Propellant Mass"] = (28600+28000) / 2
-        temp_dict[f"Stage0 Stage Mass"]      = (31300+31000)
-        temp_dict[f"Stage1 Stage Mass"]      = (9600+10600) / 2
-        temp_dict[f"Stage2 Stage Mass"]      = (4700+5000) / 2
+        # https://www.isro.gov.in/media_isro/pdf/LVM3M6/LVM3M6_Brochure_201225.pdf - M6 (LEO)
+        # 204.2, 115.9, 28.5
+
+        # We only have stage masses for the two development flights. Using the values from D2 (latest available data) for all.
+
+        temp_dict[f"Stage0 Propellant Mass"] = 205000 * 2
+        temp_dict[f"Stage1 Propellant Mass"] = 116000
+        temp_dict[f"Stage2 Propellant Mass"] = 286000
+        temp_dict[f"Stage0 Stage Mass"]      = 31
+        temp_dict[f"Stage1 Stage Mass"]      = 9.8
+        temp_dict[f"Stage2 Stage Mass"]      = 4.4 / 2
+
+        # GSLV Mk III variants have one launch each, so using brochure values of these specific launches.
+        # For LVM3, we have three launches (M2, M3, M6). Using the values for M2.
     
     if name.startswith("H-IIA"):
         # Details from https://global.jaxa.jp/projects/rockets/h2a/ 
@@ -642,7 +668,7 @@ def update_mass_info(temp_dict,name,variant):
         temp_dict[f"Fairing Mass"]           = 1756     # GCAT
         temp_dict["proxy"]                   = "Zhuque-2E"
         
-    if name in ["Minotaur I"]:
+    if name == "Minotaur I":
         # Prop masses:
         # SLR      : 20785,       6237,      3915, 782
         # Sp101    : 20785 (W-D), 6237(W-D), 3915, 770.2
@@ -741,6 +767,14 @@ def update_mass_info(temp_dict,name,variant):
         temp_dict[f"Stage3 Stage Mass"]         = (700+1100) / 2    # SLR/Sp101
         temp_dict[f"Stage4 Stage Mass"]         = (420+920) / 2     # SLR/Sp101
         temp_dict[f"Fairing Mass"]              = (1150+1100) / 2   # SLR/Sp101
+
+        # Launch event altitudes
+        # No data for PSLV,-, so using PSLV,C data.
+        # https://www.isro.gov.in/media_isro/pdf/PSLVC16/publication_pslvc16.pdf PSLV,C
+        # https://www.isro.gov.in/media_isro/pdf/Missions/PSLV_C53.pdf           PSLV,CA
+        # https://www.isro.gov.in/media_isro/pdf/Missions/PSLV_C44_Broucher.pdf  PSLV-DL
+        # https://www.isro.gov.in/media_isro/pdf/PSLV_C45_Launch_Kit.pdf         PSLV-QL
+        # https://www.isro.gov.in/media_isro/pdf/PSLVC59/PSLV_C59_Brochure.pdf   PSLV-XL        
        
     if "Pegasus XL" in name:
         # Manual: https://web.archive.org/web/20221230022508/https://www.mach5lowdown.com/wp-content/uploads/PUG/pegasus-user-guide-2007-1.pdf

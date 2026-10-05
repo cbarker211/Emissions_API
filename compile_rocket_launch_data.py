@@ -42,20 +42,6 @@ class import_launches:
         df_sites = self.scrape_jsr("https://planet4589.org/space/gcat/tsv/tables/sites.tsv",self.session)
         df_orgs = self.scrape_jsr("https://planet4589.org/space/gcat/tsv/tables/orgs.tsv",self.session)
 
-        # Download and save Jonathan's bespoke launch list.
-        barker_url = "https://planet4589.org/space/supporting/barker/launch/barker.launch.csv"
-        response = self.session.get(barker_url)
-        if response.status_code == 200:
-                csv_data = StringIO(response.text)
-                df_barker = pd.read_csv(csv_data, delimiter=",", dtype=object, skiprows=[1])
-                df_barker["Date"] = pd.to_datetime(df_barker["Date"], errors="coerce", format="mixed")
-                df_barker = df_barker[df_barker["Date"].dt.year < 2026]
-                for col in df_barker.select_dtypes(include="object"):
-                    if col != "Megaconstellation_Flag":
-                        df_barker[col] = df_barker[col].str.strip()
-                df_barker = df_barker.drop(columns=["Longitude","Latitude","SiteGroup","Site","Pad","LaunchTypeCode","LaunchSuccessCode","InsertionPerigee","InsertionApogee","InsertionInc","Azimuth"])
-                df_barker.to_csv("/home/ucfacb0/Emission_Inventory/Emissions_API/databases/barker_launch.csv", index=False)
-
         # Example dictionary mapping codes to orders
         code_to_order = {
             "ALP": 1, "BET": 2, "GAM": 3, "DEL": 4, "EPS": 5, "ZET": 6, "ETA": 7,
@@ -273,8 +259,6 @@ class import_launches:
         ds.to_netcdf("./databases/launch_activity_data.nc")
         df_out = ds.to_dataframe().sort_values("COSPAR_ID")
         df_out.to_csv("./databases/launch_activity_data.csv", index=False)
-        df_out = df_out.drop(columns=["Longitude", "Latitude", "Site", "Agency"])
-        df_out.to_csv("./databases/comparison.csv", index=False)
         ds.close()
 
     def get_rocket_info(self):

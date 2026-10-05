@@ -36,6 +36,14 @@ This major update contains a range of changes to make the data more consistent w
     - Shuang Quxian 1
     - SSLV stage masses
     - Atlas V N22
+- Launch event altitudes
+    - Added Ariane 62
+    - Updated LVM3/GSLV Mk III using details from mission brochures
+    - Added PSLV variants using details from mission brochures
+    - Added launch event altitudes for new Proton-M/Briz-M variants
+    - Minotaur altitude values were in nautical miles in the user manual, now converted
+    - Added launch events from manual for all Delta 4 variants
+    - Added RS1 from manual
 - Other updates:
     - Updated Epsilon upper stage details for 2PBS and - variants. Removed upper stage from 2 variant following GCAT.
     - Qased information was previously obtained from SLR (S1+S3) and NB (S2), but S3 was misassigned.
@@ -47,20 +55,24 @@ This major update contains a range of changes to make the data more consistent w
     - Proton-M/Briz-M now has Phase I, II, III, IV variants in GCAT, all with launch and dry mass. 
         - Therefore switching to use GCAT data for all Proton vehicles. 
         - 8S811 stage dry mass changed in GCAT by 50 kg, used in UR and Proton vehicles. 
-        - Updated launch event altitudes to accommodate the new variants.
     - Added variant-specific stage 2 and stage 3 data for GSLV Mk II.
     - GCAT now lists the SM/SMA third stage / payload dispenser as an actual stage, not a component. Therefore we switch to using GCAT info instead of DW.
     - Confirmed that H-II (2S) -1 stage is correct, so now including emissions from this. It is essentially a second set of boosters burning a separate propellant type.
+    - Removed erroneous Minotaur I stage 3 emissions from the results.
+    - Updated LVM3/GSLV Mk III propellant and stage masses using details from mission brochures
+    - Bug fix for Ariane 5ECA+ stage 2 propellant mass.
+    - Updated Antares 230 Stage 1 propellant and stage mass.
+
 
 ## Launches 
-- Bug fix for Ariane 5ECA+ stage 2 propellant mass.
 - Fixed a bug where stage 2 emissions above the model where missing if SEI was above 100 km.
 - Cleaned up launch filtering to be more consistent with GCAT. Now including orbital, near-orbital and deep space launch codes only. This removes several non-orbital 19xx-U0x launches. Removed launches which exploded or were aborted at (or close to) the pad.
-- Now using the megaconstellation flag from the group column in GCAT, instead of manually filtering using payload names. This has meant removing Lynk as a megaconstellation and adding Starshield. Updated assignment for Xingwang (and other Chinese constellations) and US SDA. 3rd Yinhe launch (2023-104) removed as SMC, as unclear if this is part of the constellation.
+- Now using the megaconstellation flag from the group column in GCAT, instead of manually filtering using payload names. This has meant removing Lynk as a megaconstellation and adding Starshield, Starcloud. Updated assignment for Xingwang (and other Chinese constellations) and US SDA.
 - Now including NOTS EV1 as this is a spy satellite, not an anti-satellite weapon.
 - Extracting launch organization data. 
 - 2024 Simorgh launch changed to "3" variant.
 - Now using the NOx emission profile derived from SABRE measurements in Barker (2026).
+- Fixed geolocation of some Falcon Heavy re-entry and landing emissions.
 
 ## Re-entries
 - Changes to re-entry dry mass due to changes to rocket database.
@@ -69,7 +81,12 @@ This major update contains a range of changes to make the data more consistent w
 - Added re-entries with "S" (suborbital) type, as long as the apogee is still above 50 km. We include discarded stages, so should include other objects.
 - Fixed a bug where launch tags containing 'S' for suborbital also removed some tags with YYYY SIG for the older pre-COSPAR identification. Added these objects back.
 - No longer adding missing rocket stages.
-- 2023-104 removed as SMC.
+- Added re-entry mass for CFLR and hot swap batteries.
+- Fixed several bugs where re-entry latitude was set to > 90.
+- Set timings of re-entries on day of launch to the launch time, instead of midnight.
+- Fixed issues with fairing mass assignment
+    - Some non-object fairings were set using the default fairing mass, now fixed.
+    - Some fairings have mass in GCAT, so now the source preference is: primary source, GCAT, then default value.
 
 ## QOL
 - Removed old databases. 
