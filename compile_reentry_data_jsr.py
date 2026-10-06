@@ -1555,6 +1555,11 @@ class build_reentry_list:
         # Fixing skylab fairing section with no mass.
         self.df_reentry.loc[self.df_reentry["name"].eq("Skylab Fairing section"), "abl_mass"] = 2950.0
 
+        # 1965-047A is a lead ballast dummy payload inside a fairing (GCAT PLName "Lead Ballast"), not aluminium.
+        lead = self.df_reentry["id"].eq("1965-047A")
+        self.df_reentry.loc[lead, "other_mass"] = self.df_reentry.loc[lead, "abl_mass"]
+        self.df_reentry.loc[lead, "abl_mass"] = 0
+
         print("Setting missing reentry times.")
 
         launch_dt = self.dsl.set_index("COSPAR_ID")["Date"]

@@ -382,9 +382,9 @@ def update_mass_info(temp_dict,name,variant):
         temp_dict[f"Stage0 Propellant Mass"] = 205000 * 2
         temp_dict[f"Stage1 Propellant Mass"] = 116000
         temp_dict[f"Stage2 Propellant Mass"] = 286000
-        temp_dict[f"Stage0 Stage Mass"]      = 31
-        temp_dict[f"Stage1 Stage Mass"]      = 9.8
-        temp_dict[f"Stage2 Stage Mass"]      = 4.4 / 2
+        temp_dict[f"Stage0 Stage Mass"]      = 31000 * 2
+        temp_dict[f"Stage1 Stage Mass"]      = 9800
+        temp_dict[f"Stage2 Stage Mass"]      = 4400
 
         # GSLV Mk III variants have one launch each, so using brochure values of these specific launches.
         # For LVM3, we have three launches (M2, M3, M6). Using the values for M2.
