@@ -1038,7 +1038,11 @@ class build_reentry_list:
             (attached_cat["Status"].isin(["AR","AL","AL IN","AR IN","E"])) &     # Attached objects only.
             (~attached_cat["Piece"].str[5:6].isin(["S","F","U"])) &              # Skip suborbital and failed launches (treated separately).
             (attached_cat["DYear"].between(self.start_year, self.final_year)) &  # Only the selected timeframe.
-            (attached_cat["PLName"] != "Manfred Mem. Moon Mission")              # This should be listed as re-entering on the Moon, so ignore.
+            (attached_cat["PLName"] != "Manfred Mem. Moon Mission") &            # This should be listed as re-entering on the Moon, so ignore.
+            (attached_cat["Parent"] != "A04313") &                               # Parent collided, producing debris.
+            (attached_cat["Parent"] != "S29402") &                               # Parent exploded.
+            (attached_cat["Parent"] != "S27542") &                               # Parent went in deep space.
+            (attached_cat["#JCAT"] != "A11023")                                  # AL IN is wrong.
         ].copy()
 
         attached_cat["parent_clean"] = attached_cat["Parent"].str.replace("*","", regex=False)            
@@ -1047,11 +1051,13 @@ class build_reentry_list:
         def find_parent(jcat):
             parent = None
             match = attached_cat[attached_cat['#JCAT'] == jcat]
-            if len(match) > 0:
+            if len(match) == 1:
                 if match["Status"].values[0] == "E":
                     parent = f"Explosion {match['#JCAT'].values[0]} {match['Name'].values[0].strip()}"
                 else:
                     parent = match["Parent"].values[0].split()[0]
+            elif len(match) > 1:
+                raise ValueError(f"Multiple matches for parent object {jcat}.")
             
             return parent
 
@@ -1063,16 +1069,29 @@ class build_reentry_list:
                 continue
 
             parent = row["parent_clean"].split()[0]
-            if parent == "S16482": # This parent object is Satcom K1, but should be Columbia (STS 61-C) (S16481). 
-                parent = "S16481"
+            child_parent_override = {
+                "A04252": "S16481",  # Landed inside Columbia (STS 61-C)
+                "A04253": "S16481",  # Landed inside Columbia (STS 61-C)
+                "A06730": "S33441",  # Landed inside Endeavour (STS-126)
+                "A07376": "S32960",  # Landed inside Discovery (STS-124)
+                "A07705": "S36507",  # Landed inside Discovery (STS-131)
+            }
+            parent = child_parent_override.get(row["#JCAT"], parent)
             found = False
+
+            def add_mass(target, row):
+                # If the payload is inside the spacecraft or in the payload bay, then add to other mass.
+                in_payload_bay = "(STS" in self.df_reentry.loc[target, "name"]
+                if "IN" in row["Status"] or in_payload_bay:
+                    self.df_reentry.loc[target, "other_mass"] += float(row["DryMass"])
+
+                # Otherwise add to ablatable mass.
+                else:
+                    self.df_reentry.loc[target, "attached_abl_mass"] += float(row["DryMass"])
 
             # If parent is already in the full reentry list.
             if parent in self.df_reentry.index:
-                if "IN" in row["Status"]:
-                    self.df_reentry.loc[parent, "other_mass"] += float(row["DryMass"]) # type: ignore
-                else:
-                    self.df_reentry.loc[parent, "attached_abl_mass"] += float(row["DryMass"]) # type: ignore
+                add_mass(parent, row)
                 found = True
 
             # If not, then need to find the grandparent.
@@ -1089,15 +1108,12 @@ class build_reentry_list:
                         found = True
                         break
                     if ancestor in self.df_reentry.index:
-                        if "IN" in row["Status"]:
-                            self.df_reentry.loc[ancestor, "other_mass"] += float(row["DryMass"]) # type: ignore
-                        else:
-                            self.df_reentry.loc[ancestor, "attached_abl_mass"] += float(row["DryMass"]) # type: ignore
+                        add_mass(ancestor, row)
                         found = True
                         break
                         
             if not found:
-                print(row["#JCAT"], row["Name"], row["Parent"], "Mass not added.")
+                print(row["#JCAT"], row["Name"], row["Status"], row["Parent"], row["DryMass"], "Mass not added.")
                 failed_count += 1
                 failed_mass += float(row["DryMass"])
         
@@ -1351,10 +1367,12 @@ class build_reentry_list:
                 df = df[df["Converted_Tag"].str[:8].isin(self.dsl["COSPAR_ID"])]
 
                 # Cut down the size of the dataframe.
+                named_debris = df["Name"].str.lower().str.contains("debris") | df["Name"].str.contains("deb")
+                remove_debris = df["Name"].str.startswith("DebrisSat") | (df["Name"] == "RemoveDebris")
+
                 df = df[(df["Primary"] == "Earth")                       # Only objects whose primary body is Earth.
                       & (~df["Type"].str[0].isin(["Z","D"]))             # No spurious or debris objects.
-                      & (~df["Name"].str.lower().str.contains("debris")) # Skipping debris objects.
-                      & (~df["Name"].str.contains("deb"))                # Skipping debris objects.
+                      & (~named_debris | remove_debris)                  # Skipping debris objects.
                 ]
 
                 # Sort out the Apogee, Inc, and DYear columns. 
