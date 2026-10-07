@@ -19,6 +19,7 @@ import pandas as pd
 import json
 import calendar
 import sys
+import os
 import requests
 import xarray as xr
 import cProfile
@@ -32,14 +33,10 @@ class InputData:
     '''Read rocket launch and re-entry activity data.'''
     def __init__(self, launchfile: str,reentryfile: str, rocketinfofile: str, peifile: str):
 
-        def open_file(filepath):
-            ds = xr.open_dataset(filepath).to_dataframe().reset_index(drop=True)
-            return ds
-
-        self.dsl  = open_file(launchfile)
+        self.dsl  = xr.open_dataset(launchfile).to_dataframe().reset_index(drop=True)
+        self.dsre = xr.open_dataset(reentryfile).to_dataframe().reset_index(drop=True)
+        self.dsr  = xr.open_dataset(rocketinfofile).to_dataframe().reset_index(drop=True)
         self.handle_falcon_landings()
-        self.dsre = open_file(reentryfile)
-        self.dsr = xr.open_dataset(rocketinfofile).to_dataframe().reset_index(drop=True)
         self.define_pei(peifile)
 
     def scrape_jsr(self,url,session):
@@ -134,8 +131,10 @@ class OutputEmis:
         self.prop_above_total = 0
         self.reentry_mass_total = 0
         self.model_alt = MODEL_ALT
+        SPECIES = ['launch_nox', 'fuel_nox',  'h2o',       'launch_bc',  'co',
+                   'co2',        'launch_al', 'launch_hcl','launch_cl',  'cl2',
+                   'reentry_nox','reentry_al','reentry_bc','reentry_hcl','reentry_cl']
         events_data = {}
-        self.csv_count = 0
         
         # Build list of rocket names and variants
         rocket_pairs = zip(input_data.dsr["Rocket_Name"].values, input_data.dsr["Rocket_Variant"].values)
@@ -172,14 +171,26 @@ class OutputEmis:
                                                                        self.ross_alt_edge, 
                                                                        self.ross_cumulative_mass)
         
-        # TODO: We should switch around calculating cumulative prop consumption and interpolating onto fine grid.
-        # This has the effect of making the fine grid mass have step changes, whereas something smooth would be better. 
-        
         # TODO: Will need to put this in the loop later if we want to use meteorological box heights.
         layer_data = np.loadtxt("./input_files/" + f"geoschem_vertical_grid_{LEVELS}.csv",delimiter=",")    
         bot_alt_base = layer_data[::-1,0]*1000  # shape (LEVELS,)
         mid_alt_base = layer_data[::-1,1]*1000
         top_alt_base = layer_data[::-1,2]*1000
+
+        # The bottom of the lowest box is -0.006 km, so offset the rest of the altitudes.
+        offset = bot_alt_base[0]
+        bot_alt_base, mid_alt_base, top_alt_base = bot_alt_base - offset, mid_alt_base - offset, top_alt_base - offset
+
+        # Copy the top altitudes and replace the last value with precision of 0.1km.
+        gc_top = top_alt_base.copy()
+        gc_top[-1] = self.fine_grid_top_alt[np.searchsorted(self.fine_grid_top_alt, gc_top[-1])]
+
+        # Calculate the overlap between the GEOS-Chem grid and the fine grid.
+        overlap = (np.minimum(gc_top[:, None], self.fine_grid_top_alt[None, :])
+                - np.maximum(bot_alt_base[:, None], self.fine_grid_bot_alt[None, :]))
+        
+        # Divide the overlap by 0.1 km to get the fraction of each GEOS-Chem box that is covered by the fine grid.
+        self.fine_to_gc = np.clip(overlap, 0, None) / (self.fine_grid_top_alt - self.fine_grid_bot_alt)[None, :]
 
         # Reshape for broadcasting: (LEVELS,1,1)
         bot_alt_3d = bot_alt_base[:, None, None]
@@ -204,7 +215,9 @@ class OutputEmis:
         self.lat =  grid['lat']
 
         # Area can also be precomputed
-        area_2d = np.ones((self.nlat, self.nlon))
+        dlon = np.deg2rad(np.diff(grid['lon_b']))
+        dsin = np.diff(np.sin(np.deg2rad(grid['lat_b'])))
+        self.area = 6.3710072e6**2 * np.outer(dsin, dlon)  # shape (nlat, nlon)
 
         ########################################
         # Filter based on the year and dataset
@@ -215,23 +228,12 @@ class OutputEmis:
             launch_mask &= ~input_data.dsl["Megaconstellation_Flag"].astype(bool)
         elif dataset == 2:
             launch_mask &= input_data.dsl["Megaconstellation_Flag"].astype(bool)
-        launch_length  = np.sum(launch_mask)
-
-        total_length = launch_length
 
         reentry_mask = (input_data.dsre["Date"].dt.year == year)
         if dataset == 1:
             reentry_mask &= ~input_data.dsre["Megaconstellation_Flag"].astype(bool)
         elif dataset == 2:
             reentry_mask &= input_data.dsre["Megaconstellation_Flag"].astype(bool)
-        reentry_length = np.sum(reentry_mask)
-        total_length += reentry_length
-
-        if launch_length > 0:
-            if OUTPUT == "GC":
-                self.output_csv_launch_prop = np.zeros((launch_length*3,LEVELS))
-            elif OUTPUT == "JSON":
-                self.output_csv_launch_prop = np.zeros((launch_length*3,3))
         
         #############################################
         # Build a list of ocean landing coordinates.
@@ -282,15 +284,17 @@ class OutputEmis:
                 day_reentry_mask = month_reentry_mask & (np.array(input_data.dsre["Date"].dt.day) == d+1)                
                 daily_reentries_df = input_data.dsre[day_reentry_mask].reset_index(drop=True).copy()
 
-                if len(daily_launches_df) + len(daily_reentries_df) == 0:
+                no_events = len(daily_launches_df) + len(daily_reentries_df) == 0
+                if no_events and not SAVE_GC:
                     continue
 
                 self.strday = str(d+1).zfill(2) # Process day data
-                
+
                 self.bot_alt = bot_alt_3d + np.zeros((LEVELS, self.nlat, self.nlon))
                 self.mid_alt = mid_alt_3d + np.zeros((LEVELS, self.nlat, self.nlon))
                 self.top_alt = top_alt_3d + np.zeros((LEVELS, self.nlat, self.nlon))
-                self.area = area_2d.copy()  # ensure a fresh array per day
+                if SAVE_GC:
+                    self.rocket_data_arrays = {sp:  np.zeros((HOURS, LEVELS, self.nlat, self.nlon)) for sp in SPECIES}
 
                 # Initialize:
                 self.pmin,self.pmax=np.nan,np.nan
@@ -306,9 +310,13 @@ class OutputEmis:
                 if len(daily_reentries_df)>0:
                     daily_reentries = self.grid_emis(daily_reentries_df,'reentry')
                 
-                daily_events_data = {"launches": daily_launches,
-                                     "reentries": daily_reentries}
-                events_data[f"{self.year}-{self.strmon}-{self.strday}"] = daily_events_data 
+                # Save to JSON
+                if not no_events:
+                    events_data[f"{self.year}-{self.strmon}-{self.strday}"] = {"launches": daily_launches,
+                                                                               "reentries": daily_reentries}
+                # Save to NetCDF
+                if SAVE_GC:
+                    self.save_netcdf(dataset)
                 
         ####################################
         # Conservation of mass check
@@ -617,29 +625,20 @@ class OutputEmis:
         emis_full[seg_slice,10] = vertical_profile
 
         selected_alts = []
-        if OUTPUT == "GC":
-            bound_arr = np.append(self.bot_alt[:, q, p], self.top_alt[-1, q, p])
-            bound_idx = np.searchsorted(self.fine_grid_bot_alt, bound_arr)
-        elif OUTPUT == "JSON":
-            trop_ind  = np.searchsorted(self.fine_grid_top_alt, 15000)
-            strat_ind = np.searchsorted(self.fine_grid_top_alt, 50000)
-            meso_ind  = np.searchsorted(self.fine_grid_top_alt, self.top_alt[-1, q, p]) # Include the original top altitude of the GC model (80.6 km) to be consistent.
-            bound_idx = [0, trop_ind+1, strat_ind+1, meso_ind+1] # Add one so we include them in the lower bin.
+        # Determine the index of the top altitude for each JSON atmospheric layer in the fine grid.
+        trop_ind  = np.searchsorted(self.fine_grid_top_alt, 15000)
+        strat_ind = np.searchsorted(self.fine_grid_top_alt, 50000)
+        meso_ind  = np.searchsorted(self.fine_grid_top_alt, self.top_alt[-1, q, p]) # Include the original top altitude of the GC model (80.6 km) to be consistent.
+        self.json_bounds = [0, trop_ind+1, strat_ind+1, meso_ind+1] # Add one so we include them in the lower bin.
 
         # Regrid the vertical_profile to the desired model profile.
-        for i in range(len(bound_idx)-1):
-
-            bot_ind = bound_idx[i]
-            top_ind = bound_idx[i+1]
+        for i in range(len(self.json_bounds)-1):
+            bot_ind, top_ind = self.json_bounds[i], self.json_bounds[i+1]
             selected_alts.extend(np.arange(bot_ind, top_ind))
 
             # Slice and sum once to save time.
             emis_slice = emis_full[bot_ind:top_ind,:]
             emis_sum   = np.sum(emis_slice, axis=0) * 1e-6
-            
-            # This is for the GEOS-Chem output.
-            for count, key in enumerate(species_keys):
-                self.rocket_data_arrays[key][time_index,count,q,p]  += (emis_sum[count] )
 
             # This is for the API output.
             vert_emis_dict["bc"][i]    += emis_sum[0] 
@@ -652,9 +651,11 @@ class OutputEmis:
             vert_emis_dict["hcl"][i]   += emis_sum[8]
             vert_emis_dict["cl2"][i]   += emis_sum[9]
             vert_emis_dict["prop"][i]  += emis_sum[10] * prop_mass * 1e6
-             
-        if len(list(set(selected_alts))) != len(selected_alts):
-            raise IndexError("Error in fine grid indexing.")
+        
+        if SAVE_GC:
+            emis_gc = self.fine_to_gc @ emis_full * 1e-6
+            for count, key in enumerate(species_keys):
+                self.rocket_data_arrays[key][time_index, :, q, p] += emis_gc[:, count]
         
         # This is just for a conversation check at the end.
         # Slice and sum once to save time.
@@ -675,7 +676,7 @@ class OutputEmis:
         self.emis_in_grid[8]     += total_sum[9]   
 
         if falcon_flag:
-            self.prop_above[stage] += np.round((np.sum(emis_full[selected_alts[0]:selected_alts[-1]+1,10])),2)
+            self.prop_above[stage] = np.round(self.prop_above[stage] - np.sum(emis_full[selected_alts[0]:selected_alts[-1]+1, 10]), 2)
         else:
             self.prop_above[stage] += np.round((100-np.sum(emis_full[selected_alts[0]:selected_alts[-1]+1,10])),2)
         
@@ -778,7 +779,6 @@ class OutputEmis:
                     
         # Skip launches where the launch failed close to the launch pad.
         if row.COSPAR_ID in ['2020-F04','2021-F04','2023-F02','2024-F01']:
-            self.csv_count += 3
             return
         
         # This is where stage 1 failed during ascent.
@@ -812,16 +812,13 @@ class OutputEmis:
         error_lim = 0.001 # Maximum error from rounding / floating point errors.
         cospar = row.COSPAR_ID
 
-        def check_error(stage,cospar,error_lim, abs=False):
+        def check_error(stage,cospar,error_lim):
 
             ''' Check the difference between the stage propellant mass and the propellant consumed for the stage. 
                 This is to catch any errors in the propellant mass distribution.'''
             
             with np.errstate(divide='ignore', invalid='ignore'):
-                if abs:
-                    per_error = np.abs(self.prop_consumed[stage,self.launch_count] - prop_masses[stage]) / prop_masses[stage] * 100.0
-                else:
-                    per_error = (self.prop_consumed[stage,self.launch_count] - prop_masses[stage]) / prop_masses[stage] * 100.0
+                per_error = (self.prop_consumed[stage,self.launch_count] - prop_masses[stage]) / prop_masses[stage] * 100.0
                 if per_error > error_lim:
                     raise ValueError(f'Error with emissions for stage {stage} of {cospar}. Prop consumed: {self.prop_consumed[stage,self.launch_count]}, Prop mass: {prop_masses[stage]}, Per Error: {per_error}.') 
             
@@ -839,7 +836,7 @@ class OutputEmis:
             check_error(2,cospar,error_lim)
 
         # When MECO occurs in the model, the consumed propellant should be the same as the total propellant mass of stage 1.  
-        # A check that the Falcon landing distribution is no greater than 7% of the stage 1 emissions is undertaken later in the grid_emis function.
+        # A check that the Falcon landing distribution is no greater than 7% of the stage 1 emissions is undertaken later in the launch_emis function.
         if stage_alt_meco < self.model_alt:
             
             if (cospar not in failed_alt_events): # Suppressed for rockets that failed early into the launch.
@@ -859,10 +856,7 @@ class OutputEmis:
         # Creating a 2d array for the prop output.
         # Total prop, bc, co, co2, nox, h2o, al2o3, cl, hcl, cl2
         vert_emis_keys =  ["prop", "bc", "co", "co2", "nox", "h2o", "al2o3", "cl", "hcl", "cl2"]
-        if OUTPUT == "GC":
-            vert_emis_dict = {sp: np.zeros(LEVELS) for sp in vert_emis_keys}
-        elif OUTPUT == "JSON":
-            vert_emis_dict = {sp: np.zeros(3) for sp in vert_emis_keys}
+        vert_emis_dict = {sp: np.zeros(3) for sp in vert_emis_keys}
             
         self.prop_above = np.zeros(6) # An array for propellant consumed by each stage above the model limits.
 
@@ -946,17 +940,11 @@ class OutputEmis:
 
                     falcon_p = np.argmin(abs(falcon_lon-self.lon))
                     falcon_q = np.argmin(abs(falcon_lat-self.lat))
-                        
-                    if falcon_p > self.pmax:
-                        self.pmax = falcon_p
-                    if falcon_q > self.qmax:
-                        self.qmax = falcon_q
+                    self.pmin, self.pmax = min(self.pmin, falcon_p), max(self.pmax, falcon_p)
+                    self.qmin, self.qmax = min(self.qmin, falcon_q), max(self.qmax, falcon_q)
                 
                 if np.sum(self.fine_grid_mass_stages[6]) + np.sum(self.fine_grid_mass_stages[7]) > 7:
                     raise RuntimeError("Error with Stage 1 Ocean Landing. Propellant distribution exceeds what is expected.")
-                
-                # TODO: This section needs to be tweaked if wanting to run for different vertical heights above 80km.
-                # Should implement the boostback burn if the vertical height is increased to 100 km.
 
                 falcon_tuple = (time_index, falcon_q, falcon_p, pei_indices, prop_masses, True) 
 
@@ -967,11 +955,10 @@ class OutputEmis:
                 
                 elif row.Rocket_Name == "Falcon Heavy":
 
-                    # Boosters
-                    if all(landing_info.get(k) != "expended" for k in ("left", "right")):
-                        ground_tuple = (time_index, q, p, pei_indices, prop_masses, True)
-                        vert_emis_dict = self.calc_emis(self.entry_bot, self.entry_top+1, vert_emis_dict, 0, ground_tuple)
-                        vert_emis_dict = self.calc_emis(None, self.landing_top+1, vert_emis_dict, 0, ground_tuple)
+                    # Boosters (always true as we remove expendable booster cases earlier)
+                    ground_tuple = (time_index, q, p, pei_indices, prop_masses, True)
+                    vert_emis_dict = self.calc_emis(self.entry_bot, self.entry_top+1, vert_emis_dict, 0, ground_tuple)
+                    vert_emis_dict = self.calc_emis(None, self.landing_top+1, vert_emis_dict, 0, ground_tuple)
 
                     # Center
                     if landing_info.get("center") != "expended":
@@ -1006,8 +993,6 @@ class OutputEmis:
                         ['2020-F08','2020-U01','2021-F01','2022-F02','2022-U02', '2022-F04','2022-F06'], # Stage4
                         []] # Stage5 
             if stages[stage_no] and prop_above > 0 and row.COSPAR_ID not in skip_ids[stage_no]:
-                if 100 - np.sum(self.fine_grid_mass_stages[stage_no]) > 100:
-                    raise ValueError(f"Error with Stage{stage_no} emissions above model.")
 
                 if stage_no == 2 and row.COSPAR_ID == "2022-F03":
                     included = 240/315*100 - (100-self.prop_above[2])
@@ -1015,6 +1000,9 @@ class OutputEmis:
                     included = 475/521*100
                 else:
                     included = prop_above
+
+                if included < 0 or included > 100:
+                    raise ValueError(f"Stage{stage_no} of {row.COSPAR_ID}: {included}% above model is outside 0-100.")
         
                 emis_dict_above = self.calc_emis_above(pei_indices[stage_no],prop_masses[stage_no],included, emis_dict_above)   
         
@@ -1037,16 +1025,6 @@ class OutputEmis:
         launch_details["emissions"]["HCl"].append  (np.round(emis_dict_above["hcl"],6))
         launch_details["emissions"]["Cl2"].append  (np.round(emis_dict_above["cl2"],6))          
         
-        ##############################################
-        # Output the emissions to a file for viewing.
-        ##############################################                  
-
-        #self.output_csv_launch_prop[self.csv_count,:] = vert_emis_dict["prop"][:]
-        #self.csv_count += 1
-        #self.output_csv_launch_prop[self.csv_count,:] = self.mid_alt[:,q,p]*1e-3
-        #self.csv_count += 1  
-        #self.output_csv_launch_prop[self.csv_count,:] = self.gc_relative_mass
-        #self.csv_count += 1 
         
         if np.sum(self.gc_relative_mass) == 0 and np.sum(vert_emis_dict["prop"][:]) == 0:
             print(f'??? {input_data.dsr["Rocket_Name"][roc_ind]}')
@@ -1074,10 +1052,9 @@ class OutputEmis:
             "emissions":  {sp: 0 for sp in ["reentry_nox","reentry_al","reentry_bc","reentry_hcl","reentry_cl"]}
         }
 
-        vert_emis_dict_reentry = np.zeros((len(self.mid_alt[:,q,p]),10))
         reentry_ei = np.zeros(5) # Al2O3, NOx, BC, Cl, HCl
         if np.ma.is_masked(row.Ablatable_Mass) or np.ma.is_masked(row.Other_Mass):
-            pass
+            self.mass_survive = 0
         else:
         
             reentry_ei[0]   = row.Ablation_Degree * row.Percent_Aluminium
@@ -1104,23 +1081,20 @@ class OutputEmis:
             def output_reentry_emis(key,temp,i):
                 self.emis_in_grid[i] += temp
                 reentry_details["emissions"][key] += temp   
-                self.rocket_data_arrays[key][time_index,self.bot_reenter:self.top_reenter+1,q,p] += temp / self.n_reenter_levs
+                if SAVE_GC:   
+                    self.rocket_data_arrays[key][time_index,self.bot_reenter:self.top_reenter+1,q,p] += temp / self.n_reenter_levs
 
             output_reentry_emis("reentry_nox",t_nox_reentry,9)
             output_reentry_emis("reentry_al",t_al2o3_reentry,10)
 
-            vert_emis_dict_reentry[self.bot_reenter:self.top_reenter+1,4]   += np.full((self.n_reenter_levs),t_nox_reentry/self.n_reenter_levs)
-            vert_emis_dict_reentry[self.bot_reenter:self.top_reenter+1,6]   += np.full((self.n_reenter_levs),t_al2o3_reentry/self.n_reenter_levs)
-            
             if row.Category in ["P","C","S2","S3","S4"]:
                 
-                prop_dict = {"reentry_bc": 1,"reentry_cl":7,"reentry_hcl": 8}
                 for i, key in enumerate(["reentry_bc","reentry_cl","reentry_hcl"]):
                     t_reentry = (row.Ablatable_Mass + row.Other_Mass) * reentry_ei[i+2] / 1000
                     self.emis_in_grid[i+11] += t_reentry
                     reentry_details["emissions"][key] += t_reentry
-                    self.rocket_data_arrays[key][time_index,self.bot_reenter:self.top_reenter+1,q,p] += t_reentry / self.n_reenter_levs
-                    vert_emis_dict_reentry[self.bot_reenter:self.top_reenter+1,prop_dict[key]]   += np.full((self.n_reenter_levs),t_reentry/self.n_reenter_levs)
+                    if SAVE_GC:
+                        self.rocket_data_arrays[key][time_index,self.bot_reenter:self.top_reenter+1,q,p] += t_reentry / self.n_reenter_levs
 
         new_dict = {
             "NOx":   float(np.round(reentry_details["emissions"]["reentry_nox"],6)),
@@ -1140,50 +1114,30 @@ class OutputEmis:
         
         # Pre allocate the emission array.
         daily_info = []
-        species = ['launch_nox', 'fuel_nox',  'h2o',       'launch_bc',  'co',
-                   'co2',        'launch_al', 'launch_hcl','launch_cl',  'cl2',
-                   'reentry_nox','reentry_al','reentry_bc','reentry_hcl','reentry_cl']
-
-        # Set up the emission arrays for this launch/reentry.
-        self.rocket_data_arrays = {}
-        for sp in species:
-            self.rocket_data_arrays[sp] = np.zeros((HOURS, LEVELS, self.nlat, self.nlon))
 
         #Loop over each launch/reentry.
         for row in df.itertuples():
             
             if pd.isna(row.Longitude) or pd.isna(row.Latitude):
-                row.Longitude = 0.0
-                row.Latitude = 0.0
+                raise ValueError("Missing longitude or latitude.")
             
             if pd.isna(row.COSPAR_ID):
-                raise ValueError(row.COSPAR_ID)
+                raise ValueError("Missing COSPAR ID.")
             
             ################
             # Setup grid.
             ################
+            
             # Get grid horizontal indices (p is lon index; q is lat index).
             # This works out the nearest latitude and longitude on the grid.
             p,q = np.argmin(np.abs(row.Longitude-self.lon)), np.argmin(np.abs(row.Latitude-self.lat))
             
-            # Usually, any reentries from launches are placed at the same lat/lon as the launch itself.
-            # This code is only used where a non launch related reentry occurs on the same day as a launch.
-            # It updates the grid range (lat and lon edges) to account for the new location and to prepare for saving to file:
             if np.isnan(self.pmin):
                 self.pmin,self.pmax=p,p
                 self.qmin,self.qmax=q,q
-            if ~np.isnan(self.pmin) and self.pmin>p:
-                self.pmin=p
-            if ~np.isnan(self.pmax) and self.pmax<p:
-                self.pmax=p
-            if ~np.isnan(self.qmin) and self.qmin>q:
-                self.qmin=q
-            if ~np.isnan(self.qmax) and self.qmax<q:
-                self.qmax=q
-                                
-            # Get factor to convert from kg to kg/m2/s if needed for GEOS-Chem outputs:
-            #self.kg_to_kgm2s        = self.area[q,p]*TIMESTEP
-            #self.falcon_kg_to_kgm2s = self.area[falcon_q,falcon_p]*TIMESTEP # TODO: Where do we calculate Falcon q and Falcon p
+            else:
+                self.pmin, self.pmax = min(self.pmin, p), max(self.pmax, p)
+                self.qmin, self.qmax = min(self.qmin, q), max(self.qmax, q)
             
             # Format the time of the event.
             seconds_since_midnight = (
@@ -1206,6 +1160,61 @@ class OutputEmis:
                 raise ValueError("Unexpected event type")
 
         return daily_info
+
+    def save_netcdf(self, dataset):
+        """Save rocket emissions as COARDS compliant NetCDF files"""
+
+        variable_names = {
+            "launch_nox":  ("launch_nox_thermal", "Indirect launch emissions of NOx",                          "Indirect launch NOx"),
+            "fuel_nox":    ("launch_nox_fuel",    "Direct launch emissions of NOx from propellant combustion", "Direct launch NOx"),
+            "reentry_nox": ("reentry_nox",        "Reentry NOx emissions",                                     "Reentry NOx"),
+            "h2o":         ("launch_h2o",         "Launch H2O emissions",                                      "Launch H2O"),
+            "launch_bc":   ("launch_bc",          "Launch BC emissions",                                       "Launch BC"),
+            "launch_al":   ("launch_al",          "Launch Al2O3 emissions",                                    "Launch Al2O3"),
+            "reentry_al":  ("reentry_al",         "Reentry alumina emissions",                                 "Reentry alumina"),
+            "launch_hcl":  ("launch_hcl",         "Launch HCl emissions",                                      "Launch HCl"),
+            "launch_cl":   ("launch_cl",          "Launch Cl emissions",                                       "Launch Cl"),
+            "cl2":         ("launch_cl2",         "Launch Cl2 emissions",                                      "Launch Cl2"),
+            "co":          ("launch_co",          "Launch CO emissions",                                       "Launch CO"),
+        }
+        
+        ###################
+        # Set up range.
+        ###################
+
+        if np.isnan(self.pmin):
+            self.pmin = self.pmax = self.qmin = self.qmax = 1
+        q0 = min(max(int(self.qmin) - 1, 0), self.nlat - 3)
+        q1 = max(min(int(self.qmax) + 2, self.nlat), q0 + 3)
+        p0 = min(max(int(self.pmin) - 1, 0), self.nlon - 3)
+        p1 = max(min(int(self.pmax) + 2, self.nlon), p0 + 3)
+
+        ########################################
+        # Convert to xarray dataset and save.
+        ########################################
+
+        date = f"{self.year}-{self.strmon}-{self.strday}"
+        
+        # Convert to kg/m2/s for GEOS-Chem. The rocket_data_arrays are in tonnes per timestep, so we need to convert to kg/m2/s.
+        kg_to_kgm2s = 1e3 / (self.area[q0:q1, p0:p1] * TIMESTEP)  # tonnes per timestep -> kg/m2/s
+
+        ds = xr.Dataset({name: (("time", "lev", "lat", "lon"), 
+                                (self.rocket_data_arrays[key][:, :, q0:q1, p0:p1] * kg_to_kgm2s).astype(np.float32),
+                                {"long_name": long_name, "short_name": short_name, "units": "kg/m2/s"})
+                        for key, (name, long_name, short_name) in variable_names.items()},
+        coords={"time": ("time",np.arange(0, HOURS, dtype=np.int64),           {"units": f"hours since {date} 00:00:00","calendar": "standard", "axis": "T"}),
+                "lev":  ("lev", np.arange(1, LEVELS + 1),                      {"units": "level", "positive": "up", "axis": "Z"}),
+                "lat":  ("lat", np.asarray(self.lat[q0:q1], dtype=np.float32), {"units": "degrees_north", "axis": "Y"}),
+                "lon":  ("lon", np.asarray(self.lon[p0:p1], dtype=np.float32), {"units": "degrees_east", "axis": "X"})})
+
+        ds["AREA"] = (("lat", "lon"), self.area[q0:q1, p0:p1],
+                      {"long_name": "Grid box surface area", "units": "m2"})
+
+        outdir = f"./out_files/GC/{GRID_RES}/{LEVELS}/{self.year}/{self.strmon}"
+        os.makedirs(outdir, exist_ok=True)
+        dataset_name = {1: "nonsmc", 2: "smc", 3: "all"}[dataset]
+        encoding = {name: {"zlib": True, "complevel": 4} for name, _, _ in variable_names.values()}
+        ds.to_netcdf(f"{outdir}/byproduct_emis_{dataset_name}_{GRID_RES}_{LEVELS}L_{date.replace('-', '')}.nc4", encoding=encoding)
 
 def check_total_emissions(year,dataset,res,levels,emis_data):
     """ Print total emissions of each species.
@@ -1253,12 +1262,13 @@ if __name__ == "__main__":
 
     # Configure the script arguments.
     parser = argparse.ArgumentParser()
-    parser.add_argument('-sm', "--start_month", default = "1", choices=str(np.arange(1,13)), help='Start Month (will override final month if greater than final month).')
-    parser.add_argument('-fm', "--final_month", default = "12", choices=str(np.arange(1,13)), help='Final Month.')
-    parser.add_argument('-sd', "--start_dataset", default = "3", choices=str(np.arange(1,4)), help='Dataset. 1=Non-SMC, 2=SMC, 3=All')
-    parser.add_argument('-fd', "--final_dataset", default = "3", choices=str(np.arange(1,4)), help='Dataset. 1=Non-SMC, 2=SMC, 3=All')
-    parser.add_argument('-sy', "--start_year", default = "1957", choices=str(np.arange(1957,current_year+1)), help='Start Year.')
-    parser.add_argument('-fy', "--final_year", default = "2026", choices=str(np.arange(1957,current_year+1)), help='Final Year.')
+    parser.add_argument('-sm', "--start_month", default = "1",   type=int, choices=range(1,13), help='Start Month (will override final month if greater than final month).')
+    parser.add_argument('-fm', "--final_month", default = "12",  type=int, choices=range(1,13), help='Final Month.')
+    parser.add_argument('-sd', "--start_dataset", default = "3", type=int, choices=range(1,4), help='Dataset. 1=Non-SMC, 2=SMC, 3=All')
+    parser.add_argument('-fd', "--final_dataset", default = "3", type=int, choices=range(1,4), help='Dataset. 1=Non-SMC, 2=SMC, 3=All')
+    parser.add_argument('-sy', "--start_year", default = "1957", type=int, choices=range(1957,current_year+1), help='Start Year.')
+    parser.add_argument('-fy', "--final_year", default = "2026", type=int, choices=range(1957,current_year+1), help='Final Year.')
+    parser.add_argument('-sv', "--save_gc", action='store_true', help='Save output as daily netcdf files.')
     args = parser.parse_args()
 
     ######################################   
@@ -1270,15 +1280,14 @@ if __name__ == "__main__":
     MODEL_ALT = 80
     GRID_RES  = "2x25"    
     HOURS     = 24
-    OUTPUT    = "JSON"
+    SAVE_GC   = args.save_gc
     print(f"Timestep: {TIMESTEP}s. Resolution: {GRID_RES}x{LEVELS}. Vertical Range: 0-{MODEL_ALT} km.")
 
     def main():
         # Define the ranges of years, months and datasets to process.
         def make_range(start, end):
-            start, end = int(start), int(end)
             if start > end:
-                end = start + 1
+                end = start
             return np.arange(start, end + 1), start, end
         
         years,    start_year,    final_year    = make_range(args.start_year, args.final_year)
@@ -1296,12 +1305,12 @@ if __name__ == "__main__":
 
         stage_alt_dict = {}
         stage_alt_rockets = np.genfromtxt("./input_files/launch_event_altitudes.csv",dtype=str,skip_header=1,usecols=[0,1],delimiter=",")
-        stage_alt_data = np.genfromtxt("./input_files/launch_event_altitudes.csv",dtype=np.float64,skip_header=1,usecols=[2,3,4,5],delimiter=",")
+        stage_alt_data    = np.genfromtxt("./input_files/launch_event_altitudes.csv",dtype=np.float64,skip_header=1,usecols=[2,3,4,5],delimiter=",")
 
         stages = ["BECO", "MECO", "SEI1", "SECO"]
         for (name, variant), row in zip(stage_alt_rockets, stage_alt_data):
             for stage, value in zip(stages, row):
-                stage_alt_dict[f"{name} {variant} {stage}"] = np.nan if value == "" else np.float64(value)
+                stage_alt_dict[f"{name} {variant} {stage}"] = value
         
         # BECO, MECO, SEI1, SECO
         # B+1/2S, B+3S, B+4S, 2S, 3S, 4S 

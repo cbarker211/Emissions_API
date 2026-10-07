@@ -5,6 +5,8 @@ For a full list of changes, please visit https://github.com/cbarker211/Emissions
 This major update contains a range of changes to make the data more consistent with GCAT and reliable across the space age.
 
 ## Rockets
+
+### Structural Changes
 - Stopped using proxy rockets where mass is available in GCAT.
     - launch mass only in GCAT
         - ADD TV2
@@ -41,7 +43,6 @@ This major update contains a range of changes to make the data more consistent w
     - Updated LVM3/GSLV Mk III using details from mission brochures
     - Added PSLV variants using details from mission brochures
     - Added launch event altitudes for new Proton-M/Briz-M variants
-    - Minotaur altitude values were in nautical miles in the user manual, now converted
     - Added launch events from manual for all Delta 4 variants
     - Added RS1 from manual
 - Other updates:
@@ -49,7 +50,6 @@ This major update contains a range of changes to make the data more consistent w
     - Qased information was previously obtained from SLR (S1+S3) and NB (S2), but S3 was misassigned.
         - GCAT has launch+dry mass for S1+S2, and launch mass for S3. Switching to using GCAT.
     - Ariane 6 booster information updated.
-    - Fixed Vulcan Centaur VC4S booster number.
     - Scout F-1 upper stage information now from GCAT instead of Encyclopedia Astronautica.
     - Set NOTS EV1 4th and 5th stages to dry_mass * 10 (launch_mass was zero). These never fired anyway, it always failed at a previous stage. 
     - Proton-M/Briz-M now has Phase I, II, III, IV variants in GCAT, all with launch and dry mass. 
@@ -58,40 +58,55 @@ This major update contains a range of changes to make the data more consistent w
     - Added variant-specific stage 2 and stage 3 data for GSLV Mk II.
     - GCAT now lists the SM/SMA third stage / payload dispenser as an actual stage, not a component. Therefore we switch to using GCAT info instead of DW.
     - Confirmed that H-II (2S) -1 stage is correct, so now including emissions from this. It is essentially a second set of boosters burning a separate propellant type.
-    - Removed erroneous Minotaur I stage 3 emissions from the results.
     - Updated LVM3/GSLV Mk III propellant and stage masses using details from mission brochures
-    - Bug fix for Ariane 5ECA+ stage 2 propellant mass.
     - Updated Antares 230 Stage 1 propellant and stage mass.
 
+### Bug Fixes
+- Minotaur launch event altitudes were in nautical miles in the user manual, now converted to km.
+- As a result, removed erroneous Minotaur I stage 3 emissions from the results.
+- Fixed Vulcan Centaur VC4S booster number.
+- Bug fix for Ariane 5ECA+ stage 2 propellant mass.
 
 ## Launches 
-- Fixed a bug where stage 2 emissions above the model where missing if SEI was above 100 km.
+
+### Structural Changes
 - Cleaned up launch filtering to be more consistent with GCAT. Now including orbital, near-orbital and deep space launch codes only. This removes several non-orbital 19xx-U0x launches. Removed launches which exploded or were aborted at (or close to) the pad.
 - Now using the megaconstellation flag from the group column in GCAT, instead of manually filtering using payload names. This has meant removing Lynk as a megaconstellation and adding Starshield, Starcloud. Updated assignment for Xingwang (and other Chinese constellations) and US SDA.
 - Now including NOTS EV1 as this is a spy satellite, not an anti-satellite weapon.
-- Extracting launch organization data. 
+- Now extracting launch organization data. 
 - 2024 Simorgh launch changed to "3" variant.
 - Now using the NOx emission profile derived from SABRE measurements in Barker (2026).
+- Note: Primary EI(CO2) for hypergolic fuel is an average of James21 and Ross14, whereas it was just Ross in Barker 2024.
+
+### Bug Fixes
+- Fixed a bug where stage 2 emissions above the model where missing if SEI was above 100 km.
+- Fixed a bug where Falcon emissions above the were being overestimated.
 - Fixed geolocation of some Falcon Heavy re-entry and landing emissions.
 
 ## Re-entries
+
+### Structural Changes
 - Changes to re-entry dry mass due to changes to rocket database.
 - Reconfigured re-entries to include only objects from launches in the launch database.
 - Re-entries with L, LF, L? now counted as partial burnup on re-entry.
 - Added re-entries with "S" (suborbital) type, as long as the apogee is still above 50 km. We include discarded stages, so should include other objects.
-- Fixed a bug where launch tags containing 'S' for suborbital also removed some tags with YYYY SIG for the older pre-COSPAR identification. Added these objects back.
 - No longer adding missing rocket stages.
-- Added re-entry mass for CFLR and hot swap batteries.
-- Fixed several bugs where re-entry latitude was set to > 90.
 - Set timings of re-entries on day of launch to the launch time, instead of midnight.
-- Fixed issues with fairing mass assignment
-    - Some non-object fairings were set using the default fairing mass, now fixed.
-    - Some fairings have mass in GCAT, so now the source preference is: primary source, GCAT, then default value.
+- Added re-entry mass for CFLR and hot swap batteries.
+- Some fairings have mass in GCAT, so now the source preference is: primary source, GCAT, then default value.
+
+### Bug Fixes
+- Fixed a bug where launch tags containing 'S' for suborbital also removed some tags with YYYY SIG for the older pre-COSPAR identification. Added these objects back.
+- Fixed several bugs where re-entry latitude was set to > 90.
+- Fixed a bug where some non-object fairings were set using the default fairing mass, now fixed.
 
 ## QOL
 - Removed old databases. 
 - Changed site names to stop renaming to DISCOSweb names.
 - Renamed Spaceport Florida Authority to Cape Canaveral and Mid-Atlantic Regional Spaceport to Wallops Island.
+- Readded the functionality to save out emissions as NetCDF files on the GEOS-Chem grid.
+
+---
 
 # v2.6.0
 
@@ -117,6 +132,8 @@ This updates adds launch emissions in atmospheric layers, fixes bugs, and stream
 - Raul data now loaded as a pandas dataframe.
 - Updated re-entries with a location of '-1'. This was used a placeholder to denote named regions where I needed to assign the geolocation.
 - OV1-7P re-classified as payload.
+
+---
 
 # v2.5.0
 
@@ -179,6 +196,8 @@ Changing the names to the GCAT names uncovered missing launch event altitudes an
     - Kairos and Ariane 62 data is now from GCAT so the emissions are slightly different.
 - GCAT only has Fregat, no Fregat-M or Fregat-MT (this only affects the third stage which is above the model).
 
+---
+
 # v2.0.0
 
 This major update contains an extension of launch emissions for 1957-2024, as well as code refactoring and bug fixes.
@@ -232,6 +251,8 @@ This major update contains an extension of launch emissions for 1957-2024, as we
 - Zhuque-2 renamed to Zhuque-2E from 2024 onwards.
 - Falcon 9 v1.2 renamed to Falcon 9 FT5 throughout.
 
+---
+
 # v1.5.0
 
 This version contained an update to include 2023 and 2024 emissions.
@@ -248,6 +269,8 @@ This version contained an update to include 2023 and 2024 emissions.
      - Chinese National Constellation (Guowang/Xingwang/Guangwang/Hulianwang)
     - Qianfan
 - Fixed re-entry location of launches from 'Naro Space Center', 'China Sea Launch', 'Newquay, Spaceport Cornwall', and 'Mojave Air and Space Port'.
+
+---
 
 # v1.0.0 
 
