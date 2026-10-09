@@ -45,6 +45,8 @@ This major update contains a range of changes to make the data more consistent w
     - Added launch event altitudes for new Proton-M/Briz-M variants
     - Added launch events from manual for all Delta 4 variants
     - Added RS1 from manual
+    - Added Space Shuttle from press kit
+    - Updated SLS Block 1 from manual
 - Other updates:
     - Updated Epsilon upper stage details for 2PBS and - variants. Removed upper stage from 2 variant following GCAT.
     - Qased information was previously obtained from SLR (S1+S3) and NB (S2), but S3 was misassigned.
@@ -66,6 +68,8 @@ This major update contains a range of changes to make the data more consistent w
 - As a result, removed erroneous Minotaur I stage 3 emissions from the results.
 - Fixed Vulcan Centaur VC4S booster number.
 - Bug fix for Ariane 5ECA+ stage 2 propellant mass.
+- Delta 4M+ launch event altitudes were not assigned due to a comma in the rocket name, messing up the csv import.
+- Atlas V launch event altitudes were wrong on the video (miles figures made no sense). Now from manual.
 
 ## Launches 
 
@@ -89,11 +93,13 @@ This major update contains a range of changes to make the data more consistent w
 - Changes to re-entry dry mass due to changes to rocket database.
 - Reconfigured re-entries to include only objects from launches in the launch database.
 - Re-entries with L, LF, L? now counted as partial burnup on re-entry.
+- Space Shuttle SRBs and Super Heavy splashdowns also counted as partial burnup.
 - Added re-entries with "S" (suborbital) type, as long as the apogee is still above 50 km. We include discarded stages, so should include other objects.
 - No longer adding missing rocket stages.
 - Set timings of re-entries on day of launch to the launch time, instead of midnight.
 - Added re-entry mass for CFLR and hot swap batteries.
 - Some fairings have mass in GCAT, so now the source preference is: primary source, GCAT, then default value.
+- No longer including ablative BC, HCl, Cl emissions for partial burnup re-entries.
 
 ### Bug Fixes
 - Fixed a bug where launch tags containing 'S' for suborbital also removed some tags with YYYY SIG for the older pre-COSPAR identification. Added these objects back.

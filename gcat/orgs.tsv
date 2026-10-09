@@ -1,5 +1,5 @@
 #Code	UCode	StateCode	Type	Class	TStart	TStop	ShortName	Name	Location	Longitude	Latitude	Error	Parent	ShortEName	EName	UName
-# Updated 2026 Oct  2 2146:37
+# Updated 2026 Oct  8 2356:31
 EARTH	EARTH	EARTH	AP	C	-	-	Earth	Earth	Earth	-	-	0.0200 	-	Earth (Terra)	Earth	Earth
 LUNA	LUNA	LUNA	AP	C	-	-	Luna	Luna	Luna	-	-	0.0200 	-	Moon	Moon	Luna
 SSYS	SSYS	SSYS	AP	C	-	-	Solar System	Solar System natural celestial objects	Sol	-	-	0.0200 	-	Solar System	Solar System natural celestial objects	Solar System
@@ -476,7 +476,7 @@ AJGC	AJGC	US	LV/PL/E	B	1953	2013 Jun	Aerojet General	Aerojet General Corp.	Sacra
 AJR	AJGC	US	P	B	2013 Jun	-	AJ Rocketdyne	Aerojet Rocketdyne	Sacramento:Rancho Cordova, California	   -121.3000 	   38.5900 	0.0200 	GTRC	-	-	Aerojet Rocketdyne
 AJRCP	RDYNE	US	PL	B	2013 Jun	-	AJ Rocketdyne	Aerojet Rocketdyne/Canoga Park	Canoga Park, California	   -118.6000 	   34.2000 	0.0200 	GTRC	-	-	Aerojet Rocketdyne/Canoga Park
 AJRED	RRC	US	E	B	2002 Aug	2013 Jun	Aerojet/Redmond	Aerojet/Redmond	Redmond, Washington	   -122.1200 	   47.6700 	0.0200 	AJ	-	-	Aerojet/Redmond
-AJRFL	PWFL	US	E	B	2013 Jun	-	AJ Rocketdyne FL	Aerojet Rocketdyne/West Palm Beach	West Palm Beach, Florida	    -80.0600 	   26.7100 	0.0200 	AJR	-	-	Aerojet Rocketdyne/West Palm Beach
+AJRFL	PWFL	US	E	B	2013 Jun	2023	AJ Rocketdyne FL	Aerojet Rocketdyne/West Palm Beach	West Palm Beach, Florida	    -80.0600 	   26.7100 	0.0200 	AJR	-	-	Aerojet Rocketdyne/West Palm Beach
 AJRRED	RRC	US	E	B	2013 Jun	-	Aerojet/Redmond	Aerojet Rocketdyne/Redmond	Redmond, Washington	   -122.1200 	   47.6700 	0.0200 	AJR	-	-	Aerojet Rocketdyne/Redmond
 AJSP	AJSP	US	LV/PL/E	B	1953	2013 Jun	AJ Rock. SPC	Aerojet Rocketdyne Solid Propulsion Co., AF Plant 70	Sacramento:Rancho Cordova, California	   -121.3000 	   38.5900 	0.0200 	AJR	-	-	Aerojet Rocketdyne Solid Propulsion Co., AF Plant 70
 AJRSP	AJSP	US	LV/E	B	2013 Jun	-	Aerojet SPC	Aerojet Solid Propulsion Co., AF Plant 70	Sacramento:Rancho Cordova, California	   -121.3000 	   38.5900 	0.0200 	AJ	-	-	Aerojet Solid Propulsion Co., AF Plant 70
@@ -2051,7 +2051,9 @@ KYUD	KYUD	J	O/PL	A	1903	-	Kyushu U.	Kyushu daigaku  (Kyudai)	Fukuoaka, Fukuoka	 
 KYUT	KYUT	J	O/PL	A	2004	-	Kyutech	Kyushu Kogyo Daigaku, Cent. Nanosatellite Testing, Tobata Campus	Kitakyushu:Tobata, Fukuoka	    130.8400 	   33.8900 	0.0200 	-	-	Kyushu Instiute of Technology	九州工業大学
 L3EDD	HSEDD	US	E	B	2016	2018 Oct	L3 EDD	L3, Electron Devices Division	Torrance, California	   -118.3400 	   33.8300 	0.0200 	-	-	-	L3, Electron Devices Division
 L3ETI	HSEDD	US	E	B	2005	2016	L3 ETI	L-3 Communications, Electron Technologies Inc.	Torrance, California	   -118.3400 	   33.8300 	0.0200 	-	-	-	L-3 Communications, Electron Technologies Inc.
+L3HAJ	PWFL	US	E	B	2023	2026 Aug	AJ Rocketdyne FL	L3 Harris Rocketdyne/West Palm Beh	West Palm Beach, Florida	    -80.0600 	   26.7100 	0.0200 	HARRL3	-	-	Aerojet Rocketdyne/West Palm Beach
 L3HED	HSEDD	US	E	B	2018 Oct	-	L3H ED	L3Harris Electron Devices	Torrance, California	   -118.3400 	   33.8300 	0.0200 	-	-	-	L3H Electron Devices
+L3HMS	RDYNE	US	E	B	2026 Aug	-	L3H Missiles	L3Harris Missile Solutions, RS-25 unit	Canoga Park, California	   -118.6000 	   34.2000 	0.0200 	-	-	-	Rocketdyne
 LAC	LAC	US	LA/LV	B	1932	1995 Mar 15	Lockheed	Lockheed Aircraft Corporation	LA:Burbank, California	   -118.3300 	   34.1800 	0.0200 	-	-	-	Lockheed Aircraft Corporation
 LACMA	LACMA	US	O	A	1910	-	LACMA	Los Angeles County Museum of Art	Los Angeles, California	   -118.3600 	   34.0600 	0.0200 	-	-	-	Los Angeles County Museum of Art
 LACU	LACU	UK	O	B	2019	-	Lacuna Space	Lacuna Space	Harwell, Oxfordshire	     -1.3100 	   51.5800 	0.0200 	-	-	-	Lacuna Space
@@ -2728,6 +2730,7 @@ OMNITQ	OMNITQ	US	O	B	2010	-	OmniTeq	OmniTeq	Bee Cave, Texas	    -97.9500 	   30.
 OMS	OMS	US	P	B	2015	-	OMS	Orbital Micro Systems	Boulder, Colorado	   -105.2200 	   40.0200 	0.0200 	WXSTR	-	-	Orbital Micro Systems
 OMSUK	OMSUK	UK	O/PL	B	2018	-	OMS Harwell	Orbital Micro Systems UK	Harwell, Oxfordshire	     -1.3100 	   51.5800 	0.0200 	OMS	-	-	Orbital Micro Systems UK
 ONAFS	AFSTC	US	O	D	1994 Jan	2014 Apr	Onizuka AFS	US Air Force Satellite Control Facility, Onizuka AFS	Sunnyvale, California	   -122.0288 	   37.4049 	0.0001 	USAF	-	-	US Air Force Satellite Control Facility, Onizuka AFS
+ONB	ONB	KR	O	B	2025?	-	OnB Space	OnB Space	Daejon	    127.3900 	   36.3500 	0.0200 	-	-	-	OnB Space
 ONDAS	ONDAS	E	-	B	2008?	-	Ondas	Ondas Media	Madrid, Espana	     -3.7200 	   40.3800 	0.0200 	-	-	-	Ondas Media
 ONDO	ONDO	MN	O	B	2022	-	ONDO Space	ONDO Space LLC	Ulaanbatar	    106.9200 	   47.9200 	0.0200 	-	-	-	ONDO Space LLC
 ONERA	ONERA	F	O/LA/LV/PL/W/E/S	D	1946	-	ONERA	Office National d'Etudes et de Recherches Aerospatiales	Paris:Chatillon (?)	      2.2900 	   48.8000 	0.0200 	-	-	-	Office National d’Études et de Recherches Aérospatiales
@@ -2969,7 +2972,9 @@ RCA	RCA	US	O/LV/PL	B	1957	1986	RCA/East Windsor	RCA Astro Electronics (Astro Spa
 RCAF	RCAF	CA	S	D	1924	1968	RCAF	Royal Canadian Air Force	North Bay, Ontario  (or RCAR?)	    -79.4500 	   46.3000 	0.0200 	-	-	-	Royal Canadian Air Force
 RCAR	RCAR	CA	LA/LS	D	1750	-	RCArtill	Royal Canadian Artillery	Shilo, Manitoba?	    -99.6300 	   49.8000 	0.0200 	-	-	-	Royal Canadian Artillery
 RCAV	RCAV	CA	PL	B	1958	1977	RCA Victor	RCA Victor Ltd.	Montreal:St Henri	    -73.5900 	   45.4800 	0.0200 	-	-	-	RCA Victor Ltd.
+RDL3H	RDYNE	US	E	B	2023	2026 Aug	Rocketdyne L3H	Rocketdyne L3 Harris	Canoga Park, California	   -118.6000 	   34.2000 	0.0200 	HARRL3	-	-	Rocketdyne L3 Harris
 RDYNE	RDYNE	US	LV/E	B	1955 Nov  7	1996 Dec	Rocketdyne	Rocketdyne	Canoga Park, California	   -118.6000 	   34.2000 	0.0200 	NAA	-	-	Rocketdyne
+RDYNE2	PWFL	US	E	B	2026 Aug	-	Rocketdyne	Rocketdyne	West Palm Beach, Florida	    -80.0600 	   26.7100 	0.0200 	-	-	-	Aerojet Rocketdyne/West Palm Beach
 RDYNM	PHILR	US	E	B	1959 Sep 30	1978	Rocketdyne Solid	Rocketdyne Solid Propulsion	McGregor, Texas	    -97.4200 	   31.4300 	0.0200 	RDYNE	-	-	Rocketdyne Solid Propulsion
 RDYNN	RDYNN	US	E	B	1956	1968	Rocketdyne Neosho	Rocketdyne, Neosho Plant	Neosho, Missouri	    -94.3800 	   36.8600 	0.0200 	RDYNE	-	-	Rocketdyne, Neosho Plant
 REAKT	REAKT	FI	O/PL	B	2016	2023	Reaktor Space	Reaktor Space Lab Ltd	Helsinki	     24.9400 	   60.1700 	0.0200 	-	-	-	Reaktor Space Lab Ltd
@@ -3429,6 +3434,7 @@ STELEX	STELEX	US	PL	B	-	-	Stellar Exp.	Stellar Exploration, Inc.	San Luis Obispo
 STELLT	STELLT	F	O	B	2001 Feb	2002 Aug	Stellat	Stellat	Paris?	      2.3000 	   48.8600 	0.0200 	-	-	Stellat	Stellat
 STEN	STEN	US	PL	A	1999?	-	STENSAT	STENSAT	Washington, DC	    -77.0200 	   38.9000 	0.0200 	-	-	-	STENSAT
 STENN	MTF	US	-	C	1988	-	NASA Stennis	NASA Stennis Space Center	Pearl River, Mississippi	    -89.6000 	   30.6200 	0.0200 	NASA	-	-	NASA Stennis Space Center
+STEPL	STEPL	KR	O	B	2021	-	StepLab	StepLab	Daejon	    127.3900 	   36.3500 	0.0200 	-	-	-	StepLab
 STERN	STERN	DK	O/PL	B	2019	-	Sternula	Sternula A/S	Aalborg	      9.9200 	   57.0500 	0.0200 	-	-	-	Sternula A/S
 STESS	STESS	SG	PL	B	2011 May	-	STE Sat Sys	Singapore Technologies Electronics (Satellite Systems)	Singapore	    103.8000 	    1.3000 	0.0200 	STELEC	-	-	Singapore Technologies Electronics (Satellite Systems)
 STETMAN	STETMAN	UA	PL/O	B	2023	-	Stetman LLC	Stetman LLC	Kyiv	     30.5200 	   50.4500 	0.0200 	-	-	-	Stetman LLC
@@ -3704,6 +3710,7 @@ UCW	UCW	UK	PL/S	A	1872	1996	UCW	University College of Wales	Aberystwyth, Wales	 
 UDAYT	UDAYT	US	S	A	1850	-	U. Dayton	University of Dayton	Dayton, Ohio	    -84.1800 	   39.7400 	0.0200 	-	-	-	University of Dayton
 UDEFA	UDEFA	MX	PL	D	1975	-	UDEFA	Universidad del Ejercito y Fuerza Aerea Mexicanos	Popotla, Mexico City	    -99.1800 	   19.4500 	0.0200 	-	-	University of the Mexican Army and Air Force	Universidad del Ejército y Fuerza Aérea Mexicanos
 UDES	UDES	CA	O/PL	A	1954	-	U de Sherbrooke	Universite de Sherbrooke	Sherbrooke, Quebec	    -71.9300 	   45.3800 	0.0200 	-	-	University of Sherbrooke	Université de Sherbrooke
+UEL	UEL	KR	O	B	2024	-	UEL	Unmanned Exploration Laboratory	Daejon	    127.3900 	   36.3500 	0.0200 	-	-	-	Unmanned Exploration Laboratory
 UEM	UEM	E	O/PL	A	1995	-	UEM	Universidad Europea de Madrid	Madrid	     -3.7200 	   40.3800 	0.0200 	-	-	European University of Madrid	Universidad Europea de Madrid
 UESTC	UESTC	CN	O	A	1956	-	UESTC	Dianzi keji daxue	Chengdu, Sichuan	    103.9300 	   30.7600 	0.0200 	-	-	University of Electronic Science and Technology of China	电子科技大学
 UFA	UFA	CZ	PL	A	1964	-	UFA	Ustav fyziky atmosfery AV CR	Praha	     14.4200 	   50.0800 	0.0200 	ANCZ	-	Institute of Atmospheric Physics	Ústav fyziky atmosféry AV ČR

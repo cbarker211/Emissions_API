@@ -1,5 +1,5 @@
 #Launch_Tag	Launch_JD	Launch_Date	LV_Type	Variant	Fairing	Flight_ID	Flight	Mission	FlightCode	Platform	Launch_Site	Launch_Pad	Ascent_Site	Ascent_Pad	Perigee	Apogee	Apoflag	Inc	Azimuth	Range	RangeFlag	Dest	OrbMass	OrbPay	Agency	LaunchCode	FailCode	Group	Category	LTCite	Cite	Notes
-# Updated 2026 Oct  2 2147:05
+# Updated 2026 Oct  8 2356:58
 1942-A01  	2430523.95 	1942 Jun 13 1052	A-4	-	-	2	-	-	-	-	HVP	P7	-	-	      -	      1	 	-	   -	    -	 	-	   0.000 	   0.000 	WEHR	MF  	U	-	Test	TTaylor	-	-
 1942-A02  	2430587.97 	1942 Aug 16 1115	A-4	-	-	3	-	-	-	-	HVP	P7	-	-	      -	     11	 	-	   -	    -	 	-	   0.000 	   0.000 	WEHR	MF  	U	-	Test	Stuhlinger	RocketTeam	-
 1942-S01  	2430636.12 	1942 Oct  3 1458	A-4	-	-	4	-	-	-	-	HVP	P7	-	-	      -	     85	 	-	   -	    -	 	-	   0.000 	   0.000 	WEHR	MS  	-	-	Test	Stuhlinger	AE1961A	-
@@ -75981,8 +75981,8 @@
 2026-218 	2461302.95 	2026 Sep 19 1050	Chang Zheng 2D	-	-	Y104	Hongtu 2-13/16	PIESAT 2-13 to 16	-	-	JQ	LC43/94	-	-	    518	    533	 	 97.5 	   -	    -	 	-	   0.000 	   1.200 	SAST	OS  	-	G	Sat SSO L	nasaspaceflight.com	-	-
 2026-219 	2461303.57 	2026 Sep 20 0147:00	Falcon 9	FT5	-	xxx/B1093.17 F690	Starlink-425	Starlink Group 15-27	V2MO 15-27 (27 Ku)	-	VSFBS	SLC4E	-	-	    135	    271	 	 70.0 	   -	    -	 	-	   0.000 	  15.500 	SPX	OS  	-	C M	Sat LEO D	SpaceX	-	-
 2026-220 	2461303.67 	2026 Sep 20 0403	Lijian-1	-	-	Y18	Pengcheng	-	-	-	JQ	LC130	-	-	    525	    543	 	 97.5 	   -	    -	 	-	   0.000 	   1.850 	ZKYT	OS  	-	C	Sat SSO L	nasaspaceflight.com	-	-
-2026-M10  	2461303.75 	2026 Sep 20 0600	Hwasong-11Ma-1	-	-	Hypersonic RV	-	-	-	-	WONSAN	-	-	-	      -	     60	 	-	   -	  450	 	-	   0.000 	   0.000 	KPA	MS  	-	-	Test	Wire	-	-
-2026-M11  	2461303.87 	2026 Sep 20 0850	Hwasong-11Ma-1	-	-	Hypersonic RV	-	-	-	-	WONSAN	-	-	-	      -	     70	 	-	   -	  908	 	-	   0.000 	   0.000 	KPA	MS  	-	-	Test	Wire	-	-
+2026-M10  	2461303.75 	2026 Sep 20 0600	Hwasong-16Na	?	-	Hypersonic RV	-	-	-	-	WONSAN	-	-	-	      -	     60	 	-	   -	  450	 	-	   0.000 	   0.000 	KPA	MS  	-	-	Test	Wire	-	-
+2026-M11  	2461303.87 	2026 Sep 20 0850	Hwasong-16Na	?	-	Hypersonic RV	-	-	-	-	WONSAN	-	-	-	      -	     70	 	-	   -	  908	 	-	   0.000 	   0.000 	KPA	MS  	-	-	Test	Wire	-	-
 2026-221 	2461307.06 	2026 Sep 23 1332	Chang Zheng 8A	-	-	Y11?	WHDW 26	WHDW 26	-	-	HCSLS	LC1	-	-	    150	   1108	 	 50.0 	   -	    -	 	-	   0.000 	   6.000 	CALT	OS  	-	G M	Sat LEO O	nasaspaceflight.com	-	-
 2026-222 	2461307.87 	2026 Sep 24 0846	Chang Zheng 6A	-	-	Y13	Yaogan 40-04	Yaogan 40-04	-	-	TYSC	LC9A	-	-	    150	    810	 	 86.0 	   -	    -	 	-	   0.000 	   2.000 	SAST	OS  	-	G	Sat LEO O	nasaspaceflight.com	-	-
 2026-223 	2461309.53 	2026 Sep 26 0039	Electron	-	-	97	Owlright,Owlright,Owlr.	StriX-12	-	-	MAHIA	LC1B	-	-	    171	    518	?	 37.9 	   -	    -	 	-	   0.000 	   0.150 	RLABN	OS  	-	C	Sat LEO OO	Wire	-	-
@@ -75992,3 +75992,6 @@
 2026-226 	2461315.13 	2026 Oct  1 1510:06	Falcon 9	FT5	-	xxx/B1101.3  F692	Dragon Crew-13	Dragon C213.2	-	-	CC	LC40	-	-	      -	      -	 	-	   -	    -	 	-	   0.000 	  13.055 	SPX	OS  	-	CX	Sat ISS D	Wire	-	-
 2026-227 	2461315.27 	2026 Oct  1 1832:00	Falcon 9	FT5	-	xxx/B1082.25 F693	Transporter-18	Transporter-18	-	-	VSFBS	SLC4E	-	-	      -	      -	 	-	   -	    -	 	-	   0.000 	   5.000 	SPX	OS  	-	C	Sat LEO D	SpaceX	-	-
 2026-228 	2461315.66 	2026 Oct  2 0354:00	Falcon Heavy	-	-	014/B1106.1	USA	NROL-97	-	-	KSC	LC39A	-	-	      -	      -	 	-	   -	    -	 	-	   0.000 	   5.000 	SPX	OS  	-	CX/G	Sat GEO O	SpaceX	-	-
+2026-S261  	2461316.40 	2026 Oct  2 2130	Hwasong-16Na	?	-	-	-	-	-	-	WONSAN?	-	-	-	      -	    100	 	-	   -	  800	 	Sea of J.	   0.000 	   0.000 	JRG	MS  	-	-	Test	Wire	-	-
+2026-S262  	2461319.50 	2026 Oct  6	MSBS M51	-	-	13	M51.3	-	-	S618	BRETA	LP3	-	-	      -	   1000	?	-	   -	 4700	?	57.3W 32.4N	   0.000 	   0.000 	DMA	MS  	-	-	Test	Wire	-	-
+2026-229 	2461320.64 	2026 Oct  7 0325	Nuri	-	-	5	NeonSat	-	-	-	NARO	LC2	-	-	      -	      -	 	-	   -	    -	 	-	   0.000 	   1.000 	KARI	OS  	-	G	Sat SSO O	Wire	-	-

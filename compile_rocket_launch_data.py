@@ -273,13 +273,11 @@ class import_launches:
 
         # Load in the stage event altitude data from the file.
         stage_alt_dict = {}
-        stage_alt_rockets = np.genfromtxt("./input_files/launch_event_altitudes.csv",dtype=str,skip_header=1,usecols=[0,1],delimiter=",")
-        stage_alt_data    = np.genfromtxt("./input_files/launch_event_altitudes.csv",dtype=np.float64,skip_header=1,usecols=[2,3,4,5],delimiter=",")
-
-        stages = ["BECO", "MECO", "SEI1", "SECO"]
-        for (name, variant), row in zip(stage_alt_rockets, stage_alt_data):
-            for stage, value in zip(stages, row):
-                stage_alt_dict[f"{name} {variant} {stage}"] = None if value == "" else np.float64(value)
+        df_alts = pd.read_csv("./input_files/launch_event_altitudes.csv", dtype={"Rocket": str, "Variant": str})
+        for _, r in df_alts.iterrows():
+            for stage in ["BECO", "MECO", "SEI1", "SECO"]:
+                val = pd.to_numeric(r[stage], errors="coerce")
+                stage_alt_dict[f"{r['Rocket']} {r['Variant']} {stage}"] = np.float64(val)
 
         config_map = {
             # booster, s1, s2, s3, s4, s5

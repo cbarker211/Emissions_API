@@ -138,6 +138,9 @@ def update_mass_info(temp_dict,name,variant):
         # The N Series, no fairing and uses DEC not SEC. No info in manual so using GCAT.
         else:
             pass
+
+        # https://www.ulalaunch.com/docs/default-source/rockets/atlasvusersguide2010a.pdf?sfvrsn=f84bb59e_2
+        # launch event altitudes from here too.
             
     if name in ["Antares 230","Antares 230+"]:
         
@@ -397,7 +400,7 @@ def update_mass_info(temp_dict,name,variant):
         temp_dict[f"Stage2 Stage Mass"]      = 3100  
         temp_dict[f"Fairing Mass"]           = 1400 # website/Sp101/SLR
         
-        temp_dict[f"Booster Number"] = name[8]
+        temp_dict[f"Booster Number"] = int(name[8])
         
         temp_dict[f"Stage0 Propellant Mass"] = 130000 / 2 * int(temp_dict[f"Booster Number"]) 
         temp_dict[f"Stage0 Stage Mass"]      = 21000 / 2 * int(temp_dict[f"Booster Number"])
@@ -864,6 +867,14 @@ def update_mass_info(temp_dict,name,variant):
         temp_dict[f"Stage2 Stage Mass"]        = 3700 # Manual
         temp_dict[f"Fairing Mass"]             = 8165 # SLR
 
+    if name == "Space Shuttle":
+
+        # https://www.nasa.gov/wp-content/uploads/2023/05/sts-030r-press-kit.pdf?emrc=1376fa
+        # Using values from here in feet for the launch event altitudes.
+        # Not sure about OMS burns, so setting SEI and SECO to 200 and 300 km.
+        # Second stage should be outside scope of model anyway.
+        pass
+        
     if name == "Strela":
         # https://web.archive.org/web/20230614172003/https://spaceflight101.com/spacerockets/strela/
         temp_dict[f"Stage1 Stage Mass"]      = 5700  # Sp101

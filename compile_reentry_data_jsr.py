@@ -922,7 +922,10 @@ class build_reentry_list:
                 burnup = "Partial"
             elif (jsr_name == "Electron Stage 1") and jsr_id in ["2019-084","2020-007","2020-085","2021-F02","2021-106",
                                                                  "2022-047","2022-147","2023-041","2023-100","2023-126","2024-022"]:
-                    burnup = "Partial"
+                burnup = "Partial"
+            elif (jsr_name == "Starship Super Heavy") and jsr_id in ["2024-U03","2024-U06","2025-U03","2025-U04"]:
+                # Controlled soft splashdowns in the Gulf.
+                burnup = "Partial"
             
             # Handle categories.
             if jsr_type[0] == "R":
@@ -941,6 +944,9 @@ class build_reentry_list:
                 if rocket_name.startswith(("Space Shuttle", "SLS Block 1", "Conestoga 1620", "Polyot", "Molniya", "Sputnik", "Voskhod", "Vostok")):
                     stage = int(jsr_type[1:2]) - 1
                     reentry_category = f"S{stage}"
+
+                if rocket_name.startswith("Space Shuttle") and reentry_category == "S0":
+                    burnup = "Partial"
 
                 # Soyuz
                 if "Blok-BVGD" in jsr_bus:

@@ -173,33 +173,29 @@ class OutputEmis:
         
         # TODO: Will need to put this in the loop later if we want to use meteorological box heights.
         layer_data = np.loadtxt("./input_files/" + f"geoschem_vertical_grid_{LEVELS}.csv",delimiter=",")    
-        bot_alt_base = layer_data[::-1,0]*1000  # shape (LEVELS,)
-        mid_alt_base = layer_data[::-1,1]*1000
-        top_alt_base = layer_data[::-1,2]*1000
-
-        # The bottom of the lowest box is -0.006 km, so offset the rest of the altitudes.
-        offset = bot_alt_base[0]
-        bot_alt_base, mid_alt_base, top_alt_base = bot_alt_base - offset, mid_alt_base - offset, top_alt_base - offset
+        self.bot_alt_base = layer_data[::-1,0]*1000  # shape (LEVELS,)
+        self.mid_alt_base = layer_data[::-1,1]*1000
+        self.top_alt_base = layer_data[::-1,2]*1000
 
         # Copy the top altitudes and replace the last value with precision of 0.1km.
-        gc_top = top_alt_base.copy()
+        gc_top = self.top_alt_base.copy()
         gc_top[-1] = self.fine_grid_top_alt[np.searchsorted(self.fine_grid_top_alt, gc_top[-1])]
 
         # Calculate the overlap between the GEOS-Chem grid and the fine grid.
         overlap = (np.minimum(gc_top[:, None], self.fine_grid_top_alt[None, :])
-                - np.maximum(bot_alt_base[:, None], self.fine_grid_bot_alt[None, :]))
+                - np.maximum(self.bot_alt_base[:, None], self.fine_grid_bot_alt[None, :]))
         
         # Divide the overlap by 0.1 km to get the fraction of each GEOS-Chem box that is covered by the fine grid.
         self.fine_to_gc = np.clip(overlap, 0, None) / (self.fine_grid_top_alt - self.fine_grid_bot_alt)[None, :]
 
         # Reshape for broadcasting: (LEVELS,1,1)
-        bot_alt_3d = bot_alt_base[:, None, None]
-        mid_alt_3d = mid_alt_base[:, None, None]
-        top_alt_3d = top_alt_base[:, None, None]
+        bot_alt_3d = self.bot_alt_base[:, None, None]
+        mid_alt_3d = self.mid_alt_base[:, None, None]
+        top_alt_3d = self.top_alt_base[:, None, None]
         
         # Place re-entry emissions between 60-80 km.
-        self.bot_reenter = np.searchsorted(top_alt_base, 60000, side='right')
-        self.top_reenter = np.searchsorted(top_alt_base, 80000, side='right')
+        self.bot_reenter = np.searchsorted(self.top_alt_base, 60000, side='right')
+        self.top_reenter = np.searchsorted(self.top_alt_base, 80000, side='right')
         self.n_reenter_levs = self.top_reenter - self.bot_reenter + 1
 
         # Make grid at input resolution (no bounds supplied so full global).
@@ -1062,16 +1058,18 @@ class OutputEmis:
                 reentry_ei[1] = 0.175
             else:
                 reentry_ei[1] = 0.4
+
+                # Add chlorine and bc reentry emissions from ATISPADE Report. 
+                # Emission indices are only given for spacecraft and upper stages.
+                # Only added for objects with complete burnup.
+                if row.Category in ["P","C"]:
+                    reentry_ei[2:] = [0.041,0.015,0.008] # Worst Case
+                elif row.Category in ["S2","S3","S4"]:
+                    reentry_ei[2:] = [0.029,0.011,0.005] # Worst Case
                 
             # Calculate the total mass surviving re-entry in tonnes
             # We are adding all mass that comes back, so this includes reusable stages and fairings.
             self.mass_survive = ((row.Ablatable_Mass* (1-row.Ablation_Degree)) + row.Other_Mass) * 1e-3
-                
-            # Add chlorine and bc reentry emissions from ATISPADE Report. Don't add for lower stages, only upper (>S2).
-            if row.Category in ["P","C"]:
-                reentry_ei[2:] = [0.041,0.015,0.008] # Worst Case
-            elif row.Category in ["S2","S3","S4"]:
-                reentry_ei[2:] = [0.029,0.011,0.005] # Worst Case
                 
             # Units are in tonnes. 
             # NOx reentry, Al2O3 reentry, BC reentry, Cl reentry, HCl reentry 9-13           
@@ -1204,6 +1202,9 @@ class OutputEmis:
                         for key, (name, long_name, short_name) in variable_names.items()},
         coords={"time": ("time",np.arange(0, HOURS, dtype=np.int64),           {"units": f"hours since {date} 00:00:00","calendar": "standard", "axis": "T"}),
                 "lev":  ("lev", np.arange(1, LEVELS + 1),                      {"units": "level", "positive": "up", "axis": "Z"}),
+                "alt_mid": ("lev", (self.mid_alt_base * 1e-3).astype(np.float32), {"long_name": "Altitude at box midpoint", "units": "km"}),
+                "alt_bot": ("lev", (self.bot_alt_base * 1e-3).astype(np.float32), {"long_name": "Altitude at box bottom edge", "units": "km"}),
+                "alt_top": ("lev", (self.top_alt_base * 1e-3).astype(np.float32), {"long_name": "Altitude at box top edge", "units": "km"}),
                 "lat":  ("lat", np.asarray(self.lat[q0:q1], dtype=np.float32), {"units": "degrees_north", "axis": "Y"}),
                 "lon":  ("lon", np.asarray(self.lon[p0:p1], dtype=np.float32), {"units": "degrees_east", "axis": "X"})})
 
