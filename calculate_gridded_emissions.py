@@ -127,8 +127,8 @@ class OutputEmis:
         self.year = year
         self.stage_alt_dict = stage_alt_dict
         self.total_landing_prop = 0
-        self.prop_in_grid_total = 0
-        self.prop_above_total = 0
+        self.prop_in_grid_annual = 0
+        self.prop_above_grid_annual = 0
         self.reentry_mass_total = 0
         self.model_alt = MODEL_ALT
         SPECIES = ['launch_nox', 'fuel_nox',  'h2o',       'launch_bc',  'co',
@@ -618,6 +618,10 @@ class OutputEmis:
         seg_slice = slice(start_ind, stop_ind)
         seg_mid_alts_km = self.fine_grid_mid_alt[seg_slice] * 1e-3  # km
 
+        ############
+        # Emissions
+        ############
+
         # Calculate the emission indices for each species.
         ei_bc                 = calculate_bc_ei (seg_mid_alts_km, input_data.bc_pei[pei_index])
         ei_co, ei_co2         = calculate_co_ei (seg_mid_alts_km, input_data.co_pei[pei_index], input_data.co2_pei[pei_index])
@@ -626,11 +630,10 @@ class OutputEmis:
         ei_h2o                = input_data.h2o_pei[pei_index] + input_data.h2_pei[pei_index] * (1.008 * 2 + 16) / (1.008 * 2)
 
         # Calculate the emissions for each species in g.
-        emis_full = np.zeros((len(self.fine_grid_mid_alt),11))
+        emis_full = np.zeros((len(self.fine_grid_mid_alt),10))
         factor = prop_mass * 1e-2 * vertical_profile
         for index, emission_index in enumerate([ei_bc, ei_co, ei_co2, ei_sec_nox, input_data.nox_pei[pei_index], ei_h2o, input_data.al2o3_pei[pei_index], ei_cl, ei_hcl, ei_cl2]):
             emis_full[seg_slice,index] = emission_index * factor
-        emis_full[seg_slice,10] = vertical_profile
 
         selected_alts = []
         # Determine the index of the top altitude for each JSON atmospheric layer in the fine grid.
@@ -646,7 +649,7 @@ class OutputEmis:
 
             # Slice and sum once to save time.
             emis_slice = emis_full[bot_ind:top_ind,:]
-            emis_sum   = np.sum(emis_slice, axis=0) * 1e-6
+            emis_sum   = np.sum(emis_slice, axis=0) * 1e-6 # Convert from grams to tonnes.
 
             # This is for the API output.
             vert_emis_dict["bc"][i]    += emis_sum[0] 
@@ -658,7 +661,6 @@ class OutputEmis:
             vert_emis_dict["cl"][i]    += emis_sum[7]
             vert_emis_dict["hcl"][i]   += emis_sum[8]
             vert_emis_dict["cl2"][i]   += emis_sum[9]
-            vert_emis_dict["prop"][i]  += emis_sum[10] * prop_mass * 1e6
         
         if SAVE_GC:
             emis_gc = self.fine_to_gc @ emis_full * 1e-6
@@ -668,11 +670,10 @@ class OutputEmis:
         # This is just for a conversation check at the end.
         # Slice and sum once to save time.
         total_slice = emis_full[selected_alts[0]:selected_alts[-1]+1,:]
-        total_sum   = np.sum(total_slice, axis=0) * 1e-6
+        total_sum   = np.sum(total_slice, axis=0) * 1e-6 # Convert from grams to tonnes
 
         # BC launch, CO launch, CO2 launch, NOx launch, H2O launch, Al2O3 launch, Cl launch, HCl launch, Cl2 launch
         # NOx reentry, Al2O3 reentry, BC reentry, HCl reentry, Cl reentry
-        self.prop_in_grid_total  += (total_sum[10] * prop_mass * 1e-2) * 1e6
         self.emis_in_grid[0]     += total_sum[0]       
         self.emis_in_grid[1]     += total_sum[1]         
         self.emis_in_grid[2]     += total_sum[2]   
@@ -683,10 +684,23 @@ class OutputEmis:
         self.emis_in_grid[7]     += total_sum[8]   
         self.emis_in_grid[8]     += total_sum[9]   
 
+        #########################
+        # Propellant Consumption
+        #########################
+
+        # Create a full profile of the propellant consumption over the fine grid.
+        profile_full = np.zeros(len(self.fine_grid_mid_alt))
+        profile_full[seg_slice] = vertical_profile
+        in_grid_pct = np.sum(profile_full[selected_alts[0]:selected_alts[-1]+1])
+        prop_in_grid = in_grid_pct * 1e-2 * prop_mass # Propellant mass in kg.
+
+        self.prop_in_grid_launch += prop_in_grid # Launch total
+        self.prop_in_grid_annual += prop_in_grid # Annual total
+
         if falcon_flag:
-            self.prop_above[stage] = np.round(self.prop_above[stage] - np.sum(emis_full[selected_alts[0]:selected_alts[-1]+1, 10]), 2)
+            self.prop_above[stage] = np.round(self.prop_above[stage] - in_grid_pct, 2)
         else:
-            self.prop_above[stage] += np.round((100-np.sum(emis_full[selected_alts[0]:selected_alts[-1]+1,10])),2)
+            self.prop_above[stage] += np.round((100-in_grid_pct),2)
         
         return vert_emis_dict        
 
@@ -716,7 +730,8 @@ class OutputEmis:
         emis_dict_above["cl2"]   += emis_full[9]
         
         # This is just for a conversation check at the end.
-        self.prop_above_total += prop_mass * 1e-2 * percent_included
+        self.prop_above_grid_annual += prop_mass * 1e-2 * percent_included
+        self.prop_above_grid_launch += prop_mass * 1e-2 * percent_included
         self.emis_above[0] += emis_full[0] 
         self.emis_above[1] += emis_full[1] 
         self.emis_above[2] += emis_full[2] 
@@ -731,12 +746,6 @@ class OutputEmis:
 
     def launch_emis(self,row,q,p,time_index):
         '''Calculate the launch emissions'''
-
-        # Interpolate propellant mass distribution.
-        # Linearly interpolate Ross profile proportion of propellant mass to GEOS-Chem vertical grid.
-        # This is just to double check that the propellant consumption profile is calculated correctly.
-        self.propellant_in_model, self.gc_relative_mass = interp_prop_mass(self.bot_alt[:,q,p], self.mid_alt[:,q,p], self.top_alt[:,q,p],
-                                                                            self.ross_alt_edge, self.ross_cumulative_mass)
 
         ############################################
         # Check the rocket type and get info.
@@ -867,13 +876,14 @@ class OutputEmis:
         # Calculate the emissions for each species.
         ##############################################     
         
-        # Creating a 2d array for the prop output.
-        # Total prop, bc, co, co2, nox, h2o, al2o3, cl, hcl, cl2
-        vert_emis_keys =  ["prop", "bc", "co", "co2", "nox", "h2o", "al2o3", "cl", "hcl", "cl2"]
+        # Creating a 2d array for the emissions output.
+        # bc, co, co2, nox, h2o, al2o3, cl, hcl, cl2
+        vert_emis_keys =  ["bc", "co", "co2", "nox", "h2o", "al2o3", "cl", "hcl", "cl2"]
         vert_emis_dict = {sp: np.zeros(3) for sp in vert_emis_keys}
             
         self.prop_above = np.zeros(7) # An array for propellant consumed by each stage above the model limits.
         # The last value is for "-1" stages, where rockets have multiple booster types.
+        self.prop_in_grid_launch, self.prop_above_grid_launch = 0.0, 0.0
 
         launch_tuple = (time_index, q, p, pei_indices, prop_masses, False)  
                         
@@ -1042,10 +1052,13 @@ class OutputEmis:
         launch_details["emissions"]["Cl"].append   (np.round(emis_dict_above["cl"],6))
         launch_details["emissions"]["HCl"].append  (np.round(emis_dict_above["hcl"],6))
         launch_details["emissions"]["Cl2"].append  (np.round(emis_dict_above["cl2"],6))          
-        
-        
-        if np.sum(self.gc_relative_mass) == 0 and np.sum(vert_emis_dict["prop"][:]) == 0:
-            print(f'??? {input_data.dsr["Rocket_Name"][roc_ind]}')
+        launch_details["propellant"] = float(np.round((self.prop_in_grid_launch + self.prop_above_grid_launch) * 1e-3, 6))
+
+        # Quick check to make sure the total propellant consumed is similar to the total propellant mass of the rocket.
+        if row.COSPAR_ID[5] not in ["F", "U"]:
+            expected = prop_masses.sum() * 1e-3
+            if not np.isclose(launch_details["propellant"], expected, rtol=1e-3):
+                print(f"Propellant mismatch for {row.COSPAR_ID} {row.Rocket_Name}: {launch_details['propellant']} vs {expected} t")
 
         self.launch_count += 1
 
@@ -1263,14 +1276,14 @@ def check_total_emissions(year,dataset,res,levels,emis_data):
                                         np.sum(emis_data.emis_in_grid[6:9]*1e-3) + np.sum(emis_data.emis_in_grid[12:]*1e-3),
                                         emis_data.emis_in_grid[3]*1e-3 + emis_data.emis_in_grid[9]*1e-3,
                                         total_emis_in_grid,
-                                        emis_data.prop_in_grid_total * 1e-6,
+                                        emis_data.prop_in_grid_annual * 1e-6,
                                         emis_data.reentry_mass_total * 1e-3,
                                         emis_data.mass_survive_total * 1e-3],
             'Emissions Above Grid [Gg]':[*(emis_data.emis_above * 1e-3).tolist(),
                                         np.sum(emis_data.emis_above[6:9]*1e-3) + np.sum(emis_data.emis_above[12:]*1e-3),
                                         emis_data.emis_above[3]*1e-3 + emis_data.emis_above[9]*1e-3,
                                         total_emis_above,
-                                        emis_data.prop_above_total * 1e-6,
+                                        emis_data.prop_above_grid_annual * 1e-6,
                                         0.0,
                                         emis_data.mass_survive_total * 1e-3]}
     df = pd.DataFrame(data)

@@ -112,6 +112,7 @@ This major update contains a range of changes to make the data more consistent w
 - Changed site names to stop renaming to DISCOSweb names.
 - Renamed Spaceport Florida Authority to Cape Canaveral and Mid-Atlantic Regional Spaceport to Wallops Island.
 - Readded the functionality to save out emissions as NetCDF files on the GEOS-Chem grid.
+- Now outputting propellant consumption per launch to the json output.
 
 ---
 
