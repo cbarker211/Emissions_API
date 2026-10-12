@@ -719,6 +719,31 @@ def update_mass_info(temp_dict,name,variant):
             temp_dict[f"Stage4 Propellant Mass"] = 72   # Sp101
             temp_dict[f"Stage4 Stage Mass"]      = 0.74 # Sp101
      
+    if name == "New Glenn":
+        # https://www.youtube.com/watch?v=KXysNxbGdCg - NG-1
+        # https://www.youtube.com/watch?v=ecfxcTEl-1I - NG-2
+        # https://www.youtube.com/watch?v=enQ_IXtfm9I - NG-3
+
+        # MECO (ft), SEI (ft), SECO (miles)
+        # 234841, 301260, 100 - NG-1
+        # 250924, 285160, 100 - NG-2
+        # 248291, 312519, 102 - NG-3
+
+        # MECO (km), SEI (km), SECO (km)
+        # 71.6, 91.8, 160.9 - NG-1
+        # 76.5, 86.9, 160.9 - NG-2
+        # 75.7, 95.3, 164.2 - NG-3
+        # 74.6, 91.3, 162   - Avg.
+
+        # Re-entry burn from 221324 - 120703, landing burn from 78080 to 0 - NG-2
+        # Re-entry burn from 215340 - 141924, no landing burn info. - NG-3
+
+        # 67.5-36.8 km, 23.8-0 - NG-2
+        # 65.6-43.3 km, None   - NG-3
+        # 66.6-40.1 km, 23.8-0 - Avg.
+
+        pass
+
     if name == "Nuri":  
         # No info anywhere else, so using DISCOSweb wet mass - dry mass.
         temp_dict[f"Stage1 Stage Mass"] = 16000   # DW

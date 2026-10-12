@@ -36,7 +36,7 @@ class InputData:
         self.dsl  = xr.open_dataset(launchfile).to_dataframe().reset_index(drop=True)
         self.dsre = xr.open_dataset(reentryfile).to_dataframe().reset_index(drop=True)
         self.dsr  = xr.open_dataset(rocketinfofile).to_dataframe().reset_index(drop=True)
-        self.handle_falcon_landings()
+        self.handle_reusable_landings()
         self.define_pei(peifile)
 
     def scrape_jsr(self,url,session):
@@ -56,41 +56,42 @@ class InputData:
             raise ImportError(f"Failed to fetch from JSR URL: {url}", response.status_code)
         return df 
     
-    def handle_falcon_landings(self):    
+    def handle_reusable_landings(self):    
 
         session = requests.Session() 
         df_rcat = self.scrape_jsr("https://planet4589.org/space/gcat/tsv/cat/rcat.tsv",session)
-        self.falcon_landing_dict = {}
-        falcon_df = self.dsl[self.dsl["Rocket_Name"].isin(["Falcon 9", "Falcon Heavy"])].copy()
+        self.reusable_landing_dict = {}
+        reusable_df = self.dsl[self.dsl["Rocket_Name"].isin(["Falcon 9", "Falcon Heavy", "New Glenn 7x2"])].copy()
 
-        for row in falcon_df.itertuples(index=False):
+        for row in reusable_df.itertuples(index=False):
             cospar_id = str(row.COSPAR_ID)
             df_launch = df_rcat[df_rcat["Launch_Tag"].str.lower() == cospar_id.lower()]
             df_launch = df_launch[df_launch["Type"].str.startswith("R")]
 
-            def falcon_dest(stage):
+            def reusable_dest(stage):
                 stage_row = df_launch[df_launch["PLName"].str.contains(stage, case=False, na=False)]
                 if "LZ" in stage_row["Dest"].values[0]:
                     return "ground"
-                elif stage_row["Status"].values[0] in ["L","LF"] or stage_row['Dest'].values[0] == "OCISLY":
+                elif stage_row["Status"].values[0] in ["L","LF"] or stage_row['Dest'].values[0] in ["OCISLY", "Jacklyn"]:
                     return "ocean"
                 elif stage_row["Status"].values[0] in ["S","R"]:
                     return "expended"
                 else:
                     raise ValueError(f"Unknown reentry method for {cospar_id} - {stage_row['Status'].values} - {stage_row['Dest'].values}")
 
-            if len(df_launch) == 1: # Falcon 9
-                self.falcon_landing_dict[cospar_id] = falcon_dest("St1")
+            if len(df_launch) == 1: # Falcon 9 or New Glenn 7x2
+                stage_tag = "GS1" if row.Rocket_Name == "New Glenn 7x2" else "St1"
+                self.reusable_landing_dict[cospar_id] = reusable_dest(stage_tag)
 
             elif len(df_launch) == 3: # Falcon Heavy. Sometimes different stages re-enter differently.
                 
-                self.falcon_landing_dict[cospar_id] = {}
-                self.falcon_landing_dict[cospar_id]["center"] = falcon_dest("center")
-                self.falcon_landing_dict[cospar_id]["left"]   = falcon_dest("left")
-                self.falcon_landing_dict[cospar_id]["right"]  = falcon_dest("right")
+                self.reusable_landing_dict[cospar_id] = {}
+                self.reusable_landing_dict[cospar_id]["center"] = reusable_dest("center")
+                self.reusable_landing_dict[cospar_id]["left"]   = reusable_dest("left")
+                self.reusable_landing_dict[cospar_id]["right"]  = reusable_dest("right")
 
             else:
-                raise ValueError(f"Unexpected number of Falcon lower stages for {cospar_id} - {len(df_launch)}")
+                raise ValueError(f"Unexpected number of reusable stages for {cospar_id} - {len(df_launch)}")
 
     def define_pei(self, peifile):
         """ Define the primary emission indices.
@@ -397,16 +398,16 @@ class OutputEmis:
             "expended": 100.0
         }
 
-        if launch_rocket == "Falcon 9":
+        if launch_rocket in ["Falcon 9", "New Glenn 7x2"]:
             booster_percent = 0.0
-            landing_info = input_data.falcon_landing_dict[launch_id]
+            landing_info = input_data.reusable_landing_dict[launch_id]
             s1_percent = landing_percent_dict.get(landing_info, None)
             if s1_percent is None: 
                 raise ValueError(f"Unexpected landing site for {launch_id}")
         elif launch_rocket == "Falcon Heavy":
-            landing_info_center = input_data.falcon_landing_dict[launch_id]["center"]
-            landing_info_booster_left = input_data.falcon_landing_dict[launch_id]["left"]
-            landing_info_booster_right = input_data.falcon_landing_dict[launch_id]["right"]
+            landing_info_center = input_data.reusable_landing_dict[launch_id]["center"]
+            landing_info_booster_left = input_data.reusable_landing_dict[launch_id]["left"]
+            landing_info_booster_right = input_data.reusable_landing_dict[launch_id]["right"]
             if landing_info_booster_left != landing_info_booster_right:
                 raise ValueError(f"Different landing sites for boosters of {launch_id}")
             s1_percent = landing_percent_dict.get(landing_info_center, None)
@@ -566,31 +567,37 @@ class OutputEmis:
             self.fine_grid_mass_stages[2] = normalize_mass(self.fine_grid_mass[self.sei_alt_index:self.seco_alt_index].copy(), seco_percent)
             
         ##################
-        # Falcon Reusable
+        # Reusable Rockets
         ##################
            
-        # TODO: Need to add emissions for reusuable first stage of Blue Origin New Glenn.
+        landing_alts = {
+            "Falcon 9":      (70.0, 54.7, 3.3),
+            "Falcon Heavy":  (70.0, 54.7, 3.3),
+            "New Glenn 7x2": (66.6, 40.1, 23.8),
+        }
             
         add_landing_emis = False
         # Finally create an extra stage just for the landing emissions of Falcon 9 v1.2. 
-        if launch_rocket == "Falcon 9" and input_data.falcon_landing_dict[launch_id] != "expended":
+        if launch_rocket in ["Falcon 9", "New Glenn 7x2"] and input_data.reusable_landing_dict[launch_id] != "expended":
             add_landing_emis = True
         elif launch_rocket == "Falcon Heavy":
-            landing_info = input_data.falcon_landing_dict[launch_id]
+            landing_info = input_data.reusable_landing_dict[launch_id]
             if any(landing_info.get(k) != "expended" for k in ("left", "right", "center")):
                 add_landing_emis = True
 
         if add_landing_emis: 
             # When 5.6% is used in the boostback burn, this is typically above 100 km, so we don't need to include it here. 
 
-            # 5.6% are used in the entry burn, over 70-54.7 km.
-            self.entry_top = np.searchsorted(self.fine_grid_top_alt, 70000, side='right')
-            self.entry_bot = np.searchsorted(self.fine_grid_top_alt, 54700, side='right')
-            self.fine_grid_mass_stages[7] = normalize_mass(self.fine_grid_mass[self.entry_bot:self.entry_top+1].copy(), 5.6)
+            entry_top_km, entry_bot_km, landing_top_km = landing_alts[launch_rocket]
+
+            # Re-entry burn
+            self.entry_top = np.searchsorted(self.fine_grid_top_alt, entry_top_km * 1e3, side='right')
+            self.entry_bot = np.searchsorted(self.fine_grid_top_alt, entry_bot_km * 1e3, side='right')
+            self.fine_grid_mass_stages[7] = normalize_mass(self.fine_grid_mass[self.entry_bot:self.entry_top+1].copy(), REENTRY)
             
-            # 1.2% are used in the landing burn, over 3.3-0 km.
-            self.landing_top = np.searchsorted(self.fine_grid_top_alt, 3300, side='right')
-            self.fine_grid_mass_stages[8] = normalize_mass(self.fine_grid_mass[:self.landing_top+1].copy(), 1.2)
+            # Landing burn
+            self.landing_top = np.searchsorted(self.fine_grid_top_alt, landing_top_km * 1e3, side='right')
+            self.fine_grid_mass_stages[8] = normalize_mass(self.fine_grid_mass[:self.landing_top+1].copy(), LANDING_BURN)
         
         return stage_alt_beco, stage_alt_meco, stages
     
@@ -863,9 +870,9 @@ class OutputEmis:
         if stage_alt_meco < self.model_alt:
             
             if (cospar not in failed_alt_events): # Suppressed for rockets that failed early into the launch.
-                if row.Rocket_Name != "Falcon 9": # Suppressed for Falcon 9, as this has a reusable first stage.
+                if row.Rocket_Name not in ["Falcon 9", "New Glenn 7x2"]: # Suppressed for rockets with a reusable first stage.
                     check_error(1,cospar,error_lim)
-                elif input_data.falcon_landing_dict[cospar] == "expended": # Keep for Falcon 9 stages that are expended.
+                elif input_data.reusable_landing_dict[cospar] == "expended": # Keep for Falcon 9 stages that are expended.
                     check_error(1,cospar,error_lim)
                 
         self.total_prop_consumed[pei_indices[0],0]  += self.prop_consumed[0,self.launch_count]
@@ -904,16 +911,16 @@ class OutputEmis:
             else:
                 self.prop_above[2] = 100
             
-        # If the rocket is a SpaceX Falcon 9 or Heavy, then add the landing emissions. Kerosene, so no Al2O3 or Cly. 
-        if row.Rocket_Name in ["Falcon 9","Falcon Heavy"]:
+        # If the rocket has a reusable stage, then add the landing emissions.
+        if row.Rocket_Name in ["Falcon 9", "Falcon Heavy", "New Glenn 7x2"]:
 
-            landing_info = input_data.falcon_landing_dict[row.COSPAR_ID]
+            landing_info = input_data.reusable_landing_dict[row.COSPAR_ID]
             is_expendable = False
             if row.Rocket_Name == "Falcon Heavy":
                 is_expendable = landing_info.get('left') == 'expended' or landing_info.get('right') == 'expended'
 
             # If the Falcon 9 first stage or Falcon Heavy boosters are expended, then we don't need to add any landing emissions.
-            if row.Rocket_Name == "Falcon 9" and landing_info == "expended":
+            if row.Rocket_Name in ["Falcon 9", "New Glenn 7x2"] and landing_info == "expended":
                 pass
             elif row.Rocket_Name == "Falcon Heavy" and is_expendable:
                 pass
@@ -924,50 +931,54 @@ class OutputEmis:
                 # By default, assume the emissions are placed at the launch site.
                 falcon_p, falcon_q = p, q
 
-                if row.Rocket_Name == "Falcon 9":
+                if row.Rocket_Name in ["Falcon 9", "New Glenn 7x2"]:
                     needs_ocean = landing_info == "ocean"
                 else:
                     needs_ocean = landing_info["center"] == "ocean"
 
                 # If the landing is in the ocean, then place the emissions there.
                 if needs_ocean:
-                    matching = self.ocean_landings[self.ocean_landings["Date"].isin([f"{self.year}-{self.strmon}-{self.strday}"])].reset_index(drop=True)
-                    # There is a typo in the database, a 2023 launch is listed as 2022.      
-                    if (matching.shape[0] == 1) or (f"{self.year}-{self.strmon}-{self.strday}" == "2022-04-27"):
-
-                        falcon_lat = matching["Latitude"].iloc[0]
-                        falcon_lon = matching["Longitude"].iloc[0]
-                        
-                    # There are two launches on the same day.
-                    elif row.COSPAR_ID in ["2022-124","2023-037"]:
-                        falcon_lat = matching["Latitude"].iloc[0]
-                        falcon_lon = matching["Longitude"].iloc[0]
-                        
-                    elif row.COSPAR_ID in ["2022-125","2023-038"]:
-                        falcon_lat = matching["Latitude"].iloc[1]
-                        falcon_lon = matching["Longitude"].iloc[1]
-                        
-                    elif matching.shape[0] == 0:
-                        # The database hasn't been well updated for 2022, so lets just fill in based on most common geolocation for all other 2020-2022 launches.
-                        if np.isclose(row.Longitude, -81.0, atol=1.0) and np.isclose(row.Latitude, 29.0, atol=1.0):
-                            falcon_lon = -75
-                            falcon_lat = 32
-                        elif np.isclose(row.Longitude, -120.6, atol=1.0) and np.isclose(row.Latitude, 34.7, atol=1.0):
-                            falcon_lon = -122.5
-                            falcon_lat = 30
-                        elif np.isclose(row.Longitude, 100.3, atol=1.0) and np.isclose(row.Latitude, 41.3, atol=1.0):
-                            falcon_lon = 100.3
-                            falcon_lat = 41.3
-                        else:
-                            raise RuntimeError("Launch not from assigned site.",row.Longitude,row.Latitude)
-                    
-                    elif matching.shape[0] > 1: 
-                        raise RuntimeError(f"Multiple ocean entries for Falcon Stage 1 landing for {row.COSPAR_ID}.")
+                    if row.Rocket_Name == "New Glenn 7x2":
+                        # Jacklyn position, same as the re-entry script (https://x.com/spaceOFFSHORE/status/1878177979974775139/photo/1).
+                        landing_lat, landing_lon = 27.888, -74.153
                     else:
-                        raise RuntimeError(f"Problem geolocating Falcon Stage 1 landing for {row.COSPAR_ID}, {self.lon[falcon_p],self.lat[falcon_q]}") 
+                        matching = self.ocean_landings[self.ocean_landings["Date"].isin([f"{self.year}-{self.strmon}-{self.strday}"])].reset_index(drop=True)
+                        # There is a typo in the database, a 2023 launch is listed as 2022.      
+                        if (matching.shape[0] == 1) or (f"{self.year}-{self.strmon}-{self.strday}" == "2022-04-27"):
 
-                    falcon_p = np.argmin(abs(falcon_lon-self.lon))
-                    falcon_q = np.argmin(abs(falcon_lat-self.lat))
+                            landing_lat = matching["Latitude"].iloc[0]
+                            landing_lon = matching["Longitude"].iloc[0]
+                            
+                        # There are two launches on the same day.
+                        elif row.COSPAR_ID in ["2022-124","2023-037"]:
+                            landing_lat = matching["Latitude"].iloc[0]
+                            landing_lon = matching["Longitude"].iloc[0]
+                            
+                        elif row.COSPAR_ID in ["2022-125","2023-038"]:
+                            landing_lat = matching["Latitude"].iloc[1]
+                            landing_lon = matching["Longitude"].iloc[1]
+                            
+                        elif matching.shape[0] == 0:
+                            # The database hasn't been well updated for 2022, so lets just fill in based on most common geolocation for all other 2020-2022 launches.
+                            if np.isclose(row.Longitude, -81.0, atol=1.0) and np.isclose(row.Latitude, 29.0, atol=1.0):
+                                landing_lon = -75
+                                landing_lat = 32
+                            elif np.isclose(row.Longitude, -120.6, atol=1.0) and np.isclose(row.Latitude, 34.7, atol=1.0):
+                                landing_lon = -122.5
+                                landing_lat = 30
+                            elif np.isclose(row.Longitude, 100.3, atol=1.0) and np.isclose(row.Latitude, 41.3, atol=1.0):
+                                landing_lon = 100.3
+                                landing_lat = 41.3
+                            else:
+                                raise RuntimeError("Launch not from assigned site.",row.Longitude,row.Latitude)
+                        
+                        elif matching.shape[0] > 1: 
+                            raise RuntimeError(f"Multiple ocean entries for Falcon Stage 1 landing for {row.COSPAR_ID}.")
+                        else:
+                            raise RuntimeError(f"Problem geolocating Falcon Stage 1 landing for {row.COSPAR_ID}, {self.lon[falcon_p],self.lat[falcon_q]}") 
+
+                    falcon_p = np.argmin(abs(landing_lon-self.lon))
+                    falcon_q = np.argmin(abs(landing_lat-self.lat))
                     self.pmin, self.pmax = min(self.pmin, falcon_p), max(self.pmax, falcon_p)
                     self.qmin, self.qmax = min(self.qmin, falcon_q), max(self.qmax, falcon_q)
                 
@@ -976,7 +987,7 @@ class OutputEmis:
 
                 falcon_tuple = (time_index, falcon_q, falcon_p, pei_indices, prop_masses, True) 
 
-                if row.Rocket_Name == "Falcon 9":
+                if row.Rocket_Name in ["Falcon 9", "New Glenn 7x2"]:
                     stage = 1
                     vert_emis_dict = self.calc_emis(self.entry_bot, self.entry_top+1, vert_emis_dict, stage, falcon_tuple)
                     vert_emis_dict = self.calc_emis(None, self.landing_top+1, vert_emis_dict, stage, falcon_tuple)
