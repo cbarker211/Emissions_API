@@ -81,6 +81,7 @@ This major update contains a range of changes to make the data more consistent w
 - 2024 Simorgh launch changed to "3" variant.
 - Now using the NOx emission profile derived from SABRE measurements in Barker (2026).
 - Note: Primary EI(CO2) for hypergolic fuel is an average of James21 and Ross14, whereas it was just Ross in Barker 2024.
+- Added emissions from "-1" stages, where the rocket has a second set of boosters.
 
 ### Bug Fixes
 - Fixed a bug where stage 2 emissions above the model where missing if SEI was above 100 km.

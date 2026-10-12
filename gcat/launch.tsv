@@ -1,5 +1,5 @@
 #Launch_Tag	Launch_JD	Launch_Date	LV_Type	Variant	Fairing	Flight_ID	Flight	Mission	FlightCode	Platform	Launch_Site	Launch_Pad	Ascent_Site	Ascent_Pad	Perigee	Apogee	Apoflag	Inc	Azimuth	Range	RangeFlag	Dest	OrbMass	OrbPay	Agency	LaunchCode	FailCode	Group	Category	LTCite	Cite	Notes
-# Updated 2026 Oct  8 2356:58
+# Updated 2026 Oct 11 1224:06
 1942-A01  	2430523.95 	1942 Jun 13 1052	A-4	-	-	2	-	-	-	-	HVP	P7	-	-	      -	      1	 	-	   -	    -	 	-	   0.000 	   0.000 	WEHR	MF  	U	-	Test	TTaylor	-	-
 1942-A02  	2430587.97 	1942 Aug 16 1115	A-4	-	-	3	-	-	-	-	HVP	P7	-	-	      -	     11	 	-	   -	    -	 	-	   0.000 	   0.000 	WEHR	MF  	U	-	Test	Stuhlinger	RocketTeam	-
 1942-S01  	2430636.12 	1942 Oct  3 1458	A-4	-	-	4	-	-	-	-	HVP	P7	-	-	      -	     85	 	-	   -	    -	 	-	   0.000 	   0.000 	WEHR	MS  	-	-	Test	Stuhlinger	AE1961A	-
@@ -75955,6 +75955,7 @@
 2026-195 	2461277.64 	2026 Aug 25 0321:54	Chang Zheng 6C	-	-	Y1	ZK-14/15	ZK-14/15	-	-	TYSC	LC9A	-	-	    530	    544	 	 97.5 	   -	    -	 	-	   0.000 	   0.150 	ZHSH/SAST	OS  	-	G/C	Sat SSO L	xinhuanet.com	-	-
 2026-196 	2461277.90 	2026 Aug 25 0933:38	Falcon 9	FT5	-	xxx/B1067.37 F683	Starlink-421	Starlink Group 10-49	V2MO 10-49 (29 Ku)	-	CC	LC40	-	-	    143	    251	 	 53.2 	   -	    -	 	-	   0.000 	  16.700 	SPX	OS  	-	C M	Sat LEO D	SpaceX	-	-
 2026-197 	2461278.90 	2026 Aug 26 0935:11	Falcon 9	FT5	-	xxx/B1082.24 F684	Starlink-422	Starlink Group 15-22	V2MO 15-22 (27 Ku)	-	VSFBS	SLC4E	-	-	    135	    270	 	 70.0 	   -	    -	 	-	   0.000 	  15.500 	SPX	OS  	-	C M	Sat LEO D	SpaceX	-	-
+2026-A07  	2461279.50 	2026 Aug 27	PERUN	-	-	4	-	-	-	-	USTKA	-	-	-	      -	     40	?	-	   -	    -	 	-	   0.000 	   0.000 	SPFOR	SS  	-	SPFOR/	Test	Wire	-	-
 2026-S259  	2461279.50 	2026 Aug 27	Yars	-	-	-	15Zh55M?	BB	-	-	GNIIP	LC167	-	-	      -	   1000	?	-	   -	    -	 	Kura	   0.000 	   0.000 	RVSNR	MS  	-	-	OT	russianforces.org	-	-
 2026-198 	2461280.34 	2026 Aug 27 2011:00	Ariane 62	-	-	VA270 (L6008)	MTG-I2	MTG-I2	-	-	CSG	ELA4	-	-	    249	  35650	 	  6.0 	   -	    -	 	-	   0.000 	   3.800 	AE	OS  	-	CO/G	Sat GTO O	youtube/arianespace	-	-
 2026-199 	2461282.98 	2026 Aug 30 1125:49	Falcon Heavy	-	-	013/B1105.1	Roman Space Telescope	NGRST	B1072.3,B1104.1	-	KSC	LC39A	-	-	    182	    183	 	 33.6 	   -	    -	 	-	   0.000 	   9.253 	SPX	DS  	-	CX/G	Sat EEO E	Wire	-	-
@@ -75991,7 +75992,10 @@
 2026-S260  	2461314.79 	2026 Oct  1 0651	Red Kite/IM	-	-	MAPHEUS 17	DLR MAPHEUS 17	-	-	-	ESR	S	-	-	      -	    291	 	-	   -	    -	 	-	   0.000 	   0.000 	DLR	SS  	-	DLR/	Micrograv	sscspace.com	-	-
 2026-226 	2461315.13 	2026 Oct  1 1510:06	Falcon 9	FT5	-	xxx/B1101.3  F692	Dragon Crew-13	Dragon C213.2	-	-	CC	LC40	-	-	      -	      -	 	-	   -	    -	 	-	   0.000 	  13.055 	SPX	OS  	-	CX	Sat ISS D	Wire	-	-
 2026-227 	2461315.27 	2026 Oct  1 1832:00	Falcon 9	FT5	-	xxx/B1082.25 F693	Transporter-18	Transporter-18	-	-	VSFBS	SLC4E	-	-	      -	      -	 	-	   -	    -	 	-	   0.000 	   5.000 	SPX	OS  	-	C	Sat LEO D	SpaceX	-	-
-2026-228 	2461315.66 	2026 Oct  2 0354:00	Falcon Heavy	-	-	014/B1106.1	USA	NROL-97	-	-	KSC	LC39A	-	-	      -	      -	 	-	   -	    -	 	-	   0.000 	   5.000 	SPX	OS  	-	CX/G	Sat GEO O	SpaceX	-	-
+2026-228 	2461315.66 	2026 Oct  2 0354:00	Falcon Heavy	-	-	014/B1106.1	USA 708	NROL-97	B1072.4,B1104.2	-	KSC	LC39A	-	-	      -	      -	 	-	   -	    -	 	-	   0.000 	   5.000 	SPX	OS  	-	CX/G	Sat GEO O	SpaceX	-	-
 2026-S261  	2461316.40 	2026 Oct  2 2130	Hwasong-16Na	?	-	-	-	-	-	-	WONSAN?	-	-	-	      -	    100	 	-	   -	  800	 	Sea of J.	   0.000 	   0.000 	JRG	MS  	-	-	Test	Wire	-	-
 2026-S262  	2461319.50 	2026 Oct  6	MSBS M51	-	-	13	M51.3	-	-	S618	BRETA	LP3	-	-	      -	   1000	?	-	   -	 4700	?	57.3W 32.4N	   0.000 	   0.000 	DMA	MS  	-	-	Test	Wire	-	-
 2026-229 	2461320.64 	2026 Oct  7 0325	Nuri	-	-	5	NeonSat	-	-	-	NARO	LC2	-	-	      -	      -	 	-	   -	    -	 	-	   0.000 	   1.000 	KARI	OS  	-	G	Sat SSO O	Wire	-	-
+2026-230 	2461323.31 	2026 Oct  9 1927	Chang Zheng 12	-	-	Y10	WHDW 27	WHDW 27	-	-	HCSLS	LC2	-	-	    180	    929	 	 50.0 	   -	    -	 	-	   0.000 	   2.000 	ZHSH/SAST	OS  	-	G M	Sat LEO P	nasaspaceflight.com	xinhuanet.com	-
+2026-231 	2461323.82 	2026 Oct 10 0739:44	Falcon 9	FT5	-	xxx/B1103.6  F694	SDA T1TL-A	Tranche 1 TL-A	-	-	VSFBS	SLC4E	-	-	      -	      -	 	-	   -	    -	 	-	   0.000 	  15.000 	SPX	OS  	-	CX/G m	Sat LEO D	SpaceX	-	-
+2026-S263  	2461323.82 	2026 Oct 10 0743	Minotaur I Lite	?	-	14	Mk 21-2B RV	-	-	-	V	TP-01?	-	-	      -	   1000	?	-	   -	    -	 	KMR 168E 9N	   0.000 	   0.000 	USAF	MS  	-	-	R&D	spaceforce.mil	-	-

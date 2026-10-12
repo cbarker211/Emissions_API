@@ -19,20 +19,16 @@ def update_mass_info(temp_dict,name,variant):
      
     if name in ["Angara A5","Angara A5/Persei","Angara A5/Orion"]:
         # https://web.archive.org/web/20220406013831/http://www.spacelaunchreport.com/angara.html
-        # https://discosweb.esoc.esa.int/launch-vehicles/107449
-        # https://discosweb.esoc.esa.int/launch-vehicles/130
         # https://web.archive.org/web/20240730160859/https://spaceflight101.com/spacerockets/angara-a5/
         # https://web.archive.org/web/20221230022503/https://www.mach5lowdown.com/wp-content/uploads/PUG/Angara-Mission-Planners-Guide-Rev-0-2002-12.pdf
         # GCAT masses are identical to the manual for S0-S2.
         
         # Prop masses:
-        # DISCOSweb: 530400, 132600, 36000, 19800 (Briz-M), 15000 (Persei)
         # SLR      : 530400, 132600, 35800, 19800 (Briz-M), 18700 (Persei) 
         # Sp101    : 512000, 128000, 35800, 19800 (Briz-M), N/A   (Persei)
         # Manual   : 530400, 132600, 35800, 19800 (Briz-M), N/A   (Persei)
         
         # Stage masses:
-        # DISCOSweb: 39200, 9800, 2000, 2370 (Briz-M), 2140 (Persei), N/A  (Fairing Briz-M), N/A (Fairing Persei)
         # SLR      : N/A,   N/A,  N/A,  2370 (Briz-M), 2900 (Persei), N/A  (Fairing Briz-M), N/A (Fairing Persei)
         # Sp101    : 39200, 9800, 4000, 2370 (Briz-M), N/A  (Persei), 1600 (Fairing Briz-M), N/A (Fairing Persei)
         # Manual   : N/A,   N/A,  N/A,  2370 (Briz-M), N/A  (Persei), 2600?? (Fairing Briz-M), N/A (Fairing Persei)
@@ -61,6 +57,13 @@ def update_mass_info(temp_dict,name,variant):
         temp_dict[f"Stage3 Propellant Mass"]  = 2000
         temp_dict[f"Stage3 Stage Mass"]       = 1000
         temp_dict[f"Fairing Mass"]            = (500+810)/2 # Two options on Sp101.
+
+    if name == "Ariane 44LP":
+        # https://dn720004.ca.archive.org/0/items/ariane-4-users-manual-issue-2-rev-0-1999-02/Ariane-4-Users-Manual-Issue2-Rev0-1999-02.pdf
+        # BECO (solid), BECO (liquid), MECO, SECO
+        # 7.5,          38.1,          73.7, 150.3
+        # Set SEI to 73.7 km, which is the altitude of the second stage MECO.
+        pass
         
     if name.startswith("Ariane 5ECA"):
         
@@ -147,16 +150,14 @@ def update_mass_info(temp_dict,name,variant):
         # https://cdn.northropgrumman.com/-/media/Project/Northrop-Grumman/ngc/space/antares/Antares-Users-Guide.pdf
         
         # Prop masses:
-        # DISCOSweb: 242000, 12837
         # SLR      : 242400, 23100 
         # Sp101    : 242000, N/A
         
         # Stage masses:
-        # DISCOSweb: 20600, 1185
         # SLR      : 18800, 2100
         # Sp101    : 20600, 2100
         
-        # Antares 230, second stage solid propellant has a typo in DISCOSweb.
+        # Antares 230
         # Looking at user manuals, this value is also wrong, it seems to be for the Castor 30B second stage.
         # This vehicle uses the Castor 30XL, which has double the propellant mass.
         # https://www.northropgrumman.com/wp-content/uploads/CASTOR-Motor-Series.pdf Had to convert LBM to kg.
@@ -173,13 +174,11 @@ def update_mass_info(temp_dict,name,variant):
         
         # https://web.archive.org/web/20240422092922/https://spaceflight101.com/spacerockets/delta-iv-heavy-rs-68a/
         # Prop masses:
-        # DISCOSweb: 399300 (two), 199650, 27200
         # SLR      : 204000 (one), 204000, 27200
         # Sp101    : 202000 (one), 202000, 27220
         # Manual   : N/A,          N/A,    27200
                 
         # Stage masses:
-        # DISCOSweb: 28000 (???), 3510,  3510
         # SLR      : 28000 (one), 28000, 3350  
         # Sp101    : 26400 (one), 26400, 3490
 
@@ -285,12 +284,10 @@ def update_mass_info(temp_dict,name,variant):
     if name == "Falcon Heavy":
     
         # Prop masses:
-        # DISCOSweb: 294300 (???), 395700, 108670
         # SLR      : 407600 (one), 407600, 107200
         # Sp101    : 411000 (one), 411000, 107500
                 
         # Stage masses:
-        # DISCOSweb: 33100 (???), 25600, 3230
         # SLR      : 17000 (one), 17000, 4500
         # Sp101    : 22500 (one), 25600, 4000
         
@@ -407,6 +404,10 @@ def update_mass_info(temp_dict,name,variant):
         if len(name) == 10:
             temp_dict[f"Stage-1 Propellant Mass"] = 52400 / 4 * int(name[9])
             temp_dict[f"Stage-1 Stage Mass"]      = (31/2-52.4/4) * 1000 * int(name[9])
+
+        # https://www.nasa.gov/wp-content/uploads/2015/03/gpm-press-kit_2014.pdf - HIIA 202/204
+        # https://www.jaxa.jp/countdown/f14/overview/sequence_e.html             - HIIA 2022/2024, HII variants
+        # Used for launch event altitudes.
         
     if name == "H-IIB":
         # Details from https://global.jaxa.jp/projects/rockets/h2b/
@@ -492,12 +493,10 @@ def update_mass_info(temp_dict,name,variant):
     if name == "Chang Zheng 2F":
         
         # Prop masses:
-        # DISCOSweb : 41501 (one), 186310, 86150
         # SLR       : 37800 (one), 187000, 86000
         # Sp101     : 40800 (one), 186500, 91500
                 
         # Stage masses:
-        # DISCOSweb : 3200 (one), 1100,  5500
         # SLR       : 3200 (one), 9500,  5500
         # Sp101     : 3000 (one), 12500, 5500
         temp_dict[f"Stage0 Propellant Mass"]  = (37800+40800) / 2 * 4 # SLR/Sp101
@@ -551,12 +550,10 @@ def update_mass_info(temp_dict,name,variant):
     if name.startswith("Chang Zheng 5"):  
         
         # Prop masses:
-        # DISCOSweb : 174000, 158500, 22900
         # SLR       : 152000, 158000, 22900
         # Sp101     : 135000, 158500, 26500
                 
         # Stage masses:
-        # DISCOSweb : 12000, 18000, 3400
         # SLR       : 12500, 17000, 3520
         # Sp101     : 12000, 18000, 3400
 
@@ -732,23 +729,29 @@ def update_mass_info(temp_dict,name,variant):
         temp_dict[f"Stage3 Propellant Mass"] = 12100-1290     # DW (W-D)
      
     if "PSLV-" in name or (name == "PSLV" and variant == "CA"):
-        # https://www.isro.gov.in/media_isro/pdf/Missions/PSLVC41/PSLVC41.pdf
-        # https://www.isro.gov.in/media_isro/pdf/Missions/PSLV_C44_LaunchKit.pdf
-        # https://www.isro.gov.in/media_isro/pdf/Missions/PSLVC60/PSLVC60-mission-brochure-english.pdf
+        # https://www.isro.gov.in/media_isro/pdf/Missions/PSLVC41/PSLVC41.pdf - PSLV-XL
+        # https://www.isro.gov.in/media_isro/pdf/Missions/PSLV_C44_LaunchKit.pdf - PSLV-DL
+        # https://www.isro.gov.in/media_isro/pdf/Missions/PSLVC60/PSLVC60-mission-brochure-english.pdf - PSLV-CA
 
         # CA has less prop in 4th stage
+        # TODO: Should go through these with Jonathan.
         
         # Prop masses:
-        # DISCOSweb    : 72000 (???),    138000, 40500, 7300, 2100
         # SLR          : 12000 (one),    138000, 41500, 7600, 2500 (XL/DL), 2100 (CA)
         # Sp101        : 12000 (one-XL), 138000, 40700, 6700, 2000 (XL/DL), 1600 (CA)
-        # Manual (DL)  : 12200 (one),    139000, 4100,  7650, 1600
+        # Manual (DL)  : 12200 (one),    139000, 4100,  7650, 1600 (probably typo in the original brochure for stage 2 propellant mass)
         # Manual (XL)  : 12200 (one),    138200, 42000, 7600, 2500
+        # Manual (CA)  : -          ,    138000, 42000, 7650, 1600
                 
         # Stage masses:
-        # DISCOSweb    : 12000 (???), 30000, 5300, 920,  960
         # SLR          : 2700 (one),  30000, 5400, 700,  420
         # Sp101        : 2010 (one),  30200, 5300, 1100, 920 
+
+        # GCAT
+        # S2  40500 5300
+        # S3  7300  1100
+        # S3  7300  1100
+        # S4  1980  920
         
         # Fairing mass:
         #   - https://spaceflight101.com/spacerockets/pslv/                                         1150 kg
@@ -759,10 +762,10 @@ def update_mass_info(temp_dict,name,variant):
         elif variant == "CA":
             temp_dict[f"Stage4 Propellant Mass"]    = (2100+1600) / 2 # SLR/Sp101
         
-        temp_dict[f"Stage0 Propellant Mass"]    = 12200 * int(temp_dict[f"Booster Number"]) # Manual
-        temp_dict[f"Stage1 Propellant Mass"]    = (139000+138200) / 2                       # Manual
-        temp_dict[f"Stage2 Propellant Mass"]    = 41500                                     # Manual
-        temp_dict[f"Stage3 Propellant Mass"]    = (7650+7600) / 2                           # Manual
+        temp_dict[f"Stage0 Propellant Mass"]    = 12200 * int(temp_dict[f"Booster Number"]) # Manual (XL/DL)
+        temp_dict[f"Stage1 Propellant Mass"]    = (139000+138200) / 2                       # Manual (XL/DL)
+        temp_dict[f"Stage2 Propellant Mass"]    = (41000+42000) / 2                         # Manual (XL/DL)
+        temp_dict[f"Stage3 Propellant Mass"]    = (7650+7600) / 2                           # Manual (XL/DL)
 
         temp_dict[f"Stage0 Stage Mass"]         = (2700+2010) / 2 * int(temp_dict[f"Booster Number"])   # SLR/Sp101
         temp_dict[f"Stage1 Stage Mass"]         = (30000+30200) / 2 # SLR/Sp101

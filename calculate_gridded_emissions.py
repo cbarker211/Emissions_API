@@ -493,7 +493,7 @@ class OutputEmis:
         # Get altitude, default to 0 if rocket not in dictionary
         fei_alt = fei_alt_dict.get(launch_rocket, 0)
 
-        self.fine_grid_mass_stages = [np.array([]) for _ in range(8)]
+        self.fine_grid_mass_stages = [np.array([]) for _ in range(9)]
         
         ###########
         # Boosters
@@ -510,6 +510,18 @@ class OutputEmis:
                          
             if launch_rocket == "Falcon Heavy":
                 self.total_landing_prop += (100.0 - booster_percent) * input_data.dsr["Stage0_PropMass"][roc_ind] / 100.0
+
+        if launch_rocket in ["Ariane 44LP", "H-IIA 2022", "H-IIA 2024"] or (launch_rocket == "H-II" and launch_variant == "(2S)"):
+            
+            if launch_rocket == "Ariane 44LP": # https://dn720004.ca.archive.org/0/items/ariane-4-users-manual-issue-2-rev-0-1999-02/Ariane-4-Users-Manual-Issue2-Rev0-1999-02.pdf
+                beco_minus_one = 38.1
+            elif launch_rocket == "H-IIA 2022" or (launch_rocket == "H-II" and launch_variant == "(2S)"): # https://www.jaxa.jp/countdown/f14/overview/sequence_e.html
+                beco_minus_one = 19.0
+            elif launch_rocket == "H-IIA 2024": # https://www.jaxa.jp/countdown/f14/overview/sequence_e.html
+                beco_minus_one = 72.0
+
+            self.extra_booster_alt_index = get_alt_index(beco_minus_one, self.fine_grid_top_alt, self.fine_grid_bot_alt)
+            self.fine_grid_mass_stages[6] = normalize_mass(self.fine_grid_mass[:self.extra_booster_alt_index].copy(), 100)
 
         ###########
         # Stage 1
@@ -574,11 +586,11 @@ class OutputEmis:
             # 5.6% are used in the entry burn, over 70-54.7 km.
             self.entry_top = np.searchsorted(self.fine_grid_top_alt, 70000, side='right')
             self.entry_bot = np.searchsorted(self.fine_grid_top_alt, 54700, side='right')
-            self.fine_grid_mass_stages[6] = normalize_mass(self.fine_grid_mass[self.entry_bot:self.entry_top+1].copy(), 5.6)
+            self.fine_grid_mass_stages[7] = normalize_mass(self.fine_grid_mass[self.entry_bot:self.entry_top+1].copy(), 5.6)
             
             # 1.2% are used in the landing burn, over 3.3-0 km.
             self.landing_top = np.searchsorted(self.fine_grid_top_alt, 3300, side='right')
-            self.fine_grid_mass_stages[7] = normalize_mass(self.fine_grid_mass[:self.landing_top+1].copy(), 1.2)
+            self.fine_grid_mass_stages[8] = normalize_mass(self.fine_grid_mass[:self.landing_top+1].copy(), 1.2)
         
         return stage_alt_beco, stage_alt_meco, stages
     
@@ -594,9 +606,9 @@ class OutputEmis:
 
         if falcon_flag:
             if start_ind != None:
-                vertical_profile = self.fine_grid_mass_stages[6]
-            else:
                 vertical_profile = self.fine_grid_mass_stages[7]
+            else:
+                vertical_profile = self.fine_grid_mass_stages[8]
         else:
             vertical_profile = self.fine_grid_mass_stages[stage]
 
@@ -753,7 +765,7 @@ class OutputEmis:
         ############################################
         
         stage_alt_beco, stage_alt_meco, stages = self.process_launch_event_altitudes(roc_ind, row.Rocket_Name, row.Rocket_Variant, row.COSPAR_ID)
-        prop_masses, pei_indices = np.zeros(6), np.full(6, -1, dtype=int)
+        prop_masses, pei_indices = np.zeros(7), np.full(7, -1, dtype=int)
         for i, active in enumerate(stages):
             if active:
                 prop_masses[i] = input_data.dsr[f"Stage{i}_PropMass"][roc_ind]
@@ -762,6 +774,12 @@ class OutputEmis:
                 if len(idx) != 1:
                     raise RuntimeError(f"Expected one PEI fuel match for Stage {i}, got {idx}") 
                 pei_indices[i] = idx[0]
+        if row.Rocket_Name in ["Ariane 44LP", "H-IIA 2022", "H-IIA 2024"] or (row.Rocket_Name == "H-II" and row.Rocket_Variant == "(2S)"):
+            prop_masses[6] = input_data.dsr[f"Stage-1_PropMass"][roc_ind]
+            idx = np.where(input_data.pei_fuel_type == input_data.dsr[f"Stage-1_Fuel_Type"][roc_ind])[0]
+            if len(idx) != 1:
+                raise RuntimeError(f"Expected one PEI fuel match for Stage -1, got {idx}") 
+            pei_indices[6] = idx[0]
 
         ############################################
         # Deal with failed launches.
@@ -854,16 +872,20 @@ class OutputEmis:
         vert_emis_keys =  ["prop", "bc", "co", "co2", "nox", "h2o", "al2o3", "cl", "hcl", "cl2"]
         vert_emis_dict = {sp: np.zeros(3) for sp in vert_emis_keys}
             
-        self.prop_above = np.zeros(6) # An array for propellant consumed by each stage above the model limits.
+        self.prop_above = np.zeros(7) # An array for propellant consumed by each stage above the model limits.
+        # The last value is for "-1" stages, where rockets have multiple booster types.
 
         launch_tuple = (time_index, q, p, pei_indices, prop_masses, False)  
                         
         # Check whether there is a booster:
         if stages[0]:
             vert_emis_dict = self.calc_emis(None,self.booster_alt_index,vert_emis_dict,0,launch_tuple)
+
+            if row.Rocket_Name in ["Ariane 44LP", "H-IIA 2022", "H-IIA 2024"] or (row.Rocket_Name == "H-II" and row.Rocket_Variant == "(2S)"):
+                vert_emis_dict = self.calc_emis(None,self.extra_booster_alt_index,vert_emis_dict,6,launch_tuple)
                 
         # Every rocket has a first stage.
-        vert_emis_dict = self.calc_emis(self.fei_alt_index, self.MECO_alt_index, vert_emis_dict, 1, launch_tuple, )
+        vert_emis_dict = self.calc_emis(self.fei_alt_index, self.MECO_alt_index, vert_emis_dict, 1, launch_tuple)
         
         # Check whether there is a second stage:
         if stages[2]:
@@ -939,7 +961,7 @@ class OutputEmis:
                     self.pmin, self.pmax = min(self.pmin, falcon_p), max(self.pmax, falcon_p)
                     self.qmin, self.qmax = min(self.qmin, falcon_q), max(self.qmax, falcon_q)
                 
-                if np.sum(self.fine_grid_mass_stages[6]) + np.sum(self.fine_grid_mass_stages[7]) > 7:
+                if np.sum(self.fine_grid_mass_stages[7]) + np.sum(self.fine_grid_mass_stages[8]) > 7:
                     raise RuntimeError("Error with Stage 1 Ocean Landing. Propellant distribution exceeds what is expected.")
 
                 falcon_tuple = (time_index, falcon_q, falcon_p, pei_indices, prop_masses, True) 
