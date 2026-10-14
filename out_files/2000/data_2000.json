@@ -1984,79 +1984,6 @@
             }
         ]
     },
-    "2000-02-10": {
-        "launches": [
-            {
-                "date": "2000-02-10T01:30:00Z",
-                "id": "2000-U01",
-                "rocket": "M-V",
-                "variant": "-",
-                "lat": 31.25,
-                "lon": 131.079,
-                "smc": false,
-                "location": "Kagoshima Space Center (Uchinoura)",
-                "agency": "ISAS",
-                "emissions": {
-                    "BC": [
-                        0.025322,
-                        0.185667,
-                        0.240243,
-                        0.569516
-                    ],
-                    "CO": [
-                        0.050085,
-                        0.243422,
-                        1.125448,
-                        6.407052
-                    ],
-                    "CO2": [
-                        18.464251,
-                        13.651746,
-                        5.268819,
-                        6.585026
-                    ],
-                    "NOx": [
-                        0.681821,
-                        0.024911,
-                        7.6e-05,
-                        0.0
-                    ],
-                    "H2O": [
-                        20.788063,
-                        15.733431,
-                        7.889184,
-                        18.701925
-                    ],
-                    "Al2O3": [
-                        12.977388,
-                        9.821927,
-                        4.92499,
-                        11.675073
-                    ],
-                    "Cl": [
-                        0.054666,
-                        0.770072,
-                        0.773047,
-                        1.815331
-                    ],
-                    "HCl": [
-                        7.767263,
-                        2.993416,
-                        0.996276,
-                        2.349252
-                    ],
-                    "Cl2": [
-                        0.763724,
-                        2.734546,
-                        1.488979,
-                        3.523879
-                    ]
-                },
-                "propellant": 120.120057
-            }
-        ],
-        "reentries": []
-    },
     "2000-02-11": {
         "launches": [
             {
@@ -6452,8 +6379,8 @@
                 "id": "2000-030",
                 "rocket": "Pegasus XL",
                 "variant": "-",
-                "lat": 34.75,
-                "lon": -120.62,
+                "lat": 36.0,
+                "lon": -123.0,
                 "smc": false,
                 "location": "Vandenberg Space Force Base",
                 "agency": "OSC-Fairfax",
@@ -10984,8 +10911,8 @@
                 "id": "2000-050",
                 "rocket": "Chang Zheng 4B",
                 "variant": "-",
-                "lat": 37.5,
-                "lon": 112.6,
+                "lat": 38.85,
+                "lon": 111.61,
                 "smc": false,
                 "location": "Taiyuan weixing fashe zhongxin",
                 "agency": "SAST",
@@ -13317,8 +13244,8 @@
                 "id": "2000-061",
                 "rocket": "Pegasus H",
                 "variant": "-",
-                "lat": 8.9917,
-                "lon": 167.72,
+                "lat": 7.65,
+                "lon": 167.7,
                 "smc": false,
                 "location": "US Army Kwajalein Atoll (USAKA), Marshall Islands",
                 "agency": "OSC-Fairfax",

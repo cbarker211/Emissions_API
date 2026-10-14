@@ -1,5 +1,5 @@
 #Code	UCode	StateCode	Type	Class	TStart	TStop	ShortName	Name	Location	Longitude	Latitude	Error	Parent	ShortEName	EName	UName
-# Updated 2026 Oct 11 1223:40
+# Updated 2026 Oct 13 2144:15
 EARTH	EARTH	EARTH	AP	C	-	-	Earth	Earth	Earth	-	-	0.0200 	-	Earth (Terra)	Earth	Earth
 LUNA	LUNA	LUNA	AP	C	-	-	Luna	Luna	Luna	-	-	0.0200 	-	Moon	Moon	Luna
 SSYS	SSYS	SSYS	AP	C	-	-	Solar System	Solar System natural celestial objects	Sol	-	-	0.0200 	-	Solar System	Solar System natural celestial objects	Solar System
@@ -1278,6 +1278,8 @@ ELKED	ELKED	GR	O	C	2024	-	EKD	Ellenko Kentro Diastematos	Athenai:Chalandri	     
 ELLT	ELLT	UK	PL	B	1804	1966	Elliott	Elliott Bros (London) Space and Weapon Research Labs (Marconi)	Frimley, Surrey	     -0.7400 	   51.3100 	0.0200 	-	-	-	Elliott Bros (London) Space and Weapon Research Labs (Marconi)
 ELUS	BOSL	US	O/LA	B	2010	-	Energia Ltd US	Energia Logistics Ltd, (ELUS)	Long Beach, California	   -118.2000 	   33.7700 	0.0200 	RKKE	-	-	Energia Logistics Ltd, (ELUS)
 ELV	ELV	I	LV	B	2008?	-	ELV SpA.	ELV SpA	Colleferro	     13.0200 	   41.7300 	0.0200 	-	-	-	ELV SpA
+ELVEO	UBIQ	US	O/PL	B	2026 Aug	-	Elveo Mobile	Elveo Mobile	Chevy Chase, Maryland	    -77.0700 	   38.9900 	0.0200 	-	-	-	Elveo Mobile
+ELVOM	OMNISP	US	O	B	2026 Aug	-	Elveo (Omni)	Elveo Mobile (OmniSpace LLC)	Tysons Corner, Virginia	    -77.2300 	   38.9200 	0.0200 	ELVEO	-	-	Elveo Mobile (OmniSpace LLC)
 ELYS	ELYS	US	O/PL	B	2015?	-	Elysium Space	Elysium Space	San Francisco, California	   -122.4200 	   37.7800 	0.0200 	-	-	-	Elysium Space
 EMASH	EMASH	RU	E	C	1990 Jan	-	Energomash	NPO Energomash	Moskva:Khimki	     37.4500 	   55.9000 	0.0200 	-	-	-	НПО Энергомаш имени академика В. П. Глушко
 EMAVI	EMAVI	CO	O	D	1933	-	EMAVI	Escuela Militar de Avacion, Base Aerea Marco Fidel Suarez	Cali	    -76.5000 	    3.4600 	0.0200 	FACO	-	Military Aviation School, FAC	Escuela Militar de Aviación,  Base Aérea Marco Fidel Suárez
@@ -2194,7 +2196,7 @@ LVMS	LTV	US	-	B	1992 Aug 31	1996	Loral Vought	Loral Vought	Dallas:Grand Prairie,
 LVN	LVN	US	LV	B	1954	1960	Lockheed/Van Nuys	Lockheed Aircraft Corp, Plant B-9, Missile Systems Division (X-7)	Van Nuys, California	   -118.4300 	   34.1800 	0.0200 	LAC	-	-	Lockheed Aircraft Corp, Plant B-9, Missile Systems Division (X-7)
 LW	LW	D	O/LA/PL	D	1956	-	Luftwaffe	Luftwaffe (Bundeswehr)	Koln?	      6.9500 	   50.9400 	0.0200 	-	-	German Air Force	Luftwaffe (Bundeswehr)
 LYK	LYK	CN	LA/LV/E	B	2015?	-	Lingyi Kongjian	Beijing Lingyi Kongjian Keji YG	Chongqing Liangjian New Area	    106.5700 	   29.6400 	0.0200 	-	-	OneSpace	北京零壹空间科技有限公司
-LYNK	UBIQ	US	O/PL	B	2019 Oct	-	Lynk	Lynk Global, Inc	Falls Church, Virginia	    -77.1700 	   38.8900 	0.0200 	-	-	-	Lynk Global, Inc.
+LYNK	UBIQ	US	O/PL	B	2019 Oct	2026 Aug	Lynk	Lynk Global, Inc	Falls Church, Virginia	    -77.1700 	   38.8900 	0.0200 	-	-	-	Lynk Global, Inc.
 M42	M42	US	PL	B	2014 Aug	-	M42 Tech	M42 Technologies	Seattle, Washington	   -122.3300 	   47.6100 	0.0200 	-	-	-	M42 Technologies
 MAEU	MAEU	MYM	O	A	2002	-	MAEU	Myanmarninengan Laykyaungg Nhang Aarkarsapanyar Takkasol	Meiktila, Mandalay	     95.8900 	   20.8900 	0.0200 	-	-	Myanmar Aerospace Engineering University	မြန်မာနိုင်ငံ လေကြောင်းနှင့်အာကာသပညာ တက္ကသိုလ်
 MAGL	MAGL	HU	O	D	1918	-	Magyar Legiero	Maygar Legiero	Budapest	     19.0500 	   47.4900 	0.0200 	-	Hungarian AF	Hungarian Air Force	Magyar Légierő
@@ -2725,7 +2727,7 @@ OLIN	RRC	US	LV/E	B	1985	1997	Olin	Olin Aerospace	Redmond, Washington	   -122.120
 OMID	OMID	IR	PL	B	2018	-	Omid-e-Faza	Omid-e-Faza company	Teheran	     51.3900 	   35.6900 	0.0200 	-	-	SpaceOMID Co. LLC	شرکت امیدفضا
 OMLGM	ABMA	US	LV	D	1954 Jan	1956 Feb	RSA OML	Redstone Arsenal, Ordnance Missle Lab, Guided Missle Div	Huntsville, Alabama	    -86.6500 	   34.6800 	0.0200 	ORDRSA	-	-	Redstone Arsenal, Ordnance Missle Lab, Guided Missle Div
 OMNIE	OMNIE	US	-	B	2014 May	-	OmniEarth	OmniEarth LLC	Arlington, Virginia	    -77.0600 	   38.8700 	0.0200 	-	-	-	OmniEarth LLC
-OMNISP	OMNISP	US	O	B	2012	-	OmniSpace	OmniSpace LLC	Tysons Corner, Virginia	    -77.2300 	   38.9200 	0.0200 	-	-	-	OmniSpace LLC
+OMNISP	OMNISP	US	O	B	2012	2026 Aug	OmniSpace	OmniSpace LLC	Tysons Corner, Virginia	    -77.2300 	   38.9200 	0.0200 	-	-	-	OmniSpace LLC
 OMNITQ	OMNITQ	US	O	B	2010	-	OmniTeq	OmniTeq	Bee Cave, Texas	    -97.9500 	   30.3100 	0.0200 	-	-	-	OmniTeq
 OMS	OMS	US	P	B	2015	-	OMS	Orbital Micro Systems	Boulder, Colorado	   -105.2200 	   40.0200 	0.0200 	WXSTR	-	-	Orbital Micro Systems
 OMSUK	OMSUK	UK	O/PL	B	2018	-	OMS Harwell	Orbital Micro Systems UK	Harwell, Oxfordshire	     -1.3100 	   51.5800 	0.0200 	OMS	-	-	Orbital Micro Systems UK

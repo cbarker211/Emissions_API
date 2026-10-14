@@ -82,7 +82,7 @@ def update_mass_info(temp_dict,name,variant):
             temp_dict[f"Stage2 Propellant Mass"] = 15260     # SLR for ESC-D
         temp_dict[f"Fairing Mass"]               = 2675      # Manual        
     
-    if name.startswith("Ariane 6") and variant != "1":
+    if name.startswith("Ariane 6"):
         # The '-' variants use the original P120C boosters from Vega C.
         # Only the latest '1' variant uses the updated P160C boosters.
         # Updated information from ESA
@@ -275,7 +275,7 @@ def update_mass_info(temp_dict,name,variant):
             temp_dict[f"Stage3 Propellant Mass"] = 2500  # SLR
             temp_dict[f"Stage3 Stage Mass"]      = 500   # SLR
 
-        if variant in ["2PBS",""]:
+        if variant in ["2PBS","-"]:
             temp_dict[f"Stage4 Propellant Mass"] = 145   # SLR         
             temp_dict[f"Stage4 Stage Mass"]      = 155   # SLR
         
@@ -381,7 +381,7 @@ def update_mass_info(temp_dict,name,variant):
 
         temp_dict[f"Stage0 Propellant Mass"] = 205000 * 2
         temp_dict[f"Stage1 Propellant Mass"] = 116000
-        temp_dict[f"Stage2 Propellant Mass"] = 286000
+        temp_dict[f"Stage2 Propellant Mass"] = 28600
         temp_dict[f"Stage0 Stage Mass"]      = 31000 * 2
         temp_dict[f"Stage1 Stage Mass"]      = 9800
         temp_dict[f"Stage2 Stage Mass"]      = 4400

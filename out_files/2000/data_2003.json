@@ -629,8 +629,8 @@
                 "id": "2003-004",
                 "rocket": "Pegasus XL",
                 "variant": "-",
-                "lat": 28.46,
-                "lon": -80.54,
+                "lat": 29.0,
+                "lon": -78.5,
                 "smc": false,
                 "location": "Cape Canaveral",
                 "agency": "OSC-Fairfax",
@@ -3713,8 +3713,8 @@
                 "id": "2003-017",
                 "rocket": "Pegasus XL",
                 "variant": "-",
-                "lat": 28.46,
-                "lon": -80.54,
+                "lat": 29.0,
+                "lon": -78.5,
                 "smc": false,
                 "location": "Cape Canaveral",
                 "agency": "OSC-Fairfax",
@@ -6500,8 +6500,8 @@
                 "id": "2003-030",
                 "rocket": "Pegasus XL",
                 "variant": "-",
-                "lat": 34.75,
-                "lon": -120.62,
+                "lat": 36.0,
+                "lon": -123.0,
                 "smc": false,
                 "location": "Vandenberg Space Force Base",
                 "agency": "OSC-Fairfax",
@@ -7953,8 +7953,8 @@
                 "id": "2003-036",
                 "rocket": "Pegasus XL",
                 "variant": "-",
-                "lat": 34.75,
-                "lon": -120.62,
+                "lat": 36.0,
+                "lon": -123.0,
                 "smc": false,
                 "location": "Vandenberg Space Force Base",
                 "agency": "OSC-Fairfax",
@@ -9235,79 +9235,6 @@
                 }
             }
         ]
-    },
-    "2003-09-16": {
-        "launches": [
-            {
-                "date": "2003-09-16T10:30:00Z",
-                "id": "2003-U01",
-                "rocket": "KT-1",
-                "variant": "-",
-                "lat": 37.5,
-                "lon": 112.6,
-                "smc": false,
-                "location": "Taiyuan weixing fashe zhongxin",
-                "agency": "PLA SAC",
-                "emissions": {
-                    "BC": [
-                        0.00531,
-                        0.038934,
-                        0.043788,
-                        0.144908
-                    ],
-                    "CO": [
-                        0.010503,
-                        0.051046,
-                        0.232692,
-                        1.630211
-                    ],
-                    "CO2": [
-                        3.871962,
-                        2.862778,
-                        0.917009,
-                        1.675494
-                    ],
-                    "NOx": [
-                        0.142978,
-                        0.005224,
-                        9e-06,
-                        0.0
-                    ],
-                    "H2O": [
-                        4.359267,
-                        3.299308,
-                        1.437914,
-                        4.758519
-                    ],
-                    "Al2O3": [
-                        2.721364,
-                        2.059663,
-                        0.897649,
-                        2.970606
-                    ],
-                    "Cl": [
-                        0.011463,
-                        0.161484,
-                        0.140905,
-                        0.461893
-                    ],
-                    "HCl": [
-                        1.628799,
-                        0.627721,
-                        0.181567,
-                        0.597744
-                    ],
-                    "Cl2": [
-                        0.160153,
-                        0.573436,
-                        0.271399,
-                        0.896616
-                    ]
-                },
-                "propellant": 26.369763
-            }
-        ],
-        "reentries": []
     },
     "2003-09-23": {
         "launches": [],
@@ -11002,8 +10929,8 @@
                 "id": "2003-049",
                 "rocket": "Chang Zheng 4B",
                 "variant": "-",
-                "lat": 37.5,
-                "lon": 112.6,
+                "lat": 38.85,
+                "lon": 111.61,
                 "smc": false,
                 "location": "Taiyuan weixing fashe zhongxin",
                 "agency": "SAST",

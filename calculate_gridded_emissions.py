@@ -132,8 +132,8 @@ class OutputEmis:
         self.prop_above_grid_annual = 0
         self.reentry_mass_total = 0
         self.model_alt = MODEL_ALT
-        SPECIES = ['launch_nox', 'fuel_nox',  'h2o',       'launch_bc',  'co',
-                   'co2',        'launch_al', 'launch_hcl','launch_cl',  'cl2',
+        SPECIES = ['launch_nox', 'fuel_nox',  'launch_h2o','launch_bc',  'launch_co',
+                   'launch_co2', 'launch_al', 'launch_hcl','launch_cl',  'launch_cl2',
                    'reentry_nox','reentry_al','reentry_bc','reentry_hcl','reentry_cl']
         events_data = {}
         
@@ -275,7 +275,7 @@ class OutputEmis:
 
                 # Skip failed launches before 2020.
                 if self.year < 2020:
-                    daily_launches_df = daily_launches_df[daily_launches_df["COSPAR_ID"].str[5] != "F"].copy()
+                    daily_launches_df = daily_launches_df[~daily_launches_df["COSPAR_ID"].str[5].isin(["F","U"])].copy()
 
                 # Find re-entries.
                 day_reentry_mask = month_reentry_mask & (np.array(input_data.dsre["Date"].dt.day) == d+1)                
@@ -609,7 +609,8 @@ class OutputEmis:
         time_index, q, p, pei_indices, prop_masses, falcon_flag = launch_tuple
         pei_index = pei_indices[stage]
         prop_mass = prop_masses[stage]
-        species_keys = ["launch_bc","co","co2","launch_nox","fuel_nox","h2o","launch_al","launch_cl","launch_hcl","cl2"]
+        species_keys = ["launch_bc","launch_co","launch_co2","launch_nox","fuel_nox",
+                        "launch_h2o","launch_al","launch_cl","launch_hcl","launch_cl2"]
 
         if falcon_flag:
             if start_ind != None:
@@ -961,14 +962,11 @@ class OutputEmis:
                         elif matching.shape[0] == 0:
                             # The database hasn't been well updated for 2022, so lets just fill in based on most common geolocation for all other 2020-2022 launches.
                             if np.isclose(row.Longitude, -81.0, atol=1.0) and np.isclose(row.Latitude, 29.0, atol=1.0):
-                                landing_lon = -75
                                 landing_lat = 32
+                                landing_lon = -75
                             elif np.isclose(row.Longitude, -120.6, atol=1.0) and np.isclose(row.Latitude, 34.7, atol=1.0):
-                                landing_lon = -122.5
                                 landing_lat = 30
-                            elif np.isclose(row.Longitude, 100.3, atol=1.0) and np.isclose(row.Latitude, 41.3, atol=1.0):
-                                landing_lon = 100.3
-                                landing_lat = 41.3
+                                landing_lon = -122.5
                             else:
                                 raise RuntimeError("Launch not from assigned site.",row.Longitude,row.Latitude)
                         
@@ -977,7 +975,7 @@ class OutputEmis:
                         else:
                             raise RuntimeError(f"Problem geolocating Falcon Stage 1 landing for {row.COSPAR_ID}, {self.lon[falcon_p],self.lat[falcon_q]}") 
 
-                    falcon_p = np.argmin(abs(landing_lon-self.lon))
+                    falcon_p = np.argmin(abs((landing_lon - self.lon + 180) % 360 - 180))
                     falcon_q = np.argmin(abs(landing_lat-self.lat))
                     self.pmin, self.pmax = min(self.pmin, falcon_p), max(self.pmax, falcon_p)
                     self.qmin, self.qmax = min(self.qmin, falcon_q), max(self.qmax, falcon_q)
@@ -1174,7 +1172,8 @@ class OutputEmis:
             
             # Get grid horizontal indices (p is lon index; q is lat index).
             # This works out the nearest latitude and longitude on the grid.
-            p,q = np.argmin(np.abs(row.Longitude-self.lon)), np.argmin(np.abs(row.Latitude-self.lat))
+            p = np.argmin(np.abs((row.Longitude - self.lon + 180) % 360 - 180))
+            q = np.argmin(np.abs(row.Latitude-self.lat))
             
             if np.isnan(self.pmin):
                 self.pmin,self.pmax=p,p
@@ -1211,15 +1210,18 @@ class OutputEmis:
         variable_names = {
             "launch_nox":  ("launch_nox_thermal", "Indirect launch emissions of NOx",                          "Indirect launch NOx"),
             "fuel_nox":    ("launch_nox_fuel",    "Direct launch emissions of NOx from propellant combustion", "Direct launch NOx"),
-            "reentry_nox": ("reentry_nox",        "Reentry NOx emissions",                                     "Reentry NOx"),
-            "h2o":         ("launch_h2o",         "Launch H2O emissions",                                      "Launch H2O"),
+            "launch_h2o":  ("launch_h2o",         "Launch H2O emissions",                                      "Launch H2O"),
             "launch_bc":   ("launch_bc",          "Launch BC emissions",                                       "Launch BC"),
             "launch_al":   ("launch_al",          "Launch Al2O3 emissions",                                    "Launch Al2O3"),
-            "reentry_al":  ("reentry_al",         "Reentry alumina emissions",                                 "Reentry alumina"),
             "launch_hcl":  ("launch_hcl",         "Launch HCl emissions",                                      "Launch HCl"),
             "launch_cl":   ("launch_cl",          "Launch Cl emissions",                                       "Launch Cl"),
-            "cl2":         ("launch_cl2",         "Launch Cl2 emissions",                                      "Launch Cl2"),
-            "co":          ("launch_co",          "Launch CO emissions",                                       "Launch CO"),
+            "launch_cl2":  ("launch_cl2",         "Launch Cl2 emissions",                                      "Launch Cl2"),
+            "launch_co":   ("launch_co",          "Launch CO emissions",                                       "Launch CO"),
+            "reentry_al":  ("reentry_al",         "Reentry alumina emissions",                                 "Reentry alumina"),
+            "reentry_nox": ("reentry_nox",        "Reentry NOx emissions",                                     "Reentry NOx"),
+            "reentry_bc":  ("reentry_bc",         "Reentry BC emissions",                                      "Reentry BC"),
+            "reentry_cl":  ("reentry_cl",         "Reentry Cl emissions",                                      "Reentry Cl"),
+            "reentry_hcl": ("reentry_hcl",        "Reentry HCl emissions",                                     "Reentry HCl"),
         }
         
         ###################
@@ -1296,7 +1298,7 @@ def check_total_emissions(year,dataset,res,levels,emis_data):
                                         total_emis_above,
                                         emis_data.prop_above_grid_annual * 1e-6,
                                         0.0,
-                                        emis_data.mass_survive_total * 1e-3]}
+                                        0.0]}
     df = pd.DataFrame(data)
     df_rounded = df.round(9)
     #print(df_rounded)  

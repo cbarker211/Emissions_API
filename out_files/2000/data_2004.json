@@ -6665,8 +6665,8 @@
                 "id": "2004-029",
                 "rocket": "Chang Zheng 2C",
                 "variant": "SM",
-                "lat": 37.5,
-                "lon": 112.6,
+                "lat": 38.85,
+                "lon": 111.61,
                 "smc": false,
                 "location": "Taiyuan weixing fashe zhongxin",
                 "agency": "CALT",
@@ -8089,8 +8089,8 @@
                 "id": "2004-035",
                 "rocket": "Chang Zheng 4B",
                 "variant": "-",
-                "lat": 37.5,
-                "lon": 112.6,
+                "lat": 38.85,
+                "lon": 111.61,
                 "smc": false,
                 "location": "Taiyuan weixing fashe zhongxin",
                 "agency": "SAST",
@@ -10273,8 +10273,8 @@
                 "id": "2004-044",
                 "rocket": "Chang Zheng 4B",
                 "variant": "-",
-                "lat": 37.5,
-                "lon": 112.6,
+                "lat": 38.85,
+                "lon": 111.61,
                 "smc": false,
                 "location": "Taiyuan weixing fashe zhongxin",
                 "agency": "SAST",
@@ -10735,79 +10735,6 @@
                 }
             }
         ]
-    },
-    "2004-11-08": {
-        "launches": [
-            {
-                "date": "2004-11-08T18:29:58Z",
-                "id": "2004-U01",
-                "rocket": "Soyuz-2-1A",
-                "variant": "-",
-                "lat": 62.9,
-                "lon": 40.5,
-                "smc": false,
-                "location": "Plesetsk Cosmodrome",
-                "agency": "KVR",
-                "emissions": {
-                    "BC": [
-                        0.102322,
-                        0.719081,
-                        0.380345,
-                        1.086327
-                    ],
-                    "CO": [
-                        0.414656,
-                        1.922006,
-                        3.272563,
-                        15.702366
-                    ],
-                    "CO2": [
-                        131.51299,
-                        95.397766,
-                        14.508904,
-                        31.454111
-                    ],
-                    "NOx": [
-                        2.003757,
-                        0.073182,
-                        7.4e-05,
-                        0.0
-                    ],
-                    "H2O": [
-                        49.92465,
-                        37.176908,
-                        7.42303,
-                        21.201408
-                    ],
-                    "Al2O3": [
-                        0.0,
-                        0.0,
-                        0.0,
-                        0.0
-                    ],
-                    "Cl": [
-                        0.0,
-                        0.0,
-                        0.0,
-                        0.0
-                    ],
-                    "HCl": [
-                        0.0,
-                        0.0,
-                        0.0,
-                        0.0
-                    ],
-                    "Cl2": [
-                        0.0,
-                        0.0,
-                        0.0,
-                        0.0
-                    ]
-                },
-                "propellant": 269.528198
-            }
-        ],
-        "reentries": []
     },
     "2004-11-09": {
         "launches": [],

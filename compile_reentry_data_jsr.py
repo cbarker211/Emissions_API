@@ -408,9 +408,9 @@ class build_reentry_list:
                     # Therefore we will just set the lat to the inclination.
                     lat = -inc
                 elif latlonstr == "Antarctic":
-                    lat = round(np.random.uniform(-90, min(-60, -inc)), 2)
+                    lat = round(np.random.uniform(-inc, -60), 2)
                 elif latlonstr == "Arctic":
-                    lat = round(np.random.uniform(max(66, inc), 90), 2)
+                    lat = round(np.random.uniform(66, inc), 2)
 
             # Ocean landings (Electron and Falcon 9)
             elif latlonstr == "Ocean":
@@ -606,12 +606,12 @@ class build_reentry_list:
 
                 # Kennedy Space Center (ETR)
                 if (lon_val == -81) and (lat_val in [28,29]):
-                    lat = 34
+                    lat = 32
                     lon = -75  
                 # Vandenberg
                 elif (lon_val == -121) and (lat_val == 35):
                     lat = 30
-                    lon = -120 
+                    lon = -122.5 
                 else:
                     raise ValueError(f'Falcon launch site not found - {lon_val} {lat_val}.')
             elif matching.shape[0] > 1:
@@ -644,8 +644,8 @@ class build_reentry_list:
                 lat = matching["Latitude"].iloc[0]
                 lon = matching["Longitude"].iloc[0]
             elif jsr_id == "2023-038":
-                lat = matching["Latitude"].iloc[0]
-                lon = matching["Longitude"].iloc[0]
+                lat = matching["Latitude"].iloc[1]
+                lon = matching["Longitude"].iloc[1]
             # If its not in the list, then set it to the ocean near the launch site. 
             # These coordinates are the most common grid box for reentries in 2020-2022.
             elif matching.shape[0] == 0:
@@ -691,8 +691,9 @@ class build_reentry_list:
         abl_mass = 0
         other_mass = 0
 
-        rocket_name = self.dsl.loc[self.dsl["COSPAR_ID"] == jsr_id, "Rocket_Name"].iloc[0]
-        rocket_ind = np.where(self.dsr["Rocket_Name"].values == rocket_name)[0][0]
+        launch = self.dsl.loc[self.dsl["COSPAR_ID"] == jsr_id[:8]].iloc[0]
+        match = (self.dsr["Rocket_Name"] == launch["Rocket_Name"]) & (self.dsr["Rocket_Variant"] == launch["Rocket_Variant"])
+        rocket_ind = np.where(match)[0][0]
 
         if reentry_category == "S0":
             abl_mass = self.dsr["Stage0_StageMass"].values[rocket_ind] / int(self.dsr["Booster_No"].values[rocket_ind])
@@ -1061,7 +1062,7 @@ class build_reentry_list:
                 if match["Status"].values[0] == "E":
                     parent = f"Explosion {match['#JCAT'].values[0]} {match['Name'].values[0].strip()}"
                 else:
-                    parent = match["Parent"].values[0].split()[0]
+                    parent = match["Parent"].values[0].replace("*", "").split()[0]
             elif len(match) > 1:
                 raise ValueError(f"Multiple matches for parent object {jcat}.")
             
@@ -1569,9 +1570,6 @@ class build_reentry_list:
         # The same item is also listed as weighing 1 kg elsewhere.
         mask_sep = self.df_reentry["name"].str.contains("sep motor cover", case=False, na=False)
         self.df_reentry.loc[mask_sep, "abl_mass"] = 1
-
-        # Dest listed as 180E, this messes up other script so adjust to 179.9, will be in same grid square.
-        self.df_reentry.loc[self.df_reentry["id"].eq("2020-086B"), "lon"] = 179.9
         
         # Object 2013-009J (PSLV upper Dual Launch Adapter (DLA-U)) has this mass on DW.
         self.df_reentry.loc[self.df_reentry["name"].eq("DLA-U"), "abl_mass"] = 100 
@@ -1644,7 +1642,6 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument('-sv', "--save_reentry_info", action='store_true', help='Save reentry info.')
     parser.add_argument('-usegpd', "--use_geopandas", action='store_true', help='Load in geopandas dataframes.')
-    parser.add_argument('-sy', "--start_year", default = "1957", choices=str(np.arange(1957,2026)), help='Start Year.')
     args = parser.parse_args()
     use_gpd = args.use_geopandas
 

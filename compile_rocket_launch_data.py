@@ -32,6 +32,18 @@ class import_launches:
             raise ImportError(f"Failed to fetch from JSR URL: {url}", response.status_code)
         return df
 
+    def add_surface_altitude(self, demfile):
+        """Sample ETOPO 2022 surface elevation (above mean sea level) at each launch site, in km."""
+        lats = xr.DataArray([launch["Latitude"]  for launch in self.launches], dims="launches")
+        lons = xr.DataArray([launch["Longitude"] for launch in self.launches], dims="launches")
+
+        with xr.open_dataset(demfile) as dem:
+            elev = dem["z"].sel(lat=lats, lon=lons, method="nearest").to_numpy()
+
+        elev = np.clip(elev, 0, None) * 1e-3  # Make sure any negative values are clipped.
+        for launch, z in zip(self.launches, elev):
+            launch["Surface_Altitude"] = round(float(z),3)
+
     def get_launch_info(self):
         
         ####################################################################
@@ -40,7 +52,8 @@ class import_launches:
 
         df       = self.scrape_jsr("https://planet4589.org/space/gcat/tsv/launch/launch.tsv",self.session)
         df_sites = self.scrape_jsr("https://planet4589.org/space/gcat/tsv/tables/sites.tsv",self.session)
-        df_orgs = self.scrape_jsr("https://planet4589.org/space/gcat/tsv/tables/orgs.tsv",self.session)
+        df_orgs  = self.scrape_jsr("https://planet4589.org/space/gcat/tsv/tables/orgs.tsv",self.session)
+        df_lp    = self.scrape_jsr("https://planet4589.org/space/gcat/tsv/tables/lp.tsv", self.session)
 
         # Example dictionary mapping codes to orders
         code_to_order = {
@@ -177,13 +190,12 @@ class import_launches:
                     return site
                 
                 # Use the group megaconstellation flag to classify megaconstellation launches.
+                mcs_flag = False
                 if " " in row["Group"]:
                     idx = row["Group"].index(" ")
                     char = row["Group"][idx + 1]
                     if char.lower() == "m":
                         mcs_flag = True
-                else:
-                    mcs_flag = False
 
                 if row["Variant"] == "?":
                     variant = "-"
@@ -203,12 +215,28 @@ class import_launches:
                 else:
                     org_name = df_org.iloc[0]["ShortName"].strip() 
 
+                ascent_site = str(row["Ascent_Site"]).strip()
+                if row["Launch_Site"].replace("?", "") == "TYSC":
+                    lat = 38.85
+                    lon = 111.61
+                elif ascent_site != "-":
+                    ascent_pad  = str(row["Ascent_Pad"]).strip()
+                    lp_row = df_lp[(df_lp["#Site"].str.strip() == ascent_site) & (df_lp["Code"].str.strip() == ascent_pad)]
+                    if len(lp_row) == 1:
+                        lat = float(lp_row.iloc[0]["Latitude"].strip())
+                        lon = float(lp_row.iloc[0]["Longitude"].strip())
+                    else:
+                        raise ValueError(f"Warning: Found {len(lp_row)} launch pads for ascent site {ascent_site} and ascent pad {ascent_pad}.")
+                else:
+                    lat = float(site_row['Latitude'].strip())
+                    lon = float(site_row['Longitude'].strip())
+
                 launches.append({
                     "COSPAR_ID":              row["#Launch_Tag"].strip(),
                     "Date":                   convert_date(row["Launch_Date"].split()),
                     "Site":                   sort_sitenames(df_site["Name"].values[0]),
-                    "Latitude":               float(site_row['Latitude'].strip()),
-                    "Longitude":              float(site_row['Longitude'].strip()),
+                    "Latitude":               lat,
+                    "Longitude":              lon,
                     "Rocket_Name":            row["LV_Type"],
                     "Rocket_Variant":         variant.replace("?",""),
                     "Megaconstellation_Flag": mcs_flag,
@@ -218,6 +246,7 @@ class import_launches:
             return launches
 
         self.launches = process_launches(df) 
+        self.add_surface_altitude("./input_files/ETOPO_2022_v1_60s_N90W180_surface.nc")
    
     def launch_info_to_netcdf(self):
         """This saves the launch information as a NetCDF file for later processing for GEOS-Chem.
@@ -240,7 +269,7 @@ class import_launches:
 
             return values
 
-        fields = ["COSPAR_ID","Date","Longitude","Latitude","Site","Rocket_Name","Rocket_Variant","Megaconstellation_Flag","Agency"]
+        fields = ["COSPAR_ID","Date","Longitude","Latitude","Surface_Altitude","Site","Rocket_Name","Rocket_Variant","Megaconstellation_Flag","Agency"]
 
         # Create DataArrays dynamically
         data_arrays = {}
@@ -254,6 +283,7 @@ class import_launches:
         # Add units only to specific variables
         ds['Longitude'].attrs['units'] = "Degrees"
         ds['Latitude'].attrs['units']  = "Degrees"
+        ds['Surface_Altitude'].attrs['units'] = "km"
              
         #Save to file and close the dataset     
         ds.to_netcdf("./databases/launch_activity_data.nc")
@@ -325,6 +355,8 @@ class import_launches:
 
                 # Get the stage number.
                 stage_number = row['Stage_No'].strip()
+                if stage_number == "A":
+                    print(f"{name} is air-launched.")
                 if stage_number in ["F","P","C","A"]: # Skip fairings, payloads, components (interstages), air launches. 
                     continue
                 else:
