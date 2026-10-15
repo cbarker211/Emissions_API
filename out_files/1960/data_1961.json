@@ -1973,14 +1973,14 @@
                 "smc": false,
                 "location": 6,
                 "burnup": "Complete",
-                "mass": 0.75,
+                "mass": 0.885,
                 "emissions": {
-                    "NOx": 0.3,
-                    "Al2O3": 0.34125,
-                    "BC": 0.02175,
-                    "Cl": 0.00825,
-                    "HCl": 0.00375,
-                    "Unablated_Mass": 0.2625
+                    "NOx": 0.354,
+                    "Al2O3": 0.402675,
+                    "BC": 0.025665,
+                    "Cl": 0.009735,
+                    "HCl": 0.004425,
+                    "Unablated_Mass": 0.30975
                 }
             }
         ]
@@ -3678,7 +3678,84 @@
                 "propellant": 47.457002
             }
         ],
-        "reentries": []
+        "reentries": [
+            {
+                "date": "1961-08-16T03:21:05Z",
+                "id": "1961-020",
+                "reusability": "",
+                "name": "Thor DM-18A 312",
+                "category": "S1",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 3.125,
+                "emissions": {
+                    "NOx": 1.25,
+                    "Al2O3": 0.65625,
+                    "BC": 0.0,
+                    "Cl": 0.0,
+                    "HCl": 0.0,
+                    "Unablated_Mass": 2.1875
+                }
+            },
+            {
+                "date": "1961-08-16T03:21:05Z",
+                "id": "1961-020",
+                "reusability": "",
+                "name": "Delta Low Drag Fairing",
+                "category": "C",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 0.878,
+                "emissions": {
+                    "NOx": 0.3512,
+                    "Al2O3": 0.18438,
+                    "BC": 0.035998,
+                    "Cl": 0.01317,
+                    "HCl": 0.007024,
+                    "Unablated_Mass": 0.6145999999999999
+                }
+            },
+            {
+                "date": "1961-08-16T03:21:05Z",
+                "id": "1961-020",
+                "reusability": "",
+                "name": "Delta Low Drag Fairing",
+                "category": "C",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 0.878,
+                "emissions": {
+                    "NOx": 0.3512,
+                    "Al2O3": 0.18438,
+                    "BC": 0.035998,
+                    "Cl": 0.01317,
+                    "HCl": 0.007024,
+                    "Unablated_Mass": 0.6145999999999999
+                }
+            },
+            {
+                "date": "1961-08-16T03:41:00Z",
+                "id": "1961-020",
+                "reusability": "",
+                "name": "Delta 6",
+                "category": "S2",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 0.6940000000000001,
+                "emissions": {
+                    "NOx": 0.2776,
+                    "Al2O3": 0.31577,
+                    "BC": 0.020126,
+                    "Cl": 0.007634,
+                    "HCl": 0.00347,
+                    "Unablated_Mass": 0.24289999999999998
+                }
+            }
+        ]
     },
     "1961-08-18": {
         "launches": [],

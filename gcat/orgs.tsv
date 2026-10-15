@@ -1,5 +1,5 @@
 #Code	UCode	StateCode	Type	Class	TStart	TStop	ShortName	Name	Location	Longitude	Latitude	Error	Parent	ShortEName	EName	UName
-# Updated 2026 Oct 13 2144:15
+# Updated 2026 Oct 15 1031:17
 EARTH	EARTH	EARTH	AP	C	-	-	Earth	Earth	Earth	-	-	0.0200 	-	Earth (Terra)	Earth	Earth
 LUNA	LUNA	LUNA	AP	C	-	-	Luna	Luna	Luna	-	-	0.0200 	-	Moon	Moon	Luna
 SSYS	SSYS	SSYS	AP	C	-	-	Solar System	Solar System natural celestial objects	Sol	-	-	0.0200 	-	Solar System	Solar System natural celestial objects	Solar System
@@ -2178,6 +2178,7 @@ LTVCAM	LTVCAM	US	LV	B	?	1995?	LTV Camden	LTV Camden	Camden, Arkansas	    -92.840
 LTVE	LTVE	US	PL	B	1964	1972	LTV ESD	LTV Electronic Systems Division	Dallas:Garland, Texas	    -96.6400 	   32.9100 	0.0200 	-	-	-	LTV Electronic Systems Division
 LTVM	LTVM	US	LV	B	1962	1980?	LTV MAMP	LTV, Michigan Army Missile Plant	Detroit:Sterling Heights, Michigan	    -83.0300 	   42.5800 	0.0200 	-	-	-	LTV, Michigan Army Missile Plant
 LTVV	LTV	US	-	B	1976	1992 Aug 31	Vought Corp	LTV Missiles and Space (Vought Corporation)	Dallas:Grand Prairie, Texas	    -97.0200 	   32.7200 	0.0200 	-	-	-	LTV Missiles and Space (Vought Corporation)
+LTZH	LTZH	CN	O	B	-	-	Lanta Zhineng	Beijing Lanta Guangchuan Zhineng Keji YG	Beijing	    116.3800 	   39.9200 	0.0200 	LANDSP	LandTower	Lanta Optical Transmission Intelligent Tech Co. Ltd.	北京蓝塔光传智能科技有限公司
 LUCPT	BELM	B	O	D	2002	-	Luchtcomponent	Luchtcomponent	Brussel	      4.3500 	   50.8500 	0.0200 	-	-	Belgian Air Component	Luchtcomponent
 LUHAI	LUHAI	CN	O	B	-	-	Luhai Xinxi	Luhai Kongjian (Yantai) Xinxi Jishu YG	Yantai, Shandong	    121.4300 	   37.4400 	0.0200 	-	-	Land and Sea Space (Yantai) Info. Tech. Co. Ltd.	陆海空间(烟台)信息技术有限公司
 LUHAN	LUHAN	KR	O	B	2018	-	Luhan	Luhan Gongzuo shi	Seoul	    126.9700 	   37.5700 	0.0200 	-	-	Luhan Studio	鹿晗工作室
@@ -3639,6 +3640,7 @@ TSPKR	TSPK	RU	O	C	2009 Jul  1	-	TsPK	Tsentr Podgotovki Kosmonavtov im. Yu. A. Ga
 TSPZ	TSPZ	I	O/PL	B	1965	-	Telespazio	Telespazio SpA	Roma	     12.4900 	   41.8900 	0.0200 	-	-	Telespazio	Telespazio SpA
 TSSKB	TSSKB	SU	O/PL	C	1974	1996 Apr 12	TsSKB	Tsentral'nogo Spetsializirovannogo Konstruktorskogo Byuro	Samara (Kubyshev), Samara Oblast	     50.1400 	   53.2000 	0.0200 	-	-	Central Specialized Design Bureau	Центрального специализированного конструкторского бюро (ЦСКБ)
 TSSKBP	TSSKB	SU	O/PL	C	1996 Apr 12	-	TsSKB-Progress	GNPRKTs TsSKB-Progress	Samara (Kubyshev), Samara Oblast	     50.1400 	   53.2000 	0.0200 	FKA	-	Central Specialized Design Bureau - Progress	ЦСКБ-Прогресс
+TSU	TSU	US	O/PL	A	1899	-	Texas State U	Texas State University	San Marcos, Texas	    -97.9400 	   29.8900 	0.0200 	-	-	-	Texas State University
 TSUK	TSUK	J	PL/S	A	1972	-	JAXA-TKSC	Tsukuba Space Center (NASDA, JAXA)	Tsukuba, Ibaraki	    140.0800 	   36.0800 	0.0200 	-	-	Tsukuba Space Center	筑波宇宙センタ
 TSUKOS	GUKOS	SU	O/LA	D	1964 Oct	1970 Mar	TsUKOS	Tsentral'noye Upravleniye Kosmicheskhikh Sredstv	Moskva?	     37.6200 	   55.7500 	0.0200 	MO	-	Central Space Forces Directorate	Центральное управление космических средств
 TSUKU	TSUKU	J	O/PL	A	1872	-	Tsukuba U	Tsukuba daigaku	Tsukuba, Ibaraki	    140.0800 	   36.0800 	0.0200 	-	-	Tsukuba University	筑波大学

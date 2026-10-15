@@ -1,4 +1,28 @@
 {
+    "1963-01-01": {
+        "launches": [],
+        "reentries": [
+            {
+                "date": "1963-01-01T00:00:00Z",
+                "id": "1961-020",
+                "reusability": "",
+                "name": "Delta 6 Stage 3",
+                "category": "S3",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 0.024,
+                "emissions": {
+                    "NOx": 0.0096,
+                    "Al2O3": 0.01092,
+                    "BC": 0.000696,
+                    "Cl": 0.000264,
+                    "HCl": 0.00012,
+                    "Unablated_Mass": 0.0084
+                }
+            }
+        ]
+    },
     "1963-01-04": {
         "launches": [
             {
@@ -2430,6 +2454,30 @@
                     "Cl": 0.01584,
                     "HCl": 0.0072,
                     "Unablated_Mass": 0.504
+                }
+            }
+        ]
+    },
+    "1963-05-02": {
+        "launches": [],
+        "reentries": [
+            {
+                "date": "1963-05-02T00:00:00Z",
+                "id": "1962-020",
+                "reusability": "",
+                "name": "Kosmos-5",
+                "category": "P",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 0.252,
+                "emissions": {
+                    "NOx": 0.1008,
+                    "Al2O3": 0.08064,
+                    "BC": 0.010332,
+                    "Cl": 0.00378,
+                    "HCl": 0.002016,
+                    "Unablated_Mass": 0.05039999999999999
                 }
             }
         ]
@@ -6156,6 +6204,44 @@
                     "HCl": 0.000304,
                     "Unablated_Mass": 0.007599999999999998
                 }
+            },
+            {
+                "date": "1963-08-01T00:00:00Z",
+                "id": "1961-020",
+                "reusability": "",
+                "name": "Explorer 12 despin weight",
+                "category": "C",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 0.0,
+                "emissions": {
+                    "NOx": 0.0,
+                    "Al2O3": 0.0,
+                    "BC": 0.0,
+                    "Cl": 0.0,
+                    "HCl": 0.0,
+                    "Unablated_Mass": 0.0
+                }
+            },
+            {
+                "date": "1963-08-01T00:00:00Z",
+                "id": "1961-020",
+                "reusability": "",
+                "name": "Explorer 12 despin weight",
+                "category": "C",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 0.0,
+                "emissions": {
+                    "NOx": 0.0,
+                    "Al2O3": 0.0,
+                    "BC": 0.0,
+                    "Cl": 0.0,
+                    "HCl": 0.0,
+                    "Unablated_Mass": 0.0
+                }
             }
         ]
     },
@@ -6716,6 +6802,30 @@
                     "Cl": 0.0,
                     "HCl": 0.0,
                     "Unablated_Mass": 2.1875
+                }
+            }
+        ]
+    },
+    "1963-08-31": {
+        "launches": [],
+        "reentries": [
+            {
+                "date": "1963-08-31T00:00:00Z",
+                "id": "1961-020",
+                "reusability": "",
+                "name": "Explorer 12",
+                "category": "P",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 0.038,
+                "emissions": {
+                    "NOx": 0.0152,
+                    "Al2O3": 0.01216,
+                    "BC": 0.001558,
+                    "Cl": 0.00057,
+                    "HCl": 0.000304,
+                    "Unablated_Mass": 0.007599999999999998
                 }
             }
         ]
@@ -8906,14 +9016,14 @@
                 "smc": false,
                 "location": 6,
                 "burnup": "Complete",
-                "mass": 0.75,
+                "mass": 0.932,
                 "emissions": {
-                    "NOx": 0.3,
-                    "Al2O3": 0.34125,
-                    "BC": 0.02175,
-                    "Cl": 0.00825,
-                    "HCl": 0.00375,
-                    "Unablated_Mass": 0.2625
+                    "NOx": 0.3728,
+                    "Al2O3": 0.42406,
+                    "BC": 0.027028,
+                    "Cl": 0.010252,
+                    "HCl": 0.00466,
+                    "Unablated_Mass": 0.3262
                 }
             }
         ]

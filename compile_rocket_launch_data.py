@@ -246,7 +246,7 @@ class import_launches:
             return launches
 
         self.launches = process_launches(df) 
-        self.add_surface_altitude("./input_files/ETOPO_2022_v1_60s_N90W180_surface.nc")
+        self.add_surface_altitude("./databases/ETOPO_2022_v1_60s_N90W180_surface.nc")
    
     def launch_info_to_netcdf(self):
         """This saves the launch information as a NetCDF file for later processing for GEOS-Chem.

@@ -14,6 +14,8 @@ from collections import Counter
 import warnings
 warnings.filterwarnings("ignore", message="Geometry is in a geographic CRS")
 
+from python_modules.distribute_emis_func import get_failed_launch_dict
+
 class build_reentry_list:
     
     def __init__(self, start_year, final_year):
@@ -27,6 +29,7 @@ class build_reentry_list:
         self.final_year = final_year
         self.session = requests.Session()
         self.latlonerror = []
+        self.failed_launch_dict = get_failed_launch_dict()
 
         self.region_specs = {
             "Gujarat":      ("States","name_en","Gujarat", 3),
@@ -679,159 +682,51 @@ class build_reentry_list:
               
         return lat, lon
     
-    def failed_launch_mass(self, jsr_id, jsr_name, reentry_category, drymass):
+    def failed_launch_mass(self, jsr_id, reentry_category, drymass, mass):
         
-        """For all failed launches, set the masses manually as we need to differentiate wet vs dry mass reentry.
+        """Split failed-launch reentry mass into ablatable (dry) and non-aluminium (unburnt propellant) mass.
 
         Returns:
-            mass(float)       : The mass of aluminium.
-            other_mass(float): Extra non-aluminium mass.
+            abl_mass (float)  : Ablatable mass (GCAT dry mass; stage/fairing masses are overwritten later from rocket_attributes).
+            other_mass (float): Unburnt propellant mass.
         """        
             
-        abl_mass = 0
-        other_mass = 0
+        abl_mass   = np.float64(drymass)
+        other_mass = 0.0
 
-        launch = self.dsl.loc[self.dsl["COSPAR_ID"] == jsr_id[:8]].iloc[0]
-        match = (self.dsr["Rocket_Name"] == launch["Rocket_Name"]) & (self.dsr["Rocket_Variant"] == launch["Rocket_Variant"])
-        rocket_ind = np.where(match)[0][0]
+        # Payloads that fail to reach orbit re-enter with their propellant.
+        if reentry_category == "P":
+            other_mass = max(np.float64(mass) - abl_mass, 0.0)
 
-        if reentry_category == "S0":
-            abl_mass = self.dsr["Stage0_StageMass"].values[rocket_ind] / int(self.dsr["Booster_No"].values[rocket_ind])
-        elif reentry_category in ["S1","S2","S3","S4"]:
-            abl_mass = self.dsr[f"Stage{reentry_category[1]}_StageMass"].values[rocket_ind]
-        elif "fairing" in jsr_name.lower():
-            abl_mass = self.dsr["Fairing_Mass"].values[rocket_ind]  / 2    
-        elif reentry_category in ["C","P"]:
+        failure = self.failed_launch_dict.get(jsr_id[:8])
+        if failure is not None and reentry_category in ["S1","S2","S3","S4","S5"]:
             
-            # 2020
-            if jsr_name == "Zafar":
-                abl_mass = 113
-            elif jsr_name == "Xinjishu Yanzheng 6":
-                abl_mass = 6550
-            elif jsr_name == "Nusantara Dua":
-                abl_mass = 5550
-            elif jsr_name == "CE-SAT-I":
-                abl_mass = 67
-            elif "Flock 4e" in jsr_name:
-                abl_mass = 5.8
-            elif jsr_name == "Faraday-1":
-                abl_mass = 10
-            elif jsr_name == "Jilin-1 Gaofen 02E":
-                abl_mass = 201    
-            elif jsr_name == "Xiangrikui 2":
-                abl_mass = 97
-            elif jsr_name == "Neimonggol 1":
-                abl_mass = 230
-            elif jsr_name == "SEOSat-Ingenio":
-                abl_mass = 750
-            elif jsr_name == "Taranis":
-                abl_mass = 175 
-            elif jsr_name == "Astra Test Payload":
-                abl_mass = 5
+            stage_no = int(reentry_category[1])
+            launch = self.dsl.loc[self.dsl["COSPAR_ID"] == jsr_id[:8]].iloc[0]
+            match = (self.dsr["Rocket_Name"] == launch["Rocket_Name"]) & (self.dsr["Rocket_Variant"] == launch["Rocket_Variant"])
+            rocket_ind = np.where(match)[0][0]
+            prop_mass = self.dsr[f"Stage{stage_no}_PropMass"].values[rocket_ind]
 
-            # 2021   
-            elif jsr_name == "Global-10":
-                abl_mass = 60
-            elif jsr_name == "Global-11":
-                abl_mass = 60
-            elif jsr_name == "Tolou-2?":
-                abl_mass = 90
-            elif jsr_name == "Jilin-1 Mofang 01":
-                abl_mass = 18
-            elif jsr_name == "GISAT-1":
-                abl_mass = 2286
-            elif jsr_name == "Wiseongmosache":
-                abl_mass = 1500
-            elif jsr_name == "GeeSat-1A":
-                abl_mass = 130
-            elif jsr_name == "GeeSat-1B":
-                abl_mass = 130
-            elif jsr_name == "Test payloads":
-                abl_mass = 90
-                
-            # 2022
-            elif jsr_name == "R5-S1":
-                abl_mass = 1
-            elif jsr_name == "INCA":
-                abl_mass = 3.8
-            elif jsr_name == "QubeSat":
-                abl_mass = 4
-            elif jsr_name == "BAMA-1":
-                abl_mass = 4
-            elif jsr_name == "Jilin-1 Mofang 01A/R":
-                abl_mass = 18
-            elif jsr_name == "TROPICS SV02":
-                abl_mass = 5.34
-            elif jsr_name == "TROPICS SV04":
-                abl_mass = 5.34
-            elif jsr_name == "EOS-02":
-                abl_mass = 145
-            elif jsr_name == "AzaadiSAT":
-                abl_mass = 8
-            elif jsr_name == "ESMS":
-                abl_mass = 200
-            elif jsr_name == "RAISE-3":
-                abl_mass = 110
-            elif jsr_name == "Amateru-I":
-                abl_mass = 170
-            elif jsr_name == "Amateru-II":
-                abl_mass = 170
-            elif jsr_name == "E-SSOD 1":
-                abl_mass = 10
-            elif jsr_name == "E-SSOD 2":
-                abl_mass = 10
-            elif jsr_name == "E-SSOD 3":
-                abl_mass = 10
-            elif jsr_name == "MITSUBA":
-                abl_mass = 1.7
-            elif jsr_name == "WASEDA-SAT-ZERO":
-                abl_mass = 1.2
-            elif jsr_name == "MAGNARO A":
-                abl_mass = 3
-            elif jsr_name == "MAGNARO B":
-                abl_mass = 1.5
-            elif jsr_name == "KOSEN-2":
-                abl_mass = 2.7
-            elif jsr_name == "FSI-SAT":
-                abl_mass = 1.4
-            elif jsr_name == "Zhixing 1B":
-                abl_mass = 50       
-            elif "Unknown payload" in jsr_name:
-                abl_mass = 10
-            elif jsr_name == "Pleiades Neo 5":
-                abl_mass = 920
-            elif jsr_name == "Pleiades Neo 6":
-                abl_mass = 920
-            else:
-                abl_mass = np.float64(drymass)
+            if stage_no > failure["failed_stage"]:
+                other_mass = prop_mass
+            elif stage_no == failure["failed_stage"]:
+                other_mass = round((1 - failure["burned"]) * prop_mass, 1)
 
-        # Add second stage propellant mass to non aluminium mass.    
-        if jsr_id in ["2020-F02","2020-F05",
-                      "2021-F02",
-                      "2022-F01","2022-F02","2022-F03",
-                      "2023-F04","2023-F05","2023-F06","2023-F07","2023-F09",
-                      "2024-F02","2024-F04"] and reentry_category == "S2":
-            other_mass = self.dsr[f"Stage2_PropMass"].values[rocket_ind]
-            if jsr_id == "2022-F03":
-                other_mass = other_mass * 0.24
-                
-        # Add third stage propellant mass to non aluminium mass.    
-        if jsr_id in ["2020-F02","2020-F03","2020-F05","2020-F06",
-                      "2021-F02","2021-F06","2021-F09","2021-F10",
-                      "2022-F02","2022-F05","2022-F07",
-                      "2023-F07","2023-F08","2023-F09","2023-F10",
-                      "2024-F02","2024-F04","2024-F05"] and reentry_category == "S3":   
-            other_mass = self.dsr[f"Stage3_PropMass"].values[rocket_ind]
-            if jsr_id == "2021-F09":
-                other_mass = other_mass * 0.08
-                    
-        # Add fourth stage propellant mass to non aluminium mass.  
-        if jsr_id in ["2020-F08","2020-F09",
-                      "2021-F10",
-                      "2022-F02","2022-F04","2022-F05","2022-F07",
-                      "2023-F10",
-                      "2024-F04"] and reentry_category == "S4":   
-            other_mass = self.dsr[f"Stage4_PropMass"].values[rocket_ind]
+        # TODO: Email Jonathan about these payload masses.
+        # ID       Name            DryMass  Mass    Lit    Source
+        # 2020-F01 Zafar           90.0     90.0    113.0  https://space.skyrocket.de/doc_sdat/zafar.htm https://spaceflightnow.com/2020/02/10/iran-fails-in-satellite-launch-attempt/ https://www.rferl.org/a/iran-says-satellite-launch-imminent-in-next-few-hours-/30424791.html
+        # 2020-F05 CE-SAT-I        65.0     65.0    67.0   https://spaceflightnow.com/2020/07/04/rocket-lab-satellite-launch-fails-before-reaching-orbit/ https://spacenews.com/rocket-lab-electron-launch-fails/
+        # 2020-F05 Flock 4e-1      5.7      5.7     5.8    https://pubs.usgs.gov/of/2021/1030/f/ofr20211030f.pdf
+        # 2020-F05 Flock 4e-2      5.7      5.7     5.8    https://pubs.usgs.gov/of/2021/1030/f/ofr20211030f.pdf
+        # 2020-F05 Flock 4e-3      5.7      5.7     5.8    https://pubs.usgs.gov/of/2021/1030/f/ofr20211030f.pdf
+        # 2020-F05 Flock 4e-4      5.7      5.7     5.8    https://pubs.usgs.gov/of/2021/1030/f/ofr20211030f.pdf
+        # 2020-F05 Flock 4e-5      5.7      5.7     5.8    https://pubs.usgs.gov/of/2021/1030/f/ofr20211030f.pdf
+        # 2022-F01 INCA            4.0      4.0     3.8    https://www.nasaspaceflight.com/2022/02/astra-cape-canaveral-elana-41/ https://space.skyrocket.de/doc_sdat/inca.htm
+        # 2022-F03 TROPICS SV02    4.0      4.0     5.34   https://web.archive.org/web/20250719051151/https://tropics.ll.mit.edu/CMS/tropics/The-MicroMAS-2-Cubesat
+        # 2022-F03 TROPICS SV04    4.0      4.0     5.34   https://web.archive.org/web/20250719051151/https://tropics.ll.mit.edu/CMS/tropics/The-MicroMAS-2-Cubesat
+        # 2022-F06 Pleiades Neo 5  895.0    922.0   920.0  https://earth.esa.int/eogateway/missions/pleiades-neo/description
+        # 2022-F06 Pleiades Neo 6  895.0    922.0   920.0  https://earth.esa.int/eogateway/missions/pleiades-neo/description 
+        # 2022-U02 EOS-02          130.0    135.0   145.0  https://spaceflightnow.com/2022/08/07/indias-new-small-satellite-launcher-fails-to-put-satellites-into-correct-orbit/ https://web.archive.org/web/20220803133923/https://www.isro.gov.in/sites/default/files/sslvd1-eos2_-_mission_brochure.pdf https://space.skyrocket.de/doc_lau/sslv.htm
 
         return abl_mass, other_mass
         
@@ -850,13 +745,9 @@ class build_reentry_list:
         # Sometimes, there is no entry in the reentry list because it didn't meet the criteria before.
         # In this case we need to look in the other inventories to look for any matching entries.
         if inc_eff == 0:
-            if "F" in jsr_id:
-                inc_eff = self.inc_by_prefix_failed.get(jsr_id[:8], 0)
-            else:
-                inc_eff = self.inc_by_prefix_all.get(jsr_id[:8], 0)
+            inc_eff = self.inc_by_prefix.get(jsr_id[:8], 0)
 
-        if inc_eff == 0 and jsr_id[5] not in ["F","U"]:
-            # TODO: Sort failed launches.
+        if inc_eff == 0:
             print(f"Warning: Inclination still empty for {jsr_id}.")
         return inc_eff 
          
@@ -872,13 +763,12 @@ class build_reentry_list:
         ################################################
 
         subset = jsr_data[
-            (jsr_data["Status"].isin(["R","R?","D","L","L?","LF","S","F","AF","AS"])) &     # Only include specific statuses (see https://planet4589.org/space/gcat/web/intro/phases.html)       
-            (~jsr_data["#JCAT"].isin(["L80508","L80509","L80510"])) &                       # Skipping 2021-F07, GCAT lists apogee as 100km, but it actually failed around 30 km and reached a height of 50 km.
-            (jsr_data["DYear"].between(self.start_year, self.final_year)) &                 # This time range only.
-            ((jsr_data["Apogee"] >= 50) | (jsr_data["Apogee"] < 0)) &                       # Apogee above 50 km, or below 0. This makes sure to include objects in lprcat returning from space.
-            ((jsr_data["Status"] != "AS") | (jsr_data["Piece"].str[5:6].isin(["F","U"]))) & # Only include AS re-entries if they are part of a failed or uncategorized launch.
-            (jsr_data["Dest"] != "Z") &                                                     # Skip duplicate objects.
-            (jsr_data["Dest"].str.lower() != "lost")                                        # Jonathan said this means the same as the OX status tag.
+            (jsr_data["Status"].isin(["R","R?","D","L","L?","LF","S","F","AF","AS"])) &             # Only include specific statuses (see https://planet4589.org/space/gcat/web/intro/phases.html)       
+            (jsr_data["DYear"].between(self.start_year, self.final_year)) &                         # This time range only.
+            ((jsr_data["Apogee"] >= 50) | (jsr_data["Apogee"] < 0)) &                               # Apogee above 50 km, or below 0. This makes sure to include objects in lprcat returning from space.
+            ((jsr_data["Status"] != "AS") | (jsr_data["Converted_Tag"].str[5:6].isin(["F","U"]))) & # Only include AS re-entries if they are part of a failed or uncategorized launch.
+            (jsr_data["Dest"] != "Z") &                                                             # Skip duplicate objects.
+            (jsr_data["Dest"].str.lower() != "lost")                                                # Jonathan said this means the same as the OX status tag.
         ]
 
         #s1 = len(subset)
@@ -887,15 +777,15 @@ class build_reentry_list:
         #print(f"{s1-s2} exploded objects removed.")
 
         # Ignore failed launches pre-2020.
-        mask = ~(subset["Piece"].str[5].isin(["F", "U"]) & (subset["DYear"] < 2020))          
+        mask = ~(subset["Converted_Tag"].str[5].isin(["F", "U"]) & (subset["Converted_Tag"].str[:4].astype(int) < 2020))          
         subset = subset[mask]
 
         # Extract the arrays before looping.
-        cols = ["DDate","Piece","Name","Type","Inc","Dest","Apogee","Status","DryMass","#JCAT","Bus","Parent","PLName"]
+        cols = ["DDate","Converted_Tag","Name","Type","Inc","Dest","Apogee","Status","DryMass","#JCAT","Bus","Parent","PLName","Mass"]
         arrays = {col: subset[col].to_numpy() for col in cols}
 
         # Now loop over the list and format into a dictionary.
-        for i in tqdm(range(len(arrays["Piece"])), total=len(subset), desc=f"Processing {file}"):
+        for i in tqdm(range(len(arrays["Converted_Tag"])), total=len(subset), desc=f"Processing {file}"):
 
             # Sort out the reentry time/date.
             ddate_parts = arrays["DDate"][i].split()
@@ -904,7 +794,7 @@ class build_reentry_list:
             day_known  = len(ddate_parts) >= 3   # has DD
 
             # Create some variables for easier access.
-            jsr_id      = self.convert_launch_tag(arrays["Piece"][i])
+            jsr_id      = arrays["Converted_Tag"][i]
             jsr_name    = str(arrays["Name"][i])
             jsr_type    = str(arrays["Type"][i]).strip()
             jsr_inc     = arrays["Inc"][i]
@@ -912,10 +802,16 @@ class build_reentry_list:
             jsr_apogee  = arrays["Apogee"][i]
             jsr_status  = arrays["Status"][i]
             jsr_drymass = arrays["DryMass"][i]
+            jsr_mass    = arrays["Mass"][i]
             jsr_jcat    = arrays["#JCAT"][i]
             jsr_parent  = arrays["Parent"][i]
             jsr_bus     = arrays["Bus"][i]
             jsr_plname  = arrays["PLName"][i]
+
+            # If the rocket failed at the first stage, it doesn't reach re-entry altitude.
+            failure = self.failed_launch_dict.get(jsr_id[:8])
+            if failure is not None and failure["failed_stage"] == 1:
+                continue
             
             burnup = "Complete"
             # Set the burnup as partial for all objects landing or splashing down at the surface.
@@ -1001,10 +897,8 @@ class build_reentry_list:
                 lat, lon, location = self.convert_lat_lon(jsr_dest.replace("?",""), inc_eff, reentry_category, jsr_apogee, jsr_id, jsr_name)
             
             # Sort the mass.    
-            # # TODO: Sort failed launches.
-            # This apparently lists which stage was responsible for the failure of the launch.
             if jsr_id[5:6] in ["F","U"]:
-                abl_mass, other_mass = self.failed_launch_mass(jsr_id, jsr_name, reentry_category,jsr_drymass)
+                abl_mass, other_mass = self.failed_launch_mass(jsr_id, reentry_category,jsr_drymass,jsr_mass)
             else:
                 abl_mass = np.float64(jsr_drymass)
                 other_mass = 0
@@ -1043,7 +937,7 @@ class build_reentry_list:
         attached_cat  = attached_cat[
             (attached_cat["Primary"] == "Earth") &                               # Primary body is Earth only.
             (attached_cat["Status"].isin(["AR","AL","AL IN","AR IN","E"])) &     # Attached objects only.
-            (~attached_cat["Piece"].str[5:6].isin(["S","F","U"])) &              # Skip suborbital and failed launches (treated separately).
+            (~attached_cat["Converted_Tag"].str[5:6].isin(["S","F","U"])) &      # Skip suborbital and failed launches (treated separately).
             (attached_cat["DYear"].between(self.start_year, self.final_year)) &  # Only the selected timeframe.
             (attached_cat["PLName"] != "Manfred Mem. Moon Mission") &            # This should be listed as re-entering on the Moon, so ignore.
             (attached_cat["Parent"] != "A04313") &                               # Parent collided, producing debris.
@@ -1410,8 +1304,7 @@ class build_reentry_list:
             
             return combined_jsr
 
-        self.inc_by_prefix_all    = groupbyinc(["satcat", "rcat", "auxcat", "ecat"])
-        self.inc_by_prefix_failed = groupbyinc(["ftocat"])
+        self.inc_by_prefix = groupbyinc(["satcat", "rcat", "auxcat", "ecat","ftocat"])
 
         ##############################
         # Add each file sequentially. 
@@ -1544,7 +1437,7 @@ class build_reentry_list:
         for idx, row in self.df_reentry.iterrows():
             
             # Is this a stage or fairing from a successful launch?
-            if (row["category"].startswith("S") or is_lv_fairing(row["name"])) and row["id"][5] not in ["F","U"]:
+            if (row["category"].startswith("S") or is_lv_fairing(row["name"])):
 
                 rocket_tuple = dsl_lookup.get(row["id"][:8])
                 rocket_row = dsr_lookup.get(rocket_tuple)

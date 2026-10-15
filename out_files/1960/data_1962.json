@@ -3415,6 +3415,63 @@
                     "HCl": 0.004645,
                     "Unablated_Mass": 0.32515
                 }
+            },
+            {
+                "date": "1962-05-28T03:00:00Z",
+                "id": "1962-020",
+                "reusability": "",
+                "name": "R-12",
+                "category": "S1",
+                "smc": false,
+                "location": 2,
+                "burnup": "Complete",
+                "mass": 4.8100000000000005,
+                "emissions": {
+                    "NOx": 1.924,
+                    "Al2O3": 1.0101,
+                    "BC": 0.0,
+                    "Cl": 0.0,
+                    "HCl": 0.0,
+                    "Unablated_Mass": 3.367
+                }
+            },
+            {
+                "date": "1962-05-28T03:00:00Z",
+                "id": "1962-020",
+                "reusability": "",
+                "name": "11K63 Fairing",
+                "category": "C",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 0.878,
+                "emissions": {
+                    "NOx": 0.3512,
+                    "Al2O3": 0.18438,
+                    "BC": 0.035998,
+                    "Cl": 0.01317,
+                    "HCl": 0.007024,
+                    "Unablated_Mass": 0.6145999999999999
+                }
+            },
+            {
+                "date": "1962-05-28T03:00:00Z",
+                "id": "1962-020",
+                "reusability": "",
+                "name": "11K63 Fairing",
+                "category": "C",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 0.878,
+                "emissions": {
+                    "NOx": 0.3512,
+                    "Al2O3": 0.18438,
+                    "BC": 0.035998,
+                    "Cl": 0.01317,
+                    "HCl": 0.007024,
+                    "Unablated_Mass": 0.6145999999999999
+                }
             }
         ]
     },
@@ -12382,6 +12439,30 @@
                     "Cl": 0.0,
                     "HCl": 0.0,
                     "Unablated_Mass": 2.1875
+                }
+            }
+        ]
+    },
+    "1962-12-15": {
+        "launches": [],
+        "reentries": [
+            {
+                "date": "1962-12-15T00:00:00Z",
+                "id": "1962-020",
+                "reusability": "",
+                "name": "Kosmos 63S1 No. 3LK St 2",
+                "category": "S2",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 0.84,
+                "emissions": {
+                    "NOx": 0.336,
+                    "Al2O3": 0.3822,
+                    "BC": 0.02436,
+                    "Cl": 0.00924,
+                    "HCl": 0.0042,
+                    "Unablated_Mass": 0.294
                 }
             }
         ]

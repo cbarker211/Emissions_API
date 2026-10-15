@@ -26,7 +26,7 @@ import cProfile
 from datetime import datetime
 from io import StringIO
 
-from python_modules.distribute_emis_func import make_grid_LL, read_gc_box_height, get_ross_profiles, interp_prop_mass
+from python_modules.distribute_emis_func import make_grid_LL, read_gc_box_height, get_ross_profiles, interp_prop_mass, get_failed_launch_dict
 from python_modules.alt_emis_func import calculate_bc_ei, calculate_nox_ei, calculate_co_ei, calculate_cl_ei
 
 class InputData:
@@ -172,7 +172,7 @@ class OutputEmis:
                                                                        self.ross_alt_edge, 
                                                                        self.ross_cumulative_mass)
         
-        # TODO: Will need to put this in the loop later if we want to use meteorological box heights.
+        # TODO: Will need to put this in the daily loop later if we want to use meteorological box heights.
         layer_data = np.loadtxt("./input_files/" + f"geoschem_vertical_grid_{LEVELS}.csv",delimiter=",")    
         self.bot_alt_base = layer_data[::-1,0]*1000  # shape (LEVELS,)
         self.mid_alt_base = layer_data[::-1,1]*1000
@@ -490,6 +490,7 @@ class OutputEmis:
             "Pegasus XL/HAPS": 11.9,
             "Pegasus/HAPS": 11.9,
             "LauncherOne": 12.37,
+            "NOTS EV1": 12.5 # https://www.designation-systems.net/dusrm/app4/notsnik.html
         }  
         # Get altitude, default to 0 if rocket not in dictionary
         fei_alt = fei_alt_dict.get(launch_rocket, 0)
@@ -505,7 +506,7 @@ class OutputEmis:
             self.booster_alt_index = get_alt_index(stage_alt_beco, self.fine_grid_top_alt, self.fine_grid_bot_alt)
 
             if stage_alt_beco * 1e3 > self.fine_grid_top_alt[-1]:
-                self.fine_grid_mass_stages[0] = np.asarray(self.fine_grid_mass)
+                self.fine_grid_mass_stages[0] = np.asarray(self.fine_grid_mass).copy()
             else:
                 self.fine_grid_mass_stages[0] = normalize_mass(self.fine_grid_mass[:self.booster_alt_index].copy(), booster_percent)
                          
@@ -531,7 +532,7 @@ class OutputEmis:
         self.MECO_alt_index = get_alt_index(stage_alt_meco, self.fine_grid_top_alt, self.fine_grid_bot_alt)
         if stage_alt_meco * 1e3 > self.fine_grid_top_alt[-1]:
             self.fine_grid_mass_stages[1] = self.fine_grid_mass[self.fei_alt_index:].copy()
-            if fei_alt > 0: # This is when its air-launched and meco is above the fine grid.
+            if fei_alt > 0: # This is when its air-launched/started and meco is above the fine grid.
                 # We can get a slightly better idea of propellant consumed by the stage.
                 fei_mass = np.interp(fei_alt,self.ross_alt_edge, self.ross_cumulative_mass)
                 fei_percent = (self.prop_in_fine_grid - fei_mass) / (100.0 - fei_mass) * 100.0
@@ -802,38 +803,26 @@ class OutputEmis:
         # Deal with failed launches.
         ############################################
 
-        # TODO: Sort failed launches. 
-        # Decide what to do with failed launches in general, should make it so its relevant up to 100 km (fine grid).
-        
-        # Most failures are for upper stages, and so can be treated as normal here.
         # Full information is provided in source_info/failed_launch_info.txt.
-                    
-        # Skip launches where the launch failed close to the launch pad.
-        if row.COSPAR_ID in ['2020-F04','2021-F04','2023-F02','2024-F01']:
-            return
-        
-        # This is where stage 1 failed during ascent.
-        failed_alt_events = {
-            '2020-F07': 900,    # Astra Rocket 3 launch, rocket shut off at 0.9km.
-            '2021-F01': 10700,  # Shuang Quxian-1 launch, rocket disintegrated at Max-Q. Approximating altitude using Proton-M and Minotaur-IV max-q alts.
-            '2021-F07': 31000   # Astra Rocket 3 launch, rocket shut off at 31km.
-        }
-        if row.COSPAR_ID in failed_alt_events:
-            failed_alt = failed_alt_events[row.COSPAR_ID]
-            cutoff_ind = np.searchsorted(self.fine_grid_mid_alt, failed_alt, side='right')
-            self.fine_grid_mass_stages[1][cutoff_ind:] = 0.0 # Zero above the cutoff_ind.
+        failed_launch_dict = get_failed_launch_dict()  
 
-        # This is where stage 2 never ignited.
-        zero_stage2_events = {
-            '2020-F02','2020-F05',
-            '2021-F02','2021-F07','2021-F08',
-            '2022-F01','2022-F02','2022-F03',
-            '2023-F01','2023-F03','2023-F04','2023-F05','2023-F06','2023-F08',
-            '2024-F02','2024-F04'
-        }
-        if row.COSPAR_ID in zero_stage2_events:
-            self.fine_grid_mass_stages[2] = np.asarray([0])
-            self.sei_alt_index = None
+        failure = failed_launch_dict.get(row.COSPAR_ID)
+        if failure is not None:
+
+            # Failed at pad or during first stage.
+            if failure["failed_stage"] == 1:
+                if failure["cutoff_alt"] == 0:
+                    return
+                cutoff_ind = np.searchsorted(self.fine_grid_mid_alt, failure["cutoff_alt"], side='right')
+                # Stage 1 array starts at fei_alt_index (non-zero for air launches).
+                self.fine_grid_mass_stages[1][max(cutoff_ind - self.fei_alt_index, 0):] = 0.0
+                if stages[0]:
+                    self.fine_grid_mass_stages[0][cutoff_ind:] = 0.0
+
+            # Failed during second stage.
+            if failure["failed_stage"] == 1 or (failure["failed_stage"] == 2 and failure["burned"] == 0.0):
+                self.fine_grid_mass_stages[2] = np.asarray([0])
+                self.sei_alt_index = None
         
         ##################################################
         # Sanity Checks for Propellant Mass Distributions.
@@ -870,7 +859,7 @@ class OutputEmis:
         # A check that the Falcon landing distribution is no greater than 7% of the stage 1 emissions is undertaken later in the launch_emis function.
         if stage_alt_meco < self.model_alt:
             
-            if (cospar not in failed_alt_events): # Suppressed for rockets that failed early into the launch.
+            if not (failure and failure["failed_stage"] == 1): # Suppressed for rockets that failed early into the launch.
                 if row.Rocket_Name not in ["Falcon 9", "New Glenn 7x2"]: # Suppressed for rockets with a reusable first stage.
                     check_error(1,cospar,error_lim)
                 elif input_data.reusable_landing_dict[cospar] == "expended": # Keep for Falcon 9 stages that are expended.
@@ -1023,25 +1012,21 @@ class OutputEmis:
         emis_dict_above = {sp: 0.0 for sp in vert_emis_keys}
         
         def prepare_emis_above(stage_no, prop_above, emis_dict_above):
-            skip_ids = [[], # Stage0
-                        ['2020-F04','2020-F07','2021-F01','2021-F07'], # Stage1
-                        ['2020-F02','2020-F04','2020-F05','2020-F07','2021-F01', '2021-F02','2021-F07','2021-F08','2022-F01','2022-F02'], # Stage2
-                        ['2020-F02','2020-F03','2020-F05','2020-F06','2021-F01', '2021-F06','2021-F10','2022-F02','2022-F04','2022-F06'], # Stage3
-                        ['2020-F08','2020-U01','2021-F01','2022-F02','2022-U02', '2022-F04','2022-F06'], # Stage4
-                        []] # Stage5 
-            if stages[stage_no] and prop_above > 0 and row.COSPAR_ID not in skip_ids[stage_no]:
 
-                if stage_no == 2 and row.COSPAR_ID == "2022-F03":
-                    included = 240/315*100 - (100-self.prop_above[2])
-                elif stage_no == 3 and row.COSPAR_ID == "2021-F09":
-                    included = 475/521*100
-                else:
-                    included = prop_above
-
-                if included < 0 or included > 100:
-                    raise ValueError(f"Stage{stage_no} of {row.COSPAR_ID}: {included}% above model is outside 0-100.")
+            if not stages[stage_no] or prop_above <=0 :
+                return emis_dict_above
         
-                emis_dict_above = self.calc_emis_above(pei_indices[stage_no],prop_masses[stage_no],included, emis_dict_above)   
+            if failure is not None:
+                failed_stage = failure["failed_stage"]
+                if failed_stage == 1 or stage_no > failed_stage:
+                    prop_above = 0.0
+                elif stage_no == failed_stage:
+                    prop_above = failure["burned"] * 100 - (100 - prop_above)
+                    
+            if prop_above < 0 or prop_above > 100:
+                raise ValueError(f"Stage{stage_no} of {row.COSPAR_ID}: {prop_above}% above model is outside 0-100.")
+    
+            emis_dict_above = self.calc_emis_above(pei_indices[stage_no],prop_masses[stage_no], prop_above, emis_dict_above)   
         
             return emis_dict_above               
         
