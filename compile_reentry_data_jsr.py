@@ -371,8 +371,8 @@ class build_reentry_list:
                 print(f"Inc band misses region: {jsr_id} {jsr_name} {latlonstr} inc={inc}")
                 band = region
 
-            row = band.sample(1, weights=band.area)
-            coords = row.sample_points(1).get_coordinates()
+            row = band.sample(1, weights=band.area, random_state=self.rng)
+            coords = row.sample_points(1, rng=self.rng).get_coordinates()
             lon, lat = coords["x"].values[0], coords["y"].values[0]
             return lat, lon
         
@@ -394,8 +394,8 @@ class build_reentry_list:
                         location = 2
                         break  
             else: 
-                lat = round(np.random.uniform(-inc, inc),2)
-                lon = round(np.random.uniform(-180, 180),2)
+                lat = round(self.rng.uniform(-inc, inc),2)
+                lon = round(self.rng.uniform(-180, 180),2)
                 location = 6
 
         # Natural Region - 4
@@ -404,16 +404,16 @@ class build_reentry_list:
 
             # Polar
             if latlonstr in ["Antarctic", "Arctic", "S Ocean","S Oc.","S OCean"]:
-                lon = round(np.random.uniform(-180, 180), 2)
+                lon = round(self.rng.uniform(-180, 180), 2)
             
                 if latlonstr in ["S Ocean","S Oc.","S OCean"]:
                     # For these objects in auxcat, the inclination is 51.65-74, outside of the general definition of the southern ocean (<60S).
                     # Therefore we will just set the lat to the inclination.
                     lat = -inc
                 elif latlonstr == "Antarctic":
-                    lat = round(np.random.uniform(-inc, -60), 2)
+                    lat = round(self.rng.uniform(-inc, -60), 2)
                 elif latlonstr == "Arctic":
-                    lat = round(np.random.uniform(66, inc), 2)
+                    lat = round(self.rng.uniform(66, inc), 2)
 
             # Ocean landings (Electron and Falcon 9)
             elif latlonstr == "Ocean":
@@ -534,6 +534,8 @@ class build_reentry_list:
         else:
             lat = np.float64(lat)
             lon = np.float64(lon)
+            if lon > 180:
+                lon -= 360
 
         return lat, lon, location
     
@@ -807,6 +809,9 @@ class build_reentry_list:
             jsr_parent  = arrays["Parent"][i]
             jsr_bus     = arrays["Bus"][i]
             jsr_plname  = arrays["PLName"][i]
+
+            # Set up the random seeds. This does one for every distinct JCAT identifier.
+            self.rng = np.random.default_rng([ord(c) for c in str(jsr_jcat)])
 
             # If the rocket failed at the first stage, it doesn't reach re-entry altitude.
             failure = self.failed_launch_dict.get(jsr_id[:8])

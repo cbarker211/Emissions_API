@@ -531,7 +531,7 @@ class OutputEmis:
         self.fei_alt_index = np.searchsorted(self.fine_grid_top_alt, fei_alt*1e3)
         self.MECO_alt_index = get_alt_index(stage_alt_meco, self.fine_grid_top_alt, self.fine_grid_bot_alt)
         if stage_alt_meco * 1e3 > self.fine_grid_top_alt[-1]:
-            self.fine_grid_mass_stages[1] = self.fine_grid_mass[self.fei_alt_index:].copy()
+            self.fine_grid_mass_stages[1] = self.fine_grid_mass[self.fei_alt_index:].copy() * s1_percent / 100.0
             if fei_alt > 0: # This is when its air-launched/started and meco is above the fine grid.
                 # We can get a slightly better idea of propellant consumed by the stage.
                 fei_mass = np.interp(fei_alt,self.ross_alt_edge, self.ross_cumulative_mass)
@@ -932,7 +932,8 @@ class OutputEmis:
                         # Jacklyn position, same as the re-entry script (https://x.com/spaceOFFSHORE/status/1878177979974775139/photo/1).
                         landing_lat, landing_lon = 27.888, -74.153
                     else:
-                        matching = self.ocean_landings[self.ocean_landings["Date"].isin([f"{self.year}-{self.strmon}-{self.strday}"])].reset_index(drop=True)
+                        day = pd.Timestamp(f"{self.year}-{self.strmon}-{self.strday}")
+                        matching = self.ocean_landings[self.ocean_landings["Date"] == day].reset_index(drop=True)
                         # There is a typo in the database, a 2023 launch is listed as 2022.      
                         if (matching.shape[0] == 1) or (f"{self.year}-{self.strmon}-{self.strday}" == "2022-04-27"):
 
@@ -1311,7 +1312,7 @@ if __name__ == "__main__":
     
     TIMESTEP  = 3600
     LEVELS    = 72
-    MODEL_ALT = 80
+    MODEL_ALT = 80.0
     GRID_RES  = "2x25"    
     HOURS     = 24
     SAVE_GC   = args.save_gc
