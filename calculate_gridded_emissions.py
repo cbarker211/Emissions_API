@@ -625,7 +625,8 @@ class OutputEmis:
             raise ValueError(f"Error with Stage {stage}. Propellant distribution exceeds unity.")
 
         seg_slice = slice(start_ind, stop_ind)
-        seg_mid_alts_km = self.fine_grid_mid_alt[seg_slice] * 1e-3  # km
+        site_alt = 0.0 if falcon_flag else self.site_alt
+        seg_mid_alts_km = self.fine_grid_mid_alt[seg_slice] * 1e-3 + site_alt  # km
 
         ############
         # Emissions
@@ -646,9 +647,9 @@ class OutputEmis:
 
         selected_alts = []
         # Determine the index of the top altitude for each JSON atmospheric layer in the fine grid.
-        trop_ind  = np.searchsorted(self.fine_grid_top_alt, 15000)
-        strat_ind = np.searchsorted(self.fine_grid_top_alt, 50000)
-        meso_ind  = np.searchsorted(self.fine_grid_top_alt, self.top_alt[-1, q, p]) # Include the original top altitude of the GC model (80.6 km) to be consistent.
+        trop_ind  = np.searchsorted(self.fine_grid_top_alt, 15000 - site_alt * 1e3)
+        strat_ind = np.searchsorted(self.fine_grid_top_alt, 50000 - site_alt * 1e3)
+        meso_ind  = np.searchsorted(self.fine_grid_top_alt, self.top_alt[-1, q, p]- site_alt * 1e3) # Include the original top altitude of the GC model (80.6 km) to be consistent.
         self.json_bounds = [0, trop_ind+1, strat_ind+1, meso_ind+1] # Add one so we include them in the lower bin.
 
         # Regrid the vertical_profile to the desired model profile.
@@ -783,6 +784,10 @@ class OutputEmis:
         ############################################
         
         stage_alt_beco, stage_alt_meco, stages = self.process_launch_event_altitudes(roc_ind, row.Rocket_Name, row.Rocket_Variant, row.COSPAR_ID)
+
+        # Get the altitude of the launch site. For air-launched rockets, the altitude is already above sea level.
+        self.site_alt = 0.0 if self.fei_alt_index > 0 else float(row.Surface_Altitude)
+
         prop_masses, pei_indices = np.zeros(7), np.full(7, -1, dtype=int)
         for i, active in enumerate(stages):
             if active:
