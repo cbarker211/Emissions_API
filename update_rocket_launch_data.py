@@ -902,7 +902,31 @@ def update_mass_info(temp_dict,name,variant):
         # Not sure about OMS burns, so setting SEI and SECO to 200 and 300 km.
         # Second stage should be outside scope of model anyway.
         pass
-        
+
+    if name.startswith("Starship"):
+
+        # https://www.spacex.com/content/starship-flight-tests/flight-x Starship V1.0
+
+        # Starship V1.0 Tests 1-6
+        # MECO, SEI,  SECO, BB1,  BB2,  LB (km)
+        # 70,   70,   148,  -,    -,    -       - 2
+        # 68,   71,   149,  75,   103,  -       - 3
+        # 68,   72,   150,  76,   103,  1       - 4   
+        # 64,   68,   150   72,   95,   1       - 5
+        # 63,   67,   149   71,   94,   1       - 6
+        # 66.6, 69.6, 149,  73.5, 98.8, 1       - Avg.
+
+        # Starship V2 Tests 7-11
+        # MECO, SEI,  SECO, BB1,  BB2,  LB (km)
+        # 60,   64,   146,  66,   89,   1       - 7
+        # 58,   62,   146   64,   87,   1       - 8
+        # 60,   64,   150,  -,    -,    -       - 9   
+        # -,    -,    150,  -,    87.5, 2       - 10
+        # -,    -,    150,  -,    88.3, 2.6     - 11
+        # 59.3, 63.3, 148,  65.0, 88.0, 1.7     - Avg.
+
+        pass
+
     if name == "Strela":
         # https://web.archive.org/web/20230614172003/https://spaceflight101.com/spacerockets/strela/
         temp_dict[f"Stage1 Stage Mass"]      = 5700  # Sp101

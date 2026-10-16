@@ -937,12 +937,12 @@ class build_reentry_list:
         """
 
         # Combine the catalogues, trimming to only include objects which have landed or re-entered inside or attached to another object within the date range.
-        keys = ["satcat","auxcat","lcat","rcat","lprcat","deepcat","ecat"]
+        keys = ["satcat","auxcat","lcat","rcat","lprcat","deepcat","ecat","ftocat"]
         attached_cat  = pd.concat([self.jsr_data_dict[k] for k in keys], ignore_index=True)
         attached_cat  = attached_cat[
             (attached_cat["Primary"] == "Earth") &                               # Primary body is Earth only.
             (attached_cat["Status"].isin(["AR","AL","AL IN","AR IN","E"])) &     # Attached objects only.
-            (~attached_cat["Converted_Tag"].str[5:6].isin(["S","F","U"])) &      # Skip suborbital and failed launches (treated separately).
+            (~attached_cat["Converted_Tag"].str[5:6].isin(["S"])) &              # Skip suborbital and failed launches.
             (attached_cat["DYear"].between(self.start_year, self.final_year)) &  # Only the selected timeframe.
             (attached_cat["PLName"] != "Manfred Mem. Moon Mission") &            # This should be listed as re-entering on the Moon, so ignore.
             (attached_cat["Parent"] != "A04313") &                               # Parent collided, producing debris.
@@ -987,7 +987,8 @@ class build_reentry_list:
 
             def add_mass(target, row):
                 # If the payload is inside the spacecraft or in the payload bay, then add to other mass.
-                in_payload_bay = "(STS" in self.df_reentry.loc[target, "name"]
+                target_name = self.df_reentry.loc[target, "name"]
+                in_payload_bay = "(STS" in target_name or target_name.startswith("Starship FT")
                 if "IN" in row["Status"] or in_payload_bay:
                     self.df_reentry.loc[target, "other_mass"] += float(row["DryMass"])
 
@@ -1548,7 +1549,7 @@ if __name__ == "__main__":
     
     # Compile the reentry data
     def run_full_pipeline():
-        Data = build_reentry_list(1957, current_year-1)
+        Data = build_reentry_list(1957, 2025)
         Data.get_reentry_info()
         if args.save_reentry_info == True:
             Data.reentry_info_to_netcdf()

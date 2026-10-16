@@ -28,12 +28,13 @@ This major update contains a range of changes to make the data more consistent w
     - Terran 1
     - Zhuque-2
     - Zhuque-2E
-- Previously using DW, now using GCAT. 
+- Previously using DW/NB, now using GCAT. 
     - Firefly Alpha
     - Kuaizhou, Kuaizhou-1 and Kuaizhou-1A
     - Shuang Quxian 1
     - SSLV stage masses
     - Atlas V N22
+    - LauncherOne
 - New proxies where no launch and dry mass is available for any stage.
     - CZ-12 (Falcon 9 FT5)
     - CZ-12A (Zhuque-2E)
@@ -49,7 +50,12 @@ This major update contains a range of changes to make the data more consistent w
     - Minotaur launch event altitudes were in nautical miles in the user manual, now converted to km.
     - Fixed the import of Delta 4M+ launch event altitudes. These were not imported correctly due to a comma in the rocket name.
     - Now using Atlas V launch event altitudes from manual. These were wrong on the launch livestream video (miles figures made no sense).
+    - Added Ariane 44LP event altitudes from user manual.
+    - Added H-II and H-IIA 2022/2024.
+    - Added New Glenn.
+    - Added Starship.
 - Additional Updates to rocket data 
+    - Atlas D booster propellant is set to zero, because these are fed propellant from the main stage.
     - Scout F-1 upper stage information now from GCAT instead of Encyclopedia Astronautica.
     - GCAT now lists the SM/SMA third stage / payload dispenser as an actual stage, not a component. Therefore we switch to using GCAT info instead of DW.
     - Proton-M/Briz-M now has Phase I, II, III, IV variants in GCAT, all with launch and dry mass. 
@@ -62,25 +68,25 @@ This major update contains a range of changes to make the data more consistent w
     - Added variant-specific stage 2 and stage 3 data for GSLV Mk II.
     - Updated LVM3/GSLV Mk III propellant and stage masses using details from mission brochures
     - Updated Antares 230 Stage 1 propellant and stage mass.
-    - Fixed Vulcan Centaur VC4S booster number.
+    - Added details for Vulcan Centaur VC4S.
     - Bug fix for Ariane 5ECA+ stage 2 propellant mass.
 - Updates to launch activity data 
     - Now including orbital, near-orbital and deep space launch codes only. This removes several non-orbital 19xx-U0x launches. 
     - For now, not including "F" or "U" launches before 2020.
     - Removed launches which exploded or were aborted at (or close to) the pad.
-    - Now including NOTS EV1 as this is a spy satellite, not an anti-satellite weapon.
+    - Now including NOTS EV1 as this is a spy satellite, not an anti-satellite weapon. These launches failed so the emissions are ignored anyway.
     - Added launch site altitude (surface elevation from ETOPO 2022).
     - Reconfigured the handling of failed launches 2020-2025. Now a single function which defines the failed stage and burned percentage, which is used by all scripts.
 
 ### Emission Indices
 - Now using the NOx emission profile derived from SABRE measurements in Barker (2026). This increases launch emissions in the troposphere and stratosphere.
-- Primary EI(CO2) for hypergolic fuel is an average of James21 and Ross14, whereas it was just Ross in Barker 2024.
+- Primary EI(CO2) for hypergolic fuel is an average of James21 and Ross14, whereas it was just Ross in Barker 2024. Not a change since v2.6.0, but a clarification.
 - Launch emission indices are now calculated using the height above sea level, taking the launch site altitude into account.
 
 ### Other 
 - Atmospheric layer boundaries in the JSON output are now relative to sea level.
 - Added emissions from "-1" stages, where the rocket has a second set of boosters.
-- Added landing emissions from New Glenn.
+- Added landing emissions from New Glenn and Starship.
 - Changed MODEL_ALT, which is used to calculate emission indices above the model from integer to float. Marginally impacts altitude-dependent emissions above 80 km.
 - Fixed a bug for Falcon Heavy Stage 1, where propellant was not reserved for propulsive landing of the center core (only 3 launches in 2018-2019).
 - Fixed a bug where stage 2 emissions above the model where missing if SEI was above 100 km.
@@ -98,6 +104,7 @@ This major update contains a range of changes to make the data more consistent w
 - Added re-entries of two DebrisSat payloads. These were previously not included as the name included 'debris'.
 - Added re-entries with "S" (suborbital) type, as long as the apogee is still above 50 km.
 - Mass inside the Space Shuttle payload bay is now assigned as other mass rather than ablatable mass.
+- Starlink simulators inside Starship now added as other mass.
 - 1965-047A (Titan 3A lead ballast) is now assigned as other mass rather than ablatable mass.
 - No longer adding missing rocket stages.
 - Some fairings have mass in GCAT, so now the source preference is: primary source, GCAT, then default value.
@@ -119,6 +126,7 @@ This major update contains a range of changes to make the data more consistent w
 - Fixed geolocation of fairing re-entry location for 2023-038.
 - Fixed geolocation of Arctic/Antarctic re-entries.
 - Fixed several bugs where re-entry latitude was set to > 90.
+- Fixed geolocation of air-launched rockets.
 
 ### Other
 - Removed empty days from the API output to cut filesize and speed up import.

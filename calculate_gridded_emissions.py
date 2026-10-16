@@ -61,7 +61,7 @@ class InputData:
         session = requests.Session() 
         df_rcat = self.scrape_jsr("https://planet4589.org/space/gcat/tsv/cat/rcat.tsv",session)
         self.reusable_landing_dict = {}
-        reusable_df = self.dsl[self.dsl["Rocket_Name"].isin(["Falcon 9", "Falcon Heavy", "New Glenn 7x2"])].copy()
+        reusable_df = self.dsl[self.dsl["Rocket_Name"].isin(["Falcon 9", "Falcon Heavy", "New Glenn 7x2", "Starship V1.0", "Starship V2"])].copy()
 
         for row in reusable_df.itertuples(index=False):
             cospar_id = str(row.COSPAR_ID)
@@ -70,18 +70,27 @@ class InputData:
 
             def reusable_dest(stage):
                 stage_row = df_launch[df_launch["PLName"].str.contains(stage, case=False, na=False)]
-                if "LZ" in stage_row["Dest"].values[0]:
+                dest = stage_row["Dest"].values[0]
+                if "LZ" in dest:
                     return "ground"
-                elif stage_row["Status"].values[0] in ["L","LF"] or stage_row['Dest'].values[0] in ["OCISLY", "Jacklyn"]:
+                if dest.startswith("STB"):
+                    return "super heavy catch"
+                elif stage_row["Status"].values[0] in ["L","LF"] or dest in ["OCISLY", "Jacklyn", "JRTI", "ASOG"]:
                     return "ocean"
                 elif stage_row["Status"].values[0] in ["S","R"]:
                     return "expended"
                 else:
                     raise ValueError(f"Unknown reentry method for {cospar_id} - {stage_row['Status'].values} - {stage_row['Dest'].values}")
+            
+            if cospar_id == "2023-F05": # This Starship V1.0 booster exploded.
+                self.reusable_landing_dict[cospar_id] = "expended"
+            
+            elif cospar_id in ["2024-U01","2024-U03","2024-U06","2025-U02","2025-U03","2025-U04"]: # These had soft splashdowns in Gulf Of Mexico.
+                self.reusable_landing_dict[cospar_id] = "super heavy splashdown"
 
-            if len(df_launch) == 1: # Falcon 9 or New Glenn 7x2
-                stage_tag = "GS1" if row.Rocket_Name == "New Glenn 7x2" else "St1"
-                self.reusable_landing_dict[cospar_id] = reusable_dest(stage_tag)
+            elif len(df_launch) == 1: # Falcon 9 or New Glenn 7x2
+                stage_tags = {"Falcon 9": "St1", "New Glenn 7x2": "GS1", "Starship V1.0": "Super Heavy", "Starship V2": "Super Heavy"}
+                self.reusable_landing_dict[cospar_id] = reusable_dest(stage_tags[row.Rocket_Name])
 
             elif len(df_launch) == 3: # Falcon Heavy. Sometimes different stages re-enter differently.
                 
@@ -388,17 +397,19 @@ class OutputEmis:
         # Define the propellant saved for landing for reusable rockets.
         ################################################################
 
+        BOOSTBACK = 5.6
         REENTRY = 5.6
         LANDING_BURN = 1.2
-        BOOSTBACK = 5.6
 
         landing_percent_dict = {
             "ocean": 100.0 - REENTRY - LANDING_BURN,
-            "ground": 100.0 - REENTRY - BOOSTBACK - LANDING_BURN,
+            "super heavy splashdown": 100.0 - BOOSTBACK - LANDING_BURN,
+            "super heavy catch": 100.0 - BOOSTBACK - LANDING_BURN,
+            "ground": 100.0 - BOOSTBACK - REENTRY - LANDING_BURN,
             "expended": 100.0
         }
 
-        if launch_rocket in ["Falcon 9", "New Glenn 7x2"]:
+        if launch_rocket in ["Falcon 9", "New Glenn 7x2", "Starship V1.0", "Starship V2"]:
             booster_percent = 0.0
             landing_info = input_data.reusable_landing_dict[launch_id]
             s1_percent = landing_percent_dict.get(landing_info, None)
@@ -575,11 +586,13 @@ class OutputEmis:
             "Falcon 9":      (70.0, 54.7, 3.3),
             "Falcon Heavy":  (70.0, 54.7, 3.3),
             "New Glenn 7x2": (66.6, 40.1, 23.8),
+            "Starship V1.0": (98.8, 73.5, 1),
+            "Starship V2":   (88.0, 65.0, 1.7),
         }
             
         add_landing_emis = False
         # Finally create an extra stage just for the landing emissions of Falcon 9 v1.2. 
-        if launch_rocket in ["Falcon 9", "New Glenn 7x2"] and input_data.reusable_landing_dict[launch_id] != "expended":
+        if launch_rocket in ["Falcon 9", "New Glenn 7x2", "Starship V1.0", "Starship V2"] and input_data.reusable_landing_dict[launch_id] != "expended":
             add_landing_emis = True
         elif launch_rocket == "Falcon Heavy":
             landing_info = input_data.reusable_landing_dict[launch_id]
@@ -594,7 +607,8 @@ class OutputEmis:
             # Re-entry burn
             self.entry_top = np.searchsorted(self.fine_grid_top_alt, entry_top_km * 1e3, side='right')
             self.entry_bot = np.searchsorted(self.fine_grid_top_alt, entry_bot_km * 1e3, side='right')
-            self.fine_grid_mass_stages[7] = normalize_mass(self.fine_grid_mass[self.entry_bot:self.entry_top+1].copy(), REENTRY)
+            grid_burn = BOOSTBACK if launch_rocket.startswith("Starship") else REENTRY
+            self.fine_grid_mass_stages[7] = normalize_mass(self.fine_grid_mass[self.entry_bot:self.entry_top+1].copy(), grid_burn)
             
             # Landing burn
             self.landing_top = np.searchsorted(self.fine_grid_top_alt, landing_top_km * 1e3, side='right')
@@ -865,7 +879,7 @@ class OutputEmis:
         if stage_alt_meco < self.model_alt:
             
             if not (failure and failure["failed_stage"] == 1): # Suppressed for rockets that failed early into the launch.
-                if row.Rocket_Name not in ["Falcon 9", "New Glenn 7x2"]: # Suppressed for rockets with a reusable first stage.
+                if row.Rocket_Name not in ["Falcon 9", "New Glenn 7x2", "Starship V1.0", "Starship V2"]: # Suppressed for rockets with a reusable first stage.
                     check_error(1,cospar,error_lim)
                 elif input_data.reusable_landing_dict[cospar] == "expended": # Keep for Falcon 9 stages that are expended.
                     check_error(1,cospar,error_lim)
@@ -907,7 +921,7 @@ class OutputEmis:
                 self.prop_above[2] = 100
             
         # If the rocket has a reusable stage, then add the landing emissions.
-        if row.Rocket_Name in ["Falcon 9", "Falcon Heavy", "New Glenn 7x2"]:
+        if row.Rocket_Name in ["Falcon 9", "Falcon Heavy", "New Glenn 7x2", "Starship V1.0", "Starship V2"]:
 
             landing_info = input_data.reusable_landing_dict[row.COSPAR_ID]
             is_expendable = False
@@ -915,7 +929,7 @@ class OutputEmis:
                 is_expendable = landing_info.get('left') == 'expended' or landing_info.get('right') == 'expended'
 
             # If the Falcon 9 first stage or Falcon Heavy boosters are expended, then we don't need to add any landing emissions.
-            if row.Rocket_Name in ["Falcon 9", "New Glenn 7x2"] and landing_info == "expended":
+            if row.Rocket_Name in ["Falcon 9", "New Glenn 7x2", "Starship V1.0", "Starship V2"] and landing_info == "expended":
                 pass
             elif row.Rocket_Name == "Falcon Heavy" and is_expendable:
                 pass
@@ -926,7 +940,7 @@ class OutputEmis:
                 # By default, assume the emissions are placed at the launch site.
                 falcon_p, falcon_q = p, q
 
-                if row.Rocket_Name in ["Falcon 9", "New Glenn 7x2"]:
+                if row.Rocket_Name in ["Falcon 9", "New Glenn 7x2", "Starship V1.0", "Starship V2"]:
                     needs_ocean = landing_info == "ocean"
                 else:
                     needs_ocean = landing_info["center"] == "ocean"
@@ -980,7 +994,7 @@ class OutputEmis:
 
                 falcon_tuple = (time_index, falcon_q, falcon_p, pei_indices, prop_masses, True) 
 
-                if row.Rocket_Name in ["Falcon 9", "New Glenn 7x2"]:
+                if row.Rocket_Name in ["Falcon 9", "New Glenn 7x2", "Starship V1.0", "Starship V2"]:
                     stage = 1
                     vert_emis_dict = self.calc_emis(self.entry_bot, self.entry_top+1, vert_emis_dict, stage, falcon_tuple)
                     vert_emis_dict = self.calc_emis(None, self.landing_top+1, vert_emis_dict, stage, falcon_tuple)
