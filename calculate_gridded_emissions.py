@@ -1340,17 +1340,13 @@ if __name__ == "__main__":
         # Define launch event altitudes.
         #################################
 
-        # BECO, MECO and SEI values from literature sources are used wherever possible. 
-        # When not available, the average of other rockets with the same configuration is used.
-
+        # Load in the stage event altitude data from the file.
         stage_alt_dict = {}
-        stage_alt_rockets = np.genfromtxt("./input_files/launch_event_altitudes.csv",dtype=str,skip_header=1,usecols=[0,1],delimiter=",")
-        stage_alt_data    = np.genfromtxt("./input_files/launch_event_altitudes.csv",dtype=np.float64,skip_header=1,usecols=[2,3,4,5],delimiter=",")
-
-        stages = ["BECO", "MECO", "SEI1", "SECO"]
-        for (name, variant), row in zip(stage_alt_rockets, stage_alt_data):
-            for stage, value in zip(stages, row):
-                stage_alt_dict[f"{name} {variant} {stage}"] = value
+        df_alts = pd.read_csv("./input_files/launch_event_altitudes.csv", dtype={"Rocket": str, "Variant": str})
+        for _, r in df_alts.iterrows():
+            for stage in ["BECO", "MECO", "SEI1", "SECO"]:
+                val = pd.to_numeric(r[stage], errors="coerce")
+                stage_alt_dict[f"{r['Rocket']} {r['Variant']} {stage}"] = np.float64(val)
         
         # BECO, MECO, SEI1, SECO
         # B+1/2S, B+3S, B+4S, 2S, 3S, 4S 

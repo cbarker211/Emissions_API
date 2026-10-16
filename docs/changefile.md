@@ -69,47 +69,66 @@ This major update contains a range of changes to make the data more consistent w
     - For now, not including "F" or "U" launches before 2020.
     - Removed launches which exploded or were aborted at (or close to) the pad.
     - Now including NOTS EV1 as this is a spy satellite, not an anti-satellite weapon.
+    - Added launch site altitude (surface elevation from ETOPO 2022).
+    - Reconfigured the handling of failed launches 2020-2025. Now a single function which defines the failed stage and burned percentage, which is used by all scripts.
 
 ### Emission Indices
-- Now using the NOx emission profile derived from SABRE measurements in Barker (2026).
+- Now using the NOx emission profile derived from SABRE measurements in Barker (2026). This increases launch emissions in the troposphere and stratosphere.
 - Primary EI(CO2) for hypergolic fuel is an average of James21 and Ross14, whereas it was just Ross in Barker 2024.
+- Launch emission indices are now calculated using the height above sea level, taking the launch site altitude into account.
 
 ### Other 
+- Atmospheric layer boundaries in the JSON output are now relative to sea level.
 - Added emissions from "-1" stages, where the rocket has a second set of boosters.
 - Added landing emissions from New Glenn.
+- Changed MODEL_ALT, which is used to calculate emission indices above the model from integer to float. Marginally impacts altitude-dependent emissions above 80 km.
+- Fixed a bug for Falcon Heavy Stage 1, where propellant was not reserved for propulsive landing of the center core (only 3 launches in 2018-2019).
 - Fixed a bug where stage 2 emissions above the model where missing if SEI was above 100 km.
 - Fixed a bug where Falcon emissions above the model were being overestimated.
 
 ## Changes affecting re-entry emission totals
 
 ### Activity Data
-- Changes to re-entry dry mass due to changes to rocket data.
+- Changes to re-entry dry mass due to changes to rocket data (see above).
+- Re-entries from failed launches now include unburnt propellant as other mass.
 - Reconfigured re-entries to include only objects from launches in the launch database.
-- Now classifying re-entry statuses of L, LF, L? as partial burnup on re-entry.
-- Space Shuttle SRBs and Super Heavy splashdowns also counted as partial burnup.
-- Added re-entries with "S" (suborbital) type, as long as the apogee is still above 50 km. We include discarded stages, so should include other objects.
+- Now classifying re-entry statuses of L, LF, L? as partial burnup.
+- Now classifying re-entries of Space Shuttle SRBs and Super Heavy splashdowns as partial burnup.
+- Added re-entries with "S" (suborbital) type, as long as the apogee is still above 50 km.
+- Mass inside the Space Shuttle payload bay is now assigned as other mass rather than ablatable mass.
 - No longer adding missing rocket stages.
 - Added re-entry mass for CFLR and hot swap batteries.
+- Added re-entries of two DebrisSat payloads. These were previously not included as the name included 'debris'.
 - Some fairings have mass in GCAT, so now the source preference is: primary source, GCAT, then default value.
+- 1965-047A (Titan 3A lead ballast) is now other mass rather than ablatable mass.
 - Fixed a bug where some non-object fairings were set using the default fairing mass, now fixed.
+- Fixed a bug where some old launch tags were not being converted. This adds 12 objects in 1960, and increases the mass of two objects.
 
 ### Emission Indices
 - BC, HCl, Cl emissions are no longer added for partial burnup re-entries, as ablation should be negligible for these.
 
 ## Structural changes not affecting emission totals
 
+### Launches
 - JSON output now includes propellant consumption per launch and launch organization data.
 - All site names are now obtained from GCAT, and similar sites are grouped.
-- Now using the megaconstellation flag from the group column in GCAT, instead of manually filtering using payload names. This has meant removing Lynk as a megaconstellation and adding Starshield, Starcloud. Updated assignment for Xingwang (and other Chinese constellations) and US SDA.
+
+### Re-entries
 - Set timings of re-entries on day of launch to the launch time, instead of midnight.
-- Fixed geolocation of some Falcon Heavy re-entry and landing emissions.
+- Randomised geolocations now use a seed based on the JCAT identifier. This means the re-entry locations stay the same during updates.
 - Fixed geolocation of fairing re-entry location for 2023-038.
 - Fixed geolocation of Arctic/Antarctic re-entries.
-- Fixed geolocation of re-entries close to 180E.
-- Set the Falcon re-entry/landing emissions to the same location as the re-entry.
 - Fixed several bugs where re-entry latitude was set to > 90.
+
+### Other
+- Removed empty days from the API output to cut filesize and speed up import.
+- Now assigning megaconstellation status using GCAT, instead of manually filtering using payload names. This has meant removing Lynk as a megaconstellation and adding Starshield, Starcloud. Updated assignment for Xingwang (and other Chinese constellations) and US SDA.
+- Fixed geolocation of some Falcon Heavy re-entry and landing emissions.
+- Fixed geolocation of emissions close to 180E.
+- Set the Falcon re-entry/landing emissions to the same location as the re-entry.
 - Added functionality to save out emissions as NetCDF files on the GEOS-Chem grid.
-- Removed obselete files from the repository. 
+- Removed obsolete files from the repository. 
+- Added sources to the launch_event_altitudes file.
 
 ---
 

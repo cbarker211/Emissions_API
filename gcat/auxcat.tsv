@@ -1,5 +1,5 @@
 #JCAT	Satcat	Launch_Tag	Piece	Type	Name	PLName	LDate	Parent	SDate	Primary	DDate	Status	Dest	Owner	State	Manufacturer	Bus	Motor	Mass	MassFlag	DryMass	DryFlag	TotMass	TotFlag	Length	LFlag	Diameter	DFlag	Span	SpanFlag	Shape	ODate	Perigee	PF	Apogee	AF	Inc	IF	OpOrbit	OQUAL	AltNames
-# Updated 2026 Oct 15 1032:50
+# Updated 2026 Oct 15 2355:31
 A00001    	NNA	1957 ALP	1957 ALP 3	C  F        	GO	Golovniy Obtekatel'	1957 Oct  4	S00001	1957 Oct  4 1933	Earth	1957 Nov?	R	-	NII88	SU	OKB1	PS Fairing	-	      10 	?	     10 	?	       0 	?	   0.5 	?	  0.5 	?	    0.5 	?	Cone	1957 Oct  4	     214	 	     938	 	 65.10 	 	LLEO/I	-	-
 A00002    	00003	1957 BET	1957 BET 1	R2          	8K71PS No. M1-11 Stage 2	8K71A M1-11 (M1-2PS)	1957 Nov  3	-	1957 Nov  3 0235	Earth	1958 Apr 14	R	-	NII88	SU	OKB1	Blok-A	-	    7790 	 	   7790 	 	       0 	?	  28.0 	 	  2.6 	 	   28.0 	 	Cyl	1957 Nov  3	     211	 	    1659	 	 65.33 	 	LEO/I	-	-
 A00003    	NNA	1957 BET	1957 BET 2	C  F        	GO	Golovniy Obtekatel'	1957 Nov  3	A00002	1957 Nov  3 0236	Earth	1957 Dec?	R	-	NII88	SU	OKB1	PS Fairing	-	      10 	?	     10 	?	       0 	?	   2.0 	?	  1.0 	?	    2.0 	?	Cone	1957 Nov  3	     211	 	    1659	 	 65.33 	 	LEO/I	-	-
@@ -12051,4 +12051,4 @@ A12048    	NNA P	2026-233	2026-233	R2--P--     	Falcon 9-xxx Stage 2	F9-xxx St2 
 A12049    	NNA A	2026-233	2026-233	C AH-I-     	IPA FSE 2A/3B	IROSA FSE	2026 Oct 13	A12045	2026 Oct 13 1044:02	Earth	-	AO	-	JSC	US	BOHSV/DSSG	ROSA	-	     700 	 	    700 	 	     700 	 	   3.5 	 	  3.0 	 	    3.5 	 	Box+disk	-	       0	 	       0	 	  0.00 	 	-	-	-
 A12050    	NNA A	2026-233	2026-233	C AH-I-     	IROSA 2A	IROSA	2026 Oct 13	A12049	2026 Oct 13 1044:02	Earth	-	AO	-	JSC	US	DSSG	ROSA	-	     340 	 	    340 	 	     340 	 	   3.5 	 	  6.0 	 	   19.0 	 	2 Cyl+Panel	-	       0	 	       0	 	  0.00 	 	-	-	-
 A12051    	NNA A	2026-233	2026-233	C AH-I-     	IROSA 3B	IROSA	2026 Oct 13	A12049	2026 Oct 13 1044:02	Earth	-	AO	-	JSC	US	DSSG	ROSA	-	     340 	 	    340 	 	     340 	 	   3.5 	 	  6.0 	 	   19.0 	 	2 Cyl+Panel	-	       0	 	       0	 	  0.00 	 	-	-	-
-A12052    	NNA E	2026-233	2026-233	CP E-I      	EMU 30xx	-	2026 Oct 13	S63628	2026 Oct 13 1044:02	Earth	-	AO	-	JSC	US	HASUN	EMU	-	     130 	 	    130 	 	       0 	 	   2.0 	 	  0.5 	 	    2.0 	 	Suit	-	       0	 	       0	 	  0.00 	 	-	-	-
+A12052    	NNA E	2026-233	2026-233	CP E-I      	EMU 30xx	-	2026 Oct 13	S101031	2026 Oct 13 1044:02	Earth	-	AO	-	JSC	US	HASUN	EMU	-	     130 	 	    130 	 	       0 	 	   2.0 	 	  0.5 	 	    2.0 	 	Suit	-	       0	 	       0	 	  0.00 	 	-	-	-
