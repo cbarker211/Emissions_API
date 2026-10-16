@@ -94,13 +94,13 @@ This major update contains a range of changes to make the data more consistent w
 - Reconfigured re-entries to include only objects from launches in the launch database.
 - Now classifying re-entry statuses of L, LF, L? as partial burnup.
 - Now classifying re-entries of Space Shuttle SRBs and Super Heavy splashdowns as partial burnup.
-- Added re-entries with "S" (suborbital) type, as long as the apogee is still above 50 km.
-- Mass inside the Space Shuttle payload bay is now assigned as other mass rather than ablatable mass.
-- No longer adding missing rocket stages.
 - Added re-entry mass for CFLR and hot swap batteries.
 - Added re-entries of two DebrisSat payloads. These were previously not included as the name included 'debris'.
+- Added re-entries with "S" (suborbital) type, as long as the apogee is still above 50 km.
+- Mass inside the Space Shuttle payload bay is now assigned as other mass rather than ablatable mass.
+- 1965-047A (Titan 3A lead ballast) is now assigned as other mass rather than ablatable mass.
+- No longer adding missing rocket stages.
 - Some fairings have mass in GCAT, so now the source preference is: primary source, GCAT, then default value.
-- 1965-047A (Titan 3A lead ballast) is now other mass rather than ablatable mass.
 - Fixed a bug where some non-object fairings were set using the default fairing mass, now fixed.
 - Fixed a bug where some old launch tags were not being converted. This adds 12 objects in 1960, and increases the mass of two objects.
 
