@@ -300,6 +300,7 @@ class import_launches:
                     "Megaconstellation_Flag": mcs_flag,
                     "Country":                country,
                     "Entity":                 entity,
+                    "Fail_Code":              str(row["FailCode"]).strip(),
                 })
 
             for site, pad in sorted(missing_pads):
@@ -331,12 +332,12 @@ class import_launches:
             if field == "Date":
                 values = np.array([v.tz_convert(None) for v in values], dtype="datetime64[ns]")
             
-            elif field in ["COSPAR_ID","Site","Rocket_Name","Rocket_Variant","Country","Entity"]:
+            elif field in ["COSPAR_ID","Site","Rocket_Name","Rocket_Variant","Country","Entity","Fail_Code"]:
                 values = np.array(values, dtype=str)
 
             return values
 
-        fields = ["COSPAR_ID","Date","Longitude","Latitude","Surface_Altitude","Site","Rocket_Name","Rocket_Variant","Megaconstellation_Flag","Country","Entity"]
+        fields = ["COSPAR_ID","Date","Longitude","Latitude","Surface_Altitude","Site","Rocket_Name","Rocket_Variant","Megaconstellation_Flag","Country","Entity","Fail_Code"]
 
         # Create DataArrays dynamically
         data_arrays = {}

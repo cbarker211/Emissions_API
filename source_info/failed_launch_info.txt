@@ -7,11 +7,6 @@
     F01 - 09/02/2020 Simorgh (Iran) Operated correctly, but didn't reach orbital velocity.
         First stage operated for 475s correctly, but second stage failed to deploy payload succesfully...
         Satellite reached 540 km apogee but only reached 6,400 m/s, just short of 7,400 m/s orbital velocity...
-        Zafar 1 mass
-            https://iranpress.com/content/18407/isa-head-satellite-imagery-from-orbit-530km-primary-mission-zafar-satellite
-            https://space.skyrocket.de/doc_sdat/zafar.htm
-            https://spaceflightnow.com/2020/02/10/iran-fails-in-satellite-launch-attempt/
-            https://www.rferl.org/a/iran-says-satellite-launch-imminent-in-next-few-hours-/30424791.html
 
     F02 - 16/03/2020 Long March 7A (China) - Stage 2
         https://web.archive.org/web/20220411235209/http://www.spacelaunchreport.com/cz5.html
@@ -44,11 +39,6 @@
             Second stage failure.     
         https://www.rocketlabusa.com/updates/rocket-lab-mission-fails-to-reach-orbit/
             Following a successful lift-off, first stage burn, and stage separation, Rocket Lab experienced an anomaly...
-        Payload masses:
-                https://spacenews.com/rocket-lab-electron-launch-fails/                                         67  / N/A / N/A kg
-                https://spaceflightnow.com/2020/07/04/rocket-lab-satellite-launch-fails-before-reaching-orbit/  67  / N/A / N/A kg
-                https://pubs.usgs.gov/of/2021/1030/f/ofr20211030f.pdf                                           N/A / 5.8 /     kg
-                GCAT lists the re-flight of the same satellite (which hosts other payloads itself) as 10 kg.    N/A / N/A / 10  kg
 
     F06 - 10/07/2020 Kuaizhou-11 - Stage 3
         https://web.archive.org/web/20220411235210/http://www.spacelaunchreport.com/log2020.html
@@ -133,9 +123,6 @@
 		No specific details, but we can assume that the first two stages performed normally and the third 'underperformed'.
 		Treating normally for launch emissions.
 		Adding payload reentries, dry mass reentry for all three stages.
-		Payload Mass:
-			90 - GCAT
-            "assumed to be small satellites" - https://www.seradata.com/irans-simorgh-has-apparent-unsuccessful-launch-with-three-small-satellite-payloads-not-quite-put-into-orbit/
 
     F04 - 23/06/2021 Simorgh - Disputed launch, not in GCAT.
         Launch existance also disputed or cancelled?? Ignoring.
@@ -218,16 +205,10 @@
         NSF  - An anomaly occurred near the time of stage separation which prevented the payload from being successfully deployed. (https://www.nasaspaceflight.com/2022/02/astra-cape-canaveral-elana-41/) 
         Astra- (https://astra.com/news/post-launch-investigation-what-we-found-and-next-steps/)
         It sounds like the fairing didn't separate, so when S2 ignited it started tumbling. Not clear whether S2 still continued to burn or not.
-        Payload Mass:
-            3.8 (INCA) - https://www.nasaspaceflight.com/2022/02/astra-cape-canaveral-elana-41/
-            3.8 (INCA) - https://space.skyrocket.de/doc_sdat/inca.htm
-            No additional info so using GCAT.
 
     F02 13/05/2022 Shuang Quxian-1 - Stage 2   
-        SLR - While official reports as of publication do not mention a reason for the failure, 
-        it is understood that shortly after stage separation, the second stage failed to ignite.
-        Including S1 as normal, ignoring S2 emissions and not including S2/S3/S4 in missing emissions.
-        Adding payload reentries, dry mass reentry for first stage and wet mass reentry for second, third and fourth stages.
+        NSF - While official reports as of publication do not mention a reason for the failure, it is understood that shortly after stage separation, the second stage failed to ignite.
+        https://www.nasaspaceflight.com/2022/05/hyperbola-1-failure-may-2022/
 
     F03 12/06/2022 Astra Rocket 3 - Stage 2, burned 76%
         Wiki - LV0010 suffered an early second-stage engine cutoff and failed to deliver the payload to orbit.
@@ -243,13 +224,7 @@
         SFN - The rocket appeared to function as designed for the first 10 minutes of the mission. The SSLV’s three main solid-fueled stages fired one after the other...
                 (https://spaceflightnow.com/2022/08/07/indias-new-small-satellite-launcher-fails-to-put-satellites-into-correct-orbit/)
                 the VTM was supposed to fire for about 20 seconds on the SSLV test flight, known as the SSLV-D1 mission, ...
-                data displayed on a screen in the Indian launch control center indicated the VTM only fired for one-tenth of a second. 
-        Payload Mass:
-            130,8    (EOS-02,AzaadiSAT) - GCAT
-            135,7.3  (EOS-02,AzaadiSAT) - https://spaceflightnow.com/2022/08/07/indias-new-small-satellite-launcher-fails-to-put-satellites-into-correct-orbit/
-            145,8    (EOS-02,AzaadiSAT) - https://web.archive.org/web/20220803133923/https://www.isro.gov.in/sites/default/files/sslvd1-eos2_-_mission_brochure.pdf
-            135,8    (EOS-02,AzaadiSAT) - https://space.skyrocket.de/doc_lau/sslv.htm  
-        Using official ISRO mass.         
+                data displayed on a screen in the Indian launch control center indicated the VTM only fired for one-tenth of a second.     
 
     F04 12/10/2022 Epsilon-2 CLPS - Stage 3
         Wiki - Vehicle was destroyed by flight termination system shortly after second stage cutoff due to an attitude control fault.
@@ -270,11 +245,6 @@
                 Tissier said Wednesday that range safety officials at the Guiana Space Center sent a destruct command to the rocket when it veered off its planned course.
                 (https://spaceflightnow.com/2022/12/21/two-pleiades-neo-earth-imaging-satellites-lost-in-failure-of-europes-vega-c-rocket/)
         Issue with second stage not providing enough thrust, not clear when engines were shut down. From livestream, seemed to go through whole S2 burn. 
-        Payload Mass:
-            895  (One)      - GCAT
-            920  (One)      - GCAT
-            1977 (Combined) - https://www.space.com/arianespace-vega-c-launch-failure-december-2022
-            920  (One)      - https://earth.esa.int/eogateway/missions/pleiades-neo/description
 
 2023
 
@@ -356,7 +326,6 @@
     2024-F02 14/07/2024 NK Kerolox LV - Stage 2
         GSP - The maiden launch in May 2024 did not reach orbit as stage 1 failed about 2 minutes into the flight.
         https://web.archive.org/web/20241207072356/https://space.skyrocket.de/doc_lau/nk-kerolox-lv.htm
-        Treating this as first stage included, second stage and above missing
     
     2024-F03 10/07/2024 Shuang Quxian-1 - Fairing separation issue, didn't reach orbital velocity.
         Wiki - After most of the day had passed, the Chinese official media Xinhua reported that the launch was unsuccessful due to off-nominal performance of the rocket which resulted in a failure to achieve orbit.

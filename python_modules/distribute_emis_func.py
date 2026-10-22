@@ -146,83 +146,56 @@ def interp_prop_mass(bot_alt, mid_alt, top_alt, ross_alt_edge, ross_cumulative_m
 def get_failed_launch_dict():
 
     failed_launch_dict = {
-        #2020-F01 Operated correctly, but didn't reach orbital velocity.             (S2U?)
-        '2020-F02': {"failed_stage": 2, "burned": 0}, #                              (S2P)
-        '2020-F03': {"failed_stage": 3, "burned": 0}, #                              (S3P)
-        '2020-F04': {"failed_stage": 1, "cutoff_alt": 0}, # Launcher One             (S1P)
-        '2020-F05': {"failed_stage": 2, "burned": 0}, #                              (S2E)
-        '2020-F06': {"failed_stage": 3, "burned": 0}, #                              (S3P)
-        '2020-F07': {"failed_stage": 1, "cutoff_alt": 900}, # Astra Rocket 3         (S1G)
-        '2020-F08': {"failed_stage": 4, "burned": 0}, #                              (S4?)
-        #2020-F09 Early shutdown, didn't reach orbital velocity.                     (S2P)
-        '2020-U01': {"failed_stage": 4, "burned": 0}, #                              (S4G)
+        # Launches which did full burns of all stages.
+        '2017-F02': {"full_burn": True}, #                                                (AD)  https://rocketlabcorp.com/missions/launches/its-a-test/
+        '2020-F01': {"full_burn": True}, # Didn't quite reach orbital velocity.           (S2U?)
+        '2020-F09': {"full_burn": True}, # Early shutdown                                 (S2P)
+        '2021-F03': {"full_burn": True}, # Underperformance                               (U)
+        '2021-F05': {"full_burn": True}, # Fairing separation issue                       (FF)
+        '2021-F11': {"full_burn": True}, # Didn't reach orbital velocity.                 (S2U?)
+        '2022-F05': {"full_burn": True}, # Early shutdown                                 (S2P)
+        '2023-F01': {"full_burn": True}, # Underperformance                               (S2P)
+        '2023-F11': {"full_burn": True}, # Went through burns                             (S2U)
+        '2024-F03': {"full_burn": True}, # Fairing separation issue                       (S4I?)
+        '2024-U01': {"full_burn": True}, # Starship V1.0 reached SECO                     (-)
+        '2024-U03': {"full_burn": True}, # Starship V1.0 reached SECO                     (-)
+        '2024-U04': {"full_burn": True}, # Starship V1.0 reached SECO                     (-)
+        '2024-U06': {"full_burn": True}, # Starship V1.0 reached SECO                     (-)
+        '2025-F01': {"full_burn": True}, # Starship V2 Early shutdown                     (S2P)
+        '2025-F03': {"full_burn": True}, # Starship V2 Early shutdown                     (S2P)
+        '2025-U01': {"full_burn": True}, # Underperformance                               (S1S)
+        '2025-U02': {"full_burn": True}, # Starship V2 reached SECO                       (-)
+        '2025-U03': {"full_burn": True}, # Starship V2 reached SECO                       (-)
+        '2025-U04': {"full_burn": True}, # Starship V2 reached SECO                       (-)
+        '2025-U05': {"full_burn": True}, # Early shutdown of 4th stage                    (S4P)
+        '2025-U06': {"full_burn": True}, # Fairing separation issue                       (FF)
 
-        '2021-F01': {"failed_stage": 1, "cutoff_alt": 10700},  # Shuang Quxian-1     (S1G)
-        '2021-F02': {"failed_stage": 2, "burned": 0}, #                              (S2I)
-        #2021-F03 Underperformance, didn't reach orbital velocity.                   (U)
-        #2021-F04 Disputed launch, not in GCAT.                                      (-)
-        #2021-F05 Fairing separation issue, didn't reach orbital velocity.           (FF)
-        '2021-F06': {"failed_stage": 3, "burned": 0}, #                              (S3I)
-        '2021-F07': {"failed_stage": 1, "cutoff_alt": 31000},  # Astra Rocket 3      (S1P)  
-        '2021-F08': {"failed_stage": 2, "burned": 0}, #                              (S1P)
-        '2021-F09': {"failed_stage": 3, "burned": 475/521}, #                        (S3U)
-        '2021-F10': {"failed_stage": 3, "burned": 0}, #                              (S3P)
-        #2021-F11 Operated correctly, but didn't reach orbital velocity.             (S2U?)
-        #2021-U01 Orbital weapon test, not included.
+        # Specific fractions.
+        '2020-F07': {"failed_stage": 1, "cutoff_alt": 900},   #                           (S1G)
+        '2021-F01': {"failed_stage": 1, "cutoff_alt": 10700}, #                           (S1G)
+        '2021-F07': {"failed_stage": 1, "cutoff_alt": 31000}, #                           (S1P)  
+        '2025-F08': {"failed_stage": 1, "cutoff_alt": 3000},  #                           (S1)
+        '2022-F03': {"failed_stage": 2, "burned": 240/315},   #                           (S2P)
+        '2021-F09': {"failed_stage": 3, "burned": 475/521},   #                           (S3U)
+        '2022-F06': {"failed_stage": 2, "burned": 2/3},       #                           (S2P)
 
-        '2022-F01': {"failed_stage": 2, "burned": 0}, #                              (FF)
-        '2022-F02': {"failed_stage": 2, "burned": 0}, #                              (S3G)
-        '2022-F03': {"failed_stage": 2, "burned": 240/315}, #                        (S2P)
-        '2022-F04': {"failed_stage": 3, "burned": 0}, #                              (S2G)
-        #2022-F05 Early shutdown, didn't reach orbital velocity.                     (S2P)
-        '2022-F06': {"failed_stage": 3, "burned": 0}, #                              (S2P)
-        #2022-U01 North Korean missile
-        '2022-U02': {"failed_stage": 4, "burned": 0}, #                              (S3G)
-        #2022-U03 North Korean missile
-
-        #2023-F01 Underperformance, didn't reach orbital velocity.                   (S2P)
-        '2023-F02': {"failed_stage": 1, "cutoff_alt": 0}, # RS1                      (S1P)
-        '2023-F03': {"failed_stage": 2, "burned": 0}, #                              (S2I)
-        '2023-F04': {"failed_stage": 2, "burned": 0}, #                              (S2I)
-        '2023-F05': {"failed_stage": 2, "burned": 0}, #                              (S1S)
-        '2023-F06': {"failed_stage": 2, "burned": 0}, #                              (S2I)
-        '2023-F07': {"failed_stage": 3, "burned": 0}, #                              (AD)
-        '2023-F08': {"failed_stage": 2, "burned": 0}, #                              (S2E)
-        '2023-F09': {"failed_stage": 3, "burned": 0}, #                              (S1P)
-        '2023-F10': {"failed_stage": 1, "cutoff_alt": 0}, #                          (U)
-        #2023-F11 Seemed to go through full burns                                    (S2U)
-        #2022-U01 North Korean missile
-        #2022-U02 North Korean missile
-        #2022-U03 North Korean missile
-        #2022-U04 North Korean missile
-
-        '2024-F01': {"failed_stage": 1, "cutoff_alt": 0}, #                          (AD)
-        '2024-F02': {"failed_stage": 2, "burned": 0}, #                              (S1P)
-        #2024-F03 Fairing separation issue, didn't reach orbital velocity.           (S4I?)
-        '2024-F04': {"failed_stage": 2, "burned": 0}, #                              (S1S)
-        '2024-F05': {"failed_stage": 3, "burned": 0}, #                              (S3G)
-        # 2024-U01 Starship V1.0 reached SECO                                        (-)
-        # 2024-U02 CE-5 SSQ, launch from moon                                        (-) 
-        # 2024-U03 Starship V1.0 reached SECO                                        (-)
-        # 2024-U04 Starship V1.0 reached SECO                                        (-)
-        # 2024-U05 North Korean missile
-        # 2024-U06 Starship V1.0 reached SECO                                        (-)
-
-        # 2025-F01 Starship V2 Early shutdown                                        (S2P)
-        # 2025-F02 Missing from GCAT, supposed launch pad failure
-        # 2025-F03 Starship V2 Early shutdown                                        (S2P)
-        '2025-F04': {"failed_stage": 1, "cutoff_alt": 0}, #                          (S1G)
-        '2025-F05': {"failed_stage": 3, "burned": 0}, #                              (S3P)
-        '2025-F06': {"failed_stage": 1, "cutoff_alt": 0}, #                          (S1U)
-        '2025-F07': {"failed_stage": 2, "burned": 0}, #                              (S2G)
-        '2025-F08': {"failed_stage": 1, "cutoff_alt": 3000}, #                       (S1)
-        '2025-F09': {"failed_stage": 1, "cutoff_alt": 0}, #                          (S1P)
-        # 2025-U01 Underperformance, didn't reach orbital velocity.                  (S1S)
-        # 2025-U02 Starship V2 reached SECO                                          (-)
-        # 2025-U03 Starship V2 reached SECO                                          (-)
-        # 2025-U04 Starship V2 reached SECO                                          (-)
-        # 2025-U05 Early shutdown of 4th stage                                       (S4P)
-        # 2025-U06 Fairing separation issue, didn't reach orbital velocity.          (FF)
+        # Corrections.
+        '1963-F06': {"failed_stage": 1, "cutoff_alt": 0}, # No info, so treating as U     (AD)
+        '1964-F08': {"failed_stage": 2, "burned": 0},     # Second stage exploded         (AD)  https://astronautix.com/t/thewrongstuhiclefailures.html
+        '1987-F02': {"failed_stage": 1, "cutoff_alt": 0}, # First stage hit by lightning  (WX)  https://astronautix.com/t/thewrongstuhiclefailures.html
+        '2010-F02': {"failed_stage": 1, "cutoff_alt": 0}, # First stage failure           (AD)  https://astronautix.com/2/2010chronology.html
+        '2021-F08': {"failed_stage": 2, "burned": 0}, # Exploded only 12s before MECO     (S1P)
+        '2022-F01': {"failed_stage": 2, "burned": 0}, # Fairing failed before S2 ignition (FF)
+        '2022-F02': {"failed_stage": 2, "burned": 0}, # Stage 2 ignition failure          (S3G)
+        '2022-F04': {"failed_stage": 3, "burned": 0}, # Stage 3 ignition failure          (S2G)
+        '2022-U02': {"failed_stage": 4, "burned": 0}, # S4 only fired for 1/10th sec      (S3G)
+        '2023-F05': {"failed_stage": 2, "burned": 0}, # Exploded near end of booster burn (S1S)
+        '2023-F07': {"failed_stage": 3, "burned": 0}, # Accidental destruct               (AD)
+        '2023-F09': {"failed_stage": 3, "burned": 0}, # Stage 3 attitude failure          (S1P)
+        '2023-F10': {"failed_stage": 1, "cutoff_alt": 0}, # Unknown. so ignoring          (U)
+        '2024-F01': {"failed_stage": 1, "cutoff_alt": 0}, # Accidental destruct           (AD)
+        '2024-F02': {"failed_stage": 2, "burned": 0}, # Failed/exploded after 2 mins      (S1P)
+        '2024-F04': {"failed_stage": 3, "burned": 0}, # S1 error but still did S2 burns   (S1S)
     }
 
     return failed_launch_dict

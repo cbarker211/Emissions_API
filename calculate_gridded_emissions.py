@@ -58,8 +58,8 @@ class InputData:
     
     def handle_reusable_landings(self):    
 
-        session = requests.Session() 
-        df_rcat = self.scrape_jsr("https://planet4589.org/space/gcat/tsv/cat/rcat.tsv",session)
+        self.session = requests.Session() 
+        df_rcat = self.scrape_jsr("https://planet4589.org/space/gcat/tsv/cat/rcat.tsv",self.session)
         self.reusable_landing_dict = {}
         reusable_df = self.dsl[self.dsl["Rocket_Name"].isin(["Falcon 9", "Falcon Heavy", "New Glenn 7x2", "Starship V1.0", "Starship V2"])].copy()
 
@@ -270,7 +270,7 @@ class OutputEmis:
             # Process month data
             ndays = calendar.monthrange(self.year, m)[1]
             self.strmon=str(m).zfill(2)
-            print('MONTH = ', self.strmon)   
+            #print('MONTH = ', self.strmon)   
 
             month_launch_mask = (launch_mask & (input_data.dsl["Date"].dt.month == m))
             month_reentry_mask = (reentry_mask & (input_data.dsre["Date"].dt.month == m))           
@@ -281,10 +281,6 @@ class OutputEmis:
                 # Find launches.
                 day_launch_mask = month_launch_mask & (np.array(input_data.dsl["Date"].dt.day)  == d+1)
                 daily_launches_df = input_data.dsl[day_launch_mask].reset_index(drop=True).copy()
-
-                # Skip failed launches before 2020.
-                if self.year < 2020:
-                    daily_launches_df = daily_launches_df[~daily_launches_df["COSPAR_ID"].str[5].isin(["F","U"])].copy()
 
                 # Find re-entries.
                 day_reentry_mask = month_reentry_mask & (np.array(input_data.dsre["Date"].dt.day) == d+1)                
@@ -317,7 +313,7 @@ class OutputEmis:
                     daily_reentries = self.grid_emis(daily_reentries_df,'reentry')
                 
                 # Save to JSON
-                if not no_events:
+                if daily_launches or daily_reentries:
                     events_data[f"{self.year}-{self.strmon}-{self.strday}"] = {"launches": daily_launches,
                                                                                "reentries": daily_reentries}
                 # Save to NetCDF
@@ -823,9 +819,48 @@ class OutputEmis:
         ############################################
 
         # Full information is provided in source_info/failed_launch_info.txt.
-        failed_launch_dict = get_failed_launch_dict()  
+        failure = None
+        if row.COSPAR_ID[5] in ["F","U"]:
 
-        failure = failed_launch_dict.get(row.COSPAR_ID)
+            failed_launch_dict = get_failed_launch_dict()
+            failure = failed_launch_dict.get(row.COSPAR_ID)
+
+            # If the failure isn't in the manual list, then calculate automatically.
+            if failure is None:
+                failure_gcat = row.Fail_Code.replace("?","")
+
+                if failure_gcat == "PI": # Payload orbital insertion system, ignition problem.
+                    failure = None
+                if "/" in failure_gcat:
+                    for part in failure_gcat.split("/"):
+                        if part.startswith("S") and part[1].isdigit():
+                            failure_gcat = part
+
+                if failure_gcat.startswith("S"):
+                    failed_stage_gcat = int(failure_gcat[1])
+                    if failed_stage_gcat == 1:
+                        failure = {'failed_stage': failed_stage_gcat, 'cutoff_alt': 0}
+                    else:
+                        failure = {'failed_stage': failed_stage_gcat, 'burned': 0}
+
+                elif failure_gcat in ["U",   # Failure, all details unknown
+                                      "UX"]: # Unconfirmed failure (may not have launched, or reaching orbit may not have been intended).
+                    failure = {"failed_stage": 1, "cutoff_alt": 0}
+
+                elif failure_gcat in [
+                    "-",   # No FailCode
+                    "FF",  # Fairing related failure (no fairing sep, or MaxQ failure, fairing destroyed)
+                    "FS",  # Structure failure other than fairing and other than due to previous loss of control
+                    "PI",  # Payload orbit insertion system, ignition problem.
+                    "PG"]: # Payload orbit insertion system, attitude or guidance problem
+                    failure = None
+                else:
+                    raise ValueError(f"Unhandled GCAT fail code {row.Fail_Code} for {row.COSPAR_ID}.")
+                
+            # Full burn but didn't reach orbit: treat as a normal launch.
+            if failure is not None and failure.get("full_burn"):
+                failure = None
+
         if failure is not None:
 
             # Failed at pad or during first stage.
