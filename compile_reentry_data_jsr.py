@@ -714,22 +714,6 @@ class build_reentry_list:
             elif stage_no == failure["failed_stage"]:
                 other_mass = round((1 - failure["burned"]) * prop_mass, 1)
 
-        # TODO: Email Jonathan about these payload masses.
-        # ID       Name            DryMass  Mass    Lit    Source
-        # 2020-F01 Zafar           90.0     90.0    113.0  https://space.skyrocket.de/doc_sdat/zafar.htm https://spaceflightnow.com/2020/02/10/iran-fails-in-satellite-launch-attempt/ https://www.rferl.org/a/iran-says-satellite-launch-imminent-in-next-few-hours-/30424791.html
-        # 2020-F05 CE-SAT-I        65.0     65.0    67.0   https://spaceflightnow.com/2020/07/04/rocket-lab-satellite-launch-fails-before-reaching-orbit/ https://spacenews.com/rocket-lab-electron-launch-fails/
-        # 2020-F05 Flock 4e-1      5.7      5.7     5.8    https://pubs.usgs.gov/of/2021/1030/f/ofr20211030f.pdf
-        # 2020-F05 Flock 4e-2      5.7      5.7     5.8    https://pubs.usgs.gov/of/2021/1030/f/ofr20211030f.pdf
-        # 2020-F05 Flock 4e-3      5.7      5.7     5.8    https://pubs.usgs.gov/of/2021/1030/f/ofr20211030f.pdf
-        # 2020-F05 Flock 4e-4      5.7      5.7     5.8    https://pubs.usgs.gov/of/2021/1030/f/ofr20211030f.pdf
-        # 2020-F05 Flock 4e-5      5.7      5.7     5.8    https://pubs.usgs.gov/of/2021/1030/f/ofr20211030f.pdf
-        # 2022-F01 INCA            4.0      4.0     3.8    https://www.nasaspaceflight.com/2022/02/astra-cape-canaveral-elana-41/ https://space.skyrocket.de/doc_sdat/inca.htm
-        # 2022-F03 TROPICS SV02    4.0      4.0     5.34   https://web.archive.org/web/20250719051151/https://tropics.ll.mit.edu/CMS/tropics/The-MicroMAS-2-Cubesat
-        # 2022-F03 TROPICS SV04    4.0      4.0     5.34   https://web.archive.org/web/20250719051151/https://tropics.ll.mit.edu/CMS/tropics/The-MicroMAS-2-Cubesat
-        # 2022-F06 Pleiades Neo 5  895.0    922.0   920.0  https://earth.esa.int/eogateway/missions/pleiades-neo/description
-        # 2022-F06 Pleiades Neo 6  895.0    922.0   920.0  https://earth.esa.int/eogateway/missions/pleiades-neo/description 
-        # 2022-U02 EOS-02          130.0    135.0   145.0  https://spaceflightnow.com/2022/08/07/indias-new-small-satellite-launcher-fails-to-put-satellites-into-correct-orbit/ https://web.archive.org/web/20220803133923/https://www.isro.gov.in/sites/default/files/sslvd1-eos2_-_mission_brochure.pdf https://space.skyrocket.de/doc_lau/sslv.htm
-
         return abl_mass, other_mass
         
     def sort_inclination(self,inc_eff,jsr_id):

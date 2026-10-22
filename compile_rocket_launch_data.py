@@ -126,8 +126,11 @@ class import_launches:
         ####################################################################
 
         codes   = df_orgs["#Code"].str.strip() # List of the org codes.
-        state_of = dict(zip(codes, df_orgs["StateCode"].fillna("?").str.strip())) # List of the state codes
-        class_of = dict(zip(codes, df_orgs["Class"].fillna("?").str.strip())) # List of the class codes
+        state_of = dict(zip(codes, df_orgs["StateCode"].fillna("?").str.strip())) # Dict of the state codes
+        class_of = dict(zip(codes, df_orgs["Class"].fillna("?").str.strip())) # Dict of the class codes
+
+        site_ucode = dict(zip(df_sites["#Site"].str.strip(), df_sites["UCode"].str.strip())) # Dict connecting site code to group code.
+        df_lp["SiteGroup"] = [site_ucode.get(s.strip(), s.strip()) for s in df_lp["#Site"]]  # New column for the site group.
 
         country_names = {
             "US": "USA",
@@ -159,6 +162,7 @@ class import_launches:
 
         def process_launches(df):
             launches = []
+            missing_pads = set()
             for n, row in tqdm(df.iterrows(), total=len(df), desc="Processing rows"):
                 
                 df_site = df_sites[df_sites["#Site"] == row["Launch_Site"].replace("?", "")]
@@ -249,21 +253,41 @@ class import_launches:
                 sector  = sector_names.get(launch_class,launch_class)
                 entity = org_name if sector == "Commercial" else sector
 
-                ascent_site = str(row["Ascent_Site"]).strip()
-                if row["Launch_Site"].replace("?", "") == "TYSC":
-                    lat = 38.85
-                    lon = 111.61
-                elif ascent_site != "-":
-                    ascent_pad  = str(row["Ascent_Pad"]).strip()
-                    lp_row = df_lp[(df_lp["#Site"].str.strip() == ascent_site) & (df_lp["Code"].str.strip() == ascent_pad)]
-                    if len(lp_row) == 1:
-                        lat = float(lp_row.iloc[0]["Latitude"].strip())
-                        lon = float(lp_row.iloc[0]["Longitude"].strip())
-                    else:
-                        raise ValueError(f"Warning: Found {len(lp_row)} launch pads for ascent site {ascent_site} and ascent pad {ascent_pad}.")
+                def pad_coords(site, pad):
+
+                    # Look up the group name. This is to account for renaming of older sites like NIIP-5.
+                    group  = site_ucode.get(site, site)
+                    lp_row = df_lp[(df_lp["SiteGroup"] == group) & (df_lp["Code"].str.strip()  == pad)]
+
+                    if len(lp_row) != 1:
+                        return None
+                    lat_str = lp_row.iloc[0]["Latitude"].replace("?", "").strip()
+                    lon_str = lp_row.iloc[0]["Longitude"].replace("?", "").strip()
+                    if lat_str in ["", "-"] or lon_str in ["", "-"]:
+                        return None
+                    return float(lat_str), float(lon_str)
+
+                launch_site = str(row["Launch_Site"]).replace("?", "").strip()
+                launch_pad  = str(row["Launch_Pad"]).replace("?", "").strip()
+                if launch_pad == "lC9A":
+                    launch_pad = "LC9A"  # Typo in GCAT
+                ascent_site = str(row["Ascent_Site"]).replace("?", "").strip()
+
+                if ascent_site != "-":
+                    ascent_pad  = str(row["Ascent_Pad"]).replace("?", "").strip()
+                    coords = pad_coords(ascent_site, ascent_pad)
+                    if coords is None:
+                        raise ValueError(f"No unique launch pad for ascent site {ascent_site} and ascent pad {ascent_pad}.")
                 else:
-                    lat = float(site_row['Latitude'].strip())
-                    lon = float(site_row['Longitude'].strip())
+                    coords = pad_coords(launch_site, launch_pad)
+                    if coords is None and launch_site == "TYSC":
+                        coords = (38.85, 111.61)
+                    if coords is None:
+                        if launch_pad != "-":
+                            missing_pads.add((launch_site, launch_pad))
+                        coords = (float(site_row["Latitude"].strip()), float(site_row["Longitude"].strip()))
+
+                lat, lon = coords
 
                 launches.append({
                     "COSPAR_ID":              row["#Launch_Tag"].strip(),
@@ -278,10 +302,18 @@ class import_launches:
                     "Entity":                 entity,
                 })
 
+            for site, pad in sorted(missing_pads):
+                print(f"No pad match: {site} {pad}")
+
             return launches
 
         self.launches = process_launches(df) 
         self.add_surface_altitude("./databases/ETOPO_2022_v1_60s_N90W180_surface.nc")
+
+        # This is a hilly coastal location, and so the alitude lookup wrongly sets the height to sea level.
+        for launch in self.launches:
+            if launch["Site"] == "Kagoshima Space Center (Uchinoura)" and launch["Surface_Altitude"] == 0:
+                launch["Surface_Altitude"] = 0.1
    
     def launch_info_to_netcdf(self):
         """This saves the launch information as a NetCDF file for later processing for GEOS-Chem.
