@@ -10,7 +10,13 @@
                 "lon": 63.0,
                 "smc": false,
                 "location": "Baikonur Cosmodrome (Tyuratam)",
-                "agency": "MVS",
+                "propellant": {
+                    "Hypergolic": 0.0,
+                    "Kerosene": 132.365,
+                    "Solid": 0.0,
+                    "Hydrogen": 0.0,
+                    "Methane": 0.0
+                },
                 "emissions": {
                     "BC": [
                         0.038428,
@@ -66,8 +72,7 @@
                         0.0,
                         0.0
                     ]
-                },
-                "propellant": 132.365
+                }
             }
         ],
         "reentries": [
@@ -222,7 +227,13 @@
                 "lon": -80.54,
                 "smc": false,
                 "location": "Cape Canaveral",
-                "agency": "NRL",
+                "propellant": {
+                    "Hypergolic": 1.471002,
+                    "Kerosene": 6.889,
+                    "Solid": 0.17,
+                    "Hydrogen": 0.0,
+                    "Methane": 0.0
+                },
                 "emissions": {
                     "BC": [
                         0.003201,
@@ -278,8 +289,7 @@
                         0.0,
                         0.01686
                     ]
-                },
-                "propellant": 8.530002
+                }
             }
         ],
         "reentries": [
@@ -353,7 +363,13 @@
                 "lon": -120.62,
                 "smc": false,
                 "location": "Vandenberg Space Force Base",
-                "agency": "USAF BMD",
+                "propellant": {
+                    "Hypergolic": 3.4,
+                    "Kerosene": 45.67351,
+                    "Solid": 0.0,
+                    "Hydrogen": 0.0,
+                    "Methane": 0.0
+                },
                 "emissions": {
                     "BC": [
                         0.015661,
@@ -409,8 +425,7 @@
                         0.0,
                         0.0
                     ]
-                },
-                "propellant": 49.07351
+                }
             }
         ],
         "reentries": [
@@ -446,7 +461,13 @@
                 "lon": -80.54,
                 "smc": false,
                 "location": "Cape Canaveral",
-                "agency": "ABMA",
+                "propellant": {
+                    "Hypergolic": 0.0,
+                    "Kerosene": 48.988,
+                    "Solid": 0.314993,
+                    "Hydrogen": 0.0,
+                    "Methane": 0.0
+                },
                 "emissions": {
                     "BC": [
                         0.023941,
@@ -502,8 +523,7 @@
                         0.006943,
                         0.024297
                     ]
-                },
-                "propellant": 49.302993
+                }
             }
         ],
         "reentries": [
@@ -620,7 +640,13 @@
                 "lon": -120.62,
                 "smc": false,
                 "location": "Vandenberg Space Force Base",
-                "agency": "USAF BMD",
+                "propellant": {
+                    "Hypergolic": 3.4,
+                    "Kerosene": 45.67351,
+                    "Solid": 0.0,
+                    "Hydrogen": 0.0,
+                    "Methane": 0.0
+                },
                 "emissions": {
                     "BC": [
                         0.015661,
@@ -676,8 +702,7 @@
                         0.0,
                         0.0
                     ]
-                },
-                "propellant": 49.07351
+                }
             }
         ],
         "reentries": [
@@ -780,7 +805,13 @@
                 "lon": -80.54,
                 "smc": false,
                 "location": "Cape Canaveral",
-                "agency": "USAF BMD",
+                "propellant": {
+                    "Hypergolic": 1.471002,
+                    "Kerosene": 45.675,
+                    "Solid": 0.276,
+                    "Hydrogen": 0.0,
+                    "Methane": 0.0
+                },
                 "emissions": {
                     "BC": [
                         0.021224,
@@ -836,8 +867,7 @@
                         0.0,
                         0.027373
                     ]
-                },
-                "propellant": 47.422002
+                }
             }
         ],
         "reentries": [
@@ -930,7 +960,13 @@
                 "lon": -120.62,
                 "smc": false,
                 "location": "Vandenberg Space Force Base",
-                "agency": "USAF BMD",
+                "propellant": {
+                    "Hypergolic": 3.4,
+                    "Kerosene": 45.67351,
+                    "Solid": 0.0,
+                    "Hydrogen": 0.0,
+                    "Methane": 0.0
+                },
                 "emissions": {
                     "BC": [
                         0.015661,
@@ -986,8 +1022,7 @@
                         0.0,
                         0.0
                     ]
-                },
-                "propellant": 49.07351
+                }
             }
         ],
         "reentries": [
@@ -1023,7 +1058,13 @@
                 "lon": -120.62,
                 "smc": false,
                 "location": "Vandenberg Space Force Base",
-                "agency": "USAF BMD",
+                "propellant": {
+                    "Hypergolic": 3.4,
+                    "Kerosene": 45.67351,
+                    "Solid": 0.0,
+                    "Hydrogen": 0.0,
+                    "Methane": 0.0
+                },
                 "emissions": {
                     "BC": [
                         0.015661,
@@ -1079,8 +1120,7 @@
                         0.0,
                         0.0
                     ]
-                },
-                "propellant": 49.07351
+                }
             }
         ],
         "reentries": [
@@ -1159,7 +1199,13 @@
                 "lon": 63.0,
                 "smc": false,
                 "location": "Baikonur Cosmodrome (Tyuratam)",
-                "agency": "MVS",
+                "propellant": {
+                    "Hypergolic": 0.0,
+                    "Kerosene": 132.365,
+                    "Solid": 0.0,
+                    "Hydrogen": 0.0,
+                    "Methane": 0.0
+                },
                 "emissions": {
                     "BC": [
                         0.038428,
@@ -1215,8 +1261,7 @@
                         0.0,
                         0.0
                     ]
-                },
-                "propellant": 132.365
+                }
             }
         ],
         "reentries": [
@@ -1347,7 +1392,13 @@
                 "lon": -80.54,
                 "smc": false,
                 "location": "Cape Canaveral",
-                "agency": "NRL",
+                "propellant": {
+                    "Hypergolic": 1.471002,
+                    "Kerosene": 6.889,
+                    "Solid": 0.276,
+                    "Hydrogen": 0.0,
+                    "Methane": 0.0
+                },
                 "emissions": {
                     "BC": [
                         0.003201,
@@ -1403,8 +1454,7 @@
                         0.0,
                         0.027373
                     ]
-                },
-                "propellant": 8.636002
+                }
             }
         ],
         "reentries": [
@@ -1502,7 +1552,13 @@
                 "lon": 63.0,
                 "smc": false,
                 "location": "Baikonur Cosmodrome (Tyuratam)",
-                "agency": "MVS",
+                "propellant": {
+                    "Hypergolic": 0.0,
+                    "Kerosene": 132.365,
+                    "Solid": 0.0,
+                    "Hydrogen": 0.0,
+                    "Methane": 0.0
+                },
                 "emissions": {
                     "BC": [
                         0.038428,
@@ -1558,8 +1614,7 @@
                         0.0,
                         0.0
                     ]
-                },
-                "propellant": 132.365
+                }
             }
         ],
         "reentries": [
@@ -1690,7 +1745,13 @@
                 "lon": -80.54,
                 "smc": false,
                 "location": "Cape Canaveral",
-                "agency": "ABMA",
+                "propellant": {
+                    "Hypergolic": 0.0,
+                    "Kerosene": 48.988,
+                    "Solid": 0.314993,
+                    "Hydrogen": 0.0,
+                    "Methane": 0.0
+                },
                 "emissions": {
                     "BC": [
                         0.023941,
@@ -1746,8 +1807,7 @@
                         0.006943,
                         0.024297
                     ]
-                },
-                "propellant": 49.302993
+                }
             }
         ],
         "reentries": [
@@ -1888,7 +1948,13 @@
                 "lon": -120.62,
                 "smc": false,
                 "location": "Vandenberg Space Force Base",
-                "agency": "USAF BMD",
+                "propellant": {
+                    "Hypergolic": 3.4,
+                    "Kerosene": 45.67351,
+                    "Solid": 0.0,
+                    "Hydrogen": 0.0,
+                    "Methane": 0.0
+                },
                 "emissions": {
                     "BC": [
                         0.015661,
@@ -1944,8 +2010,7 @@
                         0.0,
                         0.0
                     ]
-                },
-                "propellant": 49.07351
+                }
             }
         ],
         "reentries": [
@@ -1981,7 +2046,13 @@
                 "lon": -120.62,
                 "smc": false,
                 "location": "Vandenberg Space Force Base",
-                "agency": "USAF BMD",
+                "propellant": {
+                    "Hypergolic": 3.4,
+                    "Kerosene": 45.67351,
+                    "Solid": 0.0,
+                    "Hydrogen": 0.0,
+                    "Methane": 0.0
+                },
                 "emissions": {
                     "BC": [
                         0.015661,
@@ -2037,8 +2108,7 @@
                         0.0,
                         0.0
                     ]
-                },
-                "propellant": 49.07351
+                }
             }
         ],
         "reentries": [

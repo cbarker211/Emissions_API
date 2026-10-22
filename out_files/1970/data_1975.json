@@ -206,7 +206,13 @@
                 "lon": 63.0,
                 "smc": false,
                 "location": "Baikonur Cosmodrome (Tyuratam)",
-                "agency": "RVSN",
+                "propellant": {
+                    "Hypergolic": 0.0,
+                    "Kerosene": 283.655,
+                    "Solid": 0.0,
+                    "Hydrogen": 0.0,
+                    "Methane": 0.0
+                },
                 "emissions": {
                     "BC": [
                         0.091916,
@@ -262,8 +268,7 @@
                         0.0,
                         0.0
                     ]
-                },
-                "propellant": 283.655
+                }
             }
         ],
         "reentries": [
@@ -585,7 +590,13 @@
                 "lon": 63.0,
                 "smc": false,
                 "location": "Baikonur Cosmodrome (Tyuratam)",
-                "agency": "RVSN",
+                "propellant": {
+                    "Hypergolic": 0.0,
+                    "Kerosene": 154.15,
+                    "Solid": 0.0,
+                    "Hydrogen": 0.0,
+                    "Methane": 0.0
+                },
                 "emissions": {
                     "BC": [
                         0.040225,
@@ -641,8 +652,7 @@
                         0.0,
                         0.0
                     ]
-                },
-                "propellant": 154.15
+                }
             }
         ],
         "reentries": [
@@ -792,7 +802,13 @@
                 "lon": 40.5,
                 "smc": false,
                 "location": "Plesetsk Cosmodrome",
-                "agency": "RVSN",
+                "propellant": {
+                    "Hypergolic": 7.76,
+                    "Kerosene": 29.790801,
+                    "Solid": 0.0,
+                    "Hydrogen": 0.0,
+                    "Methane": 0.0
+                },
                 "emissions": {
                     "BC": [
                         0.010179,
@@ -848,8 +864,7 @@
                         0.0,
                         0.0
                     ]
-                },
-                "propellant": 37.550801
+                }
             }
         ],
         "reentries": [
@@ -980,7 +995,13 @@
                 "lon": -120.62,
                 "smc": false,
                 "location": "Vandenberg Space Force Base",
-                "agency": "GSFC",
+                "propellant": {
+                    "Hypergolic": 4.555,
+                    "Kerosene": 80.038399,
+                    "Solid": 30.915,
+                    "Hydrogen": 0.0,
+                    "Methane": 0.0
+                },
                 "emissions": {
                     "BC": [
                         0.029791,
@@ -1036,8 +1057,7 @@
                         0.554897,
                         0.0
                     ]
-                },
-                "propellant": 115.508399
+                }
             }
         ],
         "reentries": [
@@ -1149,7 +1169,13 @@
                 "lon": 40.5,
                 "smc": false,
                 "location": "Plesetsk Cosmodrome",
-                "agency": "RVSN",
+                "propellant": {
+                    "Hypergolic": 0.0,
+                    "Kerosene": 154.15,
+                    "Solid": 0.0,
+                    "Hydrogen": 0.0,
+                    "Methane": 0.0
+                },
                 "emissions": {
                     "BC": [
                         0.040087,
@@ -1205,8 +1231,7 @@
                         0.0,
                         0.0
                     ]
-                },
-                "propellant": 154.15
+                }
             }
         ],
         "reentries": [
@@ -1504,7 +1529,13 @@
                 "lon": 40.5,
                 "smc": false,
                 "location": "Plesetsk Cosmodrome",
-                "agency": "RVSN",
+                "propellant": {
+                    "Hypergolic": 7.76,
+                    "Kerosene": 29.790801,
+                    "Solid": 0.0,
+                    "Hydrogen": 0.0,
+                    "Methane": 0.0
+                },
                 "emissions": {
                     "BC": [
                         0.010179,
@@ -1560,8 +1591,7 @@
                         0.0,
                         0.0
                     ]
-                },
-                "propellant": 37.550801
+                }
             }
         ],
         "reentries": [
@@ -1697,7 +1727,13 @@
                 "lon": 40.5,
                 "smc": false,
                 "location": "Plesetsk Cosmodrome",
-                "agency": "RVSN",
+                "propellant": {
+                    "Hypergolic": 0.0,
+                    "Kerosene": 288.553,
+                    "Solid": 0.0,
+                    "Hydrogen": 0.0,
+                    "Methane": 0.0
+                },
                 "emissions": {
                     "BC": [
                         0.101509,
@@ -1753,8 +1789,7 @@
                         0.0,
                         0.0
                     ]
-                },
-                "propellant": 288.553
+                }
             }
         ],
         "reentries": [
@@ -1928,7 +1963,13 @@
                 "lon": 40.5,
                 "smc": false,
                 "location": "Plesetsk Cosmodrome",
-                "agency": "RVSN",
+                "propellant": {
+                    "Hypergolic": 100.567201,
+                    "Kerosene": 0.0,
+                    "Solid": 0.0,
+                    "Hydrogen": 0.0,
+                    "Methane": 0.0
+                },
                 "emissions": {
                     "BC": [
                         0.020353,
@@ -1984,8 +2025,7 @@
                         0.0,
                         0.0
                     ]
-                },
-                "propellant": 100.567201
+                }
             }
         ],
         "reentries": [
@@ -2059,7 +2099,13 @@
                 "lon": 40.5,
                 "smc": false,
                 "location": "Plesetsk Cosmodrome",
-                "agency": "RVSN",
+                "propellant": {
+                    "Hypergolic": 0.0,
+                    "Kerosene": 289.795,
+                    "Solid": 0.0,
+                    "Hydrogen": 0.0,
+                    "Methane": 0.0
+                },
                 "emissions": {
                     "BC": [
                         0.101509,
@@ -2115,8 +2161,7 @@
                         0.0,
                         0.0
                     ]
-                },
-                "propellant": 289.795
+                }
             },
             {
                 "date": "1975-02-06T16:35:00Z",
@@ -2127,7 +2172,13 @@
                 "lon": -52.7517,
                 "smc": false,
                 "location": "Centre Spatial Guyanais, Kourou, Guyane Francaise",
-                "agency": "CNES",
+                "propellant": {
+                    "Hypergolic": 17.0,
+                    "Kerosene": 0.0,
+                    "Solid": 4.680007,
+                    "Hydrogen": 0.0,
+                    "Methane": 0.0
+                },
                 "emissions": {
                     "BC": [
                         0.005745,
@@ -2183,8 +2234,7 @@
                         0.110046,
                         0.354104
                     ]
-                },
-                "propellant": 21.680007
+                }
             },
             {
                 "date": "1975-02-06T22:04:00Z",
@@ -2195,7 +2245,13 @@
                 "lon": -80.54,
                 "smc": false,
                 "location": "Cape Canaveral",
-                "agency": "GSFC",
+                "propellant": {
+                    "Hypergolic": 4.555,
+                    "Kerosene": 80.038399,
+                    "Solid": 31.932,
+                    "Hydrogen": 0.0,
+                    "Methane": 0.0
+                },
                 "emissions": {
                     "BC": [
                         0.031168,
@@ -2251,8 +2307,7 @@
                         0.17996,
                         0.100864
                     ]
-                },
-                "propellant": 116.525399
+                }
             }
         ],
         "reentries": [
@@ -2726,7 +2781,13 @@
                 "lon": 40.5,
                 "smc": false,
                 "location": "Plesetsk Cosmodrome",
-                "agency": "RVSN",
+                "propellant": {
+                    "Hypergolic": 100.567201,
+                    "Kerosene": 0.0,
+                    "Solid": 0.0,
+                    "Hydrogen": 0.0,
+                    "Methane": 0.0
+                },
                 "emissions": {
                     "BC": [
                         0.020353,
@@ -2782,8 +2843,7 @@
                         0.0,
                         0.0
                     ]
-                },
-                "propellant": 100.567201
+                }
             },
             {
                 "date": "1975-02-12T14:30:00Z",
@@ -2794,7 +2854,13 @@
                 "lon": 40.5,
                 "smc": false,
                 "location": "Plesetsk Cosmodrome",
-                "agency": "RVSN",
+                "propellant": {
+                    "Hypergolic": 0.0,
+                    "Kerosene": 154.15,
+                    "Solid": 0.0,
+                    "Hydrogen": 0.0,
+                    "Methane": 0.0
+                },
                 "emissions": {
                     "BC": [
                         0.040087,
@@ -2850,8 +2916,7 @@
                         0.0,
                         0.0
                     ]
-                },
-                "propellant": 154.15
+                }
             }
         ],
         "reentries": [
@@ -3235,7 +3300,13 @@
                 "lon": 131.079,
                 "smc": false,
                 "location": "Kagoshima Space Center (Uchinoura)",
-                "agency": "ISAS",
+                "propellant": {
+                    "Hypergolic": 0.0,
+                    "Kerosene": 0.0,
+                    "Solid": 31.336,
+                    "Hydrogen": 0.0,
+                    "Methane": 0.0
+                },
                 "emissions": {
                     "BC": [
                         0.004701,
@@ -3291,8 +3362,7 @@
                         0.408357,
                         1.416242
                     ]
-                },
-                "propellant": 31.336
+                }
             }
         ],
         "reentries": [
@@ -3447,7 +3517,13 @@
                 "lon": 63.0,
                 "smc": false,
                 "location": "Baikonur Cosmodrome (Tyuratam)",
-                "agency": "RVSN",
+                "propellant": {
+                    "Hypergolic": 0.0,
+                    "Kerosene": 154.15,
+                    "Solid": 0.0,
+                    "Hydrogen": 0.0,
+                    "Methane": 0.0
+                },
                 "emissions": {
                     "BC": [
                         0.040225,
@@ -3503,8 +3579,7 @@
                         0.0,
                         0.0
                     ]
-                },
-                "propellant": 154.15
+                }
             }
         ],
         "reentries": [
@@ -3673,7 +3748,13 @@
                 "lon": 40.5,
                 "smc": false,
                 "location": "Plesetsk Cosmodrome",
-                "agency": "RVSN",
+                "propellant": {
+                    "Hypergolic": 100.567201,
+                    "Kerosene": 0.0,
+                    "Solid": 0.0,
+                    "Hydrogen": 0.0,
+                    "Methane": 0.0
+                },
                 "emissions": {
                     "BC": [
                         0.020353,
@@ -3729,8 +3810,7 @@
                         0.0,
                         0.0
                     ]
-                },
-                "propellant": 100.567201
+                }
             }
         ],
         "reentries": [
@@ -3957,7 +4037,13 @@
                 "lon": -120.61,
                 "smc": false,
                 "location": "Vandenberg Space Force Base",
-                "agency": "SAMSO",
+                "propellant": {
+                    "Hypergolic": 143.898858,
+                    "Kerosene": 0.0,
+                    "Solid": 0.0,
+                    "Hydrogen": 0.0,
+                    "Methane": 0.0
+                },
                 "emissions": {
                     "BC": [
                         0.037417,
@@ -4013,8 +4099,7 @@
                         0.0,
                         0.0
                     ]
-                },
-                "propellant": 143.898858
+                }
             }
         ],
         "reentries": [
@@ -4107,7 +4192,13 @@
                 "lon": 63.0,
                 "smc": false,
                 "location": "Baikonur Cosmodrome (Tyuratam)",
-                "agency": "RVSN",
+                "propellant": {
+                    "Hypergolic": 0.0,
+                    "Kerosene": 154.15,
+                    "Solid": 0.0,
+                    "Hydrogen": 0.0,
+                    "Methane": 0.0
+                },
                 "emissions": {
                     "BC": [
                         0.040225,
@@ -4163,8 +4254,7 @@
                         0.0,
                         0.0
                     ]
-                },
-                "propellant": 154.15
+                }
             }
         ],
         "reentries": [
@@ -4538,7 +4628,13 @@
                 "lon": 40.5,
                 "smc": false,
                 "location": "Plesetsk Cosmodrome",
-                "agency": "RVSN",
+                "propellant": {
+                    "Hypergolic": 0.0,
+                    "Kerosene": 283.655,
+                    "Solid": 0.0,
+                    "Hydrogen": 0.0,
+                    "Methane": 0.0
+                },
                 "emissions": {
                     "BC": [
                         0.091599,
@@ -4594,8 +4690,7 @@
                         0.0,
                         0.0
                     ]
-                },
-                "propellant": 283.655
+                }
             }
         ],
         "reentries": [
@@ -4893,7 +4988,13 @@
                 "lon": 40.5,
                 "smc": false,
                 "location": "Plesetsk Cosmodrome",
-                "agency": "RVSN",
+                "propellant": {
+                    "Hypergolic": 0.0,
+                    "Kerosene": 154.15,
+                    "Solid": 0.0,
+                    "Hydrogen": 0.0,
+                    "Methane": 0.0
+                },
                 "emissions": {
                     "BC": [
                         0.040087,
@@ -4949,8 +5050,7 @@
                         0.0,
                         0.0
                     ]
-                },
-                "propellant": 154.15
+                }
             }
         ],
         "reentries": [
@@ -5138,7 +5238,13 @@
                 "lon": 63.0,
                 "smc": false,
                 "location": "Baikonur Cosmodrome (Tyuratam)",
-                "agency": "RVSN",
+                "propellant": {
+                    "Hypergolic": 0.0,
+                    "Kerosene": 154.15,
+                    "Solid": 0.0,
+                    "Hydrogen": 0.0,
+                    "Methane": 0.0
+                },
                 "emissions": {
                     "BC": [
                         0.040225,
@@ -5194,8 +5300,7 @@
                         0.0,
                         0.0
                     ]
-                },
-                "propellant": 154.15
+                }
             },
             {
                 "date": "1975-03-27T14:30:00Z",
@@ -5206,7 +5311,13 @@
                 "lon": 40.5,
                 "smc": false,
                 "location": "Plesetsk Cosmodrome",
-                "agency": "RVSN",
+                "propellant": {
+                    "Hypergolic": 100.567201,
+                    "Kerosene": 0.0,
+                    "Solid": 0.0,
+                    "Hydrogen": 0.0,
+                    "Methane": 0.0
+                },
                 "emissions": {
                     "BC": [
                         0.020353,
@@ -5262,8 +5373,7 @@
                         0.0,
                         0.0
                     ]
-                },
-                "propellant": 100.567201
+                }
             }
         ],
         "reentries": [
@@ -5623,7 +5733,13 @@
                 "lon": 40.5,
                 "smc": false,
                 "location": "Plesetsk Cosmodrome",
-                "agency": "RVSN",
+                "propellant": {
+                    "Hypergolic": 0.0,
+                    "Kerosene": 139.36,
+                    "Solid": 0.0,
+                    "Hydrogen": 0.0,
+                    "Methane": 0.0
+                },
                 "emissions": {
                     "BC": [
                         0.040087,
@@ -5679,8 +5795,7 @@
                         0.0,
                         0.0
                     ]
-                },
-                "propellant": 139.36
+                }
             }
         ],
         "reentries": [
@@ -5868,7 +5983,13 @@
                 "lon": 63.0,
                 "smc": false,
                 "location": "Baikonur Cosmodrome (Tyuratam)",
-                "agency": "RVSN",
+                "propellant": {
+                    "Hypergolic": 167.20319,
+                    "Kerosene": 0.0,
+                    "Solid": 0.0,
+                    "Hydrogen": 0.0,
+                    "Methane": 0.0
+                },
                 "emissions": {
                     "BC": [
                         0.0296,
@@ -5924,8 +6045,7 @@
                         0.0,
                         0.0
                     ]
-                },
-                "propellant": 167.20319
+                }
             }
         ],
         "reentries": [
@@ -6147,7 +6267,13 @@
                 "lon": 63.0,
                 "smc": false,
                 "location": "Baikonur Cosmodrome (Tyuratam)",
-                "agency": "RVSN",
+                "propellant": {
+                    "Hypergolic": 167.20319,
+                    "Kerosene": 0.0,
+                    "Solid": 0.0,
+                    "Hydrogen": 0.0,
+                    "Methane": 0.0
+                },
                 "emissions": {
                     "BC": [
                         0.0296,
@@ -6203,8 +6329,7 @@
                         0.0,
                         0.0
                     ]
-                },
-                "propellant": 167.20319
+                }
             }
         ],
         "reentries": [
@@ -6354,7 +6479,13 @@
                 "lon": 40.5,
                 "smc": false,
                 "location": "Plesetsk Cosmodrome",
-                "agency": "RVSN",
+                "propellant": {
+                    "Hypergolic": 7.76,
+                    "Kerosene": 29.790801,
+                    "Solid": 0.0,
+                    "Hydrogen": 0.0,
+                    "Methane": 0.0
+                },
                 "emissions": {
                     "BC": [
                         0.010179,
@@ -6410,8 +6541,7 @@
                         0.0,
                         0.0
                     ]
-                },
-                "propellant": 37.550801
+                }
             }
         ],
         "reentries": [
@@ -6504,7 +6634,13 @@
                 "lon": -120.62,
                 "smc": false,
                 "location": "Vandenberg Space Force Base",
-                "agency": "GSFC",
+                "propellant": {
+                    "Hypergolic": 4.555,
+                    "Kerosene": 80.039399,
+                    "Solid": 13.74,
+                    "Hydrogen": 0.0,
+                    "Methane": 0.0
+                },
                 "emissions": {
                     "BC": [
                         0.024667,
@@ -6560,8 +6696,7 @@
                         0.246621,
                         0.0
                     ]
-                },
-                "propellant": 98.334399
+                }
             }
         ],
         "reentries": [
@@ -6811,7 +6946,13 @@
                 "lon": 40.5,
                 "smc": false,
                 "location": "Plesetsk Cosmodrome",
-                "agency": "RVSN",
+                "propellant": {
+                    "Hypergolic": 100.567201,
+                    "Kerosene": 0.0,
+                    "Solid": 0.0,
+                    "Hydrogen": 0.0,
+                    "Methane": 0.0
+                },
                 "emissions": {
                     "BC": [
                         0.020353,
@@ -6867,8 +7008,7 @@
                         0.0,
                         0.0
                     ]
-                },
-                "propellant": 100.567201
+                }
             }
         ],
         "reentries": [
@@ -7009,7 +7149,13 @@
                 "lon": 40.5,
                 "smc": false,
                 "location": "Plesetsk Cosmodrome",
-                "agency": "RVSN",
+                "propellant": {
+                    "Hypergolic": 0.0,
+                    "Kerosene": 288.856,
+                    "Solid": 0.0,
+                    "Hydrogen": 0.0,
+                    "Methane": 0.0
+                },
                 "emissions": {
                     "BC": [
                         0.101509,
@@ -7065,8 +7211,7 @@
                         0.0,
                         0.0
                     ]
-                },
-                "propellant": 288.856
+                }
             }
         ],
         "reentries": [
@@ -7297,7 +7442,13 @@
                 "lon": 63.0,
                 "smc": false,
                 "location": "Baikonur Cosmodrome (Tyuratam)",
-                "agency": "RVSN",
+                "propellant": {
+                    "Hypergolic": 0.0,
+                    "Kerosene": 283.655,
+                    "Solid": 0.0,
+                    "Hydrogen": 0.0,
+                    "Methane": 0.0
+                },
                 "emissions": {
                     "BC": [
                         0.091916,
@@ -7353,8 +7504,7 @@
                         0.0,
                         0.0
                     ]
-                },
-                "propellant": 283.655
+                }
             }
         ],
         "reentries": [
@@ -7504,7 +7654,13 @@
                 "lon": 40.5,
                 "smc": false,
                 "location": "Plesetsk Cosmodrome",
-                "agency": "RVSN",
+                "propellant": {
+                    "Hypergolic": 0.0,
+                    "Kerosene": 154.15,
+                    "Solid": 0.0,
+                    "Hydrogen": 0.0,
+                    "Methane": 0.0
+                },
                 "emissions": {
                     "BC": [
                         0.040087,
@@ -7560,8 +7716,7 @@
                         0.0,
                         0.0
                     ]
-                },
-                "propellant": 154.15
+                }
             },
             {
                 "date": "1975-04-18T16:45:00Z",
@@ -7572,7 +7727,13 @@
                 "lon": -120.61,
                 "smc": false,
                 "location": "Vandenberg Space Force Base",
-                "agency": "SAMSO",
+                "propellant": {
+                    "Hypergolic": 143.898858,
+                    "Kerosene": 0.0,
+                    "Solid": 0.0,
+                    "Hydrogen": 0.0,
+                    "Methane": 0.0
+                },
                 "emissions": {
                     "BC": [
                         0.037417,
@@ -7628,8 +7789,7 @@
                         0.0,
                         0.0
                     ]
-                },
-                "propellant": 143.898858
+                }
             }
         ],
         "reentries": [
@@ -7836,7 +7996,13 @@
                 "lon": 45.8,
                 "smc": false,
                 "location": "Kapustin Yar MSC",
-                "agency": "RVSN",
+                "propellant": {
+                    "Hypergolic": 100.562328,
+                    "Kerosene": 0.0,
+                    "Solid": 0.0,
+                    "Hydrogen": 0.0,
+                    "Methane": 0.0
+                },
                 "emissions": {
                     "BC": [
                         0.020423,
@@ -7892,8 +8058,7 @@
                         0.0,
                         0.0
                     ]
-                },
-                "propellant": 100.562328
+                }
             }
         ],
         "reentries": [
@@ -8034,7 +8199,13 @@
                 "lon": 40.5,
                 "smc": false,
                 "location": "Plesetsk Cosmodrome",
-                "agency": "RVSN",
+                "propellant": {
+                    "Hypergolic": 100.567201,
+                    "Kerosene": 0.0,
+                    "Solid": 0.0,
+                    "Hydrogen": 0.0,
+                    "Methane": 0.0
+                },
                 "emissions": {
                     "BC": [
                         0.020353,
@@ -8090,8 +8261,7 @@
                         0.0,
                         0.0
                     ]
-                },
-                "propellant": 100.567201
+                }
             }
         ],
         "reentries": [
@@ -8208,7 +8378,13 @@
                 "lon": 40.5,
                 "smc": false,
                 "location": "Plesetsk Cosmodrome",
-                "agency": "RVSN",
+                "propellant": {
+                    "Hypergolic": 0.0,
+                    "Kerosene": 154.15,
+                    "Solid": 0.0,
+                    "Hydrogen": 0.0,
+                    "Methane": 0.0
+                },
                 "emissions": {
                     "BC": [
                         0.040087,
@@ -8264,8 +8440,7 @@
                         0.0,
                         0.0
                     ]
-                },
-                "propellant": 154.15
+                }
             }
         ],
         "reentries": [
@@ -8544,7 +8719,13 @@
                 "lon": 40.5,
                 "smc": false,
                 "location": "Plesetsk Cosmodrome",
-                "agency": "RVSN",
+                "propellant": {
+                    "Hypergolic": 0.0,
+                    "Kerosene": 288.856,
+                    "Solid": 0.0,
+                    "Hydrogen": 0.0,
+                    "Methane": 0.0
+                },
                 "emissions": {
                     "BC": [
                         0.101509,
@@ -8600,8 +8781,7 @@
                         0.0,
                         0.0
                     ]
-                },
-                "propellant": 288.856
+                }
             }
         ],
         "reentries": [
@@ -9023,7 +9203,13 @@
                 "lon": 40.2134,
                 "smc": false,
                 "location": "San Marco Launch Complex, Formosa Bay, Kenya",
-                "agency": "CRA",
+                "propellant": {
+                    "Hypergolic": 0.0,
+                    "Kerosene": 0.0,
+                    "Solid": 17.578896,
+                    "Hydrogen": 0.0,
+                    "Methane": 0.0
+                },
                 "emissions": {
                     "BC": [
                         0.004514,
@@ -9079,8 +9265,7 @@
                         0.133893,
                         0.380629
                     ]
-                },
-                "propellant": 17.578896
+                }
             },
             {
                 "date": "1975-05-07T23:35:26Z",
@@ -9091,7 +9276,13 @@
                 "lon": -80.54,
                 "smc": false,
                 "location": "Cape Canaveral",
-                "agency": "GSFC",
+                "propellant": {
+                    "Hypergolic": 4.555,
+                    "Kerosene": 80.038399,
+                    "Solid": 31.832,
+                    "Hydrogen": 0.0,
+                    "Methane": 0.0
+                },
                 "emissions": {
                     "BC": [
                         0.031168,
@@ -9147,8 +9338,7 @@
                         0.17996,
                         0.090946
                     ]
-                },
-                "propellant": 116.425399
+                }
             }
         ],
         "reentries": [
@@ -9503,7 +9693,13 @@
                 "lon": -52.7517,
                 "smc": false,
                 "location": "Centre Spatial Guyanais, Kourou, Guyane Francaise",
-                "agency": "CNES",
+                "propellant": {
+                    "Hypergolic": 17.0,
+                    "Kerosene": 0.0,
+                    "Solid": 4.680007,
+                    "Hydrogen": 0.0,
+                    "Methane": 0.0
+                },
                 "emissions": {
                     "BC": [
                         0.005745,
@@ -9559,8 +9755,7 @@
                         0.110046,
                         0.354104
                     ]
-                },
-                "propellant": 21.680007
+                }
             }
         ],
         "reentries": [
@@ -9653,7 +9848,13 @@
                 "lon": -80.54,
                 "smc": false,
                 "location": "Cape Canaveral",
-                "agency": "SAMSO",
+                "propellant": {
+                    "Hypergolic": 148.147778,
+                    "Kerosene": 0.0,
+                    "Solid": 384.8,
+                    "Hydrogen": 0.0,
+                    "Methane": 0.0
+                },
                 "emissions": {
                     "BC": [
                         0.15271,
@@ -9709,8 +9910,7 @@
                         2.239964,
                         0.0
                     ]
-                },
-                "propellant": 532.947778
+                }
             }
         ],
         "reentries": [
@@ -9841,7 +10041,13 @@
                 "lon": 63.0,
                 "smc": false,
                 "location": "Baikonur Cosmodrome (Tyuratam)",
-                "agency": "RVSN",
+                "propellant": {
+                    "Hypergolic": 0.0,
+                    "Kerosene": 154.15,
+                    "Solid": 0.0,
+                    "Hydrogen": 0.0,
+                    "Methane": 0.0
+                },
                 "emissions": {
                     "BC": [
                         0.040225,
@@ -9897,8 +10103,7 @@
                         0.0,
                         0.0
                     ]
-                },
-                "propellant": 154.15
+                }
             }
         ],
         "reentries": [
@@ -10086,7 +10291,13 @@
                 "lon": -80.54,
                 "smc": false,
                 "location": "Cape Canaveral",
-                "agency": "NASA LeRC",
+                "propellant": {
+                    "Hypergolic": 0.0,
+                    "Kerosene": 124.49751,
+                    "Solid": 0.0,
+                    "Hydrogen": 13.67,
+                    "Methane": 0.0
+                },
                 "emissions": {
                     "BC": [
                         0.031992,
@@ -10142,8 +10353,7 @@
                         0.0,
                         0.0
                     ]
-                },
-                "propellant": 138.16751
+                }
             }
         ],
         "reentries": [
@@ -10236,7 +10446,13 @@
                 "lon": -120.62,
                 "smc": false,
                 "location": "Vandenberg Space Force Base",
-                "agency": "ADCOM 10ADS",
+                "propellant": {
+                    "Hypergolic": 0.0,
+                    "Kerosene": 45.675,
+                    "Solid": 0.912001,
+                    "Hydrogen": 0.0,
+                    "Methane": 0.0
+                },
                 "emissions": {
                     "BC": [
                         0.021224,
@@ -10292,8 +10508,7 @@
                         0.01747,
                         0.07298
                     ]
-                },
-                "propellant": 46.587001
+                }
             },
             {
                 "date": "1975-05-24T14:58:10Z",
@@ -10304,7 +10519,13 @@
                 "lon": 63.0,
                 "smc": false,
                 "location": "Baikonur Cosmodrome (Tyuratam)",
-                "agency": "RVSN",
+                "propellant": {
+                    "Hypergolic": 0.0,
+                    "Kerosene": 283.655,
+                    "Solid": 0.0,
+                    "Hydrogen": 0.0,
+                    "Methane": 0.0
+                },
                 "emissions": {
                     "BC": [
                         0.091916,
@@ -10360,8 +10581,7 @@
                         0.0,
                         0.0
                     ]
-                },
-                "propellant": 283.655
+                }
             }
         ],
         "reentries": [
@@ -10749,7 +10969,13 @@
                 "lon": 40.5,
                 "smc": false,
                 "location": "Plesetsk Cosmodrome",
-                "agency": "RVSN",
+                "propellant": {
+                    "Hypergolic": 100.567201,
+                    "Kerosene": 0.0,
+                    "Solid": 0.0,
+                    "Hydrogen": 0.0,
+                    "Methane": 0.0
+                },
                 "emissions": {
                     "BC": [
                         0.020353,
@@ -10805,8 +11031,7 @@
                         0.0,
                         0.0
                     ]
-                },
-                "propellant": 100.567201
+                }
             },
             {
                 "date": "1975-05-28T07:29:59Z",
@@ -10817,7 +11042,13 @@
                 "lon": 63.0,
                 "smc": false,
                 "location": "Baikonur Cosmodrome (Tyuratam)",
-                "agency": "RVSN",
+                "propellant": {
+                    "Hypergolic": 0.0,
+                    "Kerosene": 154.15,
+                    "Solid": 0.0,
+                    "Hydrogen": 0.0,
+                    "Methane": 0.0
+                },
                 "emissions": {
                     "BC": [
                         0.040225,
@@ -10873,8 +11104,7 @@
                         0.0,
                         0.0
                     ]
-                },
-                "propellant": 154.15
+                }
             }
         ],
         "reentries": [
@@ -11105,7 +11335,13 @@
                 "lon": 40.5,
                 "smc": false,
                 "location": "Plesetsk Cosmodrome",
-                "agency": "RVSN",
+                "propellant": {
+                    "Hypergolic": 0.0,
+                    "Kerosene": 154.15,
+                    "Solid": 0.0,
+                    "Hydrogen": 0.0,
+                    "Methane": 0.0
+                },
                 "emissions": {
                     "BC": [
                         0.040087,
@@ -11161,8 +11397,7 @@
                         0.0,
                         0.0
                     ]
-                },
-                "propellant": 154.15
+                }
             }
         ],
         "reentries": [
@@ -11412,7 +11647,13 @@
                 "lon": 40.5,
                 "smc": false,
                 "location": "Plesetsk Cosmodrome",
-                "agency": "RVSN",
+                "propellant": {
+                    "Hypergolic": 0.0,
+                    "Kerosene": 154.15,
+                    "Solid": 0.0,
+                    "Hydrogen": 0.0,
+                    "Methane": 0.0
+                },
                 "emissions": {
                     "BC": [
                         0.040087,
@@ -11468,8 +11709,7 @@
                         0.0,
                         0.0
                     ]
-                },
-                "propellant": 154.15
+                }
             }
         ],
         "reentries": [
@@ -11719,7 +11959,13 @@
                 "lon": 40.5,
                 "smc": false,
                 "location": "Plesetsk Cosmodrome",
-                "agency": "RVSN",
+                "propellant": {
+                    "Hypergolic": 0.0,
+                    "Kerosene": 288.856,
+                    "Solid": 0.0,
+                    "Hydrogen": 0.0,
+                    "Methane": 0.0
+                },
                 "emissions": {
                     "BC": [
                         0.101509,
@@ -11775,8 +12021,7 @@
                         0.0,
                         0.0
                     ]
-                },
-                "propellant": 288.856
+                }
             }
         ],
         "reentries": [
@@ -11988,7 +12233,13 @@
                 "lon": 63.0,
                 "smc": false,
                 "location": "Baikonur Cosmodrome (Tyuratam)",
-                "agency": "RVSN",
+                "propellant": {
+                    "Hypergolic": 621.471124,
+                    "Kerosene": 11.6,
+                    "Solid": 0.0,
+                    "Hydrogen": 0.0,
+                    "Methane": 0.0
+                },
                 "emissions": {
                     "BC": [
                         0.148924,
@@ -12044,8 +12295,7 @@
                         0.0,
                         0.0
                     ]
-                },
-                "propellant": 633.071124
+                }
             },
             {
                 "date": "1975-06-08T18:30:00Z",
@@ -12056,7 +12306,13 @@
                 "lon": -120.61,
                 "smc": false,
                 "location": "Vandenberg Space Force Base",
-                "agency": "SAMSO",
+                "propellant": {
+                    "Hypergolic": 137.652222,
+                    "Kerosene": 0.0,
+                    "Solid": 384.8,
+                    "Hydrogen": 0.0,
+                    "Methane": 0.0
+                },
                 "emissions": {
                     "BC": [
                         0.135105,
@@ -12112,8 +12368,7 @@
                         6.934862,
                         0.0
                     ]
-                },
-                "propellant": 522.452222
+                }
             }
         ],
         "reentries": [
@@ -12582,7 +12837,13 @@
                 "lon": -120.62,
                 "smc": false,
                 "location": "Vandenberg Space Force Base",
-                "agency": "GSFC",
+                "propellant": {
+                    "Hypergolic": 4.555,
+                    "Kerosene": 80.038399,
+                    "Solid": 30.915,
+                    "Hydrogen": 0.0,
+                    "Methane": 0.0
+                },
                 "emissions": {
                     "BC": [
                         0.029791,
@@ -12638,8 +12899,7 @@
                         0.554897,
                         0.0
                     ]
-                },
-                "propellant": 115.508399
+                }
             },
             {
                 "date": "1975-06-12T12:30:27Z",
@@ -12650,7 +12910,13 @@
                 "lon": 40.5,
                 "smc": false,
                 "location": "Plesetsk Cosmodrome",
-                "agency": "RVSN",
+                "propellant": {
+                    "Hypergolic": 0.0,
+                    "Kerosene": 283.655,
+                    "Solid": 0.0,
+                    "Hydrogen": 0.0,
+                    "Methane": 0.0
+                },
                 "emissions": {
                     "BC": [
                         0.091599,
@@ -12706,8 +12972,7 @@
                         0.0,
                         0.0
                     ]
-                },
-                "propellant": 283.655
+                }
             }
         ],
         "reentries": [
@@ -12933,7 +13198,13 @@
                 "lon": 63.0,
                 "smc": false,
                 "location": "Baikonur Cosmodrome (Tyuratam)",
-                "agency": "RVSN",
+                "propellant": {
+                    "Hypergolic": 621.471124,
+                    "Kerosene": 11.6,
+                    "Solid": 0.0,
+                    "Hydrogen": 0.0,
+                    "Methane": 0.0
+                },
                 "emissions": {
                     "BC": [
                         0.148924,
@@ -12989,8 +13260,7 @@
                         0.0,
                         0.0
                     ]
-                },
-                "propellant": 633.071124
+                }
             }
         ],
         "reentries": [
@@ -13307,7 +13577,13 @@
                 "lon": -80.54,
                 "smc": false,
                 "location": "Cape Canaveral",
-                "agency": "SAMSO",
+                "propellant": {
+                    "Hypergolic": 6.25,
+                    "Kerosene": 138.297234,
+                    "Solid": 0.0,
+                    "Hydrogen": 0.0,
+                    "Methane": 0.0
+                },
                 "emissions": {
                     "BC": [
                         0.035538,
@@ -13363,8 +13639,7 @@
                         0.0,
                         0.0
                     ]
-                },
-                "propellant": 144.547234
+                }
             }
         ],
         "reentries": [
@@ -13538,7 +13813,13 @@
                 "lon": 40.5,
                 "smc": false,
                 "location": "Plesetsk Cosmodrome",
-                "agency": "RVSN",
+                "propellant": {
+                    "Hypergolic": 0.0,
+                    "Kerosene": 139.36,
+                    "Solid": 0.0,
+                    "Hydrogen": 0.0,
+                    "Methane": 0.0
+                },
                 "emissions": {
                     "BC": [
                         0.040087,
@@ -13594,8 +13875,7 @@
                         0.0,
                         0.0
                     ]
-                },
-                "propellant": 139.36
+                }
             }
         ],
         "reentries": [
@@ -13783,7 +14063,13 @@
                 "lon": -80.54,
                 "smc": false,
                 "location": "Cape Canaveral",
-                "agency": "GSFC",
+                "propellant": {
+                    "Hypergolic": 4.816,
+                    "Kerosene": 80.039399,
+                    "Solid": 30.915,
+                    "Hydrogen": 0.0,
+                    "Methane": 0.0
+                },
                 "emissions": {
                     "BC": [
                         0.029791,
@@ -13839,8 +14125,7 @@
                         0.554896,
                         0.0
                     ]
-                },
-                "propellant": 115.770399
+                }
             }
         ],
         "reentries": [
@@ -13914,7 +14199,13 @@
                 "lon": 40.5,
                 "smc": false,
                 "location": "Plesetsk Cosmodrome",
-                "agency": "RVSN",
+                "propellant": {
+                    "Hypergolic": 7.76,
+                    "Kerosene": 29.790801,
+                    "Solid": 0.0,
+                    "Hydrogen": 0.0,
+                    "Methane": 0.0
+                },
                 "emissions": {
                     "BC": [
                         0.010179,
@@ -13970,8 +14261,7 @@
                         0.0,
                         0.0
                     ]
-                },
-                "propellant": 37.550801
+                }
             }
         ],
         "reentries": [
@@ -14083,7 +14373,13 @@
                 "lon": 40.5,
                 "smc": false,
                 "location": "Plesetsk Cosmodrome",
-                "agency": "RVSN",
+                "propellant": {
+                    "Hypergolic": 0.0,
+                    "Kerosene": 154.15,
+                    "Solid": 0.0,
+                    "Hydrogen": 0.0,
+                    "Methane": 0.0
+                },
                 "emissions": {
                     "BC": [
                         0.040087,
@@ -14139,8 +14435,7 @@
                         0.0,
                         0.0
                     ]
-                },
-                "propellant": 154.15
+                }
             }
         ],
         "reentries": [
@@ -14428,7 +14723,13 @@
                 "lon": 40.5,
                 "smc": false,
                 "location": "Plesetsk Cosmodrome",
-                "agency": "RVSN",
+                "propellant": {
+                    "Hypergolic": 0.0,
+                    "Kerosene": 154.15,
+                    "Solid": 0.0,
+                    "Hydrogen": 0.0,
+                    "Methane": 0.0
+                },
                 "emissions": {
                     "BC": [
                         0.040087,
@@ -14484,8 +14785,7 @@
                         0.0,
                         0.0
                     ]
-                },
-                "propellant": 154.15
+                }
             }
         ],
         "reentries": [
@@ -14750,7 +15050,13 @@
                 "lon": 40.5,
                 "smc": false,
                 "location": "Plesetsk Cosmodrome",
-                "agency": "RVSN",
+                "propellant": {
+                    "Hypergolic": 0.0,
+                    "Kerosene": 154.15,
+                    "Solid": 0.0,
+                    "Hydrogen": 0.0,
+                    "Methane": 0.0
+                },
                 "emissions": {
                     "BC": [
                         0.040087,
@@ -14806,8 +15112,7 @@
                         0.0,
                         0.0
                     ]
-                },
-                "propellant": 154.15
+                }
             }
         ],
         "reentries": [
@@ -14976,7 +15281,13 @@
                 "lon": 40.5,
                 "smc": false,
                 "location": "Plesetsk Cosmodrome",
-                "agency": "RVSN",
+                "propellant": {
+                    "Hypergolic": 100.567201,
+                    "Kerosene": 0.0,
+                    "Solid": 0.0,
+                    "Hydrogen": 0.0,
+                    "Methane": 0.0
+                },
                 "emissions": {
                     "BC": [
                         0.020353,
@@ -15032,8 +15343,7 @@
                         0.0,
                         0.0
                     ]
-                },
-                "propellant": 100.567201
+                }
             }
         ],
         "reentries": [
@@ -15107,7 +15417,13 @@
                 "lon": 40.5,
                 "smc": false,
                 "location": "Plesetsk Cosmodrome",
-                "agency": "RVSN",
+                "propellant": {
+                    "Hypergolic": 0.0,
+                    "Kerosene": 288.856,
+                    "Solid": 0.0,
+                    "Hydrogen": 0.0,
+                    "Methane": 0.0
+                },
                 "emissions": {
                     "BC": [
                         0.101509,
@@ -15163,8 +15479,7 @@
                         0.0,
                         0.0
                     ]
-                },
-                "propellant": 288.856
+                }
             }
         ],
         "reentries": [
@@ -15471,7 +15786,13 @@
                 "lon": 40.5,
                 "smc": false,
                 "location": "Plesetsk Cosmodrome",
-                "agency": "RVSN",
+                "propellant": {
+                    "Hypergolic": 0.0,
+                    "Kerosene": 139.36,
+                    "Solid": 0.0,
+                    "Hydrogen": 0.0,
+                    "Methane": 0.0
+                },
                 "emissions": {
                     "BC": [
                         0.040087,
@@ -15527,8 +15848,7 @@
                         0.0,
                         0.0
                     ]
-                },
-                "propellant": 139.36
+                }
             }
         ],
         "reentries": [
@@ -15721,7 +16041,13 @@
                 "lon": 63.0,
                 "smc": false,
                 "location": "Baikonur Cosmodrome (Tyuratam)",
-                "agency": "RVSN",
+                "propellant": {
+                    "Hypergolic": 0.0,
+                    "Kerosene": 283.655,
+                    "Solid": 0.0,
+                    "Hydrogen": 0.0,
+                    "Methane": 0.0
+                },
                 "emissions": {
                     "BC": [
                         0.091916,
@@ -15777,8 +16103,7 @@
                         0.0,
                         0.0
                     ]
-                },
-                "propellant": 283.655
+                }
             },
             {
                 "date": "1975-07-15T19:50:01Z",
@@ -15789,7 +16114,13 @@
                 "lon": -80.6041,
                 "smc": false,
                 "location": "NASA John F. Kennedy Space Center, Florida",
-                "agency": "NASA MSFC",
+                "propellant": {
+                    "Hypergolic": 0.0,
+                    "Kerosene": 407.092717,
+                    "Solid": 0.0,
+                    "Hydrogen": 106.7,
+                    "Methane": 0.0
+                },
                 "emissions": {
                     "BC": [
                         0.139588,
@@ -15845,8 +16176,7 @@
                         0.0,
                         0.0
                     ]
-                },
-                "propellant": 513.792717
+                }
             }
         ],
         "reentries": [
@@ -16305,7 +16635,13 @@
                 "lon": 40.5,
                 "smc": false,
                 "location": "Plesetsk Cosmodrome",
-                "agency": "RVSN",
+                "propellant": {
+                    "Hypergolic": 7.76,
+                    "Kerosene": 29.790801,
+                    "Solid": 0.0,
+                    "Hydrogen": 0.0,
+                    "Methane": 0.0
+                },
                 "emissions": {
                     "BC": [
                         0.010179,
@@ -16361,8 +16697,7 @@
                         0.0,
                         0.0
                     ]
-                },
-                "propellant": 37.550801
+                }
             }
         ],
         "reentries": [
@@ -16579,7 +16914,13 @@
                 "lon": 40.5,
                 "smc": false,
                 "location": "Plesetsk Cosmodrome",
-                "agency": "RVSN",
+                "propellant": {
+                    "Hypergolic": 0.0,
+                    "Kerosene": 154.15,
+                    "Solid": 0.0,
+                    "Hydrogen": 0.0,
+                    "Methane": 0.0
+                },
                 "emissions": {
                     "BC": [
                         0.040087,
@@ -16635,8 +16976,7 @@
                         0.0,
                         0.0
                     ]
-                },
-                "propellant": 154.15
+                }
             }
         ],
         "reentries": [
@@ -16805,7 +17145,13 @@
                 "lon": 40.5,
                 "smc": false,
                 "location": "Plesetsk Cosmodrome",
-                "agency": "RVSN",
+                "propellant": {
+                    "Hypergolic": 100.567201,
+                    "Kerosene": 0.0,
+                    "Solid": 0.0,
+                    "Hydrogen": 0.0,
+                    "Methane": 0.0
+                },
                 "emissions": {
                     "BC": [
                         0.020353,
@@ -16861,8 +17207,7 @@
                         0.0,
                         0.0
                     ]
-                },
-                "propellant": 100.567201
+                }
             }
         ],
         "reentries": [
@@ -16974,7 +17319,13 @@
                 "lon": 100.31,
                 "smc": false,
                 "location": "Jiuquan Space Center, Nei Monggol Zizhiqu, China",
-                "agency": "SAST",
+                "propellant": {
+                    "Hypergolic": 177.006947,
+                    "Kerosene": 0.0,
+                    "Solid": 0.0,
+                    "Hydrogen": 0.0,
+                    "Methane": 0.0
+                },
                 "emissions": {
                     "BC": [
                         0.034197,
@@ -17030,8 +17381,7 @@
                         0.0,
                         0.0
                     ]
-                },
-                "propellant": 177.006947
+                }
             }
         ],
         "reentries": [
@@ -17248,7 +17598,13 @@
                 "lon": 40.5,
                 "smc": false,
                 "location": "Plesetsk Cosmodrome",
-                "agency": "RVSN",
+                "propellant": {
+                    "Hypergolic": 0.0,
+                    "Kerosene": 154.15,
+                    "Solid": 0.0,
+                    "Hydrogen": 0.0,
+                    "Methane": 0.0
+                },
                 "emissions": {
                     "BC": [
                         0.040087,
@@ -17304,8 +17660,7 @@
                         0.0,
                         0.0
                     ]
-                },
-                "propellant": 154.15
+                }
             }
         ],
         "reentries": [
@@ -17632,7 +17987,13 @@
                 "lon": -120.62,
                 "smc": false,
                 "location": "Vandenberg Space Force Base",
-                "agency": "GSFC",
+                "propellant": {
+                    "Hypergolic": 4.555,
+                    "Kerosene": 80.038399,
+                    "Solid": 31.55,
+                    "Hydrogen": 0.0,
+                    "Methane": 0.0
+                },
                 "emissions": {
                     "BC": [
                         0.031168,
@@ -17688,8 +18049,7 @@
                         0.17996,
                         0.062978
                     ]
-                },
-                "propellant": 116.143399
+                }
             }
         ],
         "reentries": [
@@ -17825,7 +18185,13 @@
                 "lon": 63.0,
                 "smc": false,
                 "location": "Baikonur Cosmodrome (Tyuratam)",
-                "agency": "RVSN",
+                "propellant": {
+                    "Hypergolic": 0.0,
+                    "Kerosene": 154.15,
+                    "Solid": 0.0,
+                    "Hydrogen": 0.0,
+                    "Methane": 0.0
+                },
                 "emissions": {
                     "BC": [
                         0.040225,
@@ -17881,8 +18247,7 @@
                         0.0,
                         0.0
                     ]
-                },
-                "propellant": 154.15
+                }
             }
         ],
         "reentries": [
@@ -18089,7 +18454,13 @@
                 "lon": 40.5,
                 "smc": false,
                 "location": "Plesetsk Cosmodrome",
-                "agency": "RVSN",
+                "propellant": {
+                    "Hypergolic": 100.567201,
+                    "Kerosene": 0.0,
+                    "Solid": 0.0,
+                    "Hydrogen": 0.0,
+                    "Methane": 0.0
+                },
                 "emissions": {
                     "BC": [
                         0.020353,
@@ -18145,8 +18516,7 @@
                         0.0,
                         0.0
                     ]
-                },
-                "propellant": 100.567201
+                }
             }
         ],
         "reentries": [
@@ -18268,7 +18638,13 @@
                 "lon": -80.54,
                 "smc": false,
                 "location": "Cape Canaveral",
-                "agency": "NASA LeRC",
+                "propellant": {
+                    "Hypergolic": 137.647778,
+                    "Kerosene": 0.0,
+                    "Solid": 384.8,
+                    "Hydrogen": 13.67,
+                    "Methane": 0.0
+                },
                 "emissions": {
                     "BC": [
                         0.15271,
@@ -18324,8 +18700,7 @@
                         2.239964,
                         0.0
                     ]
-                },
-                "propellant": 536.117778
+                }
             }
         ],
         "reentries": [
@@ -18475,7 +18850,13 @@
                 "lon": 40.5,
                 "smc": false,
                 "location": "Plesetsk Cosmodrome",
-                "agency": "RVSN",
+                "propellant": {
+                    "Hypergolic": 0.0,
+                    "Kerosene": 139.36,
+                    "Solid": 0.0,
+                    "Hydrogen": 0.0,
+                    "Methane": 0.0
+                },
                 "emissions": {
                     "BC": [
                         0.040087,
@@ -18531,8 +18912,7 @@
                         0.0,
                         0.0
                     ]
-                },
-                "propellant": 139.36
+                }
             }
         ],
         "reentries": [
@@ -18787,7 +19167,13 @@
                 "lon": -80.54,
                 "smc": false,
                 "location": "Cape Canaveral",
-                "agency": "GSFC",
+                "propellant": {
+                    "Hypergolic": 4.555,
+                    "Kerosene": 80.038399,
+                    "Solid": 31.932,
+                    "Hydrogen": 0.0,
+                    "Methane": 0.0
+                },
                 "emissions": {
                     "BC": [
                         0.031168,
@@ -18843,8 +19229,7 @@
                         0.17996,
                         0.100864
                     ]
-                },
-                "propellant": 116.525399
+                }
             },
             {
                 "date": "1975-08-27T14:45:00Z",
@@ -18855,7 +19240,13 @@
                 "lon": 40.5,
                 "smc": false,
                 "location": "Plesetsk Cosmodrome",
-                "agency": "RVSN",
+                "propellant": {
+                    "Hypergolic": 0.0,
+                    "Kerosene": 154.15,
+                    "Solid": 0.0,
+                    "Hydrogen": 0.0,
+                    "Methane": 0.0
+                },
                 "emissions": {
                     "BC": [
                         0.040087,
@@ -18911,8 +19302,7 @@
                         0.0,
                         0.0
                     ]
-                },
-                "propellant": 154.15
+                }
             }
         ],
         "reentries": [
@@ -19205,7 +19595,13 @@
                 "lon": 40.5,
                 "smc": false,
                 "location": "Plesetsk Cosmodrome",
-                "agency": "RVSN",
+                "propellant": {
+                    "Hypergolic": 0.0,
+                    "Kerosene": 288.856,
+                    "Solid": 0.0,
+                    "Hydrogen": 0.0,
+                    "Methane": 0.0
+                },
                 "emissions": {
                     "BC": [
                         0.101509,
@@ -19261,8 +19657,7 @@
                         0.0,
                         0.0
                     ]
-                },
-                "propellant": 288.856
+                }
             }
         ],
         "reentries": [
@@ -19536,7 +19931,13 @@
                 "lon": 40.5,
                 "smc": false,
                 "location": "Plesetsk Cosmodrome",
-                "agency": "RVSN",
+                "propellant": {
+                    "Hypergolic": 0.0,
+                    "Kerosene": 283.655,
+                    "Solid": 0.0,
+                    "Hydrogen": 0.0,
+                    "Methane": 0.0
+                },
                 "emissions": {
                     "BC": [
                         0.091599,
@@ -19592,8 +19993,7 @@
                         0.0,
                         0.0
                     ]
-                },
-                "propellant": 283.655
+                }
             }
         ],
         "reentries": [
@@ -19767,7 +20167,13 @@
                 "lon": 40.5,
                 "smc": false,
                 "location": "Plesetsk Cosmodrome",
-                "agency": "RVSN",
+                "propellant": {
+                    "Hypergolic": 0.0,
+                    "Kerosene": 288.856,
+                    "Solid": 0.0,
+                    "Hydrogen": 0.0,
+                    "Methane": 0.0
+                },
                 "emissions": {
                     "BC": [
                         0.101509,
@@ -19823,8 +20229,7 @@
                         0.0,
                         0.0
                     ]
-                },
-                "propellant": 288.856
+                }
             },
             {
                 "date": "1975-09-09T05:30:00Z",
@@ -19835,7 +20240,13 @@
                 "lon": 130.97,
                 "smc": false,
                 "location": "Tanegashima Space Center, Tanegashima, Nippon",
-                "agency": "NASDA",
+                "propellant": {
+                    "Hypergolic": 5.3,
+                    "Kerosene": 66.583668,
+                    "Solid": 10.841,
+                    "Hydrogen": 0.0,
+                    "Methane": 0.0
+                },
                 "emissions": {
                     "BC": [
                         0.020643,
@@ -19891,8 +20302,7 @@
                         0.059987,
                         0.053159
                     ]
-                },
-                "propellant": 82.724668
+                }
             },
             {
                 "date": "1975-09-09T18:39:00Z",
@@ -19903,7 +20313,13 @@
                 "lon": -80.54,
                 "smc": false,
                 "location": "Cape Canaveral",
-                "agency": "NASA LeRC",
+                "propellant": {
+                    "Hypergolic": 137.647778,
+                    "Kerosene": 0.0,
+                    "Solid": 384.8,
+                    "Hydrogen": 13.67,
+                    "Methane": 0.0
+                },
                 "emissions": {
                     "BC": [
                         0.15271,
@@ -19959,8 +20375,7 @@
                         2.239964,
                         0.0
                     ]
-                },
-                "propellant": 536.117778
+                }
             }
         ],
         "reentries": [
@@ -20481,7 +20896,13 @@
                 "lon": 40.5,
                 "smc": false,
                 "location": "Plesetsk Cosmodrome",
-                "agency": "RVSN",
+                "propellant": {
+                    "Hypergolic": 0.0,
+                    "Kerosene": 283.655,
+                    "Solid": 0.0,
+                    "Hydrogen": 0.0,
+                    "Methane": 0.0
+                },
                 "emissions": {
                     "BC": [
                         0.091599,
@@ -20537,8 +20958,7 @@
                         0.0,
                         0.0
                     ]
-                },
-                "propellant": 283.655
+                }
             }
         ],
         "reentries": [
@@ -20774,7 +21194,13 @@
                 "lon": 63.0,
                 "smc": false,
                 "location": "Baikonur Cosmodrome (Tyuratam)",
-                "agency": "RVSN",
+                "propellant": {
+                    "Hypergolic": 0.0,
+                    "Kerosene": 154.15,
+                    "Solid": 0.0,
+                    "Hydrogen": 0.0,
+                    "Methane": 0.0
+                },
                 "emissions": {
                     "BC": [
                         0.040225,
@@ -20830,8 +21256,7 @@
                         0.0,
                         0.0
                     ]
-                },
-                "propellant": 154.15
+                }
             }
         ],
         "reentries": [
@@ -21019,7 +21444,13 @@
                 "lon": 40.5,
                 "smc": false,
                 "location": "Plesetsk Cosmodrome",
-                "agency": "RVSN",
+                "propellant": {
+                    "Hypergolic": 100.567201,
+                    "Kerosene": 0.0,
+                    "Solid": 0.0,
+                    "Hydrogen": 0.0,
+                    "Methane": 0.0
+                },
                 "emissions": {
                     "BC": [
                         0.020353,
@@ -21075,8 +21506,7 @@
                         0.0,
                         0.0
                     ]
-                },
-                "propellant": 100.567201
+                }
             }
         ],
         "reentries": [
@@ -21169,7 +21599,13 @@
                 "lon": 40.5,
                 "smc": false,
                 "location": "Plesetsk Cosmodrome",
-                "agency": "RVSN",
+                "propellant": {
+                    "Hypergolic": 0.0,
+                    "Kerosene": 139.36,
+                    "Solid": 0.0,
+                    "Hydrogen": 0.0,
+                    "Methane": 0.0
+                },
                 "emissions": {
                     "BC": [
                         0.040087,
@@ -21225,8 +21661,7 @@
                         0.0,
                         0.0
                     ]
-                },
-                "propellant": 139.36
+                }
             }
         ],
         "reentries": [
@@ -21462,7 +21897,13 @@
                 "lon": 40.5,
                 "smc": false,
                 "location": "Plesetsk Cosmodrome",
-                "agency": "RVSN",
+                "propellant": {
+                    "Hypergolic": 0.0,
+                    "Kerosene": 154.15,
+                    "Solid": 0.0,
+                    "Hydrogen": 0.0,
+                    "Methane": 0.0
+                },
                 "emissions": {
                     "BC": [
                         0.040087,
@@ -21518,8 +21959,7 @@
                         0.0,
                         0.0
                     ]
-                },
-                "propellant": 154.15
+                }
             }
         ],
         "reentries": [
@@ -21707,7 +22147,13 @@
                 "lon": 40.5,
                 "smc": false,
                 "location": "Plesetsk Cosmodrome",
-                "agency": "RVSN",
+                "propellant": {
+                    "Hypergolic": 100.567201,
+                    "Kerosene": 0.0,
+                    "Solid": 0.0,
+                    "Hydrogen": 0.0,
+                    "Methane": 0.0
+                },
                 "emissions": {
                     "BC": [
                         0.020353,
@@ -21763,8 +22209,7 @@
                         0.0,
                         0.0
                     ]
-                },
-                "propellant": 100.567201
+                }
             }
         ],
         "reentries": [
@@ -21857,7 +22302,13 @@
                 "lon": 40.5,
                 "smc": false,
                 "location": "Plesetsk Cosmodrome",
-                "agency": "RVSN",
+                "propellant": {
+                    "Hypergolic": 0.0,
+                    "Kerosene": 283.655,
+                    "Solid": 0.0,
+                    "Hydrogen": 0.0,
+                    "Methane": 0.0
+                },
                 "emissions": {
                     "BC": [
                         0.091599,
@@ -21913,8 +22364,7 @@
                         0.0,
                         0.0
                     ]
-                },
-                "propellant": 283.655
+                }
             }
         ],
         "reentries": [
@@ -22102,7 +22552,13 @@
                 "lon": -80.54,
                 "smc": false,
                 "location": "Cape Canaveral",
-                "agency": "NASA LeRC",
+                "propellant": {
+                    "Hypergolic": 0.0,
+                    "Kerosene": 124.49751,
+                    "Solid": 0.0,
+                    "Hydrogen": 13.67,
+                    "Methane": 0.0
+                },
                 "emissions": {
                     "BC": [
                         0.031992,
@@ -22158,8 +22614,7 @@
                         0.0,
                         0.0
                     ]
-                },
-                "propellant": 138.16751
+                }
             }
         ],
         "reentries": [
@@ -22290,7 +22745,13 @@
                 "lon": -52.7517,
                 "smc": false,
                 "location": "Centre Spatial Guyanais, Kourou, Guyane Francaise",
-                "agency": "CNES",
+                "propellant": {
+                    "Hypergolic": 17.0,
+                    "Kerosene": 0.0,
+                    "Solid": 4.680007,
+                    "Hydrogen": 0.0,
+                    "Methane": 0.0
+                },
                 "emissions": {
                     "BC": [
                         0.005745,
@@ -22346,8 +22807,7 @@
                         0.110046,
                         0.354104
                     ]
-                },
-                "propellant": 21.680007
+                }
             }
         ],
         "reentries": [
@@ -22440,7 +22900,13 @@
                 "lon": 63.0,
                 "smc": false,
                 "location": "Baikonur Cosmodrome (Tyuratam)",
-                "agency": "RVSN",
+                "propellant": {
+                    "Hypergolic": 0.0,
+                    "Kerosene": 283.655,
+                    "Solid": 0.0,
+                    "Hydrogen": 0.0,
+                    "Methane": 0.0
+                },
                 "emissions": {
                     "BC": [
                         0.091916,
@@ -22496,8 +22962,7 @@
                         0.0,
                         0.0
                     ]
-                },
-                "propellant": 283.655
+                }
             }
         ],
         "reentries": [
@@ -22704,7 +23169,13 @@
                 "lon": 40.5,
                 "smc": false,
                 "location": "Plesetsk Cosmodrome",
-                "agency": "RVSN",
+                "propellant": {
+                    "Hypergolic": 100.567201,
+                    "Kerosene": 0.0,
+                    "Solid": 0.0,
+                    "Hydrogen": 0.0,
+                    "Methane": 0.0
+                },
                 "emissions": {
                     "BC": [
                         0.020353,
@@ -22760,8 +23231,7 @@
                         0.0,
                         0.0
                     ]
-                },
-                "propellant": 100.567201
+                }
             }
         ],
         "reentries": [
@@ -22892,7 +23362,13 @@
                 "lon": 63.0,
                 "smc": false,
                 "location": "Baikonur Cosmodrome (Tyuratam)",
-                "agency": "RVSN",
+                "propellant": {
+                    "Hypergolic": 0.0,
+                    "Kerosene": 154.15,
+                    "Solid": 0.0,
+                    "Hydrogen": 0.0,
+                    "Methane": 0.0
+                },
                 "emissions": {
                     "BC": [
                         0.040225,
@@ -22948,8 +23424,7 @@
                         0.0,
                         0.0
                     ]
-                },
-                "propellant": 154.15
+                }
             }
         ],
         "reentries": [
@@ -23361,7 +23836,13 @@
                 "lon": -120.62,
                 "smc": false,
                 "location": "Vandenberg Space Force Base",
-                "agency": "GSFC",
+                "propellant": {
+                    "Hypergolic": 4.555,
+                    "Kerosene": 80.038399,
+                    "Solid": 30.915,
+                    "Hydrogen": 0.0,
+                    "Methane": 0.0
+                },
                 "emissions": {
                     "BC": [
                         0.029791,
@@ -23417,8 +23898,7 @@
                         0.554897,
                         0.0
                     ]
-                },
-                "propellant": 115.508399
+                }
             }
         ],
         "reentries": [
@@ -23573,7 +24053,13 @@
                 "lon": 63.0,
                 "smc": false,
                 "location": "Baikonur Cosmodrome (Tyuratam)",
-                "agency": "RVSN",
+                "propellant": {
+                    "Hypergolic": 621.471124,
+                    "Kerosene": 15.06,
+                    "Solid": 0.0,
+                    "Hydrogen": 0.0,
+                    "Methane": 0.0
+                },
                 "emissions": {
                     "BC": [
                         0.148924,
@@ -23629,8 +24115,7 @@
                         0.0,
                         0.0
                     ]
-                },
-                "propellant": 636.531124
+                }
             }
         ],
         "reentries": [
@@ -23818,7 +24303,13 @@
                 "lon": -120.61,
                 "smc": false,
                 "location": "Vandenberg Space Force Base",
-                "agency": "SAMSO",
+                "propellant": {
+                    "Hypergolic": 143.898858,
+                    "Kerosene": 0.0,
+                    "Solid": 0.0,
+                    "Hydrogen": 0.0,
+                    "Methane": 0.0
+                },
                 "emissions": {
                     "BC": [
                         0.037417,
@@ -23874,8 +24365,7 @@
                         0.0,
                         0.0
                     ]
-                },
-                "propellant": 143.898858
+                }
             }
         ],
         "reentries": [
@@ -24049,7 +24539,13 @@
                 "lon": -120.61,
                 "smc": false,
                 "location": "Vandenberg Space Force Base",
-                "agency": "AFSC",
+                "propellant": {
+                    "Hypergolic": 0.0,
+                    "Kerosene": 0.0,
+                    "Solid": 17.60203,
+                    "Hydrogen": 0.0,
+                    "Methane": 0.0
+                },
                 "emissions": {
                     "BC": [
                         0.004498,
@@ -24105,8 +24601,7 @@
                         0.134225,
                         0.383694
                     ]
-                },
-                "propellant": 17.60203
+                }
             }
         ],
         "reentries": [
@@ -24366,7 +24861,13 @@
                 "lon": -80.54,
                 "smc": false,
                 "location": "Cape Canaveral",
-                "agency": "GSFC",
+                "propellant": {
+                    "Hypergolic": 4.555,
+                    "Kerosene": 80.038399,
+                    "Solid": 31.932,
+                    "Hydrogen": 0.0,
+                    "Methane": 0.0
+                },
                 "emissions": {
                     "BC": [
                         0.031168,
@@ -24422,8 +24923,7 @@
                         0.17996,
                         0.100864
                     ]
-                },
-                "propellant": 116.525399
+                }
             }
         ],
         "reentries": [
@@ -24516,7 +25016,13 @@
                 "lon": 40.5,
                 "smc": false,
                 "location": "Plesetsk Cosmodrome",
-                "agency": "RVSN",
+                "propellant": {
+                    "Hypergolic": 0.0,
+                    "Kerosene": 154.15,
+                    "Solid": 0.0,
+                    "Hydrogen": 0.0,
+                    "Methane": 0.0
+                },
                 "emissions": {
                     "BC": [
                         0.040087,
@@ -24572,8 +25078,7 @@
                         0.0,
                         0.0
                     ]
-                },
-                "propellant": 154.15
+                }
             }
         ],
         "reentries": [
@@ -24948,7 +25453,13 @@
                 "lon": 63.0,
                 "smc": false,
                 "location": "Baikonur Cosmodrome (Tyuratam)",
-                "agency": "RVSN",
+                "propellant": {
+                    "Hypergolic": 167.20319,
+                    "Kerosene": 0.0,
+                    "Solid": 0.0,
+                    "Hydrogen": 0.0,
+                    "Methane": 0.0
+                },
                 "emissions": {
                     "BC": [
                         0.0296,
@@ -25004,8 +25515,7 @@
                         0.0,
                         0.0
                     ]
-                },
-                "propellant": 167.20319
+                }
             }
         ],
         "reentries": [
@@ -25270,7 +25780,13 @@
                 "lon": 40.5,
                 "smc": false,
                 "location": "Plesetsk Cosmodrome",
-                "agency": "RVSN",
+                "propellant": {
+                    "Hypergolic": 100.567201,
+                    "Kerosene": 0.0,
+                    "Solid": 0.0,
+                    "Hydrogen": 0.0,
+                    "Methane": 0.0
+                },
                 "emissions": {
                     "BC": [
                         0.020353,
@@ -25326,8 +25842,7 @@
                         0.0,
                         0.0
                     ]
-                },
-                "propellant": 100.567201
+                }
             },
             {
                 "date": "1975-11-04T15:19:58Z",
@@ -25338,7 +25853,13 @@
                 "lon": 40.5,
                 "smc": false,
                 "location": "Plesetsk Cosmodrome",
-                "agency": "RVSN",
+                "propellant": {
+                    "Hypergolic": 0.0,
+                    "Kerosene": 154.15,
+                    "Solid": 0.0,
+                    "Hydrogen": 0.0,
+                    "Methane": 0.0
+                },
                 "emissions": {
                     "BC": [
                         0.040087,
@@ -25394,8 +25915,7 @@
                         0.0,
                         0.0
                     ]
-                },
-                "propellant": 154.15
+                }
             }
         ],
         "reentries": [
@@ -25741,7 +26261,13 @@
                 "lon": 40.5,
                 "smc": false,
                 "location": "Plesetsk Cosmodrome",
-                "agency": "RVSN",
+                "propellant": {
+                    "Hypergolic": 0.0,
+                    "Kerosene": 288.856,
+                    "Solid": 0.0,
+                    "Hydrogen": 0.0,
+                    "Methane": 0.0
+                },
                 "emissions": {
                     "BC": [
                         0.101509,
@@ -25797,8 +26323,7 @@
                         0.0,
                         0.0
                     ]
-                },
-                "propellant": 288.856
+                }
             }
         ],
         "reentries": [
@@ -25991,7 +26516,13 @@
                 "lon": 63.0,
                 "smc": false,
                 "location": "Baikonur Cosmodrome (Tyuratam)",
-                "agency": "RVSN",
+                "propellant": {
+                    "Hypergolic": 0.0,
+                    "Kerosene": 283.655,
+                    "Solid": 0.0,
+                    "Hydrogen": 0.0,
+                    "Methane": 0.0
+                },
                 "emissions": {
                     "BC": [
                         0.091916,
@@ -26047,8 +26578,7 @@
                         0.0,
                         0.0
                     ]
-                },
-                "propellant": 283.655
+                }
             }
         ],
         "reentries": [
@@ -26341,7 +26871,13 @@
                 "lon": -80.54,
                 "smc": false,
                 "location": "Cape Canaveral",
-                "agency": "GSFC",
+                "propellant": {
+                    "Hypergolic": 4.555,
+                    "Kerosene": 80.038399,
+                    "Solid": 30.915,
+                    "Hydrogen": 0.0,
+                    "Methane": 0.0
+                },
                 "emissions": {
                     "BC": [
                         0.029791,
@@ -26397,8 +26933,7 @@
                         0.554896,
                         0.0
                     ]
-                },
-                "propellant": 115.508399
+                }
             }
         ],
         "reentries": [
@@ -26510,7 +27045,13 @@
                 "lon": 63.0,
                 "smc": false,
                 "location": "Baikonur Cosmodrome (Tyuratam)",
-                "agency": "RVSN",
+                "propellant": {
+                    "Hypergolic": 0.0,
+                    "Kerosene": 154.15,
+                    "Solid": 0.0,
+                    "Hydrogen": 0.0,
+                    "Methane": 0.0
+                },
                 "emissions": {
                     "BC": [
                         0.040225,
@@ -26566,8 +27107,7 @@
                         0.0,
                         0.0
                     ]
-                },
-                "propellant": 154.15
+                }
             },
             {
                 "date": "1975-11-21T17:11:00Z",
@@ -26578,7 +27118,13 @@
                 "lon": 40.5,
                 "smc": false,
                 "location": "Plesetsk Cosmodrome",
-                "agency": "RVSN",
+                "propellant": {
+                    "Hypergolic": 100.567201,
+                    "Kerosene": 0.0,
+                    "Solid": 0.0,
+                    "Hydrogen": 0.0,
+                    "Methane": 0.0
+                },
                 "emissions": {
                     "BC": [
                         0.020353,
@@ -26634,8 +27180,7 @@
                         0.0,
                         0.0
                     ]
-                },
-                "propellant": 100.567201
+                }
             }
         ],
         "reentries": [
@@ -26885,7 +27430,13 @@
                 "lon": 40.5,
                 "smc": false,
                 "location": "Plesetsk Cosmodrome",
-                "agency": "RVSN",
+                "propellant": {
+                    "Hypergolic": 0.0,
+                    "Kerosene": 283.655,
+                    "Solid": 0.0,
+                    "Hydrogen": 0.0,
+                    "Methane": 0.0
+                },
                 "emissions": {
                     "BC": [
                         0.091599,
@@ -26941,8 +27492,7 @@
                         0.0,
                         0.0
                     ]
-                },
-                "propellant": 283.655
+                }
             }
         ],
         "reentries": [
@@ -27111,7 +27661,13 @@
                 "lon": 100.31,
                 "smc": false,
                 "location": "Jiuquan Space Center, Nei Monggol Zizhiqu, China",
-                "agency": "CALT",
+                "propellant": {
+                    "Hypergolic": 178.006996,
+                    "Kerosene": 0.0,
+                    "Solid": 0.0,
+                    "Hydrogen": 0.0,
+                    "Methane": 0.0
+                },
                 "emissions": {
                     "BC": [
                         0.034438,
@@ -27167,8 +27723,7 @@
                         0.0,
                         0.0
                     ]
-                },
-                "propellant": 178.006996
+                }
             }
         ],
         "reentries": [
@@ -27228,7 +27783,13 @@
                 "lon": 40.5,
                 "smc": false,
                 "location": "Plesetsk Cosmodrome",
-                "agency": "RVSN",
+                "propellant": {
+                    "Hypergolic": 100.567201,
+                    "Kerosene": 0.0,
+                    "Solid": 0.0,
+                    "Hydrogen": 0.0,
+                    "Methane": 0.0
+                },
                 "emissions": {
                     "BC": [
                         0.020353,
@@ -27284,8 +27845,7 @@
                         0.0,
                         0.0
                     ]
-                },
-                "propellant": 100.567201
+                }
             }
         ],
         "reentries": [
@@ -27564,7 +28124,13 @@
                 "lon": 40.5,
                 "smc": false,
                 "location": "Plesetsk Cosmodrome",
-                "agency": "RVSN",
+                "propellant": {
+                    "Hypergolic": 0.0,
+                    "Kerosene": 154.15,
+                    "Solid": 0.0,
+                    "Hydrogen": 0.0,
+                    "Methane": 0.0
+                },
                 "emissions": {
                     "BC": [
                         0.040087,
@@ -27620,8 +28186,7 @@
                         0.0,
                         0.0
                     ]
-                },
-                "propellant": 154.15
+                }
             }
         ],
         "reentries": [
@@ -27809,7 +28374,13 @@
                 "lon": -120.61,
                 "smc": false,
                 "location": "Vandenberg Space Force Base",
-                "agency": "SAMSO",
+                "propellant": {
+                    "Hypergolic": 137.652222,
+                    "Kerosene": 0.0,
+                    "Solid": 384.8,
+                    "Hydrogen": 0.0,
+                    "Methane": 0.0
+                },
                 "emissions": {
                     "BC": [
                         0.135105,
@@ -27865,8 +28436,7 @@
                         6.934862,
                         0.0
                     ]
-                },
-                "propellant": 522.452222
+                }
             }
         ],
         "reentries": [
@@ -28093,7 +28663,13 @@
                 "lon": 40.5,
                 "smc": false,
                 "location": "Plesetsk Cosmodrome",
-                "agency": "RVSN",
+                "propellant": {
+                    "Hypergolic": 100.567201,
+                    "Kerosene": 0.0,
+                    "Solid": 0.0,
+                    "Hydrogen": 0.0,
+                    "Methane": 0.0
+                },
                 "emissions": {
                     "BC": [
                         0.020353,
@@ -28149,8 +28725,7 @@
                         0.0,
                         0.0
                     ]
-                },
-                "propellant": 100.567201
+                }
             }
         ],
         "reentries": [
@@ -28243,7 +28818,13 @@
                 "lon": 63.0,
                 "smc": false,
                 "location": "Baikonur Cosmodrome (Tyuratam)",
-                "agency": "RVSN",
+                "propellant": {
+                    "Hypergolic": 167.20319,
+                    "Kerosene": 0.0,
+                    "Solid": 0.0,
+                    "Hydrogen": 0.0,
+                    "Methane": 0.0
+                },
                 "emissions": {
                     "BC": [
                         0.0296,
@@ -28299,8 +28880,7 @@
                         0.0,
                         0.0
                     ]
-                },
-                "propellant": 167.20319
+                }
             }
         ],
         "reentries": [
@@ -28393,7 +28973,13 @@
                 "lon": -80.54,
                 "smc": false,
                 "location": "Cape Canaveral",
-                "agency": "GSFC",
+                "propellant": {
+                    "Hypergolic": 4.555,
+                    "Kerosene": 80.038399,
+                    "Solid": 84.717,
+                    "Hydrogen": 0.0,
+                    "Methane": 0.0
+                },
                 "emissions": {
                     "BC": [
                         0.049268,
@@ -28449,8 +29035,7 @@
                         0.487227,
                         0.100864
                     ]
-                },
-                "propellant": 169.310399
+                }
             }
         ],
         "reentries": [
@@ -28695,7 +29280,13 @@
                 "lon": -80.54,
                 "smc": false,
                 "location": "Cape Canaveral",
-                "agency": "SAMSO",
+                "propellant": {
+                    "Hypergolic": 148.147778,
+                    "Kerosene": 0.0,
+                    "Solid": 384.8,
+                    "Hydrogen": 0.0,
+                    "Methane": 0.0
+                },
                 "emissions": {
                     "BC": [
                         0.15271,
@@ -28751,8 +29342,7 @@
                         2.239964,
                         0.0
                     ]
-                },
-                "propellant": 532.947778
+                }
             }
         ],
         "reentries": [
@@ -29002,7 +29592,13 @@
                 "lon": 100.31,
                 "smc": false,
                 "location": "Jiuquan Space Center, Nei Monggol Zizhiqu, China",
-                "agency": "SAST",
+                "propellant": {
+                    "Hypergolic": 177.006947,
+                    "Kerosene": 0.0,
+                    "Solid": 0.0,
+                    "Hydrogen": 0.0,
+                    "Methane": 0.0
+                },
                 "emissions": {
                     "BC": [
                         0.034197,
@@ -29058,8 +29654,7 @@
                         0.0,
                         0.0
                     ]
-                },
-                "propellant": 177.006947
+                }
             },
             {
                 "date": "1975-12-16T09:50:00Z",
@@ -29070,7 +29665,13 @@
                 "lon": 63.0,
                 "smc": false,
                 "location": "Baikonur Cosmodrome (Tyuratam)",
-                "agency": "RVSN",
+                "propellant": {
+                    "Hypergolic": 0.0,
+                    "Kerosene": 154.15,
+                    "Solid": 0.0,
+                    "Hydrogen": 0.0,
+                    "Methane": 0.0
+                },
                 "emissions": {
                     "BC": [
                         0.040225,
@@ -29126,8 +29727,7 @@
                         0.0,
                         0.0
                     ]
-                },
-                "propellant": 154.15
+                }
             }
         ],
         "reentries": [
@@ -29334,7 +29934,13 @@
                 "lon": 40.5,
                 "smc": false,
                 "location": "Plesetsk Cosmodrome",
-                "agency": "RVSN",
+                "propellant": {
+                    "Hypergolic": 0.0,
+                    "Kerosene": 288.856,
+                    "Solid": 0.0,
+                    "Hydrogen": 0.0,
+                    "Methane": 0.0
+                },
                 "emissions": {
                     "BC": [
                         0.101509,
@@ -29390,8 +29996,7 @@
                         0.0,
                         0.0
                     ]
-                },
-                "propellant": 288.856
+                }
             }
         ],
         "reentries": [
@@ -29651,7 +30256,13 @@
                 "lon": 63.0,
                 "smc": false,
                 "location": "Baikonur Cosmodrome (Tyuratam)",
-                "agency": "RVSN",
+                "propellant": {
+                    "Hypergolic": 0.0,
+                    "Kerosene": 288.856,
+                    "Solid": 0.0,
+                    "Hydrogen": 0.0,
+                    "Methane": 0.0
+                },
                 "emissions": {
                     "BC": [
                         0.10186,
@@ -29707,8 +30318,7 @@
                         0.0,
                         0.0
                     ]
-                },
-                "propellant": 288.856
+                }
             },
             {
                 "date": "1975-12-22T13:00:00Z",
@@ -29719,7 +30329,13 @@
                 "lon": 63.0,
                 "smc": false,
                 "location": "Baikonur Cosmodrome (Tyuratam)",
-                "agency": "RVSN",
+                "propellant": {
+                    "Hypergolic": 621.471124,
+                    "Kerosene": 15.06,
+                    "Solid": 0.0,
+                    "Hydrogen": 0.0,
+                    "Methane": 0.0
+                },
                 "emissions": {
                     "BC": [
                         0.148924,
@@ -29775,8 +30391,7 @@
                         0.0,
                         0.0
                     ]
-                },
-                "propellant": 636.531124
+                }
             }
         ],
         "reentries": [
@@ -30083,7 +30698,13 @@
                 "lon": 40.5,
                 "smc": false,
                 "location": "Plesetsk Cosmodrome",
-                "agency": "RVSN",
+                "propellant": {
+                    "Hypergolic": 0.0,
+                    "Kerosene": 139.36,
+                    "Solid": 0.0,
+                    "Hydrogen": 0.0,
+                    "Methane": 0.0
+                },
                 "emissions": {
                     "BC": [
                         0.040087,
@@ -30139,8 +30760,7 @@
                         0.0,
                         0.0
                     ]
-                },
-                "propellant": 139.36
+                }
             }
         ],
         "reentries": [
@@ -30309,7 +30929,13 @@
                 "lon": 40.5,
                 "smc": false,
                 "location": "Plesetsk Cosmodrome",
-                "agency": "RVSN",
+                "propellant": {
+                    "Hypergolic": 0.0,
+                    "Kerosene": 288.856,
+                    "Solid": 0.0,
+                    "Hydrogen": 0.0,
+                    "Methane": 0.0
+                },
                 "emissions": {
                     "BC": [
                         0.101509,
@@ -30365,8 +30991,7 @@
                         0.0,
                         0.0
                     ]
-                },
-                "propellant": 288.856
+                }
             }
         ],
         "reentries": [

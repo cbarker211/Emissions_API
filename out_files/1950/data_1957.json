@@ -10,7 +10,13 @@
                 "lon": 63.0,
                 "smc": false,
                 "location": "Baikonur Cosmodrome (Tyuratam)",
-                "agency": "MVS",
+                "propellant": {
+                    "Hypergolic": 0.0,
+                    "Kerosene": 125.805,
+                    "Solid": 0.0,
+                    "Hydrogen": 0.0,
+                    "Methane": 0.0
+                },
                 "emissions": {
                     "BC": [
                         0.038428,
@@ -66,8 +72,7 @@
                         0.0,
                         0.0
                     ]
-                },
-                "propellant": 125.805
+                }
             }
         ],
         "reentries": [
@@ -184,7 +189,13 @@
                 "lon": 63.0,
                 "smc": false,
                 "location": "Baikonur Cosmodrome (Tyuratam)",
-                "agency": "MVS",
+                "propellant": {
+                    "Hypergolic": 0.0,
+                    "Kerosene": 125.805,
+                    "Solid": 0.0,
+                    "Hydrogen": 0.0,
+                    "Methane": 0.0
+                },
                 "emissions": {
                     "BC": [
                         0.038428,
@@ -240,8 +251,7 @@
                         0.0,
                         0.0
                     ]
-                },
-                "propellant": 125.805
+                }
             }
         ],
         "reentries": [

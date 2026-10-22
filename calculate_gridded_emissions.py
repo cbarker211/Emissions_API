@@ -718,7 +718,7 @@ class OutputEmis:
         in_grid_pct = np.sum(profile_full[selected_alts[0]:selected_alts[-1]+1])
         prop_in_grid = in_grid_pct * 1e-2 * prop_mass # Propellant mass in kg.
 
-        self.prop_in_grid_launch += prop_in_grid # Launch total
+        self.prop_in_grid_launch[pei_index] += prop_in_grid # Launch total
         self.prop_in_grid_annual += prop_in_grid # Annual total
 
         if falcon_flag:
@@ -755,7 +755,7 @@ class OutputEmis:
         
         # This is just for a conversation check at the end.
         self.prop_above_grid_annual += prop_mass * 1e-2 * percent_included
-        self.prop_above_grid_launch += prop_mass * 1e-2 * percent_included
+        self.prop_above_grid_launch[pei_index] += prop_mass * 1e-2 * percent_included
         self.emis_above[0] += emis_full[0] 
         self.emis_above[1] += emis_full[1] 
         self.emis_above[2] += emis_full[2] 
@@ -790,7 +790,7 @@ class OutputEmis:
             "lon":       row.Longitude,
             "smc":       bool(row.Megaconstellation_Flag),
             "location":  row.Site,
-            "agency":    row.Agency,
+            "propellant": {}
         }
         
         ############################################
@@ -899,7 +899,7 @@ class OutputEmis:
             
         self.prop_above = np.zeros(7) # An array for propellant consumed by each stage above the model limits.
         # The last value is for "-1" stages, where rockets have multiple booster types.
-        self.prop_in_grid_launch, self.prop_above_grid_launch = 0.0, 0.0
+        self.prop_in_grid_launch, self.prop_above_grid_launch = np.zeros(5), np.zeros(5)
 
         launch_tuple = (time_index, q, p, pei_indices, prop_masses, False)  
                         
@@ -1065,13 +1065,15 @@ class OutputEmis:
         launch_details["emissions"]["Al2O3"].append(np.round(emis_dict_above["al2o3"],6))
         launch_details["emissions"]["Cl"].append   (np.round(emis_dict_above["cl"],6))
         launch_details["emissions"]["HCl"].append  (np.round(emis_dict_above["hcl"],6))
-        launch_details["emissions"]["Cl2"].append  (np.round(emis_dict_above["cl2"],6))          
-        launch_details["propellant"] = float(np.round((self.prop_in_grid_launch + self.prop_above_grid_launch) * 1e-3, 6))
+        launch_details["emissions"]["Cl2"].append  (np.round(emis_dict_above["cl2"],6))        
+        for pei_ind, prop in enumerate(input_data.pei_fuel_type):
+            launch_details["propellant"][prop] = float(np.round((self.prop_in_grid_launch[pei_ind] + self.prop_above_grid_launch[pei_ind]) * 1e-3, 6))
 
         # Quick check to make sure the total propellant consumed is similar to the total propellant mass of the rocket.
         if row.COSPAR_ID[5] not in ["F", "U"]:
+            consumed = sum(launch_details["propellant"].values())
             expected = prop_masses.sum() * 1e-3
-            if not np.isclose(launch_details["propellant"], expected, rtol=1e-3):
+            if not np.isclose(consumed, expected, rtol=1e-3):
                 print(f"Propellant mismatch for {row.COSPAR_ID} {row.Rocket_Name}: {launch_details['propellant']} vs {expected} t")
 
         self.launch_count += 1

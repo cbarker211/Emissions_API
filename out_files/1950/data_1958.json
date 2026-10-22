@@ -96,7 +96,13 @@
                 "lon": -80.54,
                 "smc": false,
                 "location": "Cape Canaveral",
-                "agency": "ABMA",
+                "propellant": {
+                    "Hypergolic": 24.54,
+                    "Kerosene": 0.0,
+                    "Solid": 0.314993,
+                    "Hydrogen": 0.0,
+                    "Methane": 0.0
+                },
                 "emissions": {
                     "BC": [
                         0.008722,
@@ -152,8 +158,7 @@
                         0.006943,
                         0.024297
                     ]
-                },
-                "propellant": 24.854993
+                }
             }
         ],
         "reentries": [
@@ -227,7 +232,13 @@
                 "lon": -80.54,
                 "smc": false,
                 "location": "Cape Canaveral",
-                "agency": "NRL",
+                "propellant": {
+                    "Hypergolic": 1.471002,
+                    "Kerosene": 6.889,
+                    "Solid": 0.17,
+                    "Hydrogen": 0.0,
+                    "Methane": 0.0
+                },
                 "emissions": {
                     "BC": [
                         0.003201,
@@ -283,8 +294,7 @@
                         0.0,
                         0.01686
                     ]
-                },
-                "propellant": 8.530002
+                }
             }
         ],
         "reentries": [
@@ -358,7 +368,13 @@
                 "lon": -80.54,
                 "smc": false,
                 "location": "Cape Canaveral",
-                "agency": "ABMA",
+                "propellant": {
+                    "Hypergolic": 24.54,
+                    "Kerosene": 0.0,
+                    "Solid": 0.314993,
+                    "Hydrogen": 0.0,
+                    "Methane": 0.0
+                },
                 "emissions": {
                     "BC": [
                         0.008722,
@@ -414,8 +430,7 @@
                         0.006943,
                         0.024297
                     ]
-                },
-                "propellant": 24.854993
+                }
             }
         ],
         "reentries": [
@@ -513,7 +528,13 @@
                 "lon": 63.0,
                 "smc": false,
                 "location": "Baikonur Cosmodrome (Tyuratam)",
-                "agency": "MVS",
+                "propellant": {
+                    "Hypergolic": 0.0,
+                    "Kerosene": 132.8,
+                    "Solid": 0.0,
+                    "Hydrogen": 0.0,
+                    "Methane": 0.0
+                },
                 "emissions": {
                     "BC": [
                         0.040225,
@@ -569,8 +590,7 @@
                         0.0,
                         0.0
                     ]
-                },
-                "propellant": 132.8
+                }
             }
         ],
         "reentries": [
@@ -687,7 +707,13 @@
                 "lon": -80.54,
                 "smc": false,
                 "location": "Cape Canaveral",
-                "agency": "ABMA",
+                "propellant": {
+                    "Hypergolic": 24.54,
+                    "Kerosene": 0.0,
+                    "Solid": 0.314993,
+                    "Hydrogen": 0.0,
+                    "Methane": 0.0
+                },
                 "emissions": {
                     "BC": [
                         0.008722,
@@ -743,8 +769,7 @@
                         0.006943,
                         0.024297
                     ]
-                },
-                "propellant": 24.854993
+                }
             }
         ],
         "reentries": [
@@ -818,7 +843,13 @@
                 "lon": -80.54,
                 "smc": false,
                 "location": "Cape Canaveral",
-                "agency": "USAF BMD",
+                "propellant": {
+                    "Hypergolic": 1.471002,
+                    "Kerosene": 45.675,
+                    "Solid": 0.276,
+                    "Hydrogen": 0.0,
+                    "Methane": 0.0
+                },
                 "emissions": {
                     "BC": [
                         0.021224,
@@ -874,8 +905,7 @@
                         0.0,
                         0.027373
                     ]
-                },
-                "propellant": 47.422002
+                }
             }
         ],
         "reentries": [
@@ -1035,7 +1065,13 @@
                 "lon": -80.54,
                 "smc": false,
                 "location": "Cape Canaveral",
-                "agency": "ABMA",
+                "propellant": {
+                    "Hypergolic": 0.0,
+                    "Kerosene": 48.988,
+                    "Solid": 0.314993,
+                    "Hydrogen": 0.0,
+                    "Methane": 0.0
+                },
                 "emissions": {
                     "BC": [
                         0.023941,
@@ -1091,8 +1127,7 @@
                         0.006943,
                         0.024297
                     ]
-                },
-                "propellant": 49.302993
+                }
             }
         ],
         "reentries": [
@@ -1228,7 +1263,13 @@
                 "lon": -80.54,
                 "smc": false,
                 "location": "Cape Canaveral",
-                "agency": "USAF BMD",
+                "propellant": {
+                    "Hypergolic": 0.0,
+                    "Kerosene": 104.147917,
+                    "Solid": 0.0,
+                    "Hydrogen": 0.0,
+                    "Methane": 0.0
+                },
                 "emissions": {
                     "BC": [
                         0.026762,
@@ -1284,8 +1325,7 @@
                         0.0,
                         0.0
                     ]
-                },
-                "propellant": 104.147917
+                }
             }
         ],
         "reentries": [

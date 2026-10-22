@@ -54,8 +54,8 @@ def update_mass_info(temp_dict,name,variant):
 
         # https://www.russianspaceweb.com/angara1.html There is an 'Aggregate Module' upper stage according to this.
         # No info on GCAT, SLR or Sp101. Setting using DW info.
-        temp_dict[f"Stage3 Propellant Mass"]  = 2000
-        temp_dict[f"Stage3 Stage Mass"]       = 1000
+        temp_dict[f"Stage3 Propellant Mass"]  = 2000 # DW
+        temp_dict[f"Stage3 Stage Mass"]       = 1000 # DW
         temp_dict[f"Fairing Mass"]            = (500+810)/2 # Two options on Sp101.
 
     if name == "Ariane 44LP":
@@ -233,7 +233,6 @@ def update_mass_info(temp_dict,name,variant):
         # Manual   : N/A,  N/A,  N/A
                 
         # Stage masses:
-        # DISCOSweb: 950, 250, 55
         # SLR      : 950, 250, N/A  
         # Sp101    : 950, 250, N/A
         # Manual   : N/A, N/A, 40
@@ -841,14 +840,10 @@ def update_mass_info(temp_dict,name,variant):
 
     if "Shavit" in name:
         # Shavit (Stage 1-3, no prop mass or type)
-        # https://discosweb.esoc.esa.int/launch-vehicles/76
         # https://space.skyrocket.de/doc_lau/shavit.htm
         # https://web.archive.org/web/20220406013832/http://www.spacelaunchreport.com/shavit.html
         # https://www.rafael.co.il/wp-content/uploads/2021/07/RAFAEL-SPACE-PROPULSION-2021-CATALOGUE-2.pdf
         # https://www.iai.co.il/sites/default/files/2020-07/Shavit%20Brochure.pdf
-        # The stages are listed on DISCOSweb as the RSA-3 vehicle from South Africa, however the launch in 2020 was for Shavit-2.
-        # Fourth stage isn't included on DISCOSweb or NB, but is included on SLR and mentioned on wiki.
-        # DISCOSweb(wet/dry) are similar to values for Shavit/Shavit-1. Will use SLR values as these are correct for Shavit-2.
 
         if name == "Shavit":
             temp_dict[f"Stage1 Propellant Mass"] = 9100  # SLR

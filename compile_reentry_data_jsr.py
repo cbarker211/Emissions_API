@@ -939,10 +939,12 @@ class build_reentry_list:
         # Combine the catalogues, trimming to only include objects which have landed or re-entered inside or attached to another object within the date range.
         keys = ["satcat","auxcat","lcat","rcat","lprcat","deepcat","ecat","ftocat"]
         attached_cat  = pd.concat([self.jsr_data_dict[k] for k in keys], ignore_index=True)
+        tag = attached_cat["Converted_Tag"]
         attached_cat  = attached_cat[
             (attached_cat["Primary"] == "Earth") &                               # Primary body is Earth only.
             (attached_cat["Status"].isin(["AR","AL","AL IN","AR IN","E"])) &     # Attached objects only.
-            (~attached_cat["Converted_Tag"].str[5:6].isin(["S"])) &              # Skip suborbital and failed launches.
+            (~tag.str[5:6].isin(["S"])) &                                        # Skip suborbital launches.
+            (~(tag.str[5:6].isin(["F", "U"])&(tag.str[:4].astype(int) < 2020))) &# Skip failed launches before 2020.
             (attached_cat["DYear"].between(self.start_year, self.final_year)) &  # Only the selected timeframe.
             (attached_cat["PLName"] != "Manfred Mem. Moon Mission") &            # This should be listed as re-entering on the Moon, so ignore.
             (attached_cat["Parent"] != "A04313") &                               # Parent collided, producing debris.

@@ -58,7 +58,13 @@
                 "lon": -154.0,
                 "smc": false,
                 "location": "Sea Launch Kiritimati Launch Area, Pacific Ocean",
-                "agency": "SeaLaunch",
+                "propellant": {
+                    "Hypergolic": 0.0,
+                    "Kerosene": 413.380132,
+                    "Solid": 0.0,
+                    "Hydrogen": 0.0,
+                    "Methane": 0.0
+                },
                 "emissions": {
                     "BC": [
                         0.14781,
@@ -114,8 +120,7 @@
                         0.0,
                         0.0
                     ]
-                },
-                "propellant": 413.380132
+                }
             }
         ],
         "reentries": [
@@ -284,7 +289,13 @@
                 "lon": 80.303,
                 "smc": false,
                 "location": "Satish Dhawan Space Ctr, Sriharikota, Andhra Pradesh, India",
-                "agency": "ISRO",
+                "propellant": {
+                    "Hypergolic": 43.348641,
+                    "Kerosene": 0.0,
+                    "Solid": 146.225,
+                    "Hydrogen": 0.0,
+                    "Methane": 0.0
+                },
                 "emissions": {
                     "BC": [
                         0.049991,
@@ -340,8 +351,7 @@
                         0.135758,
                         0.75623
                     ]
-                },
-                "propellant": 189.573641
+                }
             }
         ],
         "reentries": [
@@ -496,7 +506,13 @@
                 "lon": 63.0,
                 "smc": false,
                 "location": "Baikonur Cosmodrome (Tyuratam)",
-                "agency": "Khrunichev",
+                "propellant": {
+                    "Hypergolic": 641.82388,
+                    "Kerosene": 0.0,
+                    "Solid": 0.0,
+                    "Hydrogen": 0.0,
+                    "Methane": 0.0
+                },
                 "emissions": {
                     "BC": [
                         0.162444,
@@ -552,8 +568,7 @@
                         0.0,
                         0.0
                     ]
-                },
-                "propellant": 641.82388
+                }
             }
         ],
         "reentries": [
@@ -684,7 +699,13 @@
                 "lon": 63.0,
                 "smc": false,
                 "location": "Baikonur Cosmodrome (Tyuratam)",
-                "agency": "Roskosmos",
+                "propellant": {
+                    "Hypergolic": 0.0,
+                    "Kerosene": 283.655,
+                    "Solid": 0.0,
+                    "Hydrogen": 0.0,
+                    "Methane": 0.0
+                },
                 "emissions": {
                     "BC": [
                         0.091916,
@@ -740,8 +761,7 @@
                         0.0,
                         0.0
                     ]
-                },
-                "propellant": 283.655
+                }
             }
         ],
         "reentries": [
@@ -891,7 +911,13 @@
                 "lon": -80.6041,
                 "smc": false,
                 "location": "NASA John F. Kennedy Space Center, Florida",
-                "agency": "NASA JSC",
+                "propellant": {
+                    "Hypergolic": 30.0,
+                    "Kerosene": 0.0,
+                    "Solid": 1004.0,
+                    "Hydrogen": 720.98558,
+                    "Methane": 0.0
+                },
                 "emissions": {
                     "BC": [
                         0.37655,
@@ -947,8 +973,7 @@
                         0.0,
                         0.0
                     ]
-                },
-                "propellant": 1754.98558
+                }
             }
         ],
         "reentries": [
@@ -1046,7 +1071,13 @@
                 "lon": 63.0,
                 "smc": false,
                 "location": "Baikonur Cosmodrome (Tyuratam)",
-                "agency": "ILS-K",
+                "propellant": {
+                    "Hypergolic": 641.82388,
+                    "Kerosene": 0.0,
+                    "Solid": 0.0,
+                    "Hydrogen": 0.0,
+                    "Methane": 0.0
+                },
                 "emissions": {
                     "BC": [
                         0.162444,
@@ -1102,8 +1133,7 @@
                         0.0,
                         0.0
                     ]
-                },
-                "propellant": 641.82388
+                }
             }
         ],
         "reentries": [
@@ -1354,7 +1384,13 @@
                 "lon": 130.97,
                 "smc": false,
                 "location": "Tanegashima Space Center, Tanegashima, Nippon",
-                "agency": "MHI",
+                "propellant": {
+                    "Hypergolic": 0.0,
+                    "Kerosene": 0.0,
+                    "Solid": 182.4,
+                    "Hydrogen": 117.997978,
+                    "Methane": 0.0
+                },
                 "emissions": {
                     "BC": [
                         0.065976,
@@ -1410,8 +1446,7 @@
                         1.159424,
                         0.0
                     ]
-                },
-                "propellant": 300.397978
+                }
             }
         ],
         "reentries": [
@@ -1623,7 +1658,13 @@
                 "lon": -52.7517,
                 "smc": false,
                 "location": "Centre Spatial Guyanais, Kourou, Guyane Francaise",
-                "agency": "Arianespace",
+                "propellant": {
+                    "Hypergolic": 10.15,
+                    "Kerosene": 0.0,
+                    "Solid": 480.0,
+                    "Hydrogen": 174.796504,
+                    "Methane": 0.0
+                },
                 "emissions": {
                     "BC": [
                         0.143208,
@@ -1679,8 +1720,7 @@
                         8.615564,
                         0.0
                     ]
-                },
-                "propellant": 664.946504
+                }
             }
         ],
         "reentries": [
@@ -1811,7 +1851,13 @@
                 "lon": -80.6041,
                 "smc": false,
                 "location": "NASA John F. Kennedy Space Center, Florida",
-                "agency": "NASA JSC",
+                "propellant": {
+                    "Hypergolic": 30.0,
+                    "Kerosene": 0.0,
+                    "Solid": 1004.0,
+                    "Hydrogen": 720.98558,
+                    "Methane": 0.0
+                },
                 "emissions": {
                     "BC": [
                         0.37655,
@@ -1867,8 +1913,7 @@
                         0.0,
                         0.0
                     ]
-                },
-                "propellant": 1754.98558
+                }
             }
         ],
         "reentries": [
@@ -1942,7 +1987,13 @@
                 "lon": -120.61,
                 "smc": false,
                 "location": "Vandenberg Space Force Base",
-                "agency": "ULA",
+                "propellant": {
+                    "Hypergolic": 0.0,
+                    "Kerosene": 284.094682,
+                    "Solid": 42.63,
+                    "Hydrogen": 20.8,
+                    "Methane": 0.0
+                },
                 "emissions": {
                     "BC": [
                         0.085426,
@@ -1998,8 +2049,7 @@
                         0.768277,
                         0.0
                     ]
-                },
-                "propellant": 347.524682
+                }
             }
         ],
         "reentries": [
@@ -2111,7 +2161,13 @@
                 "lon": 63.0,
                 "smc": false,
                 "location": "Baikonur Cosmodrome (Tyuratam)",
-                "agency": "ILS-K",
+                "propellant": {
+                    "Hypergolic": 641.82388,
+                    "Kerosene": 0.0,
+                    "Solid": 0.0,
+                    "Hydrogen": 0.0,
+                    "Methane": 0.0
+                },
                 "emissions": {
                     "BC": [
                         0.162444,
@@ -2167,8 +2223,7 @@
                         0.0,
                         0.0
                     ]
-                },
-                "propellant": 641.82388
+                }
             }
         ],
         "reentries": [
@@ -2280,7 +2335,13 @@
                 "lon": -80.54,
                 "smc": false,
                 "location": "Cape Canaveral",
-                "agency": "ULA",
+                "propellant": {
+                    "Hypergolic": 5.95,
+                    "Kerosene": 96.118078,
+                    "Solid": 108.057,
+                    "Hydrogen": 0.0,
+                    "Methane": 0.0
+                },
                 "emissions": {
                     "BC": [
                         0.061069,
@@ -2336,8 +2397,7 @@
                         0.617416,
                         0.197562
                     ]
-                },
-                "propellant": 210.125078
+                }
             }
         ],
         "reentries": [
@@ -2582,7 +2642,13 @@
                 "lon": -154.0,
                 "smc": false,
                 "location": "Sea Launch Kiritimati Launch Area, Pacific Ocean",
-                "agency": "SeaLaunch",
+                "propellant": {
+                    "Hypergolic": 0.0,
+                    "Kerosene": 413.380132,
+                    "Solid": 0.0,
+                    "Hydrogen": 0.0,
+                    "Methane": 0.0
+                },
                 "emissions": {
                     "BC": [
                         0.14781,
@@ -2638,8 +2704,7 @@
                         0.0,
                         0.0
                     ]
-                },
-                "propellant": 413.380132
+                }
             }
         ],
         "reentries": [
@@ -2832,7 +2897,13 @@
                 "lon": 40.5,
                 "smc": false,
                 "location": "Plesetsk Cosmodrome",
-                "agency": "KVR",
+                "propellant": {
+                    "Hypergolic": 100.567201,
+                    "Kerosene": 0.0,
+                    "Solid": 0.0,
+                    "Hydrogen": 0.0,
+                    "Methane": 0.0
+                },
                 "emissions": {
                     "BC": [
                         0.020353,
@@ -2888,8 +2959,7 @@
                         0.0,
                         0.0
                     ]
-                },
-                "propellant": 100.567201
+                }
             }
         ],
         "reentries": [
@@ -3054,7 +3124,13 @@
                 "lon": 63.0,
                 "smc": false,
                 "location": "Baikonur Cosmodrome (Tyuratam)",
-                "agency": "Roskosmos",
+                "propellant": {
+                    "Hypergolic": 0.0,
+                    "Kerosene": 283.655,
+                    "Solid": 0.0,
+                    "Hydrogen": 0.0,
+                    "Methane": 0.0
+                },
                 "emissions": {
                     "BC": [
                         0.091916,
@@ -3110,8 +3186,7 @@
                         0.0,
                         0.0
                     ]
-                },
-                "propellant": 283.655
+                }
             }
         ],
         "reentries": [
@@ -3323,7 +3398,13 @@
                 "lon": -80.54,
                 "smc": false,
                 "location": "Cape Canaveral",
-                "agency": "ULA",
+                "propellant": {
+                    "Hypergolic": 0.0,
+                    "Kerosene": 284.083318,
+                    "Solid": 85.26,
+                    "Hydrogen": 20.8,
+                    "Methane": 0.0
+                },
                 "emissions": {
                     "BC": [
                         0.098437,
@@ -3379,8 +3460,7 @@
                         1.530339,
                         0.0
                     ]
-                },
-                "propellant": 390.143318
+                }
             }
         ],
         "reentries": [
@@ -3492,7 +3572,13 @@
                 "lon": 167.7562,
                 "smc": false,
                 "location": "US Army Kwajalein Atoll (USAKA), Marshall Islands",
-                "agency": "OSC-Fairfax",
+                "propellant": {
+                    "Hypergolic": 0.0,
+                    "Kerosene": 0.0,
+                    "Solid": 19.725026,
+                    "Hydrogen": 0.0,
+                    "Methane": 0.0
+                },
                 "emissions": {
                     "BC": [
                         0.001221,
@@ -3548,8 +3634,7 @@
                         0.061437,
                         0.404006
                     ]
-                },
-                "propellant": 19.725026
+                }
             }
         ],
         "reentries": [
@@ -3642,7 +3727,13 @@
                 "lon": -52.7517,
                 "smc": false,
                 "location": "Centre Spatial Guyanais, Kourou, Guyane Francaise",
-                "agency": "Arianespace",
+                "propellant": {
+                    "Hypergolic": 0.0,
+                    "Kerosene": 0.0,
+                    "Solid": 480.0,
+                    "Hydrogen": 184.8966,
+                    "Methane": 0.0
+                },
                 "emissions": {
                     "BC": [
                         0.138101,
@@ -3698,8 +3789,7 @@
                         10.005744,
                         0.0
                     ]
-                },
-                "propellant": 664.8966
+                }
             }
         ],
         "reentries": [
@@ -3897,7 +3987,13 @@
                 "lon": 102.0291,
                 "smc": false,
                 "location": "Xichang Space Center (Songlin), Sichuan, China",
-                "agency": "CALT",
+                "propellant": {
+                    "Hypergolic": 296.872651,
+                    "Kerosene": 0.0,
+                    "Solid": 0.0,
+                    "Hydrogen": 18.193,
+                    "Methane": 0.0
+                },
                 "emissions": {
                     "BC": [
                         0.074235,
@@ -3953,8 +4049,7 @@
                         0.0,
                         0.0
                     ]
-                },
-                "propellant": 315.065651
+                }
             }
         ],
         "reentries": [
@@ -4085,7 +4180,13 @@
                 "lon": 63.0,
                 "smc": false,
                 "location": "Baikonur Cosmodrome (Tyuratam)",
-                "agency": "Starsem",
+                "propellant": {
+                    "Hypergolic": 5.4,
+                    "Kerosene": 283.655,
+                    "Solid": 0.0,
+                    "Hydrogen": 0.0,
+                    "Methane": 0.0
+                },
                 "emissions": {
                     "BC": [
                         0.10186,
@@ -4141,8 +4242,7 @@
                         0.0,
                         0.0
                     ]
-                },
-                "propellant": 289.055
+                }
             }
         ],
         "reentries": [
@@ -4311,7 +4411,13 @@
                 "lon": 80.303,
                 "smc": false,
                 "location": "Satish Dhawan Space Ctr, Sriharikota, Andhra Pradesh, India",
-                "agency": "ISRO",
+                "propellant": {
+                    "Hypergolic": 43.348641,
+                    "Kerosene": 0.0,
+                    "Solid": 146.225,
+                    "Hydrogen": 0.0,
+                    "Methane": 0.0
+                },
                 "emissions": {
                     "BC": [
                         0.049991,
@@ -4367,8 +4473,7 @@
                         0.135758,
                         0.75623
                     ]
-                },
-                "propellant": 189.573641
+                }
             },
             {
                 "date": "2008-04-28T05:00:00Z",
@@ -4379,7 +4484,13 @@
                 "lon": 63.0,
                 "smc": false,
                 "location": "Baikonur Cosmodrome (Tyuratam)",
-                "agency": "SIS",
+                "propellant": {
+                    "Hypergolic": 0.0,
+                    "Kerosene": 413.382366,
+                    "Solid": 0.0,
+                    "Hydrogen": 0.0,
+                    "Methane": 0.0
+                },
                 "emissions": {
                     "BC": [
                         0.147813,
@@ -4435,8 +4546,7 @@
                         0.0,
                         0.0
                     ]
-                },
-                "propellant": 413.382366
+                }
             }
         ],
         "reentries": [
@@ -4767,7 +4877,13 @@
                 "lon": 63.0,
                 "smc": false,
                 "location": "Baikonur Cosmodrome (Tyuratam)",
-                "agency": "Roskosmos",
+                "propellant": {
+                    "Hypergolic": 0.0,
+                    "Kerosene": 283.655,
+                    "Solid": 0.0,
+                    "Hydrogen": 0.0,
+                    "Methane": 0.0
+                },
                 "emissions": {
                     "BC": [
                         0.091916,
@@ -4823,8 +4939,7 @@
                         0.0,
                         0.0
                     ]
-                },
-                "propellant": 283.655
+                }
             }
         ],
         "reentries": [
@@ -4998,7 +5113,13 @@
                 "lon": -154.0,
                 "smc": false,
                 "location": "Sea Launch Kiritimati Launch Area, Pacific Ocean",
-                "agency": "SeaLaunch",
+                "propellant": {
+                    "Hypergolic": 0.0,
+                    "Kerosene": 413.380132,
+                    "Solid": 0.0,
+                    "Hydrogen": 0.0,
+                    "Methane": 0.0
+                },
                 "emissions": {
                     "BC": [
                         0.14781,
@@ -5054,8 +5175,7 @@
                         0.0,
                         0.0
                     ]
-                },
-                "propellant": 413.380132
+                }
             }
         ],
         "reentries": [
@@ -5224,7 +5344,13 @@
                 "lon": 40.5,
                 "smc": false,
                 "location": "Plesetsk Cosmodrome",
-                "agency": "KVR",
+                "propellant": {
+                    "Hypergolic": 101.000381,
+                    "Kerosene": 0.0,
+                    "Solid": 0.0,
+                    "Hydrogen": 0.0,
+                    "Methane": 0.0
+                },
                 "emissions": {
                     "BC": [
                         0.027953,
@@ -5280,8 +5406,7 @@
                         0.0,
                         0.0
                     ]
-                },
-                "propellant": 101.000381
+                }
             }
         ],
         "reentries": [
@@ -5398,7 +5523,13 @@
                 "lon": 111.61,
                 "smc": false,
                 "location": "Taiyuan weixing fashe zhongxin",
-                "agency": "SAST",
+                "propellant": {
+                    "Hypergolic": 232.751333,
+                    "Kerosene": 0.0,
+                    "Solid": 0.0,
+                    "Hydrogen": 0.0,
+                    "Methane": 0.0
+                },
                 "emissions": {
                     "BC": [
                         0.058943,
@@ -5454,8 +5585,7 @@
                         0.0,
                         0.0
                     ]
-                },
-                "propellant": 232.751333
+                }
             }
         ],
         "reentries": [
@@ -5572,7 +5702,13 @@
                 "lon": -80.6041,
                 "smc": false,
                 "location": "NASA John F. Kennedy Space Center, Florida",
-                "agency": "NASA JSC",
+                "propellant": {
+                    "Hypergolic": 30.0,
+                    "Kerosene": 0.0,
+                    "Solid": 1004.0,
+                    "Hydrogen": 720.98558,
+                    "Methane": 0.0
+                },
                 "emissions": {
                     "BC": [
                         0.37655,
@@ -5628,8 +5764,7 @@
                         0.0,
                         0.0
                     ]
-                },
-                "propellant": 1754.98558
+                }
             }
         ],
         "reentries": [
@@ -5703,7 +5838,13 @@
                 "lon": 102.0291,
                 "smc": false,
                 "location": "Xichang Space Center (Songlin), Sichuan, China",
-                "agency": "CALT",
+                "propellant": {
+                    "Hypergolic": 372.362346,
+                    "Kerosene": 0.0,
+                    "Solid": 0.0,
+                    "Hydrogen": 18.193,
+                    "Methane": 0.0
+                },
                 "emissions": {
                     "BC": [
                         0.094514,
@@ -5759,8 +5900,7 @@
                         0.0,
                         0.0
                     ]
-                },
-                "propellant": 390.555346
+                }
             }
         ],
         "reentries": [
@@ -5929,7 +6069,13 @@
                 "lon": -80.54,
                 "smc": false,
                 "location": "Cape Canaveral",
-                "agency": "ULA",
+                "propellant": {
+                    "Hypergolic": 5.95,
+                    "Kerosene": 96.118078,
+                    "Solid": 155.385,
+                    "Hydrogen": 0.0,
+                    "Methane": 0.0
+                },
                 "emissions": {
                     "BC": [
                         0.071058,
@@ -5985,8 +6131,7 @@
                         2.789019,
                         0.0
                     ]
-                },
-                "propellant": 257.453078
+                }
             }
         ],
         "reentries": [
@@ -6193,7 +6338,13 @@
                 "lon": -52.7517,
                 "smc": false,
                 "location": "Centre Spatial Guyanais, Kourou, Guyane Francaise",
-                "agency": "Arianespace",
+                "propellant": {
+                    "Hypergolic": 0.0,
+                    "Kerosene": 0.0,
+                    "Solid": 480.0,
+                    "Hydrogen": 184.8966,
+                    "Methane": 0.0
+                },
                 "emissions": {
                     "BC": [
                         0.138101,
@@ -6249,8 +6400,7 @@
                         10.005744,
                         0.0
                     ]
-                },
-                "propellant": 664.8966
+                }
             }
         ],
         "reentries": [
@@ -6429,7 +6579,13 @@
                 "lon": 45.8,
                 "smc": false,
                 "location": "Kapustin Yar MSC",
-                "agency": "KVR",
+                "propellant": {
+                    "Hypergolic": 100.562328,
+                    "Kerosene": 0.0,
+                    "Solid": 0.0,
+                    "Hydrogen": 0.0,
+                    "Methane": 0.0
+                },
                 "emissions": {
                     "BC": [
                         0.020423,
@@ -6485,8 +6641,7 @@
                         0.0,
                         0.0
                     ]
-                },
-                "propellant": 100.562328
+                }
             }
         ],
         "reentries": [
@@ -6560,7 +6715,13 @@
                 "lon": -120.62,
                 "smc": false,
                 "location": "Vandenberg Space Force Base",
-                "agency": "ULA",
+                "propellant": {
+                    "Hypergolic": 5.95,
+                    "Kerosene": 96.118078,
+                    "Solid": 35.355,
+                    "Hydrogen": 0.0,
+                    "Methane": 0.0
+                },
                 "emissions": {
                     "BC": [
                         0.035247,
@@ -6616,8 +6777,7 @@
                         0.634591,
                         0.0
                     ]
-                },
-                "propellant": 137.423078
+                }
             }
         ],
         "reentries": [
@@ -6691,7 +6851,13 @@
                 "lon": 63.0,
                 "smc": false,
                 "location": "Baikonur Cosmodrome (Tyuratam)",
-                "agency": "Khrunichev",
+                "propellant": {
+                    "Hypergolic": 621.471124,
+                    "Kerosene": 15.06,
+                    "Solid": 0.0,
+                    "Hydrogen": 0.0,
+                    "Methane": 0.0
+                },
                 "emissions": {
                     "BC": [
                         0.148924,
@@ -6747,8 +6913,7 @@
                         0.0,
                         0.0
                     ]
-                },
-                "propellant": 636.531124
+                }
             }
         ],
         "reentries": [
@@ -6937,7 +7102,13 @@
                 "lon": -52.7517,
                 "smc": false,
                 "location": "Centre Spatial Guyanais, Kourou, Guyane Francaise",
-                "agency": "Arianespace",
+                "propellant": {
+                    "Hypergolic": 0.0,
+                    "Kerosene": 0.0,
+                    "Solid": 480.0,
+                    "Hydrogen": 184.8966,
+                    "Methane": 0.0
+                },
                 "emissions": {
                     "BC": [
                         0.138101,
@@ -6993,8 +7164,7 @@
                         10.005744,
                         0.0
                     ]
-                },
-                "propellant": 664.8966
+                }
             }
         ],
         "reentries": [
@@ -7154,7 +7324,13 @@
                 "lon": -154.0,
                 "smc": false,
                 "location": "Sea Launch Kiritimati Launch Area, Pacific Ocean",
-                "agency": "SeaLaunch",
+                "propellant": {
+                    "Hypergolic": 0.0,
+                    "Kerosene": 413.380132,
+                    "Solid": 0.0,
+                    "Hydrogen": 0.0,
+                    "Methane": 0.0
+                },
                 "emissions": {
                     "BC": [
                         0.14781,
@@ -7210,8 +7386,7 @@
                         0.0,
                         0.0
                     ]
-                },
-                "propellant": 413.380132
+                }
             }
         ],
         "reentries": [
@@ -7452,7 +7627,13 @@
                 "lon": 40.5,
                 "smc": false,
                 "location": "Plesetsk Cosmodrome",
-                "agency": "KVR",
+                "propellant": {
+                    "Hypergolic": 100.567201,
+                    "Kerosene": 0.0,
+                    "Solid": 0.0,
+                    "Hydrogen": 0.0,
+                    "Methane": 0.0
+                },
                 "emissions": {
                     "BC": [
                         0.020353,
@@ -7508,8 +7689,7 @@
                         0.0,
                         0.0
                     ]
-                },
-                "propellant": 100.567201
+                }
             }
         ],
         "reentries": [
@@ -7583,7 +7763,13 @@
                 "lon": 40.5,
                 "smc": false,
                 "location": "Plesetsk Cosmodrome",
-                "agency": "KVR",
+                "propellant": {
+                    "Hypergolic": 0.0,
+                    "Kerosene": 272.14,
+                    "Solid": 0.0,
+                    "Hydrogen": 0.0,
+                    "Methane": 0.0
+                },
                 "emissions": {
                     "BC": [
                         0.104173,
@@ -7639,8 +7825,7 @@
                         0.0,
                         0.0
                     ]
-                },
-                "propellant": 272.14
+                }
             }
         ],
         "reentries": [
@@ -7790,7 +7975,13 @@
                 "lon": -52.7517,
                 "smc": false,
                 "location": "Centre Spatial Guyanais, Kourou, Guyane Francaise",
-                "agency": "Arianespace",
+                "propellant": {
+                    "Hypergolic": 0.0,
+                    "Kerosene": 0.0,
+                    "Solid": 480.0,
+                    "Hydrogen": 184.8966,
+                    "Methane": 0.0
+                },
                 "emissions": {
                     "BC": [
                         0.138101,
@@ -7846,8 +8037,7 @@
                         10.005744,
                         0.0
                     ]
-                },
-                "propellant": 664.8966
+                }
             }
         ],
         "reentries": [
@@ -7959,7 +8149,13 @@
                 "lon": 63.0,
                 "smc": false,
                 "location": "Baikonur Cosmodrome (Tyuratam)",
-                "agency": "ILS-K",
+                "propellant": {
+                    "Hypergolic": 652.023833,
+                    "Kerosene": 0.0,
+                    "Solid": 0.0,
+                    "Hydrogen": 0.0,
+                    "Methane": 0.0
+                },
                 "emissions": {
                     "BC": [
                         0.16593,
@@ -8015,8 +8211,7 @@
                         0.0,
                         0.0
                     ]
-                },
-                "propellant": 652.023833
+                }
             }
         ],
         "reentries": [
@@ -8157,7 +8352,13 @@
                 "lon": 63.0,
                 "smc": false,
                 "location": "Baikonur Cosmodrome (Tyuratam)",
-                "agency": "Kosmotras",
+                "propellant": {
+                    "Hypergolic": 249.401357,
+                    "Kerosene": 0.0,
+                    "Solid": 0.0,
+                    "Hydrogen": 0.0,
+                    "Methane": 0.0
+                },
                 "emissions": {
                     "BC": [
                         0.06617,
@@ -8213,8 +8414,7 @@
                         0.0,
                         0.0
                     ]
-                },
-                "propellant": 249.401357
+                }
             }
         ],
         "reentries": [
@@ -8269,7 +8469,13 @@
                 "lon": 111.61,
                 "smc": false,
                 "location": "Taiyuan weixing fashe zhongxin",
-                "agency": "CALT",
+                "propellant": {
+                    "Hypergolic": 217.373264,
+                    "Kerosene": 0.0,
+                    "Solid": 0.15,
+                    "Hydrogen": 0.0,
+                    "Methane": 0.0
+                },
                 "emissions": {
                     "BC": [
                         0.057885,
@@ -8325,8 +8531,7 @@
                         0.0,
                         0.014877
                     ]
-                },
-                "propellant": 217.523264
+                }
             },
             {
                 "date": "2008-09-06T18:50:57Z",
@@ -8337,7 +8542,13 @@
                 "lon": -120.62,
                 "smc": false,
                 "location": "Vandenberg Space Force Base",
-                "agency": "ULA",
+                "propellant": {
+                    "Hypergolic": 5.95,
+                    "Kerosene": 96.118078,
+                    "Solid": 47.14,
+                    "Hydrogen": 0.0,
+                    "Methane": 0.0
+                },
                 "emissions": {
                     "BC": [
                         0.038763,
@@ -8393,8 +8604,7 @@
                         0.846121,
                         0.0
                     ]
-                },
-                "propellant": 149.208078
+                }
             }
         ],
         "reentries": [
@@ -8568,7 +8778,13 @@
                 "lon": 63.0,
                 "smc": false,
                 "location": "Baikonur Cosmodrome (Tyuratam)",
-                "agency": "Roskosmos",
+                "propellant": {
+                    "Hypergolic": 0.0,
+                    "Kerosene": 283.655,
+                    "Solid": 0.0,
+                    "Hydrogen": 0.0,
+                    "Methane": 0.0
+                },
                 "emissions": {
                     "BC": [
                         0.091916,
@@ -8624,8 +8840,7 @@
                         0.0,
                         0.0
                     ]
-                },
-                "propellant": 283.655
+                }
             }
         ],
         "reentries": [
@@ -8799,7 +9014,13 @@
                 "lon": 63.0,
                 "smc": false,
                 "location": "Baikonur Cosmodrome (Tyuratam)",
-                "agency": "ILS-K",
+                "propellant": {
+                    "Hypergolic": 641.82388,
+                    "Kerosene": 0.0,
+                    "Solid": 0.0,
+                    "Hydrogen": 0.0,
+                    "Methane": 0.0
+                },
                 "emissions": {
                     "BC": [
                         0.162444,
@@ -8855,8 +9076,7 @@
                         0.0,
                         0.0
                     ]
-                },
-                "propellant": 641.82388
+                }
             }
         ],
         "reentries": [
@@ -8992,7 +9212,13 @@
                 "lon": -154.0,
                 "smc": false,
                 "location": "Sea Launch Kiritimati Launch Area, Pacific Ocean",
-                "agency": "SeaLaunch",
+                "propellant": {
+                    "Hypergolic": 0.0,
+                    "Kerosene": 413.380132,
+                    "Solid": 0.0,
+                    "Hydrogen": 0.0,
+                    "Methane": 0.0
+                },
                 "emissions": {
                     "BC": [
                         0.14781,
@@ -9048,8 +9274,7 @@
                         0.0,
                         0.0
                     ]
-                },
-                "propellant": 413.380132
+                }
             }
         ],
         "reentries": [
@@ -9218,7 +9443,13 @@
                 "lon": 63.0,
                 "smc": false,
                 "location": "Baikonur Cosmodrome (Tyuratam)",
-                "agency": "Khrunichev",
+                "propellant": {
+                    "Hypergolic": 632.300557,
+                    "Kerosene": 15.06,
+                    "Solid": 0.0,
+                    "Hydrogen": 0.0,
+                    "Methane": 0.0
+                },
                 "emissions": {
                     "BC": [
                         0.166794,
@@ -9274,8 +9505,7 @@
                         0.0,
                         0.0
                     ]
-                },
-                "propellant": 647.360557
+                }
             },
             {
                 "date": "2008-09-25T13:10:05Z",
@@ -9286,7 +9516,13 @@
                 "lon": 100.31,
                 "smc": false,
                 "location": "Jiuquan Space Center, Nei Monggol Zizhiqu, China",
-                "agency": "CALT",
+                "propellant": {
+                    "Hypergolic": 432.703735,
+                    "Kerosene": 0.0,
+                    "Solid": 0.0,
+                    "Hydrogen": 0.0,
+                    "Methane": 0.0
+                },
                 "emissions": {
                     "BC": [
                         0.078999,
@@ -9342,8 +9578,7 @@
                         0.0,
                         0.0
                     ]
-                },
-                "propellant": 432.703735
+                }
             }
         ],
         "reentries": [
@@ -9650,7 +9885,13 @@
                 "lon": 167.72,
                 "smc": false,
                 "location": "US Army Kwajalein Atoll (USAKA), Marshall Islands",
-                "agency": "SpaceX",
+                "propellant": {
+                    "Hypergolic": 0.0,
+                    "Kerosene": 25.495297,
+                    "Solid": 0.0,
+                    "Hydrogen": 0.0,
+                    "Methane": 0.0
+                },
                 "emissions": {
                     "BC": [
                         0.007386,
@@ -9706,8 +9947,7 @@
                         0.0,
                         0.0
                     ]
-                },
-                "propellant": 25.495297
+                }
             }
         ],
         "reentries": [
@@ -9905,7 +10145,13 @@
                 "lon": 59.5,
                 "smc": false,
                 "location": "Yasniy site, Dombarovskiy Air Base, Orensburgskaya Oblast', Rossiya",
-                "agency": "Kosmotras",
+                "propellant": {
+                    "Hypergolic": 249.39929,
+                    "Kerosene": 0.0,
+                    "Solid": 0.0,
+                    "Hydrogen": 0.0,
+                    "Methane": 0.0
+                },
                 "emissions": {
                     "BC": [
                         0.065716,
@@ -9961,8 +10207,7 @@
                         0.0,
                         0.0
                     ]
-                },
-                "propellant": 249.39929
+                }
             }
         ],
         "reentries": [
@@ -10060,7 +10305,13 @@
                 "lon": 63.0,
                 "smc": false,
                 "location": "Baikonur Cosmodrome (Tyuratam)",
-                "agency": "Roskosmos",
+                "propellant": {
+                    "Hypergolic": 0.0,
+                    "Kerosene": 283.655,
+                    "Solid": 0.0,
+                    "Hydrogen": 0.0,
+                    "Methane": 0.0
+                },
                 "emissions": {
                     "BC": [
                         0.091916,
@@ -10116,8 +10367,7 @@
                         0.0,
                         0.0
                     ]
-                },
-                "propellant": 283.655
+                }
             }
         ],
         "reentries": [
@@ -10334,7 +10584,13 @@
                 "lon": 167.7562,
                 "smc": false,
                 "location": "US Army Kwajalein Atoll (USAKA), Marshall Islands",
-                "agency": "OSC-Fairfax",
+                "propellant": {
+                    "Hypergolic": 0.0,
+                    "Kerosene": 0.0,
+                    "Solid": 19.725026,
+                    "Hydrogen": 0.0,
+                    "Methane": 0.0
+                },
                 "emissions": {
                     "BC": [
                         0.001221,
@@ -10390,8 +10646,7 @@
                         0.061437,
                         0.404006
                     ]
-                },
-                "propellant": 19.725026
+                }
             }
         ],
         "reentries": [
@@ -10527,7 +10782,13 @@
                 "lon": 80.303,
                 "smc": false,
                 "location": "Satish Dhawan Space Ctr, Sriharikota, Andhra Pradesh, India",
-                "agency": "ISRO",
+                "propellant": {
+                    "Hypergolic": 43.748883,
+                    "Kerosene": 0.0,
+                    "Solid": 219.425,
+                    "Hydrogen": 0.0,
+                    "Methane": 0.0
+                },
                 "emissions": {
                     "BC": [
                         0.074129,
@@ -10583,8 +10844,7 @@
                         1.404537,
                         0.75623
                     ]
-                },
-                "propellant": 263.173883
+                }
             }
         ],
         "reentries": [
@@ -10872,7 +11132,13 @@
                 "lon": 111.61,
                 "smc": false,
                 "location": "Taiyuan weixing fashe zhongxin",
-                "agency": "SAST",
+                "propellant": {
+                    "Hypergolic": 232.751333,
+                    "Kerosene": 0.0,
+                    "Solid": 0.0,
+                    "Hydrogen": 0.0,
+                    "Methane": 0.0
+                },
                 "emissions": {
                     "BC": [
                         0.058943,
@@ -10928,8 +11194,7 @@
                         0.0,
                         0.0
                     ]
-                },
-                "propellant": 232.751333
+                }
             },
             {
                 "date": "2008-10-25T02:28:25Z",
@@ -10940,7 +11205,13 @@
                 "lon": -120.62,
                 "smc": false,
                 "location": "Vandenberg Space Force Base",
-                "agency": "ULA",
+                "propellant": {
+                    "Hypergolic": 5.95,
+                    "Kerosene": 96.118078,
+                    "Solid": 47.14,
+                    "Hydrogen": 0.0,
+                    "Methane": 0.0
+                },
                 "emissions": {
                     "BC": [
                         0.038763,
@@ -10996,8 +11267,7 @@
                         0.846121,
                         0.0
                     ]
-                },
-                "propellant": 149.208078
+                }
             }
         ],
         "reentries": [
@@ -11190,7 +11460,13 @@
                 "lon": 102.0291,
                 "smc": false,
                 "location": "Xichang Space Center (Songlin), Sichuan, China",
-                "agency": "CALT",
+                "propellant": {
+                    "Hypergolic": 400.203346,
+                    "Kerosene": 0.0,
+                    "Solid": 0.0,
+                    "Hydrogen": 18.193,
+                    "Methane": 0.0
+                },
                 "emissions": {
                     "BC": [
                         0.10269,
@@ -11246,8 +11522,7 @@
                         0.0,
                         0.0
                     ]
-                },
-                "propellant": 418.396346
+                }
             }
         ],
         "reentries": [
@@ -11440,7 +11715,13 @@
                 "lon": 100.31,
                 "smc": false,
                 "location": "Jiuquan Space Center, Nei Monggol Zizhiqu, China",
-                "agency": "SAST",
+                "propellant": {
+                    "Hypergolic": 234.708904,
+                    "Kerosene": 0.0,
+                    "Solid": 0.0,
+                    "Hydrogen": 0.0,
+                    "Methane": 0.0
+                },
                 "emissions": {
                     "BC": [
                         0.04383,
@@ -11496,8 +11777,7 @@
                         0.0,
                         0.0
                     ]
-                },
-                "propellant": 234.708904
+                }
             },
             {
                 "date": "2008-11-05T20:44:20Z",
@@ -11508,7 +11788,13 @@
                 "lon": 63.0,
                 "smc": false,
                 "location": "Baikonur Cosmodrome (Tyuratam)",
-                "agency": "ILS-K",
+                "propellant": {
+                    "Hypergolic": 641.82388,
+                    "Kerosene": 0.0,
+                    "Solid": 0.0,
+                    "Hydrogen": 0.0,
+                    "Methane": 0.0
+                },
                 "emissions": {
                     "BC": [
                         0.162444,
@@ -11564,8 +11850,7 @@
                         0.0,
                         0.0
                     ]
-                },
-                "propellant": 641.82388
+                }
             }
         ],
         "reentries": [
@@ -11758,7 +12043,13 @@
                 "lon": 40.5,
                 "smc": false,
                 "location": "Plesetsk Cosmodrome",
-                "agency": "KVR",
+                "propellant": {
+                    "Hypergolic": 0.0,
+                    "Kerosene": 283.655,
+                    "Solid": 0.0,
+                    "Hydrogen": 0.0,
+                    "Methane": 0.0
+                },
                 "emissions": {
                     "BC": [
                         0.091599,
@@ -11814,8 +12105,7 @@
                         0.0,
                         0.0
                     ]
-                },
-                "propellant": 283.655
+                }
             }
         ],
         "reentries": [
@@ -11984,7 +12274,13 @@
                 "lon": -80.6041,
                 "smc": false,
                 "location": "NASA John F. Kennedy Space Center, Florida",
-                "agency": "NASA JSC",
+                "propellant": {
+                    "Hypergolic": 30.0,
+                    "Kerosene": 0.0,
+                    "Solid": 1004.0,
+                    "Hydrogen": 720.98558,
+                    "Methane": 0.0
+                },
                 "emissions": {
                     "BC": [
                         0.37655,
@@ -12040,8 +12336,7 @@
                         0.0,
                         0.0
                     ]
-                },
-                "propellant": 1754.98558
+                }
             }
         ],
         "reentries": [
@@ -12211,7 +12506,13 @@
                 "lon": 63.0,
                 "smc": false,
                 "location": "Baikonur Cosmodrome (Tyuratam)",
-                "agency": "Roskosmos",
+                "propellant": {
+                    "Hypergolic": 0.0,
+                    "Kerosene": 283.655,
+                    "Solid": 0.0,
+                    "Hydrogen": 0.0,
+                    "Methane": 0.0
+                },
                 "emissions": {
                     "BC": [
                         0.091916,
@@ -12267,8 +12568,7 @@
                         0.0,
                         0.0
                     ]
-                },
-                "propellant": 283.655
+                }
             }
         ],
         "reentries": [
@@ -12466,7 +12766,13 @@
                 "lon": 100.31,
                 "smc": false,
                 "location": "Jiuquan Space Center, Nei Monggol Zizhiqu, China",
-                "agency": "SAST",
+                "propellant": {
+                    "Hypergolic": 234.708904,
+                    "Kerosene": 0.0,
+                    "Solid": 0.0,
+                    "Hydrogen": 0.0,
+                    "Methane": 0.0
+                },
                 "emissions": {
                     "BC": [
                         0.04383,
@@ -12522,8 +12828,7 @@
                         0.0,
                         0.0
                     ]
-                },
-                "propellant": 234.708904
+                }
             }
         ],
         "reentries": [
@@ -12616,7 +12921,13 @@
                 "lon": 40.5,
                 "smc": false,
                 "location": "Plesetsk Cosmodrome",
-                "agency": "KVR",
+                "propellant": {
+                    "Hypergolic": 0.0,
+                    "Kerosene": 288.553,
+                    "Solid": 0.0,
+                    "Hydrogen": 0.0,
+                    "Methane": 0.0
+                },
                 "emissions": {
                     "BC": [
                         0.101509,
@@ -12672,8 +12983,7 @@
                         0.0,
                         0.0
                     ]
-                },
-                "propellant": 288.553
+                }
             }
         ],
         "reentries": [
@@ -12890,7 +13200,13 @@
                 "lon": 63.0,
                 "smc": false,
                 "location": "Baikonur Cosmodrome (Tyuratam)",
-                "agency": "ILS-K",
+                "propellant": {
+                    "Hypergolic": 652.023833,
+                    "Kerosene": 0.0,
+                    "Solid": 0.0,
+                    "Hydrogen": 0.0,
+                    "Methane": 0.0
+                },
                 "emissions": {
                     "BC": [
                         0.16593,
@@ -12946,8 +13262,7 @@
                         0.0,
                         0.0
                     ]
-                },
-                "propellant": 652.023833
+                }
             }
         ],
         "reentries": [
@@ -13083,7 +13398,13 @@
                 "lon": 111.61,
                 "smc": false,
                 "location": "Taiyuan weixing fashe zhongxin",
-                "agency": "SAST",
+                "propellant": {
+                    "Hypergolic": 232.751333,
+                    "Kerosene": 0.0,
+                    "Solid": 0.0,
+                    "Hydrogen": 0.0,
+                    "Methane": 0.0
+                },
                 "emissions": {
                     "BC": [
                         0.058943,
@@ -13139,8 +13460,7 @@
                         0.0,
                         0.0
                     ]
-                },
-                "propellant": 232.751333
+                }
             }
         ],
         "reentries": [
@@ -13271,7 +13591,13 @@
                 "lon": -52.7517,
                 "smc": false,
                 "location": "Centre Spatial Guyanais, Kourou, Guyane Francaise",
-                "agency": "Arianespace",
+                "propellant": {
+                    "Hypergolic": 0.0,
+                    "Kerosene": 0.0,
+                    "Solid": 480.0,
+                    "Hydrogen": 184.8966,
+                    "Methane": 0.0
+                },
                 "emissions": {
                     "BC": [
                         0.138101,
@@ -13327,8 +13653,7 @@
                         10.005744,
                         0.0
                     ]
-                },
-                "propellant": 664.8966
+                }
             }
         ],
         "reentries": [
@@ -13464,7 +13789,13 @@
                 "lon": 102.0291,
                 "smc": false,
                 "location": "Xichang Space Center (Songlin), Sichuan, China",
-                "agency": "CALT",
+                "propellant": {
+                    "Hypergolic": 201.374627,
+                    "Kerosene": 0.0,
+                    "Solid": 0.0,
+                    "Hydrogen": 18.193,
+                    "Methane": 0.0
+                },
                 "emissions": {
                     "BC": [
                         0.054073,
@@ -13520,8 +13851,7 @@
                         0.0,
                         0.0
                     ]
-                },
-                "propellant": 219.567627
+                }
             }
         ],
         "reentries": [
@@ -13614,7 +13944,13 @@
                 "lon": 63.0,
                 "smc": false,
                 "location": "Baikonur Cosmodrome (Tyuratam)",
-                "agency": "Khrunichev",
+                "propellant": {
+                    "Hypergolic": 632.300557,
+                    "Kerosene": 15.06,
+                    "Solid": 0.0,
+                    "Hydrogen": 0.0,
+                    "Methane": 0.0
+                },
                 "emissions": {
                     "BC": [
                         0.166794,
@@ -13670,8 +14006,7 @@
                         0.0,
                         0.0
                     ]
-                },
-                "propellant": 647.360557
+                }
             }
         ],
         "reentries": [

@@ -125,6 +125,38 @@ class import_launches:
         # Extract the required launch activity data and convert to a dict.
         ####################################################################
 
+        codes   = df_orgs["#Code"].str.strip() # List of the org codes.
+        state_of = dict(zip(codes, df_orgs["StateCode"].fillna("?").str.strip())) # List of the state codes
+        class_of = dict(zip(codes, df_orgs["Class"].fillna("?").str.strip())) # List of the class codes
+
+        country_names = {
+            "US": "USA",
+            "SU": "USSR/Russia",
+            "RU": "USSR/Russia",
+            "CN": "China",
+            "F": "Europe",
+            "D": "Europe",
+            "I": "Europe",
+            "UK": "Europe",
+            "I-ESA": "Europe",
+            "I-ELDO": "Europe",
+            "J": "Japan",
+            "IN": "India",
+            "IL": "Israel",
+            "IR": "Iran",
+            "KP": "North Korea",
+            "KR": "South Korea",
+            "BR": "Brazil",
+            "AU": "Australia",
+        }
+
+        sector_names = {
+            "A": "Academic, amateur and non-profit",
+            "B": "Commercial",
+            "C": "Government",
+            "D": "Defence"
+        }
+
         def process_launches(df):
             launches = []
             for n, row in tqdm(df.iterrows(), total=len(df), desc="Processing rows"):
@@ -202,11 +234,7 @@ class import_launches:
                 else:
                     variant = row["Variant"]
 
-                if "/" in row["Agency"]:
-                    agency_code = row["Agency"].split("/")[0].replace("?", "").strip()
-                else:
-                    agency_code = row["Agency"].replace("?", "").strip()
-
+                agency_code = row["Agency"].split("/")[0].replace("?", "").strip()
                 df_org = df_orgs[df_orgs["#Code"] == agency_code]
                 
                 if len(df_org) != 1:
@@ -214,6 +242,12 @@ class import_launches:
                     org_name = row["Agency"].strip()
                 else:
                     org_name = df_org.iloc[0]["ShortName"].strip() 
+
+                state        = state_of.get(agency_code, "?")
+                country      = country_names.get(state, state)
+                launch_class = class_of.get(agency_code, "?")
+                sector  = sector_names.get(launch_class,launch_class)
+                entity = org_name if sector == "Commercial" else sector
 
                 ascent_site = str(row["Ascent_Site"]).strip()
                 if row["Launch_Site"].replace("?", "") == "TYSC":
@@ -240,7 +274,8 @@ class import_launches:
                     "Rocket_Name":            row["LV_Type"],
                     "Rocket_Variant":         variant.replace("?",""),
                     "Megaconstellation_Flag": mcs_flag,
-                    "Agency":                 org_name        
+                    "Country":                country,
+                    "Entity":                 entity,
                 })
 
             return launches
@@ -264,12 +299,12 @@ class import_launches:
             if field == "Date":
                 values = np.array([v.tz_convert(None) for v in values], dtype="datetime64[ns]")
             
-            elif field in ["COSPAR_ID","Site","Rocket_Name","Rocket_Variant","Agency"]:
+            elif field in ["COSPAR_ID","Site","Rocket_Name","Rocket_Variant","Country","Entity"]:
                 values = np.array(values, dtype=str)
 
             return values
 
-        fields = ["COSPAR_ID","Date","Longitude","Latitude","Surface_Altitude","Site","Rocket_Name","Rocket_Variant","Megaconstellation_Flag","Agency"]
+        fields = ["COSPAR_ID","Date","Longitude","Latitude","Surface_Altitude","Site","Rocket_Name","Rocket_Variant","Megaconstellation_Flag","Country","Entity"]
 
         # Create DataArrays dynamically
         data_arrays = {}
