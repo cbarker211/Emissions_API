@@ -8328,7 +8328,122 @@
                 }
             }
         ],
-        "reentries": []
+        "reentries": [
+            {
+                "date": "2004-09-06T10:53:00Z",
+                "id": "2004-F01",
+                "reusability": "",
+                "name": "Shaviyt 1",
+                "category": "S1",
+                "smc": false,
+                "location": 2,
+                "burnup": "Complete",
+                "mass": 1.24,
+                "emissions": {
+                    "NOx": 0.496,
+                    "Al2O3": 0.2604,
+                    "BC": 0.0,
+                    "Cl": 0.0,
+                    "HCl": 0.0,
+                    "Unablated_Mass": 0.868
+                }
+            },
+            {
+                "date": "2004-09-06T10:53:00Z",
+                "id": "2004-F01",
+                "reusability": "",
+                "name": "Shaviyt",
+                "category": "S2",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 1.288,
+                "emissions": {
+                    "NOx": 0.5152,
+                    "Al2O3": 0.58604,
+                    "BC": 0.037352,
+                    "Cl": 0.014168,
+                    "HCl": 0.00644,
+                    "Unablated_Mass": 0.4508
+                }
+            },
+            {
+                "date": "2004-09-06T10:53:00Z",
+                "id": "2004-F01",
+                "reusability": "",
+                "name": "Shaviyt Fairing",
+                "category": "C",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 0.0285,
+                "emissions": {
+                    "NOx": 0.0114,
+                    "Al2O3": 0.005985,
+                    "BC": 0.001168,
+                    "Cl": 0.000428,
+                    "HCl": 0.000228,
+                    "Unablated_Mass": 0.01995
+                }
+            },
+            {
+                "date": "2004-09-06T10:53:00Z",
+                "id": "2004-F01",
+                "reusability": "",
+                "name": "Shaviyt Fairing",
+                "category": "C",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 0.0285,
+                "emissions": {
+                    "NOx": 0.0114,
+                    "Al2O3": 0.005985,
+                    "BC": 0.001168,
+                    "Cl": 0.000428,
+                    "HCl": 0.000228,
+                    "Unablated_Mass": 0.01995
+                }
+            },
+            {
+                "date": "2004-09-06T11:06:00Z",
+                "id": "2004-F01",
+                "reusability": "",
+                "name": "Shavit (6) Stage 3",
+                "category": "S3",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 2.574,
+                "emissions": {
+                    "NOx": 1.0296,
+                    "Al2O3": 0.31122,
+                    "BC": 0.074646,
+                    "Cl": 0.028314,
+                    "HCl": 0.01287,
+                    "Unablated_Mass": 2.1294
+                }
+            },
+            {
+                "date": "2004-09-06T11:06:00Z",
+                "id": "2004-F01",
+                "reusability": "",
+                "name": "'Ofeq-6",
+                "category": "P",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 0.3,
+                "emissions": {
+                    "NOx": 0.12,
+                    "Al2O3": 0.096,
+                    "BC": 0.0123,
+                    "Cl": 0.0045,
+                    "HCl": 0.0024,
+                    "Unablated_Mass": 0.059999999999999984
+                }
+            }
+        ]
     },
     "2004-09-08": {
         "launches": [
@@ -11115,7 +11230,179 @@
                 }
             }
         ],
-        "reentries": []
+        "reentries": [
+            {
+                "date": "2004-11-08T18:55:00Z",
+                "id": "2004-U01",
+                "reusability": "",
+                "name": "GVM Oblik",
+                "category": "P",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 6.3,
+                "emissions": {
+                    "NOx": 2.52,
+                    "Al2O3": 2.016,
+                    "BC": 0.2583,
+                    "Cl": 0.0945,
+                    "HCl": 0.0504,
+                    "Unablated_Mass": 1.2599999999999998
+                }
+            },
+            {
+                "date": "2004-11-08T18:55:00Z",
+                "id": "2004-U01",
+                "reusability": "",
+                "name": "Soyuz-2-1a No. 001 Blok-I",
+                "category": "S2",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 2.41,
+                "emissions": {
+                    "NOx": 0.964,
+                    "Al2O3": 1.09655,
+                    "BC": 0.06989,
+                    "Cl": 0.02651,
+                    "HCl": 0.01205,
+                    "Unablated_Mass": 0.8435
+                }
+            },
+            {
+                "date": "2004-11-08T18:29:58Z",
+                "id": "2004-U01",
+                "reusability": "",
+                "name": "14S53B",
+                "category": "S0",
+                "smc": false,
+                "location": 2,
+                "burnup": "Complete",
+                "mass": 3.7840000000000003,
+                "emissions": {
+                    "NOx": 1.5136,
+                    "Al2O3": 0.79464,
+                    "BC": 0.0,
+                    "Cl": 0.0,
+                    "HCl": 0.0,
+                    "Unablated_Mass": 2.6487999999999996
+                }
+            },
+            {
+                "date": "2004-11-08T18:29:58Z",
+                "id": "2004-U01",
+                "reusability": "",
+                "name": "14S53V",
+                "category": "S0",
+                "smc": false,
+                "location": 2,
+                "burnup": "Complete",
+                "mass": 3.7840000000000003,
+                "emissions": {
+                    "NOx": 1.5136,
+                    "Al2O3": 0.79464,
+                    "BC": 0.0,
+                    "Cl": 0.0,
+                    "HCl": 0.0,
+                    "Unablated_Mass": 2.6487999999999996
+                }
+            },
+            {
+                "date": "2004-11-08T18:29:58Z",
+                "id": "2004-U01",
+                "reusability": "",
+                "name": "14S53G",
+                "category": "S0",
+                "smc": false,
+                "location": 2,
+                "burnup": "Complete",
+                "mass": 3.7840000000000003,
+                "emissions": {
+                    "NOx": 1.5136,
+                    "Al2O3": 0.79464,
+                    "BC": 0.0,
+                    "Cl": 0.0,
+                    "HCl": 0.0,
+                    "Unablated_Mass": 2.6487999999999996
+                }
+            },
+            {
+                "date": "2004-11-08T18:29:58Z",
+                "id": "2004-U01",
+                "reusability": "",
+                "name": "14S53D",
+                "category": "S0",
+                "smc": false,
+                "location": 2,
+                "burnup": "Complete",
+                "mass": 3.7840000000000003,
+                "emissions": {
+                    "NOx": 1.5136,
+                    "Al2O3": 0.79464,
+                    "BC": 0.0,
+                    "Cl": 0.0,
+                    "HCl": 0.0,
+                    "Unablated_Mass": 2.6487999999999996
+                }
+            },
+            {
+                "date": "2004-11-08T18:29:58Z",
+                "id": "2004-U01",
+                "reusability": "",
+                "name": "14S53A",
+                "category": "S1",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 6.545,
+                "emissions": {
+                    "NOx": 2.618,
+                    "Al2O3": 1.37445,
+                    "BC": 0.0,
+                    "Cl": 0.0,
+                    "HCl": 0.0,
+                    "Unablated_Mass": 4.5815
+                }
+            },
+            {
+                "date": "2004-11-08T18:29:58Z",
+                "id": "2004-U01",
+                "reusability": "",
+                "name": "Oblik Fairing",
+                "category": "C",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 0.5,
+                "emissions": {
+                    "NOx": 0.2,
+                    "Al2O3": 0.105,
+                    "BC": 0.0205,
+                    "Cl": 0.0075,
+                    "HCl": 0.004,
+                    "Unablated_Mass": 0.35000000000000003
+                }
+            },
+            {
+                "date": "2004-11-08T18:29:58Z",
+                "id": "2004-U01",
+                "reusability": "",
+                "name": "Oblik Fairing",
+                "category": "C",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 0.5,
+                "emissions": {
+                    "NOx": 0.2,
+                    "Al2O3": 0.105,
+                    "BC": 0.0205,
+                    "Cl": 0.0075,
+                    "HCl": 0.004,
+                    "Unablated_Mass": 0.35000000000000003
+                }
+            }
+        ]
     },
     "2004-11-09": {
         "launches": [],

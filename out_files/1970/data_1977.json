@@ -26695,6 +26695,101 @@
                     "HCl": 4e-05,
                     "Unablated_Mass": 0.0009999999999999998
                 }
+            },
+            {
+                "date": "1977-11-29T07:05:00Z",
+                "id": "1977-F06",
+                "reusability": "",
+                "name": "R-14 11K65MA",
+                "category": "S1",
+                "smc": false,
+                "location": 2,
+                "burnup": "Complete",
+                "mass": 5.3,
+                "emissions": {
+                    "NOx": 2.12,
+                    "Al2O3": 1.113,
+                    "BC": 0.0,
+                    "Cl": 0.0,
+                    "HCl": 0.0,
+                    "Unablated_Mass": 3.7099999999999995
+                }
+            },
+            {
+                "date": "1977-11-29T07:05:00Z",
+                "id": "1977-F06",
+                "reusability": "",
+                "name": "Kosmos-3M Fairing",
+                "category": "C",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 0.878,
+                "emissions": {
+                    "NOx": 0.3512,
+                    "Al2O3": 0.18438,
+                    "BC": 0.035998,
+                    "Cl": 0.01317,
+                    "HCl": 0.007024,
+                    "Unablated_Mass": 0.6145999999999999
+                }
+            },
+            {
+                "date": "1977-11-29T07:05:00Z",
+                "id": "1977-F06",
+                "reusability": "",
+                "name": "Kosmos-3M Fairing",
+                "category": "C",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 0.878,
+                "emissions": {
+                    "NOx": 0.3512,
+                    "Al2O3": 0.18438,
+                    "BC": 0.035998,
+                    "Cl": 0.01317,
+                    "HCl": 0.007024,
+                    "Unablated_Mass": 0.6145999999999999
+                }
+            },
+            {
+                "date": "1977-11-29T07:05:00Z",
+                "id": "1977-F06",
+                "reusability": "",
+                "name": "Kosmos-3M 21-265 Stage 2",
+                "category": "S2",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 20.1,
+                "emissions": {
+                    "NOx": 8.04,
+                    "Al2O3": 0.652925,
+                    "BC": 0.5829,
+                    "Cl": 0.2211,
+                    "HCl": 0.1005,
+                    "Unablated_Mass": 19.16725
+                }
+            },
+            {
+                "date": "1977-11-29T07:05:00Z",
+                "id": "1977-F06",
+                "reusability": "",
+                "name": "-",
+                "category": "P",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 0.87,
+                "emissions": {
+                    "NOx": 0.348,
+                    "Al2O3": 0.2784,
+                    "BC": 0.03567,
+                    "Cl": 0.01305,
+                    "HCl": 0.00696,
+                    "Unablated_Mass": 0.174
+                }
             }
         ]
     },

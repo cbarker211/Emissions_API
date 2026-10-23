@@ -2036,6 +2036,101 @@
                     "HCl": 1.6e-05,
                     "Unablated_Mass": 0.0003999999999999999
                 }
+            },
+            {
+                "date": "1966-02-05T12:44:00Z",
+                "id": "1966-U01",
+                "reusability": "",
+                "name": "R-36O No. 02L Stage 2",
+                "category": "S2",
+                "smc": false,
+                "location": 4,
+                "burnup": "Complete",
+                "mass": 3.7,
+                "emissions": {
+                    "NOx": 1.48,
+                    "Al2O3": 1.6835,
+                    "BC": 0.1073,
+                    "Cl": 0.0407,
+                    "HCl": 0.0185,
+                    "Unablated_Mass": 1.295
+                }
+            },
+            {
+                "date": "1966-02-05T12:44:00Z",
+                "id": "1966-U01",
+                "reusability": "",
+                "name": "-",
+                "category": "C",
+                "smc": false,
+                "location": 4,
+                "burnup": "Complete",
+                "mass": 0.5,
+                "emissions": {
+                    "NOx": 0.2,
+                    "Al2O3": 0.16,
+                    "BC": 0.0205,
+                    "Cl": 0.0075,
+                    "HCl": 0.004,
+                    "Unablated_Mass": 0.09999999999999998
+                }
+            },
+            {
+                "date": "1966-02-05T12:41:00Z",
+                "id": "1966-U01",
+                "reusability": "",
+                "name": "OGCh No. 02L",
+                "category": "P",
+                "smc": false,
+                "location": 2,
+                "burnup": "Complete",
+                "mass": 1.45,
+                "emissions": {
+                    "NOx": 0.58,
+                    "Al2O3": 0.464,
+                    "BC": 0.05945,
+                    "Cl": 0.02175,
+                    "HCl": 0.0116,
+                    "Unablated_Mass": 0.2899999999999999
+                }
+            },
+            {
+                "date": "1966-02-05T12:40:00Z",
+                "id": "1966-U01",
+                "reusability": "",
+                "name": "-",
+                "category": "C",
+                "smc": false,
+                "location": 2,
+                "burnup": "Complete",
+                "mass": 0.5,
+                "emissions": {
+                    "NOx": 0.2,
+                    "Al2O3": 0.16,
+                    "BC": 0.0205,
+                    "Cl": 0.0075,
+                    "HCl": 0.004,
+                    "Unablated_Mass": 0.09999999999999998
+                }
+            },
+            {
+                "date": "1966-02-05T12:19:49Z",
+                "id": "1966-U01",
+                "reusability": "",
+                "name": "8S691",
+                "category": "S1",
+                "smc": false,
+                "location": 2,
+                "burnup": "Complete",
+                "mass": 6.4,
+                "emissions": {
+                    "NOx": 2.56,
+                    "Al2O3": 1.344,
+                    "BC": 0.0,
+                    "Cl": 0.0,
+                    "HCl": 0.0,
+                    "Unablated_Mass": 4.48
+                }
             }
         ]
     },
@@ -3644,7 +3739,141 @@
                 }
             }
         ],
-        "reentries": []
+        "reentries": [
+            {
+                "date": "1966-02-26T16:49:00Z",
+                "id": "1966-U04",
+                "reusability": "",
+                "name": "Apollo AS-201",
+                "category": "P",
+                "smc": false,
+                "location": 4,
+                "burnup": "Partial",
+                "mass": 4.99,
+                "emissions": {
+                    "NOx": 0.87325,
+                    "Al2O3": 0.0,
+                    "BC": 0.0,
+                    "Cl": 0.0,
+                    "HCl": 0.0,
+                    "Unablated_Mass": 4.99
+                }
+            },
+            {
+                "date": "1966-02-26T16:40:00Z",
+                "id": "1966-U04",
+                "reusability": "",
+                "name": "Apollo SM-009",
+                "category": "C",
+                "smc": false,
+                "location": 4,
+                "burnup": "Complete",
+                "mass": 3.694,
+                "emissions": {
+                    "NOx": 1.4776,
+                    "Al2O3": 1.18208,
+                    "BC": 0.151454,
+                    "Cl": 0.05541,
+                    "HCl": 0.029552,
+                    "Unablated_Mass": 0.7387999999999999
+                }
+            },
+            {
+                "date": "1966-02-26T16:12:01Z",
+                "id": "1966-U04",
+                "reusability": "",
+                "name": "Saturn S-IB SA201",
+                "category": "S1",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 41.594,
+                "emissions": {
+                    "NOx": 16.6376,
+                    "Al2O3": 8.73474,
+                    "BC": 0.0,
+                    "Cl": 0.0,
+                    "HCl": 0.0,
+                    "Unablated_Mass": 29.1158
+                }
+            },
+            {
+                "date": "1966-02-26T16:12:01Z",
+                "id": "1966-U04",
+                "reusability": "",
+                "name": "LES-009",
+                "category": "C",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 0.0,
+                "emissions": {
+                    "NOx": 0.0,
+                    "Al2O3": 0.0,
+                    "BC": 0.0,
+                    "Cl": 0.0,
+                    "HCl": 0.0,
+                    "Unablated_Mass": 0.0
+                }
+            },
+            {
+                "date": "1966-02-26T16:44:00Z",
+                "id": "1966-U04",
+                "reusability": "",
+                "name": "Saturn S-IVB-201",
+                "category": "S2",
+                "smc": false,
+                "location": 1,
+                "burnup": "Complete",
+                "mass": 13.3,
+                "emissions": {
+                    "NOx": 5.32,
+                    "Al2O3": 6.0515,
+                    "BC": 0.3857,
+                    "Cl": 0.1463,
+                    "HCl": 0.0665,
+                    "Unablated_Mass": 4.655
+                }
+            },
+            {
+                "date": "1966-02-26T16:44:00Z",
+                "id": "1966-U04",
+                "reusability": "",
+                "name": "S-IU-201",
+                "category": "C",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 0.0,
+                "emissions": {
+                    "NOx": 0.0,
+                    "Al2O3": 0.0,
+                    "BC": 0.0,
+                    "Cl": 0.0,
+                    "HCl": 0.0,
+                    "Unablated_Mass": 0.0
+                }
+            },
+            {
+                "date": "1966-02-26T16:44:00Z",
+                "id": "1966-U04",
+                "reusability": "",
+                "name": "SLA-3",
+                "category": "C",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 0.0,
+                "emissions": {
+                    "NOx": 0.0,
+                    "Al2O3": 0.0,
+                    "BC": 0.0,
+                    "Cl": 0.0,
+                    "HCl": 0.0,
+                    "Unablated_Mass": 0.0
+                }
+            }
+        ]
     },
     "1966-02-27": {
         "launches": [],
@@ -5542,6 +5771,101 @@
                     "HCl": 8e-05,
                     "Unablated_Mass": 0.0019999999999999996
                 }
+            },
+            {
+                "date": "1966-03-24T14:39:00Z",
+                "id": "1966-F03",
+                "reusability": "",
+                "name": "8S810",
+                "category": "S1",
+                "smc": false,
+                "location": 2,
+                "burnup": "Complete",
+                "mass": 31.0,
+                "emissions": {
+                    "NOx": 12.4,
+                    "Al2O3": 6.51,
+                    "BC": 0.0,
+                    "Cl": 0.0,
+                    "HCl": 0.0,
+                    "Unablated_Mass": 21.7
+                }
+            },
+            {
+                "date": "1966-03-24T14:39:00Z",
+                "id": "1966-F03",
+                "reusability": "",
+                "name": "8S811",
+                "category": "S2",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 167.8,
+                "emissions": {
+                    "NOx": 67.12,
+                    "Al2O3": 5.34625,
+                    "BC": 4.8662,
+                    "Cl": 1.8458,
+                    "HCl": 0.839,
+                    "Unablated_Mass": 160.1625
+                }
+            },
+            {
+                "date": "1966-03-24T14:39:00Z",
+                "id": "1966-F03",
+                "reusability": "",
+                "name": "[Proton-3]",
+                "category": "P",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 8.3,
+                "emissions": {
+                    "NOx": 3.32,
+                    "Al2O3": 2.656,
+                    "BC": 0.3403,
+                    "Cl": 0.1245,
+                    "HCl": 0.0664,
+                    "Unablated_Mass": 1.6599999999999995
+                }
+            },
+            {
+                "date": "1966-03-24T14:39:00Z",
+                "id": "1966-F03",
+                "reusability": "",
+                "name": "UR-500 GO part",
+                "category": "C",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 0.2,
+                "emissions": {
+                    "NOx": 0.08,
+                    "Al2O3": 0.064,
+                    "BC": 0.0082,
+                    "Cl": 0.003,
+                    "HCl": 0.0016,
+                    "Unablated_Mass": 0.039999999999999994
+                }
+            },
+            {
+                "date": "1966-03-24T14:39:00Z",
+                "id": "1966-F03",
+                "reusability": "",
+                "name": "UR-500 GO part",
+                "category": "C",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 0.2,
+                "emissions": {
+                    "NOx": 0.08,
+                    "Al2O3": 0.064,
+                    "BC": 0.0082,
+                    "Cl": 0.003,
+                    "HCl": 0.0016,
+                    "Unablated_Mass": 0.039999999999999994
+                }
             }
         ]
     },
@@ -5857,7 +6181,84 @@
                 }
             }
         ],
-        "reentries": []
+        "reentries": [
+            {
+                "date": "1966-03-27T07:20:00Z",
+                "id": "1966-F04",
+                "reusability": "",
+                "name": "Molniya 8K78(M) (N34) Blok-I",
+                "category": "S2",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 2.35,
+                "emissions": {
+                    "NOx": 0.94,
+                    "Al2O3": 1.06925,
+                    "BC": 0.06815,
+                    "Cl": 0.02585,
+                    "HCl": 0.01175,
+                    "Unablated_Mass": 0.8225
+                }
+            },
+            {
+                "date": "1966-03-27T07:20:00Z",
+                "id": "1966-F04",
+                "reusability": "",
+                "name": "BOZ",
+                "category": "C",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 0.3,
+                "emissions": {
+                    "NOx": 0.12,
+                    "Al2O3": 0.096,
+                    "BC": 0.0123,
+                    "Cl": 0.0045,
+                    "HCl": 0.0024,
+                    "Unablated_Mass": 0.059999999999999984
+                }
+            },
+            {
+                "date": "1966-03-27T07:20:00Z",
+                "id": "1966-F04",
+                "reusability": "",
+                "name": "Blok-L No. N103-38",
+                "category": "S3",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 7.3,
+                "emissions": {
+                    "NOx": 2.92,
+                    "Al2O3": 0.5278,
+                    "BC": 0.2117,
+                    "Cl": 0.0803,
+                    "HCl": 0.0365,
+                    "Unablated_Mass": 6.546
+                }
+            },
+            {
+                "date": "1966-03-27T07:20:00Z",
+                "id": "1966-F04",
+                "reusability": "",
+                "name": "Molniya-1 No. 5",
+                "category": "P",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 1.6500000000000001,
+                "emissions": {
+                    "NOx": 0.66,
+                    "Al2O3": 0.5184,
+                    "BC": 0.06765,
+                    "Cl": 0.02475,
+                    "HCl": 0.0132,
+                    "Unablated_Mass": 0.3539999999999999
+                }
+            }
+        ]
     },
     "1966-03-29": {
         "launches": [],
@@ -9403,6 +9804,82 @@
         ],
         "reentries": [
             {
+                "date": "1966-05-19T19:24:00Z",
+                "id": "1966-U02",
+                "reusability": "",
+                "name": "R-36O No. 04L Stage 2",
+                "category": "S2",
+                "smc": false,
+                "location": 4,
+                "burnup": "Complete",
+                "mass": 3.7,
+                "emissions": {
+                    "NOx": 1.48,
+                    "Al2O3": 1.6835,
+                    "BC": 0.1073,
+                    "Cl": 0.0407,
+                    "HCl": 0.0185,
+                    "Unablated_Mass": 1.295
+                }
+            },
+            {
+                "date": "1966-05-19T19:24:00Z",
+                "id": "1966-U02",
+                "reusability": "",
+                "name": "OGCh Adapter",
+                "category": "C",
+                "smc": false,
+                "location": 4,
+                "burnup": "Complete",
+                "mass": 0.5,
+                "emissions": {
+                    "NOx": 0.2,
+                    "Al2O3": 0.16,
+                    "BC": 0.0205,
+                    "Cl": 0.0075,
+                    "HCl": 0.004,
+                    "Unablated_Mass": 0.09999999999999998
+                }
+            },
+            {
+                "date": "1966-05-19T19:21:00Z",
+                "id": "1966-U02",
+                "reusability": "",
+                "name": "OGCh",
+                "category": "P",
+                "smc": false,
+                "location": 2,
+                "burnup": "Complete",
+                "mass": 1.45,
+                "emissions": {
+                    "NOx": 0.58,
+                    "Al2O3": 0.464,
+                    "BC": 0.05945,
+                    "Cl": 0.02175,
+                    "HCl": 0.0116,
+                    "Unablated_Mass": 0.2899999999999999
+                }
+            },
+            {
+                "date": "1966-05-19T19:19:00Z",
+                "id": "1966-U02",
+                "reusability": "",
+                "name": "OGCh Retro",
+                "category": "C",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 0.5,
+                "emissions": {
+                    "NOx": 0.2,
+                    "Al2O3": 0.16,
+                    "BC": 0.0205,
+                    "Cl": 0.0075,
+                    "HCl": 0.004,
+                    "Unablated_Mass": 0.09999999999999998
+                }
+            },
+            {
                 "date": "1966-05-19T02:27:00Z",
                 "id": "1966-041",
                 "reusability": "",
@@ -9538,6 +10015,25 @@
                     "Cl": 0.00015,
                     "HCl": 8e-05,
                     "Unablated_Mass": 0.0019999999999999996
+                }
+            },
+            {
+                "date": "1966-05-20T00:00:00Z",
+                "id": "1966-U02",
+                "reusability": "",
+                "name": "8S691",
+                "category": "S1",
+                "smc": false,
+                "location": 2,
+                "burnup": "Complete",
+                "mass": 6.4,
+                "emissions": {
+                    "NOx": 2.56,
+                    "Al2O3": 1.344,
+                    "BC": 0.0,
+                    "Cl": 0.0,
+                    "HCl": 0.0,
+                    "Unablated_Mass": 4.48
                 }
             }
         ]
@@ -17216,6 +17712,120 @@
                     "HCl": 0.01205,
                     "Unablated_Mass": 0.8435
                 }
+            },
+            {
+                "date": "1966-08-25T18:48:00Z",
+                "id": "1966-U06",
+                "reusability": "",
+                "name": "Apollo AS-202",
+                "category": "P",
+                "smc": false,
+                "location": 1,
+                "burnup": "Partial",
+                "mass": 5.531,
+                "emissions": {
+                    "NOx": 0.967925,
+                    "Al2O3": 0.0,
+                    "BC": 0.0,
+                    "Cl": 0.0,
+                    "HCl": 0.0,
+                    "Unablated_Mass": 5.531
+                }
+            },
+            {
+                "date": "1966-08-25T18:30:00Z",
+                "id": "1966-U06",
+                "reusability": "",
+                "name": "Apollo SM-011",
+                "category": "C",
+                "smc": false,
+                "location": 4,
+                "burnup": "Complete",
+                "mass": 4.507,
+                "emissions": {
+                    "NOx": 1.8028,
+                    "Al2O3": 1.44224,
+                    "BC": 0.184787,
+                    "Cl": 0.067605,
+                    "HCl": 0.036056,
+                    "Unablated_Mass": 0.9013999999999998
+                }
+            },
+            {
+                "date": "1966-08-25T17:15:32Z",
+                "id": "1966-U06",
+                "reusability": "",
+                "name": "LES-011",
+                "category": "C",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 0.0,
+                "emissions": {
+                    "NOx": 0.0,
+                    "Al2O3": 0.0,
+                    "BC": 0.0,
+                    "Cl": 0.0,
+                    "HCl": 0.0,
+                    "Unablated_Mass": 0.0
+                }
+            },
+            {
+                "date": "1966-08-25T17:15:32Z",
+                "id": "1966-U06",
+                "reusability": "",
+                "name": "Saturn S-IB SA202",
+                "category": "S1",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 41.594,
+                "emissions": {
+                    "NOx": 16.6376,
+                    "Al2O3": 8.73474,
+                    "BC": 0.0,
+                    "Cl": 0.0,
+                    "HCl": 0.0,
+                    "Unablated_Mass": 29.1158
+                }
+            },
+            {
+                "date": "1966-08-25T17:15:32Z",
+                "id": "1966-U06",
+                "reusability": "",
+                "name": "S-IU-202",
+                "category": "C",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 0.0,
+                "emissions": {
+                    "NOx": 0.0,
+                    "Al2O3": 0.0,
+                    "BC": 0.0,
+                    "Cl": 0.0,
+                    "HCl": 0.0,
+                    "Unablated_Mass": 0.0
+                }
+            },
+            {
+                "date": "1966-08-25T17:15:32Z",
+                "id": "1966-U06",
+                "reusability": "",
+                "name": "SLA-4",
+                "category": "C",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 0.0,
+                "emissions": {
+                    "NOx": 0.0,
+                    "Al2O3": 0.0,
+                    "BC": 0.0,
+                    "Cl": 0.0,
+                    "HCl": 0.0,
+                    "Unablated_Mass": 0.0
+                }
             }
         ]
     },
@@ -19012,7 +19622,141 @@
                 }
             }
         ],
-        "reentries": []
+        "reentries": [
+            {
+                "date": "1966-09-26T02:58:00Z",
+                "id": "1966-F10",
+                "reusability": "",
+                "name": "L735 L-4S-1",
+                "category": "S1",
+                "smc": false,
+                "location": 2,
+                "burnup": "Complete",
+                "mass": 2.14555,
+                "emissions": {
+                    "NOx": 0.85822,
+                    "Al2O3": 0.450566,
+                    "BC": 0.0,
+                    "Cl": 0.0,
+                    "HCl": 0.0,
+                    "Unablated_Mass": 1.501885
+                }
+            },
+            {
+                "date": "1966-09-26T02:58:00Z",
+                "id": "1966-F10",
+                "reusability": "",
+                "name": "L735(1/3)",
+                "category": "S2",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 3.4075,
+                "emissions": {
+                    "NOx": 1.363,
+                    "Al2O3": 0.710937,
+                    "BC": 0.098818,
+                    "Cl": 0.037482,
+                    "HCl": 0.017038,
+                    "Unablated_Mass": 2.391875
+                }
+            },
+            {
+                "date": "1966-09-26T02:58:00Z",
+                "id": "1966-F10",
+                "reusability": "",
+                "name": "L500",
+                "category": "S3",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 0.9424,
+                "emissions": {
+                    "NOx": 0.37696,
+                    "Al2O3": 0.179679,
+                    "BC": 0.02733,
+                    "Cl": 0.010366,
+                    "HCl": 0.004712,
+                    "Unablated_Mass": 0.685715
+                }
+            },
+            {
+                "date": "1966-09-26T02:58:00Z",
+                "id": "1966-F10",
+                "reusability": "",
+                "name": "Lambda Fairing",
+                "category": "C",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 0.878,
+                "emissions": {
+                    "NOx": 0.3512,
+                    "Al2O3": 0.18438,
+                    "BC": 0.035998,
+                    "Cl": 0.01317,
+                    "HCl": 0.007024,
+                    "Unablated_Mass": 0.6145999999999999
+                }
+            },
+            {
+                "date": "1966-09-26T02:58:00Z",
+                "id": "1966-F10",
+                "reusability": "",
+                "name": "Lambda Fairing",
+                "category": "C",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 0.878,
+                "emissions": {
+                    "NOx": 0.3512,
+                    "Al2O3": 0.18438,
+                    "BC": 0.035998,
+                    "Cl": 0.01317,
+                    "HCl": 0.007024,
+                    "Unablated_Mass": 0.6145999999999999
+                }
+            },
+            {
+                "date": "1966-09-26T03:07:00Z",
+                "id": "1966-F10",
+                "reusability": "",
+                "name": "L480S",
+                "category": "S4",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 0.111,
+                "emissions": {
+                    "NOx": 0.0444,
+                    "Al2O3": 0.010488,
+                    "BC": 0.003219,
+                    "Cl": 0.001221,
+                    "HCl": 0.000555,
+                    "Unablated_Mass": 0.0960175
+                }
+            },
+            {
+                "date": "1966-09-26T03:07:00Z",
+                "id": "1966-F10",
+                "reusability": "",
+                "name": "L-4S-1",
+                "category": "P",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 0.009000000000000001,
+                "emissions": {
+                    "NOx": 0.0036,
+                    "Al2O3": 0.00288,
+                    "BC": 0.000369,
+                    "Cl": 0.000135,
+                    "HCl": 7.2e-05,
+                    "Unablated_Mass": 0.0017999999999999997
+                }
+            }
+        ]
     },
     "1966-09-28": {
         "launches": [
@@ -23017,6 +23761,101 @@
                     "HCl": 0.004,
                     "Unablated_Mass": 0.28
                 }
+            },
+            {
+                "date": "1966-11-16T13:00:00Z",
+                "id": "1966-F11",
+                "reusability": "",
+                "name": "R-14 11K65A",
+                "category": "S1",
+                "smc": false,
+                "location": 2,
+                "burnup": "Complete",
+                "mass": 5.3,
+                "emissions": {
+                    "NOx": 2.12,
+                    "Al2O3": 1.113,
+                    "BC": 0.0,
+                    "Cl": 0.0,
+                    "HCl": 0.0,
+                    "Unablated_Mass": 3.7099999999999995
+                }
+            },
+            {
+                "date": "1966-11-16T13:00:00Z",
+                "id": "1966-F11",
+                "reusability": "",
+                "name": "Kosmos-3 Fairing",
+                "category": "C",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 0.878,
+                "emissions": {
+                    "NOx": 0.3512,
+                    "Al2O3": 0.18438,
+                    "BC": 0.035998,
+                    "Cl": 0.01317,
+                    "HCl": 0.007024,
+                    "Unablated_Mass": 0.6145999999999999
+                }
+            },
+            {
+                "date": "1966-11-16T13:00:00Z",
+                "id": "1966-F11",
+                "reusability": "",
+                "name": "Kosmos-3 Fairing",
+                "category": "C",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 0.878,
+                "emissions": {
+                    "NOx": 0.3512,
+                    "Al2O3": 0.18438,
+                    "BC": 0.035998,
+                    "Cl": 0.01317,
+                    "HCl": 0.007024,
+                    "Unablated_Mass": 0.6145999999999999
+                }
+            },
+            {
+                "date": "1966-11-16T13:00:00Z",
+                "id": "1966-F11",
+                "reusability": "",
+                "name": "Kosmos-3 No. 10LP Stage 2",
+                "category": "S2",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 20.1,
+                "emissions": {
+                    "NOx": 8.04,
+                    "Al2O3": 0.6825,
+                    "BC": 0.5829,
+                    "Cl": 0.2211,
+                    "HCl": 0.1005,
+                    "Unablated_Mass": 19.125
+                }
+            },
+            {
+                "date": "1966-11-16T13:00:00Z",
+                "id": "1966-F11",
+                "reusability": "",
+                "name": "Kosmos",
+                "category": "P",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 0.8,
+                "emissions": {
+                    "NOx": 0.32,
+                    "Al2O3": 0.256,
+                    "BC": 0.0328,
+                    "Cl": 0.012,
+                    "HCl": 0.0064,
+                    "Unablated_Mass": 0.15999999999999998
+                }
             }
         ]
     },
@@ -25608,7 +26447,141 @@
                 }
             }
         ],
-        "reentries": []
+        "reentries": [
+            {
+                "date": "1966-12-20T02:20:00Z",
+                "id": "1966-F13",
+                "reusability": "",
+                "name": "L735 L-4S-2",
+                "category": "S1",
+                "smc": false,
+                "location": 2,
+                "burnup": "Complete",
+                "mass": 2.14555,
+                "emissions": {
+                    "NOx": 0.85822,
+                    "Al2O3": 0.450566,
+                    "BC": 0.0,
+                    "Cl": 0.0,
+                    "HCl": 0.0,
+                    "Unablated_Mass": 1.501885
+                }
+            },
+            {
+                "date": "1966-12-20T02:20:00Z",
+                "id": "1966-F13",
+                "reusability": "",
+                "name": "L735(1/3)",
+                "category": "S2",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 1.5625,
+                "emissions": {
+                    "NOx": 0.625,
+                    "Al2O3": 0.710937,
+                    "BC": 0.045312,
+                    "Cl": 0.017188,
+                    "HCl": 0.007812,
+                    "Unablated_Mass": 0.546875
+                }
+            },
+            {
+                "date": "1966-12-20T02:20:00Z",
+                "id": "1966-F13",
+                "reusability": "",
+                "name": "L500",
+                "category": "S3",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 0.3949,
+                "emissions": {
+                    "NOx": 0.15796,
+                    "Al2O3": 0.179679,
+                    "BC": 0.011452,
+                    "Cl": 0.004344,
+                    "HCl": 0.001975,
+                    "Unablated_Mass": 0.13821499999999998
+                }
+            },
+            {
+                "date": "1966-12-20T02:20:00Z",
+                "id": "1966-F13",
+                "reusability": "",
+                "name": "Lambda Fairing",
+                "category": "C",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 0.878,
+                "emissions": {
+                    "NOx": 0.3512,
+                    "Al2O3": 0.18438,
+                    "BC": 0.035998,
+                    "Cl": 0.01317,
+                    "HCl": 0.007024,
+                    "Unablated_Mass": 0.6145999999999999
+                }
+            },
+            {
+                "date": "1966-12-20T02:20:00Z",
+                "id": "1966-F13",
+                "reusability": "",
+                "name": "Lambda Fairing",
+                "category": "C",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 0.878,
+                "emissions": {
+                    "NOx": 0.3512,
+                    "Al2O3": 0.18438,
+                    "BC": 0.035998,
+                    "Cl": 0.01317,
+                    "HCl": 0.007024,
+                    "Unablated_Mass": 0.6145999999999999
+                }
+            },
+            {
+                "date": "1966-12-20T02:30:00Z",
+                "id": "1966-F13",
+                "reusability": "",
+                "name": "L480S",
+                "category": "S4",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 0.11105,
+                "emissions": {
+                    "NOx": 0.04442,
+                    "Al2O3": 0.010488,
+                    "BC": 0.00322,
+                    "Cl": 0.001222,
+                    "HCl": 0.000555,
+                    "Unablated_Mass": 0.0960675
+                }
+            },
+            {
+                "date": "1966-12-20T02:30:00Z",
+                "id": "1966-F13",
+                "reusability": "",
+                "name": "L-4S-2",
+                "category": "P",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 0.009000000000000001,
+                "emissions": {
+                    "NOx": 0.0036,
+                    "Al2O3": 0.00288,
+                    "BC": 0.000369,
+                    "Cl": 0.000135,
+                    "HCl": 7.2e-05,
+                    "Unablated_Mass": 0.0017999999999999997
+                }
+            }
+        ]
     },
     "1966-12-21": {
         "launches": [
@@ -25834,6 +26807,44 @@
         ],
         "reentries": [
             {
+                "date": "1966-12-21T23:05:00Z",
+                "id": "1966-U08",
+                "reusability": "",
+                "name": "SV-5D",
+                "category": "P",
+                "smc": false,
+                "location": 4,
+                "burnup": "Partial",
+                "mass": 0.39,
+                "emissions": {
+                    "NOx": 0.06825,
+                    "Al2O3": 0.0,
+                    "BC": 0.0,
+                    "Cl": 0.0,
+                    "HCl": 0.0,
+                    "Unablated_Mass": 0.39
+                }
+            },
+            {
+                "date": "1966-12-21T22:40:00Z",
+                "id": "1966-U08",
+                "reusability": "",
+                "name": "Atlas 7001",
+                "category": "S1",
+                "smc": false,
+                "location": 4,
+                "burnup": "Complete",
+                "mass": 3.0,
+                "emissions": {
+                    "NOx": 1.2,
+                    "Al2O3": 0.63,
+                    "BC": 0.0,
+                    "Cl": 0.0,
+                    "HCl": 0.0,
+                    "Unablated_Mass": 2.1
+                }
+            },
+            {
                 "date": "1966-12-21T10:17:08Z",
                 "id": "1966-116",
                 "reusability": "",
@@ -26021,6 +27032,63 @@
                     "Cl": 0.01317,
                     "HCl": 0.007024,
                     "Unablated_Mass": 0.6145999999999999
+                }
+            },
+            {
+                "date": "1966-12-21T22:15:02Z",
+                "id": "1966-U08",
+                "reusability": "",
+                "name": "Atlas Booster",
+                "category": "S0",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 3.2,
+                "emissions": {
+                    "NOx": 1.28,
+                    "Al2O3": 0.672,
+                    "BC": 0.0,
+                    "Cl": 0.0,
+                    "HCl": 0.0,
+                    "Unablated_Mass": 2.24
+                }
+            },
+            {
+                "date": "1966-12-21T22:15:02Z",
+                "id": "1966-U08",
+                "reusability": "",
+                "name": "Short Nimbus Shroud?",
+                "category": "C",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 0.0,
+                "emissions": {
+                    "NOx": 0.0,
+                    "Al2O3": 0.0,
+                    "BC": 0.0,
+                    "Cl": 0.0,
+                    "HCl": 0.0,
+                    "Unablated_Mass": 0.0
+                }
+            },
+            {
+                "date": "1966-12-21T22:15:02Z",
+                "id": "1966-U08",
+                "reusability": "",
+                "name": "Short Nimbus Shroud?",
+                "category": "C",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 0.0,
+                "emissions": {
+                    "NOx": 0.0,
+                    "Al2O3": 0.0,
+                    "BC": 0.0,
+                    "Cl": 0.0,
+                    "HCl": 0.0,
+                    "Unablated_Mass": 0.0
                 }
             }
         ]

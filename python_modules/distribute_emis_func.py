@@ -143,8 +143,11 @@ def interp_prop_mass(bot_alt, mid_alt, top_alt, ross_alt_edge, ross_cumulative_m
     
     return propellant_in_model, model_relative_mass
 
-def get_failed_launch_dict():
+def get_failed_launch_dict(id, fail_code):
 
+    if id[5] not in ["F","U"]:
+        return None
+    
     failed_launch_dict = {
         # Launches which did full burns of all stages.
         '2017-F02': {"full_burn": True}, #                                                (AD)  https://rocketlabcorp.com/missions/launches/its-a-test/
@@ -171,6 +174,7 @@ def get_failed_launch_dict():
         '2025-U06': {"full_burn": True}, # Fairing separation issue                       (FF)
 
         # Specific fractions.
+        '2015-F02': {"failed_stage": 1, "cutoff_alt": 44900}, #                           (S2P) https://www.youtube.com/watch?v=PuNymhcTtSQ
         '2020-F07': {"failed_stage": 1, "cutoff_alt": 900},   #                           (S1G)
         '2021-F01': {"failed_stage": 1, "cutoff_alt": 10700}, #                           (S1G)
         '2021-F07': {"failed_stage": 1, "cutoff_alt": 31000}, #                           (S1P)  
@@ -197,5 +201,45 @@ def get_failed_launch_dict():
         '2024-F02': {"failed_stage": 2, "burned": 0}, # Failed/exploded after 2 mins      (S1P)
         '2024-F04': {"failed_stage": 3, "burned": 0}, # S1 error but still did S2 burns   (S1S)
     }
+    
+    failure = failed_launch_dict.get(id)
+    
+    # If the failure isn't in the manual list, then calculate automatically.
+    if failure is None:
+        failure_gcat = fail_code.replace("?","")
 
-    return failed_launch_dict
+        # Sometimes the fail code has two parts, so we use the stage part.
+        if "/" in failure_gcat:
+            for part in failure_gcat.split("/"):
+                if part.startswith("S") and part[1].isdigit():
+                    failure_gcat = part
+
+        # This is where the stage number is given by the fail_code.
+        if failure_gcat.startswith("S"):
+            failed_stage_gcat = int(failure_gcat[1])
+            if failed_stage_gcat == 1:
+                failure = {'failed_stage': failed_stage_gcat, 'cutoff_alt': 0}
+            else:
+                failure = {'failed_stage': failed_stage_gcat, 'burned': 0}
+
+        # Unknown failure codes, ignoring.
+        elif failure_gcat in ["U",   # Failure, all details unknown
+                              "UX"]: # Unconfirmed failure (may not have launched, or reaching orbit may not have been intended).
+            failure = {"failed_stage": 1, "cutoff_alt": 0}
+
+        # Failure during payload deployment, so treat as normal.
+        elif failure_gcat in [
+            "-",   # No FailCode
+            "FF",  # Fairing related failure (no fairing sep, or MaxQ failure, fairing destroyed)
+            "FS",  # Structure failure other than fairing and other than due to previous loss of control
+            "PI",  # Payload orbit insertion system, ignition problem.
+            "PG"]: # Payload orbit insertion system, attitude or guidance problem
+            return None
+        else:
+            raise ValueError(f"Unhandled GCAT fail code {fail_code} for {id}.")
+        
+    # Full burn but didn't reach orbit, so treat as normal.
+    if failure is not None and failure.get("full_burn"):
+        return None
+
+    return failure

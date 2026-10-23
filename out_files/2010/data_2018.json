@@ -17759,6 +17759,120 @@
                     "HCl": 0.0245,
                     "Unablated_Mass": 1.715
                 }
+            },
+            {
+                "date": "2018-10-27T08:00:00Z",
+                "id": "2018-F02",
+                "reusability": "",
+                "name": "ZQ-1 Stage 1",
+                "category": "S1",
+                "smc": false,
+                "location": 2,
+                "burnup": "Complete",
+                "mass": 1.0,
+                "emissions": {
+                    "NOx": 0.4,
+                    "Al2O3": 0.21,
+                    "BC": 0.0,
+                    "Cl": 0.0,
+                    "HCl": 0.0,
+                    "Unablated_Mass": 0.7000000000000001
+                }
+            },
+            {
+                "date": "2018-10-27T08:00:00Z",
+                "id": "2018-F02",
+                "reusability": "",
+                "name": "ZQ-1 Stage 2",
+                "category": "S2",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 1.0,
+                "emissions": {
+                    "NOx": 0.4,
+                    "Al2O3": 0.455,
+                    "BC": 0.029,
+                    "Cl": 0.011,
+                    "HCl": 0.005,
+                    "Unablated_Mass": 0.35000000000000003
+                }
+            },
+            {
+                "date": "2018-10-27T08:00:00Z",
+                "id": "2018-F02",
+                "reusability": "",
+                "name": "ZQ-1 Fairing",
+                "category": "C",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 0.878,
+                "emissions": {
+                    "NOx": 0.3512,
+                    "Al2O3": 0.18438,
+                    "BC": 0.035998,
+                    "Cl": 0.01317,
+                    "HCl": 0.007024,
+                    "Unablated_Mass": 0.6145999999999999
+                }
+            },
+            {
+                "date": "2018-10-27T08:00:00Z",
+                "id": "2018-F02",
+                "reusability": "",
+                "name": "ZQ-1 Fairing",
+                "category": "C",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 0.878,
+                "emissions": {
+                    "NOx": 0.3512,
+                    "Al2O3": 0.18438,
+                    "BC": 0.035998,
+                    "Cl": 0.01317,
+                    "HCl": 0.007024,
+                    "Unablated_Mass": 0.6145999999999999
+                }
+            },
+            {
+                "date": "2018-10-27T08:15:00Z",
+                "id": "2018-F02",
+                "reusability": "",
+                "name": "ZQ-1 Stage 3",
+                "category": "S3",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 2.0,
+                "emissions": {
+                    "NOx": 0.8,
+                    "Al2O3": 0.091,
+                    "BC": 0.058,
+                    "Cl": 0.022,
+                    "HCl": 0.01,
+                    "Unablated_Mass": 1.87
+                }
+            },
+            {
+                "date": "2018-10-27T08:15:00Z",
+                "id": "2018-F02",
+                "reusability": "",
+                "name": "Weilai",
+                "category": "P",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 0.02,
+                "emissions": {
+                    "NOx": 0.008,
+                    "Al2O3": 0.0064,
+                    "BC": 0.00082,
+                    "Cl": 0.0003,
+                    "HCl": 0.00016,
+                    "Unablated_Mass": 0.003999999999999999
+                }
             }
         ]
     },

@@ -11086,7 +11086,217 @@
                 }
             }
         ],
-        "reentries": []
+        "reentries": [
+            {
+                "date": "2001-09-21T18:49:30Z",
+                "id": "2001-U01",
+                "reusability": "",
+                "name": "Castor 120",
+                "category": "S1",
+                "smc": false,
+                "location": 2,
+                "burnup": "Complete",
+                "mass": 4.45,
+                "emissions": {
+                    "NOx": 1.78,
+                    "Al2O3": 0.9345,
+                    "BC": 0.0,
+                    "Cl": 0.0,
+                    "HCl": 0.0,
+                    "Unablated_Mass": 3.115
+                }
+            },
+            {
+                "date": "2001-09-21T18:49:30Z",
+                "id": "2001-U01",
+                "reusability": "",
+                "name": "Orion 50S-G",
+                "category": "S2",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 3.4,
+                "emissions": {
+                    "NOx": 1.36,
+                    "Al2O3": 0.156975,
+                    "BC": 0.0986,
+                    "Cl": 0.0374,
+                    "HCl": 0.017,
+                    "Unablated_Mass": 3.17575
+                }
+            },
+            {
+                "date": "2001-09-21T18:49:30Z",
+                "id": "2001-U01",
+                "reusability": "",
+                "name": "Orion 50",
+                "category": "S3",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 3.4,
+                "emissions": {
+                    "NOx": 1.36,
+                    "Al2O3": 0.156975,
+                    "BC": 0.0986,
+                    "Cl": 0.0374,
+                    "HCl": 0.017,
+                    "Unablated_Mass": 3.17575
+                }
+            },
+            {
+                "date": "2001-09-21T18:49:30Z",
+                "id": "2001-U01",
+                "reusability": "",
+                "name": "Taurus Fairing",
+                "category": "C",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 0.878,
+                "emissions": {
+                    "NOx": 0.3512,
+                    "Al2O3": 0.18438,
+                    "BC": 0.035998,
+                    "Cl": 0.01317,
+                    "HCl": 0.007024,
+                    "Unablated_Mass": 0.6145999999999999
+                }
+            },
+            {
+                "date": "2001-09-21T18:49:30Z",
+                "id": "2001-U01",
+                "reusability": "",
+                "name": "Taurus Fairing",
+                "category": "C",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 0.878,
+                "emissions": {
+                    "NOx": 0.3512,
+                    "Al2O3": 0.18438,
+                    "BC": 0.035998,
+                    "Cl": 0.01317,
+                    "HCl": 0.007024,
+                    "Unablated_Mass": 0.6145999999999999
+                }
+            },
+            {
+                "date": "2001-09-21T19:39:00Z",
+                "id": "2001-U01",
+                "reusability": "",
+                "name": "Taurus 6 Stage 4",
+                "category": "S4",
+                "smc": false,
+                "location": 4,
+                "burnup": "Complete",
+                "mass": 0.9,
+                "emissions": {
+                    "NOx": 0.36,
+                    "Al2O3": 0.05733,
+                    "BC": 0.0261,
+                    "Cl": 0.0099,
+                    "HCl": 0.0045,
+                    "Unablated_Mass": 0.8181
+                }
+            },
+            {
+                "date": "2001-09-21T19:39:00Z",
+                "id": "2001-U01",
+                "reusability": "",
+                "name": "OrbView-4",
+                "category": "P",
+                "smc": false,
+                "location": 4,
+                "burnup": "Complete",
+                "mass": 0.368,
+                "emissions": {
+                    "NOx": 0.1472,
+                    "Al2O3": 0.112,
+                    "BC": 0.015088,
+                    "Cl": 0.00552,
+                    "HCl": 0.002944,
+                    "Unablated_Mass": 0.08799999999999998
+                }
+            },
+            {
+                "date": "2001-09-21T19:39:00Z",
+                "id": "2001-U01",
+                "reusability": "",
+                "name": "APC",
+                "category": "C",
+                "smc": false,
+                "location": 4,
+                "burnup": "Complete",
+                "mass": 0.035,
+                "emissions": {
+                    "NOx": 0.014,
+                    "Al2O3": 0.0112,
+                    "BC": 0.001435,
+                    "Cl": 0.000525,
+                    "HCl": 0.00028,
+                    "Unablated_Mass": 0.006999999999999998
+                }
+            },
+            {
+                "date": "2001-09-21T19:39:00Z",
+                "id": "2001-U01",
+                "reusability": "",
+                "name": "QuikTOMS",
+                "category": "P",
+                "smc": false,
+                "location": 4,
+                "burnup": "Complete",
+                "mass": 0.168,
+                "emissions": {
+                    "NOx": 0.0672,
+                    "Al2O3": 0.032,
+                    "BC": 0.006888,
+                    "Cl": 0.00252,
+                    "HCl": 0.001344,
+                    "Unablated_Mass": 0.088
+                }
+            },
+            {
+                "date": "2001-09-21T19:39:00Z",
+                "id": "2001-U01",
+                "reusability": "",
+                "name": "SBD",
+                "category": "P",
+                "smc": false,
+                "location": 4,
+                "burnup": "Complete",
+                "mass": 0.073,
+                "emissions": {
+                    "NOx": 0.0292,
+                    "Al2O3": 0.02336,
+                    "BC": 0.002993,
+                    "Cl": 0.001095,
+                    "HCl": 0.000584,
+                    "Unablated_Mass": 0.014599999999999997
+                }
+            },
+            {
+                "date": "2001-09-21T19:39:00Z",
+                "id": "2001-U01",
+                "reusability": "",
+                "name": "Celestis-05",
+                "category": "P",
+                "smc": false,
+                "location": 4,
+                "burnup": "Complete",
+                "mass": 0.001,
+                "emissions": {
+                    "NOx": 0.0004,
+                    "Al2O3": 0.00032,
+                    "BC": 4.1e-05,
+                    "Cl": 1.5e-05,
+                    "HCl": 8e-06,
+                    "Unablated_Mass": 0.00019999999999999996
+                }
+            }
+        ]
     },
     "2001-09-24": {
         "launches": [],

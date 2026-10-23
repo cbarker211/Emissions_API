@@ -1652,7 +1652,122 @@
                 }
             }
         ],
-        "reentries": []
+        "reentries": [
+            {
+                "date": "1981-01-23T11:20:00Z",
+                "id": "1981-F01",
+                "reusability": "",
+                "name": "11S691",
+                "category": "S1",
+                "smc": false,
+                "location": 2,
+                "burnup": "Complete",
+                "mass": 8.3,
+                "emissions": {
+                    "NOx": 3.32,
+                    "Al2O3": 1.743,
+                    "BC": 0.0,
+                    "Cl": 0.0,
+                    "HCl": 0.0,
+                    "Unablated_Mass": 5.8100000000000005
+                }
+            },
+            {
+                "date": "1981-01-23T11:20:00Z",
+                "id": "1981-F01",
+                "reusability": "",
+                "name": "Tsiklon-3 Fairing",
+                "category": "C",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 0.878,
+                "emissions": {
+                    "NOx": 0.3512,
+                    "Al2O3": 0.18438,
+                    "BC": 0.035998,
+                    "Cl": 0.01317,
+                    "HCl": 0.007024,
+                    "Unablated_Mass": 0.6145999999999999
+                }
+            },
+            {
+                "date": "1981-01-23T11:20:00Z",
+                "id": "1981-F01",
+                "reusability": "",
+                "name": "Tsiklon-3 Fairing",
+                "category": "C",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 0.878,
+                "emissions": {
+                    "NOx": 0.3512,
+                    "Al2O3": 0.18438,
+                    "BC": 0.035998,
+                    "Cl": 0.01317,
+                    "HCl": 0.007024,
+                    "Unablated_Mass": 0.6145999999999999
+                }
+            },
+            {
+                "date": "1981-01-23T11:20:00Z",
+                "id": "1981-F01",
+                "reusability": "",
+                "name": "Tsiklon-3 83-621 Stage 2",
+                "category": "S2",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 53.300000000000004,
+                "emissions": {
+                    "NOx": 21.32,
+                    "Al2O3": 2.184,
+                    "BC": 1.5457,
+                    "Cl": 0.5863,
+                    "HCl": 0.2665,
+                    "Unablated_Mass": 50.18
+                }
+            },
+            {
+                "date": "1981-01-23T11:24:00Z",
+                "id": "1981-F01",
+                "reusability": "",
+                "name": "Tsiklon-3 83-621 Stage 3",
+                "category": "S3",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 4.6000000000000005,
+                "emissions": {
+                    "NOx": 1.84,
+                    "Al2O3": 0.728,
+                    "BC": 0.1334,
+                    "Cl": 0.0506,
+                    "HCl": 0.023,
+                    "Unablated_Mass": 3.56
+                }
+            },
+            {
+                "date": "1981-01-23T11:24:00Z",
+                "id": "1981-F01",
+                "reusability": "",
+                "name": "[Kosmos]",
+                "category": "P",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 1.53,
+                "emissions": {
+                    "NOx": 0.612,
+                    "Al2O3": 0.4896,
+                    "BC": 0.06273,
+                    "Cl": 0.02295,
+                    "HCl": 0.01224,
+                    "Unablated_Mass": 0.30599999999999994
+                }
+            }
+        ]
     },
     "1981-01-24": {
         "launches": [

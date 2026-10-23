@@ -10627,7 +10627,141 @@
                 }
             }
         ],
-        "reentries": []
+        "reentries": [
+            {
+                "date": "2002-09-15T10:30:00Z",
+                "id": "2002-F01",
+                "reusability": "",
+                "name": "DF-21 St1",
+                "category": "S1",
+                "smc": false,
+                "location": 2,
+                "burnup": "Complete",
+                "mass": 1.6600000000000001,
+                "emissions": {
+                    "NOx": 0.664,
+                    "Al2O3": 0.3486,
+                    "BC": 0.0,
+                    "Cl": 0.0,
+                    "HCl": 0.0,
+                    "Unablated_Mass": 1.162
+                }
+            },
+            {
+                "date": "2002-09-15T10:30:00Z",
+                "id": "2002-F01",
+                "reusability": "",
+                "name": "DF-21 St2",
+                "category": "S2",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 8.700000000000001,
+                "emissions": {
+                    "NOx": 3.48,
+                    "Al2O3": 0.39585,
+                    "BC": 0.2523,
+                    "Cl": 0.0957,
+                    "HCl": 0.0435,
+                    "Unablated_Mass": 8.134500000000001
+                }
+            },
+            {
+                "date": "2002-09-15T10:30:00Z",
+                "id": "2002-F01",
+                "reusability": "",
+                "name": "KT-1 Fairing",
+                "category": "C",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 0.878,
+                "emissions": {
+                    "NOx": 0.3512,
+                    "Al2O3": 0.18438,
+                    "BC": 0.035998,
+                    "Cl": 0.01317,
+                    "HCl": 0.007024,
+                    "Unablated_Mass": 0.6145999999999999
+                }
+            },
+            {
+                "date": "2002-09-15T10:30:00Z",
+                "id": "2002-F01",
+                "reusability": "",
+                "name": "KT-1 Fairing",
+                "category": "C",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 0.878,
+                "emissions": {
+                    "NOx": 0.3512,
+                    "Al2O3": 0.18438,
+                    "BC": 0.035998,
+                    "Cl": 0.01317,
+                    "HCl": 0.007024,
+                    "Unablated_Mass": 0.6145999999999999
+                }
+            },
+            {
+                "date": "2002-09-15T10:30:00Z",
+                "id": "2002-F01",
+                "reusability": "",
+                "name": "KT-1 St3",
+                "category": "S3",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 2.0,
+                "emissions": {
+                    "NOx": 0.8,
+                    "Al2O3": 0.091,
+                    "BC": 0.058,
+                    "Cl": 0.022,
+                    "HCl": 0.01,
+                    "Unablated_Mass": 1.87
+                }
+            },
+            {
+                "date": "2002-09-15T10:32:00Z",
+                "id": "2002-F01",
+                "reusability": "",
+                "name": "Hangtian Tsinghua 1-01",
+                "category": "P",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 0.036000000000000004,
+                "emissions": {
+                    "NOx": 0.0144,
+                    "Al2O3": 0.01152,
+                    "BC": 0.001476,
+                    "Cl": 0.00054,
+                    "HCl": 0.000288,
+                    "Unablated_Mass": 0.007199999999999999
+                }
+            },
+            {
+                "date": "2002-09-15T10:32:00Z",
+                "id": "2002-F01",
+                "reusability": "",
+                "name": "KT-1 stage 4",
+                "category": "S4",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 2.0,
+                "emissions": {
+                    "NOx": 0.8,
+                    "Al2O3": 0.091,
+                    "BC": 0.058,
+                    "Cl": 0.022,
+                    "HCl": 0.01,
+                    "Unablated_Mass": 1.87
+                }
+            }
+        ]
     },
     "2002-09-16": {
         "launches": [],

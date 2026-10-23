@@ -6170,6 +6170,120 @@
                     "HCl": 0.0072,
                     "Unablated_Mass": 0.63
                 }
+            },
+            {
+                "date": "2017-05-25T04:20:00Z",
+                "id": "2017-F02",
+                "reusability": "",
+                "name": "Electron Stage 1",
+                "category": "S1",
+                "smc": false,
+                "location": 2,
+                "burnup": "Complete",
+                "mass": 0.9500000000000001,
+                "emissions": {
+                    "NOx": 0.38,
+                    "Al2O3": 0.1995,
+                    "BC": 0.0,
+                    "Cl": 0.0,
+                    "HCl": 0.0,
+                    "Unablated_Mass": 0.665
+                }
+            },
+            {
+                "date": "2017-05-25T04:20:00Z",
+                "id": "2017-F02",
+                "reusability": "",
+                "name": "Electron Fairing",
+                "category": "C",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 0.022,
+                "emissions": {
+                    "NOx": 0.0088,
+                    "Al2O3": 0.00462,
+                    "BC": 0.000902,
+                    "Cl": 0.00033,
+                    "HCl": 0.000176,
+                    "Unablated_Mass": 0.015399999999999999
+                }
+            },
+            {
+                "date": "2017-05-25T04:20:00Z",
+                "id": "2017-F02",
+                "reusability": "",
+                "name": "Electron Fairing",
+                "category": "C",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 0.022,
+                "emissions": {
+                    "NOx": 0.0088,
+                    "Al2O3": 0.00462,
+                    "BC": 0.000902,
+                    "Cl": 0.00033,
+                    "HCl": 0.000176,
+                    "Unablated_Mass": 0.015399999999999999
+                }
+            },
+            {
+                "date": "2017-05-25T04:20:00Z",
+                "id": "2017-F02",
+                "reusability": "",
+                "name": "Electron Stage 2",
+                "category": "S2",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 0.25,
+                "emissions": {
+                    "NOx": 0.1,
+                    "Al2O3": 0.11375,
+                    "BC": 0.00725,
+                    "Cl": 0.00275,
+                    "HCl": 0.00125,
+                    "Unablated_Mass": 0.08750000000000001
+                }
+            },
+            {
+                "date": "2017-05-25T04:20:00Z",
+                "id": "2017-F02",
+                "reusability": "",
+                "name": "It's A Test",
+                "category": "P",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 0.02,
+                "emissions": {
+                    "NOx": 0.008,
+                    "Al2O3": 0.0064,
+                    "BC": 0.00082,
+                    "Cl": 0.0003,
+                    "HCl": 0.00016,
+                    "Unablated_Mass": 0.003999999999999999
+                }
+            },
+            {
+                "date": "2017-05-25T04:20:00Z",
+                "id": "2017-F02",
+                "reusability": "",
+                "name": "Humanity Star",
+                "category": "P",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 0.02,
+                "emissions": {
+                    "NOx": 0.008,
+                    "Al2O3": 0.0064,
+                    "BC": 0.00082,
+                    "Cl": 0.0003,
+                    "HCl": 0.00016,
+                    "Unablated_Mass": 0.003999999999999999
+                }
             }
         ]
     },
@@ -16294,7 +16408,540 @@
                 }
             }
         ],
-        "reentries": []
+        "reentries": [
+            {
+                "date": "2017-11-28T05:41:46Z",
+                "id": "2017-F05",
+                "reusability": "",
+                "name": "14S53V",
+                "category": "S0",
+                "smc": false,
+                "location": 2,
+                "burnup": "Complete",
+                "mass": 3.7840000000000003,
+                "emissions": {
+                    "NOx": 1.5136,
+                    "Al2O3": 0.79464,
+                    "BC": 0.0,
+                    "Cl": 0.0,
+                    "HCl": 0.0,
+                    "Unablated_Mass": 2.6487999999999996
+                }
+            },
+            {
+                "date": "2017-11-28T05:41:46Z",
+                "id": "2017-F05",
+                "reusability": "",
+                "name": "14S53G",
+                "category": "S0",
+                "smc": false,
+                "location": 2,
+                "burnup": "Complete",
+                "mass": 3.7840000000000003,
+                "emissions": {
+                    "NOx": 1.5136,
+                    "Al2O3": 0.79464,
+                    "BC": 0.0,
+                    "Cl": 0.0,
+                    "HCl": 0.0,
+                    "Unablated_Mass": 2.6487999999999996
+                }
+            },
+            {
+                "date": "2017-11-28T05:41:46Z",
+                "id": "2017-F05",
+                "reusability": "",
+                "name": "14S53D",
+                "category": "S0",
+                "smc": false,
+                "location": 2,
+                "burnup": "Complete",
+                "mass": 3.7840000000000003,
+                "emissions": {
+                    "NOx": 1.5136,
+                    "Al2O3": 0.79464,
+                    "BC": 0.0,
+                    "Cl": 0.0,
+                    "HCl": 0.0,
+                    "Unablated_Mass": 2.6487999999999996
+                }
+            },
+            {
+                "date": "2017-11-28T05:41:46Z",
+                "id": "2017-F05",
+                "reusability": "",
+                "name": "14S53B",
+                "category": "S0",
+                "smc": false,
+                "location": 2,
+                "burnup": "Complete",
+                "mass": 3.7840000000000003,
+                "emissions": {
+                    "NOx": 1.5136,
+                    "Al2O3": 0.79464,
+                    "BC": 0.0,
+                    "Cl": 0.0,
+                    "HCl": 0.0,
+                    "Unablated_Mass": 2.6487999999999996
+                }
+            },
+            {
+                "date": "2017-11-28T05:41:46Z",
+                "id": "2017-F05",
+                "reusability": "",
+                "name": "14S53A",
+                "category": "S1",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 6.545,
+                "emissions": {
+                    "NOx": 2.618,
+                    "Al2O3": 1.37445,
+                    "BC": 0.0,
+                    "Cl": 0.0,
+                    "HCl": 0.0,
+                    "Unablated_Mass": 4.5815
+                }
+            },
+            {
+                "date": "2017-11-28T05:41:46Z",
+                "id": "2017-F05",
+                "reusability": "",
+                "name": "14S737 Fairing",
+                "category": "C",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 0.9,
+                "emissions": {
+                    "NOx": 0.36,
+                    "Al2O3": 0.189,
+                    "BC": 0.0369,
+                    "Cl": 0.0135,
+                    "HCl": 0.0072,
+                    "Unablated_Mass": 0.63
+                }
+            },
+            {
+                "date": "2017-11-28T05:41:46Z",
+                "id": "2017-F05",
+                "reusability": "",
+                "name": "14S737 Fairing",
+                "category": "C",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 0.9,
+                "emissions": {
+                    "NOx": 0.36,
+                    "Al2O3": 0.189,
+                    "BC": 0.0369,
+                    "Cl": 0.0135,
+                    "HCl": 0.0072,
+                    "Unablated_Mass": 0.63
+                }
+            },
+            {
+                "date": "2017-11-28T06:15:00Z",
+                "id": "2017-F05",
+                "reusability": "",
+                "name": "Soyuz-2-1b(V) 001 Blok-I",
+                "category": "S2",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 2.355,
+                "emissions": {
+                    "NOx": 0.942,
+                    "Al2O3": 1.071525,
+                    "BC": 0.068295,
+                    "Cl": 0.025905,
+                    "HCl": 0.011775,
+                    "Unablated_Mass": 0.82425
+                }
+            },
+            {
+                "date": "2017-11-28T06:06:00Z",
+                "id": "2017-F05",
+                "reusability": "",
+                "name": "Fregat No. 122-01",
+                "category": "S3",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 1.0,
+                "emissions": {
+                    "NOx": 0.4,
+                    "Al2O3": 0.455,
+                    "BC": 0.029,
+                    "Cl": 0.011,
+                    "HCl": 0.005,
+                    "Unablated_Mass": 0.35000000000000003
+                }
+            },
+            {
+                "date": "2017-11-28T06:06:00Z",
+                "id": "2017-F05",
+                "reusability": "",
+                "name": "Meteor-M No. 2-1",
+                "category": "P",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 2.778,
+                "emissions": {
+                    "NOx": 1.1112,
+                    "Al2O3": 0.832,
+                    "BC": 0.113898,
+                    "Cl": 0.04167,
+                    "HCl": 0.022224,
+                    "Unablated_Mass": 0.698
+                }
+            },
+            {
+                "date": "2017-11-28T06:06:00Z",
+                "id": "2017-F05",
+                "reusability": "",
+                "name": "LEO Vantage 2",
+                "category": "P",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 0.07,
+                "emissions": {
+                    "NOx": 0.028,
+                    "Al2O3": 0.0224,
+                    "BC": 0.00287,
+                    "Cl": 0.00105,
+                    "HCl": 0.00056,
+                    "Unablated_Mass": 0.013999999999999997
+                }
+            },
+            {
+                "date": "2017-11-28T06:06:00Z",
+                "id": "2017-F05",
+                "reusability": "",
+                "name": "Baumanets-2",
+                "category": "P",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 0.117,
+                "emissions": {
+                    "NOx": 0.0468,
+                    "Al2O3": 0.03744,
+                    "BC": 0.004797,
+                    "Cl": 0.001755,
+                    "HCl": 0.000936,
+                    "Unablated_Mass": 0.023399999999999997
+                }
+            },
+            {
+                "date": "2017-11-28T06:06:00Z",
+                "id": "2017-F05",
+                "reusability": "",
+                "name": "IDEA-OSG 1",
+                "category": "P",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 0.025,
+                "emissions": {
+                    "NOx": 0.01,
+                    "Al2O3": 0.008,
+                    "BC": 0.001025,
+                    "Cl": 0.000375,
+                    "HCl": 0.0002,
+                    "Unablated_Mass": 0.004999999999999999
+                }
+            },
+            {
+                "date": "2017-11-28T06:06:00Z",
+                "id": "2017-F05",
+                "reusability": "",
+                "name": "CORVUS BC3",
+                "category": "P",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 0.011,
+                "emissions": {
+                    "NOx": 0.0044,
+                    "Al2O3": 0.00352,
+                    "BC": 0.000451,
+                    "Cl": 0.000165,
+                    "HCl": 8.8e-05,
+                    "Unablated_Mass": 0.0021999999999999993
+                }
+            },
+            {
+                "date": "2017-11-28T06:06:00Z",
+                "id": "2017-F05",
+                "reusability": "",
+                "name": "Helios Wire BIU",
+                "category": "P",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 0.011,
+                "emissions": {
+                    "NOx": 0.0044,
+                    "Al2O3": 0.00352,
+                    "BC": 0.000451,
+                    "Cl": 0.000165,
+                    "HCl": 8.8e-05,
+                    "Unablated_Mass": 0.0021999999999999993
+                }
+            },
+            {
+                "date": "2017-11-28T06:06:00Z",
+                "id": "2017-F05",
+                "reusability": "",
+                "name": "AISSAT-3",
+                "category": "P",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 0.007,
+                "emissions": {
+                    "NOx": 0.0028,
+                    "Al2O3": 0.00224,
+                    "BC": 0.000287,
+                    "Cl": 0.000105,
+                    "HCl": 5.6e-05,
+                    "Unablated_Mass": 0.0013999999999999998
+                }
+            },
+            {
+                "date": "2017-11-28T06:06:00Z",
+                "id": "2017-F05",
+                "reusability": "",
+                "name": "Lemur-2-McGarvey",
+                "category": "P",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 0.0046,
+                "emissions": {
+                    "NOx": 0.00184,
+                    "Al2O3": 0.001472,
+                    "BC": 0.000189,
+                    "Cl": 6.9e-05,
+                    "HCl": 3.7e-05,
+                    "Unablated_Mass": 0.0009199999999999997
+                }
+            },
+            {
+                "date": "2017-11-28T06:06:00Z",
+                "id": "2017-F05",
+                "reusability": "",
+                "name": "Lemur-2-BenYeoh",
+                "category": "P",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 0.0046,
+                "emissions": {
+                    "NOx": 0.00184,
+                    "Al2O3": 0.001472,
+                    "BC": 0.000189,
+                    "Cl": 6.9e-05,
+                    "HCl": 3.7e-05,
+                    "Unablated_Mass": 0.0009199999999999997
+                }
+            },
+            {
+                "date": "2017-11-28T06:06:00Z",
+                "id": "2017-F05",
+                "reusability": "",
+                "name": "Lemur-2-Harvey",
+                "category": "P",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 0.0046,
+                "emissions": {
+                    "NOx": 0.00184,
+                    "Al2O3": 0.001472,
+                    "BC": 0.000189,
+                    "Cl": 6.9e-05,
+                    "HCl": 3.7e-05,
+                    "Unablated_Mass": 0.0009199999999999997
+                }
+            },
+            {
+                "date": "2017-11-28T06:06:00Z",
+                "id": "2017-F05",
+                "reusability": "",
+                "name": "Lemur-2-Matthew",
+                "category": "P",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 0.0046,
+                "emissions": {
+                    "NOx": 0.00184,
+                    "Al2O3": 0.001472,
+                    "BC": 0.000189,
+                    "Cl": 6.9e-05,
+                    "HCl": 3.7e-05,
+                    "Unablated_Mass": 0.0009199999999999997
+                }
+            },
+            {
+                "date": "2017-11-28T06:06:00Z",
+                "id": "2017-F05",
+                "reusability": "",
+                "name": "Lemur-2-MaxiMillie",
+                "category": "P",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 0.0046,
+                "emissions": {
+                    "NOx": 0.00184,
+                    "Al2O3": 0.001472,
+                    "BC": 0.000189,
+                    "Cl": 6.9e-05,
+                    "HCl": 3.7e-05,
+                    "Unablated_Mass": 0.0009199999999999997
+                }
+            },
+            {
+                "date": "2017-11-28T06:06:00Z",
+                "id": "2017-F05",
+                "reusability": "",
+                "name": "Lemur-2-SMillie-Face",
+                "category": "P",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 0.0046,
+                "emissions": {
+                    "NOx": 0.00184,
+                    "Al2O3": 0.001472,
+                    "BC": 0.000189,
+                    "Cl": 6.9e-05,
+                    "HCl": 3.7e-05,
+                    "Unablated_Mass": 0.0009199999999999997
+                }
+            },
+            {
+                "date": "2017-11-28T06:06:00Z",
+                "id": "2017-F05",
+                "reusability": "",
+                "name": "Lemur-2-NRE-Metts",
+                "category": "P",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 0.0046,
+                "emissions": {
+                    "NOx": 0.00184,
+                    "Al2O3": 0.001472,
+                    "BC": 0.000189,
+                    "Cl": 6.9e-05,
+                    "HCl": 3.7e-05,
+                    "Unablated_Mass": 0.0009199999999999997
+                }
+            },
+            {
+                "date": "2017-11-28T06:06:00Z",
+                "id": "2017-F05",
+                "reusability": "",
+                "name": "Lemur-2-CylonRaider",
+                "category": "P",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 0.0046,
+                "emissions": {
+                    "NOx": 0.00184,
+                    "Al2O3": 0.001472,
+                    "BC": 0.000189,
+                    "Cl": 6.9e-05,
+                    "HCl": 3.7e-05,
+                    "Unablated_Mass": 0.0009199999999999997
+                }
+            },
+            {
+                "date": "2017-11-28T06:06:00Z",
+                "id": "2017-F05",
+                "reusability": "",
+                "name": "Lemur-2-Ector",
+                "category": "P",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 0.0046,
+                "emissions": {
+                    "NOx": 0.00184,
+                    "Al2O3": 0.001472,
+                    "BC": 0.000189,
+                    "Cl": 6.9e-05,
+                    "HCl": 3.7e-05,
+                    "Unablated_Mass": 0.0009199999999999997
+                }
+            },
+            {
+                "date": "2017-11-28T06:06:00Z",
+                "id": "2017-F05",
+                "reusability": "",
+                "name": "Lemur-2-Craig",
+                "category": "P",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 0.0046,
+                "emissions": {
+                    "NOx": 0.00184,
+                    "Al2O3": 0.001472,
+                    "BC": 0.000189,
+                    "Cl": 6.9e-05,
+                    "HCl": 3.7e-05,
+                    "Unablated_Mass": 0.0009199999999999997
+                }
+            },
+            {
+                "date": "2017-11-28T06:06:00Z",
+                "id": "2017-F05",
+                "reusability": "",
+                "name": "SEAM",
+                "category": "P",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 0.0047,
+                "emissions": {
+                    "NOx": 0.00188,
+                    "Al2O3": 0.001504,
+                    "BC": 0.000193,
+                    "Cl": 7e-05,
+                    "HCl": 3.8e-05,
+                    "Unablated_Mass": 0.0009399999999999999
+                }
+            },
+            {
+                "date": "2017-11-28T06:06:00Z",
+                "id": "2017-F05",
+                "reusability": "",
+                "name": "D-Star One",
+                "category": "P",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 0.003,
+                "emissions": {
+                    "NOx": 0.0012,
+                    "Al2O3": 0.00096,
+                    "BC": 0.000123,
+                    "Cl": 4.5e-05,
+                    "HCl": 2.4e-05,
+                    "Unablated_Mass": 0.0005999999999999998
+                }
+            }
+        ]
     },
     "2017-12-01": {
         "launches": [],

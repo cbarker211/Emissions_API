@@ -123,7 +123,141 @@
                 }
             }
         ],
-        "reentries": []
+        "reentries": [
+            {
+                "date": "1962-01-13T21:41:02Z",
+                "id": "1962-F01",
+                "reusability": "",
+                "name": "Thor DM-21 327",
+                "category": "S1",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 3.125,
+                "emissions": {
+                    "NOx": 1.25,
+                    "Al2O3": 0.65625,
+                    "BC": 0.0,
+                    "Cl": 0.0,
+                    "HCl": 0.0,
+                    "Unablated_Mass": 2.1875
+                }
+            },
+            {
+                "date": "1962-01-13T21:41:02Z",
+                "id": "1962-F01",
+                "reusability": "",
+                "name": "Agena B 1120",
+                "category": "S2",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 7.0,
+                "emissions": {
+                    "NOx": 2.8,
+                    "Al2O3": 0.34125,
+                    "BC": 0.203,
+                    "Cl": 0.077,
+                    "HCl": 0.035,
+                    "Unablated_Mass": 6.5125
+                }
+            },
+            {
+                "date": "1962-01-13T21:41:02Z",
+                "id": "1962-F01",
+                "reusability": "",
+                "name": "Discoverer 37",
+                "category": "P",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 0.29,
+                "emissions": {
+                    "NOx": 0.116,
+                    "Al2O3": 0.0928,
+                    "BC": 0.01189,
+                    "Cl": 0.00435,
+                    "HCl": 0.00232,
+                    "Unablated_Mass": 0.05799999999999999
+                }
+            },
+            {
+                "date": "1962-01-13T21:41:02Z",
+                "id": "1962-F01",
+                "reusability": "",
+                "name": "Star 12",
+                "category": "C",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 0.01,
+                "emissions": {
+                    "NOx": 0.004,
+                    "Al2O3": 0.0032,
+                    "BC": 0.00041,
+                    "Cl": 0.00015,
+                    "HCl": 8e-05,
+                    "Unablated_Mass": 0.0019999999999999996
+                }
+            },
+            {
+                "date": "1962-01-13T21:41:02Z",
+                "id": "1962-F01",
+                "reusability": "",
+                "name": "SRV 571",
+                "category": "P",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 0.157,
+                "emissions": {
+                    "NOx": 0.0628,
+                    "Al2O3": 0.05024,
+                    "BC": 0.006437,
+                    "Cl": 0.002355,
+                    "HCl": 0.001256,
+                    "Unablated_Mass": 0.03139999999999999
+                }
+            },
+            {
+                "date": "1962-01-13T21:41:02Z",
+                "id": "1962-F01",
+                "reusability": "",
+                "name": "LPARL Aurora 1962a",
+                "category": "P",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 0.02,
+                "emissions": {
+                    "NOx": 0.008,
+                    "Al2O3": 0.0064,
+                    "BC": 0.00082,
+                    "Cl": 0.0003,
+                    "HCl": 0.00016,
+                    "Unablated_Mass": 0.003999999999999999
+                }
+            },
+            {
+                "date": "1962-01-13T21:41:02Z",
+                "id": "1962-F01",
+                "reusability": "",
+                "name": "TAKI",
+                "category": "P",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 0.005,
+                "emissions": {
+                    "NOx": 0.002,
+                    "Al2O3": 0.0016,
+                    "BC": 0.000205,
+                    "Cl": 7.5e-05,
+                    "HCl": 4e-05,
+                    "Unablated_Mass": 0.0009999999999999998
+                }
+            }
+        ]
     },
     "1962-01-24": {
         "launches": [
@@ -201,7 +335,179 @@
                 }
             }
         ],
-        "reentries": []
+        "reentries": [
+            {
+                "date": "1962-01-24T09:30:00Z",
+                "id": "1962-F02",
+                "reusability": "",
+                "name": "Thor DM-18A  311",
+                "category": "S1",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 3.125,
+                "emissions": {
+                    "NOx": 1.25,
+                    "Al2O3": 0.65625,
+                    "BC": 0.0,
+                    "Cl": 0.0,
+                    "HCl": 0.0,
+                    "Unablated_Mass": 2.1875
+                }
+            },
+            {
+                "date": "1962-01-24T09:30:00Z",
+                "id": "1962-F02",
+                "reusability": "",
+                "name": "Ablestar Fairing",
+                "category": "C",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 0.878,
+                "emissions": {
+                    "NOx": 0.3512,
+                    "Al2O3": 0.18438,
+                    "BC": 0.035998,
+                    "Cl": 0.01317,
+                    "HCl": 0.007024,
+                    "Unablated_Mass": 0.6145999999999999
+                }
+            },
+            {
+                "date": "1962-01-24T09:30:00Z",
+                "id": "1962-F02",
+                "reusability": "",
+                "name": "Ablestar Fairing",
+                "category": "C",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 0.878,
+                "emissions": {
+                    "NOx": 0.3512,
+                    "Al2O3": 0.18438,
+                    "BC": 0.035998,
+                    "Cl": 0.01317,
+                    "HCl": 0.007024,
+                    "Unablated_Mass": 0.6145999999999999
+                }
+            },
+            {
+                "date": "1962-01-24T09:30:00Z",
+                "id": "1962-F02",
+                "reusability": "",
+                "name": "Ablestar 010",
+                "category": "S2",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 4.5,
+                "emissions": {
+                    "NOx": 1.8,
+                    "Al2O3": 0.272545,
+                    "BC": 0.1305,
+                    "Cl": 0.0495,
+                    "HCl": 0.0225,
+                    "Unablated_Mass": 4.11065
+                }
+            },
+            {
+                "date": "1962-01-24T09:30:00Z",
+                "id": "1962-F02",
+                "reusability": "",
+                "name": "SR 4",
+                "category": "P",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 0.025,
+                "emissions": {
+                    "NOx": 0.01,
+                    "Al2O3": 0.008,
+                    "BC": 0.001025,
+                    "Cl": 0.000375,
+                    "HCl": 0.0002,
+                    "Unablated_Mass": 0.004999999999999999
+                }
+            },
+            {
+                "date": "1962-01-24T09:30:00Z",
+                "id": "1962-F02",
+                "reusability": "",
+                "name": "Lofti II",
+                "category": "P",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 0.027,
+                "emissions": {
+                    "NOx": 0.0108,
+                    "Al2O3": 0.00864,
+                    "BC": 0.001107,
+                    "Cl": 0.000405,
+                    "HCl": 0.000216,
+                    "Unablated_Mass": 0.0053999999999999986
+                }
+            },
+            {
+                "date": "1962-01-24T09:30:00Z",
+                "id": "1962-F02",
+                "reusability": "",
+                "name": "SECOR",
+                "category": "P",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 0.016,
+                "emissions": {
+                    "NOx": 0.0064,
+                    "Al2O3": 0.00512,
+                    "BC": 0.000656,
+                    "Cl": 0.00024,
+                    "HCl": 0.000128,
+                    "Unablated_Mass": 0.0031999999999999993
+                }
+            },
+            {
+                "date": "1962-01-24T09:30:00Z",
+                "id": "1962-F02",
+                "reusability": "",
+                "name": "Injun II",
+                "category": "P",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 0.025,
+                "emissions": {
+                    "NOx": 0.01,
+                    "Al2O3": 0.008,
+                    "BC": 0.001025,
+                    "Cl": 0.000375,
+                    "HCl": 0.0002,
+                    "Unablated_Mass": 0.004999999999999999
+                }
+            },
+            {
+                "date": "1962-01-24T09:30:00Z",
+                "id": "1962-F02",
+                "reusability": "",
+                "name": "SURCAL 1",
+                "category": "P",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 0.004,
+                "emissions": {
+                    "NOx": 0.0016,
+                    "Al2O3": 0.00128,
+                    "BC": 0.000164,
+                    "Cl": 6e-05,
+                    "HCl": 3.2e-05,
+                    "Unablated_Mass": 0.0007999999999999998
+                }
+            }
+        ]
     },
     "1962-01-26": {
         "launches": [
@@ -2649,6 +2955,25 @@
         ],
         "reentries": [
             {
+                "date": "1962-04-26T10:49:00Z",
+                "id": "1962-F03",
+                "reusability": "",
+                "name": "Algol 1D-29",
+                "category": "S1",
+                "smc": false,
+                "location": 2,
+                "burnup": "Complete",
+                "mass": 1.2,
+                "emissions": {
+                    "NOx": 0.48,
+                    "Al2O3": 0.252,
+                    "BC": 0.0,
+                    "Cl": 0.0,
+                    "HCl": 0.0,
+                    "Unablated_Mass": 0.84
+                }
+            },
+            {
                 "date": "1962-04-26T10:02:00Z",
                 "id": "1962-014",
                 "reusability": "",
@@ -2722,6 +3047,82 @@
                     "Cl": 0.0,
                     "HCl": 0.0,
                     "Unablated_Mass": 0.595
+                }
+            },
+            {
+                "date": "1962-04-26T10:49:00Z",
+                "id": "1962-F03",
+                "reusability": "",
+                "name": "Castor 1E5-147",
+                "category": "S2",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 0.783,
+                "emissions": {
+                    "NOx": 0.3132,
+                    "Al2O3": 0.356265,
+                    "BC": 0.022707,
+                    "Cl": 0.008613,
+                    "HCl": 0.003915,
+                    "Unablated_Mass": 0.27404999999999996
+                }
+            },
+            {
+                "date": "1962-04-26T10:49:00Z",
+                "id": "1962-F03",
+                "reusability": "",
+                "name": "Antares 2A1-16",
+                "category": "S3",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 0.107,
+                "emissions": {
+                    "NOx": 0.0428,
+                    "Al2O3": 0.048685,
+                    "BC": 0.003103,
+                    "Cl": 0.001177,
+                    "HCl": 0.000535,
+                    "Unablated_Mass": 0.03745
+                }
+            },
+            {
+                "date": "1962-04-26T10:49:00Z",
+                "id": "1962-F03",
+                "reusability": "",
+                "name": "Altair Fairing 34-10 #111",
+                "category": "C",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 0.878,
+                "emissions": {
+                    "NOx": 0.3512,
+                    "Al2O3": 0.18438,
+                    "BC": 0.035998,
+                    "Cl": 0.01317,
+                    "HCl": 0.007024,
+                    "Unablated_Mass": 0.6145999999999999
+                }
+            },
+            {
+                "date": "1962-04-26T10:49:00Z",
+                "id": "1962-F03",
+                "reusability": "",
+                "name": "Altair Fairing 34-10 #111",
+                "category": "C",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 0.878,
+                "emissions": {
+                    "NOx": 0.3512,
+                    "Al2O3": 0.18438,
+                    "BC": 0.035998,
+                    "Cl": 0.01317,
+                    "HCl": 0.007024,
+                    "Unablated_Mass": 0.6145999999999999
                 }
             },
             {
@@ -2893,6 +3294,44 @@
                     "Cl": 0.007634,
                     "HCl": 0.00347,
                     "Unablated_Mass": 0.24289999999999998
+                }
+            },
+            {
+                "date": "1962-04-26T10:51:00Z",
+                "id": "1962-F03",
+                "reusability": "",
+                "name": "Scout S111 Stage 4",
+                "category": "S4",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 0.3,
+                "emissions": {
+                    "NOx": 0.12,
+                    "Al2O3": 0.01092,
+                    "BC": 0.0087,
+                    "Cl": 0.0033,
+                    "HCl": 0.0015,
+                    "Unablated_Mass": 0.2844
+                }
+            },
+            {
+                "date": "1962-04-26T10:51:00Z",
+                "id": "1962-F03",
+                "reusability": "",
+                "name": "SR 4B",
+                "category": "P",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 0.026000000000000002,
+                "emissions": {
+                    "NOx": 0.0104,
+                    "Al2O3": 0.00832,
+                    "BC": 0.001066,
+                    "Cl": 0.00039,
+                    "HCl": 0.000208,
+                    "Unablated_Mass": 0.0052
                 }
             }
         ]
@@ -3243,7 +3682,103 @@
                 }
             }
         ],
-        "reentries": []
+        "reentries": [
+            {
+                "date": "1962-05-10T12:06:00Z",
+                "id": "1962-F04",
+                "reusability": "",
+                "name": "Thor DM-18A  314",
+                "category": "S1",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 3.125,
+                "emissions": {
+                    "NOx": 1.25,
+                    "Al2O3": 0.65625,
+                    "BC": 0.0,
+                    "Cl": 0.0,
+                    "HCl": 0.0,
+                    "Unablated_Mass": 2.1875
+                }
+            },
+            {
+                "date": "1962-05-10T12:06:00Z",
+                "id": "1962-F04",
+                "reusability": "",
+                "name": "Ablestar Fairing",
+                "category": "C",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 0.878,
+                "emissions": {
+                    "NOx": 0.3512,
+                    "Al2O3": 0.18438,
+                    "BC": 0.035998,
+                    "Cl": 0.01317,
+                    "HCl": 0.007024,
+                    "Unablated_Mass": 0.6145999999999999
+                }
+            },
+            {
+                "date": "1962-05-10T12:06:00Z",
+                "id": "1962-F04",
+                "reusability": "",
+                "name": "Ablestar Fairing",
+                "category": "C",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 0.878,
+                "emissions": {
+                    "NOx": 0.3512,
+                    "Al2O3": 0.18438,
+                    "BC": 0.035998,
+                    "Cl": 0.01317,
+                    "HCl": 0.007024,
+                    "Unablated_Mass": 0.6145999999999999
+                }
+            },
+            {
+                "date": "1962-05-10T12:06:00Z",
+                "id": "1962-F04",
+                "reusability": "",
+                "name": "Ablestar 011",
+                "category": "S2",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 4.5,
+                "emissions": {
+                    "NOx": 1.8,
+                    "Al2O3": 0.272545,
+                    "BC": 0.1305,
+                    "Cl": 0.0495,
+                    "HCl": 0.0225,
+                    "Unablated_Mass": 4.11065
+                }
+            },
+            {
+                "date": "1962-05-10T12:06:00Z",
+                "id": "1962-F04",
+                "reusability": "",
+                "name": "ANNA 1A",
+                "category": "P",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 0.161,
+                "emissions": {
+                    "NOx": 0.0644,
+                    "Al2O3": 0.05152,
+                    "BC": 0.006601,
+                    "Cl": 0.002415,
+                    "HCl": 0.001288,
+                    "Unablated_Mass": 0.0322
+                }
+            }
+        ]
     },
     "1962-05-15": {
         "launches": [

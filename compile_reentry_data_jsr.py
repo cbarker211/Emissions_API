@@ -29,7 +29,6 @@ class build_reentry_list:
         self.final_year = final_year
         self.session = requests.Session()
         self.latlonerror = []
-        self.failed_launch_dict = get_failed_launch_dict()
 
         self.region_specs = {
             "Gujarat":      ("States","name_en","Gujarat", 3),
@@ -55,6 +54,7 @@ class build_reentry_list:
             "KRZ":          ("Countries","NAME","Kazakhstan", 3),
             "Kaz.":         ("Countries","NAME","Kazakhstan", 3),
             "Kaz":          ("Countries","NAME","Kazakhstan", 3),
+            "Kazakstan":    ("Countries","NAME","Kazakhstan", 3),
             "Mexico":       ("Countries","NAME","Mexico", 3),
             "S Africa":     ("Countries","NAME","South Africa", 3),
             "N Zealand":    ("Countries","NAME","New Zealand", 3),
@@ -77,6 +77,8 @@ class build_reentry_list:
             "Australia":    ("Countries","NAME","Australia", 3),
             "Spain":        ("Countries","NAME","Spain", 3),
             "UK":           ("Countries","NAME","United Kingdom", 3),
+            "England":      ("Countries","NAME","United Kingdom", 3, (-6, 49.9, 1.8, 55.8)),
+            "Ghana":        ("Countries","NAME","Ghana", 3),
             "Argentina":    ("Countries","NAME","Argentina", 3),  
             "Eastern US":   ("Countries", "NAME", "United States of America", 3, (-90, 24, -66, 50)),
             "E USA":        ("Countries", "NAME", "United States of America", 3, (-90, 24, -66, 50)), 
@@ -90,6 +92,7 @@ class build_reentry_list:
             "Indian Ocean": ("Indian Ocean","name","Indian Ocean", 4),
             "Indian O.":    ("Indian Ocean","name","Indian Ocean", 4),
             "IOR":          ("Indian Ocean","name","Indian Ocean", 4), 
+            "IO":           ("Indian Ocean","name","Indian Ocean", 4),  
             "Bay of Bengal":("Indian Ocean","name","Bay of Bengal", 4),
             "Pacific":      ("Pacific",  None, None, 4),
             "PO":           ("Pacific",  None, None, 4),
@@ -217,6 +220,7 @@ class build_reentry_list:
             "Eniwetok":     (11.50 , 162.25, 2),   # Enewetak Atoll, coords from sites.tsv
             "Canary Is.":   (28.3, -15.6, 2),
             "KB":           (46.0, 63.0, 2),       # Not sure why this is KB, but this is the group for GIK-5 / NIIP-5 at Baikonur.
+            "Kura":         (57.33, 161.83, 2),    # Kura Missile Test Range, Kamchatka. https://en.wikipedia.org/wiki/Kura_Missile_Test_Range
         }
 
         self.site_codes = {
@@ -684,7 +688,7 @@ class build_reentry_list:
               
         return lat, lon
     
-    def failed_launch_mass(self, jsr_id, reentry_category, drymass, mass):
+    def failed_launch_mass(self, jsr_id, reentry_category, drymass, mass, failure):
         
         """Split failed-launch reentry mass into ablatable (dry) and non-aluminium (unburnt propellant) mass.
 
@@ -700,7 +704,6 @@ class build_reentry_list:
         if reentry_category == "P":
             other_mass = max(np.float64(mass) - abl_mass, 0.0)
 
-        failure = self.failed_launch_dict.get(jsr_id[:8])
         if failure is not None and reentry_category in ["S1","S2","S3","S4","S5"]:
             
             stage_no = int(reentry_category[1])
@@ -762,10 +765,6 @@ class build_reentry_list:
         #s2 = len(subset)
         #print(f"{s1-s2} exploded objects removed.")
 
-        # Ignore failed launches pre-2020.
-        mask = ~(subset["Converted_Tag"].str[5].isin(["F", "U"]) & (subset["Converted_Tag"].str[:4].astype(int) < 2020))          
-        subset = subset[mask]
-
         # Extract the arrays before looping.
         cols = ["DDate","Converted_Tag","Name","Type","Inc","Dest","Apogee","Status","DryMass","#JCAT","Bus","Parent","PLName","Mass"]
         arrays = {col: subset[col].to_numpy() for col in cols}
@@ -798,7 +797,7 @@ class build_reentry_list:
             self.rng = np.random.default_rng([ord(c) for c in str(jsr_jcat)])
 
             # If the rocket failed at the first stage, it doesn't reach re-entry altitude.
-            failure = self.failed_launch_dict.get(jsr_id[:8])
+            failure = get_failed_launch_dict(jsr_id[:8], self.fail_code_by_cospar.get(jsr_id[:8]))
             if failure is not None and failure["failed_stage"] == 1:
                 continue
             
@@ -887,7 +886,7 @@ class build_reentry_list:
             
             # Sort the mass.    
             if jsr_id[5:6] in ["F","U"]:
-                abl_mass, other_mass = self.failed_launch_mass(jsr_id, reentry_category,jsr_drymass,jsr_mass)
+                abl_mass, other_mass = self.failed_launch_mass(jsr_id,reentry_category,jsr_drymass,jsr_mass,failure)
             else:
                 abl_mass = np.float64(jsr_drymass)
                 other_mass = 0
@@ -919,6 +918,10 @@ class build_reentry_list:
         Function to add cargo or attached mass to its parent object.
         Skipping objects attached or inside an object that has exploded, as we can't accurately estimate the emissions.
         """
+                # Create a mask to remove objects from launches which failed at the first stage.
+        def failed_at_stage1(prefix):
+            failure = get_failed_launch_dict(prefix, self.fail_code_by_cospar[prefix])
+            return failure is not None and failure["failed_stage"] == 1
 
         # Combine the catalogues, trimming to only include objects which have landed or re-entered inside or attached to another object within the date range.
         keys = ["satcat","auxcat","lcat","rcat","lprcat","deepcat","ecat","ftocat"]
@@ -927,8 +930,7 @@ class build_reentry_list:
         attached_cat  = attached_cat[
             (attached_cat["Primary"] == "Earth") &                               # Primary body is Earth only.
             (attached_cat["Status"].isin(["AR","AL","AL IN","AR IN","E"])) &     # Attached objects only.
-            (~tag.str[5:6].isin(["S"])) &                                        # Skip suborbital launches.
-            (~(tag.str[5:6].isin(["F", "U"])&(tag.str[:4].astype(int) < 2020))) &# Skip failed launches before 2020.
+            (~tag.str[:8].map(failed_at_stage1)) &                               # Skip launches that failed during stage 1.
             (attached_cat["DYear"].between(self.start_year, self.final_year)) &  # Only the selected timeframe.
             (attached_cat["PLName"] != "Manfred Mem. Moon Mission") &            # This should be listed as re-entering on the Moon, so ignore.
             (attached_cat["Parent"] != "A04313") &                               # Parent collided, producing debris.
@@ -1224,6 +1226,7 @@ class build_reentry_list:
 
         self.dsr = xr.open_dataset(f"./databases/rocket_attributes.nc", decode_times=False).to_dataframe().reset_index()
         self.dsl = xr.open_dataset(f"./databases/launch_activity_data.nc").to_dataframe().reset_index()
+        self.fail_code_by_cospar = self.dsl.set_index("COSPAR_ID")["Fail_Code"].fillna("-").to_dict()
         self.import_raul_spacex_map() #(https://t.co/RAsQ9NDmEr)
 
         self.cospar_to_rocket = (self.dsl.set_index("COSPAR_ID")["Rocket_Name"].to_dict())

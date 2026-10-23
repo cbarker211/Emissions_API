@@ -676,7 +676,122 @@
                 }
             }
         ],
-        "reentries": []
+        "reentries": [
+            {
+                "date": "2019-01-15T00:30:00Z",
+                "id": "2019-F01",
+                "reusability": "",
+                "name": "Simorgh Stage 1",
+                "category": "S1",
+                "smc": false,
+                "location": 2,
+                "burnup": "Complete",
+                "mass": 12.700000000000001,
+                "emissions": {
+                    "NOx": 5.08,
+                    "Al2O3": 2.667,
+                    "BC": 0.0,
+                    "Cl": 0.0,
+                    "HCl": 0.0,
+                    "Unablated_Mass": 8.89
+                }
+            },
+            {
+                "date": "2019-01-15T00:40:00Z",
+                "id": "2019-F01",
+                "reusability": "",
+                "name": "Simorgh Stage 2",
+                "category": "S2",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 9.6,
+                "emissions": {
+                    "NOx": 3.84,
+                    "Al2O3": 0.728,
+                    "BC": 0.2784,
+                    "Cl": 0.1056,
+                    "HCl": 0.048,
+                    "Unablated_Mass": 8.56
+                }
+            },
+            {
+                "date": "2019-01-15T00:30:00Z",
+                "id": "2019-F01",
+                "reusability": "",
+                "name": "Simorgh Fairing",
+                "category": "C",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 0.06,
+                "emissions": {
+                    "NOx": 0.024,
+                    "Al2O3": 0.0126,
+                    "BC": 0.00246,
+                    "Cl": 0.0009,
+                    "HCl": 0.00048,
+                    "Unablated_Mass": 0.042
+                }
+            },
+            {
+                "date": "2019-01-15T00:30:00Z",
+                "id": "2019-F01",
+                "reusability": "",
+                "name": "Simorgh Fairing",
+                "category": "C",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 0.06,
+                "emissions": {
+                    "NOx": 0.024,
+                    "Al2O3": 0.0126,
+                    "BC": 0.00246,
+                    "Cl": 0.0009,
+                    "HCl": 0.00048,
+                    "Unablated_Mass": 0.042
+                }
+            },
+            {
+                "date": "2019-01-15T00:50:00Z",
+                "id": "2019-F01",
+                "reusability": "",
+                "name": "Simorgh Stage 3",
+                "category": "S3",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 0.41500000000000004,
+                "emissions": {
+                    "NOx": 0.166,
+                    "Al2O3": 0.10465,
+                    "BC": 0.012035,
+                    "Cl": 0.004565,
+                    "HCl": 0.002075,
+                    "Unablated_Mass": 0.2655
+                }
+            },
+            {
+                "date": "2019-01-15T00:50:00Z",
+                "id": "2019-F01",
+                "reusability": "",
+                "name": "Payam",
+                "category": "P",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 0.09,
+                "emissions": {
+                    "NOx": 0.036,
+                    "Al2O3": 0.0288,
+                    "BC": 0.00369,
+                    "Cl": 0.00135,
+                    "HCl": 0.00072,
+                    "Unablated_Mass": 0.017999999999999995
+                }
+            }
+        ]
     },
     "2019-01-16": {
         "launches": [],
@@ -9729,6 +9844,196 @@
                     "HCl": 0.0045,
                     "Unablated_Mass": 0.315
                 }
+            },
+            {
+                "date": "2019-05-22T22:49:00Z",
+                "id": "2019-F04",
+                "reusability": "",
+                "name": "CZ-4C Stage 1",
+                "category": "S1",
+                "smc": false,
+                "location": 2,
+                "burnup": "Complete",
+                "mass": 9.5,
+                "emissions": {
+                    "NOx": 3.8,
+                    "Al2O3": 1.995,
+                    "BC": 0.0,
+                    "Cl": 0.0,
+                    "HCl": 0.0,
+                    "Unablated_Mass": 6.65
+                }
+            },
+            {
+                "date": "2019-05-22T22:49:00Z",
+                "id": "2019-F04",
+                "reusability": "",
+                "name": "CZ-4C Stage 2",
+                "category": "S2",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 4.0,
+                "emissions": {
+                    "NOx": 1.6,
+                    "Al2O3": 1.82,
+                    "BC": 0.116,
+                    "Cl": 0.044,
+                    "HCl": 0.02,
+                    "Unablated_Mass": 1.4000000000000001
+                }
+            },
+            {
+                "date": "2019-05-22T22:49:00Z",
+                "id": "2019-F04",
+                "reusability": "",
+                "name": "CZ-4C Fairing",
+                "category": "C",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 0.9,
+                "emissions": {
+                    "NOx": 0.36,
+                    "Al2O3": 0.189,
+                    "BC": 0.0369,
+                    "Cl": 0.0135,
+                    "HCl": 0.0072,
+                    "Unablated_Mass": 0.63
+                }
+            },
+            {
+                "date": "2019-05-22T22:49:00Z",
+                "id": "2019-F04",
+                "reusability": "",
+                "name": "CZ-4C Fairing",
+                "category": "C",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 0.9,
+                "emissions": {
+                    "NOx": 0.36,
+                    "Al2O3": 0.189,
+                    "BC": 0.0369,
+                    "Cl": 0.0135,
+                    "HCl": 0.0072,
+                    "Unablated_Mass": 0.63
+                }
+            },
+            {
+                "date": "2019-05-22T23:16:00Z",
+                "id": "2019-F04",
+                "reusability": "",
+                "name": "CZ-4C Y23 Stage 3",
+                "category": "S3",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 16.0,
+                "emissions": {
+                    "NOx": 6.4,
+                    "Al2O3": 0.91,
+                    "BC": 0.464,
+                    "Cl": 0.176,
+                    "HCl": 0.08,
+                    "Unablated_Mass": 14.700000000000001
+                }
+            },
+            {
+                "date": "2019-05-22T23:16:00Z",
+                "id": "2019-F04",
+                "reusability": "",
+                "name": "Yaogan 33",
+                "category": "P",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 1.04,
+                "emissions": {
+                    "NOx": 0.416,
+                    "Al2O3": 0.3328,
+                    "BC": 0.04264,
+                    "Cl": 0.0156,
+                    "HCl": 0.00832,
+                    "Unablated_Mass": 0.20799999999999993
+                }
+            },
+            {
+                "date": "2019-05-22T23:16:00Z",
+                "id": "2019-F04",
+                "reusability": "",
+                "name": "CZ-4C Sep motor cover",
+                "category": "C",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 0.001,
+                "emissions": {
+                    "NOx": 0.0004,
+                    "Al2O3": 0.00032,
+                    "BC": 4.1e-05,
+                    "Cl": 1.5e-05,
+                    "HCl": 8e-06,
+                    "Unablated_Mass": 0.00019999999999999996
+                }
+            },
+            {
+                "date": "2019-05-22T23:16:00Z",
+                "id": "2019-F04",
+                "reusability": "",
+                "name": "CZ-4C Sep motor cover",
+                "category": "C",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 0.001,
+                "emissions": {
+                    "NOx": 0.0004,
+                    "Al2O3": 0.00032,
+                    "BC": 4.1e-05,
+                    "Cl": 1.5e-05,
+                    "HCl": 8e-06,
+                    "Unablated_Mass": 0.00019999999999999996
+                }
+            },
+            {
+                "date": "2019-05-22T23:16:00Z",
+                "id": "2019-F04",
+                "reusability": "",
+                "name": "CZ-4C Sep motor cover",
+                "category": "C",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 0.001,
+                "emissions": {
+                    "NOx": 0.0004,
+                    "Al2O3": 0.00032,
+                    "BC": 4.1e-05,
+                    "Cl": 1.5e-05,
+                    "HCl": 8e-06,
+                    "Unablated_Mass": 0.00019999999999999996
+                }
+            },
+            {
+                "date": "2019-05-22T23:16:00Z",
+                "id": "2019-F04",
+                "reusability": "",
+                "name": "CZ-4C Sep motor cover",
+                "category": "C",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 0.001,
+                "emissions": {
+                    "NOx": 0.0004,
+                    "Al2O3": 0.00032,
+                    "BC": 4.1e-05,
+                    "Cl": 1.5e-05,
+                    "HCl": 8e-06,
+                    "Unablated_Mass": 0.00019999999999999996
+                }
             }
         ]
     },
@@ -12123,7 +12428,141 @@
                 }
             }
         ],
-        "reentries": []
+        "reentries": [
+            {
+                "date": "2019-07-11T01:53:03Z",
+                "id": "2019-F05",
+                "reusability": "",
+                "name": "Vega P80FW",
+                "category": "S1",
+                "smc": false,
+                "location": 2,
+                "burnup": "Complete",
+                "mass": 8.533,
+                "emissions": {
+                    "NOx": 3.4132,
+                    "Al2O3": 1.79193,
+                    "BC": 0.0,
+                    "Cl": 0.0,
+                    "HCl": 0.0,
+                    "Unablated_Mass": 5.9731
+                }
+            },
+            {
+                "date": "2019-07-11T01:53:03Z",
+                "id": "2019-F05",
+                "reusability": "",
+                "name": "Zefiro 23",
+                "category": "S2",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 26.3,
+                "emissions": {
+                    "NOx": 10.52,
+                    "Al2O3": 1.13113,
+                    "BC": 0.7627,
+                    "Cl": 0.2893,
+                    "HCl": 0.1315,
+                    "Unablated_Mass": 24.6841
+                }
+            },
+            {
+                "date": "2019-07-11T01:53:03Z",
+                "id": "2019-F05",
+                "reusability": "",
+                "name": "Vega Fairing",
+                "category": "C",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 0.27,
+                "emissions": {
+                    "NOx": 0.108,
+                    "Al2O3": 0.0567,
+                    "BC": 0.01107,
+                    "Cl": 0.00405,
+                    "HCl": 0.00216,
+                    "Unablated_Mass": 0.189
+                }
+            },
+            {
+                "date": "2019-07-11T01:53:03Z",
+                "id": "2019-F05",
+                "reusability": "",
+                "name": "Vega Fairing",
+                "category": "C",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 0.27,
+                "emissions": {
+                    "NOx": 0.108,
+                    "Al2O3": 0.0567,
+                    "BC": 0.01107,
+                    "Cl": 0.00405,
+                    "HCl": 0.00216,
+                    "Unablated_Mass": 0.189
+                }
+            },
+            {
+                "date": "2019-07-11T01:58:00Z",
+                "id": "2019-F05",
+                "reusability": "",
+                "name": "Zefiro 9A",
+                "category": "S3",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 12.0,
+                "emissions": {
+                    "NOx": 4.8,
+                    "Al2O3": 0.652015,
+                    "BC": 0.348,
+                    "Cl": 0.132,
+                    "HCl": 0.06,
+                    "Unablated_Mass": 11.06855
+                }
+            },
+            {
+                "date": "2019-07-11T01:58:00Z",
+                "id": "2019-F05",
+                "reusability": "",
+                "name": "Vega AVUM VV15",
+                "category": "S4",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 1.2650000000000001,
+                "emissions": {
+                    "NOx": 0.506,
+                    "Al2O3": 0.31304,
+                    "BC": 0.036685,
+                    "Cl": 0.013915,
+                    "HCl": 0.006325,
+                    "Unablated_Mass": 0.8178
+                }
+            },
+            {
+                "date": "2019-07-11T01:58:00Z",
+                "id": "2019-F05",
+                "reusability": "",
+                "name": "FalconEye 1",
+                "category": "P",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 1.197,
+                "emissions": {
+                    "NOx": 0.4788,
+                    "Al2O3": 0.288,
+                    "BC": 0.049077,
+                    "Cl": 0.017955,
+                    "HCl": 0.009576,
+                    "Unablated_Mass": 0.47700000000000004
+                }
+            }
+        ]
     },
     "2019-07-13": {
         "launches": [

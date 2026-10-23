@@ -2096,6 +2096,101 @@
                     "HCl": 0.0,
                     "Unablated_Mass": 0.0
                 }
+            },
+            {
+                "date": "1970-01-30T15:40:01Z",
+                "id": "1970-F01",
+                "reusability": "",
+                "name": "R-12",
+                "category": "S1",
+                "smc": false,
+                "location": 2,
+                "burnup": "Complete",
+                "mass": 4.8100000000000005,
+                "emissions": {
+                    "NOx": 1.924,
+                    "Al2O3": 1.0101,
+                    "BC": 0.0,
+                    "Cl": 0.0,
+                    "HCl": 0.0,
+                    "Unablated_Mass": 3.367
+                }
+            },
+            {
+                "date": "1970-01-30T15:40:01Z",
+                "id": "1970-F01",
+                "reusability": "",
+                "name": "11K63 Fairing",
+                "category": "C",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 0.878,
+                "emissions": {
+                    "NOx": 0.3512,
+                    "Al2O3": 0.18438,
+                    "BC": 0.035998,
+                    "Cl": 0.01317,
+                    "HCl": 0.007024,
+                    "Unablated_Mass": 0.6145999999999999
+                }
+            },
+            {
+                "date": "1970-01-30T15:40:01Z",
+                "id": "1970-F01",
+                "reusability": "",
+                "name": "11K63 Fairing",
+                "category": "C",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 0.878,
+                "emissions": {
+                    "NOx": 0.3512,
+                    "Al2O3": 0.18438,
+                    "BC": 0.035998,
+                    "Cl": 0.01317,
+                    "HCl": 0.007024,
+                    "Unablated_Mass": 0.6145999999999999
+                }
+            },
+            {
+                "date": "1970-01-30T15:40:01Z",
+                "id": "1970-F01",
+                "reusability": "",
+                "name": "Kosmos-2 (N55) Stage 2",
+                "category": "S2",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 8.6,
+                "emissions": {
+                    "NOx": 3.44,
+                    "Al2O3": 0.3822,
+                    "BC": 0.2494,
+                    "Cl": 0.0946,
+                    "HCl": 0.043,
+                    "Unablated_Mass": 8.054
+                }
+            },
+            {
+                "date": "1970-01-30T15:40:01Z",
+                "id": "1970-F01",
+                "reusability": "",
+                "name": "Kosmos",
+                "category": "P",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 0.2,
+                "emissions": {
+                    "NOx": 0.08,
+                    "Al2O3": 0.064,
+                    "BC": 0.0082,
+                    "Cl": 0.003,
+                    "HCl": 0.0016,
+                    "Unablated_Mass": 0.039999999999999994
+                }
             }
         ]
     },
@@ -2359,7 +2454,274 @@
                 }
             }
         ],
-        "reentries": []
+        "reentries": [
+            {
+                "date": "1970-02-06T04:16:06Z",
+                "id": "1970-F02",
+                "reusability": "",
+                "name": "8S810",
+                "category": "S1",
+                "smc": false,
+                "location": 2,
+                "burnup": "Complete",
+                "mass": 31.0,
+                "emissions": {
+                    "NOx": 12.4,
+                    "Al2O3": 6.51,
+                    "BC": 0.0,
+                    "Cl": 0.0,
+                    "HCl": 0.0,
+                    "Unablated_Mass": 21.7
+                }
+            },
+            {
+                "date": "1970-02-06T04:16:06Z",
+                "id": "1970-F02",
+                "reusability": "",
+                "name": "Proton Fairing",
+                "category": "C",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 0.878,
+                "emissions": {
+                    "NOx": 0.3512,
+                    "Al2O3": 0.18438,
+                    "BC": 0.035998,
+                    "Cl": 0.01317,
+                    "HCl": 0.007024,
+                    "Unablated_Mass": 0.6145999999999999
+                }
+            },
+            {
+                "date": "1970-02-06T04:16:06Z",
+                "id": "1970-F02",
+                "reusability": "",
+                "name": "Proton Fairing",
+                "category": "C",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 0.878,
+                "emissions": {
+                    "NOx": 0.3512,
+                    "Al2O3": 0.18438,
+                    "BC": 0.035998,
+                    "Cl": 0.01317,
+                    "HCl": 0.007024,
+                    "Unablated_Mass": 0.6145999999999999
+                }
+            },
+            {
+                "date": "1970-02-06T04:19:00Z",
+                "id": "1970-F02",
+                "reusability": "",
+                "name": "8S811",
+                "category": "S2",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 167.8,
+                "emissions": {
+                    "NOx": 67.12,
+                    "Al2O3": 5.34625,
+                    "BC": 4.8662,
+                    "Cl": 1.8458,
+                    "HCl": 0.839,
+                    "Unablated_Mass": 160.1625
+                }
+            },
+            {
+                "date": "1970-02-06T04:19:00Z",
+                "id": "1970-F02",
+                "reusability": "",
+                "name": "Proton-K 247-01 Stage 3",
+                "category": "S3",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 50.6,
+                "emissions": {
+                    "NOx": 20.24,
+                    "Al2O3": 1.904175,
+                    "BC": 1.4674,
+                    "Cl": 0.5566,
+                    "HCl": 0.253,
+                    "Unablated_Mass": 47.87975
+                }
+            },
+            {
+                "date": "1970-02-06T04:19:00Z",
+                "id": "1970-F02",
+                "reusability": "",
+                "name": "Perekhodnik",
+                "category": "C",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 0.0,
+                "emissions": {
+                    "NOx": 0.0,
+                    "Al2O3": 0.0,
+                    "BC": 0.0,
+                    "Cl": 0.0,
+                    "HCl": 0.0,
+                    "Unablated_Mass": 0.0
+                }
+            },
+            {
+                "date": "1970-02-06T04:19:00Z",
+                "id": "1970-F02",
+                "reusability": "",
+                "name": "Blok D No. 405L?",
+                "category": "S4",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 13.4,
+                "emissions": {
+                    "NOx": 5.36,
+                    "Al2O3": 0.819,
+                    "BC": 0.3886,
+                    "Cl": 0.1474,
+                    "HCl": 0.067,
+                    "Unablated_Mass": 12.23
+                }
+            },
+            {
+                "date": "1970-02-06T04:19:00Z",
+                "id": "1970-F02",
+                "reusability": "",
+                "name": "D-405L SOZ-1",
+                "category": "C",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 0.06,
+                "emissions": {
+                    "NOx": 0.024,
+                    "Al2O3": 0.0192,
+                    "BC": 0.00246,
+                    "Cl": 0.0009,
+                    "HCl": 0.00048,
+                    "Unablated_Mass": 0.011999999999999997
+                }
+            },
+            {
+                "date": "1970-02-06T04:19:00Z",
+                "id": "1970-F02",
+                "reusability": "",
+                "name": "D-405L SOZ-2",
+                "category": "C",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 0.06,
+                "emissions": {
+                    "NOx": 0.024,
+                    "Al2O3": 0.0192,
+                    "BC": 0.00246,
+                    "Cl": 0.0009,
+                    "HCl": 0.00048,
+                    "Unablated_Mass": 0.011999999999999997
+                }
+            },
+            {
+                "date": "1970-02-06T04:19:00Z",
+                "id": "1970-F02",
+                "reusability": "",
+                "name": "[Luna-16]",
+                "category": "P",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 3.18,
+                "emissions": {
+                    "NOx": 1.272,
+                    "Al2O3": 0.4352,
+                    "BC": 0.13038,
+                    "Cl": 0.0477,
+                    "HCl": 0.02544,
+                    "Unablated_Mass": 2.092
+                }
+            },
+            {
+                "date": "1970-02-06T04:19:00Z",
+                "id": "1970-F02",
+                "reusability": "",
+                "name": "VS",
+                "category": "C",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 0.176,
+                "emissions": {
+                    "NOx": 0.0704,
+                    "Al2O3": 0.05632,
+                    "BC": 0.007216,
+                    "Cl": 0.00264,
+                    "HCl": 0.001408,
+                    "Unablated_Mass": 0.03519999999999999
+                }
+            },
+            {
+                "date": "1970-02-06T04:19:00Z",
+                "id": "1970-F02",
+                "reusability": "",
+                "name": "VA",
+                "category": "P",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 0.039,
+                "emissions": {
+                    "NOx": 0.0156,
+                    "Al2O3": 0.01248,
+                    "BC": 0.001599,
+                    "Cl": 0.000585,
+                    "HCl": 0.000312,
+                    "Unablated_Mass": 0.007799999999999998
+                }
+            },
+            {
+                "date": "1970-02-06T04:19:00Z",
+                "id": "1970-F02",
+                "reusability": "",
+                "name": "Sbrasivaemiy otsek",
+                "category": "C",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 0.2,
+                "emissions": {
+                    "NOx": 0.08,
+                    "Al2O3": 0.064,
+                    "BC": 0.0082,
+                    "Cl": 0.003,
+                    "HCl": 0.0016,
+                    "Unablated_Mass": 0.039999999999999994
+                }
+            },
+            {
+                "date": "1970-02-06T04:19:00Z",
+                "id": "1970-F02",
+                "reusability": "",
+                "name": "Sbrasivaemiy otsek",
+                "category": "C",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 0.2,
+                "emissions": {
+                    "NOx": 0.08,
+                    "Al2O3": 0.064,
+                    "BC": 0.0082,
+                    "Cl": 0.003,
+                    "HCl": 0.0016,
+                    "Unablated_Mass": 0.039999999999999994
+                }
+            }
+        ]
     },
     "1970-02-07": {
         "launches": [],
@@ -10005,6 +10367,82 @@
         ],
         "reentries": [
             {
+                "date": "1970-06-12T01:10:32Z",
+                "id": "1970-U02",
+                "reusability": "",
+                "name": "Blue Streak F-9",
+                "category": "S1",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 6.8,
+                "emissions": {
+                    "NOx": 2.72,
+                    "Al2O3": 1.428,
+                    "BC": 0.0,
+                    "Cl": 0.0,
+                    "HCl": 0.0,
+                    "Unablated_Mass": 4.76
+                }
+            },
+            {
+                "date": "1970-06-12T01:10:32Z",
+                "id": "1970-U02",
+                "reusability": "",
+                "name": "Coralie",
+                "category": "S2",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 2.4,
+                "emissions": {
+                    "NOx": 0.96,
+                    "Al2O3": 1.092,
+                    "BC": 0.0696,
+                    "Cl": 0.0264,
+                    "HCl": 0.012,
+                    "Unablated_Mass": 0.84
+                }
+            },
+            {
+                "date": "1970-06-12T01:10:32Z",
+                "id": "1970-U02",
+                "reusability": "",
+                "name": "Europa I fairing",
+                "category": "C",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 0.878,
+                "emissions": {
+                    "NOx": 0.3512,
+                    "Al2O3": 0.18438,
+                    "BC": 0.035998,
+                    "Cl": 0.01317,
+                    "HCl": 0.007024,
+                    "Unablated_Mass": 0.6145999999999999
+                }
+            },
+            {
+                "date": "1970-06-12T01:10:32Z",
+                "id": "1970-U02",
+                "reusability": "",
+                "name": "Europa I fairing",
+                "category": "C",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 0.878,
+                "emissions": {
+                    "NOx": 0.3512,
+                    "Al2O3": 0.18438,
+                    "BC": 0.035998,
+                    "Cl": 0.01317,
+                    "HCl": 0.007024,
+                    "Unablated_Mass": 0.6145999999999999
+                }
+            },
+            {
                 "date": "1970-06-12T09:30:02Z",
                 "id": "1970-043",
                 "reusability": "",
@@ -10059,6 +10497,44 @@
                     "Cl": 0.01317,
                     "HCl": 0.007024,
                     "Unablated_Mass": 0.6145999999999999
+                }
+            },
+            {
+                "date": "1970-06-12T01:50:00Z",
+                "id": "1970-U02",
+                "reusability": "",
+                "name": "Europa I F-9 Stage 3",
+                "category": "S3",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 0.8,
+                "emissions": {
+                    "NOx": 0.32,
+                    "Al2O3": 0.364,
+                    "BC": 0.0232,
+                    "Cl": 0.0088,
+                    "HCl": 0.004,
+                    "Unablated_Mass": 0.28
+                }
+            },
+            {
+                "date": "1970-06-12T01:50:00Z",
+                "id": "1970-U02",
+                "reusability": "",
+                "name": "ELDO F-9 STV",
+                "category": "P",
+                "smc": false,
+                "location": 1,
+                "burnup": "Complete",
+                "mass": 0.215,
+                "emissions": {
+                    "NOx": 0.086,
+                    "Al2O3": 0.0688,
+                    "BC": 0.008815,
+                    "Cl": 0.003225,
+                    "HCl": 0.00172,
+                    "Unablated_Mass": 0.043
                 }
             }
         ]
@@ -12568,6 +13044,196 @@
                     "Cl": 0.04275,
                     "HCl": 0.0228,
                     "Unablated_Mass": 0.57
+                }
+            },
+            {
+                "date": "1970-07-21T12:30:01Z",
+                "id": "1970-F06",
+                "reusability": "",
+                "name": "8K74B",
+                "category": "S0",
+                "smc": false,
+                "location": 2,
+                "burnup": "Complete",
+                "mass": 0.85,
+                "emissions": {
+                    "NOx": 0.34,
+                    "Al2O3": 0.1785,
+                    "BC": 0.0,
+                    "Cl": 0.0,
+                    "HCl": 0.0,
+                    "Unablated_Mass": 0.595
+                }
+            },
+            {
+                "date": "1970-07-21T12:30:01Z",
+                "id": "1970-F06",
+                "reusability": "",
+                "name": "8K74V",
+                "category": "S0",
+                "smc": false,
+                "location": 2,
+                "burnup": "Complete",
+                "mass": 0.85,
+                "emissions": {
+                    "NOx": 0.34,
+                    "Al2O3": 0.1785,
+                    "BC": 0.0,
+                    "Cl": 0.0,
+                    "HCl": 0.0,
+                    "Unablated_Mass": 0.595
+                }
+            },
+            {
+                "date": "1970-07-21T12:30:01Z",
+                "id": "1970-F06",
+                "reusability": "",
+                "name": "8K74G",
+                "category": "S0",
+                "smc": false,
+                "location": 2,
+                "burnup": "Complete",
+                "mass": 0.85,
+                "emissions": {
+                    "NOx": 0.34,
+                    "Al2O3": 0.1785,
+                    "BC": 0.0,
+                    "Cl": 0.0,
+                    "HCl": 0.0,
+                    "Unablated_Mass": 0.595
+                }
+            },
+            {
+                "date": "1970-07-21T12:30:01Z",
+                "id": "1970-F06",
+                "reusability": "",
+                "name": "8K74D",
+                "category": "S0",
+                "smc": false,
+                "location": 2,
+                "burnup": "Complete",
+                "mass": 0.85,
+                "emissions": {
+                    "NOx": 0.34,
+                    "Al2O3": 0.1785,
+                    "BC": 0.0,
+                    "Cl": 0.0,
+                    "HCl": 0.0,
+                    "Unablated_Mass": 0.595
+                }
+            },
+            {
+                "date": "1970-07-21T12:30:01Z",
+                "id": "1970-F06",
+                "reusability": "",
+                "name": "8K74A",
+                "category": "S1",
+                "smc": false,
+                "location": 2,
+                "burnup": "Complete",
+                "mass": 7.0,
+                "emissions": {
+                    "NOx": 2.8,
+                    "Al2O3": 1.47,
+                    "BC": 0.0,
+                    "Cl": 0.0,
+                    "HCl": 0.0,
+                    "Unablated_Mass": 4.9
+                }
+            },
+            {
+                "date": "1970-07-21T12:30:01Z",
+                "id": "1970-F06",
+                "reusability": "",
+                "name": "11S512 Fairing",
+                "category": "C",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 0.878,
+                "emissions": {
+                    "NOx": 0.3512,
+                    "Al2O3": 0.18438,
+                    "BC": 0.035998,
+                    "Cl": 0.01317,
+                    "HCl": 0.007024,
+                    "Unablated_Mass": 0.6145999999999999
+                }
+            },
+            {
+                "date": "1970-07-21T12:30:01Z",
+                "id": "1970-F06",
+                "reusability": "",
+                "name": "11S512 Fairing",
+                "category": "C",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 0.878,
+                "emissions": {
+                    "NOx": 0.3512,
+                    "Al2O3": 0.18438,
+                    "BC": 0.035998,
+                    "Cl": 0.01317,
+                    "HCl": 0.007024,
+                    "Unablated_Mass": 0.6145999999999999
+                }
+            },
+            {
+                "date": "1970-07-21T12:30:01Z",
+                "id": "1970-F06",
+                "reusability": "",
+                "name": "Voskhod No. 017 Blok-I",
+                "category": "S2",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 23.7,
+                "emissions": {
+                    "NOx": 9.48,
+                    "Al2O3": 1.06925,
+                    "BC": 0.6873,
+                    "Cl": 0.2607,
+                    "HCl": 0.1185,
+                    "Unablated_Mass": 22.1725
+                }
+            },
+            {
+                "date": "1970-07-21T12:30:01Z",
+                "id": "1970-F06",
+                "reusability": "",
+                "name": "[Kosmos]",
+                "category": "P",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 2.2,
+                "emissions": {
+                    "NOx": 0.88,
+                    "Al2O3": 0.704,
+                    "BC": 0.0902,
+                    "Cl": 0.033,
+                    "HCl": 0.0176,
+                    "Unablated_Mass": 0.4399999999999999
+                }
+            },
+            {
+                "date": "1970-07-21T12:30:01Z",
+                "id": "1970-F06",
+                "reusability": "",
+                "name": "Priborniy otsek",
+                "category": "C",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 3.45,
+                "emissions": {
+                    "NOx": 1.38,
+                    "Al2O3": 1.104,
+                    "BC": 0.14145,
+                    "Cl": 0.05175,
+                    "HCl": 0.0276,
+                    "Unablated_Mass": 0.69
                 }
             }
         ]
@@ -15682,6 +16348,158 @@
                     "HCl": 0.01175,
                     "Unablated_Mass": 0.8225
                 }
+            },
+            {
+                "date": "1970-09-02T00:34:05Z",
+                "id": "1970-F07",
+                "reusability": "",
+                "name": "Black Arrow Stage 1",
+                "category": "S1",
+                "smc": false,
+                "location": 2,
+                "burnup": "Complete",
+                "mass": 1.07,
+                "emissions": {
+                    "NOx": 0.428,
+                    "Al2O3": 0.2247,
+                    "BC": 0.0,
+                    "Cl": 0.0,
+                    "HCl": 0.0,
+                    "Unablated_Mass": 0.749
+                }
+            },
+            {
+                "date": "1970-09-02T00:34:05Z",
+                "id": "1970-F07",
+                "reusability": "",
+                "name": "Black Arrow Stage 2",
+                "category": "S2",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 0.535,
+                "emissions": {
+                    "NOx": 0.214,
+                    "Al2O3": 0.243425,
+                    "BC": 0.015515,
+                    "Cl": 0.005885,
+                    "HCl": 0.002675,
+                    "Unablated_Mass": 0.18725
+                }
+            },
+            {
+                "date": "1970-09-02T00:34:05Z",
+                "id": "1970-F07",
+                "reusability": "",
+                "name": "Black Arrow Fairing",
+                "category": "C",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 0.878,
+                "emissions": {
+                    "NOx": 0.3512,
+                    "Al2O3": 0.18438,
+                    "BC": 0.035998,
+                    "Cl": 0.01317,
+                    "HCl": 0.007024,
+                    "Unablated_Mass": 0.6145999999999999
+                }
+            },
+            {
+                "date": "1970-09-02T00:34:05Z",
+                "id": "1970-F07",
+                "reusability": "",
+                "name": "Black Arrow Fairing",
+                "category": "C",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 0.878,
+                "emissions": {
+                    "NOx": 0.3512,
+                    "Al2O3": 0.18438,
+                    "BC": 0.035998,
+                    "Cl": 0.01317,
+                    "HCl": 0.007024,
+                    "Unablated_Mass": 0.6145999999999999
+                }
+            },
+            {
+                "date": "1970-09-02T00:50:00Z",
+                "id": "1970-F07",
+                "reusability": "",
+                "name": "Waxwing R-2",
+                "category": "S3",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 0.3,
+                "emissions": {
+                    "NOx": 0.12,
+                    "Al2O3": 0.017745,
+                    "BC": 0.0087,
+                    "Cl": 0.0033,
+                    "HCl": 0.0015,
+                    "Unablated_Mass": 0.27465
+                }
+            },
+            {
+                "date": "1970-09-02T00:50:00Z",
+                "id": "1970-F07",
+                "reusability": "",
+                "name": "X-2",
+                "category": "P",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 0.068,
+                "emissions": {
+                    "NOx": 0.0272,
+                    "Al2O3": 0.02176,
+                    "BC": 0.002788,
+                    "Cl": 0.00102,
+                    "HCl": 0.000544,
+                    "Unablated_Mass": 0.013599999999999998
+                }
+            },
+            {
+                "date": "1970-09-02T00:50:00Z",
+                "id": "1970-F07",
+                "reusability": "",
+                "name": "Orba",
+                "category": "P",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 0.013000000000000001,
+                "emissions": {
+                    "NOx": 0.0052,
+                    "Al2O3": 0.00416,
+                    "BC": 0.000533,
+                    "Cl": 0.000195,
+                    "HCl": 0.000104,
+                    "Unablated_Mass": 0.0026
+                }
+            },
+            {
+                "date": "1970-09-02T00:50:00Z",
+                "id": "1970-F07",
+                "reusability": "",
+                "name": "X-2 aerial",
+                "category": "C",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 0.001,
+                "emissions": {
+                    "NOx": 0.0004,
+                    "Al2O3": 0.00032,
+                    "BC": 4.1e-05,
+                    "Cl": 1.5e-05,
+                    "HCl": 8e-06,
+                    "Unablated_Mass": 0.00019999999999999996
+                }
             }
         ]
     },
@@ -17347,6 +18165,82 @@
                 }
             },
             {
+                "date": "1970-09-25T05:00:00Z",
+                "id": "1970-F08",
+                "reusability": "",
+                "name": "M-10 M-4S-1",
+                "category": "S1",
+                "smc": false,
+                "location": 2,
+                "burnup": "Complete",
+                "mass": 5.907,
+                "emissions": {
+                    "NOx": 2.3628,
+                    "Al2O3": 1.24047,
+                    "BC": 0.0,
+                    "Cl": 0.0,
+                    "HCl": 0.0,
+                    "Unablated_Mass": 4.1349
+                }
+            },
+            {
+                "date": "1970-09-25T05:00:00Z",
+                "id": "1970-F08",
+                "reusability": "",
+                "name": "M-20",
+                "category": "S2",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 2.779,
+                "emissions": {
+                    "NOx": 1.1116,
+                    "Al2O3": 1.264445,
+                    "BC": 0.080591,
+                    "Cl": 0.030569,
+                    "HCl": 0.013895,
+                    "Unablated_Mass": 0.97265
+                }
+            },
+            {
+                "date": "1970-09-25T05:00:00Z",
+                "id": "1970-F08",
+                "reusability": "",
+                "name": "M-4S Fairing",
+                "category": "C",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 0.878,
+                "emissions": {
+                    "NOx": 0.3512,
+                    "Al2O3": 0.18438,
+                    "BC": 0.035998,
+                    "Cl": 0.01317,
+                    "HCl": 0.007024,
+                    "Unablated_Mass": 0.6145999999999999
+                }
+            },
+            {
+                "date": "1970-09-25T05:00:00Z",
+                "id": "1970-F08",
+                "reusability": "",
+                "name": "M-4S Fairing",
+                "category": "C",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 0.878,
+                "emissions": {
+                    "NOx": 0.3512,
+                    "Al2O3": 0.18438,
+                    "BC": 0.035998,
+                    "Cl": 0.01317,
+                    "HCl": 0.007024,
+                    "Unablated_Mass": 0.6145999999999999
+                }
+            },
+            {
                 "date": "1970-09-25T14:05:00Z",
                 "id": "1970-076",
                 "reusability": "",
@@ -17363,6 +18257,63 @@
                     "Cl": 0.0,
                     "HCl": 0.0,
                     "Unablated_Mass": 4.48
+                }
+            },
+            {
+                "date": "1970-09-25T05:18:00Z",
+                "id": "1970-F08",
+                "reusability": "",
+                "name": "M-4S-1 Stage 3",
+                "category": "S3",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 0.773,
+                "emissions": {
+                    "NOx": 0.3092,
+                    "Al2O3": 0.351715,
+                    "BC": 0.022417,
+                    "Cl": 0.008503,
+                    "HCl": 0.003865,
+                    "Unablated_Mass": 0.27054999999999996
+                }
+            },
+            {
+                "date": "1970-09-25T05:18:00Z",
+                "id": "1970-F08",
+                "reusability": "",
+                "name": "M-4S-1 Stage 4",
+                "category": "S4",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 0.4,
+                "emissions": {
+                    "NOx": 0.16,
+                    "Al2O3": 0.033215,
+                    "BC": 0.0116,
+                    "Cl": 0.0044,
+                    "HCl": 0.002,
+                    "Unablated_Mass": 0.35255000000000003
+                }
+            },
+            {
+                "date": "1970-09-25T05:18:00Z",
+                "id": "1970-F08",
+                "reusability": "",
+                "name": "MS-F1",
+                "category": "P",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 0.062,
+                "emissions": {
+                    "NOx": 0.0248,
+                    "Al2O3": 0.01984,
+                    "BC": 0.002542,
+                    "Cl": 0.00093,
+                    "HCl": 0.000496,
+                    "Unablated_Mass": 0.012399999999999998
                 }
             }
         ]
@@ -23031,6 +23982,120 @@
                     "Cl": 0.00924,
                     "HCl": 0.0042,
                     "Unablated_Mass": 0.294
+                }
+            },
+            {
+                "date": "1970-11-30T22:40:05Z",
+                "id": "1970-U03",
+                "reusability": "",
+                "name": "Atlas Booster",
+                "category": "S0",
+                "smc": false,
+                "location": 2,
+                "burnup": "Complete",
+                "mass": 3.2,
+                "emissions": {
+                    "NOx": 1.28,
+                    "Al2O3": 0.672,
+                    "BC": 0.0,
+                    "Cl": 0.0,
+                    "HCl": 0.0,
+                    "Unablated_Mass": 2.24
+                }
+            },
+            {
+                "date": "1970-11-30T22:40:05Z",
+                "id": "1970-U03",
+                "reusability": "",
+                "name": "Atlas SLV-3C 5003C",
+                "category": "S1",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 4.0,
+                "emissions": {
+                    "NOx": 1.6,
+                    "Al2O3": 0.84,
+                    "BC": 0.0,
+                    "Cl": 0.0,
+                    "HCl": 0.0,
+                    "Unablated_Mass": 2.8000000000000003
+                }
+            },
+            {
+                "date": "1970-11-30T23:25:00Z",
+                "id": "1970-U03",
+                "reusability": "",
+                "name": "OAO B fairing half",
+                "category": "C",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 0.55,
+                "emissions": {
+                    "NOx": 0.22,
+                    "Al2O3": 0.1155,
+                    "BC": 0.02255,
+                    "Cl": 0.00825,
+                    "HCl": 0.0044,
+                    "Unablated_Mass": 0.385
+                }
+            },
+            {
+                "date": "1970-11-30T23:25:00Z",
+                "id": "1970-U03",
+                "reusability": "",
+                "name": "OAO B fairing half",
+                "category": "C",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 0.55,
+                "emissions": {
+                    "NOx": 0.22,
+                    "Al2O3": 0.1155,
+                    "BC": 0.02255,
+                    "Cl": 0.00825,
+                    "HCl": 0.0044,
+                    "Unablated_Mass": 0.385
+                }
+            },
+            {
+                "date": "1970-11-30T23:25:00Z",
+                "id": "1970-U03",
+                "reusability": "",
+                "name": "Centaur AC-21",
+                "category": "S2",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 2.0,
+                "emissions": {
+                    "NOx": 0.8,
+                    "Al2O3": 0.91,
+                    "BC": 0.058,
+                    "Cl": 0.022,
+                    "HCl": 0.01,
+                    "Unablated_Mass": 0.7000000000000001
+                }
+            },
+            {
+                "date": "1970-11-30T23:25:00Z",
+                "id": "1970-U03",
+                "reusability": "",
+                "name": "OAO B",
+                "category": "P",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 2.13,
+                "emissions": {
+                    "NOx": 0.852,
+                    "Al2O3": 0.6816,
+                    "BC": 0.08733,
+                    "Cl": 0.03195,
+                    "HCl": 0.01704,
+                    "Unablated_Mass": 0.4259999999999999
                 }
             }
         ]

@@ -2256,7 +2256,198 @@
                 }
             }
         ],
-        "reentries": []
+        "reentries": [
+            {
+                "date": "2011-03-04T10:09:43Z",
+                "id": "2011-F01",
+                "reusability": "",
+                "name": "Castor 120",
+                "category": "S1",
+                "smc": false,
+                "location": 2,
+                "burnup": "Complete",
+                "mass": 4.45,
+                "emissions": {
+                    "NOx": 1.78,
+                    "Al2O3": 0.9345,
+                    "BC": 0.0,
+                    "Cl": 0.0,
+                    "HCl": 0.0,
+                    "Unablated_Mass": 3.115
+                }
+            },
+            {
+                "date": "2011-03-04T10:09:43Z",
+                "id": "2011-F01",
+                "reusability": "",
+                "name": "Orion 50SXL",
+                "category": "S2",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 1.014685304,
+                "emissions": {
+                    "NOx": 0.405874,
+                    "Al2O3": 0.461682,
+                    "BC": 0.029426,
+                    "Cl": 0.011162,
+                    "HCl": 0.005073,
+                    "Unablated_Mass": 0.3551398564
+                }
+            },
+            {
+                "date": "2011-03-04T10:09:43Z",
+                "id": "2011-F01",
+                "reusability": "",
+                "name": "Orion 50XL",
+                "category": "S3",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 0.42,
+                "emissions": {
+                    "NOx": 0.168,
+                    "Al2O3": 0.1911,
+                    "BC": 0.01218,
+                    "Cl": 0.00462,
+                    "HCl": 0.0021,
+                    "Unablated_Mass": 0.147
+                }
+            },
+            {
+                "date": "2011-03-04T10:09:43Z",
+                "id": "2011-F01",
+                "reusability": "",
+                "name": "Taurus Fairing",
+                "category": "C",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 0.878,
+                "emissions": {
+                    "NOx": 0.3512,
+                    "Al2O3": 0.18438,
+                    "BC": 0.035998,
+                    "Cl": 0.01317,
+                    "HCl": 0.007024,
+                    "Unablated_Mass": 0.6145999999999999
+                }
+            },
+            {
+                "date": "2011-03-04T10:09:43Z",
+                "id": "2011-F01",
+                "reusability": "",
+                "name": "Taurus Fairing",
+                "category": "C",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 0.878,
+                "emissions": {
+                    "NOx": 0.3512,
+                    "Al2O3": 0.18438,
+                    "BC": 0.035998,
+                    "Cl": 0.01317,
+                    "HCl": 0.007024,
+                    "Unablated_Mass": 0.6145999999999999
+                }
+            },
+            {
+                "date": "2011-03-04T10:45:00Z",
+                "id": "2011-F01",
+                "reusability": "",
+                "name": "Taurus 9 Stage 4",
+                "category": "S4",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 0.126,
+                "emissions": {
+                    "NOx": 0.0504,
+                    "Al2O3": 0.05733,
+                    "BC": 0.003654,
+                    "Cl": 0.001386,
+                    "HCl": 0.00063,
+                    "Unablated_Mass": 0.04409999999999999
+                }
+            },
+            {
+                "date": "2011-03-04T10:45:00Z",
+                "id": "2011-F01",
+                "reusability": "",
+                "name": "Glory",
+                "category": "P",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 0.525,
+                "emissions": {
+                    "NOx": 0.21,
+                    "Al2O3": 0.1536,
+                    "BC": 0.021525,
+                    "Cl": 0.007875,
+                    "HCl": 0.0042,
+                    "Unablated_Mass": 0.141
+                }
+            },
+            {
+                "date": "2011-03-04T10:45:00Z",
+                "id": "2011-F01",
+                "reusability": "",
+                "name": "KySat",
+                "category": "P",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 0.001,
+                "emissions": {
+                    "NOx": 0.0004,
+                    "Al2O3": 0.00032,
+                    "BC": 4.1e-05,
+                    "Cl": 1.5e-05,
+                    "HCl": 8e-06,
+                    "Unablated_Mass": 0.00019999999999999996
+                }
+            },
+            {
+                "date": "2011-03-04T10:45:00Z",
+                "id": "2011-F01",
+                "reusability": "",
+                "name": "Explorer 1 Prime",
+                "category": "P",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 0.001,
+                "emissions": {
+                    "NOx": 0.0004,
+                    "Al2O3": 0.00032,
+                    "BC": 4.1e-05,
+                    "Cl": 1.5e-05,
+                    "HCl": 8e-06,
+                    "Unablated_Mass": 0.00019999999999999996
+                }
+            },
+            {
+                "date": "2011-03-04T10:45:00Z",
+                "id": "2011-F01",
+                "reusability": "",
+                "name": "Hermes-1",
+                "category": "P",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 0.001,
+                "emissions": {
+                    "NOx": 0.0004,
+                    "Al2O3": 0.00032,
+                    "BC": 4.1e-05,
+                    "Cl": 1.5e-05,
+                    "HCl": 8e-06,
+                    "Unablated_Mass": 0.00019999999999999996
+                }
+            }
+        ]
     },
     "2011-03-05": {
         "launches": [
@@ -9996,6 +10187,177 @@
                     "HCl": 0.0,
                     "Unablated_Mass": 21.42
                 }
+            },
+            {
+                "date": "2011-08-18T09:28:03Z",
+                "id": "2011-F02",
+                "reusability": "",
+                "name": "CZ-2C Stage 1",
+                "category": "S1",
+                "smc": false,
+                "location": 2,
+                "burnup": "Complete",
+                "mass": 10.0,
+                "emissions": {
+                    "NOx": 4.0,
+                    "Al2O3": 2.1,
+                    "BC": 0.0,
+                    "Cl": 0.0,
+                    "HCl": 0.0,
+                    "Unablated_Mass": 7.0
+                }
+            },
+            {
+                "date": "2011-08-18T09:28:03Z",
+                "id": "2011-F02",
+                "reusability": "",
+                "name": "CZ-2C fairing half",
+                "category": "C",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 0.4,
+                "emissions": {
+                    "NOx": 0.16,
+                    "Al2O3": 0.084,
+                    "BC": 0.0164,
+                    "Cl": 0.006,
+                    "HCl": 0.0032,
+                    "Unablated_Mass": 0.28
+                }
+            },
+            {
+                "date": "2011-08-18T09:28:03Z",
+                "id": "2011-F02",
+                "reusability": "",
+                "name": "CZ-2C fairing half",
+                "category": "C",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 0.4,
+                "emissions": {
+                    "NOx": 0.16,
+                    "Al2O3": 0.084,
+                    "BC": 0.0164,
+                    "Cl": 0.006,
+                    "HCl": 0.0032,
+                    "Unablated_Mass": 0.28
+                }
+            },
+            {
+                "date": "2011-08-18T09:33:00Z",
+                "id": "2011-F02",
+                "reusability": "",
+                "name": "Shi Jian 11-04",
+                "category": "P",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 0.3,
+                "emissions": {
+                    "NOx": 0.12,
+                    "Al2O3": 0.096,
+                    "BC": 0.0123,
+                    "Cl": 0.0045,
+                    "HCl": 0.0024,
+                    "Unablated_Mass": 0.059999999999999984
+                }
+            },
+            {
+                "date": "2011-08-18T09:33:00Z",
+                "id": "2011-F02",
+                "reusability": "",
+                "name": "CZ-2C Y26 Stage 2",
+                "category": "S2",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 58.667,
+                "emissions": {
+                    "NOx": 23.4668,
+                    "Al2O3": 1.82,
+                    "BC": 1.701343,
+                    "Cl": 0.645337,
+                    "HCl": 0.293335,
+                    "Unablated_Mass": 56.067
+                }
+            },
+            {
+                "date": "2011-08-18T09:33:00Z",
+                "id": "2011-F02",
+                "reusability": "",
+                "name": "CZ-2C Stage 2 motor cover",
+                "category": "C",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 0.001,
+                "emissions": {
+                    "NOx": 0.0004,
+                    "Al2O3": 0.00032,
+                    "BC": 4.1e-05,
+                    "Cl": 1.5e-05,
+                    "HCl": 8e-06,
+                    "Unablated_Mass": 0.00019999999999999996
+                }
+            },
+            {
+                "date": "2011-08-18T09:33:00Z",
+                "id": "2011-F02",
+                "reusability": "",
+                "name": "CZ-2C Stage 2 motor cover",
+                "category": "C",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 0.001,
+                "emissions": {
+                    "NOx": 0.0004,
+                    "Al2O3": 0.00032,
+                    "BC": 4.1e-05,
+                    "Cl": 1.5e-05,
+                    "HCl": 8e-06,
+                    "Unablated_Mass": 0.00019999999999999996
+                }
+            },
+            {
+                "date": "2011-08-18T09:33:00Z",
+                "id": "2011-F02",
+                "reusability": "",
+                "name": "CZ-2C Stage 2 motor cover",
+                "category": "C",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 0.001,
+                "emissions": {
+                    "NOx": 0.0004,
+                    "Al2O3": 0.00032,
+                    "BC": 4.1e-05,
+                    "Cl": 1.5e-05,
+                    "HCl": 8e-06,
+                    "Unablated_Mass": 0.00019999999999999996
+                }
+            },
+            {
+                "date": "2011-08-18T09:33:00Z",
+                "id": "2011-F02",
+                "reusability": "",
+                "name": "CZ-2C Stage 2 motor cover",
+                "category": "C",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 0.001,
+                "emissions": {
+                    "NOx": 0.0004,
+                    "Al2O3": 0.00032,
+                    "BC": 4.1e-05,
+                    "Cl": 1.5e-05,
+                    "HCl": 8e-06,
+                    "Unablated_Mass": 0.00019999999999999996
+                }
             }
         ]
     },
@@ -10075,7 +10437,198 @@
                 }
             }
         ],
-        "reentries": []
+        "reentries": [
+            {
+                "date": "2011-08-24T13:00:08Z",
+                "id": "2011-F03",
+                "reusability": "",
+                "name": "11S59B",
+                "category": "S0",
+                "smc": false,
+                "location": 2,
+                "burnup": "Complete",
+                "mass": 3.915,
+                "emissions": {
+                    "NOx": 1.566,
+                    "Al2O3": 0.82215,
+                    "BC": 0.0,
+                    "Cl": 0.0,
+                    "HCl": 0.0,
+                    "Unablated_Mass": 2.7405
+                }
+            },
+            {
+                "date": "2011-08-24T13:00:08Z",
+                "id": "2011-F03",
+                "reusability": "",
+                "name": "11S59V",
+                "category": "S0",
+                "smc": false,
+                "location": 2,
+                "burnup": "Complete",
+                "mass": 3.915,
+                "emissions": {
+                    "NOx": 1.566,
+                    "Al2O3": 0.82215,
+                    "BC": 0.0,
+                    "Cl": 0.0,
+                    "HCl": 0.0,
+                    "Unablated_Mass": 2.7405
+                }
+            },
+            {
+                "date": "2011-08-24T13:00:08Z",
+                "id": "2011-F03",
+                "reusability": "",
+                "name": "11S59G",
+                "category": "S0",
+                "smc": false,
+                "location": 2,
+                "burnup": "Complete",
+                "mass": 3.915,
+                "emissions": {
+                    "NOx": 1.566,
+                    "Al2O3": 0.82215,
+                    "BC": 0.0,
+                    "Cl": 0.0,
+                    "HCl": 0.0,
+                    "Unablated_Mass": 2.7405
+                }
+            },
+            {
+                "date": "2011-08-24T13:00:08Z",
+                "id": "2011-F03",
+                "reusability": "",
+                "name": "11S59D",
+                "category": "S0",
+                "smc": false,
+                "location": 2,
+                "burnup": "Complete",
+                "mass": 3.915,
+                "emissions": {
+                    "NOx": 1.566,
+                    "Al2O3": 0.82215,
+                    "BC": 0.0,
+                    "Cl": 0.0,
+                    "HCl": 0.0,
+                    "Unablated_Mass": 2.7405
+                }
+            },
+            {
+                "date": "2011-08-24T13:00:08Z",
+                "id": "2011-F03",
+                "reusability": "",
+                "name": "11S59A",
+                "category": "S1",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 6.875,
+                "emissions": {
+                    "NOx": 2.75,
+                    "Al2O3": 1.44375,
+                    "BC": 0.0,
+                    "Cl": 0.0,
+                    "HCl": 0.0,
+                    "Unablated_Mass": 4.8125
+                }
+            },
+            {
+                "date": "2011-08-24T13:00:08Z",
+                "id": "2011-F03",
+                "reusability": "",
+                "name": "Progress Fairing",
+                "category": "C",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 0.878,
+                "emissions": {
+                    "NOx": 0.3512,
+                    "Al2O3": 0.18438,
+                    "BC": 0.035998,
+                    "Cl": 0.01317,
+                    "HCl": 0.007024,
+                    "Unablated_Mass": 0.6145999999999999
+                }
+            },
+            {
+                "date": "2011-08-24T13:00:08Z",
+                "id": "2011-F03",
+                "reusability": "",
+                "name": "Progress Fairing",
+                "category": "C",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 0.878,
+                "emissions": {
+                    "NOx": 0.3512,
+                    "Al2O3": 0.18438,
+                    "BC": 0.035998,
+                    "Cl": 0.01317,
+                    "HCl": 0.007024,
+                    "Unablated_Mass": 0.6145999999999999
+                }
+            },
+            {
+                "date": "2011-08-24T13:12:00Z",
+                "id": "2011-F03",
+                "reusability": "",
+                "name": "Soyuz-U-PVB No. 132 Blok-I",
+                "category": "S2",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 2.41,
+                "emissions": {
+                    "NOx": 0.964,
+                    "Al2O3": 1.09655,
+                    "BC": 0.06989,
+                    "Cl": 0.02651,
+                    "HCl": 0.01205,
+                    "Unablated_Mass": 0.8435
+                }
+            },
+            {
+                "date": "2011-08-24T13:12:00Z",
+                "id": "2011-F03",
+                "reusability": "",
+                "name": "Progress M-12M",
+                "category": "P",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 7.289000000000001,
+                "emissions": {
+                    "NOx": 2.9156,
+                    "Al2O3": 1.472,
+                    "BC": 0.298849,
+                    "Cl": 0.109335,
+                    "HCl": 0.058312,
+                    "Unablated_Mass": 3.609
+                }
+            },
+            {
+                "date": "2011-08-24T13:12:00Z",
+                "id": "2011-F03",
+                "reusability": "",
+                "name": "Progress M-12M Up Cargo",
+                "category": "C",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 1.204,
+                "emissions": {
+                    "NOx": 0.4816,
+                    "Al2O3": 0.38528,
+                    "BC": 0.049364,
+                    "Cl": 0.01806,
+                    "HCl": 0.009632,
+                    "Unablated_Mass": 0.24079999999999996
+                }
+            }
+        ]
     },
     "2011-09-01": {
         "launches": [],
@@ -18178,7 +18731,198 @@
                 }
             }
         ],
-        "reentries": []
+        "reentries": [
+            {
+                "date": "2011-12-23T12:08:10Z",
+                "id": "2011-F04",
+                "reusability": "",
+                "name": "14S53B",
+                "category": "S0",
+                "smc": false,
+                "location": 2,
+                "burnup": "Complete",
+                "mass": 3.7840000000000003,
+                "emissions": {
+                    "NOx": 1.5136,
+                    "Al2O3": 0.79464,
+                    "BC": 0.0,
+                    "Cl": 0.0,
+                    "HCl": 0.0,
+                    "Unablated_Mass": 2.6487999999999996
+                }
+            },
+            {
+                "date": "2011-12-23T12:08:10Z",
+                "id": "2011-F04",
+                "reusability": "",
+                "name": "14S53V",
+                "category": "S0",
+                "smc": false,
+                "location": 2,
+                "burnup": "Complete",
+                "mass": 3.7840000000000003,
+                "emissions": {
+                    "NOx": 1.5136,
+                    "Al2O3": 0.79464,
+                    "BC": 0.0,
+                    "Cl": 0.0,
+                    "HCl": 0.0,
+                    "Unablated_Mass": 2.6487999999999996
+                }
+            },
+            {
+                "date": "2011-12-23T12:08:10Z",
+                "id": "2011-F04",
+                "reusability": "",
+                "name": "14S53G",
+                "category": "S0",
+                "smc": false,
+                "location": 2,
+                "burnup": "Complete",
+                "mass": 3.7840000000000003,
+                "emissions": {
+                    "NOx": 1.5136,
+                    "Al2O3": 0.79464,
+                    "BC": 0.0,
+                    "Cl": 0.0,
+                    "HCl": 0.0,
+                    "Unablated_Mass": 2.6487999999999996
+                }
+            },
+            {
+                "date": "2011-12-23T12:08:10Z",
+                "id": "2011-F04",
+                "reusability": "",
+                "name": "14S53D",
+                "category": "S0",
+                "smc": false,
+                "location": 2,
+                "burnup": "Complete",
+                "mass": 3.7840000000000003,
+                "emissions": {
+                    "NOx": 1.5136,
+                    "Al2O3": 0.79464,
+                    "BC": 0.0,
+                    "Cl": 0.0,
+                    "HCl": 0.0,
+                    "Unablated_Mass": 2.6487999999999996
+                }
+            },
+            {
+                "date": "2011-12-23T12:08:10Z",
+                "id": "2011-F04",
+                "reusability": "",
+                "name": "14S53A",
+                "category": "S1",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 6.545,
+                "emissions": {
+                    "NOx": 2.618,
+                    "Al2O3": 1.37445,
+                    "BC": 0.0,
+                    "Cl": 0.0,
+                    "HCl": 0.0,
+                    "Unablated_Mass": 4.5815
+                }
+            },
+            {
+                "date": "2011-12-23T12:08:10Z",
+                "id": "2011-F04",
+                "reusability": "",
+                "name": "14S737 Fairing",
+                "category": "C",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 0.9,
+                "emissions": {
+                    "NOx": 0.36,
+                    "Al2O3": 0.189,
+                    "BC": 0.0369,
+                    "Cl": 0.0135,
+                    "HCl": 0.0072,
+                    "Unablated_Mass": 0.63
+                }
+            },
+            {
+                "date": "2011-12-23T12:08:10Z",
+                "id": "2011-F04",
+                "reusability": "",
+                "name": "14S737 Fairing",
+                "category": "C",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 0.9,
+                "emissions": {
+                    "NOx": 0.36,
+                    "Al2O3": 0.189,
+                    "BC": 0.0369,
+                    "Cl": 0.0135,
+                    "HCl": 0.0072,
+                    "Unablated_Mass": 0.63
+                }
+            },
+            {
+                "date": "2011-12-23T12:20:00Z",
+                "id": "2011-F04",
+                "reusability": "",
+                "name": "Soyuz-2-1b No. 006? Blok-I",
+                "category": "S2",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 2.355,
+                "emissions": {
+                    "NOx": 0.942,
+                    "Al2O3": 1.071525,
+                    "BC": 0.068295,
+                    "Cl": 0.025905,
+                    "HCl": 0.011775,
+                    "Unablated_Mass": 0.82425
+                }
+            },
+            {
+                "date": "2011-12-23T12:20:00Z",
+                "id": "2011-F04",
+                "reusability": "",
+                "name": "Fregat No. 1042",
+                "category": "S3",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 6.3500000000000005,
+                "emissions": {
+                    "NOx": 2.54,
+                    "Al2O3": 0.455,
+                    "BC": 0.18415,
+                    "Cl": 0.06985,
+                    "HCl": 0.03175,
+                    "Unablated_Mass": 5.7
+                }
+            },
+            {
+                "date": "2011-12-23T12:20:00Z",
+                "id": "2011-F04",
+                "reusability": "",
+                "name": "Meridian No. 15L",
+                "category": "P",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 2.0,
+                "emissions": {
+                    "NOx": 0.8,
+                    "Al2O3": 0.64,
+                    "BC": 0.082,
+                    "Cl": 0.03,
+                    "HCl": 0.016,
+                    "Unablated_Mass": 0.3999999999999999
+                }
+            }
+        ]
     },
     "2011-12-24": {
         "launches": [],

@@ -10922,6 +10922,82 @@
         ],
         "reentries": [
             {
+                "date": "1987-05-15T17:30:01Z",
+                "id": "1987-U01",
+                "reusability": "",
+                "name": "Energiya Blok 11K25.10A",
+                "category": "S0",
+                "smc": false,
+                "location": 2,
+                "burnup": "Complete",
+                "mass": 60.0,
+                "emissions": {
+                    "NOx": 24.0,
+                    "Al2O3": 12.6,
+                    "BC": 0.0,
+                    "Cl": 0.0,
+                    "HCl": 0.0,
+                    "Unablated_Mass": 42.0
+                }
+            },
+            {
+                "date": "1987-05-15T17:30:01Z",
+                "id": "1987-U01",
+                "reusability": "",
+                "name": "Energiya Blok 11K25.20A",
+                "category": "S0",
+                "smc": false,
+                "location": 2,
+                "burnup": "Complete",
+                "mass": 60.0,
+                "emissions": {
+                    "NOx": 24.0,
+                    "Al2O3": 12.6,
+                    "BC": 0.0,
+                    "Cl": 0.0,
+                    "HCl": 0.0,
+                    "Unablated_Mass": 42.0
+                }
+            },
+            {
+                "date": "1987-05-15T17:30:01Z",
+                "id": "1987-U01",
+                "reusability": "",
+                "name": "Energiya Blok 11K25.30A",
+                "category": "S0",
+                "smc": false,
+                "location": 2,
+                "burnup": "Complete",
+                "mass": 60.0,
+                "emissions": {
+                    "NOx": 24.0,
+                    "Al2O3": 12.6,
+                    "BC": 0.0,
+                    "Cl": 0.0,
+                    "HCl": 0.0,
+                    "Unablated_Mass": 42.0
+                }
+            },
+            {
+                "date": "1987-05-15T17:30:01Z",
+                "id": "1987-U01",
+                "reusability": "",
+                "name": "Energiya Blok 11K25.40A",
+                "category": "S0",
+                "smc": false,
+                "location": 2,
+                "burnup": "Complete",
+                "mass": 60.0,
+                "emissions": {
+                    "NOx": 24.0,
+                    "Al2O3": 12.6,
+                    "BC": 0.0,
+                    "Cl": 0.0,
+                    "HCl": 0.0,
+                    "Unablated_Mass": 42.0
+                }
+            },
+            {
                 "date": "1987-05-15T15:45:00Z",
                 "id": "1987-043",
                 "reusability": "",
@@ -10995,6 +11071,120 @@
                     "Cl": 0.01317,
                     "HCl": 0.007024,
                     "Unablated_Mass": 0.6145999999999999
+                }
+            },
+            {
+                "date": "1987-05-15T17:30:01Z",
+                "id": "1987-U01",
+                "reusability": "",
+                "name": "Polyus fairing",
+                "category": "C",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 0.878,
+                "emissions": {
+                    "NOx": 0.3512,
+                    "Al2O3": 0.18438,
+                    "BC": 0.035998,
+                    "Cl": 0.01317,
+                    "HCl": 0.007024,
+                    "Unablated_Mass": 0.6145999999999999
+                }
+            },
+            {
+                "date": "1987-05-15T17:30:01Z",
+                "id": "1987-U01",
+                "reusability": "",
+                "name": "Polyus fairing",
+                "category": "C",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 0.878,
+                "emissions": {
+                    "NOx": 0.3512,
+                    "Al2O3": 0.18438,
+                    "BC": 0.035998,
+                    "Cl": 0.01317,
+                    "HCl": 0.007024,
+                    "Unablated_Mass": 0.6145999999999999
+                }
+            },
+            {
+                "date": "1987-05-15T18:00:00Z",
+                "id": "1987-U01",
+                "reusability": "",
+                "name": "Energiya Blok Ts",
+                "category": "S1",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 80.0,
+                "emissions": {
+                    "NOx": 32.0,
+                    "Al2O3": 16.8,
+                    "BC": 0.0,
+                    "Cl": 0.0,
+                    "HCl": 0.0,
+                    "Unablated_Mass": 56.0
+                }
+            },
+            {
+                "date": "1987-05-15T18:22:00Z",
+                "id": "1987-U01",
+                "reusability": "",
+                "name": "FSB",
+                "category": "C",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 10.0,
+                "emissions": {
+                    "NOx": 4.0,
+                    "Al2O3": 3.2,
+                    "BC": 0.41,
+                    "Cl": 0.15,
+                    "HCl": 0.08,
+                    "Unablated_Mass": 1.9999999999999996
+                }
+            },
+            {
+                "date": "1987-05-15T18:22:00Z",
+                "id": "1987-U01",
+                "reusability": "",
+                "name": "Polyus",
+                "category": "P",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 70.0,
+                "emissions": {
+                    "NOx": 28.0,
+                    "Al2O3": 22.4,
+                    "BC": 2.87,
+                    "Cl": 1.05,
+                    "HCl": 0.56,
+                    "Unablated_Mass": 13.999999999999996
+                }
+            },
+            {
+                "date": "1987-05-15T18:22:00Z",
+                "id": "1987-U01",
+                "reusability": "",
+                "name": "Donniy Obtekatel'",
+                "category": "C",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 0.1,
+                "emissions": {
+                    "NOx": 0.04,
+                    "Al2O3": 0.032,
+                    "BC": 0.0041,
+                    "Cl": 0.0015,
+                    "HCl": 0.0008,
+                    "Unablated_Mass": 0.019999999999999997
                 }
             }
         ]

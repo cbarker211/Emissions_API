@@ -4129,7 +4129,103 @@
                 }
             }
         ],
-        "reentries": []
+        "reentries": [
+            {
+                "date": "1971-03-05T08:15:02Z",
+                "id": "1971-F02",
+                "reusability": "",
+                "name": "R-12",
+                "category": "S1",
+                "smc": false,
+                "location": 2,
+                "burnup": "Complete",
+                "mass": 4.8100000000000005,
+                "emissions": {
+                    "NOx": 1.924,
+                    "Al2O3": 1.0101,
+                    "BC": 0.0,
+                    "Cl": 0.0,
+                    "HCl": 0.0,
+                    "Unablated_Mass": 3.367
+                }
+            },
+            {
+                "date": "1971-03-05T08:15:02Z",
+                "id": "1971-F02",
+                "reusability": "",
+                "name": "11K63 Fairing",
+                "category": "C",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 0.878,
+                "emissions": {
+                    "NOx": 0.3512,
+                    "Al2O3": 0.18438,
+                    "BC": 0.035998,
+                    "Cl": 0.01317,
+                    "HCl": 0.007024,
+                    "Unablated_Mass": 0.6145999999999999
+                }
+            },
+            {
+                "date": "1971-03-05T08:15:02Z",
+                "id": "1971-F02",
+                "reusability": "",
+                "name": "11K63 Fairing",
+                "category": "C",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 0.878,
+                "emissions": {
+                    "NOx": 0.3512,
+                    "Al2O3": 0.18438,
+                    "BC": 0.035998,
+                    "Cl": 0.01317,
+                    "HCl": 0.007024,
+                    "Unablated_Mass": 0.6145999999999999
+                }
+            },
+            {
+                "date": "1971-03-05T08:17:00Z",
+                "id": "1971-F02",
+                "reusability": "",
+                "name": "Kosmos-2 (N74) Stage 2",
+                "category": "S2",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 8.6,
+                "emissions": {
+                    "NOx": 3.44,
+                    "Al2O3": 0.3822,
+                    "BC": 0.2494,
+                    "Cl": 0.0946,
+                    "HCl": 0.043,
+                    "Unablated_Mass": 8.054
+                }
+            },
+            {
+                "date": "1971-03-05T08:17:00Z",
+                "id": "1971-F02",
+                "reusability": "",
+                "name": "Kosmos",
+                "category": "P",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 0.2,
+                "emissions": {
+                    "NOx": 0.08,
+                    "Al2O3": 0.064,
+                    "BC": 0.0082,
+                    "Cl": 0.003,
+                    "HCl": 0.0016,
+                    "Unablated_Mass": 0.039999999999999994
+                }
+            }
+        ]
     },
     "1971-03-08": {
         "launches": [],
@@ -9069,6 +9165,120 @@
                     "HCl": 0.001064,
                     "Unablated_Mass": 0.026599999999999995
                 }
+            },
+            {
+                "date": "1971-05-09T01:11:02Z",
+                "id": "1971-F04",
+                "reusability": "",
+                "name": "Atlas Booster",
+                "category": "S0",
+                "smc": false,
+                "location": 2,
+                "burnup": "Complete",
+                "mass": 3.2,
+                "emissions": {
+                    "NOx": 1.28,
+                    "Al2O3": 0.672,
+                    "BC": 0.0,
+                    "Cl": 0.0,
+                    "HCl": 0.0,
+                    "Unablated_Mass": 2.24
+                }
+            },
+            {
+                "date": "1971-05-09T01:11:02Z",
+                "id": "1971-F04",
+                "reusability": "",
+                "name": "Atlas SLV-3C 5405C",
+                "category": "S1",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 4.0,
+                "emissions": {
+                    "NOx": 1.6,
+                    "Al2O3": 0.84,
+                    "BC": 0.0,
+                    "Cl": 0.0,
+                    "HCl": 0.0,
+                    "Unablated_Mass": 2.8000000000000003
+                }
+            },
+            {
+                "date": "1971-05-09T01:11:02Z",
+                "id": "1971-F04",
+                "reusability": "",
+                "name": "AC Short PLF",
+                "category": "C",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 0.878,
+                "emissions": {
+                    "NOx": 0.3512,
+                    "Al2O3": 0.18438,
+                    "BC": 0.035998,
+                    "Cl": 0.01317,
+                    "HCl": 0.007024,
+                    "Unablated_Mass": 0.6145999999999999
+                }
+            },
+            {
+                "date": "1971-05-09T01:11:02Z",
+                "id": "1971-F04",
+                "reusability": "",
+                "name": "AC Short PLF",
+                "category": "C",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 0.878,
+                "emissions": {
+                    "NOx": 0.3512,
+                    "Al2O3": 0.18438,
+                    "BC": 0.035998,
+                    "Cl": 0.01317,
+                    "HCl": 0.007024,
+                    "Unablated_Mass": 0.6145999999999999
+                }
+            },
+            {
+                "date": "1971-05-09T01:21:00Z",
+                "id": "1971-F04",
+                "reusability": "",
+                "name": "Centaur AC-24",
+                "category": "S2",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 15.6,
+                "emissions": {
+                    "NOx": 6.24,
+                    "Al2O3": 0.91,
+                    "BC": 0.4524,
+                    "Cl": 0.1716,
+                    "HCl": 0.078,
+                    "Unablated_Mass": 14.3
+                }
+            },
+            {
+                "date": "1971-05-09T01:21:00Z",
+                "id": "1971-F04",
+                "reusability": "",
+                "name": "Mariner 8",
+                "category": "P",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 1.031,
+                "emissions": {
+                    "NOx": 0.4124,
+                    "Al2O3": 0.1776,
+                    "BC": 0.042271,
+                    "Cl": 0.015465,
+                    "HCl": 0.008248,
+                    "Unablated_Mass": 0.587
+                }
             }
         ]
     },
@@ -13937,7 +14147,103 @@
                 }
             }
         ],
-        "reentries": []
+        "reentries": [
+            {
+                "date": "1971-07-22T13:45:00Z",
+                "id": "1971-F07",
+                "reusability": "",
+                "name": "R-14 11K65MA",
+                "category": "S1",
+                "smc": false,
+                "location": 2,
+                "burnup": "Complete",
+                "mass": 5.3,
+                "emissions": {
+                    "NOx": 2.12,
+                    "Al2O3": 1.113,
+                    "BC": 0.0,
+                    "Cl": 0.0,
+                    "HCl": 0.0,
+                    "Unablated_Mass": 3.7099999999999995
+                }
+            },
+            {
+                "date": "1971-07-22T13:45:00Z",
+                "id": "1971-F07",
+                "reusability": "",
+                "name": "Kosmos-3M Fairing",
+                "category": "C",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 0.878,
+                "emissions": {
+                    "NOx": 0.3512,
+                    "Al2O3": 0.18438,
+                    "BC": 0.035998,
+                    "Cl": 0.01317,
+                    "HCl": 0.007024,
+                    "Unablated_Mass": 0.6145999999999999
+                }
+            },
+            {
+                "date": "1971-07-22T13:45:00Z",
+                "id": "1971-F07",
+                "reusability": "",
+                "name": "Kosmos-3M Fairing",
+                "category": "C",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 0.878,
+                "emissions": {
+                    "NOx": 0.3512,
+                    "Al2O3": 0.18438,
+                    "BC": 0.035998,
+                    "Cl": 0.01317,
+                    "HCl": 0.007024,
+                    "Unablated_Mass": 0.6145999999999999
+                }
+            },
+            {
+                "date": "1971-07-22T14:30:00Z",
+                "id": "1971-F07",
+                "reusability": "",
+                "name": "Kosmos-3M V149-32LM Stage 2",
+                "category": "S2",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 20.1,
+                "emissions": {
+                    "NOx": 8.04,
+                    "Al2O3": 0.652925,
+                    "BC": 0.5829,
+                    "Cl": 0.2211,
+                    "HCl": 0.1005,
+                    "Unablated_Mass": 19.16725
+                }
+            },
+            {
+                "date": "1971-07-22T14:30:00Z",
+                "id": "1971-F07",
+                "reusability": "",
+                "name": "Kosmos",
+                "category": "P",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 0.434,
+                "emissions": {
+                    "NOx": 0.1736,
+                    "Al2O3": 0.13888,
+                    "BC": 0.017794,
+                    "Cl": 0.00651,
+                    "HCl": 0.003472,
+                    "Unablated_Mass": 0.08679999999999999
+                }
+            }
+        ]
     },
     "1971-07-23": {
         "launches": [
@@ -15067,6 +15373,101 @@
                     "Cl": 0.0003,
                     "HCl": 0.00016,
                     "Unablated_Mass": 0.003999999999999999
+                }
+            },
+            {
+                "date": "1971-08-03T11:00:00Z",
+                "id": "1971-F08",
+                "reusability": "",
+                "name": "R-12",
+                "category": "S1",
+                "smc": false,
+                "location": 2,
+                "burnup": "Complete",
+                "mass": 4.8100000000000005,
+                "emissions": {
+                    "NOx": 1.924,
+                    "Al2O3": 1.0101,
+                    "BC": 0.0,
+                    "Cl": 0.0,
+                    "HCl": 0.0,
+                    "Unablated_Mass": 3.367
+                }
+            },
+            {
+                "date": "1971-08-03T11:00:00Z",
+                "id": "1971-F08",
+                "reusability": "",
+                "name": "11K63 Fairing",
+                "category": "C",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 0.878,
+                "emissions": {
+                    "NOx": 0.3512,
+                    "Al2O3": 0.18438,
+                    "BC": 0.035998,
+                    "Cl": 0.01317,
+                    "HCl": 0.007024,
+                    "Unablated_Mass": 0.6145999999999999
+                }
+            },
+            {
+                "date": "1971-08-03T11:00:00Z",
+                "id": "1971-F08",
+                "reusability": "",
+                "name": "11K63 Fairing",
+                "category": "C",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 0.878,
+                "emissions": {
+                    "NOx": 0.3512,
+                    "Al2O3": 0.18438,
+                    "BC": 0.035998,
+                    "Cl": 0.01317,
+                    "HCl": 0.007024,
+                    "Unablated_Mass": 0.6145999999999999
+                }
+            },
+            {
+                "date": "1971-08-03T11:03:00Z",
+                "id": "1971-F08",
+                "reusability": "",
+                "name": "Kosmos-2 (N78) Stage 2",
+                "category": "S2",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 8.6,
+                "emissions": {
+                    "NOx": 3.44,
+                    "Al2O3": 0.3822,
+                    "BC": 0.2494,
+                    "Cl": 0.0946,
+                    "HCl": 0.043,
+                    "Unablated_Mass": 8.054
+                }
+            },
+            {
+                "date": "1971-08-03T11:03:00Z",
+                "id": "1971-F08",
+                "reusability": "",
+                "name": "Kosmos",
+                "category": "P",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 0.2,
+                "emissions": {
+                    "NOx": 0.08,
+                    "Al2O3": 0.064,
+                    "BC": 0.0082,
+                    "Cl": 0.003,
+                    "HCl": 0.0016,
+                    "Unablated_Mass": 0.039999999999999994
                 }
             }
         ]
@@ -16633,7 +17034,141 @@
                 }
             }
         ],
-        "reentries": []
+        "reentries": [
+            {
+                "date": "1971-08-19T06:30:00Z",
+                "id": "1971-F09",
+                "reusability": "",
+                "name": "8K74B",
+                "category": "S0",
+                "smc": false,
+                "location": 2,
+                "burnup": "Complete",
+                "mass": 0.85,
+                "emissions": {
+                    "NOx": 0.34,
+                    "Al2O3": 0.1785,
+                    "BC": 0.0,
+                    "Cl": 0.0,
+                    "HCl": 0.0,
+                    "Unablated_Mass": 0.595
+                }
+            },
+            {
+                "date": "1971-08-19T06:30:00Z",
+                "id": "1971-F09",
+                "reusability": "",
+                "name": "8K74V",
+                "category": "S0",
+                "smc": false,
+                "location": 2,
+                "burnup": "Complete",
+                "mass": 0.85,
+                "emissions": {
+                    "NOx": 0.34,
+                    "Al2O3": 0.1785,
+                    "BC": 0.0,
+                    "Cl": 0.0,
+                    "HCl": 0.0,
+                    "Unablated_Mass": 0.595
+                }
+            },
+            {
+                "date": "1971-08-19T06:30:00Z",
+                "id": "1971-F09",
+                "reusability": "",
+                "name": "8K74G",
+                "category": "S0",
+                "smc": false,
+                "location": 2,
+                "burnup": "Complete",
+                "mass": 0.85,
+                "emissions": {
+                    "NOx": 0.34,
+                    "Al2O3": 0.1785,
+                    "BC": 0.0,
+                    "Cl": 0.0,
+                    "HCl": 0.0,
+                    "Unablated_Mass": 0.595
+                }
+            },
+            {
+                "date": "1971-08-19T06:30:00Z",
+                "id": "1971-F09",
+                "reusability": "",
+                "name": "8K74D",
+                "category": "S0",
+                "smc": false,
+                "location": 2,
+                "burnup": "Complete",
+                "mass": 0.85,
+                "emissions": {
+                    "NOx": 0.34,
+                    "Al2O3": 0.1785,
+                    "BC": 0.0,
+                    "Cl": 0.0,
+                    "HCl": 0.0,
+                    "Unablated_Mass": 0.595
+                }
+            },
+            {
+                "date": "1971-08-19T06:30:00Z",
+                "id": "1971-F09",
+                "reusability": "",
+                "name": "8K74A",
+                "category": "S1",
+                "smc": false,
+                "location": 2,
+                "burnup": "Complete",
+                "mass": 7.0,
+                "emissions": {
+                    "NOx": 2.8,
+                    "Al2O3": 1.47,
+                    "BC": 0.0,
+                    "Cl": 0.0,
+                    "HCl": 0.0,
+                    "Unablated_Mass": 4.9
+                }
+            },
+            {
+                "date": "1971-08-19T06:30:00Z",
+                "id": "1971-F09",
+                "reusability": "",
+                "name": "11S513 Fairing",
+                "category": "C",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 0.878,
+                "emissions": {
+                    "NOx": 0.3512,
+                    "Al2O3": 0.18438,
+                    "BC": 0.035998,
+                    "Cl": 0.01317,
+                    "HCl": 0.007024,
+                    "Unablated_Mass": 0.6145999999999999
+                }
+            },
+            {
+                "date": "1971-08-19T06:30:00Z",
+                "id": "1971-F09",
+                "reusability": "",
+                "name": "11S513 Fairing",
+                "category": "C",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 0.878,
+                "emissions": {
+                    "NOx": 0.3512,
+                    "Al2O3": 0.18438,
+                    "BC": 0.035998,
+                    "Cl": 0.01317,
+                    "HCl": 0.007024,
+                    "Unablated_Mass": 0.6145999999999999
+                }
+            }
+        ]
     },
     "1971-08-21": {
         "launches": [],
@@ -24420,6 +24955,120 @@
                     "Cl": 0.0,
                     "HCl": 0.0,
                     "Unablated_Mass": 0.0
+                }
+            },
+            {
+                "date": "1971-12-05T16:20:00Z",
+                "id": "1971-F14",
+                "reusability": "",
+                "name": "Amethyste",
+                "category": "S1",
+                "smc": false,
+                "location": 2,
+                "burnup": "Complete",
+                "mass": 1.969,
+                "emissions": {
+                    "NOx": 0.7876,
+                    "Al2O3": 0.41349,
+                    "BC": 0.0,
+                    "Cl": 0.0,
+                    "HCl": 0.0,
+                    "Unablated_Mass": 1.3783
+                }
+            },
+            {
+                "date": "1971-12-05T16:20:00Z",
+                "id": "1971-F14",
+                "reusability": "",
+                "name": "Topaze",
+                "category": "S2",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 2.9,
+                "emissions": {
+                    "NOx": 1.16,
+                    "Al2O3": 0.30485,
+                    "BC": 0.0841,
+                    "Cl": 0.0319,
+                    "HCl": 0.0145,
+                    "Unablated_Mass": 2.4645
+                }
+            },
+            {
+                "date": "1971-12-05T16:20:00Z",
+                "id": "1971-F14",
+                "reusability": "",
+                "name": "Diamant Fairing",
+                "category": "C",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 0.878,
+                "emissions": {
+                    "NOx": 0.3512,
+                    "Al2O3": 0.18438,
+                    "BC": 0.035998,
+                    "Cl": 0.01317,
+                    "HCl": 0.007024,
+                    "Unablated_Mass": 0.6145999999999999
+                }
+            },
+            {
+                "date": "1971-12-05T16:20:00Z",
+                "id": "1971-F14",
+                "reusability": "",
+                "name": "Diamant Fairing",
+                "category": "C",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 0.878,
+                "emissions": {
+                    "NOx": 0.3512,
+                    "Al2O3": 0.18438,
+                    "BC": 0.035998,
+                    "Cl": 0.01317,
+                    "HCl": 0.007024,
+                    "Unablated_Mass": 0.6145999999999999
+                }
+            },
+            {
+                "date": "1971-12-05T16:25:00Z",
+                "id": "1971-F14",
+                "reusability": "",
+                "name": "Diamant B No. 4 Stage 3",
+                "category": "S3",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 0.762,
+                "emissions": {
+                    "NOx": 0.3048,
+                    "Al2O3": 0.02821,
+                    "BC": 0.022098,
+                    "Cl": 0.008382,
+                    "HCl": 0.00381,
+                    "Unablated_Mass": 0.7217
+                }
+            },
+            {
+                "date": "1971-12-05T16:25:00Z",
+                "id": "1971-F14",
+                "reusability": "",
+                "name": "D-2A Polaire",
+                "category": "P",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 0.096,
+                "emissions": {
+                    "NOx": 0.0384,
+                    "Al2O3": 0.03072,
+                    "BC": 0.003936,
+                    "Cl": 0.00144,
+                    "HCl": 0.000768,
+                    "Unablated_Mass": 0.019199999999999995
                 }
             }
         ]

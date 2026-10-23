@@ -1673,6 +1673,139 @@
                     "HCl": 0.0,
                     "Unablated_Mass": 0.0
                 }
+            },
+            {
+                "date": "2009-02-24T09:55:30Z",
+                "id": "2009-F01",
+                "reusability": "",
+                "name": "Castor 120",
+                "category": "S1",
+                "smc": false,
+                "location": 2,
+                "burnup": "Complete",
+                "mass": 4.45,
+                "emissions": {
+                    "NOx": 1.78,
+                    "Al2O3": 0.9345,
+                    "BC": 0.0,
+                    "Cl": 0.0,
+                    "HCl": 0.0,
+                    "Unablated_Mass": 3.115
+                }
+            },
+            {
+                "date": "2009-02-24T09:55:30Z",
+                "id": "2009-F01",
+                "reusability": "",
+                "name": "Orion 50SXL",
+                "category": "S2",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 1.014685304,
+                "emissions": {
+                    "NOx": 0.405874,
+                    "Al2O3": 0.461682,
+                    "BC": 0.029426,
+                    "Cl": 0.011162,
+                    "HCl": 0.005073,
+                    "Unablated_Mass": 0.3551398564
+                }
+            },
+            {
+                "date": "2009-02-24T09:55:30Z",
+                "id": "2009-F01",
+                "reusability": "",
+                "name": "Orion 50XL",
+                "category": "S3",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 0.42,
+                "emissions": {
+                    "NOx": 0.168,
+                    "Al2O3": 0.1911,
+                    "BC": 0.01218,
+                    "Cl": 0.00462,
+                    "HCl": 0.0021,
+                    "Unablated_Mass": 0.147
+                }
+            },
+            {
+                "date": "2009-02-24T09:55:30Z",
+                "id": "2009-F01",
+                "reusability": "",
+                "name": "Taurus Fairing",
+                "category": "C",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 0.878,
+                "emissions": {
+                    "NOx": 0.3512,
+                    "Al2O3": 0.18438,
+                    "BC": 0.035998,
+                    "Cl": 0.01317,
+                    "HCl": 0.007024,
+                    "Unablated_Mass": 0.6145999999999999
+                }
+            },
+            {
+                "date": "2009-02-24T09:55:30Z",
+                "id": "2009-F01",
+                "reusability": "",
+                "name": "Taurus Fairing",
+                "category": "C",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 0.878,
+                "emissions": {
+                    "NOx": 0.3512,
+                    "Al2O3": 0.18438,
+                    "BC": 0.035998,
+                    "Cl": 0.01317,
+                    "HCl": 0.007024,
+                    "Unablated_Mass": 0.6145999999999999
+                }
+            },
+            {
+                "date": "2009-02-24T10:37:00Z",
+                "id": "2009-F01",
+                "reusability": "",
+                "name": "Taurus 8 Stage 4",
+                "category": "S4",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 0.126,
+                "emissions": {
+                    "NOx": 0.0504,
+                    "Al2O3": 0.05733,
+                    "BC": 0.003654,
+                    "Cl": 0.001386,
+                    "HCl": 0.00063,
+                    "Unablated_Mass": 0.04409999999999999
+                }
+            },
+            {
+                "date": "2009-02-24T10:37:00Z",
+                "id": "2009-F01",
+                "reusability": "",
+                "name": "OCO",
+                "category": "P",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 0.441,
+                "emissions": {
+                    "NOx": 0.1764,
+                    "Al2O3": 0.12672,
+                    "BC": 0.018081,
+                    "Cl": 0.006615,
+                    "HCl": 0.003528,
+                    "Unablated_Mass": 0.12419999999999999
+                }
             }
         ]
     },
@@ -3770,7 +3903,122 @@
                 }
             }
         ],
-        "reentries": []
+        "reentries": [
+            {
+                "date": "2009-04-05T02:30:00Z",
+                "id": "2009-F02",
+                "reusability": "",
+                "name": "Taepo Dong 1",
+                "category": "S1",
+                "smc": false,
+                "location": 2,
+                "burnup": "Complete",
+                "mass": 5.0,
+                "emissions": {
+                    "NOx": 2.0,
+                    "Al2O3": 1.05,
+                    "BC": 0.0,
+                    "Cl": 0.0,
+                    "HCl": 0.0,
+                    "Unablated_Mass": 3.5
+                }
+            },
+            {
+                "date": "2009-04-05T02:30:00Z",
+                "id": "2009-F02",
+                "reusability": "",
+                "name": "Unha-2 Stage 2",
+                "category": "S2",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 1.5,
+                "emissions": {
+                    "NOx": 0.6,
+                    "Al2O3": 0.6825,
+                    "BC": 0.0435,
+                    "Cl": 0.0165,
+                    "HCl": 0.0075,
+                    "Unablated_Mass": 0.525
+                }
+            },
+            {
+                "date": "2009-04-05T02:30:00Z",
+                "id": "2009-F02",
+                "reusability": "",
+                "name": "TD-1 Fairing",
+                "category": "C",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 0.878,
+                "emissions": {
+                    "NOx": 0.3512,
+                    "Al2O3": 0.18438,
+                    "BC": 0.035998,
+                    "Cl": 0.01317,
+                    "HCl": 0.007024,
+                    "Unablated_Mass": 0.6145999999999999
+                }
+            },
+            {
+                "date": "2009-04-05T02:30:00Z",
+                "id": "2009-F02",
+                "reusability": "",
+                "name": "TD-1 Fairing",
+                "category": "C",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 0.878,
+                "emissions": {
+                    "NOx": 0.3512,
+                    "Al2O3": 0.18438,
+                    "BC": 0.035998,
+                    "Cl": 0.01317,
+                    "HCl": 0.007024,
+                    "Unablated_Mass": 0.6145999999999999
+                }
+            },
+            {
+                "date": "2009-04-05T02:44:00Z",
+                "id": "2009-F02",
+                "reusability": "",
+                "name": "Unha-2 Stage 3",
+                "category": "S3",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 3.0,
+                "emissions": {
+                    "NOx": 1.2,
+                    "Al2O3": 0.1365,
+                    "BC": 0.087,
+                    "Cl": 0.033,
+                    "HCl": 0.015,
+                    "Unablated_Mass": 2.805
+                }
+            },
+            {
+                "date": "2009-04-05T02:44:00Z",
+                "id": "2009-F02",
+                "reusability": "",
+                "name": "Kwangmyongsong-2",
+                "category": "P",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 0.05,
+                "emissions": {
+                    "NOx": 0.02,
+                    "Al2O3": 0.016,
+                    "BC": 0.00205,
+                    "Cl": 0.00075,
+                    "HCl": 0.0004,
+                    "Unablated_Mass": 0.009999999999999998
+                }
+            }
+        ]
     },
     "2009-04-06": {
         "launches": [],
@@ -9648,7 +9896,103 @@
                 }
             }
         ],
-        "reentries": []
+        "reentries": [
+            {
+                "date": "2009-08-25T08:12:00Z",
+                "id": "2009-F03",
+                "reusability": "",
+                "name": "Angara URM",
+                "category": "S1",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 9.8,
+                "emissions": {
+                    "NOx": 3.92,
+                    "Al2O3": 2.058,
+                    "BC": 0.0,
+                    "Cl": 0.0,
+                    "HCl": 0.0,
+                    "Unablated_Mass": 6.86
+                }
+            },
+            {
+                "date": "2009-08-25T08:12:00Z",
+                "id": "2009-F03",
+                "reusability": "",
+                "name": "KSLV-1 Fairing",
+                "category": "C",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 0.3,
+                "emissions": {
+                    "NOx": 0.12,
+                    "Al2O3": 0.063,
+                    "BC": 0.0123,
+                    "Cl": 0.0045,
+                    "HCl": 0.0024,
+                    "Unablated_Mass": 0.21
+                }
+            },
+            {
+                "date": "2009-08-25T08:17:00Z",
+                "id": "2009-F03",
+                "reusability": "",
+                "name": "KSLV-1 Fairing",
+                "category": "C",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 0.3,
+                "emissions": {
+                    "NOx": 0.12,
+                    "Al2O3": 0.063,
+                    "BC": 0.0123,
+                    "Cl": 0.0045,
+                    "HCl": 0.0024,
+                    "Unablated_Mass": 0.21
+                }
+            },
+            {
+                "date": "2009-08-25T08:18:00Z",
+                "id": "2009-F03",
+                "reusability": "",
+                "name": "Naro-1 Stage 2",
+                "category": "S2",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 0.2,
+                "emissions": {
+                    "NOx": 0.08,
+                    "Al2O3": 0.091,
+                    "BC": 0.0058,
+                    "Cl": 0.0022,
+                    "HCl": 0.001,
+                    "Unablated_Mass": 0.07
+                }
+            },
+            {
+                "date": "2009-08-25T08:18:00Z",
+                "id": "2009-F03",
+                "reusability": "",
+                "name": "STSat-2A",
+                "category": "P",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 0.1,
+                "emissions": {
+                    "NOx": 0.04,
+                    "Al2O3": 0.032,
+                    "BC": 0.0041,
+                    "Cl": 0.0015,
+                    "HCl": 0.0008,
+                    "Unablated_Mass": 0.019999999999999997
+                }
+            }
+        ]
     },
     "2009-08-29": {
         "launches": [

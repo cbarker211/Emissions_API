@@ -15706,6 +15706,82 @@
                 }
             },
             {
+                "date": "1980-07-15T02:22:11Z",
+                "id": "1980-F02",
+                "reusability": "",
+                "name": "Thor DM-18A 304",
+                "category": "S1",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 3.125,
+                "emissions": {
+                    "NOx": 1.25,
+                    "Al2O3": 0.65625,
+                    "BC": 0.0,
+                    "Cl": 0.0,
+                    "HCl": 0.0,
+                    "Unablated_Mass": 2.1875
+                }
+            },
+            {
+                "date": "1980-07-15T02:22:11Z",
+                "id": "1980-F02",
+                "reusability": "",
+                "name": "Thor/Block 5D Stage 2",
+                "category": "S2",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 0.9,
+                "emissions": {
+                    "NOx": 0.36,
+                    "Al2O3": 0.030485,
+                    "BC": 0.0261,
+                    "Cl": 0.0099,
+                    "HCl": 0.0045,
+                    "Unablated_Mass": 0.85645
+                }
+            },
+            {
+                "date": "1980-07-15T02:22:11Z",
+                "id": "1980-F02",
+                "reusability": "",
+                "name": "Thor DMSP Fairing",
+                "category": "C",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 0.878,
+                "emissions": {
+                    "NOx": 0.3512,
+                    "Al2O3": 0.18438,
+                    "BC": 0.035998,
+                    "Cl": 0.01317,
+                    "HCl": 0.007024,
+                    "Unablated_Mass": 0.6145999999999999
+                }
+            },
+            {
+                "date": "1980-07-15T02:22:11Z",
+                "id": "1980-F02",
+                "reusability": "",
+                "name": "Thor DMSP Fairing",
+                "category": "C",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 0.878,
+                "emissions": {
+                    "NOx": 0.3512,
+                    "Al2O3": 0.18438,
+                    "BC": 0.035998,
+                    "Cl": 0.01317,
+                    "HCl": 0.007024,
+                    "Unablated_Mass": 0.6145999999999999
+                }
+            },
+            {
                 "date": "1980-07-15T07:30:00Z",
                 "id": "1980-061",
                 "reusability": "",
@@ -15760,6 +15836,120 @@
                     "Cl": 0.01317,
                     "HCl": 0.007024,
                     "Unablated_Mass": 0.6145999999999999
+                }
+            },
+            {
+                "date": "1980-07-15T02:42:00Z",
+                "id": "1980-F02",
+                "reusability": "",
+                "name": "Thor/Block 5D Stage 3",
+                "category": "C",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 0.053,
+                "emissions": {
+                    "NOx": 0.0212,
+                    "Al2O3": 0.01696,
+                    "BC": 0.002173,
+                    "Cl": 0.000795,
+                    "HCl": 0.000424,
+                    "Unablated_Mass": 0.010599999999999998
+                }
+            },
+            {
+                "date": "1980-07-15T02:42:00Z",
+                "id": "1980-F02",
+                "reusability": "",
+                "name": "DMSP F-5",
+                "category": "P",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 0.467,
+                "emissions": {
+                    "NOx": 0.1868,
+                    "Al2O3": 0.14944,
+                    "BC": 0.019147,
+                    "Cl": 0.007005,
+                    "HCl": 0.003736,
+                    "Unablated_Mass": 0.09339999999999998
+                }
+            },
+            {
+                "date": "1980-07-15T02:42:00Z",
+                "id": "1980-F02",
+                "reusability": "",
+                "name": "DMSP F-5 OLS Cover",
+                "category": "C",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 0.005,
+                "emissions": {
+                    "NOx": 0.002,
+                    "Al2O3": 0.0016,
+                    "BC": 0.000205,
+                    "Cl": 7.5e-05,
+                    "HCl": 4e-05,
+                    "Unablated_Mass": 0.0009999999999999998
+                }
+            },
+            {
+                "date": "1980-07-15T02:42:00Z",
+                "id": "1980-F02",
+                "reusability": "",
+                "name": "DMSP F-5 OLS Cooler Cover",
+                "category": "C",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 0.001,
+                "emissions": {
+                    "NOx": 0.0004,
+                    "Al2O3": 0.00032,
+                    "BC": 4.1e-05,
+                    "Cl": 1.5e-05,
+                    "HCl": 8e-06,
+                    "Unablated_Mass": 0.00019999999999999996
+                }
+            },
+            {
+                "date": "1980-07-15T02:42:00Z",
+                "id": "1980-F02",
+                "reusability": "",
+                "name": "DMSP F-5 Despin weight",
+                "category": "C",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 0.0,
+                "emissions": {
+                    "NOx": 0.0,
+                    "Al2O3": 0.0,
+                    "BC": 0.0,
+                    "Cl": 0.0,
+                    "HCl": 0.0,
+                    "Unablated_Mass": 0.0
+                }
+            },
+            {
+                "date": "1980-07-15T02:42:00Z",
+                "id": "1980-F02",
+                "reusability": "",
+                "name": "DMSP F-5 Despin weight",
+                "category": "C",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 0.0,
+                "emissions": {
+                    "NOx": 0.0,
+                    "Al2O3": 0.0,
+                    "BC": 0.0,
+                    "Cl": 0.0,
+                    "HCl": 0.0,
+                    "Unablated_Mass": 0.0
                 }
             }
         ]

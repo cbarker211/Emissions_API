@@ -1662,6 +1662,139 @@
                 }
             },
             {
+                "date": "2015-02-11T14:27:00Z",
+                "id": "2015-U01",
+                "reusability": "",
+                "name": "Vega VV04 Stage 3",
+                "category": "S3",
+                "smc": false,
+                "location": 4,
+                "burnup": "Complete",
+                "mass": 1.433,
+                "emissions": {
+                    "NOx": 0.5732,
+                    "Al2O3": 0.652015,
+                    "BC": 0.041557,
+                    "Cl": 0.015763,
+                    "HCl": 0.007165,
+                    "Unablated_Mass": 0.5015499999999999
+                }
+            },
+            {
+                "date": "2015-02-11T15:18:00Z",
+                "id": "2015-U01",
+                "reusability": "",
+                "name": "IXV",
+                "category": "P",
+                "smc": false,
+                "location": 1,
+                "burnup": "Partial",
+                "mass": 1.845,
+                "emissions": {
+                    "NOx": 0.322875,
+                    "Al2O3": 0.0,
+                    "BC": 0.0,
+                    "Cl": 0.0,
+                    "HCl": 0.0,
+                    "Unablated_Mass": 1.845
+                }
+            },
+            {
+                "date": "2015-02-11T16:10:00Z",
+                "id": "2015-U01",
+                "reusability": "",
+                "name": "Vega AVUM VV04",
+                "category": "S4",
+                "smc": false,
+                "location": 4,
+                "burnup": "Complete",
+                "mass": 0.6880000000000001,
+                "emissions": {
+                    "NOx": 0.2752,
+                    "Al2O3": 0.31304,
+                    "BC": 0.019952,
+                    "Cl": 0.007568,
+                    "HCl": 0.00344,
+                    "Unablated_Mass": 0.2408
+                }
+            },
+            {
+                "date": "2015-02-11T13:40:00Z",
+                "id": "2015-U01",
+                "reusability": "",
+                "name": "Vega P80FW",
+                "category": "S1",
+                "smc": false,
+                "location": 2,
+                "burnup": "Complete",
+                "mass": 8.533,
+                "emissions": {
+                    "NOx": 3.4132,
+                    "Al2O3": 1.79193,
+                    "BC": 0.0,
+                    "Cl": 0.0,
+                    "HCl": 0.0,
+                    "Unablated_Mass": 5.9731
+                }
+            },
+            {
+                "date": "2015-02-11T13:40:00Z",
+                "id": "2015-U01",
+                "reusability": "",
+                "name": "Zefiro 23",
+                "category": "S2",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 2.486,
+                "emissions": {
+                    "NOx": 0.9944,
+                    "Al2O3": 1.13113,
+                    "BC": 0.072094,
+                    "Cl": 0.027346,
+                    "HCl": 0.01243,
+                    "Unablated_Mass": 0.8700999999999999
+                }
+            },
+            {
+                "date": "2015-02-11T13:40:00Z",
+                "id": "2015-U01",
+                "reusability": "",
+                "name": "Vega Fairing",
+                "category": "C",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 0.27,
+                "emissions": {
+                    "NOx": 0.108,
+                    "Al2O3": 0.0567,
+                    "BC": 0.01107,
+                    "Cl": 0.00405,
+                    "HCl": 0.00216,
+                    "Unablated_Mass": 0.189
+                }
+            },
+            {
+                "date": "2015-02-11T13:40:00Z",
+                "id": "2015-U01",
+                "reusability": "",
+                "name": "Vega Fairing",
+                "category": "C",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 0.27,
+                "emissions": {
+                    "NOx": 0.108,
+                    "Al2O3": 0.0567,
+                    "BC": 0.01107,
+                    "Cl": 0.00405,
+                    "HCl": 0.00216,
+                    "Unablated_Mass": 0.189
+                }
+            },
+            {
                 "date": "2015-02-11T23:12:00Z",
                 "id": "2015-007",
                 "reusability": "",
@@ -5847,6 +5980,158 @@
                     "HCl": 8e-06,
                     "Unablated_Mass": 0.00019999999999999996
                 }
+            },
+            {
+                "date": "2015-05-16T05:47:39Z",
+                "id": "2015-F01",
+                "reusability": "",
+                "name": "8S810M",
+                "category": "S1",
+                "smc": false,
+                "location": 2,
+                "burnup": "Complete",
+                "mass": 30.6,
+                "emissions": {
+                    "NOx": 12.24,
+                    "Al2O3": 6.426,
+                    "BC": 0.0,
+                    "Cl": 0.0,
+                    "HCl": 0.0,
+                    "Unablated_Mass": 21.42
+                }
+            },
+            {
+                "date": "2015-05-16T05:47:39Z",
+                "id": "2015-F01",
+                "reusability": "",
+                "name": "8S811",
+                "category": "S2",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 11.0,
+                "emissions": {
+                    "NOx": 4.4,
+                    "Al2O3": 5.005,
+                    "BC": 0.319,
+                    "Cl": 0.121,
+                    "HCl": 0.055,
+                    "Unablated_Mass": 3.8499999999999996
+                }
+            },
+            {
+                "date": "2015-05-16T05:47:39Z",
+                "id": "2015-F01",
+                "reusability": "",
+                "name": "Briz-M Fairing",
+                "category": "C",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 1.0,
+                "emissions": {
+                    "NOx": 0.4,
+                    "Al2O3": 0.21,
+                    "BC": 0.041,
+                    "Cl": 0.015,
+                    "HCl": 0.008,
+                    "Unablated_Mass": 0.7000000000000001
+                }
+            },
+            {
+                "date": "2015-05-16T05:47:39Z",
+                "id": "2015-F01",
+                "reusability": "",
+                "name": "Briz-M Fairing",
+                "category": "C",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 1.0,
+                "emissions": {
+                    "NOx": 0.4,
+                    "Al2O3": 0.21,
+                    "BC": 0.041,
+                    "Cl": 0.015,
+                    "HCl": 0.008,
+                    "Unablated_Mass": 0.7000000000000001
+                }
+            },
+            {
+                "date": "2015-05-16T06:10:00Z",
+                "id": "2015-F01",
+                "reusability": "",
+                "name": "Proton-M 935-54 Stage 3",
+                "category": "S3",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 50.1,
+                "emissions": {
+                    "NOx": 20.04,
+                    "Al2O3": 1.5925,
+                    "BC": 1.4529,
+                    "Cl": 0.5511,
+                    "HCl": 0.2505,
+                    "Unablated_Mass": 47.825
+                }
+            },
+            {
+                "date": "2015-05-16T06:10:00Z",
+                "id": "2015-F01",
+                "reusability": "",
+                "name": "Briz-M No. 99555",
+                "category": "S4",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 22.1,
+                "emissions": {
+                    "NOx": 8.84,
+                    "Al2O3": 1.07835,
+                    "BC": 0.6409,
+                    "Cl": 0.2431,
+                    "HCl": 0.1105,
+                    "Unablated_Mass": 20.5595
+                }
+            },
+            {
+                "date": "2015-05-16T06:10:00Z",
+                "id": "2015-F01",
+                "reusability": "",
+                "name": "Briz-M DTB",
+                "category": "C",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 1.0,
+                "emissions": {
+                    "NOx": 0.4,
+                    "Al2O3": 0.32,
+                    "BC": 0.041,
+                    "Cl": 0.015,
+                    "HCl": 0.008,
+                    "Unablated_Mass": 0.19999999999999996
+                }
+            },
+            {
+                "date": "2015-05-16T06:10:00Z",
+                "id": "2015-F01",
+                "reusability": "",
+                "name": "Mexsat-1 Centenario",
+                "category": "P",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 5.325,
+                "emissions": {
+                    "NOx": 2.13,
+                    "Al2O3": 0.896,
+                    "BC": 0.218325,
+                    "Cl": 0.079875,
+                    "HCl": 0.0426,
+                    "Unablated_Mass": 3.085
+                }
             }
         ]
     },
@@ -7312,7 +7597,7 @@
                 "location": "Cape Canaveral",
                 "propellant": {
                     "Hypergolic": 0.0,
-                    "Kerosene": 371.987862,
+                    "Kerosene": 242.979904,
                     "Solid": 0.0,
                     "Hydrogen": 0.0,
                     "Methane": 0.0
@@ -7320,33 +7605,33 @@
                 "emissions": {
                     "BC": [
                         0.127551,
-                        0.935365,
-                        2.095415,
-                        0.48613
+                        0.678735,
+                        0.0,
+                        0.0
                     ],
                     "CO": [
                         0.516962,
-                        2.512514,
-                        18.030961,
-                        7.026782
+                        1.840207,
+                        0.0,
+                        0.0
                     ],
                     "CO2": [
                         163.938351,
-                        120.743666,
-                        79.930776,
-                        14.075662
+                        108.540972,
+                        0.0,
+                        0.0
                     ],
                     "NOx": [
                         2.497049,
-                        0.091232,
-                        0.000406,
-                        4e-06
+                        0.090913,
+                        0.0,
+                        0.0
                     ],
                     "H2O": [
                         62.233931,
-                        47.101708,
-                        40.895365,
-                        9.487594
+                        42.093155,
+                        0.0,
+                        0.0
                     ],
                     "Al2O3": [
                         0.0,

@@ -15692,7 +15692,122 @@
                 }
             }
         ],
-        "reentries": []
+        "reentries": [
+            {
+                "date": "2013-12-09T03:26:00Z",
+                "id": "2013-F03",
+                "reusability": "",
+                "name": "CZ-4B Stage 1",
+                "category": "S1",
+                "smc": false,
+                "location": 2,
+                "burnup": "Complete",
+                "mass": 9.5,
+                "emissions": {
+                    "NOx": 3.8,
+                    "Al2O3": 1.995,
+                    "BC": 0.0,
+                    "Cl": 0.0,
+                    "HCl": 0.0,
+                    "Unablated_Mass": 6.65
+                }
+            },
+            {
+                "date": "2013-12-09T03:26:00Z",
+                "id": "2013-F03",
+                "reusability": "",
+                "name": "CZ-4B Stage 2",
+                "category": "S2",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 4.0,
+                "emissions": {
+                    "NOx": 1.6,
+                    "Al2O3": 1.82,
+                    "BC": 0.116,
+                    "Cl": 0.044,
+                    "HCl": 0.02,
+                    "Unablated_Mass": 1.4000000000000001
+                }
+            },
+            {
+                "date": "2013-12-09T03:26:00Z",
+                "id": "2013-F03",
+                "reusability": "",
+                "name": "CZ-4B Y1 3.35m Fairing",
+                "category": "C",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 0.9,
+                "emissions": {
+                    "NOx": 0.36,
+                    "Al2O3": 0.189,
+                    "BC": 0.0369,
+                    "Cl": 0.0135,
+                    "HCl": 0.0072,
+                    "Unablated_Mass": 0.63
+                }
+            },
+            {
+                "date": "2013-12-09T03:26:00Z",
+                "id": "2013-F03",
+                "reusability": "",
+                "name": "CZ-4B Y1 3.35m Fairing",
+                "category": "C",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 0.9,
+                "emissions": {
+                    "NOx": 0.36,
+                    "Al2O3": 0.189,
+                    "BC": 0.0369,
+                    "Cl": 0.0135,
+                    "HCl": 0.0072,
+                    "Unablated_Mass": 0.63
+                }
+            },
+            {
+                "date": "2013-12-09T04:08:00Z",
+                "id": "2013-F03",
+                "reusability": "",
+                "name": "CZ-4B Y10 Stage 3",
+                "category": "S3",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 16.0,
+                "emissions": {
+                    "NOx": 6.4,
+                    "Al2O3": 0.91,
+                    "BC": 0.464,
+                    "Cl": 0.176,
+                    "HCl": 0.08,
+                    "Unablated_Mass": 14.700000000000001
+                }
+            },
+            {
+                "date": "2013-12-09T04:08:00Z",
+                "id": "2013-F03",
+                "reusability": "",
+                "name": "Zi Yuan 1-03",
+                "category": "P",
+                "smc": false,
+                "location": 1,
+                "burnup": "Complete",
+                "mass": 2.1,
+                "emissions": {
+                    "NOx": 0.84,
+                    "Al2O3": 0.608,
+                    "BC": 0.0861,
+                    "Cl": 0.0315,
+                    "HCl": 0.0168,
+                    "Unablated_Mass": 0.58
+                }
+            }
+        ]
     },
     "2013-12-12": {
         "launches": [],

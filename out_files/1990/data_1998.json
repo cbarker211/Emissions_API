@@ -743,7 +743,122 @@
                 }
             }
         ],
-        "reentries": []
+        "reentries": [
+            {
+                "date": "1998-01-22T12:56:00Z",
+                "id": "1998-F01",
+                "reusability": "",
+                "name": "Shaviyt 1",
+                "category": "S1",
+                "smc": false,
+                "location": 2,
+                "burnup": "Complete",
+                "mass": 1.24,
+                "emissions": {
+                    "NOx": 0.496,
+                    "Al2O3": 0.2604,
+                    "BC": 0.0,
+                    "Cl": 0.0,
+                    "HCl": 0.0,
+                    "Unablated_Mass": 0.868
+                }
+            },
+            {
+                "date": "1998-01-22T12:56:00Z",
+                "id": "1998-F01",
+                "reusability": "",
+                "name": "Shaviyt",
+                "category": "S2",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 10.388,
+                "emissions": {
+                    "NOx": 4.1552,
+                    "Al2O3": 0.58604,
+                    "BC": 0.301252,
+                    "Cl": 0.114268,
+                    "HCl": 0.05194,
+                    "Unablated_Mass": 9.550799999999999
+                }
+            },
+            {
+                "date": "1998-01-22T12:56:00Z",
+                "id": "1998-F01",
+                "reusability": "",
+                "name": "Shaviyt Fairing",
+                "category": "C",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 0.0285,
+                "emissions": {
+                    "NOx": 0.0114,
+                    "Al2O3": 0.005985,
+                    "BC": 0.001168,
+                    "Cl": 0.000428,
+                    "HCl": 0.000228,
+                    "Unablated_Mass": 0.01995
+                }
+            },
+            {
+                "date": "1998-01-22T12:56:00Z",
+                "id": "1998-F01",
+                "reusability": "",
+                "name": "Shaviyt Fairing",
+                "category": "C",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 0.0285,
+                "emissions": {
+                    "NOx": 0.0114,
+                    "Al2O3": 0.005985,
+                    "BC": 0.001168,
+                    "Cl": 0.000428,
+                    "HCl": 0.000228,
+                    "Unablated_Mass": 0.01995
+                }
+            },
+            {
+                "date": "1998-01-22T13:02:00Z",
+                "id": "1998-F01",
+                "reusability": "",
+                "name": "Shavit (4) Stage 3",
+                "category": "S3",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 2.574,
+                "emissions": {
+                    "NOx": 1.0296,
+                    "Al2O3": 0.31122,
+                    "BC": 0.074646,
+                    "Cl": 0.028314,
+                    "HCl": 0.01287,
+                    "Unablated_Mass": 2.1294
+                }
+            },
+            {
+                "date": "1998-01-22T13:02:00Z",
+                "id": "1998-F01",
+                "reusability": "",
+                "name": "'Ofeq-4",
+                "category": "P",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 0.25,
+                "emissions": {
+                    "NOx": 0.1,
+                    "Al2O3": 0.08,
+                    "BC": 0.01025,
+                    "Cl": 0.00375,
+                    "HCl": 0.002,
+                    "Unablated_Mass": 0.04999999999999999
+                }
+            }
+        ]
     },
     "1998-01-23": {
         "launches": [
@@ -11973,6 +12088,120 @@
                     "HCl": 0.0064,
                     "Unablated_Mass": 0.15999999999999998
                 }
+            },
+            {
+                "date": "1998-08-31T03:07:00Z",
+                "id": "1998-F04",
+                "reusability": "",
+                "name": "Taepo Dong 1",
+                "category": "S1",
+                "smc": false,
+                "location": 2,
+                "burnup": "Complete",
+                "mass": 3.7,
+                "emissions": {
+                    "NOx": 1.48,
+                    "Al2O3": 0.777,
+                    "BC": 0.0,
+                    "Cl": 0.0,
+                    "HCl": 0.0,
+                    "Unablated_Mass": 2.59
+                }
+            },
+            {
+                "date": "1998-08-31T03:07:00Z",
+                "id": "1998-F04",
+                "reusability": "",
+                "name": "Taepo Dong 1 Stage 2",
+                "category": "S2",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 1.5,
+                "emissions": {
+                    "NOx": 0.6,
+                    "Al2O3": 0.6825,
+                    "BC": 0.0435,
+                    "Cl": 0.0165,
+                    "HCl": 0.0075,
+                    "Unablated_Mass": 0.525
+                }
+            },
+            {
+                "date": "1998-08-31T03:07:00Z",
+                "id": "1998-F04",
+                "reusability": "",
+                "name": "TD-1 Fairing",
+                "category": "C",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 0.878,
+                "emissions": {
+                    "NOx": 0.3512,
+                    "Al2O3": 0.18438,
+                    "BC": 0.035998,
+                    "Cl": 0.01317,
+                    "HCl": 0.007024,
+                    "Unablated_Mass": 0.6145999999999999
+                }
+            },
+            {
+                "date": "1998-08-31T03:07:00Z",
+                "id": "1998-F04",
+                "reusability": "",
+                "name": "TD-1 Fairing",
+                "category": "C",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 0.878,
+                "emissions": {
+                    "NOx": 0.3512,
+                    "Al2O3": 0.18438,
+                    "BC": 0.035998,
+                    "Cl": 0.01317,
+                    "HCl": 0.007024,
+                    "Unablated_Mass": 0.6145999999999999
+                }
+            },
+            {
+                "date": "1998-08-31T03:12:00Z",
+                "id": "1998-F04",
+                "reusability": "",
+                "name": "Taepo Dong 1 Stage 3",
+                "category": "S3",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 0.2,
+                "emissions": {
+                    "NOx": 0.08,
+                    "Al2O3": 0.02275,
+                    "BC": 0.0058,
+                    "Cl": 0.0022,
+                    "HCl": 0.001,
+                    "Unablated_Mass": 0.1675
+                }
+            },
+            {
+                "date": "1998-08-31T03:12:00Z",
+                "id": "1998-F04",
+                "reusability": "",
+                "name": "Kwangmyongsong 1",
+                "category": "P",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 0.05,
+                "emissions": {
+                    "NOx": 0.02,
+                    "Al2O3": 0.016,
+                    "BC": 0.00205,
+                    "Cl": 0.00075,
+                    "HCl": 0.0004,
+                    "Unablated_Mass": 0.009999999999999998
+                }
             }
         ]
     },
@@ -12512,7 +12741,407 @@
                 }
             }
         ],
-        "reentries": []
+        "reentries": [
+            {
+                "date": "1998-09-09T20:29:00Z",
+                "id": "1998-F05",
+                "reusability": "",
+                "name": "11S771",
+                "category": "S1",
+                "smc": false,
+                "location": 2,
+                "burnup": "Complete",
+                "mass": 33.9,
+                "emissions": {
+                    "NOx": 13.56,
+                    "Al2O3": 7.119,
+                    "BC": 0.0,
+                    "Cl": 0.0,
+                    "HCl": 0.0,
+                    "Unablated_Mass": 23.73
+                }
+            },
+            {
+                "date": "1998-09-09T20:29:00Z",
+                "id": "1998-F05",
+                "reusability": "",
+                "name": "Zenit 11K77.05 fairing",
+                "category": "C",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 0.878,
+                "emissions": {
+                    "NOx": 0.3512,
+                    "Al2O3": 0.18438,
+                    "BC": 0.035998,
+                    "Cl": 0.01317,
+                    "HCl": 0.007024,
+                    "Unablated_Mass": 0.6145999999999999
+                }
+            },
+            {
+                "date": "1998-09-09T20:29:00Z",
+                "id": "1998-F05",
+                "reusability": "",
+                "name": "Zenit 11K77.05 fairing",
+                "category": "C",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 0.878,
+                "emissions": {
+                    "NOx": 0.3512,
+                    "Al2O3": 0.18438,
+                    "BC": 0.035998,
+                    "Cl": 0.01317,
+                    "HCl": 0.007024,
+                    "Unablated_Mass": 0.6145999999999999
+                }
+            },
+            {
+                "date": "1998-09-09T20:29:00Z",
+                "id": "1998-F05",
+                "reusability": "",
+                "name": "Zenit-2 No. 22L Stage 2",
+                "category": "S2",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 90.0,
+                "emissions": {
+                    "NOx": 36.0,
+                    "Al2O3": 4.2315,
+                    "BC": 2.61,
+                    "Cl": 0.99,
+                    "HCl": 0.45,
+                    "Unablated_Mass": 83.955
+                }
+            },
+            {
+                "date": "1998-09-09T20:29:00Z",
+                "id": "1998-F05",
+                "reusability": "",
+                "name": "Sep Motor Cover",
+                "category": "C",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 0.001,
+                "emissions": {
+                    "NOx": 0.0004,
+                    "Al2O3": 0.00032,
+                    "BC": 4.1e-05,
+                    "Cl": 1.5e-05,
+                    "HCl": 8e-06,
+                    "Unablated_Mass": 0.00019999999999999996
+                }
+            },
+            {
+                "date": "1998-09-09T20:29:00Z",
+                "id": "1998-F05",
+                "reusability": "",
+                "name": "Sep Motor Cover",
+                "category": "C",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 0.001,
+                "emissions": {
+                    "NOx": 0.0004,
+                    "Al2O3": 0.00032,
+                    "BC": 4.1e-05,
+                    "Cl": 1.5e-05,
+                    "HCl": 8e-06,
+                    "Unablated_Mass": 0.00019999999999999996
+                }
+            },
+            {
+                "date": "1998-09-09T20:29:00Z",
+                "id": "1998-F05",
+                "reusability": "",
+                "name": "Sep Motor Cover",
+                "category": "C",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 0.001,
+                "emissions": {
+                    "NOx": 0.0004,
+                    "Al2O3": 0.00032,
+                    "BC": 4.1e-05,
+                    "Cl": 1.5e-05,
+                    "HCl": 8e-06,
+                    "Unablated_Mass": 0.00019999999999999996
+                }
+            },
+            {
+                "date": "1998-09-09T20:29:00Z",
+                "id": "1998-F05",
+                "reusability": "",
+                "name": "Sep Motor Cover",
+                "category": "C",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 0.001,
+                "emissions": {
+                    "NOx": 0.0004,
+                    "Al2O3": 0.00032,
+                    "BC": 4.1e-05,
+                    "Cl": 1.5e-05,
+                    "HCl": 8e-06,
+                    "Unablated_Mass": 0.00019999999999999996
+                }
+            },
+            {
+                "date": "1998-09-09T20:29:00Z",
+                "id": "1998-F05",
+                "reusability": "",
+                "name": "Globalstar Dispenser",
+                "category": "C",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 0.4,
+                "emissions": {
+                    "NOx": 0.16,
+                    "Al2O3": 0.128,
+                    "BC": 0.0164,
+                    "Cl": 0.006,
+                    "HCl": 0.0032,
+                    "Unablated_Mass": 0.07999999999999999
+                }
+            },
+            {
+                "date": "1998-09-09T20:29:00Z",
+                "id": "1998-F05",
+                "reusability": "",
+                "name": "Globalstar M005",
+                "category": "P",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 0.45,
+                "emissions": {
+                    "NOx": 0.18,
+                    "Al2O3": 0.1216,
+                    "BC": 0.01845,
+                    "Cl": 0.00675,
+                    "HCl": 0.0036,
+                    "Unablated_Mass": 0.146
+                }
+            },
+            {
+                "date": "1998-09-09T20:29:00Z",
+                "id": "1998-F05",
+                "reusability": "",
+                "name": "Globalstar M007",
+                "category": "P",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 0.45,
+                "emissions": {
+                    "NOx": 0.18,
+                    "Al2O3": 0.1216,
+                    "BC": 0.01845,
+                    "Cl": 0.00675,
+                    "HCl": 0.0036,
+                    "Unablated_Mass": 0.146
+                }
+            },
+            {
+                "date": "1998-09-09T20:29:00Z",
+                "id": "1998-F05",
+                "reusability": "",
+                "name": "Globalstar M009",
+                "category": "P",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 0.45,
+                "emissions": {
+                    "NOx": 0.18,
+                    "Al2O3": 0.1216,
+                    "BC": 0.01845,
+                    "Cl": 0.00675,
+                    "HCl": 0.0036,
+                    "Unablated_Mass": 0.146
+                }
+            },
+            {
+                "date": "1998-09-09T20:29:00Z",
+                "id": "1998-F05",
+                "reusability": "",
+                "name": "Globalstar M010",
+                "category": "P",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 0.45,
+                "emissions": {
+                    "NOx": 0.18,
+                    "Al2O3": 0.1216,
+                    "BC": 0.01845,
+                    "Cl": 0.00675,
+                    "HCl": 0.0036,
+                    "Unablated_Mass": 0.146
+                }
+            },
+            {
+                "date": "1998-09-09T20:29:00Z",
+                "id": "1998-F05",
+                "reusability": "",
+                "name": "Globalstar M011",
+                "category": "P",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 0.45,
+                "emissions": {
+                    "NOx": 0.18,
+                    "Al2O3": 0.1216,
+                    "BC": 0.01845,
+                    "Cl": 0.00675,
+                    "HCl": 0.0036,
+                    "Unablated_Mass": 0.146
+                }
+            },
+            {
+                "date": "1998-09-09T20:29:00Z",
+                "id": "1998-F05",
+                "reusability": "",
+                "name": "Globalstar M012",
+                "category": "P",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 0.45,
+                "emissions": {
+                    "NOx": 0.18,
+                    "Al2O3": 0.1216,
+                    "BC": 0.01845,
+                    "Cl": 0.00675,
+                    "HCl": 0.0036,
+                    "Unablated_Mass": 0.146
+                }
+            },
+            {
+                "date": "1998-09-09T20:29:00Z",
+                "id": "1998-F05",
+                "reusability": "",
+                "name": "Globalstar M013",
+                "category": "P",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 0.45,
+                "emissions": {
+                    "NOx": 0.18,
+                    "Al2O3": 0.1216,
+                    "BC": 0.01845,
+                    "Cl": 0.00675,
+                    "HCl": 0.0036,
+                    "Unablated_Mass": 0.146
+                }
+            },
+            {
+                "date": "1998-09-09T20:29:00Z",
+                "id": "1998-F05",
+                "reusability": "",
+                "name": "Globalstar M016",
+                "category": "P",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 0.45,
+                "emissions": {
+                    "NOx": 0.18,
+                    "Al2O3": 0.1216,
+                    "BC": 0.01845,
+                    "Cl": 0.00675,
+                    "HCl": 0.0036,
+                    "Unablated_Mass": 0.146
+                }
+            },
+            {
+                "date": "1998-09-09T20:29:00Z",
+                "id": "1998-F05",
+                "reusability": "",
+                "name": "Globalstar M017",
+                "category": "P",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 0.45,
+                "emissions": {
+                    "NOx": 0.18,
+                    "Al2O3": 0.1216,
+                    "BC": 0.01845,
+                    "Cl": 0.00675,
+                    "HCl": 0.0036,
+                    "Unablated_Mass": 0.146
+                }
+            },
+            {
+                "date": "1998-09-09T20:29:00Z",
+                "id": "1998-F05",
+                "reusability": "",
+                "name": "Globalstar M018",
+                "category": "P",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 0.45,
+                "emissions": {
+                    "NOx": 0.18,
+                    "Al2O3": 0.1216,
+                    "BC": 0.01845,
+                    "Cl": 0.00675,
+                    "HCl": 0.0036,
+                    "Unablated_Mass": 0.146
+                }
+            },
+            {
+                "date": "1998-09-09T20:29:00Z",
+                "id": "1998-F05",
+                "reusability": "",
+                "name": "Globalstar M020",
+                "category": "P",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 0.45,
+                "emissions": {
+                    "NOx": 0.18,
+                    "Al2O3": 0.1216,
+                    "BC": 0.01845,
+                    "Cl": 0.00675,
+                    "HCl": 0.0036,
+                    "Unablated_Mass": 0.146
+                }
+            },
+            {
+                "date": "1998-09-09T20:29:00Z",
+                "id": "1998-F05",
+                "reusability": "",
+                "name": "Globalstar M021",
+                "category": "P",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 0.45,
+                "emissions": {
+                    "NOx": 0.18,
+                    "Al2O3": 0.1216,
+                    "BC": 0.01845,
+                    "Cl": 0.00675,
+                    "HCl": 0.0036,
+                    "Unablated_Mass": 0.146
+                }
+            }
+        ]
     },
     "1998-09-15": {
         "launches": [],

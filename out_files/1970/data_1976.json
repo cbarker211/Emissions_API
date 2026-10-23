@@ -2641,7 +2641,122 @@
                 }
             }
         ],
-        "reentries": []
+        "reentries": [
+            {
+                "date": "1976-02-04T06:00:00Z",
+                "id": "1976-F01",
+                "reusability": "",
+                "name": "M-10 M-3C-3",
+                "category": "S1",
+                "smc": false,
+                "location": 2,
+                "burnup": "Complete",
+                "mass": 5.907,
+                "emissions": {
+                    "NOx": 2.3628,
+                    "Al2O3": 1.24047,
+                    "BC": 0.0,
+                    "Cl": 0.0,
+                    "HCl": 0.0,
+                    "Unablated_Mass": 4.1349
+                }
+            },
+            {
+                "date": "1976-02-04T06:00:00Z",
+                "id": "1976-F01",
+                "reusability": "",
+                "name": "M-3C Fairing",
+                "category": "C",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 0.878,
+                "emissions": {
+                    "NOx": 0.3512,
+                    "Al2O3": 0.18438,
+                    "BC": 0.035998,
+                    "Cl": 0.01317,
+                    "HCl": 0.007024,
+                    "Unablated_Mass": 0.6145999999999999
+                }
+            },
+            {
+                "date": "1976-02-04T06:00:00Z",
+                "id": "1976-F01",
+                "reusability": "",
+                "name": "M-3C Fairing",
+                "category": "C",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 0.878,
+                "emissions": {
+                    "NOx": 0.3512,
+                    "Al2O3": 0.18438,
+                    "BC": 0.035998,
+                    "Cl": 0.01317,
+                    "HCl": 0.007024,
+                    "Unablated_Mass": 0.6145999999999999
+                }
+            },
+            {
+                "date": "1976-02-04T06:03:00Z",
+                "id": "1976-F01",
+                "reusability": "",
+                "name": "M-22TVC",
+                "category": "S2",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 9.8,
+                "emissions": {
+                    "NOx": 3.92,
+                    "Al2O3": 1.186185,
+                    "BC": 0.2842,
+                    "Cl": 0.1078,
+                    "HCl": 0.049,
+                    "Unablated_Mass": 8.10545
+                }
+            },
+            {
+                "date": "1976-02-04T06:02:00Z",
+                "id": "1976-F01",
+                "reusability": "",
+                "name": "M-3C-3 Stage 3",
+                "category": "S3",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 1.1,
+                "emissions": {
+                    "NOx": 0.44,
+                    "Al2O3": 0.05915,
+                    "BC": 0.0319,
+                    "Cl": 0.0121,
+                    "HCl": 0.0055,
+                    "Unablated_Mass": 1.0155
+                }
+            },
+            {
+                "date": "1976-02-04T06:02:00Z",
+                "id": "1976-F01",
+                "reusability": "",
+                "name": "CORSA",
+                "category": "P",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 0.085,
+                "emissions": {
+                    "NOx": 0.034,
+                    "Al2O3": 0.0272,
+                    "BC": 0.003485,
+                    "Cl": 0.001275,
+                    "HCl": 0.00068,
+                    "Unablated_Mass": 0.016999999999999998
+                }
+            }
+        ]
     },
     "1976-02-05": {
         "launches": [
@@ -26315,6 +26430,101 @@
                     "Cl": 0.0,
                     "HCl": 0.0,
                     "Unablated_Mass": 0.0
+                }
+            },
+            {
+                "date": "1976-11-10T09:05:00Z",
+                "id": "1976-F03",
+                "reusability": "",
+                "name": "FB-1 Stage 1",
+                "category": "S1",
+                "smc": false,
+                "location": 2,
+                "burnup": "Complete",
+                "mass": 9.0,
+                "emissions": {
+                    "NOx": 3.6,
+                    "Al2O3": 1.89,
+                    "BC": 0.0,
+                    "Cl": 0.0,
+                    "HCl": 0.0,
+                    "Unablated_Mass": 6.3
+                }
+            },
+            {
+                "date": "1976-11-10T09:05:00Z",
+                "id": "1976-F03",
+                "reusability": "",
+                "name": "FB-1 Fairing",
+                "category": "C",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 0.878,
+                "emissions": {
+                    "NOx": 0.3512,
+                    "Al2O3": 0.18438,
+                    "BC": 0.035998,
+                    "Cl": 0.01317,
+                    "HCl": 0.007024,
+                    "Unablated_Mass": 0.6145999999999999
+                }
+            },
+            {
+                "date": "1976-11-10T09:05:00Z",
+                "id": "1976-F03",
+                "reusability": "",
+                "name": "FB-1 Fairing",
+                "category": "C",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 0.878,
+                "emissions": {
+                    "NOx": 0.3512,
+                    "Al2O3": 0.18438,
+                    "BC": 0.035998,
+                    "Cl": 0.01317,
+                    "HCl": 0.007024,
+                    "Unablated_Mass": 0.6145999999999999
+                }
+            },
+            {
+                "date": "1976-11-10T09:05:00Z",
+                "id": "1976-F03",
+                "reusability": "",
+                "name": "FB-1 701-08 Stage 2",
+                "category": "S2",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 39.0,
+                "emissions": {
+                    "NOx": 15.6,
+                    "Al2O3": 1.82,
+                    "BC": 1.131,
+                    "Cl": 0.429,
+                    "HCl": 0.195,
+                    "Unablated_Mass": 36.4
+                }
+            },
+            {
+                "date": "1976-11-10T09:05:00Z",
+                "id": "1976-F03",
+                "reusability": "",
+                "name": "JSSW 6",
+                "category": "P",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 1.208,
+                "emissions": {
+                    "NOx": 0.4832,
+                    "Al2O3": 0.38656,
+                    "BC": 0.049528,
+                    "Cl": 0.01812,
+                    "HCl": 0.009664,
+                    "Unablated_Mass": 0.24159999999999995
                 }
             }
         ]

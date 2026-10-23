@@ -819,47 +819,7 @@ class OutputEmis:
         ############################################
 
         # Full information is provided in source_info/failed_launch_info.txt.
-        failure = None
-        if row.COSPAR_ID[5] in ["F","U"]:
-
-            failed_launch_dict = get_failed_launch_dict()
-            failure = failed_launch_dict.get(row.COSPAR_ID)
-
-            # If the failure isn't in the manual list, then calculate automatically.
-            if failure is None:
-                failure_gcat = row.Fail_Code.replace("?","")
-
-                if failure_gcat == "PI": # Payload orbital insertion system, ignition problem.
-                    failure = None
-                if "/" in failure_gcat:
-                    for part in failure_gcat.split("/"):
-                        if part.startswith("S") and part[1].isdigit():
-                            failure_gcat = part
-
-                if failure_gcat.startswith("S"):
-                    failed_stage_gcat = int(failure_gcat[1])
-                    if failed_stage_gcat == 1:
-                        failure = {'failed_stage': failed_stage_gcat, 'cutoff_alt': 0}
-                    else:
-                        failure = {'failed_stage': failed_stage_gcat, 'burned': 0}
-
-                elif failure_gcat in ["U",   # Failure, all details unknown
-                                      "UX"]: # Unconfirmed failure (may not have launched, or reaching orbit may not have been intended).
-                    failure = {"failed_stage": 1, "cutoff_alt": 0}
-
-                elif failure_gcat in [
-                    "-",   # No FailCode
-                    "FF",  # Fairing related failure (no fairing sep, or MaxQ failure, fairing destroyed)
-                    "FS",  # Structure failure other than fairing and other than due to previous loss of control
-                    "PI",  # Payload orbit insertion system, ignition problem.
-                    "PG"]: # Payload orbit insertion system, attitude or guidance problem
-                    failure = None
-                else:
-                    raise ValueError(f"Unhandled GCAT fail code {row.Fail_Code} for {row.COSPAR_ID}.")
-                
-            # Full burn but didn't reach orbit: treat as a normal launch.
-            if failure is not None and failure.get("full_burn"):
-                failure = None
+        failure = get_failed_launch_dict(row.COSPAR_ID, row.Fail_Code)
 
         if failure is not None:
 

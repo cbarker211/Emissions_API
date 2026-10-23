@@ -2033,7 +2033,103 @@
                 }
             }
         ],
-        "reentries": []
+        "reentries": [
+            {
+                "date": "2007-03-21T01:10:00Z",
+                "id": "2007-F02",
+                "reusability": "",
+                "name": "Falcon 1",
+                "category": "S1",
+                "smc": false,
+                "location": 2,
+                "burnup": "Complete",
+                "mass": 1.36,
+                "emissions": {
+                    "NOx": 0.544,
+                    "Al2O3": 0.2856,
+                    "BC": 0.0,
+                    "Cl": 0.0,
+                    "HCl": 0.0,
+                    "Unablated_Mass": 0.952
+                }
+            },
+            {
+                "date": "2007-03-21T01:10:00Z",
+                "id": "2007-F02",
+                "reusability": "",
+                "name": "Falcon 1 Fairing Half",
+                "category": "C",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 0.878,
+                "emissions": {
+                    "NOx": 0.3512,
+                    "Al2O3": 0.18438,
+                    "BC": 0.035998,
+                    "Cl": 0.01317,
+                    "HCl": 0.007024,
+                    "Unablated_Mass": 0.6145999999999999
+                }
+            },
+            {
+                "date": "2007-03-21T01:10:00Z",
+                "id": "2007-F02",
+                "reusability": "",
+                "name": "Falcon 1 Fairing Half",
+                "category": "C",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 0.878,
+                "emissions": {
+                    "NOx": 0.3512,
+                    "Al2O3": 0.18438,
+                    "BC": 0.035998,
+                    "Cl": 0.01317,
+                    "HCl": 0.007024,
+                    "Unablated_Mass": 0.6145999999999999
+                }
+            },
+            {
+                "date": "2007-03-21T01:20:00Z",
+                "id": "2007-F02",
+                "reusability": "",
+                "name": "Instrumentation Ring",
+                "category": "P",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 0.02,
+                "emissions": {
+                    "NOx": 0.008,
+                    "Al2O3": 0.0064,
+                    "BC": 0.00082,
+                    "Cl": 0.0003,
+                    "HCl": 0.00016,
+                    "Unablated_Mass": 0.003999999999999999
+                }
+            },
+            {
+                "date": "2007-03-21T01:20:00Z",
+                "id": "2007-F02",
+                "reusability": "",
+                "name": "Falcon 1 F002 St 2",
+                "category": "S2",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 4.5,
+                "emissions": {
+                    "NOx": 1.8,
+                    "Al2O3": 0.24752,
+                    "BC": 0.1305,
+                    "Cl": 0.0495,
+                    "HCl": 0.0225,
+                    "Unablated_Mass": 4.1464
+                }
+            }
+        ]
     },
     "2007-03-28": {
         "launches": [],

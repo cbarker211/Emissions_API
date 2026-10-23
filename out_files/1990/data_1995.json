@@ -554,7 +554,160 @@
                 }
             }
         ],
-        "reentries": []
+        "reentries": [
+            {
+                "date": "1995-01-15T14:30:00Z",
+                "id": "1995-U01",
+                "reusability": "",
+                "name": "KM-M",
+                "category": "C",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 0.045,
+                "emissions": {
+                    "NOx": 0.018,
+                    "Al2O3": 0.0144,
+                    "BC": 0.001845,
+                    "Cl": 0.000675,
+                    "HCl": 0.00036,
+                    "Unablated_Mass": 0.008999999999999998
+                }
+            },
+            {
+                "date": "1995-01-15T18:00:00Z",
+                "id": "1995-U01",
+                "reusability": "",
+                "name": "EXPRESS",
+                "category": "P",
+                "smc": false,
+                "location": 3,
+                "burnup": "Complete",
+                "mass": 0.36,
+                "emissions": {
+                    "NOx": 0.144,
+                    "Al2O3": 0.032,
+                    "BC": 0.01476,
+                    "Cl": 0.0054,
+                    "HCl": 0.00288,
+                    "Unablated_Mass": 0.28
+                }
+            },
+            {
+                "date": "1995-01-15T18:00:00Z",
+                "id": "1995-U01",
+                "reusability": "",
+                "name": "EXPRESS RV",
+                "category": "P",
+                "smc": false,
+                "location": 1,
+                "burnup": "Partial",
+                "mass": 0.405,
+                "emissions": {
+                    "NOx": 0.070875,
+                    "Al2O3": 0.0,
+                    "BC": 0.0,
+                    "Cl": 0.0,
+                    "HCl": 0.0,
+                    "Unablated_Mass": 0.405
+                }
+            },
+            {
+                "date": "1995-01-15T13:45:00Z",
+                "id": "1995-U01",
+                "reusability": "",
+                "name": "M-13 M-3S2-8",
+                "category": "S1",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 6.29,
+                "emissions": {
+                    "NOx": 2.516,
+                    "Al2O3": 1.3209,
+                    "BC": 0.0,
+                    "Cl": 0.0,
+                    "HCl": 0.0,
+                    "Unablated_Mass": 4.4030000000000005
+                }
+            },
+            {
+                "date": "1995-01-15T13:45:00Z",
+                "id": "1995-U01",
+                "reusability": "",
+                "name": "M-3S-2 Fairing",
+                "category": "C",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 0.878,
+                "emissions": {
+                    "NOx": 0.3512,
+                    "Al2O3": 0.18438,
+                    "BC": 0.035998,
+                    "Cl": 0.01317,
+                    "HCl": 0.007024,
+                    "Unablated_Mass": 0.6145999999999999
+                }
+            },
+            {
+                "date": "1995-01-15T13:45:00Z",
+                "id": "1995-U01",
+                "reusability": "",
+                "name": "M-3S-2 Fairing",
+                "category": "C",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 0.878,
+                "emissions": {
+                    "NOx": 0.3512,
+                    "Al2O3": 0.18438,
+                    "BC": 0.035998,
+                    "Cl": 0.01317,
+                    "HCl": 0.007024,
+                    "Unablated_Mass": 0.6145999999999999
+                }
+            },
+            {
+                "date": "1995-01-15T13:53:00Z",
+                "id": "1995-U01",
+                "reusability": "",
+                "name": "M-23",
+                "category": "S2",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 13.0,
+                "emissions": {
+                    "NOx": 5.2,
+                    "Al2O3": 1.24761,
+                    "BC": 0.377,
+                    "Cl": 0.143,
+                    "HCl": 0.065,
+                    "Unablated_Mass": 11.2177
+                }
+            },
+            {
+                "date": "1995-01-15T13:56:00Z",
+                "id": "1995-U01",
+                "reusability": "",
+                "name": "M-3S2-8 Stage 3",
+                "category": "S3",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 3.6,
+                "emissions": {
+                    "NOx": 1.44,
+                    "Al2O3": 0.14105,
+                    "BC": 0.1044,
+                    "Cl": 0.0396,
+                    "HCl": 0.018,
+                    "Unablated_Mass": 3.3985
+                }
+            }
+        ]
     },
     "1995-01-23": {
         "launches": [],
@@ -4292,6 +4445,101 @@
                 }
             },
             {
+                "date": "1995-03-28T10:00:00Z",
+                "id": "1995-F02",
+                "reusability": "",
+                "name": "15Zh58A",
+                "category": "S1",
+                "smc": false,
+                "location": 2,
+                "burnup": "Complete",
+                "mass": 3.0,
+                "emissions": {
+                    "NOx": 1.2,
+                    "Al2O3": 0.63,
+                    "BC": 0.0,
+                    "Cl": 0.0,
+                    "HCl": 0.0,
+                    "Unablated_Mass": 2.1
+                }
+            },
+            {
+                "date": "1995-03-28T10:00:00Z",
+                "id": "1995-F02",
+                "reusability": "",
+                "name": "15Zh58B",
+                "category": "S2",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 1.5,
+                "emissions": {
+                    "NOx": 0.6,
+                    "Al2O3": 0.6825,
+                    "BC": 0.0435,
+                    "Cl": 0.0165,
+                    "HCl": 0.0075,
+                    "Unablated_Mass": 0.525
+                }
+            },
+            {
+                "date": "1995-03-28T10:00:00Z",
+                "id": "1995-F02",
+                "reusability": "",
+                "name": "15Zh58B",
+                "category": "S3",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 1.5,
+                "emissions": {
+                    "NOx": 0.6,
+                    "Al2O3": 0.6825,
+                    "BC": 0.0435,
+                    "Cl": 0.0165,
+                    "HCl": 0.0075,
+                    "Unablated_Mass": 0.525
+                }
+            },
+            {
+                "date": "1995-03-28T10:00:00Z",
+                "id": "1995-F02",
+                "reusability": "",
+                "name": "15Zh58V",
+                "category": "S4",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 6.0,
+                "emissions": {
+                    "NOx": 2.4,
+                    "Al2O3": 0.455,
+                    "BC": 0.174,
+                    "Cl": 0.066,
+                    "HCl": 0.03,
+                    "Unablated_Mass": 5.3500000000000005
+                }
+            },
+            {
+                "date": "1995-03-28T10:00:00Z",
+                "id": "1995-F02",
+                "reusability": "",
+                "name": "Start Fairing",
+                "category": "C",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 1.756,
+                "emissions": {
+                    "NOx": 0.7024,
+                    "Al2O3": 0.36876,
+                    "BC": 0.071996,
+                    "Cl": 0.02634,
+                    "HCl": 0.014048,
+                    "Unablated_Mass": 1.2291999999999998
+                }
+            },
+            {
                 "date": "1995-03-28T23:14:19Z",
                 "id": "1995-016",
                 "reusability": "",
@@ -4365,6 +4613,82 @@
                     "Cl": 0.01317,
                     "HCl": 0.007024,
                     "Unablated_Mass": 0.6145999999999999
+                }
+            },
+            {
+                "date": "1995-03-28T10:00:00Z",
+                "id": "1995-F02",
+                "reusability": "",
+                "name": "Start",
+                "category": "S5",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 1.0,
+                "emissions": {
+                    "NOx": 0.4,
+                    "Al2O3": 0.1365,
+                    "BC": 0.0,
+                    "Cl": 0.0,
+                    "HCl": 0.0,
+                    "Unablated_Mass": 0.805
+                }
+            },
+            {
+                "date": "1995-03-28T10:00:00Z",
+                "id": "1995-F02",
+                "reusability": "",
+                "name": "Gurwin-1",
+                "category": "P",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 0.048,
+                "emissions": {
+                    "NOx": 0.0192,
+                    "Al2O3": 0.01536,
+                    "BC": 0.001968,
+                    "Cl": 0.00072,
+                    "HCl": 0.000384,
+                    "Unablated_Mass": 0.009599999999999997
+                }
+            },
+            {
+                "date": "1995-03-28T10:00:00Z",
+                "id": "1995-F02",
+                "reusability": "",
+                "name": "ENB",
+                "category": "P",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 0.01,
+                "emissions": {
+                    "NOx": 0.004,
+                    "Al2O3": 0.0032,
+                    "BC": 0.00041,
+                    "Cl": 0.00015,
+                    "HCl": 8e-05,
+                    "Unablated_Mass": 0.0019999999999999996
+                }
+            },
+            {
+                "date": "1995-03-28T10:00:00Z",
+                "id": "1995-F02",
+                "reusability": "",
+                "name": "EKA-2",
+                "category": "P",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 0.202,
+                "emissions": {
+                    "NOx": 0.0808,
+                    "Al2O3": 0.06464,
+                    "BC": 0.008282,
+                    "Cl": 0.00303,
+                    "HCl": 0.001616,
+                    "Unablated_Mass": 0.04039999999999999
                 }
             }
         ]

@@ -8214,7 +8214,65 @@
                 }
             }
         ],
-        "reentries": []
+        "reentries": [
+            {
+                "date": "2008-08-16T19:32:00Z",
+                "id": "2008-F02",
+                "reusability": "",
+                "name": "Shahab 3",
+                "category": "S1",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 3.5,
+                "emissions": {
+                    "NOx": 1.4,
+                    "Al2O3": 0.735,
+                    "BC": 0.0,
+                    "Cl": 0.0,
+                    "HCl": 0.0,
+                    "Unablated_Mass": 2.45
+                }
+            },
+            {
+                "date": "2008-08-16T19:43:00Z",
+                "id": "2008-F02",
+                "reusability": "",
+                "name": "Safir Stage 2",
+                "category": "S2",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 3.4,
+                "emissions": {
+                    "NOx": 1.36,
+                    "Al2O3": 0.15925,
+                    "BC": 0.0986,
+                    "Cl": 0.0374,
+                    "HCl": 0.017,
+                    "Unablated_Mass": 3.1725
+                }
+            },
+            {
+                "date": "2008-08-16T19:43:00Z",
+                "id": "2008-F02",
+                "reusability": "",
+                "name": "IRSA Test Payload",
+                "category": "P",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 0.02,
+                "emissions": {
+                    "NOx": 0.008,
+                    "Al2O3": 0.0064,
+                    "BC": 0.00082,
+                    "Cl": 0.0003,
+                    "HCl": 0.00016,
+                    "Unablated_Mass": 0.003999999999999999
+                }
+            }
+        ]
     },
     "2008-08-18": {
         "launches": [

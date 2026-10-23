@@ -9517,7 +9517,141 @@
                 }
             }
         ],
-        "reentries": []
+        "reentries": [
+            {
+                "date": "2003-09-16T11:25:00Z",
+                "id": "2003-U01",
+                "reusability": "",
+                "name": "Hangtian Tsinghua 1-02",
+                "category": "P",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 0.0335,
+                "emissions": {
+                    "NOx": 0.0134,
+                    "Al2O3": 0.01072,
+                    "BC": 0.001374,
+                    "Cl": 0.000502,
+                    "HCl": 0.000268,
+                    "Unablated_Mass": 0.0066999999999999985
+                }
+            },
+            {
+                "date": "2003-09-16T11:25:00Z",
+                "id": "2003-U01",
+                "reusability": "",
+                "name": "KT-1 stage",
+                "category": "S4",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 2.0,
+                "emissions": {
+                    "NOx": 0.8,
+                    "Al2O3": 0.091,
+                    "BC": 0.058,
+                    "Cl": 0.022,
+                    "HCl": 0.01,
+                    "Unablated_Mass": 1.87
+                }
+            },
+            {
+                "date": "2003-09-16T10:30:00Z",
+                "id": "2003-U01",
+                "reusability": "",
+                "name": "DF-21 St1",
+                "category": "S1",
+                "smc": false,
+                "location": 2,
+                "burnup": "Complete",
+                "mass": 1.6600000000000001,
+                "emissions": {
+                    "NOx": 0.664,
+                    "Al2O3": 0.3486,
+                    "BC": 0.0,
+                    "Cl": 0.0,
+                    "HCl": 0.0,
+                    "Unablated_Mass": 1.162
+                }
+            },
+            {
+                "date": "2003-09-16T10:30:00Z",
+                "id": "2003-U01",
+                "reusability": "",
+                "name": "DF-21 St2",
+                "category": "S2",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 0.87,
+                "emissions": {
+                    "NOx": 0.348,
+                    "Al2O3": 0.39585,
+                    "BC": 0.02523,
+                    "Cl": 0.00957,
+                    "HCl": 0.00435,
+                    "Unablated_Mass": 0.3045
+                }
+            },
+            {
+                "date": "2003-09-16T10:30:00Z",
+                "id": "2003-U01",
+                "reusability": "",
+                "name": "KT-1 Fairing",
+                "category": "C",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 0.878,
+                "emissions": {
+                    "NOx": 0.3512,
+                    "Al2O3": 0.18438,
+                    "BC": 0.035998,
+                    "Cl": 0.01317,
+                    "HCl": 0.007024,
+                    "Unablated_Mass": 0.6145999999999999
+                }
+            },
+            {
+                "date": "2003-09-16T10:30:00Z",
+                "id": "2003-U01",
+                "reusability": "",
+                "name": "KT-1 Fairing",
+                "category": "C",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 0.878,
+                "emissions": {
+                    "NOx": 0.3512,
+                    "Al2O3": 0.18438,
+                    "BC": 0.035998,
+                    "Cl": 0.01317,
+                    "HCl": 0.007024,
+                    "Unablated_Mass": 0.6145999999999999
+                }
+            },
+            {
+                "date": "2003-09-16T10:30:00Z",
+                "id": "2003-U01",
+                "reusability": "",
+                "name": "KT-1 St 3",
+                "category": "S3",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 0.2,
+                "emissions": {
+                    "NOx": 0.08,
+                    "Al2O3": 0.091,
+                    "BC": 0.0058,
+                    "Cl": 0.0022,
+                    "HCl": 0.001,
+                    "Unablated_Mass": 0.07
+                }
+            }
+        ]
     },
     "2003-09-23": {
         "launches": [],
@@ -12520,6 +12654,329 @@
             {
                 "date": "2003-11-29T00:00:00Z",
                 "id": "2003-009F",
+                "reusability": "",
+                "name": "4/4D-LC Lower Fairing Half",
+                "category": "C",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 0.23333333333333334,
+                "emissions": {
+                    "NOx": 0.093333,
+                    "Al2O3": 0.049,
+                    "BC": 0.009567,
+                    "Cl": 0.0035,
+                    "HCl": 0.001867,
+                    "Unablated_Mass": 0.16333333333333336
+                }
+            },
+            {
+                "date": "2003-11-29T04:33:00Z",
+                "id": "2003-F02",
+                "reusability": "",
+                "name": "H-IIA SRB-A",
+                "category": "S0",
+                "smc": false,
+                "location": 2,
+                "burnup": "Complete",
+                "mass": 10.5,
+                "emissions": {
+                    "NOx": 4.2,
+                    "Al2O3": 2.205,
+                    "BC": 0.0,
+                    "Cl": 0.0,
+                    "HCl": 0.0,
+                    "Unablated_Mass": 7.35
+                }
+            },
+            {
+                "date": "2003-11-29T04:33:00Z",
+                "id": "2003-F02",
+                "reusability": "",
+                "name": "H-IIA SRB-A",
+                "category": "S0",
+                "smc": false,
+                "location": 2,
+                "burnup": "Complete",
+                "mass": 10.5,
+                "emissions": {
+                    "NOx": 4.2,
+                    "Al2O3": 2.205,
+                    "BC": 0.0,
+                    "Cl": 0.0,
+                    "HCl": 0.0,
+                    "Unablated_Mass": 7.35
+                }
+            },
+            {
+                "date": "2003-11-29T04:33:00Z",
+                "id": "2003-F02",
+                "reusability": "",
+                "name": "H-IIA SSB",
+                "category": "S0",
+                "smc": false,
+                "location": 2,
+                "burnup": "Complete",
+                "mass": 10.5,
+                "emissions": {
+                    "NOx": 4.2,
+                    "Al2O3": 2.205,
+                    "BC": 0.0,
+                    "Cl": 0.0,
+                    "HCl": 0.0,
+                    "Unablated_Mass": 7.35
+                }
+            },
+            {
+                "date": "2003-11-29T04:33:00Z",
+                "id": "2003-F02",
+                "reusability": "",
+                "name": "H-IIA SSB",
+                "category": "S0",
+                "smc": false,
+                "location": 2,
+                "burnup": "Complete",
+                "mass": 10.5,
+                "emissions": {
+                    "NOx": 4.2,
+                    "Al2O3": 2.205,
+                    "BC": 0.0,
+                    "Cl": 0.0,
+                    "HCl": 0.0,
+                    "Unablated_Mass": 7.35
+                }
+            },
+            {
+                "date": "2003-11-29T04:33:00Z",
+                "id": "2003-F02",
+                "reusability": "",
+                "name": "H-IIA SSB",
+                "category": "S0",
+                "smc": false,
+                "location": 2,
+                "burnup": "Complete",
+                "mass": 10.5,
+                "emissions": {
+                    "NOx": 4.2,
+                    "Al2O3": 2.205,
+                    "BC": 0.0,
+                    "Cl": 0.0,
+                    "HCl": 0.0,
+                    "Unablated_Mass": 7.35
+                }
+            },
+            {
+                "date": "2003-11-29T04:33:00Z",
+                "id": "2003-F02",
+                "reusability": "",
+                "name": "H-IIA SSB",
+                "category": "S0",
+                "smc": false,
+                "location": 2,
+                "burnup": "Complete",
+                "mass": 10.5,
+                "emissions": {
+                    "NOx": 4.2,
+                    "Al2O3": 2.205,
+                    "BC": 0.0,
+                    "Cl": 0.0,
+                    "HCl": 0.0,
+                    "Unablated_Mass": 7.35
+                }
+            },
+            {
+                "date": "2003-11-29T04:33:00Z",
+                "id": "2003-F02",
+                "reusability": "",
+                "name": "H-IIA Stage 1",
+                "category": "S1",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 114.0,
+                "emissions": {
+                    "NOx": 45.6,
+                    "Al2O3": 2.709,
+                    "BC": 0.0,
+                    "Cl": 0.0,
+                    "HCl": 0.0,
+                    "Unablated_Mass": 110.13
+                }
+            },
+            {
+                "date": "2003-11-29T04:33:00Z",
+                "id": "2003-F02",
+                "reusability": "",
+                "name": "4/4D-LC Fairing",
+                "category": "C",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 0.23333333333333334,
+                "emissions": {
+                    "NOx": 0.093333,
+                    "Al2O3": 0.049,
+                    "BC": 0.009567,
+                    "Cl": 0.0035,
+                    "HCl": 0.001867,
+                    "Unablated_Mass": 0.16333333333333336
+                }
+            },
+            {
+                "date": "2003-11-29T04:33:00Z",
+                "id": "2003-F02",
+                "reusability": "",
+                "name": "4/4D-LC Fairing",
+                "category": "C",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 0.23333333333333334,
+                "emissions": {
+                    "NOx": 0.093333,
+                    "Al2O3": 0.049,
+                    "BC": 0.009567,
+                    "Cl": 0.0035,
+                    "HCl": 0.001867,
+                    "Unablated_Mass": 0.16333333333333336
+                }
+            },
+            {
+                "date": "2003-11-29T04:33:00Z",
+                "id": "2003-F02",
+                "reusability": "",
+                "name": "4/4D-LC Fairing Side",
+                "category": "C",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 0.23333333333333334,
+                "emissions": {
+                    "NOx": 0.093333,
+                    "Al2O3": 0.049,
+                    "BC": 0.009567,
+                    "Cl": 0.0035,
+                    "HCl": 0.001867,
+                    "Unablated_Mass": 0.16333333333333336
+                }
+            },
+            {
+                "date": "2003-11-29T04:33:00Z",
+                "id": "2003-F02",
+                "reusability": "",
+                "name": "4/4D-LC Fairing Side",
+                "category": "C",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 0.23333333333333334,
+                "emissions": {
+                    "NOx": 0.093333,
+                    "Al2O3": 0.049,
+                    "BC": 0.009567,
+                    "Cl": 0.0035,
+                    "HCl": 0.001867,
+                    "Unablated_Mass": 0.16333333333333336
+                }
+            },
+            {
+                "date": "2003-11-29T04:43:00Z",
+                "id": "2003-F02",
+                "reusability": "",
+                "name": "JSE kougaku-2 gouki",
+                "category": "P",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 1.5,
+                "emissions": {
+                    "NOx": 0.6,
+                    "Al2O3": 0.32,
+                    "BC": 0.0615,
+                    "Cl": 0.0225,
+                    "HCl": 0.012,
+                    "Unablated_Mass": 0.7000000000000001
+                }
+            },
+            {
+                "date": "2003-11-29T04:43:00Z",
+                "id": "2003-F02",
+                "reusability": "",
+                "name": "JSE reda-2 gouki",
+                "category": "P",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 1.5,
+                "emissions": {
+                    "NOx": 0.6,
+                    "Al2O3": 0.32,
+                    "BC": 0.0615,
+                    "Cl": 0.0225,
+                    "HCl": 0.012,
+                    "Unablated_Mass": 0.7000000000000001
+                }
+            },
+            {
+                "date": "2003-11-29T04:43:00Z",
+                "id": "2003-F02",
+                "reusability": "",
+                "name": "H-2A F6 Stage 2",
+                "category": "S2",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 20.0,
+                "emissions": {
+                    "NOx": 8.0,
+                    "Al2O3": 1.4105,
+                    "BC": 0.58,
+                    "Cl": 0.22,
+                    "HCl": 0.1,
+                    "Unablated_Mass": 17.985
+                }
+            },
+            {
+                "date": "2003-11-29T04:43:00Z",
+                "id": "2003-F02",
+                "reusability": "",
+                "name": "4/4D-LC Adapter",
+                "category": "C",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 0.1,
+                "emissions": {
+                    "NOx": 0.04,
+                    "Al2O3": 0.032,
+                    "BC": 0.0041,
+                    "Cl": 0.0015,
+                    "HCl": 0.0008,
+                    "Unablated_Mass": 0.019999999999999997
+                }
+            },
+            {
+                "date": "2003-11-29T04:43:00Z",
+                "id": "2003-F02",
+                "reusability": "",
+                "name": "4/4D-LC Lower Fairing Half",
+                "category": "C",
+                "smc": false,
+                "location": 6,
+                "burnup": "Complete",
+                "mass": 0.23333333333333334,
+                "emissions": {
+                    "NOx": 0.093333,
+                    "Al2O3": 0.049,
+                    "BC": 0.009567,
+                    "Cl": 0.0035,
+                    "HCl": 0.001867,
+                    "Unablated_Mass": 0.16333333333333336
+                }
+            },
+            {
+                "date": "2003-11-29T04:43:00Z",
+                "id": "2003-F02",
                 "reusability": "",
                 "name": "4/4D-LC Lower Fairing Half",
                 "category": "C",
