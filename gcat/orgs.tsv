@@ -1,5 +1,5 @@
 #Code	UCode	StateCode	Type	Class	TStart	TStop	ShortName	Name	Location	Longitude	Latitude	Error	Parent	ShortEName	EName	UName
-# Updated 2026 Oct 17 1831:24
+# Updated 2026 Oct 29 0116:40
 EARTH	EARTH	EARTH	AP	C	-	-	Earth	Earth	Earth	-	-	0.0200 	-	Earth (Terra)	Earth	Earth
 LUNA	LUNA	LUNA	AP	C	-	-	Luna	Luna	Luna	-	-	0.0200 	-	Moon	Moon	Luna
 SSYS	SSYS	SSYS	AP	C	-	-	Solar System	Solar System natural celestial objects	Sol	-	-	0.0200 	-	Solar System	Solar System natural celestial objects	Solar System
@@ -1570,8 +1570,9 @@ GSOC	GSOC	D	PL/S	C	1969	-	GSOC	Deutsches Raumfahrt-Kontrollzentrum (German Space
 GSYU	GSYU	J	PL	B	2004	-	GS Yuasa	Kabushiki-gaisha GS Yuasa Korporeshon	Kyoto	    135.7700 	   35.0100 	0.0200 	-	-	GS Yuasa Corporation	株式会社ジーエス・ユアサ コーポレーション
 GTC	SUD	F	PL	B	1941 Apr	1957 Mar	GTC	Group Technique de Cannes  (SNCASE/Aerospatiale)	Cannes	      7.0100 	   43.5500 	0.0200 	SUD	-	-	Group Technique de Cannes  (SNCASE/Aerospatiale)
 GTE	GTE	US	O	B	1983	1994 Jun 30	GTE	GTE Spacenet Corp	McLean, Virginia	    -77.1800 	   38.9300 	0.0200 	-	-	-	GTE Spacenet Corp
-GTRC	GTRC	US	P	B	1915	1984	Gen Tire	General Tire and Rubber Company	Cleveland:Akron, Ohio	    -81.5200 	   41.0700 	0.0200 	-	-	-	General Tire and Rubber Company
-GUGK	GUGK	SU	P	C	-	1991	GUGK	Glavnoye Upravleniye Geodesii i Kartographii SSSR	Moskva	     37.6200 	   55.7500 	0.0200 	MVD	-	Main Geodesy and Cartography Administration of the USSR	Главное управление геодезии и картографии при Совете министров СССР (ГУГК при СМ СССР)
+GTRC	GTRC	US	PL	B	1915	1984	Gen Tire	General Tire and Rubber Company	Cleveland:Akron, Ohio	    -81.5200 	   41.0700 	0.0200 	-	-	-	General Tire and Rubber Company
+GUDA	GUDA	CN	O/PL	B	1927	-	Guangda	Guangzhou Daxue	Guangzhou, Guangdong	    113.3700 	   23.0400 	0.0200 	-	Guangzhou U.	Guangzhou University	广州大学
+GUGK	GUGK	SU	PL	C	-	1991	GUGK	Glavnoye Upravleniye Geodesii i Kartographii SSSR	Moskva	     37.6200 	   55.7500 	0.0200 	MVD	-	Main Geodesy and Cartography Administration of the USSR	Главное управление геодезии и картографии при Совете министров СССР (ГУГК при СМ СССР)
 GUKOS	GUKOS	SU	O/LA	D	1981	1986 Apr 24	GUKOS	Glavnoye Upravleniye Kosmicheskhikh Sredstv	Moskva?	     37.6200 	   55.7500 	0.0200 	MO	-	Main Space Forces Directorate	Главное управление космических средств
 GUKOSR	GUKOS	SU	O/LA	D	1970 Mar	1981	GUKOS RVSN	Glavnoye Upravleniye Kosmicheskhikh Sredstv	Moskva?	     37.6200 	   55.7500 	0.0200 	RVSN	-	Main Space Forces Directorate	Glavnoye Upravleniye Kosmicheskhikh Sredstv
 GUMUSH	GUMUSH	TR	PL	B	2012	-	GUMUSH	GUMUSH AeroSpace	Istanbul	     29.0300 	   41.1100 	0.0200 	-	-	-	GUMUSH Aerospace

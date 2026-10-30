@@ -1,5 +1,5 @@
 #Launch_Tag	Launch_JD	Launch_Date	LV_Type	Variant	Fairing	Flight_ID	Flight	Mission	FlightCode	Platform	Launch_Site	Launch_Pad	Ascent_Site	Ascent_Pad	Perigee	Apogee	Apoflag	Inc	Azimuth	Range	RangeFlag	Dest	OrbMass	OrbPay	Agency	LaunchCode	FailCode	Group	Category	LTCite	Cite	Notes
-# Updated 2026 Oct 17 1831:51
+# Updated 2026 Oct 29 0117:07
 1942-A01  	2430523.95 	1942 Jun 13 1052	A-4	-	-	2	-	-	-	-	HVP	P7	-	-	      -	      1	 	-	   -	    -	 	-	   0.000 	   0.000 	WEHR	MF  	U	-	Test	TTaylor	-	-
 1942-A02  	2430587.97 	1942 Aug 16 1115	A-4	-	-	3	-	-	-	-	HVP	P7	-	-	      -	     11	 	-	   -	    -	 	-	   0.000 	   0.000 	WEHR	MF  	U	-	Test	Stuhlinger	RocketTeam	-
 1942-S01  	2430636.12 	1942 Oct  3 1458	A-4	-	-	4	-	-	-	-	HVP	P7	-	-	      -	     85	 	-	   -	    -	 	-	   0.000 	   0.000 	WEHR	MS  	-	-	Test	Stuhlinger	AE1961A	-
@@ -15791,7 +15791,7 @@
 1967-W43  	2439521.50 	1967 Feb	Arcas	-	-	-	Arcasonde 1A?	-	-	-	FC	-	-	-	      -	     60	?	-	   -	    -	 	-	   0.000 	   0.000 	AWS	SS  	-	USAF/6WW	Aeron	FC	-	-
 1967-W44  	2439521.50 	1967 Feb	Arcas	-	-	-	Arcasonde 1A?	-	-	-	FC	-	-	-	      -	     60	?	-	   -	    -	 	-	   0.000 	   0.000 	AWS	SS  	-	USAF/6WW	Aeron	FC	-	-
 1967-A173  	2439521.50 	1967 Feb	ALARR	-	-	-	-	-	-	F-4C-654	HADC	RW07/25?	WS	LP1	      -	    100	?	-	   -	    -	 	-	   0.000 	   0.000 	AFSWC	SU  	-	AFSWC/	Test?	AWST670227-40	-	-
-1966-M01  	2439521.50 	1967 Feb	MSBS M112	-	-	-	Caisson 2	-	-	-	CERES	Nemo	-	-	      -	     50	?	-	   -	    -	 	-	   0.000 	   0.000 	DMA	MU  	-	-	Test	Villain	Serra	-
+1967-M159  	2439521.50 	1967 Feb	MSBS M112	-	-	-	Caisson 2	-	-	-	CERES	Nemo	-	-	      -	     50	?	-	   -	    -	 	-	   0.000 	   0.000 	DMA	MU  	-	-	Test	Villain	Serra	-
 1967-S91  	2439521.59 	1967 Jan 31 0205	Kappa 9M	-	-	K-9M-22	-	-	-	-	KASC	-	-	-	      -	    327	 	-	   -	    -	 	-	   0.000 	   0.000 	ISAS	SS  	-	NAG/Yamaguchi	Ionos/Solar RF	WDCRF	-	-
 1967-F01  	2439522.03 	1967 Jan 31 1245:01	Scout B	-	-	S151C	OV3-5	ATCOS 1	BUSY MASON	-	VS	SLC5	-	-	      -	    430	?	-	   -	    -	 	-	   0.000 	   0.095 	AFSSD	OF  	S4P	G	Sat LEO O	LAAFB	-	Nozzle failed
 1967-M23  	2439522.12 	1967 Jan 31 1500	Arcas	-	-	-	Ballute/Arcasonde 1A	-	-	-	CC	-	-	-	      -	     60	?	-	   -	    -	 	-	   0.000 	   0.000 	AFCRL	SS  	-	AFCRL/	Test	AFCRL-68-0622	-	-
@@ -24758,7 +24758,7 @@
 1970-W1559  	2440882.15 	1970 Oct 22 1530:00	Rocketsonde	-	-	-	Met Para,AN/DMQ-9	-	-	-	THU	-	-	-	      -	     67	 	-	   -	    -	 	-	   0.000 	   0.000 	MRN	SS  	-	-	Meteo	DSI-5850	-	-
 1970-A188  	2440882.17 	1970 Oct 22 1610	Mace	-	-	-	-	-	-	-	EGL	-	-	-	      -	     12	?	-	   -	    -	 	-	   0.000 	   0.000 	TAC	MS  	-	-	Test	Ulrich/Wire	MT60-2544	-
 1970-W1560  	2440882.19 	1970 Oct 22 1629:00	Rocketsonde	-	-	-	Starute,Datasonde	-	-	-	PM	-	-	-	      -	     59	 	-	   -	    -	 	-	   0.000 	   0.000 	MRN	SS  	-	-	Meteo	DSI-5850	-	-
-1979-S751  	2440882.27 	1970 Oct 22 1830	Nike Apache	-	-	-	-	-	-	-	EGL	-	-	-	      -	    100	?	-	   -	    -	 	-	   0.000 	   0.000 	AFCRL?	SS  	-	AFCRL/?	Aeron	Ulrich/FDC	-	-
+1970-S781  	2440882.27 	1970 Oct 22 1830	Nike Apache	-	-	-	-	-	-	-	EGL	-	-	-	      -	    100	?	-	   -	    -	 	-	   0.000 	   0.000 	AFCRL?	SS  	-	AFCRL/?	Aeron	Ulrich/FDC	-	-
 1970-W1561  	2440882.38 	1970 Oct 22 2100:00	Rocketsonde	-	-	-	Met Para	-	-	-	KAU	-	-	-	      -	     50	 	-	   -	    -	 	-	   0.000 	   0.000 	MRN	SS  	-	-	Meteo	DSI-5850	-	-
 1970-S576  	2440882.44 	1970 Oct 22 2235	Minuteman 2	-	-	-	Mk 11 RV?	OT GT69F (Salvo)	GLORY TRIP 69F	-	V	LF25	-	-	      -	   1300	?	-	   -	    -	 	-	   0.000 	   0.000 	SAC	MS  	-	-	OT	VAFB/Wire	-	-
 1970-S577  	2440882.44 	1970 Oct 22 2235	Minuteman 2	-	-	-	Mk 11 RV?	OT GT70F (Salvo)	GLORY TRIP 70F	-	V	LF26	-	-	      -	   1300	?	-	   -	    -	 	-	   0.000 	   0.000 	SAC	MS  	-	-	OT	VAFB/Wire	-	-
@@ -62666,7 +62666,7 @@
 1987-Y339  	2447109.09 	1987 Nov 09 1416:00	M-100B	-	-	-	-	-	-	-	MLD	-	-	-	      -	     90	 	-	   -	    -	 	-	   0.000 	   0.000 	AN	SU  	-	-	Aeron	WDCRF	-	-
 1987-Y340  	2447109.38 	1987 Nov 09 2105:00	M-100B	-	-	-	-	-	-	-	OK	-	-	-	      -	     86	 	-	   -	    -	 	-	   0.000 	   0.000 	AN	SU  	-	-	Aeron	WDCRF	-	-
 1987-S192  	2447109.50 	1987 Nov 10	Pershing 1A	-	-	AO-233  ASP	P-510? 87 Fall 01	-	-	-	FTB	MCG	-	-	      -	    180	?	-	   -	    -	 	-	   0.000 	   0.000 	FKG	MU  	-	-	OT	FRGPER	-	-
-1988-S163  	2447109.50 	1987 Nov 10	Pershing 1A	-	-	AO-240?	P-517?	-	-	-	FTB	MCG	-	-	      -	    180	?	-	   -	    -	 	-	   0.000 	   0.000 	US7A?	MU  	-	-	OT	FRGPER	-	-
+1987-S282  	2447109.50 	1987 Nov 10	Pershing 1A	-	-	AO-240?	P-517?	-	-	-	FTB	MCG	-	-	      -	    180	?	-	   -	    -	 	-	   0.000 	   0.000 	US7A?	MU  	-	-	OT	FRGPER	-	-
 1987-S168  	2447109.59 	1987 Nov 10 0210	Minuteman 2	-	-	-	Mk 11 RV?	FOT GT149M	GLORY TRIP 149M	-	V	LF07	-	-	      -	      1	 	-	   -	    -	 	(KMR)	   0.000 	   0.000 	SAC	MF  	S1	-	OT	VAFB/Wire	-	-
 1987-M45  	2447110.50 	1987 Nov 11	RH-200	-	-	-	Meteo Chaff	-	-	-	CHAN	-	-	-	      -	     70	?	-	   -	    -	 	-	   0.000 	   0.000 	ISRO	SS  	-	ISRO/	Meteo	IJSRP18,224	-	-
 1987-S193  	2447110.53 	1987 Nov 11 0045?	Pershing 1A	-	-	AO-234  ASP	P-511? 87 Fall 02	-	-	-	FTB	MCG	-	-	      -	    180	?	-	   -	    -	 	-	   0.000 	   0.000 	FKG	MU  	-	-	OT	RoswellDailyR871111	FRGPER	-
@@ -64483,8 +64483,8 @@
 1989-W193  	2447748.13 	1989 Aug 09 1505:00	M-100B	-	-	-	-	-	-	-	OK	-	-	-	      -	     76	 	-	   -	    -	 	-	   0.000 	   0.000 	AN	SU  	-	-	Aeron	WDCRF	-	-
 1989-Y171  	2447748.17 	1989 Aug 09 1611:00	M-100B	-	-	-	-	-	-	-	GTsP-4	-	-	-	      -	     83	 	-	   -	    -	 	-	   0.000 	   0.000 	AN	SU  	-	-	Aeron	WDCRF	-	-
 1989-W194  	2447748.26 	1989 Aug  9 1814:59	Rocketsonde	-	-	-	Datasonde	-	-	-	CCA	LC47	-	-	      -	     67	 	-	   -	    -	 	-	   0.000 	   0.000 	MRN	SS  	-	-	Meteo	DSI-5850	-	-
-1988-S190  	2447748.50 	1989 Aug 10?	R-39U	-	-	-	3M65U UBP	10 BB	-	TK-13	BELA?	-	-	-	      -	   1000	?	-	   -	    -	 	Kura	   0.000 	   0.000 	VMF	MS  	-	-	Test	tehnowar.ru	RML	-
-1988-S191  	2447748.50 	1989 Aug 10?	R-39U	-	-	-	3M65U UBP	10 BB	-	TK-13	BELA?	-	-	-	      -	   1000	?	-	   -	    -	 	Kura	   0.000 	   0.000 	VMF	MS  	-	-	Test	tehnowar.ru	RML	-
+1989-S157  	2447748.50 	1989 Aug 10?	R-39U	-	-	-	3M65U UBP	10 BB	-	TK-13	BELA?	-	-	-	      -	   1000	?	-	   -	    -	 	Kura	   0.000 	   0.000 	VMF	MS  	-	-	Test	tehnowar.ru	RML	-
+1989-S158  	2447748.50 	1989 Aug 10?	R-39U	-	-	-	3M65U UBP	10 BB	-	TK-13	BELA?	-	-	-	      -	   1000	?	-	   -	    -	 	Kura	   0.000 	   0.000 	VMF	MS  	-	-	Test	tehnowar.ru	RML	-
 1989-W195  	2447749.02 	1989 Aug 10 1233:00	Rocketsonde	-	-	-	AN/DMQ-9-	-	-	-	PM	-	-	-	      -	     62	 	-	   -	    -	 	-	   0.000 	   0.000 	MRN	SS  	-	-	Meteo	DSI-5850	-	-
 1989-W196  	2447749.06 	1989 Aug 10 1322:59	Rocketsonde	-	-	-	Datasonde	-	-	-	PM	-	-	-	      -	     65	 	-	   -	    -	 	-	   0.000 	   0.000 	MRN	SS  	-	-	Meteo	DSI-5850	-	-
 1989-A05  	2447749.10 	1989 Aug 10 1427:59	Rocketsonde	-	-	-	AN/DMQ-9-	-	-	-	PM	-	-	-	      -	      0	 	-	   -	    -	 	-	   0.000 	   0.000 	MRN	SS  	-	-	Meteo	DSI-5850	-	-
@@ -66195,7 +66195,7 @@
 1991-W152  	2448448.58 	1991 Jul 11 0200	MT-135P	-	-	MT135P-R787	-	-	-	-	RYO	-	-	-	      -	     60	 	-	   -	    -	 	-	   0.000 	   0.000 	JMA	SS  	-	JMA/	Meteo	SRJ	-	-
 1991-S123  	2448449.23 	1991 Jul 11 1725	Black Brant IX	-	-	NASA 36.087US	Corona Tel 3	-	-	-	WS	LC36	-	-	      -	    300	?	-	   -	    -	 	-	   0.000 	   0.000 	GSFC	SS  	-	SAO/Golub	Solar EUV/Eclipse	WISR	-	-
 1991-S223  	2448451.50 	1991 Jul 14	Shtil'	-	-	-	R-29RM 3M37U	4 BB 3G95	Begemot-2 test	K-407	BLA	-	-	-	      -	   1000	?	-	   -	    -	 	Kura	   0.000 	   0.000 	VMF	MS  	-	-	Test	RML	-	-
-1990-S225  	2448454.50 	1991 Jul 17	Super Arcas	-	-	-	Ariane Met	-	-	-	CSG	ALFS	-	-	      -	     80	?	-	   -	    -	 	-	   0.000 	   0.000 	ESA	SS  	-	ESA/	Meteo	HDLCSG	-	-
+1991-S243  	2448454.50 	1991 Jul 17	Super Arcas	-	-	-	Ariane Met	-	-	-	CSG	ALFS	-	-	      -	     80	?	-	   -	    -	 	-	   0.000 	   0.000 	ESA	SS  	-	ESA/	Meteo	HDLCSG	-	-
 1991-050 	2448454.57 	1991 Jul 17 0146:31	Ariane 40	40	-	V44 L416a	ERS 1/ASAP 2	ERS-1	-	-	CSG	ELA2	-	-	      -	    805	 	-	   -	    -	 	-	   0.000 	   2.502 	AE	OS  	-	CO/G	Sat SSO O	CNES32	-	-
 1991-W153  	2448454.58 	1991 Jul 17 0200	MT-135P	-	-	MT135P-R788	-	-	-	-	RYO	-	-	-	      -	     60	 	-	   -	    -	 	-	   0.000 	   0.000 	JMA	SS  	-	JMA/	Meteo	SRJ	-	-
 1991-W85  	2448455.08 	1991 Jul 17 1400:00	Rocketsonde	-	-	-	Datasonde	-	-	-	CCA	LC47	-	-	      -	     69	 	-	   -	    -	 	-	   0.000 	   0.000 	MRN	SS  	-	-	Meteo	DSI-5850	-	-
@@ -75018,8 +75018,6 @@
 2024-252 	2460673.71 	2024 Dec 29 0500:00	Falcon 9	FT5	-	414/B1083.7  F417	Astranis	Astranis	-	-	CC	LC40	-	-	      -	      -	 	-	   -	    -	 	-	   0.000 	   1.600 	SPX	OS  	-	C	Sat STO O	Wire	-	-
 2024-253 	2460675.19 	2024 Dec 30 1630:15	PSLV	CA	-	PSLV-C60	SPADEX	SPADEX	-	-	SHAR	FLP	-	-	    469	    476	 	 54.9 	   -	    -	 	-	   0.000 	   0.500 	ISRO	OS  	-	G	Sat LEO O	Wire	-	-
 2024-254 	2460675.74 	2024 Dec 31 0539:10	Falcon 9	FT5	-	420/B1078.16 F418	Starlink-222	Starlink Group 12-6	V2M  12-6 (13 DTC,8 Ku)	-	KSC	LC39A	-	-	      -	      -	 	-	   -	    -	 	-	   0.000 	  13.700 	SPX	OS  	-	C M	Sat LEO D	Wire	-	-
-2026-M01  	2460679.45 	2025 Jan  3 2254	Hwasong-11E	?	-	-	-	-	-	-	RYOKPO	-	-	-	      -	     50	 	-	   -	  900	 	-	   0.000 	   0.000 	KPA	MS  	-	-	Test	Wire	-	-
-2026-M02  	2460679.46 	2025 Jan  3 2305	Hwasong-11E	?	-	-	-	-	-	-	RYOKPO	-	-	-	      -	     50	 	-	   -	  950	 	-	   0.000 	   0.000 	KPA	MS  	-	-	Test	Wire	-	-
 2025-001 	2460679.56 	2025 Jan  4 0127	Falcon 9	FT5	-	415/B1073.20 F419	Thuraya-4-NGS	Thuraya 4-NGS	-	-	CC	LC40	-	-	      -	      -	 	-	   -	    -	 	-	   0.000 	   5.000 	SPX	OS  	-	C	Sat GTO O	Wire	-	-
 2025-S01  	2460681.62 	2025 Jan  6 0300	Hwasong-16Na	?	-	-	-	-	-	-	CHDONG?	-	-	-	      -	    100	 	-	   -	 1100	 	-	   0.000 	   0.000 	JRG	MS  	-	-	Test	Wire	-	-
 2025-002 	2460682.33 	2025 Jan  6 2000	Chang Zheng 3B	G2	-	Y104	SJ-25	Shi Jian 25	-	-	XSC	LC3	-	-	    180	    300	?	 28.6 	   -	    -	 	-	   0.000 	   4.000 	CALT	OS  	-	G	Sat GTO O	nasaspaceflight.com	-	-
@@ -75234,7 +75232,7 @@
 2025-S105  	2460847.50 	2025 Jun 21	Fattah-1	?	-	-	Vadeh Sadegh 3 Moj 19	-	-	-	IRAN	-	-	-	      -	    400	?	-	   -	 1700	?	Israel?	   0.000 	   0.000 	IR	MS  	-	-	Weapon	Wire	-	-
 2025-S106  	2460847.50 	2025 Jun 21	Kheibar Shekan	?	-	-	Vadeh Sadegh 3 Moj 19	-	-	-	IRAN	-	-	-	      -	    400	?	-	   -	 1700	?	Israel?	   0.000 	   0.000 	IR	MS  	-	-	Weapon	Wire	-	-
 2025-S103  	2460847.50 	2025 Jun 21	Emad	?	-	-	Vadeh Sadegh 3 Moj 19	-	-	-	IRAN	-	-	-	      -	    400	?	-	   -	 1700	?	Israel?	   0.000 	   0.000 	IR	MS  	-	-	Weapon	Wire	-	-
-2023-A23  	2460847.50 	2025 Jun 21	PERUN	-	-	1	-	-	-	-	USTKA	-	-	-	      -	     22	 	-	   -	    -	 	Baltic	   0.000 	   0.000 	SPFOR	SF  	-	SPFOR/	Test	Wire	-	-
+2025-A07  	2460847.50 	2025 Jun 21	PERUN	-	-	1	-	-	-	-	USTKA	-	-	-	      -	     22	 	-	   -	    -	 	Baltic	   0.000 	   0.000 	SPFOR	SF  	-	SPFOR/	Test	Wire	-	-
 2025-S108  	2460848.50 	2025 Jun 22	Fattah-1	?	-	-	Vadeh Sadegh 3 Moj 20	-	-	-	IRAN	-	-	-	      -	    400	?	-	   -	 1700	?	Israel?	   0.000 	   0.000 	IR	MS  	-	-	Weapon	Wire	-	-
 2025-S107  	2460848.50 	2025 Jun 22	Emad	?	-	-	Vadeh Sadegh 3 Moj 20	-	-	-	IRAN	-	-	-	      -	    400	?	-	   -	 1700	?	Israel?	   0.000 	   0.000 	IR	MS  	-	-	Weapon	Wire	-	-
 2025-S109  	2460849.50 	2025 Jun 23	Fattah-1	?	-	-	Vadeh Sadegh 3 Moj 20	-	-	-	IRAN	-	-	-	      -	    400	?	-	   -	 1700	?	Israel?	   0.000 	   0.000 	IR	MS  	-	-	Weapon	Wire	-	-
@@ -75364,7 +75362,7 @@
 2025-224 	2460955.78 	2025 Oct  7 0646:10	Falcon 9	FT5	-	543/B1090.8  F544	Starlink-312	Starlink Group 10-59	V2MO 10-59 (28 Ku)	-	CC	LC40	-	-	      -	      -	 	-	   -	    -	 	-	   0.000 	  16.100 	SPX	OS  	-	C M	Sat LEO D	celestrak.org	-	-
 2025-225 	2460956.66 	2025 Oct  8 0354:00	Falcon 9	FT5	-	548/B1071.29 F545	Starlink-313	Starlink Group 11-17	V2MO 11-17 (28 Ku)	-	VSFBS	SLC4E	-	-	      -	      -	 	-	   -	    -	 	-	   0.000 	  16.100 	SPX	OS  	-	C M	Sat LEO D	SpaceX	-	-
 2025-S52  	2460957.07 	2025 Oct  8 1340:36	New Shepard	-	-	PM4-4 F16	New Shepard NS36	New Shepard CC2.0-2 F15	RSS First Step	-	WTEX	-	-	-	      -	    107	 	-	   -	    -	 	-	   0.000 	   0.000 	BLOR	YS  	-	BLOR/	Tourist Flight	nasaspaceflight.com	-	-
-2023-A24  	2460958.92 	2025 Oct 10 1010	PERUN	-	-	2	-	-	-	-	USTKA	-	-	-	      -	     12	 	-	   -	    -	 	Baltic	   0.000 	   0.000 	SPFOR	SF  	-	SPFOR/	Test	Wire	-	-
+2025-A08  	2460958.92 	2025 Oct 10 1010	PERUN	-	-	2	-	-	-	-	USTKA	-	-	-	      -	     12	 	-	   -	    -	 	Baltic	   0.000 	   0.000 	SPFOR	SF  	-	SPFOR/	Test	Wire	-	-
 2025-226 	2460959.60 	2025 Oct 11 0220	Yinli-1	-	-	Y2	Jilin-1 Kuanfu 02B07	-	-	DFHT	HHAI	LP4A	-	-	      -	      -	 	-	   -	    -	 	-	   0.000 	   1.500 	DFK	OS  	-	C	Sat SSO O	nasaspaceflight.com	-	-
 2025-227 	2460961.92 	2025 Oct 13 1000	Chang Zheng 2D	-	-	Y92	Shiyan 31	Shiyan 31	-	-	JQ	LC43/94	-	-	    497	    513	 	 80.0 	   -	    -	 	-	   0.000 	   2.000 	SAST	OS  	-	G	Sat SSO O	nasaspaceflight.com	-	-
 2025-U04  	2460962.47 	2025 Oct 13 2323:45	Starship V2	R2	-	B15.2/S38	Starship Flight 11	Ship 38	-	-	STB	OLP1	-	-	     -1	    192	 	 26.4 	   -	    -	 	-	   0.000 	 120.000 	SPX	OS  	-	C M	Sat LEO S	nasaspaceflight.com	-	-
@@ -75478,6 +75476,7 @@
 2025-314 	2461039.67 	2025 Dec 30 0412	Chang Zheng 4B	-	-	Y69	Tianhui-7	Tianhui-7	-	-	JQ	LC43/94	-	-	    480	    489	 	 97.4 	   -	    -	 	-	   0.000 	   2.500 	SAST	OS  	-	G	Sat SSO O	nasaspaceflight.com	-	-
 2025-315 	2461040.44 	2025 Dec 30 2240:07	Chang Zheng 7A	-	-	Y7	Shijian-29A/B	Shijian 29A/B	-	-	WEN	LC201	-	-	    192	    300	?	 19.7 	   -	    -	 	-	   0.000 	   5.000 	CALT	OS  	-	G	Sat GTO O	nasaspaceflight.com	-	-
 2026-001 	2461043.59 	2026 Jan  3 0209:16	Falcon 9	FT5	-	586/B1081.21 F584	CSG 3	COSMO-Skymed SG FM3	-	-	VSFBS	SLC4E	-	-	    622	    627	 	 97.9 	   -	    -	 	-	   0.000 	   2.200 	SPX	OS  	-	C/OG	Sat SSO D	Wire	-	-
+2026-M01  	2461044.45 	2026 Jan  3 2254	Hwasong-11E	?	-	-	-	-	-	-	RYOKPO	-	-	-	      -	     50	 	-	   -	  900	 	-	   0.000 	   0.000 	KPA	MS  	-	-	Test	Wire	-	-
 2026-002 	2461044.78 	2026 Jan  4 0648:10	Falcon 9	FT5	-	585/B1101.1  F585	Starlink-345	Starlink Group 6-88	V2MO 6-88  (29 Ku)	-	CC	LC40	-	-	    135	    277	 	 43.0 	   -	    -	 	-	   0.000 	  16.700 	SPX	OS  	-	C M	Sat LEO D	nasaspaceflight.com	-	-
 2026-S01  	2461049.40 	2026 Jan  8 2130?	Oreshnik	-	-	-	-	6 BB?	-	-	GTsMP-4	-	-	-	      -	    500	?	-	   -	  800	 	Lviv	   0.000 	   0.000 	RVSNR	MS  	-	-	Weapon	Wire	-	-
 2026-003 	2461050.40 	2026 Jan  9 2141:00	Falcon 9	FT5	-	587/B1069.29 F586	Starlink-346	Starlink Group 6-96	V2MO 6-96  (29 Ku)	-	CC	LC40	-	-	      -	      -	 	-	   -	    -	 	-	   0.000 	  16.700 	SPX	OS  	-	C M	Sat LEO D	nasaspaceflight.com	-	-
@@ -75827,7 +75826,7 @@
 2026-103 	2461172.59 	2026 May 12 0213:50	Falcon 9	FT5	-	xxx/B1097.9  F638	NROL-172	NRO Starshield A9	NRO PA13 (22)	-	VSFBS	SLC4E	-	-	      -	      -	 	-	   -	    -	 	-	   0.000 	  15.500 	SPX	OS  	-	CX/G m	Sat LEO D	SpaceX	-	-
 2026-104 	2461173.00 	2026 May 12 1158	Chang Zheng 6A	-	-	Y23	Qianfan Xingzuo 08	Qianfan Jigui 09	-	-	TYSC	LC9A	-	-	    150	    820	 	 88.9 	   -	    -	 	-	   0.000 	   5.400 	CGWIC/SAST	OS  	-	G/C M	Sat LEO L	nasaspaceflight.com	-	-
 2026-105 	2461174.62 	2026 May 14 0300	Zhuque-2E	2	-	Y5	Dummy sat	-	-	-	JQ	LC43/96A	-	-	      -	      -	 	-	   -	    -	 	-	   0.000 	   2.800 	LANDSP	OS  	-	C	Sat LEO O	nasaspaceflight.com	-	-
-2026-S234  	2461175.31 	2026 May 14 1923:30	Black Brant IX	-	-	NASA 36.3xxUS	FOXSI-5	-	-	-	PF	-	-	-	      -	    270	?	-	   -	    -	 	-	   0.000 	   0.000 	GSFC	SS  	-	UCB/Buitrago	Solar X	www.nasa.gov	-	-
+2026-S234  	2461175.31 	2026 May 14 1923:30	Black Brant IX	-	-	NASA 36.412US	FOXSI-5	-	-	-	PF	-	-	-	      -	    270	?	-	   -	    -	 	-	   0.000 	   0.000 	GSFC	SS  	-	UCB/Buitrago	Solar X	www.nasa.gov	-	-
 2026-106 	2461175.69 	2026 May 15 0433	Lijian-1	-	-	Y13	Taijing-3	-	-	-	JQ	LC130	-	-	      -	      -	 	-	   -	    -	 	-	   0.000 	   0.800 	ZKYT	OS  	-	C	Sat SSO O	nasaspaceflight.com	-	-
 2026-107 	2461176.42 	2026 May 15 2205:41	Falcon 9	FT5	-	xxx/B1096.6  F639	Dragon CRS-34	Dragon C209.6	-	-	CC	LC40	-	-	      -	      -	 	-	   -	    -	 	-	   0.000 	  16.700 	SPX	OS  	-	CX	Sat ISS D	Wire	-	-
 2026-108 	2461178.11 	2026 May 17 1443	Chang Zheng 8	-	-	Y8	Qianfan Xingzuo 09	Qianfan	-	-	HCSLS	LC1	-	-	    150	    840	 	 89.0 	   -	    -	 	-	   0.000 	   6.000 	ZHSH/CALT	OS  	-	G/C M	Sat LEO O	nasaspaceflight.com	-	-
@@ -75984,7 +75983,7 @@
 2026-220 	2461303.67 	2026 Sep 20 0403	Lijian-1	-	-	Y18	Pengcheng	-	-	-	JQ	LC130	-	-	    525	    543	 	 97.5 	   -	    -	 	-	   0.000 	   1.850 	ZKYT	OS  	-	C	Sat SSO L	nasaspaceflight.com	-	-
 2026-M10  	2461303.75 	2026 Sep 20 0600	Hwasong-16Na	?	-	Hypersonic RV	-	-	-	-	WONSAN	-	-	-	      -	     60	 	-	   -	  450	 	-	   0.000 	   0.000 	KPA	MS  	-	-	Test	Wire	-	-
 2026-M11  	2461303.87 	2026 Sep 20 0850	Hwasong-16Na	?	-	Hypersonic RV	-	-	-	-	WONSAN	-	-	-	      -	     70	 	-	   -	  908	 	-	   0.000 	   0.000 	KPA	MS  	-	-	Test	Wire	-	-
-2026-221 	2461307.06 	2026 Sep 23 1332	Chang Zheng 8A	-	-	Y11?	WHDW 26	WHDW 26	-	-	HCSLS	LC1	-	-	    150	   1108	 	 50.0 	   -	    -	 	-	   0.000 	   6.000 	CALT	OS  	-	G M	Sat LEO O	nasaspaceflight.com	-	-
+2026-221 	2461307.06 	2026 Sep 23 1332	Chang Zheng 8A	-	-	Y11	WHDW 26	WHDW 26	-	-	HCSLS	LC1	-	-	    150	   1108	 	 50.0 	   -	    -	 	-	   0.000 	   6.000 	CALT	OS  	-	G M	Sat LEO O	nasaspaceflight.com	-	-
 2026-222 	2461307.87 	2026 Sep 24 0846	Chang Zheng 6A	-	-	Y13	Yaogan 40-04	Yaogan 40-04	-	-	TYSC	LC9A	-	-	    150	    810	 	 86.0 	   -	    -	 	-	   0.000 	   2.000 	SAST	OS  	-	G	Sat LEO O	nasaspaceflight.com	-	-
 2026-223 	2461309.53 	2026 Sep 26 0039	Electron	-	-	97	Owlright,Owlright,Owlr.	StriX-12	-	-	MAHIA	LC1B	-	-	    171	    518	?	 37.9 	   -	    -	 	-	   0.000 	   0.150 	RLABN	OS  	-	C	Sat LEO OO	Wire	-	-
 2026-224 	2461310.08 	2026 Sep 26 1400	Falcon 9	FT5	-	xxx/B1100.10 F691	USSF-385	SBST R-3	-	-	VSFBS	SLC4E	-	-	    300	    300	?	 70.0 	   -	    -	 	-	   0.000 	  16.000 	SPX	OS  	-	CX/G	Sat LEO D	nasaspaceflight.com	-	-
@@ -76005,3 +76004,15 @@
 2026-233 	2461326.94 	2026 Oct 13 1033:44	Falcon 9	FT5	-	xxx/B1096.8  F696	Dragon CRS-35	Dragon C211.4	-	-	CC	LC40	-	-	      -	      -	 	-	   -	    -	 	-	   0.000 	  13.055 	SPX	OS  	-	CX	Sat ISS D	Wire	-	-
 2026-234 	2461327.99 	2026 Oct 14 1140	Zhuque-2E	2	-	Y4	XSD	XSD-39,44-50	-	-	JQ	LC43/96A	-	-	      -	      -	 	-	   -	    -	 	-	   0.000 	   3.000 	LANDSP	OS  	-	C	Sat LEO O	nasaspaceflight.com	-	-
 2026-235 	2461329.50 	2026 Oct 16 0001:05	Falcon 9	FT5	-	xxx/B1081.28 F697	USSF-481	SBST TH-2	-	-	VSFBS	SLC4E	-	-	    300	    300	?	 80.0 	   -	    -	 	-	   0.000 	  16.000 	SPX	OS  	-	CX/G	Sat LEO D	nasaspaceflight.com	-	-
+2026-236 	2461333.32 	2026 Oct 19 1941:03	H3-24L	-	-	H3-F10	MMX	MMX	-	-	TNSC	Y2	-	-	    320	    340	?	 30.0 	   -	    -	 	-	   0.000 	   4.500 	JAXA	DS  	-	G	Sat EEO O	Wire	-	-
+2026-S264  	2461333.80 	2026 Oct 20 0707	Black Brant IX	-	-	NASA 36.405UA	INFUSE II	-	-	-	PF	-	-	-	      -	    270	?	-	   -	    -	 	-	   0.000 	   0.000 	GSFC	SS  	-	UCO/Fleming	UV Astron	gi.alaska.edu	-	-
+2026-237 	2461333.96 	2026 Oct 20 1104:00	Falcon 9	FT5	-	xxx/B1085.19 F698	Bandwagon-5	Bandwagon-5	-	-	CC	LC40	-	-	      -	      -	 	-	   -	    -	 	-	   0.000 	   5.000 	SPX	OS  	-	C/OG m	Sat LEO D	SpaceX	-	-
+2026-238 	2461334.65 	2026 Oct 21 0339	Gushenxing 1	S	-	Y8	Xiguang 4-01	Xiguang 4-01	-	DFHT	HHAI	LP6	-	-	    529	    548	 	 39.0 	   -	    -	 	-	   0.000 	   0.250 	XIDO	OS  	-	C	Sat SSO L	Wire	-	-
+2026-S265  	2461335.73 	2026 Oct 22 0530	Black Brant IX	-	-	NASA 36.414GA	DUST III	-	-	-	PF	-	-	-	      -	    270	?	-	   -	    -	 	-	   0.000 	   0.000 	GSFC	SS  	-	GSFC/Nuth	Physics	gi.alaska.edu	-	-
+2026-239 	2461336.80 	2026 Oct 23 0711	Electron	-	-	98	We're not Hawking Around	Hawk 16A/B/C	-	-	MAHIA	LC1A	-	-	      -	      -	 	-	   -	    -	 	-	   0.000 	   0.138 	RLABN	OS  	-	C	Sat LEO OO	Wire	-	-
+2026-240 	2461336.93 	2026 Oct 23 1015	Chang Zheng 6A	-	-	Y30	Yaogan 50-03	Yaogan 50-03	-	-	TYSC	LC9A	-	-	      -	      -	 	-	   -	    -	 	-	   0.000 	   2.000 	SAST	OS  	-	G	Sat LEO O	nasaspaceflight.com	-	-
+2026-241 	2461337.31 	2026 Oct 23 1925	Chang Zheng 4B	-	-	Y81	YG53/YG56	YG53/YG56	-	-	JQ	LC43/94	-	-	      -	      -	 	-	   -	    -	 	-	   0.000 	   2.000 	SAST	OS  	-	G	Sat LEO L	nasaspaceflight.com	-	-
+2026-242 	2461337.45 	2026 Oct 23 2248:44	Falcon 9	FT5	-	xxx/B1063.36 F699	Starlink-427	Starlink Group 15-15	V2MO 15-15 (27 Ku)	-	VSFBS	SLC4E	-	-	    135	    271	 	 70.0 	   -	    -	 	-	   0.000 	  15.500 	SPX	OS  	-	C M	Sat LEO D	SpaceX	-	-
+2026-243 	2461338.59 	2026 Oct 25 0203	Chang Zheng 8A	-	-	Y12	WHDW 28	WHDW 28	-	-	HCSLS	LC1	-	-	    150	   1108	 	 50.0 	   -	    -	 	-	   0.000 	   6.000 	ZHSH/CALT	OS  	-	G M	Sat LEO O	nasaspaceflight.com	-	-
+2026-244 	2461340.81 	2026 Oct 27 0725:23	Falcon 9	FT5	-	xxx/B1082.26 F700	Starlink-428	Starlink Group 15-16	V2MO 15-16 (27 Ku)	-	VSFBS	SLC4E	-	-	    135	    271	 	 70.0 	   -	    -	 	-	   0.000 	  15.500 	SPX	OS  	-	C M	Sat LEO D	SpaceX	-	-
+2026-M02  	2461409.46 	2027 Jan  3 2305	Hwasong-11E	?	-	-	-	-	-	-	RYOKPO	-	-	-	      -	     50	 	-	   -	  950	 	-	   0.000 	   0.000 	KPA	MS  	-	-	Test	Wire	-	-

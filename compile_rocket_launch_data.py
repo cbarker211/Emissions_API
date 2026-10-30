@@ -126,104 +126,67 @@ class import_launches:
         ####################################################################
 
         codes   = df_orgs["#Code"].str.strip() # List of the org codes.
-        state_of = dict(zip(codes, df_orgs["StateCode"].fillna("?").str.strip())) # Dict of the state codes
-        class_of = dict(zip(codes, df_orgs["Class"].fillna("?").str.strip())) # Dict of the class codes
+        
+        def org_lookup(col):
+            return dict(zip(codes, df_orgs[col].fillna("?").str.strip()))
+        
+        # Dicts to make codes easier and quicker to look up
+        name_of  = org_lookup("ShortName")
+        state_of = org_lookup("StateCode")
+        class_of = org_lookup("Class")
+        ename_of = org_lookup("ShortEName")
 
         site_ucode = dict(zip(df_sites["#Site"].str.strip(), df_sites["UCode"].str.strip())) # Dict connecting site code to group code.
         df_lp["SiteGroup"] = [site_ucode.get(s.strip(), s.strip()) for s in df_lp["#Site"]]  # New column for the site group.
 
-        country_names = {
-            "US": "USA",
-            "SU": "USSR/Russia",
-            "RU": "USSR/Russia",
-            "CN": "China",
-            "F": "Europe",
-            "D": "Europe",
-            "I": "Europe",
-            "UK": "Europe",
-            "I-ESA": "Europe",
-            "I-ELDO": "Europe",
-            "J": "Japan",
-            "IN": "India",
-            "IL": "Israel",
-            "IR": "Iran",
-            "KP": "North Korea",
-            "KR": "South Korea",
-            "BR": "Brazil",
-            "AU": "Australia",
-        }
-
+        ename_of = org_lookup("ShortEName")
+        country_groups = dict.fromkeys(["SU", "RU"], "USSR/Russia") | dict.fromkeys(["F", "D", "I", "UK", "I-ESA", "I-ELDO"], "Europe")
+        
         sector_names = {
             "A": "Academic, amateur and non-profit",
             "B": "Commercial",
             "C": "Government",
             "D": "Defence"
         }
+        
+        group_map = {
+            "Kodiak Launch Complex, Kodiak Island, Alaska":                                   "Kodiak Launch Complex",
+            "Pacific Spaceport Complex Alaska, Kodiak Island, Alaska":                        "Kodiak Launch Complex",
+            "Spaceport Florida, Cape Canaveral":                                              "Cape Canaveral",
+            "Space Florida, Cape Canaveral":                                                  "Cape Canaveral",
+            "Cape Canaveral Air Station, Florida":                                            "Cape Canaveral",
+            "Kagoshima Space Center, Kagoshima, Kyushu, Nippon":                              "Kagoshima Space Center (Uchinoura)",
+            "Uchinoura Space Center, Kagoshima (formerly Kagoshima)":                         "Kagoshima Space Center (Uchinoura)",
+            "South Base, Vandenberg Space Force Base, California":                            "Vandenberg Space Force Base",
+            "Vandenberg Space Force Base, California":                                        "Vandenberg Space Force Base",
+            "Vandenberg AFB, California":                                                     "Vandenberg Space Force Base",
+            "South Vandenberg AFB, California":                                               "Vandenberg Space Force Base",
+            "Naval Missile Facility, Point Arguello, California":                             "Vandenberg Space Force Base",
+            "Mid-Atlantic Regional Spaceport, Wallops Island, Virginia":                      "Wallops Island",
+            "Wallops Flight Facility, Wallops Island, Virginia":                              "Wallops Island",
+            "Wallops Island Main Base, NASA Wallops Flight Facility, Chincoteague, Virginia": "Wallops Island",
+            "NIIP-5, Baykonur, Kazakstan":                                                    "Baikonur Cosmodrome (Tyuratam)",
+            "GIK-5, Baykonur, Kazakstan":                                                     "Baikonur Cosmodrome (Tyuratam)",
+            "GTsP-4, Kapustin Yar, Volgograd, Rossiya":                                       "Kapustin Yar MSC",
+            "GTsMP-4 MO RF, Znamensk (Kapustin Yar), Rossiya":                                "Kapustin Yar MSC",
+            "Vostochniy, Svobodniy, Amurskaya Oblast', Rossiya":                              "Vostochny Cosmodrome",
+            "GIK-2, Svobodniy, Amurskaya Oblast', Rossiya":                                   "Vostochny Cosmodrome",
+            "GNIIP, Plesetsk, Rossiya":                                                       "Plesetsk Cosmodrome",
+            "1-y Gosudarstvenniy Ispitatelniy Kosmodrom MO RF":                               "Plesetsk Cosmodrome",
+            "GNIIP, VKS section, Plesetsk, Rossiya":                                          "Plesetsk Cosmodrome",
+            "53-y Nauchno-Issledovatelskiy Ispitatelniy Poligon,":                            "Plesetsk Cosmodrome",
+        }
 
         def process_launches(df):
             launches = []
             missing_pads = set()
+            odd_sectors = set()
             for n, row in tqdm(df.iterrows(), total=len(df), desc="Processing rows"):
                 
                 df_site = df_sites[df_sites["#Site"] == row["Launch_Site"].replace("?", "")]
                 site_row = df_site.iloc[0]
-                    
-                def sort_sitenames(site):
-
-                    # Handle groups of equivalent site names
-                    group_map = {
-                        "Kodiak Launch Complex": [
-                            "Kodiak Launch Complex, Kodiak Island, Alaska",
-                            "Pacific Spaceport Complex Alaska, Kodiak Island, Alaska",
-                        ],
-                        "Cape Canaveral": [
-                            "Spaceport Florida, Cape Canaveral",
-                            "Space Florida, Cape Canaveral",
-                            "Cape Canaveral Air Station, Florida"
-                        ],
-                        "Kagoshima Space Center (Uchinoura)": [
-                            "Kagoshima Space Center, Kagoshima, Kyushu, Nippon",
-                            "Uchinoura Space Center, Kagoshima (formerly Kagoshima)"
-                        ],
-                        "Vandenberg Space Force Base": [
-                            "South Base, Vandenberg Space Force Base, California",
-                            "Vandenberg Space Force Base, California",
-                            "Vandenberg AFB, California",
-                            "South Vandenberg AFB, California",
-                            "Naval Missile Facility, Point Arguello, California"
-                        ],
-                        "Wallops Island": [
-                            "Mid-Atlantic Regional Spaceport, Wallops Island, Virginia",
-                            "Wallops Flight Facility, Wallops Island, Virginia",
-                            "Wallops Island Main Base, NASA Wallops Flight Facility, Chincoteague, Virginia"
-                        ],
-                        "Baikonur Cosmodrome (Tyuratam)": [
-                            "NIIP-5, Baykonur, Kazakstan",
-                            "GIK-5, Baykonur, Kazakstan"
-                        ],
-                        "Kapustin Yar MSC": [
-                            "GTsP-4, Kapustin Yar, Volgograd, Rossiya",
-                            "GTsMP-4 MO RF, Znamensk (Kapustin Yar), Rossiya"
-                        ],
-                        "Vostochny Cosmodrome": [
-                            "Vostochniy, Svobodniy, Amurskaya Oblast', Rossiya",
-                            "GIK-2, Svobodniy, Amurskaya Oblast', Rossiya"
-                        ],
-                        "Plesetsk Cosmodrome": [
-                            "GNIIP, Plesetsk, Rossiya",
-                            "1-y Gosudarstvenniy Ispitatelniy Kosmodrom MO RF",
-                            "GNIIP, VKS section, Plesetsk, Rossiya",
-                            "53-y Nauchno-Issledovatelskiy Ispitatelniy Poligon,"
-                        ]
-                    }
-
-                    # Group lookup
-                    for normalized, variants in group_map.items():
-                        if site in variants:
-                            return normalized
-
-                    # Default: return unchanged
-                    return site
+                
+                normalized = group_map.get(df_site["Name"].values[0], df_site["Name"].values[0])
                 
                 # Use the group megaconstellation flag to classify megaconstellation launches.
                 mcs_flag = False
@@ -239,19 +202,16 @@ class import_launches:
                     variant = row["Variant"]
 
                 agency_code = row["Agency"].split("/")[0].replace("?", "").strip()
-                df_org = df_orgs[df_orgs["#Code"] == agency_code]
-                
-                if len(df_org) != 1:
-                    print(f"Warning: Found {len(df_org)} organizations for code {row['Agency']}.")
-                    org_name = row["Agency"].strip()
-                else:
-                    org_name = df_org.iloc[0]["ShortName"].strip() 
-
-                state        = state_of.get(agency_code, "?")
-                country      = country_names.get(state, state)
-                launch_class = class_of.get(agency_code, "?")
-                sector  = sector_names.get(launch_class,launch_class)
-                entity = org_name if sector == "Commercial" else sector
+                if agency_code not in name_of:
+                    print(f"Warning: no organisation for code {row['Agency']}.")
+                org_name = name_of.get(agency_code, row["Agency"].strip())
+                cls      = class_of.get(agency_code, "?")
+                sector   = sector_names.get(cls, cls)
+                state    = state_of.get(agency_code, "?")
+                country = country_groups.get(state, ename_of.get(state, state))
+                if cls not in ("B", "C", "D"):
+                    odd_sectors.add((sector, agency_code, org_name))
+                entity = org_name if cls == "B" else sector
 
                 def pad_coords(site, pad):
 
@@ -292,7 +252,7 @@ class import_launches:
                 launches.append({
                     "COSPAR_ID":              row["#Launch_Tag"].strip(),
                     "Date":                   convert_date(row["Launch_Date"].split()),
-                    "Site":                   sort_sitenames(df_site["Name"].values[0]),
+                    "Site":                   normalized,
                     "Latitude":               lat,
                     "Longitude":              lon,
                     "Rocket_Name":            row["LV_Type"],
@@ -305,6 +265,9 @@ class import_launches:
 
             for site, pad in sorted(missing_pads):
                 print(f"No pad match: {site} {pad}")
+                
+            for sector, code, org in sorted(odd_sectors):
+                print(f"Non-standard sector: {sector} ({code} - {org})")
 
             return launches
 
@@ -395,7 +358,7 @@ class import_launches:
         df_vehicles = self.scrape_jsr("https://planet4589.org/space/gcat/tsv/tables/lvs.tsv",self.session) 
         df_stages   = self.scrape_jsr("https://planet4589.org/space/gcat/tsv/tables/stages.tsv",self.session)
         df_engines  = self.scrape_jsr("https://planet4589.org/space/gcat/tsv/tables/engines.tsv",self.session)
-        count,count2 = 0,0
+        ratio_used, total_stages = 0, 0
         #Loop over all rockets, and pull the information for each.
         for i, (name, variant) in enumerate(unique_vehicle_names):
 
@@ -414,7 +377,7 @@ class import_launches:
                     f"Stage{j} Propellant Mass": 0,
                     f"Stage{j} Stage Mass":      0,
                 })
-
+            ratio_stages = {}
             # First find the vehicle and its stages in the vehicles databases.
             df_vehicle = df_vehicles[(df_vehicles["#LV_Name"] == name) & (df_vehicles["LV_Variant"] == variant)].reset_index()
 
@@ -460,16 +423,12 @@ class import_launches:
                 if launch_mass != None:
                     launch_mass = launch_mass * int(row["Multiplicity"])   
                 
-                if launch_mass is not None and dry_mass is None:
-                    count+=1
-                else:
-                    count2+=1 
-                
+                total_stages += 1
                 # Going to use a constant mass ratio when we have the launch mass but not the dry.
                 # Jonathan McDowell said this is a reasonable estimate.
                 if launch_mass is not None and dry_mass is None:
-                    #print(name,variant)
                     dry_mass = launch_mass / 10
+                    ratio_stages[stage_number] = dry_mass
                 elif row["Stage_Name"] in ["Atlas Booster","Atlas B Booster","Atlas D Booster","Atlas E/F Booster"]:
                     # Atlas boosters were fed propellant from the main stage, so they essentially have zero propellant mass (dry mass = launch mass in GCAT).
                     # We shall include them as a stage with zero propellant mass, as we need the dry mass for the re-entry emissions.
@@ -532,6 +491,10 @@ class import_launches:
 
             # Handle any incomplete/incorrect propellant/stage mass information.
             temp_dict = update_mass_info(temp_dict, temp_dict["name"], variant)
+            
+            for stage_number, ratio_mass in ratio_stages.items():
+                if temp_dict[f"Stage{stage_number} Stage Mass"] == ratio_mass:
+                    ratio_used += 1
 
             # Find the event altitude information and look up configuration
             stage_alts = {key: stage_alt_dict.get(f"{name} {variant} {key}", np.nan) for key in ['BECO', 'MECO', 'SEI1', 'SECO']}
@@ -550,7 +513,7 @@ class import_launches:
 
             # Update the rocket list.   
             self.unique_rocket_list.append(temp_dict) 
-        print(f"Used launch/dry mass ratio for {count}/{count+count2} stages.")
+        print(f"Used launch/dry mass ratio for {ratio_used}/{total_stages} stages.")
         
     def rocket_info_to_netcdf(self):
         """

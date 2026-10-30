@@ -230,8 +230,19 @@ class build_reentry_list:
             "STB": "STB",
         }
 
-        url = "https://planet4589.org/space/gcat/tsv/tables/lp.tsv"
-        response = self.session.get(url)
+        self.lp_data  = self.scrape_jsr("https://planet4589.org/space/gcat/tsv/tables/lp.tsv",self.session)    
+        df_orgs  = self.scrape_jsr("https://planet4589.org/space/gcat/tsv/tables/orgs.tsv",self.session)
+        codes   = df_orgs["#Code"].str.strip() # List of the org codes.
+        
+        def org_lookup(col):
+            return dict(zip(codes, df_orgs[col].fillna("?").str.strip()))
+        
+        self.shortename_of, self.owner_of, self.class_of, self.statecode_of = org_lookup("ShortEName"), org_lookup("Name"), org_lookup("Class"), org_lookup("StateCode")
+        self.country_groups = dict.fromkeys(["SU", "RU"], "USSR/Russia") | dict.fromkeys(["F", "D", "I", "UK", "I-ESA", "I-ELDO"], "Europe")
+    
+    def scrape_jsr(self,url,session):
+        # Function to web scrape data and convert to a pandas DataFrame.
+        response = session.get(url)
         if response.status_code == 200:
 
             # Save the file so we can search and track updates.
@@ -242,8 +253,11 @@ class build_reentry_list:
             # Convert the content to a file-like object for pandas
             tsv_data = StringIO(response.text)
             # Load the data into a pandas DataFrame
-            self.lp_data = pd.read_csv(tsv_data, delimiter="\t", dtype=object, skiprows=[1])
-
+            df = pd.read_csv(tsv_data, delimiter="\t", dtype=object, low_memory=False)
+        else:
+            raise ImportError(f"Failed to fetch from JSR URL: {url}", response.status_code)
+        return df
+    
     def convert_time(self, date):
     
         """Converts the "DDate" listing from GCAT to day, month, and time strings.
@@ -766,8 +780,15 @@ class build_reentry_list:
         #print(f"{s1-s2} exploded objects removed.")
 
         # Extract the arrays before looping.
-        cols = ["DDate","Converted_Tag","Name","Type","Inc","Dest","Apogee","Status","DryMass","#JCAT","Bus","Parent","PLName","Mass"]
+        cols = ["DDate","Converted_Tag","Name","Type","Inc","Dest","Apogee","Status","DryMass","#JCAT","Bus","Parent","PLName","Mass","State","Owner"]
         arrays = {col: subset[col].to_numpy() for col in cols}
+        
+        sector_names = {
+            "A": "Academic, amateur and non-profit",
+            "B": "Commercial",
+            "C": "Government",
+            "D": "Defence"
+        }
 
         # Now loop over the list and format into a dictionary.
         for i in tqdm(range(len(arrays["Converted_Tag"])), total=len(subset), desc=f"Processing {file}"):
@@ -890,6 +911,35 @@ class build_reentry_list:
             else:
                 abl_mass = np.float64(jsr_drymass)
                 other_mass = 0
+                
+            owner_code  = arrays["Owner"][i].split("/")[0].replace("?", "").strip()
+            state_code  = arrays["State"][i].split("/")[0].replace("?", "").strip()
+            if state_code == "-":  # rcat/lcat leave State blank for stages
+                state_code = self.statecode_of.get(owner_code, "-")
+            
+            country = self.country_groups.get(state_code, self.shortename_of.get(state_code, state_code))
+                        
+            owner      = self.owner_of.get(owner_code, "-")
+            obj_class  = self.class_of.get(owner_code, "=")
+            sector     = sector_names.get(obj_class, obj_class)
+            entity     = owner if obj_class == "B" else sector
+            
+            if country in ["UK","Italy","France","Germany","Czechoslovakia","Netherlands","ESRO","Belarus","Luxembourg",
+                         "Spain","Hungary","Poland","Czech Republic","Sweden","Finland","ESA","Lithuania","Denmark",
+                         "Greece","Ireland","Bulgaria","Slovakia","Romania","Portugal","Monaco","Switzerland","Ukraine",
+                         "Belgium","Moldova","Slovenia","Estonia","Norway","Austria","Latvia","Turkey","PR Bulgaria",
+                         "ELDO","EUTELSAT"]:
+                country = "Europe"
+            elif country == "I-INT":
+                country = "INTELSAT"
+            if country not in ["USSR/Russia","USA","China","Europe","Japan","India","Vietnam","Iran","New Zealand","Egypt",
+                             "Rwanda","Sudan","Thailand","Mexico","Singapore","Israel", "Pakistan","Australia","Canada",
+                             "Malaysia","Mongolia","UAE","Taiwan","South Korea","Armenia","Djibouti","Argentina","Uganda",
+                             "Zimbabwe","Phillipines","Brazil","Kenya","Colombia","Uruguay","Chile","South Africa","Nepal",
+                             "Indonesia","Puerto Rico","Mauritius","Myanmar","Saudi Arabia","Paraguay","Tunisia","Guatemala",
+                             "Bhutan","Ethiopia","Kuwait","Ecuador","Sri Lanka","Kazakhstan","Costa Rica","Ghana","Bangladesh",
+                             "Nigeria","Peru","North Korea","INTELSAT","-","Cayman Is.","Oman"]:
+                print(jsr_id, arrays["State"][i], country)
             
             # Set up the dictionary.                      
             self.reentry_rows.append({
@@ -910,6 +960,8 @@ class build_reentry_list:
                 "parent"           : jsr_parent,
                 "time_known"       : time_known,
                 "day_known"        : day_known,
+                "state"            : country,
+                "owner"            : entity,
             })
             
     def add_attached(self):
@@ -977,7 +1029,8 @@ class build_reentry_list:
                 # If the payload is inside the spacecraft or in the payload bay, then add to other mass.
                 target_name = self.df_reentry.loc[target, "name"]
                 in_payload_bay = "(STS" in target_name or target_name.startswith("Starship FT")
-                if "IN" in row["Status"] or in_payload_bay:
+                gemini_suit = str(row["Name"]).strip().startswith(("G3C", "G4C", "G5C"))  # Pressure suits worn inside Gemini capsules.
+                if "IN" in row["Status"] or in_payload_bay or gemini_suit:
                     self.df_reentry.loc[target, "other_mass"] += float(row["DryMass"])
 
                 # Otherwise add to ablatable mass.
@@ -1273,6 +1326,7 @@ class build_reentry_list:
 
                 # Sort out the Apogee, Inc, and DYear columns. 
                 df["Apogee"] = pd.to_numeric(df["Apogee"].astype(str).str.rstrip("?"), errors="coerce").fillna(0).astype(int)
+                df.loc[df["#JCAT"] == "R81744", "Apogee"] = 200 # Need to set apogee of this fairing to 200km (its 0 in GCAT but the other half is 200).
                 df["Inc"]    = pd.to_numeric(df["Inc"], errors="coerce").fillna(0).astype(np.float64)
                 df["DYear"]  = pd.to_numeric(df["DDate"].astype(str).str[0:4],errors="coerce")
                                                                                     
@@ -1462,9 +1516,6 @@ class build_reentry_list:
         # Object 2013-009J (PSLV upper Dual Launch Adapter (DLA-U)) has this mass on DW.
         self.df_reentry.loc[self.df_reentry["name"].eq("DLA-U"), "abl_mass"] = 100 
 
-        # Fixing skylab fairing section with no mass.
-        self.df_reentry.loc[self.df_reentry["name"].eq("Skylab Fairing section"), "abl_mass"] = 2950.0
-
         # 1965-047A is a lead ballast dummy payload inside a fairing (GCAT PLName "Lead Ballast"), not aluminium.
         lead = self.df_reentry["id"].eq("1965-047A")
         self.df_reentry.loc[lead, "other_mass"] = self.df_reentry.loc[lead, "abl_mass"]
@@ -1516,7 +1567,8 @@ class build_reentry_list:
             'Megaconstellation_Flag' : xr.DataArray(self.df_reentry["smc"].to_numpy(),  dims=dims, attrs=dict(long_name="Megaconstellation_Flag")),
             'Location_Constraint'    : xr.DataArray(self.df_reentry["location"].to_numpy(),  dims=dims, attrs=dict(long_name="Location Constraint")),
             'Apogee'                 : xr.DataArray(self.df_reentry["apogee"].to_numpy(),  dims=dims, attrs=dict(long_name="Apogee", units="km")),
-            'Burnup'                 : xr.DataArray(self.df_reentry["burnup"].to_numpy(),  dims=dims, attrs=dict(long_name="Burnup")),
+            'State'                  : xr.DataArray(self.df_reentry["state"].to_numpy(),  dims=dims, attrs=dict(long_name="Owner Country")),
+            'Owner'                  : xr.DataArray(self.df_reentry["owner"].to_numpy(),  dims=dims, attrs=dict(long_name="Owner")),
         })
              
         #Save to file and close the DataSet  

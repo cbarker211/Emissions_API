@@ -1084,12 +1084,11 @@ class OutputEmis:
         reentry_details = {
             "date":        row.Date.strftime("%Y-%m-%dT%H:%M:%SZ"),
             "id":          row.COSPAR_ID,
-            "reusability": "",
             "name":        row.Object_Name,
             "category":    row.Category, 
             "smc":         bool(row.Megaconstellation_Flag),
             "location":    int(row.Location_Constraint),
-            "burnup":      row.Burnup, 
+            "ablation":    float(row.Ablation_Degree),
             "mass":        total_reentry_mass,
             "emissions":  {sp: 0 for sp in ["reentry_nox","reentry_al","reentry_bc","reentry_hcl","reentry_cl"]}
         }

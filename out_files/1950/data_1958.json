@@ -5,12 +5,11 @@
             {
                 "date": "1958-01-01T00:00:00Z",
                 "id": "1958-004",
-                "reusability": "",
                 "name": "GO",
                 "category": "C",
                 "smc": false,
                 "location": 6,
-                "burnup": "Complete",
+                "ablation": 0.8,
                 "mass": 0.01,
                 "emissions": {
                     "NOx": 0.004,
@@ -24,12 +23,11 @@
             {
                 "date": "1958-01-01T00:00:00Z",
                 "id": "1958-004",
-                "reusability": "",
                 "name": "GO part",
                 "category": "C",
                 "smc": false,
                 "location": 6,
-                "burnup": "Complete",
+                "ablation": 0.8,
                 "mass": 0.01,
                 "emissions": {
                     "NOx": 0.004,
@@ -43,12 +41,11 @@
             {
                 "date": "1958-01-01T00:00:00Z",
                 "id": "1958-004",
-                "reusability": "",
                 "name": "GO part",
                 "category": "C",
                 "smc": false,
                 "location": 6,
-                "burnup": "Complete",
+                "ablation": 0.8,
                 "mass": 0.01,
                 "emissions": {
                     "NOx": 0.004,
@@ -67,12 +64,11 @@
             {
                 "date": "1958-01-04T00:00:00Z",
                 "id": "1957-001",
-                "reusability": "",
                 "name": "1-y ISZ",
                 "category": "P",
                 "smc": false,
                 "location": 6,
-                "burnup": "Complete",
+                "ablation": 0.8,
                 "mass": 0.084,
                 "emissions": {
                     "NOx": 0.0336,
@@ -165,12 +161,11 @@
             {
                 "date": "1958-02-01T03:47:56Z",
                 "id": "1958-001",
-                "reusability": "",
                 "name": "Redstone RS-29",
                 "category": "S1",
                 "smc": false,
                 "location": 6,
-                "burnup": "Complete",
+                "ablation": 0.3,
                 "mass": 3.89,
                 "emissions": {
                     "NOx": 1.556,
@@ -184,12 +179,11 @@
             {
                 "date": "1958-02-01T03:47:56Z",
                 "id": "1958-001",
-                "reusability": "",
                 "name": "Cluster 4 Assembly 2",
                 "category": "S2",
                 "smc": false,
                 "location": 6,
-                "burnup": "Complete",
+                "ablation": 0.65,
                 "mass": 0.231,
                 "emissions": {
                     "NOx": 0.0924,
@@ -203,12 +197,11 @@
             {
                 "date": "1958-02-01T03:47:56Z",
                 "id": "1958-001",
-                "reusability": "",
                 "name": "Cluster 4 Assembly 3",
                 "category": "S3",
                 "smc": false,
                 "location": 6,
-                "burnup": "Complete",
+                "ablation": 0.65,
                 "mass": 0.063,
                 "emissions": {
                     "NOx": 0.0252,
@@ -301,12 +294,11 @@
             {
                 "date": "1958-03-05T18:27:57Z",
                 "id": "1958-F02",
-                "reusability": "",
                 "name": "Redstone RS-CC26",
                 "category": "S1",
                 "smc": false,
                 "location": 6,
-                "burnup": "Complete",
+                "ablation": 0.3,
                 "mass": 3.89,
                 "emissions": {
                     "NOx": 1.556,
@@ -320,12 +312,11 @@
             {
                 "date": "1958-03-05T18:27:57Z",
                 "id": "1958-F02",
-                "reusability": "",
                 "name": "Cluster 5 Assembly 2",
                 "category": "S2",
                 "smc": false,
                 "location": 6,
-                "burnup": "Complete",
+                "ablation": 0.65,
                 "mass": 0.231,
                 "emissions": {
                     "NOx": 0.0924,
@@ -339,12 +330,11 @@
             {
                 "date": "1958-03-05T18:27:57Z",
                 "id": "1958-F02",
-                "reusability": "",
                 "name": "Cluster 5 Assembly 3",
                 "category": "S3",
                 "smc": false,
                 "location": 6,
-                "burnup": "Complete",
+                "ablation": 0.65,
                 "mass": 0.063,
                 "emissions": {
                     "NOx": 0.0252,
@@ -358,12 +348,11 @@
             {
                 "date": "1958-03-05T18:27:57Z",
                 "id": "1958-F02",
-                "reusability": "",
                 "name": "Cluster 5 Assembly 4",
                 "category": "S4",
                 "smc": false,
                 "location": 6,
-                "burnup": "Complete",
+                "ablation": 0.65,
                 "mass": 0.042,
                 "emissions": {
                     "NOx": 0.0168,
@@ -377,12 +366,11 @@
             {
                 "date": "1958-03-05T18:27:57Z",
                 "id": "1958-F02",
-                "reusability": "",
                 "name": "Explorer II",
                 "category": "P",
                 "smc": false,
                 "location": 6,
-                "burnup": "Complete",
+                "ablation": 0.8,
                 "mass": 0.005,
                 "emissions": {
                     "NOx": 0.002,
@@ -475,12 +463,11 @@
             {
                 "date": "1958-03-17T12:15:41Z",
                 "id": "1958-002",
-                "reusability": "",
                 "name": "Vanguard TV4",
                 "category": "S1",
                 "smc": false,
                 "location": 6,
-                "burnup": "Complete",
+                "ablation": 0.3,
                 "mass": 0.811,
                 "emissions": {
                     "NOx": 0.3244,
@@ -494,12 +481,11 @@
             {
                 "date": "1958-03-17T12:15:41Z",
                 "id": "1958-002",
-                "reusability": "",
                 "name": "AJ10-37",
                 "category": "S2",
                 "smc": false,
                 "location": 6,
-                "burnup": "Complete",
+                "ablation": 0.65,
                 "mass": 0.429,
                 "emissions": {
                     "NOx": 0.1716,
@@ -513,12 +499,11 @@
             {
                 "date": "1958-03-17T12:15:41Z",
                 "id": "1958-002",
-                "reusability": "",
                 "name": "Vanguard Fairing",
                 "category": "C",
                 "smc": false,
                 "location": 6,
-                "burnup": "Complete",
+                "ablation": 0.3,
                 "mass": 1.756,
                 "emissions": {
                     "NOx": 0.7024,
@@ -611,12 +596,11 @@
             {
                 "date": "1958-03-26T17:38:03Z",
                 "id": "1958-003",
-                "reusability": "",
                 "name": "Redstone RS-24",
                 "category": "S1",
                 "smc": false,
                 "location": 6,
-                "burnup": "Complete",
+                "ablation": 0.3,
                 "mass": 3.89,
                 "emissions": {
                     "NOx": 1.556,
@@ -630,12 +614,11 @@
             {
                 "date": "1958-03-26T17:38:03Z",
                 "id": "1958-003",
-                "reusability": "",
                 "name": "Cluster 7 Assembly 2",
                 "category": "S2",
                 "smc": false,
                 "location": 6,
-                "burnup": "Complete",
+                "ablation": 0.65,
                 "mass": 0.231,
                 "emissions": {
                     "NOx": 0.0924,
@@ -649,12 +632,11 @@
             {
                 "date": "1958-03-26T17:38:03Z",
                 "id": "1958-003",
-                "reusability": "",
                 "name": "Cluster 7 Assembly 3",
                 "category": "S3",
                 "smc": false,
                 "location": 6,
-                "burnup": "Complete",
+                "ablation": 0.65,
                 "mass": 0.063,
                 "emissions": {
                     "NOx": 0.0252,
@@ -673,12 +655,11 @@
             {
                 "date": "1958-04-14T00:00:00Z",
                 "id": "1957-002",
-                "reusability": "",
                 "name": "8K71PS No. M1-11 Stage 2",
                 "category": "S1",
                 "smc": false,
                 "location": 6,
-                "burnup": "Complete",
+                "ablation": 0.3,
                 "mass": 8.003,
                 "emissions": {
                     "NOx": 3.2012,
@@ -771,12 +752,11 @@
             {
                 "date": "1958-04-29T02:53:00Z",
                 "id": "1958-F04",
-                "reusability": "",
                 "name": "Vanguard TV5",
                 "category": "S1",
                 "smc": false,
                 "location": 6,
-                "burnup": "Complete",
+                "ablation": 0.3,
                 "mass": 0.811,
                 "emissions": {
                     "NOx": 0.3244,
@@ -790,12 +770,11 @@
             {
                 "date": "1958-04-29T02:53:00Z",
                 "id": "1958-F04",
-                "reusability": "",
                 "name": "AJ10-37",
                 "category": "S2",
                 "smc": false,
                 "location": 6,
-                "burnup": "Complete",
+                "ablation": 0.65,
                 "mass": 1.9000000000000001,
                 "emissions": {
                     "NOx": 0.76,
@@ -809,12 +788,11 @@
             {
                 "date": "1958-04-29T02:53:00Z",
                 "id": "1958-F04",
-                "reusability": "",
                 "name": "Vanguard Fairing",
                 "category": "C",
                 "smc": false,
                 "location": 6,
-                "burnup": "Complete",
+                "ablation": 0.3,
                 "mass": 1.756,
                 "emissions": {
                     "NOx": 0.7024,
@@ -828,12 +806,11 @@
             {
                 "date": "1958-04-29T02:53:00Z",
                 "id": "1958-F04",
-                "reusability": "",
                 "name": "Vanguard TV-5 Stage 3",
                 "category": "S3",
                 "smc": false,
                 "location": 6,
-                "burnup": "Complete",
+                "ablation": 0.65,
                 "mass": 0.2,
                 "emissions": {
                     "NOx": 0.08,
@@ -847,12 +824,11 @@
             {
                 "date": "1958-04-29T02:53:00Z",
                 "id": "1958-F04",
-                "reusability": "",
                 "name": "Vanguard",
                 "category": "P",
                 "smc": false,
                 "location": 6,
-                "burnup": "Complete",
+                "ablation": 0.8,
                 "mass": 0.01,
                 "emissions": {
                     "NOx": 0.004,
@@ -945,12 +921,11 @@
             {
                 "date": "1958-05-15T07:00:35Z",
                 "id": "1958-004",
-                "reusability": "",
                 "name": "8K74B",
                 "category": "S0",
                 "smc": false,
                 "location": 2,
-                "burnup": "Complete",
+                "ablation": 0.3,
                 "mass": 0.85,
                 "emissions": {
                     "NOx": 0.34,
@@ -964,12 +939,11 @@
             {
                 "date": "1958-05-15T07:00:35Z",
                 "id": "1958-004",
-                "reusability": "",
                 "name": "8K74V",
                 "category": "S0",
                 "smc": false,
                 "location": 2,
-                "burnup": "Complete",
+                "ablation": 0.3,
                 "mass": 0.85,
                 "emissions": {
                     "NOx": 0.34,
@@ -983,12 +957,11 @@
             {
                 "date": "1958-05-15T07:00:35Z",
                 "id": "1958-004",
-                "reusability": "",
                 "name": "8K74G",
                 "category": "S0",
                 "smc": false,
                 "location": 2,
-                "burnup": "Complete",
+                "ablation": 0.3,
                 "mass": 0.85,
                 "emissions": {
                     "NOx": 0.34,
@@ -1002,12 +975,11 @@
             {
                 "date": "1958-05-15T07:00:35Z",
                 "id": "1958-004",
-                "reusability": "",
                 "name": "8K74D",
                 "category": "S0",
                 "smc": false,
                 "location": 2,
-                "burnup": "Complete",
+                "ablation": 0.3,
                 "mass": 0.85,
                 "emissions": {
                     "NOx": 0.34,
@@ -1100,12 +1072,11 @@
             {
                 "date": "1958-05-28T03:46:20Z",
                 "id": "1958-F05",
-                "reusability": "",
                 "name": "Vanguard SLV1",
                 "category": "S1",
                 "smc": false,
                 "location": 6,
-                "burnup": "Complete",
+                "ablation": 0.3,
                 "mass": 0.811,
                 "emissions": {
                     "NOx": 0.3244,
@@ -1119,12 +1090,11 @@
             {
                 "date": "1958-05-28T03:46:20Z",
                 "id": "1958-F05",
-                "reusability": "",
                 "name": "AJ10-37",
                 "category": "S2",
                 "smc": false,
                 "location": 6,
-                "burnup": "Complete",
+                "ablation": 0.65,
                 "mass": 0.429,
                 "emissions": {
                     "NOx": 0.1716,
@@ -1138,12 +1108,11 @@
             {
                 "date": "1958-05-28T03:46:20Z",
                 "id": "1958-F05",
-                "reusability": "",
                 "name": "Vanguard Fairing",
                 "category": "C",
                 "smc": false,
                 "location": 6,
-                "burnup": "Complete",
+                "ablation": 0.3,
                 "mass": 1.756,
                 "emissions": {
                     "NOx": 0.7024,
@@ -1157,12 +1126,11 @@
             {
                 "date": "1958-05-28T04:45:00Z",
                 "id": "1958-F05",
-                "reusability": "",
                 "name": "Vanguard SLV-1 Stage 3",
                 "category": "S3",
                 "smc": false,
                 "location": 6,
-                "burnup": "Complete",
+                "ablation": 0.65,
                 "mass": 0.2,
                 "emissions": {
                     "NOx": 0.08,
@@ -1176,12 +1144,11 @@
             {
                 "date": "1958-05-28T04:45:00Z",
                 "id": "1958-F05",
-                "reusability": "",
                 "name": "Vanguard",
                 "category": "P",
                 "smc": false,
                 "location": 6,
-                "burnup": "Complete",
+                "ablation": 0.8,
                 "mass": 0.01,
                 "emissions": {
                     "NOx": 0.004,
@@ -1274,12 +1241,11 @@
             {
                 "date": "1958-06-26T05:00:52Z",
                 "id": "1958-F06",
-                "reusability": "",
                 "name": "Vanguard SLV2",
                 "category": "S1",
                 "smc": false,
                 "location": 6,
-                "burnup": "Complete",
+                "ablation": 0.3,
                 "mass": 0.811,
                 "emissions": {
                     "NOx": 0.3244,
@@ -1293,12 +1259,11 @@
             {
                 "date": "1958-06-26T05:00:52Z",
                 "id": "1958-F06",
-                "reusability": "",
                 "name": "AJ10-37",
                 "category": "S2",
                 "smc": false,
                 "location": 6,
-                "burnup": "Complete",
+                "ablation": 0.65,
                 "mass": 1.9000000000000001,
                 "emissions": {
                     "NOx": 0.76,
@@ -1312,12 +1277,11 @@
             {
                 "date": "1958-06-26T05:00:52Z",
                 "id": "1958-F06",
-                "reusability": "",
                 "name": "Vanguard Fairing",
                 "category": "C",
                 "smc": false,
                 "location": 6,
-                "burnup": "Complete",
+                "ablation": 0.3,
                 "mass": 1.756,
                 "emissions": {
                     "NOx": 0.7024,
@@ -1331,12 +1295,11 @@
             {
                 "date": "1958-06-26T05:00:52Z",
                 "id": "1958-F06",
-                "reusability": "",
                 "name": "Vanguard SLV-2 Stage 3",
                 "category": "S3",
                 "smc": false,
                 "location": 6,
-                "burnup": "Complete",
+                "ablation": 0.65,
                 "mass": 0.2,
                 "emissions": {
                     "NOx": 0.08,
@@ -1350,12 +1313,11 @@
             {
                 "date": "1958-06-26T05:00:52Z",
                 "id": "1958-F06",
-                "reusability": "",
                 "name": "Vanguard",
                 "category": "P",
                 "smc": false,
                 "location": 6,
-                "burnup": "Complete",
+                "ablation": 0.8,
                 "mass": 0.01,
                 "emissions": {
                     "NOx": 0.004,
@@ -1374,12 +1336,11 @@
             {
                 "date": "1958-06-28T00:00:00Z",
                 "id": "1958-003",
-                "reusability": "",
                 "name": "Cluster 7 Assembly 4",
                 "category": "S4",
                 "smc": false,
                 "location": 6,
-                "burnup": "Complete",
+                "ablation": 0.65,
                 "mass": 0.029,
                 "emissions": {
                     "NOx": 0.0116,
@@ -1472,12 +1433,11 @@
             {
                 "date": "1958-07-26T15:00:57Z",
                 "id": "1958-005",
-                "reusability": "",
                 "name": "Redstone RS-CC44",
                 "category": "S1",
                 "smc": false,
                 "location": 6,
-                "burnup": "Complete",
+                "ablation": 0.3,
                 "mass": 3.89,
                 "emissions": {
                     "NOx": 1.556,
@@ -1491,12 +1451,11 @@
             {
                 "date": "1958-07-26T15:00:57Z",
                 "id": "1958-005",
-                "reusability": "",
                 "name": "Cluster 9 Assembly 2",
                 "category": "S2",
                 "smc": false,
                 "location": 6,
-                "burnup": "Complete",
+                "ablation": 0.65,
                 "mass": 0.231,
                 "emissions": {
                     "NOx": 0.0924,
@@ -1510,12 +1469,11 @@
             {
                 "date": "1958-07-26T15:00:57Z",
                 "id": "1958-005",
-                "reusability": "",
                 "name": "Cluster 9 Assembly 3",
                 "category": "S3",
                 "smc": false,
                 "location": 6,
-                "burnup": "Complete",
+                "ablation": 0.65,
                 "mass": 0.063,
                 "emissions": {
                     "NOx": 0.0252,
@@ -1608,12 +1566,11 @@
             {
                 "date": "1958-08-22T00:00:00Z",
                 "id": "1958-F10",
-                "reusability": "",
                 "name": "NOTSnik Fairing",
                 "category": "C",
                 "smc": false,
                 "location": 6,
-                "burnup": "Complete",
+                "ablation": 0.3,
                 "mass": 1.756,
                 "emissions": {
                     "NOx": 0.7024,
@@ -1627,12 +1584,11 @@
             {
                 "date": "1958-08-22T00:00:00Z",
                 "id": "1958-F10",
-                "reusability": "",
                 "name": "HOTROC",
                 "category": "S2",
                 "smc": false,
                 "location": 6,
-                "burnup": "Complete",
+                "ablation": 0.65,
                 "mass": 0.054,
                 "emissions": {
                     "NOx": 0.0216,
@@ -1646,12 +1602,11 @@
             {
                 "date": "1958-08-22T00:00:00Z",
                 "id": "1958-F10",
-                "reusability": "",
                 "name": "HOTROC",
                 "category": "S2",
                 "smc": false,
                 "location": 6,
-                "burnup": "Complete",
+                "ablation": 0.65,
                 "mass": 0.054,
                 "emissions": {
                     "NOx": 0.0216,
@@ -1665,12 +1620,11 @@
             {
                 "date": "1958-08-22T00:00:00Z",
                 "id": "1958-F10",
-                "reusability": "",
                 "name": "X-241",
                 "category": "S3",
                 "smc": false,
                 "location": 6,
-                "burnup": "Complete",
+                "ablation": 0.65,
                 "mass": 0.2,
                 "emissions": {
                     "NOx": 0.08,
@@ -1684,12 +1638,11 @@
             {
                 "date": "1958-08-22T00:00:00Z",
                 "id": "1958-F10",
-                "reusability": "",
                 "name": "NOTS EV1 No. 3 Stage 4",
                 "category": "S4",
                 "smc": false,
                 "location": 6,
-                "burnup": "Complete",
+                "ablation": 0.65,
                 "mass": 0.03,
                 "emissions": {
                     "NOx": 0.012,
@@ -1703,12 +1656,11 @@
             {
                 "date": "1958-08-22T00:00:00Z",
                 "id": "1958-F10",
-                "reusability": "",
                 "name": "NOTS EV1 No. 3 Stage 5",
                 "category": "S5",
                 "smc": false,
                 "location": 6,
-                "burnup": "Complete",
+                "ablation": 0.65,
                 "mass": 0.01,
                 "emissions": {
                     "NOx": 0.004,
@@ -1722,12 +1674,11 @@
             {
                 "date": "1958-08-22T00:00:00Z",
                 "id": "1958-F10",
-                "reusability": "",
                 "name": "NOTS 3",
                 "category": "P",
                 "smc": false,
                 "location": 6,
-                "burnup": "Complete",
+                "ablation": 0.8,
                 "mass": 0.001,
                 "emissions": {
                     "NOx": 0.0004,
@@ -1820,12 +1771,11 @@
             {
                 "date": "1958-09-26T15:38:00Z",
                 "id": "1958-U01",
-                "reusability": "",
                 "name": "Vanguard SLV3",
                 "category": "S1",
                 "smc": false,
                 "location": 6,
-                "burnup": "Complete",
+                "ablation": 0.3,
                 "mass": 0.811,
                 "emissions": {
                     "NOx": 0.3244,
@@ -1839,12 +1789,11 @@
             {
                 "date": "1958-09-26T15:38:00Z",
                 "id": "1958-U01",
-                "reusability": "",
                 "name": "AJ10-37",
                 "category": "S2",
                 "smc": false,
                 "location": 6,
-                "burnup": "Complete",
+                "ablation": 0.65,
                 "mass": 1.9000000000000001,
                 "emissions": {
                     "NOx": 0.76,
@@ -1858,12 +1807,11 @@
             {
                 "date": "1958-09-26T15:38:00Z",
                 "id": "1958-U01",
-                "reusability": "",
                 "name": "Vanguard Fairing",
                 "category": "C",
                 "smc": false,
                 "location": 6,
-                "burnup": "Complete",
+                "ablation": 0.3,
                 "mass": 1.756,
                 "emissions": {
                     "NOx": 0.7024,
@@ -1877,12 +1825,11 @@
             {
                 "date": "1958-09-26T15:38:00Z",
                 "id": "1958-U01",
-                "reusability": "",
                 "name": "Vanguard SLV-3 Stage 3",
                 "category": "S3",
                 "smc": false,
                 "location": 6,
-                "burnup": "Complete",
+                "ablation": 0.65,
                 "mass": 0.2,
                 "emissions": {
                     "NOx": 0.08,
@@ -1896,12 +1843,11 @@
             {
                 "date": "1958-09-26T15:38:00Z",
                 "id": "1958-U01",
-                "reusability": "",
                 "name": "Vanguard",
                 "category": "P",
                 "smc": false,
                 "location": 6,
-                "burnup": "Complete",
+                "ablation": 0.8,
                 "mass": 0.01,
                 "emissions": {
                     "NOx": 0.004,
@@ -1994,12 +1940,11 @@
             {
                 "date": "1958-10-11T08:42:13Z",
                 "id": "1958-007",
-                "reusability": "",
                 "name": "Thor DM-18A 130",
                 "category": "S1",
                 "smc": false,
                 "location": 6,
-                "burnup": "Complete",
+                "ablation": 0.3,
                 "mass": 3.125,
                 "emissions": {
                     "NOx": 1.25,
@@ -2013,12 +1958,11 @@
             {
                 "date": "1958-10-11T08:42:13Z",
                 "id": "1958-007",
-                "reusability": "",
                 "name": "AJ10-41",
                 "category": "S2",
                 "smc": false,
                 "location": 6,
-                "burnup": "Complete",
+                "ablation": 0.65,
                 "mass": 0.429,
                 "emissions": {
                     "NOx": 0.1716,
@@ -2032,12 +1976,11 @@
             {
                 "date": "1958-10-11T08:42:13Z",
                 "id": "1958-007",
-                "reusability": "",
                 "name": "Able Fairing",
                 "category": "C",
                 "smc": false,
                 "location": 6,
-                "burnup": "Complete",
+                "ablation": 0.3,
                 "mass": 0.878,
                 "emissions": {
                     "NOx": 0.3512,
@@ -2051,12 +1994,11 @@
             {
                 "date": "1958-10-11T08:42:13Z",
                 "id": "1958-007",
-                "reusability": "",
                 "name": "Able Fairing",
                 "category": "C",
                 "smc": false,
                 "location": 6,
-                "burnup": "Complete",
+                "ablation": 0.3,
                 "mass": 0.878,
                 "emissions": {
                     "NOx": 0.3512,
@@ -2075,12 +2017,11 @@
             {
                 "date": "1958-10-13T04:46:00Z",
                 "id": "1958-007",
-                "reusability": "",
                 "name": "Pioneer I",
                 "category": "P",
                 "smc": false,
                 "location": 6,
-                "burnup": "Complete",
+                "ablation": 0.8,
                 "mass": 0.027,
                 "emissions": {
                     "NOx": 0.0108,
@@ -2094,12 +2035,11 @@
             {
                 "date": "1958-10-13T00:00:00Z",
                 "id": "1958-007",
-                "reusability": "",
                 "name": "Thor Able I Stage 3",
                 "category": "S3",
                 "smc": false,
                 "location": 6,
-                "burnup": "Complete",
+                "ablation": 0.65,
                 "mass": 0.024,
                 "emissions": {
                     "NOx": 0.0096,
@@ -2192,12 +2132,11 @@
             {
                 "date": "1958-10-23T03:21:04Z",
                 "id": "1958-F18",
-                "reusability": "",
                 "name": "Redstone RS-CC49",
                 "category": "S1",
                 "smc": false,
                 "location": 2,
-                "burnup": "Complete",
+                "ablation": 0.3,
                 "mass": 3.89,
                 "emissions": {
                     "NOx": 1.556,
@@ -2211,12 +2150,11 @@
             {
                 "date": "1958-10-23T03:21:04Z",
                 "id": "1958-F18",
-                "reusability": "",
                 "name": "Cluster 10 Assembly 2",
                 "category": "S2",
                 "smc": false,
                 "location": 6,
-                "burnup": "Complete",
+                "ablation": 0.65,
                 "mass": 0.231,
                 "emissions": {
                     "NOx": 0.0924,
@@ -2230,12 +2168,11 @@
             {
                 "date": "1958-10-23T03:21:04Z",
                 "id": "1958-F18",
-                "reusability": "",
                 "name": "Cluster 10 Assembly 3",
                 "category": "S3",
                 "smc": false,
                 "location": 6,
-                "burnup": "Complete",
+                "ablation": 0.65,
                 "mass": 0.063,
                 "emissions": {
                     "NOx": 0.0252,
@@ -2249,12 +2186,11 @@
             {
                 "date": "1958-10-23T03:21:04Z",
                 "id": "1958-F18",
-                "reusability": "",
                 "name": "Cluster 10 Assembly 4",
                 "category": "S4",
                 "smc": false,
                 "location": 6,
-                "burnup": "Complete",
+                "ablation": 0.65,
                 "mass": 0.021,
                 "emissions": {
                     "NOx": 0.0084,
@@ -2268,12 +2204,11 @@
             {
                 "date": "1958-10-23T03:21:04Z",
                 "id": "1958-F18",
-                "reusability": "",
                 "name": "2 lb Motor",
                 "category": "C",
                 "smc": false,
                 "location": 6,
-                "burnup": "Complete",
+                "ablation": 0.8,
                 "mass": 0.0,
                 "emissions": {
                     "NOx": 0.0,
@@ -2287,12 +2222,11 @@
             {
                 "date": "1958-10-23T03:21:04Z",
                 "id": "1958-F18",
-                "reusability": "",
                 "name": "Beacon container",
                 "category": "C",
                 "smc": false,
                 "location": 6,
-                "burnup": "Complete",
+                "ablation": 0.8,
                 "mass": 0.018000000000000002,
                 "emissions": {
                     "NOx": 0.0072,
@@ -2306,12 +2240,11 @@
             {
                 "date": "1958-10-23T03:21:04Z",
                 "id": "1958-F18",
-                "reusability": "",
                 "name": "Beacon",
                 "category": "P",
                 "smc": false,
                 "location": 6,
-                "burnup": "Complete",
+                "ablation": 0.8,
                 "mass": 0.014,
                 "emissions": {
                     "NOx": 0.0056,
@@ -2325,12 +2258,11 @@
             {
                 "date": "1958-10-23T03:21:04Z",
                 "id": "1958-F18",
-                "reusability": "",
                 "name": "Nose Cone",
                 "category": "C",
                 "smc": false,
                 "location": 6,
-                "burnup": "Complete",
+                "ablation": 0.8,
                 "mass": 0.001,
                 "emissions": {
                     "NOx": 0.0004,
@@ -2423,12 +2355,11 @@
             {
                 "date": "1958-11-08T07:30:21Z",
                 "id": "1958-F19",
-                "reusability": "",
                 "name": "Thor DM-18A 129",
                 "category": "S1",
                 "smc": false,
                 "location": 6,
-                "burnup": "Complete",
+                "ablation": 0.3,
                 "mass": 3.125,
                 "emissions": {
                     "NOx": 1.25,
@@ -2442,12 +2373,11 @@
             {
                 "date": "1958-11-08T07:30:21Z",
                 "id": "1958-F19",
-                "reusability": "",
                 "name": "AJ10-41",
                 "category": "S2",
                 "smc": false,
                 "location": 6,
-                "burnup": "Complete",
+                "ablation": 0.65,
                 "mass": 0.429,
                 "emissions": {
                     "NOx": 0.1716,
@@ -2461,12 +2391,11 @@
             {
                 "date": "1958-11-08T07:30:21Z",
                 "id": "1958-F19",
-                "reusability": "",
                 "name": "Able Fairing",
                 "category": "C",
                 "smc": false,
                 "location": 6,
-                "burnup": "Complete",
+                "ablation": 0.3,
                 "mass": 0.878,
                 "emissions": {
                     "NOx": 0.3512,
@@ -2480,12 +2409,11 @@
             {
                 "date": "1958-11-08T07:30:21Z",
                 "id": "1958-F19",
-                "reusability": "",
                 "name": "Able Fairing",
                 "category": "C",
                 "smc": false,
                 "location": 6,
-                "burnup": "Complete",
+                "ablation": 0.3,
                 "mass": 0.878,
                 "emissions": {
                     "NOx": 0.3512,
@@ -2499,12 +2427,11 @@
             {
                 "date": "1958-11-08T07:30:21Z",
                 "id": "1958-F19",
-                "reusability": "",
                 "name": "Thor Able I Stage 3",
                 "category": "S3",
                 "smc": false,
                 "location": 6,
-                "burnup": "Complete",
+                "ablation": 0.65,
                 "mass": 0.3,
                 "emissions": {
                     "NOx": 0.12,
@@ -2518,12 +2445,11 @@
             {
                 "date": "1958-11-08T07:30:21Z",
                 "id": "1958-F19",
-                "reusability": "",
                 "name": "Pioneer II",
                 "category": "P",
                 "smc": false,
                 "location": 6,
-                "burnup": "Complete",
+                "ablation": 0.8,
                 "mass": 0.022,
                 "emissions": {
                     "NOx": 0.0088,
@@ -2537,12 +2463,11 @@
             {
                 "date": "1958-11-08T07:30:21Z",
                 "id": "1958-F19",
-                "reusability": "",
                 "name": "TX-8 Falcon",
                 "category": "C",
                 "smc": false,
                 "location": 6,
-                "burnup": "Complete",
+                "ablation": 0.8,
                 "mass": 0.005,
                 "emissions": {
                     "NOx": 0.002,
@@ -2561,12 +2486,11 @@
             {
                 "date": "1958-12-03T00:00:00Z",
                 "id": "1958-004",
-                "reusability": "",
                 "name": "8A91 No. B1-1 Stage 2",
                 "category": "S1",
                 "smc": false,
                 "location": 6,
-                "burnup": "Complete",
+                "ablation": 0.3,
                 "mass": 7.0,
                 "emissions": {
                     "NOx": 2.8,
@@ -2659,12 +2583,11 @@
             {
                 "date": "1958-12-04T18:18:45Z",
                 "id": "1958-F20",
-                "reusability": "",
                 "name": "8K71B",
                 "category": "S0",
                 "smc": false,
                 "location": 2,
-                "burnup": "Complete",
+                "ablation": 0.3,
                 "mass": 0.85,
                 "emissions": {
                     "NOx": 0.34,
@@ -2678,12 +2601,11 @@
             {
                 "date": "1958-12-04T18:18:45Z",
                 "id": "1958-F20",
-                "reusability": "",
                 "name": "8K71V",
                 "category": "S0",
                 "smc": false,
                 "location": 2,
-                "burnup": "Complete",
+                "ablation": 0.3,
                 "mass": 0.85,
                 "emissions": {
                     "NOx": 0.34,
@@ -2697,12 +2619,11 @@
             {
                 "date": "1958-12-04T18:18:45Z",
                 "id": "1958-F20",
-                "reusability": "",
                 "name": "8K71G",
                 "category": "S0",
                 "smc": false,
                 "location": 2,
-                "burnup": "Complete",
+                "ablation": 0.3,
                 "mass": 0.85,
                 "emissions": {
                     "NOx": 0.34,
@@ -2716,12 +2637,11 @@
             {
                 "date": "1958-12-04T18:18:45Z",
                 "id": "1958-F20",
-                "reusability": "",
                 "name": "8K71D",
                 "category": "S0",
                 "smc": false,
                 "location": 2,
-                "burnup": "Complete",
+                "ablation": 0.3,
                 "mass": 0.85,
                 "emissions": {
                     "NOx": 0.34,
@@ -2735,12 +2655,11 @@
             {
                 "date": "1958-12-04T18:18:45Z",
                 "id": "1958-F20",
-                "reusability": "",
                 "name": "8K71A B1-5",
                 "category": "S1",
                 "smc": false,
                 "location": 6,
-                "burnup": "Complete",
+                "ablation": 0.3,
                 "mass": 7.495,
                 "emissions": {
                     "NOx": 2.998,
@@ -2754,12 +2673,11 @@
             {
                 "date": "1958-12-04T18:18:45Z",
                 "id": "1958-F20",
-                "reusability": "",
                 "name": "Luna Fairing",
                 "category": "C",
                 "smc": false,
                 "location": 6,
-                "burnup": "Complete",
+                "ablation": 0.3,
                 "mass": 1.756,
                 "emissions": {
                     "NOx": 0.7024,
@@ -2773,12 +2691,11 @@
             {
                 "date": "1958-12-04T18:18:45Z",
                 "id": "1958-F20",
-                "reusability": "",
                 "name": "Vostok 8K72 No. 5 Stage 3",
                 "category": "S2",
                 "smc": false,
                 "location": 6,
-                "burnup": "Complete",
+                "ablation": 0.65,
                 "mass": 8.0,
                 "emissions": {
                     "NOx": 3.2,
@@ -2792,12 +2709,11 @@
             {
                 "date": "1958-12-04T18:18:45Z",
                 "id": "1958-F20",
-                "reusability": "",
                 "name": "AMS",
                 "category": "P",
                 "smc": false,
                 "location": 6,
-                "burnup": "Complete",
+                "ablation": 0.8,
                 "mass": 0.17,
                 "emissions": {
                     "NOx": 0.068,
@@ -2890,12 +2806,11 @@
             {
                 "date": "1958-12-06T05:44:52Z",
                 "id": "1958-008",
-                "reusability": "",
                 "name": "Jupiter AM-11",
                 "category": "S1",
                 "smc": false,
                 "location": 6,
-                "burnup": "Complete",
+                "ablation": 0.3,
                 "mass": 5.4430000000000005,
                 "emissions": {
                     "NOx": 2.1772,
@@ -2909,12 +2824,11 @@
             {
                 "date": "1958-12-06T05:44:52Z",
                 "id": "1958-008",
-                "reusability": "",
                 "name": "Cluster 11 Assembly 2",
                 "category": "S2",
                 "smc": false,
                 "location": 6,
-                "burnup": "Complete",
+                "ablation": 0.65,
                 "mass": 0.231,
                 "emissions": {
                     "NOx": 0.0924,
@@ -2928,12 +2842,11 @@
             {
                 "date": "1958-12-06T05:44:52Z",
                 "id": "1958-008",
-                "reusability": "",
                 "name": "Cluster 11 Assembly 3",
                 "category": "S3",
                 "smc": false,
                 "location": 6,
-                "burnup": "Complete",
+                "ablation": 0.65,
                 "mass": 0.063,
                 "emissions": {
                     "NOx": 0.0252,
@@ -2947,12 +2860,11 @@
             {
                 "date": "1958-12-06T05:44:52Z",
                 "id": "1958-008",
-                "reusability": "",
                 "name": "Juno II Fairing",
                 "category": "C",
                 "smc": false,
                 "location": 6,
-                "burnup": "Complete",
+                "ablation": 0.3,
                 "mass": 1.756,
                 "emissions": {
                     "NOx": 0.7024,
@@ -2971,12 +2883,11 @@
             {
                 "date": "1958-12-07T19:52:00Z",
                 "id": "1958-008",
-                "reusability": "",
                 "name": "Pioneer III",
                 "category": "P",
                 "smc": false,
                 "location": 4,
-                "burnup": "Complete",
+                "ablation": 0.8,
                 "mass": 0.006,
                 "emissions": {
                     "NOx": 0.0024,
@@ -2990,12 +2901,11 @@
             {
                 "date": "1958-12-07T00:00:00Z",
                 "id": "1958-008",
-                "reusability": "",
                 "name": "Cluster 11 Assembly 4",
                 "category": "S4",
                 "smc": false,
                 "location": 6,
-                "burnup": "Complete",
+                "ablation": 0.65,
                 "mass": 0.021,
                 "emissions": {
                     "NOx": 0.0084,
@@ -3088,12 +2998,11 @@
             {
                 "date": "1958-12-18T23:02:00Z",
                 "id": "1958-006",
-                "reusability": "",
                 "name": "Atlas Booster",
                 "category": "S0",
                 "smc": false,
                 "location": 6,
-                "burnup": "Complete",
+                "ablation": 0.3,
                 "mass": 3.5,
                 "emissions": {
                     "NOx": 1.4,
