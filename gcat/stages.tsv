@@ -1,5 +1,5 @@
 #Stage_Name	Stage_Family	Stage_Manufacturer	Stage_Alt_Name	Length	Length_Flag	Diameter	Diameter_Flag	Launch_Mass	Launch_Mass_Flag	Dry_Mass	Dry_Mass_Flag	Thrust	Thrust_Flag	ThrustSL	ThrustSL_Flag	Duration	Engine	NEng	Class
-# Updated 2026 Oct 29 0116:40
+# Updated 2026 Nov  2 0003:29
 -	Unknown             	-	Dummy	-	 	-	 	-	 	-	 	-	 	-	 	   0.0 	-	 0	-
 ?	Unknown             	-	-	-	 	-	 	-	 	-	 	-	 	-	 	-	-	-	-
 N-1 Blok-A	N-1                 	OKB1	N-1 Blok A	 30.0	 	14.00	 	1870.0	 	  130000	 	   45300.0	 	-	 	 110.0 	NK-15	30	O
@@ -65,8 +65,8 @@ ICPS	D4SS                	BOHB	Delta-5m	 13.7	 	 5.10	 	  31.0	?	    3500	?	    
 Neutron St2	Neutron2	RLABU	-	 11.5	 	 5.00	 	  30.0	?	-	 	     890.0	 	-	 	-	Archimedes Vac	 1	U
 DC-X	DC-X                	MDAC	-	 12.6	 	 4.95	 	  18.8	 	   10000	 	     242.0	 	-	 	 263.0 	RL10	 4	L
 DC-XA	DC-X                	MDAC	Clipper Graham	 12.6	 	 4.95	 	  18.8	 	   10000	 	     242.0	 	-	 	 263.0 	RL10	 4	L
-ZQ-3 Stage 1	ZQ-3	LANDSP	-	 39.0	?	 4.50	 	 385.0	?	    4000	?	    7300.0	 	-	 	-	TQ-12A	 9	O
-ZQ-3 Stage 2	ZQ-3	LANDSP	-	 14.5	?	 4.50	 	 145.0	?	    1400	?	     944.4	 	-	 	-	TQ-15A	 1	O
+ZQ-3 Stage 1	ZQ-3	LANDSP	-	 39.0	?	 4.50	 	 385.0	?	   20000	?	    7300.0	 	-	 	-	TQ-12A	 9	O
+ZQ-3 Stage 2	ZQ-3	LANDSP	-	 14.5	?	 4.50	 	 145.0	?	   10000	?	     944.4	 	-	 	-	TQ-15A	 1	O
 L-3 Blok G	BlokG               	OKB1	-	  9.1	 	 4.40	 	  61.8	 	    6000	 	     445.0	 	-	 	 443.0 	NK-19	 1	U
 CZ-12B Stage 1	CZ12B	ZHSH	-	 39.0	?	 4.37	 	-	 	-	 	    7515.0	 	-	 	-	YF-102R	 9	O
 CZ-12B Stage 2	CZ12B	ZHSH	-	 10.0	?	 4.37	 	-	 	-	 	     835.0	 	-	 	-	YF-102V	 1	O

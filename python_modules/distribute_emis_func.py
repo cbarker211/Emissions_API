@@ -174,6 +174,7 @@ def get_failed_launch_dict(id, fail_code):
         '2025-U06': {"full_burn": True}, # Fairing separation issue                       (FF)
 
         # Specific fractions.
+        '1963-F02': {"failed_stage": 1, "cutoff_alt": 44000}, # Detonated at 44 km        (S0I) https://kirkmcd.princeton.edu/JEMcDonald/mcdonald_weatherwise_16_99_63.pdf
         '2015-F02': {"failed_stage": 1, "cutoff_alt": 44900}, #                           (S2P) https://www.youtube.com/watch?v=PuNymhcTtSQ
         '2020-F07': {"failed_stage": 1, "cutoff_alt": 900},   #                           (S1G)
         '2021-F01': {"failed_stage": 1, "cutoff_alt": 10700}, #                           (S1G)
@@ -186,13 +187,13 @@ def get_failed_launch_dict(id, fail_code):
         # Corrections.
         '1963-F06': {"failed_stage": 1, "cutoff_alt": 0}, # No info, so treating as U     (AD)
         '1964-F08': {"failed_stage": 2, "burned": 0},     # Second stage exploded         (AD)  https://astronautix.com/t/thewrongstuhiclefailures.html
+        '1975-F01': {"failed_stage": 2, "burned": 0},     # Reached S2 ignition           (S0S) https://en.wikipedia.org/wiki/Atlas-Centaur#AC-33_failure
         '1987-F02': {"failed_stage": 1, "cutoff_alt": 0}, # First stage hit by lightning  (WX)  https://astronautix.com/t/thewrongstuhiclefailures.html
+        '2003-F02': {"failed_stage": 2, "burned": 0},     # Destroyed sometime during S2  (S0S) 
         '2010-F02': {"failed_stage": 1, "cutoff_alt": 0}, # First stage failure           (AD)  https://astronautix.com/2/2010chronology.html
         '2021-F08': {"failed_stage": 2, "burned": 0}, # Exploded only 12s before MECO     (S1P)
         '2022-F01': {"failed_stage": 2, "burned": 0}, # Fairing failed before S2 ignition (FF)
-        '2022-F02': {"failed_stage": 2, "burned": 0}, # Stage 2 ignition failure          (S3G)
-        '2022-F04': {"failed_stage": 3, "burned": 0}, # Stage 3 ignition failure          (S2G)
-        '2022-U02': {"failed_stage": 4, "burned": 0}, # S4 only fired for 1/10th sec      (S3G)
+        '2022-F04': {"failed_stage": 3, "burned": 0}, # Failed just before 2/3 separation (S2G)
         '2023-F05': {"failed_stage": 2, "burned": 0}, # Exploded near end of booster burn (S1S)
         '2023-F07': {"failed_stage": 3, "burned": 0}, # Accidental destruct               (AD)
         '2023-F09': {"failed_stage": 3, "burned": 0}, # Stage 3 attitude failure          (S1P)
@@ -217,8 +218,8 @@ def get_failed_launch_dict(id, fail_code):
         # This is where the stage number is given by the fail_code.
         if failure_gcat.startswith("S"):
             failed_stage_gcat = int(failure_gcat[1])
-            if failed_stage_gcat == 1:
-                failure = {'failed_stage': failed_stage_gcat, 'cutoff_alt': 0}
+            if failed_stage_gcat in [0,1]:
+                failure = {'failed_stage': 1, 'cutoff_alt': 0}
             else:
                 failure = {'failed_stage': failed_stage_gcat, 'burned': 0}
 

@@ -281,7 +281,8 @@ class build_reentry_list:
             try:
                 monstr = str(datetime.strptime(date[1], '%b').month).zfill(2)  
             except:
-                sys.exit(date)
+                print(date)
+                sys.exit()
             if len(date) > 2: 
                 daystr = str(date[2]).zfill(2)
             else:
@@ -308,7 +309,7 @@ class build_reentry_list:
         non_geo_count = len(self.latlonerror)
         geo_percent_all =  non_geo_count  / total_reentries * 100
 
-        total_mass_array = self.df_reentry["abl_mass"] + self.df_reentry["other_mass"]
+        total_mass_array = self.df_reentry["abl_mass"] + self.df_reentry["other_mass"] + self.df_reentry["attached_abl_mass"]
         total_mass = total_mass_array.sum()
         non_mass_mask = total_mass_array == 0
         non_mass_count = non_mass_mask.sum()
@@ -986,9 +987,7 @@ class build_reentry_list:
             (attached_cat["DYear"].between(self.start_year, self.final_year)) &  # Only the selected timeframe.
             (attached_cat["PLName"] != "Manfred Mem. Moon Mission") &            # This should be listed as re-entering on the Moon, so ignore.
             (attached_cat["Parent"] != "A04313") &                               # Parent collided, producing debris.
-            (attached_cat["Parent"] != "S29402") &                               # Parent exploded.
-            (attached_cat["Parent"] != "S27542") &                               # Parent went in deep space.
-            (attached_cat["#JCAT"] != "A11023")                                  # AL IN is wrong.
+            (attached_cat["Parent"] != "S29402")                                 # Parent exploded.
         ].copy()
 
         attached_cat["parent_clean"] = attached_cat["Parent"].str.replace("*","", regex=False)            

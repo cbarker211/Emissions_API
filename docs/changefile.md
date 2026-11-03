@@ -72,11 +72,10 @@ This major update contains a range of changes to make the data more consistent w
     - Bug fix for Ariane 5ECA+ stage 2 propellant mass.
 - Updates to launch activity data 
     - Now including orbital, near-orbital and deep space launch codes only. This removes several non-orbital 19xx-U0x launches. 
-    - For now, not including "F" or "U" launches before 2020.
     - Removed launches which exploded or were aborted at (or close to) the pad.
     - Now including NOTS EV1 as this is a spy satellite, not an anti-satellite weapon. These launches failed so the emissions are ignored anyway.
     - Added launch site altitude (surface elevation from ETOPO 2022).
-    - Reconfigured the handling of failed launches 2020-2025. Now a single function which defines the failed stage and burned percentage, which is used by all scripts.
+    - Reconfigured the handling of failed launches for 1957-2025. Now a single function which defines the failed stage and burned percentage, which is used by all scripts.
 
 ### Emission Indices
 - Now using the NOx emission profile derived from SABRE measurements in Barker (2026). This increases launch emissions in the troposphere and stratosphere.
@@ -110,6 +109,7 @@ This major update contains a range of changes to make the data more consistent w
 - Some fairings have mass in GCAT, so now the source preference is: primary source, GCAT, then default value.
 - Fixed a bug where some non-object fairings were set using the default fairing mass, now fixed.
 - Fixed a bug where some old launch tags were not being converted. This adds 12 objects in 1960, and increases the mass of two objects.
+- Added re-entries from failed launches before 2020.
 
 ### Emission Indices
 - BC, HCl, Cl emissions are no longer added for partial burnup re-entries, as ablation should be negligible for these.
@@ -119,6 +119,7 @@ This major update contains a range of changes to make the data more consistent w
 ### Launches
 - JSON output now includes propellant consumption per launch and launch organization data.
 - All site names are now obtained from GCAT, and similar sites are grouped.
+- Launch coordinates are now from GCAT pad coords where available.
 
 ### Re-entries
 - Set timings of re-entries on day of launch to the launch time, instead of midnight.
