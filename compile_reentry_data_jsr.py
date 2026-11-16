@@ -408,8 +408,8 @@ class build_reentry_list:
             if (apogee <= 100) and (category in ["S0","S1"]): 
                 for i, cpid in enumerate(self.dsl["COSPAR_ID"].values):
                     if jsr_id[:8] == cpid[:8]:
-                        lat = self.dsl["Latitude"].values[i]
-                        lon = self.dsl["Longitude"].values[i]
+                        lat = self.dsl["Latitude"].to_numpy()[i]
+                        lon = self.dsl["Longitude"].to_numpy()[i]
                         location = 2
                         break  
             else: 
@@ -498,7 +498,7 @@ class build_reentry_list:
                     lon = np.float64(lon_data.replace("E",""))
                 else:
                     print(f"Missing lon Direction for {jsr_id} - {latlonstr} - Assuming E")
-                    lon = lon_data
+                    lon = np.float64(lon_data)
 
                 if lat_data[-1] == "N":
                     lat = np.float64(lat_data.replace("N",""))
@@ -506,7 +506,7 @@ class build_reentry_list:
                     lat = np.float64(lat_data.replace("S",""))*-1  
                 else:
                     print(f"Missing lat direction for {jsr_id} - {latlonstr} - Assuming N")
-                    lat = lat_data 
+                    lat = np.float64(lat_data)
 
                 return lat, lon, location
 
@@ -583,8 +583,8 @@ class build_reentry_list:
                 idx = np.where(self.dsl["COSPAR_ID"] == jsr_id)[0]
                 if len(idx) == 0:
                     raise ValueError(f"Problem geolocating Falcon Stage 1 recovery - {jsr_id}.")
-                lat = np.round(self.dsl["Latitude"].values[idx[0]]) 
-                lon = np.round(self.dsl["Longitude"].values[idx[0]])
+                lat = np.round(self.dsl["Latitude"].to_numpy()[idx[0]]) 
+                lon = np.round(self.dsl["Longitude"].to_numpy()[idx[0]])
                 
             elif matching.shape[0] > 1:
                 # If its a Falcon Heavy launch with two landings, then we set both to the same location.
@@ -625,8 +625,8 @@ class build_reentry_list:
                 idx = np.where(self.dsl["COSPAR_ID"] == jsr_id)[0]
                 if len(idx) == 0:
                     raise ValueError(f"Problem geolocating Falcon fairing recovery - {jsr_id}.")
-                lon_val = np.round(self.dsl["Longitude"].values[idx[0]])
-                lat_val = np.round(self.dsl["Latitude"].values[idx[0]])
+                lon_val = np.round(self.dsl["Longitude"].to_numpy()[idx[0]])
+                lat_val = np.round(self.dsl["Latitude"].to_numpy()[idx[0]])
 
                 # Kennedy Space Center (ETR)
                 if (lon_val == -81) and (lat_val in [28,29]):
@@ -687,8 +687,8 @@ class build_reentry_list:
             if len(idx) == 0:
                 raise ValueError(f"Problem geolocating Falcon fairing recovery - {jsr_id}.")
             
-            lon_val = np.round(self.dsl["Longitude"].values[idx[0]])
-            lat_val = np.round(self.dsl["Latitude"].values[idx[0]])
+            lon_val = np.round(self.dsl["Longitude"].to_numpy()[idx[0]])
+            lat_val = np.round(self.dsl["Latitude"].to_numpy()[idx[0]])
 
             # Kennedy Space Center (ETR)
             if (lon_val == -81) and (lat_val in [28,29]):
@@ -703,13 +703,13 @@ class build_reentry_list:
               
         return lat, lon
     
-    def failed_launch_mass(self, jsr_id, reentry_category, drymass, mass, failure):
+    def failed_launch_mass(self, jsr_id, reentry_category, drymass, mass, failure, status):
         
         """Split failed-launch reentry mass into ablatable (dry) and non-aluminium (unburnt propellant) mass.
 
         Returns:
             abl_mass (float)  : Ablatable mass (GCAT dry mass; stage/fairing masses are overwritten later from rocket_attributes).
-            other_mass (float): Unburnt propellant mass.
+            other_mass (float): Unburnt propellant and payload mass.
         """        
             
         abl_mass   = np.float64(drymass)
@@ -717,7 +717,14 @@ class build_reentry_list:
 
         # Payloads that fail to reach orbit re-enter with their propellant.
         if reentry_category == "P":
-            other_mass = max(np.float64(mass) - abl_mass, 0.0)
+            
+            # The payload was undeployed, so add all mass to other mass.
+            if status in ["AF", "AS"]:
+                other_mass = np.float64(mass)
+                abl_mass   = 0.0
+            # The payload had been deployed, so only add the propellant mass to other mass. 
+            else:
+                other_mass = max(np.float64(mass) - abl_mass, 0.0)
 
         if failure is not None and reentry_category in ["S1","S2","S3","S4","S5"]:
             
@@ -910,7 +917,7 @@ class build_reentry_list:
             
             # Sort the mass.    
             if jsr_id[5:6] in ["F","U"]:
-                abl_mass, other_mass = self.failed_launch_mass(jsr_id,reentry_category,jsr_drymass,jsr_mass,failure)
+                abl_mass, other_mass = self.failed_launch_mass(jsr_id,reentry_category,jsr_drymass,jsr_mass,failure,jsr_status)
             else:
                 abl_mass = np.float64(jsr_drymass)
                 other_mass = 0
@@ -1067,136 +1074,6 @@ class build_reentry_list:
                 failed_mass += float(row["DryMass"])
         
         print(f'Failed to add mass for {failed_count} objects totalling {failed_mass} kg.')
-         
-    def add_missing_stages(self):
-        
-        """Add any missing stages for launches in the year.
-        """   
-        apogee_limit = 100  # km
-
-        # Load in the launch list and only choose successful launches.     
-        success_dsl  = self.dsl[~self.dsl["COSPAR_ID"].str[5].isin(["F", "U"])]
-
-        self.df_reentry = self.df_reentry.copy()
-        self.df_reentry["_cospar_prefix"] = self.df_reentry["cospar_id_new"].str[:8]
-        reentry_grouped = self.df_reentry.groupby(["_cospar_prefix", "category"])
-        rocket_index = self.dsr.set_index(["Rocket_Name", "Rocket_Variant"])
-
-        # BECO, MECO, SEI1, SECO
-        # B+1/2S, B+3S, B+4S, 2S, 3S, 4S 
-        self.event_alts = [[66,55,29,0,0,0],
-                           [220,120,64,90,56,52],
-                           [229,120,64,103,61,59],
-                           [356,232,216,312,176,149]]
-
-        missing_stages_list = []
-        missing_boosters_count, missing_first_count = 0,0
-        missing_boosters_mass, missing_first_mass = 0,0
-
-        # Loop over each launch, locate the rocket and then filter for rocket configuration.
-        for launch_row in success_dsl.itertuples():
-
-            # Locate the rocket.
-            key = (launch_row.Rocket_Name, launch_row.Rocket_Variant)
-            try:
-                rocket_row = rocket_index.loc[key]          # keep as DataFrame # type: ignore
-            except KeyError:
-                raise ValueError(f"Rocket not found: {key}")
-
-            rocket_config_type = rocket_row["Rocket_Config"]
-
-            temp_dict = {
-                "id"               : f'{launch_row.COSPAR_ID}',
-                "jcat"             : "N/A",
-                "burnup"           : "Complete",
-                "category"         : "S0",
-                "date"             : launch_row.Date,
-                "lat"              : launch_row.Latitude,
-                "lon"              : launch_row.Longitude,
-                "other_mass"       : 0,
-                "attached_abl_mass": 0,
-                "location"         : 2,
-            }
-
-            ################s
-            # Boosters 
-            ################
-            boosters = int(rocket_row.Booster_No)
-            if boosters > 0:
-                
-                # Find the event altitudes (use default if NaN) 
-                beco = rocket_row.BECO
-                if np.isnan(beco):
-                    beco = self.event_alts[0][rocket_config_type]
-
-                # Count how many boosters are currently added, and compare it to the number of boosters there should be.
-                try:
-                    booster_count = len(reentry_grouped.get_group((launch_row.COSPAR_ID, "S0")))
-                except KeyError:
-                    booster_count = 0
-
-                # Adding boosters where BECO is above 50km.
-                if (booster_count != boosters) and (beco > apogee_limit):
-                    print(f"{boosters-booster_count} missing boosters for {launch_row.COSPAR_ID} {launch_row.Rocket_Name} {launch_row.Rocket_Variant}.")
-                    missing_boosters_count += (boosters-booster_count)
-
-                    for i in range(boosters-booster_count):
-                        abl_mass = float(rocket_row.Stage0_StageMass) / boosters
-                        if np.isnan(abl_mass):
-                            raise ValueError(f"Missing booster mass for {launch_row.Rocket_Name} {launch_row.Rocket_Variant}.")
-                        missing_boosters_mass += abl_mass   
-                        missing_stages_list.append({
-                            **temp_dict,
-                            "name"             : f"{launch_row.Rocket_Name} {launch_row.Rocket_Variant} Booster",
-                            "category"         : "S0",
-                            "apogee"           : beco,
-                            "abl_mass"         : abl_mass,
-                        })
-            
-            ################
-            # 1st Stage 
-            ################
-
-            # Find the event altitudes (use default if NaN) 
-            meco = rocket_row.MECO
-            if np.isnan(meco):
-                meco = self.event_alts[1][rocket_config_type]
-            
-            # See if there is a matching first stage already in the dictionary.
-            try:
-                first_count = len(reentry_grouped.get_group((launch_row.COSPAR_ID, "S1")))
-            except KeyError:
-                first_count = 0
-
-            if meco > apogee_limit and (first_count < 1):
-                # Check if there is a first stage, and add if not.
-                print(f"Missing 1st stage for {launch_row.COSPAR_ID} {launch_row.Rocket_Name} {launch_row.Rocket_Variant} {rocket_row.Stage1_StageMass} kg")
-                abl_mass = rocket_row.Stage1_StageMass
-                if np.isnan(abl_mass):
-                    raise ValueError(f"Missing first stage mass for {launch_row.Rocket_Name} {launch_row.Rocket_Variant}.")
-                missing_first_count += 1
-                missing_first_mass += abl_mass
-                missing_stages_list.append({
-                    **temp_dict,
-                    "name"             : f"{launch_row.Rocket_Name} {launch_row.Rocket_Variant} Stage 1",
-                    "category"         : "S1",
-                    "apogee"           : meco,
-                    "abl_mass"         : abl_mass,
-                })
-
-        # Check the number of stages.
-        stage_counts = reentry_grouped.size()
-        stage_mask = (stage_counts.index.get_level_values('category').str.startswith('S') & 
-                        (stage_counts.index.get_level_values('category') != 'S0'))
-        stage_counts = stage_counts[stage_mask]
-        duplicates   = stage_counts[stage_counts > 1]
-        if len(duplicates) > 0:
-            print("Duplicate stages found:")
-            for (cospar, category), count in duplicates.items():
-                print(f"  {cospar} has {count} × {category}")
-        
-        print(f"Missing Boosters:    {missing_boosters_mass},{missing_boosters_count}")
-        print(f"Missing First Stage: {missing_first_mass},{missing_first_count}")
     
     def import_raul_spacex_map(self):
         """Import and set up the geolocation lists for falcon landings.
@@ -1326,7 +1203,7 @@ class build_reentry_list:
                 ]
 
                 # Sort out the Apogee, Inc, and DYear columns. 
-                df["Apogee"] = pd.to_numeric(df["Apogee"].astype(str).str.rstrip("?"), errors="coerce").fillna(0).astype(int)
+                df["Apogee"] = pd.to_numeric(df["Apogee"].str.rstrip("?"), errors="coerce").fillna(0).astype(int)
                 df.loc[df["#JCAT"] == "R81744", "Apogee"] = 200 # Need to set apogee of this fairing to 200km (its 0 in GCAT but the other half is 200).
                 df["Inc"]    = pd.to_numeric(df["Inc"], errors="coerce").fillna(0).astype(np.float64)
                 df["DYear"]  = pd.to_numeric(df["DDate"].astype(str).str[0:4],errors="coerce")

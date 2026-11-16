@@ -17,7 +17,7 @@ Date,COSPAR_ID,Category,Object_Name,Ablatable_Mass,Ablation_Degree,Percent_Alumi
 1958-02-01 03:47:56,1958-001,S1,Redstone RS-29,3890.0,0.3,0.7,0.0,False,6,360.0,USA,Defense
 1958-02-01 03:47:56,1958-001,S2,Cluster 4 Assembly 2,231.0,0.65,0.7,0.0,False,6,360.0,USA,Government
 1958-02-01 03:47:56,1958-001,S3,Cluster 4 Assembly 3,63.0,0.65,0.7,0.0,False,6,360.0,USA,Government
-1958-03-05 18:27:57,1958-F02,P,Explorer II,5.0,0.8,0.4,0.0,False,6,379.0,USA,Defense
+1958-03-05 18:27:57,1958-F02,P,Explorer II,0.0,0.8,0.4,5.0,False,6,379.0,USA,Defense
 1958-03-05 18:27:57,1958-F02,S1,Redstone RS-CC26,3890.0,0.3,0.7,0.0,False,6,360.0,USA,Defense
 1958-03-05 18:27:57,1958-F02,S2,Cluster 5 Assembly 2,231.0,0.65,0.7,0.0,False,6,360.0,USA,Government
 1958-03-05 18:27:57,1958-F02,S3,Cluster 5 Assembly 3,63.0,0.65,0.7,0.0,False,6,360.0,USA,Government
@@ -30,7 +30,7 @@ Date,COSPAR_ID,Category,Object_Name,Ablatable_Mass,Ablation_Degree,Percent_Alumi
 1958-03-26 17:38:03,1958-003,S3,Cluster 7 Assembly 3,63.0,0.65,0.7,0.0,False,6,360.0,USA,Government
 1958-04-14 00:00:00,1957-002,S1,8K71PS No. M1-11 Stage 2,8003.0,0.3,0.7,0.0,False,6,1659.0,USSR/Russia,Defense
 1958-04-29 02:53:00,1958-F04,C,Vanguard Fairing,1756.0,0.3,0.7,0.0,False,6,170.0,USA,Defense
-1958-04-29 02:53:00,1958-F04,P,Vanguard,10.0,0.8,0.4,0.0,False,6,544.0,USA,Defense
+1958-04-29 02:53:00,1958-F04,P,Vanguard,0.0,0.8,0.4,10.0,False,6,544.0,USA,Defense
 1958-04-29 02:53:00,1958-F04,S1,Vanguard TV5,811.0,0.3,0.7,0.0,False,6,165.0,USA,Defense
 1958-04-29 02:53:00,1958-F04,S2,AJ10-37,429.0,0.65,0.7,1471.0,False,6,650.0,USA,Defense
 1958-04-29 02:53:00,1958-F04,S3,Vanguard TV-5 Stage 3,30.0,0.65,0.7,170.0,False,6,544.0,USA,Defense
@@ -53,7 +53,7 @@ Date,COSPAR_ID,Category,Object_Name,Ablatable_Mass,Ablation_Degree,Percent_Alumi
 1958-07-26 15:00:57,1958-005,S2,Cluster 9 Assembly 2,231.0,0.65,0.7,0.0,False,6,360.0,USA,Government
 1958-07-26 15:00:57,1958-005,S3,Cluster 9 Assembly 3,63.0,0.65,0.7,0.0,False,6,360.0,USA,Government
 1958-08-22 00:00:00,1958-F10,C,NOTSnik Fairing,1756.0,0.3,0.7,0.0,False,6,50.0,USA,Defense
-1958-08-22 00:00:00,1958-F10,P,NOTS 3,1.0,0.8,0.4,0.0,False,6,80.0,USA,Defense
+1958-08-22 00:00:00,1958-F10,P,NOTS 3,0.0,0.8,0.4,1.0,False,6,80.0,USA,Defense
 1958-08-22 00:00:00,1958-F10,S2,HOTROC,54.0,0.65,0.7,0.0,False,6,81.0,USA,Defense
 1958-08-22 00:00:00,1958-F10,S2,HOTROC,54.0,0.65,0.7,0.0,False,6,81.0,USA,Defense
 1958-08-22 00:00:00,1958-F10,S3,X-241,25.0,0.65,0.7,175.0,False,6,83.0,USA,Defense
@@ -73,7 +73,7 @@ Date,COSPAR_ID,Category,Object_Name,Ablatable_Mass,Ablation_Degree,Percent_Alumi
 1958-10-23 03:21:04,1958-F18,C,2 lb Motor,0.0,0.8,0.4,0.0,False,6,100.0,USA,Government
 1958-10-23 03:21:04,1958-F18,C,Beacon container,18.0,0.8,0.4,0.0,False,6,100.0,USA,Government
 1958-10-23 03:21:04,1958-F18,C,Nose Cone,1.0,0.8,0.4,0.0,False,6,100.0,USA,Government
-1958-10-23 03:21:04,1958-F18,P,Beacon,14.0,0.8,0.4,0.0,False,6,100.0,USA,Government
+1958-10-23 03:21:04,1958-F18,P,Beacon,0.0,0.8,0.4,14.0,False,6,100.0,USA,Government
 1958-10-23 03:21:04,1958-F18,S1,Redstone RS-CC49,3890.0,0.3,0.7,0.0,False,2,100.0,USA,Defense
 1958-10-23 03:21:04,1958-F18,S2,Cluster 10 Assembly 2,231.0,0.65,0.7,0.0,False,6,100.0,USA,Defense
 1958-10-23 03:21:04,1958-F18,S3,Cluster 10 Assembly 3,63.0,0.65,0.7,0.0,False,6,100.0,USA,Defense
@@ -87,7 +87,7 @@ Date,COSPAR_ID,Category,Object_Name,Ablatable_Mass,Ablation_Degree,Percent_Alumi
 1958-11-08 07:30:21,1958-F19,S3,Thor Able I Stage 3,24.0,0.65,0.7,276.0,False,6,1550.0,USA,Defense
 1958-12-03 00:00:00,1958-004,S1,8A91 No. B1-1 Stage 2,7000.0,0.3,0.7,0.0,False,6,1860.0,USSR/Russia,Government
 1958-12-04 18:18:45,1958-F20,C,Luna Fairing,1756.0,0.3,0.7,0.0,False,6,120.0,USSR/Russia,Defense
-1958-12-04 18:18:45,1958-F20,P,AMS,170.0,0.8,0.4,0.0,False,6,100.0,USSR/Russia,Defense
+1958-12-04 18:18:45,1958-F20,P,AMS,0.0,0.8,0.4,170.0,False,6,100.0,USSR/Russia,Defense
 1958-12-04 18:18:45,1958-F20,S0,8K71B,850.0,0.3,0.7,0.0,False,2,60.0,USSR/Russia,Defense
 1958-12-04 18:18:45,1958-F20,S0,8K71D,850.0,0.3,0.7,0.0,False,2,60.0,USSR/Russia,Defense
 1958-12-04 18:18:45,1958-F20,S0,8K71G,850.0,0.3,0.7,0.0,False,2,60.0,USSR/Russia,Defense
@@ -122,21 +122,21 @@ Date,COSPAR_ID,Category,Object_Name,Ablatable_Mass,Ablation_Degree,Percent_Alumi
 1959-04-15 00:30:00,1959-003,P,SRV,71.0,0.0,0.4,0.0,False,3,346.0,USA,Defense
 1959-04-26 00:00:00,1959-003,S2,Agena A 1018,510.0,0.65,0.7,0.0,False,6,346.0,USA,Defense
 1959-06-03 20:09:20,1959-F02,C,Star 10,5.0,0.8,0.4,0.0,False,6,250.0,USA,Defense
-1959-06-03 20:09:20,1959-F02,P,Discoverer 3,165.0,0.8,0.4,0.0,False,6,250.0,USA,Defense
-1959-06-03 20:09:20,1959-F02,P,SRV,71.0,0.8,0.4,0.0,False,6,250.0,USA,Defense
+1959-06-03 20:09:20,1959-F02,P,Discoverer 3,0.0,0.8,0.4,165.0,False,6,250.0,USA,Defense
+1959-06-03 20:09:20,1959-F02,P,SRV,0.0,0.8,0.4,71.0,False,6,250.0,USA,Defense
 1959-06-03 20:09:20,1959-F02,S1,Thor DM-18A 174,3125.0,0.3,0.7,0.0,False,6,200.0,USA,Defense
 1959-06-03 20:09:20,1959-F02,S2,Agena A 1020,400.0,0.65,0.7,3400.0,False,6,250.0,USA,Defense
-1959-06-18 08:08:00,1959-F06,P,AMS,170.0,0.8,0.4,0.0,False,6,80.0,USSR/Russia,Defense
+1959-06-18 08:08:00,1959-F06,P,AMS,0.0,0.8,0.4,170.0,False,6,80.0,USSR/Russia,Defense
 1959-06-18 08:08:00,1959-F06,S2,Vostok 8K72 No. 7 Stage 3,1440.0,0.65,0.7,6560.0,False,6,80.0,USSR/Russia,Government
 1959-06-22 20:16:09,1959-F03,C,Vanguard Fairing,1756.0,0.3,0.7,0.0,False,6,140.0,USA,Government
-1959-06-22 20:16:09,1959-F03,P,Vanguard,10.0,0.8,0.4,0.0,False,6,140.0,USA,Government
+1959-06-22 20:16:09,1959-F03,P,Vanguard,0.0,0.8,0.4,10.0,False,6,140.0,USA,Government
 1959-06-22 20:16:09,1959-F03,S1,Vanguard SLV6,811.0,0.3,0.7,0.0,False,6,140.0,USA,Government
 1959-06-22 20:16:09,1959-F03,S2,AJ10-37,429.0,0.65,0.7,1471.0,False,6,140.0,USA,Government
 1959-06-22 20:16:09,1959-F03,S3,Vanguard SLV-6 Stage 3,30.0,0.65,0.7,170.0,False,6,140.0,USA,Government
 1959-06-25 22:47:45,1959-U01,S1,Thor DM-18A 179,3125.0,0.3,0.7,0.0,False,6,200.0,USA,Defense
 1959-06-25 23:45:00,1959-U01,C,Star 10,5.0,0.8,0.4,0.0,False,6,170.0,USA,Defense
-1959-06-25 23:45:00,1959-U01,P,Discoverer 4,182.0,0.8,0.4,0.0,False,6,170.0,USA,Defense
-1959-06-25 23:45:00,1959-U01,P,SRV 102,71.0,0.8,0.4,0.0,False,6,170.0,USA,Defense
+1959-06-25 23:45:00,1959-U01,P,Discoverer 4,0.0,0.8,0.4,182.0,False,6,170.0,USA,Defense
+1959-06-25 23:45:00,1959-U01,P,SRV 102,0.0,0.8,0.4,71.0,False,6,170.0,USA,Defense
 1959-06-25 23:45:00,1959-U01,S2,Agena A 1023,400.0,0.65,0.7,3400.0,False,6,170.0,USA,Defense
 1959-08-07 14:24:20,1959-004,C,Able Fairing,878.0,0.3,0.7,0.0,False,6,500.0,USA,Defense
 1959-08-07 14:24:20,1959-004,C,Able Fairing,878.0,0.3,0.7,0.0,False,6,500.0,USA,Defense
@@ -145,7 +145,7 @@ Date,COSPAR_ID,Category,Object_Name,Ablatable_Mass,Ablation_Degree,Percent_Alumi
 1959-08-13 19:00:08,1959-005,S1,Thor DM-18A 192,3125.0,0.3,0.7,0.0,False,6,200.0,USA,Defense
 1959-08-15 00:31:00,1959-F07,C,Beacon container,18.0,0.8,0.4,0.0,False,6,831.0,USA,Government
 1959-08-15 00:31:00,1959-F07,C,Juno II Fairing,1756.0,0.3,0.7,0.0,False,6,442.0,USA,Government
-1959-08-15 00:31:00,1959-F07,P,Beacon,14.0,0.8,0.4,0.0,False,6,831.0,USA,Government
+1959-08-15 00:31:00,1959-F07,P,Beacon,0.0,0.8,0.4,14.0,False,6,831.0,USA,Government
 1959-08-15 00:31:00,1959-F07,S1,Jupiter AM-19B,5443.0,0.3,0.7,0.0,False,6,442.0,USA,Defense
 1959-08-15 00:31:00,1959-F07,S2,Cluster 15 Assembly 2,231.0,0.65,0.7,231.0,False,6,830.0,USA,Defense
 1959-08-15 00:31:00,1959-F07,S3,Cluster 15 Assembly 3,63.0,0.65,0.7,63.0,False,6,831.0,USA,Defense
@@ -197,9 +197,9 @@ Date,COSPAR_ID,Category,Object_Name,Ablatable_Mass,Ablation_Degree,Percent_Alumi
 1960-01-01 00:00:00,1962-015,C,Ariel 1 despin weight,1.0,0.8,0.4,0.0,False,6,1214.0,USA,Government
 1960-01-01 00:00:00,1962-015,C,Ariel 1 despin weight,1.0,0.8,0.4,0.0,False,6,1214.0,USA,Government
 1960-02-04 18:51:45,1960-F01,C,Star 10,5.0,0.8,0.4,0.0,False,6,200.0,USA,Defense
-1960-02-04 18:51:45,1960-F01,P,Discoverer 9,190.0,0.8,0.4,0.0,False,6,200.0,USA,Defense
-1960-02-04 18:51:45,1960-F01,P,SRV 113,123.0,0.8,0.4,0.0,False,6,200.0,USA,Defense
-1960-02-04 18:51:45,1960-F01,P,TOD-1,5.0,0.8,0.4,0.0,False,6,200.0,USA,Defense
+1960-02-04 18:51:45,1960-F01,P,Discoverer 9,0.0,0.8,0.4,190.0,False,6,200.0,USA,Defense
+1960-02-04 18:51:45,1960-F01,P,SRV 113,0.0,0.8,0.4,123.0,False,6,200.0,USA,Defense
+1960-02-04 18:51:45,1960-F01,P,TOD-1,0.0,0.8,0.4,5.0,False,6,200.0,USA,Defense
 1960-02-04 18:51:45,1960-F01,S1,Thor DM-18A 218,3125.0,0.3,0.7,0.0,False,6,200.0,USA,Defense
 1960-02-04 18:51:45,1960-F01,S2,Agena A 1052,400.0,0.65,0.7,3400.0,False,6,200.0,USA,Defense
 1960-03-08 00:00:00,1959-011,S2,Agena A 1050,557.0,0.65,0.7,0.0,False,6,1658.0,USA,Defense
@@ -208,7 +208,7 @@ Date,COSPAR_ID,Category,Object_Name,Ablatable_Mass,Ablation_Degree,Percent_Alumi
 1960-03-11 13:00:07,1960-001,S1,Thor DM-18A 219,3125.0,0.3,0.7,0.0,False,6,500.0,USA,Defense
 1960-03-11 13:00:07,1960-001,S2,AJ10-101A,429.0,0.65,0.7,0.0,False,6,500.0,USA,Defense
 1960-03-23 13:35:11,1960-F04,C,Juno II Fairing,1756.0,0.3,0.7,0.0,False,6,442.0,USA,Government
-1960-03-23 13:35:11,1960-F04,P,NASA S-46,10.0,0.8,0.4,0.0,False,6,401.0,USA,Government
+1960-03-23 13:35:11,1960-F04,P,NASA S-46,0.0,0.8,0.4,10.0,False,6,401.0,USA,Government
 1960-03-23 13:35:11,1960-F04,S1,Jupiter AM-19C,5443.0,0.3,0.7,0.0,False,6,442.0,USA,Government
 1960-03-23 13:35:11,1960-F04,S2,Cluster 16 Assembly 2,231.0,0.65,0.7,231.0,False,6,442.0,USA,Government
 1960-03-23 13:35:11,1960-F04,S3,Cluster 16 Assembly 3,63.0,0.65,0.7,63.0,False,6,442.0,USA,Government
@@ -240,7 +240,7 @@ Date,COSPAR_ID,Category,Object_Name,Ablatable_Mass,Ablation_Degree,Percent_Alumi
 1960-05-13 09:16:05,1960-F07,S1,Thor DM-18A 144,3125.0,0.3,0.7,0.0,False,6,200.0,USA,Government
 1960-05-13 09:52:00,1960-F07,C,A-10 Canister half,5.0,0.8,0.4,0.0,False,6,1668.0,USA,Government
 1960-05-13 09:52:00,1960-F07,C,A-10 Canister half,5.0,0.8,0.4,0.0,False,6,1668.0,USA,Government
-1960-05-13 09:52:00,1960-F07,P,Echo,60.0,0.8,0.4,15.0,False,6,1668.0,USA,Government
+1960-05-13 09:52:00,1960-F07,P,Echo,0.0,0.8,0.4,75.0,False,6,1668.0,USA,Government
 1960-05-13 09:52:00,1960-F07,S2,Delta 1,694.0,0.65,0.7,1506.0,False,6,1668.0,USA,Government
 1960-05-13 09:52:00,1960-F07,S3,Delta 1 Stage 3,24.0,0.65,0.7,276.0,False,6,1668.0,USA,Government
 1960-05-15 00:00:05,1960-005,C,Vostok Fairing,878.0,0.3,0.7,0.0,False,6,120.0,USSR/Russia,Defense
@@ -257,8 +257,8 @@ Date,COSPAR_ID,Category,Object_Name,Ablatable_Mass,Ablation_Degree,Percent_Alumi
 1960-06-22 05:54:00,1960-007,S1,Thor DM-18A  281,3125.0,0.3,0.7,0.0,False,6,200.0,USA,Defense
 1960-06-29 22:00:44,1960-F08,S1,Thor DM-18A 160,3125.0,0.3,0.7,0.0,False,6,200.0,USA,Defense
 1960-06-29 22:09:00,1960-F08,C,Star 10,5.0,0.8,0.4,0.0,False,6,1300.0,USA,Defense
-1960-06-29 22:09:00,1960-F08,P,Discoverer 12,190.0,0.8,0.4,0.0,False,6,1300.0,USA,Defense
-1960-06-29 22:09:00,1960-F08,P,SRV (GRD),123.0,0.8,0.4,0.0,False,6,1300.0,USA,Defense
+1960-06-29 22:09:00,1960-F08,P,Discoverer 12,0.0,0.8,0.4,190.0,False,6,1300.0,USA,Defense
+1960-06-29 22:09:00,1960-F08,P,SRV (GRD),0.0,0.8,0.4,123.0,False,6,1300.0,USA,Defense
 1960-06-29 22:09:00,1960-F08,S2,Agena A 1053,400.0,0.65,0.7,3400.0,False,6,1300.0,USA,Defense
 1960-07-17 00:00:00,1960-003,P,Dummy subsatellite?,2.0,0.8,0.4,0.0,False,6,663.0,USA,Government
 1960-07-17 19:45:00,1960-005,S2,Vostok 8K72 No. 11 Stage 3,1440.0,0.65,0.7,0.0,False,6,288.0,USSR/Russia,Defense
@@ -290,7 +290,7 @@ Date,COSPAR_ID,Category,Object_Name,Ablatable_Mass,Ablation_Degree,Percent_Alumi
 1960-09-24 00:00:00,1960-005,C,Korabl'-Sputnik part,0.0,0.8,0.4,0.0,False,6,537.0,USSR/Russia,Government
 1960-09-25 15:13:17,1960-F11,C,Altair Fairing,878.0,0.3,0.7,0.0,False,6,180.0,USA,Government
 1960-09-25 15:13:17,1960-F11,C,Altair Fairing,878.0,0.3,0.7,0.0,False,6,180.0,USA,Government
-1960-09-25 15:13:17,1960-F11,P,NASA P-30,170.0,0.8,0.4,5.0,False,6,1290.0,USA,Government
+1960-09-25 15:13:17,1960-F11,P,NASA P-30,0.0,0.8,0.4,175.0,False,6,1290.0,USA,Government
 1960-09-25 15:13:17,1960-F11,S0,Atlas Booster,3400.0,0.3,0.7,0.0,False,6,120.0,USA,Government
 1960-09-25 15:13:17,1960-F11,S1,Atlas D 80D,3400.0,0.3,0.7,0.0,False,6,1290.0,USA,Government
 1960-09-25 15:13:17,1960-F11,S2,AJ10-101A,385.0,0.65,0.7,1515.0,False,6,1290.0,USA,Government
@@ -304,7 +304,7 @@ Date,COSPAR_ID,Category,Object_Name,Ablatable_Mass,Ablation_Degree,Percent_Alumi
 1960-10-10 14:27:49,1960-F12,C,BOZ,300.0,0.8,0.4,0.0,False,6,200.0,USSR/Russia,Defense
 1960-10-10 14:27:49,1960-F12,C,Molniya  Fairing,878.0,0.3,0.7,0.0,False,6,250.0,USSR/Russia,Defense
 1960-10-10 14:27:49,1960-F12,C,Molniya  Fairing,878.0,0.3,0.7,0.0,False,6,250.0,USSR/Russia,Defense
-1960-10-10 14:27:49,1960-F12,P,AMS,480.0,0.8,0.4,0.0,False,6,200.0,USSR/Russia,Defense
+1960-10-10 14:27:49,1960-F12,P,AMS,0.0,0.8,0.4,480.0,False,6,200.0,USSR/Russia,Defense
 1960-10-10 14:27:49,1960-F12,S0,8K74B,850.0,0.3,0.7,0.0,False,2,75.0,USSR/Russia,Defense
 1960-10-10 14:27:49,1960-F12,S0,8K74D,850.0,0.3,0.7,0.0,False,2,75.0,USSR/Russia,Defense
 1960-10-10 14:27:49,1960-F12,S0,8K74G,850.0,0.3,0.7,0.0,False,2,75.0,USSR/Russia,Defense
@@ -312,15 +312,15 @@ Date,COSPAR_ID,Category,Object_Name,Ablatable_Mass,Ablation_Degree,Percent_Alumi
 1960-10-10 14:27:49,1960-F12,S1,8K74A,7000.0,0.3,0.7,0.0,False,6,200.0,USSR/Russia,Defense
 1960-10-10 14:27:49,1960-F12,S2,Molniya No. L1-4M Blok-I,2350.0,0.65,0.7,0.0,False,6,200.0,USSR/Russia,Defense
 1960-10-10 14:27:49,1960-F12,S3,Blok-L No. L1-4M,1160.0,0.65,0.7,6140.0,False,6,200.0,USSR/Russia,Defense
-1960-10-11 20:33:28,1960-F13,P,Samos 1 F-1,166.0,0.8,0.4,0.0,False,6,200.0,USA,Defense
+1960-10-11 20:33:28,1960-F13,P,Samos 1 F-1,0.0,0.8,0.4,166.0,False,6,200.0,USA,Defense
 1960-10-11 20:33:28,1960-F13,S0,Atlas Booster,3400.0,0.3,0.7,0.0,False,6,120.0,USA,Defense
 1960-10-11 20:33:28,1960-F13,S1,Atlas D 57D,3400.0,0.3,0.7,0.0,False,6,173.0,USA,Defense
-1960-10-11 20:48:00,1960-F13,P,Samos 1,1360.0,0.8,0.4,0.0,False,6,200.0,USA,Defense
+1960-10-11 20:48:00,1960-F13,P,Samos 1,0.0,0.8,0.4,1360.0,False,6,200.0,USA,Defense
 1960-10-11 20:48:00,1960-F13,S2,Agena A 2101,400.0,0.65,0.7,3400.0,False,6,200.0,USA,Defense
 1960-10-14 13:51:03,1960-F14,C,BOZ,300.0,0.8,0.4,0.0,False,6,100.0,USSR/Russia,Defense
 1960-10-14 13:51:03,1960-F14,C,Molniya  Fairing,878.0,0.3,0.7,0.0,False,6,250.0,USSR/Russia,Defense
 1960-10-14 13:51:03,1960-F14,C,Molniya  Fairing,878.0,0.3,0.7,0.0,False,6,250.0,USSR/Russia,Defense
-1960-10-14 13:51:03,1960-F14,P,AMS,480.0,0.8,0.4,0.0,False,6,100.0,USSR/Russia,Defense
+1960-10-14 13:51:03,1960-F14,P,AMS,0.0,0.8,0.4,480.0,False,6,100.0,USSR/Russia,Defense
 1960-10-14 13:51:03,1960-F14,S0,8K74B,850.0,0.3,0.7,0.0,False,2,75.0,USSR/Russia,Defense
 1960-10-14 13:51:03,1960-F14,S0,8K74D,850.0,0.3,0.7,0.0,False,2,75.0,USSR/Russia,Defense
 1960-10-14 13:51:03,1960-F14,S0,8K74G,850.0,0.3,0.7,0.0,False,2,75.0,USSR/Russia,Defense
@@ -345,8 +345,8 @@ Date,COSPAR_ID,Category,Object_Name,Ablatable_Mass,Ablation_Degree,Percent_Alumi
 1960-11-30 19:50:00,1960-F16,C,Ablestar Fairing,878.0,0.3,0.7,0.0,False,6,200.0,USA,Defense
 1960-11-30 19:50:00,1960-F16,C,Transit 3A despin weight,0.0,0.8,0.4,0.0,False,6,100.0,USA,Defense
 1960-11-30 19:50:00,1960-F16,C,Transit 3A despin weight,0.0,0.8,0.4,0.0,False,6,100.0,USA,Defense
-1960-11-30 19:50:00,1960-F16,P,SR 2,18.0,0.8,0.4,0.0,False,6,100.0,USA,Defense
-1960-11-30 19:50:00,1960-F16,P,Transit III-A,92.0,0.8,0.4,0.0,False,6,100.0,USA,Defense
+1960-11-30 19:50:00,1960-F16,P,SR 2,0.0,0.8,0.4,18.0,False,6,100.0,USA,Defense
+1960-11-30 19:50:00,1960-F16,P,Transit III-A,0.0,0.8,0.4,92.0,False,6,100.0,USA,Defense
 1960-11-30 19:50:00,1960-F16,S1,Thor DM-18A  283,3125.0,0.3,0.7,0.0,False,6,200.0,USA,Defense
 1960-11-30 19:50:00,1960-F16,S2,Ablestar 006,599.0,0.65,0.7,3901.0,False,6,100.0,USA,Defense
 1960-12-01 07:30:04,1960-017,C,Vostok Fairing,878.0,0.3,0.7,0.0,False,6,120.0,USSR/Russia,Defense
@@ -444,9 +444,9 @@ Date,COSPAR_ID,Category,Object_Name,Ablatable_Mass,Ablation_Degree,Percent_Alumi
 1961-03-30 00:00:00,1961-005,C,Star 12,10.0,0.8,0.4,0.0,False,6,734.0,USA,Defense
 1961-03-30 00:00:00,1961-007,S2,Ablestar 007,795.0,0.65,0.7,0.0,False,6,1002.0,USA,Defense
 1961-03-30 20:34:43,1961-F02,C,Star 12,10.0,0.8,0.4,0.0,False,6,200.0,USA,Defense
-1961-03-30 20:34:43,1961-F02,P,Discoverer 22,130.0,0.8,0.4,0.0,False,6,200.0,USA,Defense
-1961-03-30 20:34:43,1961-F02,P,SOCTOP 5,5.0,0.8,0.4,0.0,False,6,200.0,USA,Defense
-1961-03-30 20:34:43,1961-F02,P,SRV 509,157.0,0.8,0.4,0.0,False,6,200.0,USA,Defense
+1961-03-30 20:34:43,1961-F02,P,Discoverer 22,0.0,0.8,0.4,130.0,False,6,200.0,USA,Defense
+1961-03-30 20:34:43,1961-F02,P,SOCTOP 5,0.0,0.8,0.4,5.0,False,6,200.0,USA,Defense
+1961-03-30 20:34:43,1961-F02,P,SRV 509,0.0,0.8,0.4,157.0,False,6,200.0,USA,Defense
 1961-03-30 20:34:43,1961-F02,S1,Thor DM-21 300,3125.0,0.3,0.7,0.0,False,6,150.0,USA,Defense
 1961-03-30 20:34:43,1961-F02,S2,Agena B 1105,750.0,0.65,0.7,6250.0,False,6,200.0,USA,Defense
 1961-04-02 00:00:00,1960-018,S2,Agena B 1103,885.0,0.65,0.7,0.0,False,6,665.0,USA,Defense
@@ -467,7 +467,7 @@ Date,COSPAR_ID,Category,Object_Name,Ablatable_Mass,Ablation_Degree,Percent_Alumi
 1961-04-27 14:16:38,1961-013,S2,Cluster Stage 2,231.0,0.65,0.7,0.0,False,6,442.0,USA,Government
 1961-04-27 14:16:38,1961-013,S3,Cluster Stage 3,63.0,0.65,0.7,0.0,False,6,442.0,USA,Government
 1961-05-24 19:48:05,1961-F04,C,Juno II Fairing,1756.0,0.3,0.7,0.0,False,6,442.0,USA,Government
-1961-05-24 19:48:05,1961-F04,P,NASA S-45A,34.0,0.8,0.4,0.0,False,6,444.0,USA,Government
+1961-05-24 19:48:05,1961-F04,P,NASA S-45A,0.0,0.8,0.4,34.0,False,6,444.0,USA,Government
 1961-05-24 19:48:05,1961-F04,S1,Jupiter AM-19G,5443.0,0.3,0.7,0.0,False,6,442.0,USA,Government
 1961-05-24 19:48:05,1961-F04,S2,Cluster Stage 2,231.0,0.65,0.7,231.0,False,6,442.0,USA,Government
 1961-05-24 19:48:05,1961-F04,S3,Cluster Stage 3,63.0,0.65,0.7,63.0,False,6,442.0,USA,Government
@@ -475,8 +475,8 @@ Date,COSPAR_ID,Category,Object_Name,Ablatable_Mass,Ablation_Degree,Percent_Alumi
 1961-06-01 00:00:00,1959-004,C,Clamp band half,0.0,0.8,0.4,0.0,False,6,42327.0,USA,Government
 1961-06-01 00:00:00,1959-004,C,Clamp band half,0.0,0.8,0.4,0.0,False,6,42327.0,USA,Government
 1961-06-08 21:16:00,1961-F05,C,Star 12,10.0,0.8,0.4,0.0,False,6,200.0,USA,Defense
-1961-06-08 21:16:00,1961-F05,P,Discoverer 24,140.0,0.8,0.4,0.0,False,6,200.0,USA,Defense
-1961-06-08 21:16:00,1961-F05,P,SRV 541,157.0,0.8,0.4,0.0,False,6,200.0,USA,Defense
+1961-06-08 21:16:00,1961-F05,P,Discoverer 24,0.0,0.8,0.4,140.0,False,6,200.0,USA,Defense
+1961-06-08 21:16:00,1961-F05,P,SRV 541,0.0,0.8,0.4,157.0,False,6,200.0,USA,Defense
 1961-06-08 21:16:00,1961-F05,S1,Thor DM-21 302,3125.0,0.3,0.7,0.0,False,6,150.0,USA,Defense
 1961-06-08 21:16:00,1961-F05,S2,Agena B 1108,750.0,0.65,0.7,6250.0,False,6,200.0,USA,Defense
 1961-06-16 23:02:52,1961-014,S1,Thor DM-21 303,3125.0,0.3,0.7,0.0,False,6,150.0,USA,Defense
@@ -489,7 +489,7 @@ Date,COSPAR_ID,Category,Object_Name,Ablatable_Mass,Ablation_Degree,Percent_Alumi
 1961-06-30 00:00:00,1960-005,C,Korabl'-Sputnik part,0.0,0.8,0.4,0.0,False,6,667.0,USSR/Russia,Government
 1961-06-30 17:09:00,1961-F06,C,Altair Fairing 25.7+13,878.0,0.3,0.7,0.0,False,6,172.0,USA,Government
 1961-06-30 17:09:00,1961-F06,C,Altair Fairing 25.7+13,878.0,0.3,0.7,0.0,False,6,172.0,USA,Government
-1961-06-30 17:09:00,1961-F06,P,NASA S-55,62.0,0.8,0.4,0.0,False,6,172.0,USA,Government
+1961-06-30 17:09:00,1961-F06,P,NASA S-55,0.0,0.8,0.4,62.0,False,6,172.0,USA,Government
 1961-06-30 17:09:00,1961-F06,S1,Algol 1B-10,1200.0,0.3,0.7,0.0,False,2,77.0,USA,Government
 1961-06-30 17:09:00,1961-F06,S2,Castor 1E5-326,783.0,0.65,0.7,0.0,False,6,172.0,USA,Government
 1961-06-30 17:09:00,1961-F06,S3,Antares X-254 F-15,240.0,0.65,0.7,960.0,False,6,172.0,USA,Government
@@ -507,10 +507,10 @@ Date,COSPAR_ID,Category,Object_Name,Ablatable_Mass,Ablation_Degree,Percent_Alumi
 1961-07-12 15:11:46,1961-018,S1,Atlas D 97D,3400.0,0.3,0.7,0.0,False,6,180.0,USA,Defense
 1961-07-25 21:00:00,1961-018,C,Midas  Fairing,50.0,0.3,0.7,0.0,False,6,2984.0,USA,Defense
 1961-08-04 00:01:00,1961-F08,C,Star 12,10.0,0.8,0.4,0.0,False,6,200.0,USA,Defense
-1961-08-04 00:01:00,1961-F08,P,Discoverer 28,140.0,0.8,0.4,0.0,False,6,200.0,USA,Defense
-1961-08-04 00:01:00,1961-F08,P,SOCTOP 8,5.0,0.8,0.4,0.0,False,6,200.0,USA,Defense
-1961-08-04 00:01:00,1961-F08,P,SRV 512,157.0,0.8,0.4,0.0,False,6,200.0,USA,Defense
-1961-08-04 00:01:00,1961-F08,P,TAKI,5.0,0.8,0.4,0.0,False,6,200.0,USA,Defense
+1961-08-04 00:01:00,1961-F08,P,Discoverer 28,0.0,0.8,0.4,140.0,False,6,200.0,USA,Defense
+1961-08-04 00:01:00,1961-F08,P,SOCTOP 8,0.0,0.8,0.4,5.0,False,6,200.0,USA,Defense
+1961-08-04 00:01:00,1961-F08,P,SRV 512,0.0,0.8,0.4,157.0,False,6,200.0,USA,Defense
+1961-08-04 00:01:00,1961-F08,P,TAKI,0.0,0.8,0.4,5.0,False,6,200.0,USA,Defense
 1961-08-04 00:01:00,1961-F08,S1,Thor DM-21 309,3125.0,0.3,0.7,0.0,False,6,150.0,USA,Defense
 1961-08-04 00:01:00,1961-F08,S2,Agena B 1111,750.0,0.65,0.7,6250.0,False,6,200.0,USA,Defense
 1961-08-06 06:00:00,1961-019,C,Vostok Fairing,878.0,0.3,0.7,0.0,False,6,120.0,USSR/Russia,Defense
@@ -562,8 +562,8 @@ Date,COSPAR_ID,Category,Object_Name,Ablatable_Mass,Ablation_Degree,Percent_Alumi
 1961-10-21 13:53:03,1961-028,S0,Atlas Booster,3400.0,0.3,0.7,0.0,False,6,120.0,USA,Defense
 1961-10-21 13:53:03,1961-028,S1,Atlas D 105D,3400.0,0.3,0.7,0.0,False,6,180.0,USA,Defense
 1961-10-23 19:23:00,1961-F10,C,Star 12,10.0,0.8,0.4,0.0,False,6,420.0,USA,Defense
-1961-10-23 19:23:00,1961-F10,P,Discoverer 33,130.0,0.8,0.4,0.0,False,6,420.0,USA,Defense
-1961-10-23 19:23:00,1961-F10,P,SRV 513,157.0,0.8,0.4,0.0,False,6,420.0,USA,Defense
+1961-10-23 19:23:00,1961-F10,P,Discoverer 33,0.0,0.8,0.4,130.0,False,6,420.0,USA,Defense
+1961-10-23 19:23:00,1961-F10,P,SRV 513,0.0,0.8,0.4,157.0,False,6,420.0,USA,Defense
 1961-10-23 19:23:00,1961-F10,S1,Thor DM-21 329,3125.0,0.3,0.7,0.0,False,6,150.0,USA,Defense
 1961-10-23 19:23:00,1961-F10,S2,Agena B 1116,750.0,0.65,0.7,6250.0,False,6,420.0,USA,Defense
 1961-10-26 00:00:00,1961-026,S2,Agena B 1114,1085.0,0.65,0.7,0.0,False,6,403.0,USA,Defense
@@ -596,7 +596,7 @@ Date,COSPAR_ID,Category,Object_Name,Ablatable_Mass,Ablation_Degree,Percent_Alumi
 1961-12-11 09:39:02,1961-F14,C,11S512 Fairing,878.0,0.3,0.7,0.0,False,6,120.0,USSR/Russia,Defense
 1961-12-11 09:39:02,1961-F14,C,11S512 Fairing,878.0,0.3,0.7,0.0,False,6,120.0,USSR/Russia,Defense
 1961-12-11 09:39:02,1961-F14,C,Priborniy otsek,2600.0,0.8,0.4,0.0,False,6,200.0,USSR/Russia,Government
-1961-12-11 09:39:02,1961-F14,P,Kosmos,2100.0,0.8,0.4,0.0,False,6,200.0,USSR/Russia,Government
+1961-12-11 09:39:02,1961-F14,P,Kosmos,0.0,0.8,0.4,2100.0,False,6,200.0,USSR/Russia,Government
 1961-12-11 09:39:02,1961-F14,S0,8K71B,850.0,0.3,0.7,0.0,False,2,60.0,USSR/Russia,Defense
 1961-12-11 09:39:02,1961-F14,S0,8K71D,850.0,0.3,0.7,0.0,False,2,60.0,USSR/Russia,Defense
 1961-12-11 09:39:02,1961-F14,S0,8K71G,850.0,0.3,0.7,0.0,False,2,60.0,USSR/Russia,Defense
@@ -609,7 +609,7 @@ Date,COSPAR_ID,Category,Object_Name,Ablatable_Mass,Ablation_Degree,Percent_Alumi
 1961-12-19 00:00:00,1961-034,C,Discoverer XXXVI inst cover,1.0,0.8,0.4,0.0,False,6,434.0,USA,Defense
 1961-12-21 12:30:00,1961-F15,C,11K63 Fairing,878.0,0.3,0.7,0.0,False,6,100.0,USSR/Russia,Defense
 1961-12-21 12:30:00,1961-F15,C,11K63 Fairing,878.0,0.3,0.7,0.0,False,6,100.0,USSR/Russia,Defense
-1961-12-21 12:30:00,1961-F15,P,Kosmos,160.0,0.8,0.4,0.0,False,6,200.0,USSR/Russia,Defense
+1961-12-21 12:30:00,1961-F15,P,Kosmos,0.0,0.8,0.4,160.0,False,6,200.0,USSR/Russia,Defense
 1961-12-21 12:30:00,1961-F15,S1,R-12,4810.0,0.3,0.7,0.0,False,2,100.0,USSR/Russia,Defense
 1961-12-21 12:30:00,1961-F15,S2,Kosmos 63S1 No. 2LK Stage 2,840.0,0.65,0.7,7760.0,False,6,200.0,USSR/Russia,Defense
 1961-12-22 19:12:33,1961-035,S0,Atlas Booster,3400.0,0.3,0.7,0.0,False,6,120.0,USA,Defense
@@ -618,19 +618,19 @@ Date,COSPAR_ID,Category,Object_Name,Ablatable_Mass,Ablation_Degree,Percent_Alumi
 1962-01-01 00:00:00,1961-004,C,S-56A Canister part?,0.0,0.8,0.4,0.0,False,6,2580.0,USA,Government
 1962-01-09 00:00:00,1961-035,P,Samos 5,800.0,0.8,0.4,0.0,False,6,275.0,USA,Defense
 1962-01-13 21:41:02,1962-F01,C,Star 12,10.0,0.8,0.4,0.0,False,6,200.0,USA,Defense
-1962-01-13 21:41:02,1962-F01,P,Discoverer 37,290.0,0.8,0.4,0.0,False,6,200.0,USA,Defense
-1962-01-13 21:41:02,1962-F01,P,LPARL Aurora 1962a,20.0,0.8,0.4,0.0,False,6,200.0,USA,Defense
-1962-01-13 21:41:02,1962-F01,P,SRV 571,157.0,0.8,0.4,0.0,False,6,200.0,USA,Defense
-1962-01-13 21:41:02,1962-F01,P,TAKI,5.0,0.8,0.4,0.0,False,6,200.0,USA,Defense
+1962-01-13 21:41:02,1962-F01,P,Discoverer 37,0.0,0.8,0.4,290.0,False,6,200.0,USA,Defense
+1962-01-13 21:41:02,1962-F01,P,LPARL Aurora 1962a,0.0,0.8,0.4,20.0,False,6,200.0,USA,Defense
+1962-01-13 21:41:02,1962-F01,P,SRV 571,0.0,0.8,0.4,157.0,False,6,200.0,USA,Defense
+1962-01-13 21:41:02,1962-F01,P,TAKI,0.0,0.8,0.4,5.0,False,6,200.0,USA,Defense
 1962-01-13 21:41:02,1962-F01,S1,Thor DM-21 327,3125.0,0.3,0.7,0.0,False,6,150.0,USA,Defense
 1962-01-13 21:41:02,1962-F01,S2,Agena B 1120,750.0,0.65,0.7,6250.0,False,6,200.0,USA,Defense
 1962-01-24 09:30:00,1962-F02,C,Ablestar Fairing,878.0,0.3,0.7,0.0,False,6,150.0,USA,Defense
 1962-01-24 09:30:00,1962-F02,C,Ablestar Fairing,878.0,0.3,0.7,0.0,False,6,150.0,USA,Defense
-1962-01-24 09:30:00,1962-F02,P,Injun II,25.0,0.8,0.4,0.0,False,6,150.0,USA,Defense
-1962-01-24 09:30:00,1962-F02,P,Lofti II,27.0,0.8,0.4,0.0,False,6,150.0,USA,Defense
-1962-01-24 09:30:00,1962-F02,P,SECOR,16.0,0.8,0.4,0.0,False,6,150.0,USA,Defense
-1962-01-24 09:30:00,1962-F02,P,SR 4,25.0,0.8,0.4,0.0,False,6,150.0,USA,Defense
-1962-01-24 09:30:00,1962-F02,P,SURCAL 1,4.0,0.8,0.4,0.0,False,6,150.0,USA,Defense
+1962-01-24 09:30:00,1962-F02,P,Injun II,0.0,0.8,0.4,25.0,False,6,150.0,USA,Defense
+1962-01-24 09:30:00,1962-F02,P,Lofti II,0.0,0.8,0.4,27.0,False,6,150.0,USA,Defense
+1962-01-24 09:30:00,1962-F02,P,SECOR,0.0,0.8,0.4,16.0,False,6,150.0,USA,Defense
+1962-01-24 09:30:00,1962-F02,P,SR 4,0.0,0.8,0.4,25.0,False,6,150.0,USA,Defense
+1962-01-24 09:30:00,1962-F02,P,SURCAL 1,0.0,0.8,0.4,4.0,False,6,150.0,USA,Defense
 1962-01-24 09:30:00,1962-F02,S1,Thor DM-18A  311,3125.0,0.3,0.7,0.0,False,6,150.0,USA,Defense
 1962-01-24 09:30:00,1962-F02,S2,Ablestar 010,599.0,0.65,0.7,3901.0,False,6,150.0,USA,Defense
 1962-01-26 20:30:11,1962-001,C,Ranger Nose Cone,0.0,0.8,0.4,0.0,False,6,300.0,USA,Government
@@ -702,7 +702,7 @@ Date,COSPAR_ID,Category,Object_Name,Ablatable_Mass,Ablation_Degree,Percent_Alumi
 1962-04-26 10:49:00,1962-F03,S1,Algol 1D-29,1200.0,0.3,0.7,0.0,False,2,75.0,USA,Government
 1962-04-26 10:49:00,1962-F03,S2,Castor 1E5-147,783.0,0.65,0.7,0.0,False,6,100.0,USA,Government
 1962-04-26 10:49:00,1962-F03,S3,Antares 2A1-16,107.0,0.65,0.7,0.0,False,6,100.0,USA,Government
-1962-04-26 10:51:00,1962-F03,P,SR 4B,26.0,0.8,0.4,0.0,False,6,100.0,USA,Defense
+1962-04-26 10:51:00,1962-F03,P,SR 4B,0.0,0.8,0.4,26.0,False,6,100.0,USA,Defense
 1962-04-26 10:51:00,1962-F03,S4,Scout S111 Stage 4,24.0,0.65,0.7,276.0,False,6,100.0,USA,Government
 1962-04-26 18:00:16,1962-015,C,Delta Low Drag Fairing,878.0,0.3,0.7,0.0,False,6,200.0,USA,Government
 1962-04-26 18:00:16,1962-015,C,Delta Low Drag Fairing,878.0,0.3,0.7,0.0,False,6,200.0,USA,Government
@@ -721,7 +721,7 @@ Date,COSPAR_ID,Category,Object_Name,Ablatable_Mass,Ablation_Degree,Percent_Alumi
 1962-05-05 02:45:00,1962-017,P,SRV 586,157.0,0.0,0.4,0.0,False,1,441.0,USA,Defense
 1962-05-10 12:06:00,1962-F04,C,Ablestar Fairing,878.0,0.3,0.7,0.0,False,6,200.0,USA,Defense
 1962-05-10 12:06:00,1962-F04,C,Ablestar Fairing,878.0,0.3,0.7,0.0,False,6,200.0,USA,Defense
-1962-05-10 12:06:00,1962-F04,P,ANNA 1A,161.0,0.8,0.4,0.0,False,6,200.0,USA,Defense
+1962-05-10 12:06:00,1962-F04,P,ANNA 1A,0.0,0.8,0.4,161.0,False,6,200.0,USA,Defense
 1962-05-10 12:06:00,1962-F04,S1,Thor DM-18A  314,3125.0,0.3,0.7,0.0,False,6,200.0,USA,Defense
 1962-05-10 12:06:00,1962-F04,S2,Ablestar 011,599.0,0.65,0.7,3901.0,False,6,200.0,USA,Defense
 1962-05-15 19:36:00,1962-018,S1,Thor DM-21 334,3125.0,0.3,0.7,0.0,False,6,150.0,USA,Defense
@@ -1065,8 +1065,8 @@ Date,COSPAR_ID,Category,Object_Name,Ablatable_Mass,Ablation_Degree,Percent_Alumi
 1963-02-03 09:29:14,1963-F01,C,Molniya Fairing,878.0,0.3,0.7,0.0,False,6,250.0,USSR/Russia,Defense
 1963-02-03 09:29:14,1963-F01,C,Otdelyaemiy otsek No. 1,50.0,0.8,0.4,0.0,False,6,200.0,USSR/Russia,Defense
 1963-02-03 09:29:14,1963-F01,C,Otdelyaemiy otsek No. 2,50.0,0.8,0.4,0.0,False,6,200.0,USSR/Russia,Defense
-1963-02-03 09:29:14,1963-F01,P,ALS,82.0,0.8,0.4,0.0,False,6,200.0,USSR/Russia,Defense
-1963-02-03 09:29:14,1963-F01,P,AMS,500.0,0.8,0.4,788.0,False,6,200.0,USSR/Russia,Defense
+1963-02-03 09:29:14,1963-F01,P,ALS,0.0,0.8,0.4,82.0,False,6,200.0,USSR/Russia,Defense
+1963-02-03 09:29:14,1963-F01,P,AMS,0.0,0.8,0.4,1288.0,False,6,200.0,USSR/Russia,Defense
 1963-02-03 09:29:14,1963-F01,S0,8K74B,850.0,0.3,0.7,0.0,False,2,75.0,USSR/Russia,Defense
 1963-02-03 09:29:14,1963-F01,S0,8K74D,850.0,0.3,0.7,0.0,False,2,75.0,USSR/Russia,Defense
 1963-02-03 09:29:14,1963-F01,S0,8K74G,850.0,0.3,0.7,0.0,False,2,75.0,USSR/Russia,Defense
@@ -1087,9 +1087,9 @@ Date,COSPAR_ID,Category,Object_Name,Ablatable_Mass,Ablation_Degree,Percent_Alumi
 1963-03-18 21:13:01,1963-F03,S1,Thor DSV-2C 360,3175.0,0.3,0.7,0.0,False,6,150.0,USA,Defense
 1963-03-18 21:30:00,1963-F03,C,Star 12,10.0,0.8,0.4,0.0,False,6,183.0,USA,Defense
 1963-03-18 21:30:00,1963-F03,C,TE-345,6.0,0.8,0.4,0.0,False,6,183.0,USA,Defense
-1963-03-18 21:30:00,1963-F03,P,Hitchhiker I,106.0,0.8,0.4,0.0,False,6,183.0,USA,Defense
-1963-03-18 21:30:00,1963-F03,P,OPS 0627,510.0,0.8,0.4,0.0,False,6,183.0,USA,Defense
-1963-03-18 21:30:00,1963-F03,P,SRV 612,157.0,0.8,0.4,0.0,False,6,183.0,USA,Defense
+1963-03-18 21:30:00,1963-F03,P,Hitchhiker I,0.0,0.8,0.4,106.0,False,6,183.0,USA,Defense
+1963-03-18 21:30:00,1963-F03,P,OPS 0627,0.0,0.8,0.4,510.0,False,6,183.0,USA,Defense
+1963-03-18 21:30:00,1963-F03,P,SRV 612,0.0,0.8,0.4,157.0,False,6,183.0,USA,Defense
 1963-03-18 21:30:00,1963-F03,S2,Agena D 1164,750.0,0.65,0.7,6250.0,False,6,183.0,USA,Defense
 1963-03-21 08:30:01,1963-006,C,11S512 Fairing,878.0,0.3,0.7,0.0,False,6,120.0,USSR/Russia,Defense
 1963-03-21 08:30:01,1963-006,C,11S512 Fairing,878.0,0.3,0.7,0.0,False,6,120.0,USSR/Russia,Defense
@@ -1138,8 +1138,8 @@ Date,COSPAR_ID,Category,Object_Name,Ablatable_Mass,Ablation_Degree,Percent_Alumi
 1963-04-22 08:30:00,1963-011,S1,8K74A,7000.0,0.3,0.7,0.0,False,6,120.0,USSR/Russia,Defense
 1963-04-26 00:00:00,1963-007A,S2,Agena D 1160,965.0,0.65,0.7,0.0,False,6,409.0,USA,Defense
 1963-04-26 20:12:57,1963-F07,C,Star 12,10.0,0.8,0.4,0.0,False,6,618.0,USA,Defense
-1963-04-26 20:12:57,1963-F07,P,OPS 1008,352.0,0.8,0.4,0.0,False,6,618.0,USA,Defense
-1963-04-26 20:12:57,1963-F07,P,SRV 605,157.0,0.8,0.4,0.0,False,6,618.0,USA,Defense
+1963-04-26 20:12:57,1963-F07,P,OPS 1008,0.0,0.8,0.4,352.0,False,6,618.0,USA,Defense
+1963-04-26 20:12:57,1963-F07,P,SRV 605,0.0,0.8,0.4,157.0,False,6,618.0,USA,Defense
 1963-04-26 20:12:57,1963-F07,S1,Thor DM-21 372,3125.0,0.3,0.7,0.0,False,6,150.0,USA,Defense
 1963-04-26 20:12:57,1963-F07,S2,Agena D 1411,750.0,0.65,0.7,6250.0,False,6,618.0,USA,Defense
 1963-04-27 00:00:00,1963-011,C,Priborniy otsek,2600.0,0.8,0.4,0.0,False,6,170.0,USSR/Russia,Defense
@@ -1302,7 +1302,7 @@ Date,COSPAR_ID,Category,Object_Name,Ablatable_Mass,Ablation_Degree,Percent_Alumi
 1963-09-27 11:17:49,1963-F12,C,Altair Fairing 25.7-10 C-1,878.0,0.3,0.7,0.0,False,6,280.0,USA,Government
 1963-09-27 11:17:49,1963-F12,C,P35 despin weight,0.0,0.8,0.4,0.0,False,6,730.0,USA,Defense
 1963-09-27 11:17:49,1963-F12,C,P35 despin weight,0.0,0.8,0.4,0.0,False,6,730.0,USA,Defense
-1963-09-27 11:17:49,1963-F12,P,OPS 1610,50.0,0.8,0.4,0.0,False,6,730.0,USA,Defense
+1963-09-27 11:17:49,1963-F12,P,OPS 1610,0.0,0.8,0.4,50.0,False,6,730.0,USA,Defense
 1963-09-27 11:17:49,1963-F12,S1,Algol 1D-33,1200.0,0.3,0.7,0.0,False,2,75.0,USA,Government
 1963-09-27 11:17:49,1963-F12,S2,Castor 1E5-160,783.0,0.65,0.7,0.0,False,6,280.0,USA,Government
 1963-09-27 11:17:49,1963-F12,S3,Antares 2A4-118,107.0,0.65,0.7,0.0,False,6,730.0,USA,Government
@@ -1325,7 +1325,7 @@ Date,COSPAR_ID,Category,Object_Name,Ablatable_Mass,Ablation_Degree,Percent_Alumi
 1963-10-18 09:29:58,1963-040,S1,8K74A,7000.0,0.3,0.7,0.0,False,6,120.0,USSR/Russia,Defense
 1963-10-24 04:30:00,1963-F13,C,11K63 Fairing,878.0,0.3,0.7,0.0,False,6,100.0,USSR/Russia,Defense
 1963-10-24 04:30:00,1963-F13,C,11K63 Fairing,878.0,0.3,0.7,0.0,False,6,100.0,USSR/Russia,Defense
-1963-10-24 04:30:00,1963-F13,P,Kosmos,220.0,0.8,0.4,0.0,False,6,250.0,USSR/Russia,Defense
+1963-10-24 04:30:00,1963-F13,P,Kosmos,0.0,0.8,0.4,220.0,False,6,250.0,USSR/Russia,Defense
 1963-10-24 04:30:00,1963-F13,S1,R-12,4810.0,0.3,0.7,0.0,False,2,100.0,USSR/Russia,Defense
 1963-10-24 04:30:00,1963-F13,S2,Kosmos 63S1 (N17) Stage 2,840.0,0.65,0.7,7760.0,False,6,250.0,USSR/Russia,Defense
 1963-10-25 18:59:27,1963-041,S0,Atlas Booster,3400.0,0.3,0.7,0.0,False,6,130.0,USA,Defense
@@ -1381,7 +1381,7 @@ Date,COSPAR_ID,Category,Object_Name,Ablatable_Mass,Ablation_Degree,Percent_Alumi
 1963-11-28 09:19:59,1963-F15,C,11S512 Fairing,878.0,0.3,0.7,0.0,False,6,120.0,USSR/Russia,Defense
 1963-11-28 09:19:59,1963-F15,C,11S512 Fairing,878.0,0.3,0.7,0.0,False,6,120.0,USSR/Russia,Defense
 1963-11-28 09:19:59,1963-F15,C,Priborniy otsek,2600.0,0.8,0.4,0.0,False,6,205.0,USSR/Russia,Government
-1963-11-28 09:19:59,1963-F15,P,Kosmos,2100.0,0.8,0.4,0.0,False,6,205.0,USSR/Russia,Government
+1963-11-28 09:19:59,1963-F15,P,Kosmos,0.0,0.8,0.4,2100.0,False,6,205.0,USSR/Russia,Government
 1963-11-28 09:19:59,1963-F15,S0,8K74B,850.0,0.3,0.7,0.0,False,2,60.0,USSR/Russia,Defense
 1963-11-28 09:19:59,1963-F15,S0,8K74D,850.0,0.3,0.7,0.0,False,2,60.0,USSR/Russia,Defense
 1963-11-28 09:19:59,1963-F15,S0,8K74G,850.0,0.3,0.7,0.0,False,2,60.0,USSR/Russia,Defense
@@ -1456,8 +1456,8 @@ Date,COSPAR_ID,Category,Object_Name,Ablatable_Mass,Ablation_Degree,Percent_Alumi
 1964-02-19 05:47:40,1964-F01,C,BOZ,300.0,0.8,0.4,0.0,False,6,200.0,USSR/Russia,Defense
 1964-02-19 05:47:40,1964-F01,C,Molniya Fairing,878.0,0.3,0.7,0.0,False,6,250.0,USSR/Russia,Defense
 1964-02-19 05:47:40,1964-F01,C,Molniya Fairing,878.0,0.3,0.7,0.0,False,6,250.0,USSR/Russia,Defense
-1964-02-19 05:47:40,1964-F01,P,Spuskaemiy apparat,400.0,0.8,0.4,0.0,False,6,200.0,USSR/Russia,Government
-1964-02-19 05:47:40,1964-F01,P,Zond,480.0,0.8,0.4,10.0,False,6,200.0,USSR/Russia,Government
+1964-02-19 05:47:40,1964-F01,P,Spuskaemiy apparat,0.0,0.8,0.4,400.0,False,6,200.0,USSR/Russia,Government
+1964-02-19 05:47:40,1964-F01,P,Zond,0.0,0.8,0.4,490.0,False,6,200.0,USSR/Russia,Government
 1964-02-19 05:47:40,1964-F01,S0,11S59B,850.0,0.3,0.7,0.0,False,2,75.0,USSR/Russia,Defense
 1964-02-19 05:47:40,1964-F01,S0,11S59D,850.0,0.3,0.7,0.0,False,2,75.0,USSR/Russia,Defense
 1964-02-19 05:47:40,1964-F01,S0,11S59G,850.0,0.3,0.7,0.0,False,2,75.0,USSR/Russia,Defense
@@ -1497,15 +1497,15 @@ Date,COSPAR_ID,Category,Object_Name,Ablatable_Mass,Ablation_Degree,Percent_Alumi
 1964-03-19 11:13:41,1964-F02,S1,Thor DM-21 391,3125.0,0.3,0.7,0.0,False,6,150.0,USA,Government
 1964-03-19 11:42:00,1964-F02,S2,Delta 24,600.0,0.65,0.7,0.0,False,6,1200.0,USA,Government
 1964-03-19 11:45:00,1964-F02,C,BE-A despin weight,0.0,0.8,0.4,0.0,False,6,1200.0,USA,Government
-1964-03-19 11:45:00,1964-F02,P,Beacon Explorer A,54.0,0.8,0.4,0.0,False,6,1200.0,USA,Government
+1964-03-19 11:45:00,1964-F02,P,Beacon Explorer A,0.0,0.8,0.4,54.0,False,6,1200.0,USA,Government
 1964-03-19 11:45:00,1964-F02,S3,Delta 24 Stage 3,24.0,0.65,0.7,276.0,False,6,1200.0,USA,Government
 1964-03-21 08:15:35,1964-F03,C,BOZ,300.0,0.8,0.4,0.0,False,6,200.0,USSR/Russia,Defense
 1964-03-21 08:15:35,1964-F03,C,Molniya Fairing,878.0,0.3,0.7,0.0,False,6,250.0,USSR/Russia,Defense
 1964-03-21 08:15:35,1964-F03,C,Molniya Fairing,878.0,0.3,0.7,0.0,False,6,250.0,USSR/Russia,Defense
 1964-03-21 08:15:35,1964-F03,C,Otdelyaemiy otsek No. 1,156.0,0.8,0.4,0.0,False,6,200.0,USSR/Russia,Government
 1964-03-21 08:15:35,1964-F03,C,Otdelyaemiy otsek No. 2,156.0,0.8,0.4,0.0,False,6,200.0,USSR/Russia,Government
-1964-03-21 08:15:35,1964-F03,P,ALS,104.0,0.8,0.4,0.0,False,6,200.0,USSR/Russia,Government
-1964-03-21 08:15:35,1964-F03,P,AMS,280.0,0.8,0.4,776.0,False,6,200.0,USSR/Russia,Government
+1964-03-21 08:15:35,1964-F03,P,ALS,0.0,0.8,0.4,104.0,False,6,200.0,USSR/Russia,Government
+1964-03-21 08:15:35,1964-F03,P,AMS,0.0,0.8,0.4,1056.0,False,6,200.0,USSR/Russia,Government
 1964-03-21 08:15:35,1964-F03,S0,11S59B,850.0,0.3,0.7,0.0,False,2,75.0,USSR/Russia,Defense
 1964-03-21 08:15:35,1964-F03,S0,11S59D,850.0,0.3,0.7,0.0,False,2,75.0,USSR/Russia,Defense
 1964-03-21 08:15:35,1964-F03,S0,11S59G,850.0,0.3,0.7,0.0,False,2,75.0,USSR/Russia,Defense
@@ -1517,10 +1517,10 @@ Date,COSPAR_ID,Category,Object_Name,Ablatable_Mass,Ablation_Degree,Percent_Alumi
 1964-03-24 22:32:00,1964-F04,C,Fairing,25.0,0.3,0.7,0.0,False,6,183.0,USA,Defense
 1964-03-24 22:32:00,1964-F04,C,Star 12,10.0,0.8,0.4,0.0,False,6,183.0,USA,Defense
 1964-03-24 22:32:00,1964-F04,C,Star 12,10.0,0.8,0.4,0.0,False,6,183.0,USA,Defense
-1964-03-24 22:32:00,1964-F04,P,LPARL Aurora 1964,20.0,0.8,0.4,0.0,False,6,183.0,USA,Defense
-1964-03-24 22:32:00,1964-F04,P,OPS 3467,247.0,0.8,0.4,0.0,False,6,183.0,USA,Defense
-1964-03-24 22:32:00,1964-F04,P,SRV 630,157.0,0.8,0.4,0.0,False,6,183.0,USA,Defense
-1964-03-24 22:32:00,1964-F04,P,SRV 631,157.0,0.8,0.4,0.0,False,6,183.0,USA,Defense
+1964-03-24 22:32:00,1964-F04,P,LPARL Aurora 1964,0.0,0.8,0.4,20.0,False,6,183.0,USA,Defense
+1964-03-24 22:32:00,1964-F04,P,OPS 3467,0.0,0.8,0.4,247.0,False,6,183.0,USA,Defense
+1964-03-24 22:32:00,1964-F04,P,SRV 630,0.0,0.8,0.4,157.0,False,6,183.0,USA,Defense
+1964-03-24 22:32:00,1964-F04,P,SRV 631,0.0,0.8,0.4,157.0,False,6,183.0,USA,Defense
 1964-03-24 22:32:00,1964-F04,S2,Agena D 1175,750.0,0.65,0.7,6250.0,False,6,183.0,USA,Defense
 1964-03-27 00:00:00,1963-050A,P,Kosmos-23,200.0,0.8,0.4,0.0,False,6,528.0,USSR/Russia,Government
 1964-03-27 03:24:42,1964-014,C,Molniya Fairing,878.0,0.3,0.7,0.0,False,6,250.0,USSR/Russia,Defense
@@ -1574,8 +1574,8 @@ Date,COSPAR_ID,Category,Object_Name,Ablatable_Mass,Ablation_Degree,Percent_Alumi
 1964-04-20 08:08:28,1964-F05,C,Molniya Fairing,878.0,0.3,0.7,0.0,False,6,250.0,USSR/Russia,Defense
 1964-04-20 08:08:28,1964-F05,C,Otdelyaemiy otsek No. 1,156.0,0.8,0.4,0.0,False,6,200.0,USSR/Russia,Government
 1964-04-20 08:08:28,1964-F05,C,Otdelyaemiy otsek No. 2,156.0,0.8,0.4,0.0,False,6,200.0,USSR/Russia,Government
-1964-04-20 08:08:28,1964-F05,P,ALS,104.0,0.8,0.4,0.0,False,6,200.0,USSR/Russia,Government
-1964-04-20 08:08:28,1964-F05,P,AMS,280.0,0.8,0.4,776.0,False,6,200.0,USSR/Russia,Government
+1964-04-20 08:08:28,1964-F05,P,ALS,0.0,0.8,0.4,104.0,False,6,200.0,USSR/Russia,Government
+1964-04-20 08:08:28,1964-F05,P,AMS,0.0,0.8,0.4,1056.0,False,6,200.0,USSR/Russia,Government
 1964-04-20 08:08:28,1964-F05,S0,11S59B,850.0,0.3,0.7,0.0,False,2,75.0,USSR/Russia,Defense
 1964-04-20 08:08:28,1964-F05,S0,11S59D,850.0,0.3,0.7,0.0,False,2,75.0,USSR/Russia,Defense
 1964-04-20 08:08:28,1964-F05,S0,11S59G,850.0,0.3,0.7,0.0,False,2,75.0,USSR/Russia,Defense
@@ -1628,7 +1628,7 @@ Date,COSPAR_ID,Category,Object_Name,Ablatable_Mass,Ablation_Degree,Percent_Alumi
 1964-06-04 03:50:55,1964-026,S2,Castor 1E5-182,783.0,0.65,0.7,0.0,False,6,280.0,USA,Government
 1964-06-04 03:50:55,1964-026,S3,Antares 2A3-146,107.0,0.65,0.7,0.0,False,6,1000.0,USA,Government
 1964-06-04 04:00:00,1964-F07,C,BOZ,300.0,0.8,0.4,0.0,False,6,50.0,USSR/Russia,Defense
-1964-06-04 04:00:00,1964-F07,P,Molniya-1 No. 2,1600.0,0.8,0.4,0.0,False,6,50.0,USSR/Russia,Government
+1964-06-04 04:00:00,1964-F07,P,Molniya-1 No. 2,0.0,0.8,0.4,1600.0,False,6,50.0,USSR/Russia,Government
 1964-06-04 04:00:00,1964-F07,S2,Molniya 8K78 (N20) Blok-I,2350.0,0.65,0.7,23150.0,False,6,50.0,USSR/Russia,Defense
 1964-06-04 04:00:00,1964-F07,S3,Blok-L No. R103-34,1160.0,0.65,0.7,6140.0,False,6,50.0,USSR/Russia,Defense
 1964-06-04 22:59:00,1964-027,S1,Thor DSV-2C 403,3175.0,0.3,0.7,0.0,False,6,150.0,USA,Defense
@@ -1679,7 +1679,7 @@ Date,COSPAR_ID,Category,Object_Name,Ablatable_Mass,Ablation_Degree,Percent_Alumi
 1964-06-30 14:04:22,1964-F09,C,Centaur insulation panel,154.0,0.8,0.4,0.0,False,6,310.0,USA,Government
 1964-06-30 14:04:22,1964-F09,S0,Atlas Booster,3400.0,0.3,0.7,0.0,False,6,257.0,USA,Government
 1964-06-30 14:04:22,1964-F09,S1,Atlas D 135D,3400.0,0.3,0.7,0.0,False,6,436.0,USA,Government
-1964-06-30 14:25:00,1964-F09,P,AC-3 Instrumentation Ring,900.0,0.8,0.4,0.0,False,6,598.0,USA,Government
+1964-06-30 14:25:00,1964-F09,P,AC-3 Instrumentation Ring,0.0,0.8,0.4,900.0,False,6,598.0,USA,Government
 1964-06-30 14:25:00,1964-F09,S2,Centaur AC-3,2000.0,0.65,0.7,13600.0,False,6,598.0,USA,Government
 1964-07-01 08:30:00,1964-033,C,Priborniy otsek,2600.0,0.8,0.4,0.0,False,6,223.0,USSR/Russia,Defense
 1964-07-01 08:40:00,1964-033A,P,Kosmos-33,2100.0,0.0,0.4,0.0,False,6,267.0,USSR/Russia,Government
@@ -1803,7 +1803,7 @@ Date,COSPAR_ID,Category,Object_Name,Ablatable_Mass,Ablation_Degree,Percent_Alumi
 1964-09-01 15:00:06,1964-F10,S1,Titan 3A-2 Stage 1,5500.0,0.3,0.7,0.0,False,2,90.0,USA,Defense
 1964-09-01 15:00:06,1964-F10,S2,Titan 3A-2 Stage 2,2650.0,0.65,0.7,0.0,False,6,160.0,USA,Defense
 1964-09-01 15:17:00,1964-F10,C,Transtage Payload Truss,148.0,0.8,0.4,0.0,False,6,160.0,USA,Defense
-1964-09-01 15:17:00,1964-F10,P,Titan 3A Fairing,1266.0,0.3,0.7,0.0,False,6,160.0,USA,Defense
+1964-09-01 15:17:00,1964-F10,P,Titan 3A Fairing,878.0,0.3,0.7,1266.0,False,6,160.0,USA,Defense
 1964-09-01 15:17:00,1964-F10,S3,Transtage 2,2000.0,0.65,0.7,10500.0,False,6,160.0,USA,Defense
 1964-09-03 00:00:00,1964-044B,S2,Vostok-2 (N19) Stage 3,1440.0,0.65,0.7,0.0,False,6,267.0,USSR/Russia,Defense
 1964-09-05 01:23:00,1964-054,C,Nimbus Clamshell Shroud?,0.0,0.8,0.4,0.0,False,6,300.0,USA,Government
@@ -1871,9 +1871,9 @@ Date,COSPAR_ID,Category,Object_Name,Ablatable_Mass,Ablation_Degree,Percent_Alumi
 1964-10-08 19:06:19,1964-F11,S1,Atlas SLV-3 7103,3000.0,0.3,0.7,0.0,False,6,180.0,USA,Defense
 1964-10-08 19:16:00,1964-F11,C,Star 12,10.0,0.8,0.4,0.0,False,6,140.0,USA,Defense
 1964-10-08 19:16:00,1964-F11,C,TE-344,2.0,0.8,0.4,0.0,False,6,140.0,USA,Defense
-1964-10-08 19:16:00,1964-F11,P,OPS 4036,2000.0,0.8,0.4,0.0,False,6,140.0,USA,Defense
-1964-10-08 19:16:00,1964-F11,P,PUNDIT III,81.0,0.8,0.4,0.0,False,6,140.0,USA,Defense
-1964-10-08 19:16:00,1964-F11,P,SRV Mission 4012,157.0,0.8,0.4,0.0,False,6,140.0,USA,Defense
+1964-10-08 19:16:00,1964-F11,P,OPS 4036,0.0,0.8,0.4,2000.0,False,6,140.0,USA,Defense
+1964-10-08 19:16:00,1964-F11,P,PUNDIT III,0.0,0.8,0.4,81.0,False,6,140.0,USA,Defense
+1964-10-08 19:16:00,1964-F11,P,SRV Mission 4012,0.0,0.8,0.4,157.0,False,6,140.0,USA,Defense
 1964-10-08 19:16:00,1964-F11,S2,Agena D 4810,750.0,0.65,0.7,6250.0,False,1,140.0,USA,Defense
 1964-10-10 00:14:00,1964-061,C,Star 12,10.0,0.8,0.4,0.0,False,6,347.0,USA,Defense
 1964-10-10 00:43:00,1964-061,P,SRV 653,157.0,0.0,0.4,0.0,False,4,429.0,USA,Defense
@@ -1914,9 +1914,9 @@ Date,COSPAR_ID,Category,Object_Name,Ablatable_Mass,Ablation_Degree,Percent_Alumi
 1964-10-23 07:30:00,1964-F12,C,Kosmos-3 Fairing,878.0,0.3,0.7,0.0,False,6,100.0,USSR/Russia,Defense
 1964-10-23 07:30:00,1964-F12,C,Kosmos-3 Fairing,878.0,0.3,0.7,0.0,False,6,100.0,USSR/Russia,Defense
 1964-10-23 07:30:00,1964-F12,S1,R-14 65S3A,5300.0,0.3,0.7,0.0,False,2,100.0,USSR/Russia,Defense
-1964-10-23 07:34:00,1964-F12,P,Kosmos,50.0,0.8,0.4,0.0,False,6,250.0,USSR/Russia,Government
-1964-10-23 07:34:00,1964-F12,P,Kosmos,50.0,0.8,0.4,0.0,False,6,250.0,USSR/Russia,Government
-1964-10-23 07:34:00,1964-F12,P,Kosmos,50.0,0.8,0.4,0.0,False,6,250.0,USSR/Russia,Government
+1964-10-23 07:34:00,1964-F12,P,Kosmos,0.0,0.8,0.4,50.0,False,6,250.0,USSR/Russia,Government
+1964-10-23 07:34:00,1964-F12,P,Kosmos,0.0,0.8,0.4,50.0,False,6,250.0,USSR/Russia,Government
+1964-10-23 07:34:00,1964-F12,P,Kosmos,0.0,0.8,0.4,50.0,False,6,250.0,USSR/Russia,Government
 1964-10-23 07:34:00,1964-F12,S2,Kosmos-3 No. 01L Stage 2,1500.0,0.65,0.7,18600.0,False,6,250.0,USSR/Russia,Defense
 1964-10-23 18:27:00,1964-068,S0,Atlas Booster,3400.0,0.3,0.7,0.0,False,6,130.0,USA,Defense
 1964-10-23 18:27:00,1964-068,S1,Atlas D 353D,3400.0,0.3,0.7,0.0,False,6,300.0,USA,Defense
@@ -2214,8 +2214,8 @@ Date,COSPAR_ID,Category,Object_Name,Ablatable_Mass,Ablation_Degree,Percent_Alumi
 1965-04-10 08:39:01,1965-F05,C,Molniya Fairing,878.0,0.3,0.7,0.0,False,6,250.0,USSR/Russia,Defense
 1965-04-10 08:39:01,1965-F05,C,Otdelyaemiy otsek No. 1,50.0,0.8,0.4,0.0,False,6,200.0,USSR/Russia,Defense
 1965-04-10 08:39:01,1965-F05,C,Otdelyaemiy otsek No. 2,50.0,0.8,0.4,0.0,False,6,200.0,USSR/Russia,Defense
-1965-04-10 08:39:01,1965-F05,P,ALS,82.0,0.8,0.4,0.0,False,6,200.0,USSR/Russia,Defense
-1965-04-10 08:39:01,1965-F05,P,[Luna-5],500.0,0.8,0.4,790.0,False,6,200.0,USSR/Russia,Defense
+1965-04-10 08:39:01,1965-F05,P,ALS,0.0,0.8,0.4,82.0,False,6,200.0,USSR/Russia,Defense
+1965-04-10 08:39:01,1965-F05,P,[Luna-5],0.0,0.8,0.4,1290.0,False,6,200.0,USSR/Russia,Defense
 1965-04-10 08:39:01,1965-F05,S0,8K74B,850.0,0.3,0.7,0.0,False,2,75.0,USSR/Russia,Defense
 1965-04-10 08:39:01,1965-F05,S0,8K74D,850.0,0.3,0.7,0.0,False,2,75.0,USSR/Russia,Defense
 1965-04-10 08:39:01,1965-F05,S0,8K74G,850.0,0.3,0.7,0.0,False,2,75.0,USSR/Russia,Defense
@@ -2394,7 +2394,7 @@ Date,COSPAR_ID,Category,Object_Name,Ablatable_Mass,Ablation_Degree,Percent_Alumi
 1965-07-13 11:00:00,1965-F08,C,11S512 Fairing,878.0,0.3,0.7,0.0,False,6,100.0,USSR/Russia,Defense
 1965-07-13 11:00:00,1965-F08,C,11S512 Fairing,878.0,0.3,0.7,0.0,False,6,100.0,USSR/Russia,Defense
 1965-07-13 11:00:00,1965-F08,C,Priborniy otsek,2600.0,0.8,0.4,0.0,False,6,100.0,USSR/Russia,Defense
-1965-07-13 11:00:00,1965-F08,P,Kosmos,2100.0,0.8,0.4,0.0,False,6,100.0,USSR/Russia,Defense
+1965-07-13 11:00:00,1965-F08,P,Kosmos,0.0,0.8,0.4,2100.0,False,6,100.0,USSR/Russia,Defense
 1965-07-13 11:00:00,1965-F08,S0,8K74B,850.0,0.3,0.7,0.0,False,2,60.0,USSR/Russia,Defense
 1965-07-13 11:00:00,1965-F08,S0,8K74D,850.0,0.3,0.7,0.0,False,2,60.0,USSR/Russia,Defense
 1965-07-13 11:00:00,1965-F08,S0,8K74G,850.0,0.3,0.7,0.0,False,2,60.0,USSR/Russia,Defense
@@ -2614,7 +2614,7 @@ Date,COSPAR_ID,Category,Object_Name,Ablatable_Mass,Ablation_Degree,Percent_Alumi
 1965-10-25 15:00:00,1965-F11,C,TDA Fairing,878.0,0.3,0.7,0.0,False,6,180.0,USA,Government
 1965-10-25 15:00:00,1965-F11,S0,Atlas Booster,3200.0,0.3,0.7,0.0,False,6,120.0,USA,Government
 1965-10-25 15:00:00,1965-F11,S1,Atlas SLV-3 5301,3000.0,0.3,0.7,0.0,False,6,180.0,USA,Government
-1965-10-25 15:12:00,1965-F11,P,TDA-2,500.0,0.8,0.4,0.0,False,1,294.0,USA,Government
+1965-10-25 15:12:00,1965-F11,P,TDA-2,0.0,0.8,0.4,500.0,False,1,294.0,USA,Government
 1965-10-25 15:12:00,1965-F11,S2,Agena D  5002 GATV,750.0,0.65,0.7,6250.0,False,1,294.0,USA,Government
 1965-10-28 08:15:01,1965-085,C,11S512 Fairing,878.0,0.3,0.7,0.0,False,6,120.0,USSR/Russia,Defense
 1965-10-28 08:15:01,1965-085,C,11S512 Fairing,878.0,0.3,0.7,0.0,False,6,120.0,USSR/Russia,Defense
@@ -2991,7 +2991,7 @@ Date,COSPAR_ID,Category,Object_Name,Ablatable_Mass,Ablation_Degree,Percent_Alumi
 1966-03-24 00:00:00,1966-022A,P,OPS 0879,2000.0,0.8,0.4,0.0,False,6,301.0,USA,Defense
 1966-03-24 14:39:00,1966-F03,C,UR-500 GO part,200.0,0.8,0.4,0.0,False,6,180.0,USSR/Russia,Defense
 1966-03-24 14:39:00,1966-F03,C,UR-500 GO part,200.0,0.8,0.4,0.0,False,6,180.0,USSR/Russia,Defense
-1966-03-24 14:39:00,1966-F03,P,[Proton-3],8300.0,0.8,0.4,0.0,False,6,180.0,USSR/Russia,Government
+1966-03-24 14:39:00,1966-F03,P,[Proton-3],0.0,0.8,0.4,8300.0,False,6,180.0,USSR/Russia,Government
 1966-03-24 14:39:00,1966-F03,S1,8S810,31000.0,0.3,0.7,0.0,False,2,60.0,USSR/Russia,Defense
 1966-03-24 14:39:00,1966-F03,S2,8S811,11750.0,0.65,0.7,156050.0,False,6,180.0,USSR/Russia,Defense
 1966-03-24 23:55:00,1966-022,C,Star 12,10.0,0.8,0.4,0.0,False,6,242.0,USA,Defense
@@ -3431,7 +3431,7 @@ Date,COSPAR_ID,Category,Object_Name,Ablatable_Mass,Ablation_Degree,Percent_Alumi
 1966-09-26 02:58:00,1966-F10,S1,L735 L-4S-1,2145.55,0.3,0.7,0.0,False,2,50.0,Japan,Government
 1966-09-26 02:58:00,1966-F10,S2,L735(1/3),1562.5,0.65,0.7,1845.0,False,6,300.0,Japan,Government
 1966-09-26 02:58:00,1966-F10,S3,L500,394.9,0.65,0.7,547.5,False,6,525.0,Japan,Government
-1966-09-26 03:07:00,1966-F10,P,L-4S-1,9.0,0.8,0.4,0.0,False,6,525.0,Japan,Government
+1966-09-26 03:07:00,1966-F10,P,L-4S-1,0.0,0.8,0.4,9.0,False,6,525.0,Japan,Government
 1966-09-26 03:07:00,1966-F10,S4,L480S,23.05,0.65,0.7,87.95,False,6,525.0,Japan,Government
 1966-09-28 19:07:00,1966-086,S1,Titan 3B-2 Stage 1,5500.0,0.3,0.7,0.0,False,2,90.0,USA,Defense
 1966-09-28 19:07:00,1966-086,S2,Titan 3B-2 Stage 2,2650.0,0.65,0.7,0.0,False,6,130.0,USA,Defense
@@ -3655,7 +3655,7 @@ Date,COSPAR_ID,Category,Object_Name,Ablatable_Mass,Ablation_Degree,Percent_Alumi
 1966-12-20 02:20:00,1966-F13,S1,L735 L-4S-2,2145.55,0.3,0.7,0.0,False,2,50.0,Japan,Government
 1966-12-20 02:20:00,1966-F13,S2,L735(1/3),1562.5,0.65,0.7,0.0,False,6,300.0,Japan,Government
 1966-12-20 02:20:00,1966-F13,S3,L500,394.9,0.65,0.7,0.0,False,6,525.0,Japan,Government
-1966-12-20 02:30:00,1966-F13,P,L-4S-2,9.0,0.8,0.4,0.0,False,6,525.0,Japan,Government
+1966-12-20 02:30:00,1966-F13,P,L-4S-2,0.0,0.8,0.4,9.0,False,6,525.0,Japan,Government
 1966-12-20 02:30:00,1966-F13,S4,L480S,23.05,0.65,0.7,88.0,False,6,525.0,Japan,Government
 1966-12-21 10:17:08,1966-116,C,Molniya Fairing,878.0,0.3,0.7,0.0,False,6,250.0,USSR/Russia,Defense
 1966-12-21 10:17:08,1966-116,C,Molniya Fairing,878.0,0.3,0.7,0.0,False,6,250.0,USSR/Russia,Defense
@@ -3736,7 +3736,7 @@ Date,COSPAR_ID,Category,Object_Name,Ablatable_Mass,Ablation_Degree,Percent_Alumi
 1967-01-31 12:45:01,1967-F01,S1,Algol 2B S/N 42,1170.0,0.3,0.7,0.0,False,2,70.0,USA,Government
 1967-01-31 12:45:01,1967-F01,S2,Castor 2 S/N 29,565.0,0.65,0.7,0.0,False,6,280.0,USA,Government
 1967-01-31 12:45:01,1967-F01,S3,Antares 2A3 HPC-184,107.0,0.65,0.7,0.0,False,6,1000.0,USA,Government
-1967-01-31 12:52:00,1967-F01,P,OV3-5,95.0,0.8,0.4,0.0,False,6,430.0,USA,Defense
+1967-01-31 12:52:00,1967-F01,P,OV3-5,0.0,0.8,0.4,95.0,False,6,430.0,USA,Defense
 1967-01-31 12:52:00,1967-F01,S4,Scout S151C Stage 4,32.0,0.65,0.7,268.0,False,6,430.0,USA,Government
 1967-02-02 14:30:00,1967-002A,S2,Agena D 1629,960.0,0.65,0.7,0.0,False,6,381.0,USA,Defense
 1967-02-02 20:00:00,1967-007,S0,Atlas Booster,3200.0,0.3,0.7,0.0,False,6,120.0,USA,Defense
@@ -3875,7 +3875,7 @@ Date,COSPAR_ID,Category,Object_Name,Ablatable_Mass,Ablation_Degree,Percent_Alumi
 1967-03-22 14:05:02,1967-F02,S1,8S691,6400.0,0.3,0.7,0.0,False,2,100.0,USSR/Russia,Defense
 1967-03-22 14:09:00,1967-F02,C,Adapter,500.0,0.8,0.4,0.0,False,6,140.0,USSR/Russia,Defense
 1967-03-22 14:09:00,1967-F02,C,Retro,2000.0,0.8,0.4,0.0,False,6,140.0,USSR/Russia,Defense
-1967-03-22 14:09:00,1967-F02,P,[Kosmos],1450.0,0.8,0.4,0.0,False,6,140.0,USSR/Russia,Defense
+1967-03-22 14:09:00,1967-F02,P,[Kosmos],0.0,0.8,0.4,1450.0,False,6,140.0,USSR/Russia,Defense
 1967-03-22 14:09:00,1967-F02,S2,R-36O No. 08L Stage 2,3700.0,0.65,0.7,45300.0,False,6,140.0,USSR/Russia,Defense
 1967-03-23 00:00:00,1966-118B,C,OPS 1584 sensor cover?,0.0,0.8,0.4,0.0,False,6,472.0,USA,Defense
 1967-03-23 00:00:00,1966-118C,C,OPS 1584 sensor cover?,0.0,0.8,0.4,0.0,False,6,479.0,USA,Defense
@@ -3939,7 +3939,7 @@ Date,COSPAR_ID,Category,Object_Name,Ablatable_Mass,Ablation_Degree,Percent_Alumi
 1967-04-13 02:40:00,1967-F03,S1,L735 L-4S-3,2145.55,0.3,0.7,0.0,False,2,50.0,Japan,Government
 1967-04-13 02:40:00,1967-F03,S2,L735(1/3),1562.5,0.65,0.7,0.0,False,6,140.0,Japan,Government
 1967-04-13 02:40:00,1967-F03,S3,L500,394.9,0.65,0.7,547.5,False,6,140.0,Japan,Government
-1967-04-13 02:42:00,1967-F03,P,L-4S-3,9.0,0.8,0.4,0.0,False,6,140.0,Japan,Government
+1967-04-13 02:42:00,1967-F03,P,L-4S-3,0.0,0.8,0.4,9.0,False,6,140.0,Japan,Government
 1967-04-13 02:42:00,1967-F03,S4,L480S,23.05,0.65,0.7,87.95,False,6,140.0,Japan,Government
 1967-04-14 00:00:00,1967-023B,S2,Kosmos-2 (N10) Stage 2,840.0,0.65,0.7,0.0,False,6,365.0,USSR/Russia,Defense
 1967-04-14 03:25:00,1967-034,C,Altair Fairing 34-25 A-37,878.0,0.3,0.7,0.0,False,6,280.0,USA,Government
@@ -3986,8 +3986,8 @@ Date,COSPAR_ID,Category,Object_Name,Ablatable_Mass,Ablation_Degree,Percent_Alumi
 1967-04-26 18:00:00,1967-F04,S1,Titan 3B-5 Stage 1,5500.0,0.3,0.7,0.0,False,2,90.0,USA,Defense
 1967-04-26 18:00:00,1967-F04,S2,Titan 3B-5 Stage 2,2650.0,0.65,0.7,26550.0,False,6,130.0,USA,Defense
 1967-04-26 18:12:00,1967-F04,C,Star 12,10.0,0.8,0.4,0.0,False,6,130.0,USA,Defense
-1967-04-26 18:12:00,1967-F04,P,OPS 4243,2250.0,0.8,0.4,0.0,False,6,130.0,USA,Defense
-1967-04-26 18:12:00,1967-F04,P,SRV Mission 4305-1,157.0,0.8,0.4,0.0,False,6,130.0,USA,Defense
+1967-04-26 18:12:00,1967-F04,P,OPS 4243,0.0,0.8,0.4,2250.0,False,6,130.0,USA,Defense
+1967-04-26 18:12:00,1967-F04,P,SRV Mission 4305-1,0.0,0.8,0.4,157.0,False,6,130.0,USA,Defense
 1967-04-26 18:12:00,1967-F04,S3,Agena D 4755,750.0,0.65,0.7,6250.0,False,1,130.0,USA,Defense
 1967-04-27 12:50:02,1967-039,C,Meteor Fairing,878.0,0.3,0.7,0.0,False,6,120.0,USSR/Russia,Defense
 1967-04-27 12:50:02,1967-039,C,Meteor Fairing,878.0,0.3,0.7,0.0,False,6,120.0,USSR/Russia,Defense
@@ -4080,7 +4080,7 @@ Date,COSPAR_ID,Category,Object_Name,Ablatable_Mass,Ablation_Degree,Percent_Alumi
 1967-05-30 02:06:00,1967-F05,S3,Antares 2A3 HPC-151A,107.0,0.65,0.7,1193.0,False,6,280.0,USA,Government
 1967-05-30 02:09:00,1967-F05,C,ESRO 2A despin weight,1.0,0.8,0.4,0.0,False,6,300.0,Europe,Government
 1967-05-30 02:09:00,1967-F05,C,ESRO 2A despin weight,1.0,0.8,0.4,0.0,False,6,300.0,Europe,Government
-1967-05-30 02:09:00,1967-F05,P,ESRO IIA,74.0,0.8,0.4,0.0,False,6,300.0,Europe,Government
+1967-05-30 02:09:00,1967-F05,P,ESRO IIA,0.0,0.8,0.4,74.0,False,6,300.0,Europe,Government
 1967-05-30 02:09:00,1967-F05,S4,Scout S152C Stage 4,32.0,0.65,0.7,268.0,False,6,300.0,USA,Government
 1967-05-30 08:44:00,1967-049,C,Priborniy otsek,3450.0,0.8,0.4,0.0,False,6,228.0,USSR/Russia,Defense
 1967-05-30 08:54:00,1967-049A,P,Kosmos-161,2200.0,0.0,0.4,0.0,False,6,320.0,USSR/Russia,Defense
@@ -4285,7 +4285,7 @@ Date,COSPAR_ID,Category,Object_Name,Ablatable_Mass,Ablation_Degree,Percent_Alumi
 1967-09-01 10:30:00,1967-F09,S0,8K74V,850.0,0.3,0.7,0.0,False,2,60.0,USSR/Russia,Defense
 1967-09-01 10:30:00,1967-F09,S1,8K74A,7000.0,0.3,0.7,0.0,False,6,120.0,USSR/Russia,Defense
 1967-09-01 10:37:00,1967-F09,C,Priborniy otsek,2600.0,0.8,0.4,0.0,False,6,200.0,USSR/Russia,Defense
-1967-09-01 10:37:00,1967-F09,P,[Kosmos],2100.0,0.8,0.4,0.0,False,6,200.0,USSR/Russia,Defense
+1967-09-01 10:37:00,1967-F09,P,[Kosmos],0.0,0.8,0.4,2100.0,False,6,200.0,USSR/Russia,Defense
 1967-09-01 10:37:00,1967-F09,S2,Voskhod (N43) Blok-I,2350.0,0.65,0.7,0.0,False,6,200.0,USSR/Russia,Defense
 1967-09-04 00:00:00,1965-017C,S2,Ablestar 018,599.0,0.65,0.7,0.0,False,6,1018.0,USA,Defense
 1967-09-07 22:04:26,1967-083,C,Improved Delta PLF,878.0,0.3,0.7,0.0,False,6,200.0,USA,Government
@@ -4663,7 +4663,7 @@ Date,COSPAR_ID,Category,Object_Name,Ablatable_Mass,Ablation_Degree,Percent_Alumi
 1968-02-07 10:43:54,1968-F01,C,Molniya Fairing,878.0,0.3,0.7,0.0,False,6,250.0,USSR/Russia,Defense
 1968-02-07 10:43:54,1968-F01,C,Otdelyaemiy otsek No. 1,156.0,0.8,0.4,0.0,False,6,190.0,USSR/Russia,Government
 1968-02-07 10:43:54,1968-F01,C,Otdelyaemiy otsek No. 2,156.0,0.8,0.4,0.0,False,6,190.0,USSR/Russia,Government
-1968-02-07 10:43:54,1968-F01,P,[Luna],600.0,0.8,0.4,790.0,False,6,190.0,USSR/Russia,Defense
+1968-02-07 10:43:54,1968-F01,P,[Luna],0.0,0.8,0.4,1390.0,False,6,190.0,USSR/Russia,Defense
 1968-02-07 10:43:54,1968-F01,S0,11S59B,3915.0,0.3,0.7,0.0,False,2,75.0,USSR/Russia,Defense
 1968-02-07 10:43:54,1968-F01,S0,11S59D,3915.0,0.3,0.7,0.0,False,2,75.0,USSR/Russia,Defense
 1968-02-07 10:43:54,1968-F01,S0,11S59G,3915.0,0.3,0.7,0.0,False,2,75.0,USSR/Russia,Defense
@@ -4726,7 +4726,7 @@ Date,COSPAR_ID,Category,Object_Name,Ablatable_Mass,Ablation_Degree,Percent_Alumi
 1968-03-06 11:02:57,1968-F02,C,11K63 Fairing,878.0,0.3,0.7,0.0,False,6,100.0,USSR/Russia,Defense
 1968-03-06 11:02:57,1968-F02,C,11K63 Fairing,878.0,0.3,0.7,0.0,False,6,100.0,USSR/Russia,Defense
 1968-03-06 11:02:57,1968-F02,S1,R-12,4810.0,0.3,0.7,0.0,False,2,100.0,USSR/Russia,Defense
-1968-03-06 11:06:00,1968-F02,P,Kosmos,316.0,0.8,0.4,0.0,False,6,255.0,USSR/Russia,Government
+1968-03-06 11:06:00,1968-F02,P,Kosmos,0.0,0.8,0.4,316.0,False,6,255.0,USSR/Russia,Government
 1968-03-06 11:06:00,1968-F02,S2,Kosmos-2 (N22) Stage 2,840.0,0.65,0.7,7760.0,False,6,255.0,USSR/Russia,Defense
 1968-03-07 00:00:00,1968-013B,C,D-14L SOZ-1,60.0,0.8,0.4,0.0,False,6,217.0,USSR/Russia,Defense
 1968-03-07 00:00:00,1968-013C,C,D-14L SOZ-2,60.0,0.8,0.4,0.0,False,6,214.0,USSR/Russia,Defense
@@ -4977,7 +4977,7 @@ Date,COSPAR_ID,Category,Object_Name,Ablatable_Mass,Ablation_Degree,Percent_Alumi
 1968-06-04 06:45:02,1968-046,S1,8K74A,7000.0,0.3,0.7,0.0,False,6,120.0,USSR/Russia,Defense
 1968-06-04 18:45:00,1968-F05,C,Kosmos-3M Fairing,878.0,0.3,0.7,0.0,False,6,100.0,USSR/Russia,Defense
 1968-06-04 18:45:00,1968-F05,C,Kosmos-3M Fairing,878.0,0.3,0.7,0.0,False,6,100.0,USSR/Russia,Defense
-1968-06-04 18:45:00,1968-F05,P,Kosmos,800.0,0.8,0.4,0.0,False,6,1200.0,USSR/Russia,Government
+1968-06-04 18:45:00,1968-F05,P,Kosmos,0.0,0.8,0.4,800.0,False,6,1200.0,USSR/Russia,Government
 1968-06-04 18:45:00,1968-F05,S1,R-14 11K65MA,5300.0,0.3,0.7,0.0,False,2,100.0,USSR/Russia,Defense
 1968-06-04 18:45:00,1968-F05,S2,Kosmos-3M No. 23LM Stage 2,1435.0,0.65,0.7,18665.0,False,6,1200.0,USSR/Russia,Defense
 1968-06-05 17:33:00,1968-047,S1,Titan 3B-16 Stage 1,5500.0,0.3,0.7,0.0,False,2,90.0,USA,Defense
@@ -5006,7 +5006,7 @@ Date,COSPAR_ID,Category,Object_Name,Ablatable_Mass,Ablation_Degree,Percent_Alumi
 1968-06-13 14:21:00,1968-050,S2,Titan 3C-16 Stage 2,2650.0,0.65,0.7,0.0,False,6,160.0,USA,Defense
 1968-06-15 12:25:00,1968-F06,C,Kosmos-3M Fairing,878.0,0.3,0.7,0.0,False,6,100.0,USSR/Russia,Defense
 1968-06-15 12:25:00,1968-F06,C,Kosmos-3M Fairing,878.0,0.3,0.7,0.0,False,6,100.0,USSR/Russia,Defense
-1968-06-15 12:25:00,1968-F06,P,Kosmos,800.0,0.8,0.4,0.0,False,6,200.0,USSR/Russia,Government
+1968-06-15 12:25:00,1968-F06,P,Kosmos,0.0,0.8,0.4,800.0,False,6,200.0,USSR/Russia,Government
 1968-06-15 12:25:00,1968-F06,S1,R-14 11K65A,5300.0,0.3,0.7,0.0,False,2,100.0,USSR/Russia,Defense
 1968-06-15 12:25:00,1968-F06,S2,Kosmos-3 No. 11LP Stage 2,1500.0,0.65,0.7,18600.0,False,6,200.0,USSR/Russia,Defense
 1968-06-15 21:50:00,1968-047,C,Star 12,10.0,0.8,0.4,0.0,False,6,224.0,USA,Defense
@@ -5160,19 +5160,19 @@ Date,COSPAR_ID,Category,Object_Name,Ablatable_Mass,Ablation_Degree,Percent_Alumi
 1968-08-16 21:30:00,1968-F07,C,LIDOS Bus,35.0,0.8,0.4,0.0,False,6,600.0,USA,Defense
 1968-08-16 21:30:00,1968-F07,C,LIDOS motor,40.0,0.8,0.4,0.0,False,6,600.0,USA,Defense
 1968-08-16 21:30:00,1968-F07,C,VIP CO1-5,2.0,0.8,0.4,0.0,False,6,600.0,USA,Defense
-1968-08-16 21:30:00,1968-F07,P,AVL-802 Grid Sphere 7-1,6.0,0.8,0.4,0.0,False,6,600.0,USA,Defense
-1968-08-16 21:30:00,1968-F07,P,AVL-802 Grid Sphere 7-2,4.0,0.8,0.4,0.0,False,6,600.0,USA,Defense
-1968-08-16 21:30:00,1968-F07,P,AVL-802 Mylar Sphere,1.0,0.8,0.4,0.0,False,6,600.0,USA,Defense
-1968-08-16 21:30:00,1968-F07,P,AVL-802 Rigid Sphere,2.0,0.8,0.4,0.0,False,6,600.0,USA,Defense
-1968-08-16 21:30:00,1968-F07,P,EGRS 11,18.0,0.8,0.4,0.0,False,6,600.0,USA,Defense
-1968-08-16 21:30:00,1968-F07,P,EGRS 12,18.0,0.8,0.4,0.0,False,6,600.0,USA,Defense
-1968-08-16 21:30:00,1968-F07,P,LCS 3,38.0,0.8,0.4,0.0,False,6,600.0,USA,Defense
-1968-08-16 21:30:00,1968-F07,P,LIDOS,56.0,0.8,0.4,6.0,False,6,600.0,USA,Defense
-1968-08-16 21:30:00,1968-F07,P,ORBIS CAL 1,50.0,0.8,0.4,3.0,False,6,600.0,USA,Defense
-1968-08-16 21:30:00,1968-F07,P,OV5-8,12.0,0.8,0.4,0.0,False,6,600.0,USA,Defense
-1968-08-16 21:30:00,1968-F07,P,RM-18,41.0,0.8,0.4,0.0,False,6,600.0,USA,Defense
-1968-08-16 21:30:00,1968-F07,P,Radcat,179.0,0.8,0.4,0.0,False,6,600.0,USA,Defense
-1968-08-16 21:30:00,1968-F07,P,UVR,18.0,0.8,0.4,0.0,False,6,600.0,USA,Defense
+1968-08-16 21:30:00,1968-F07,P,AVL-802 Grid Sphere 7-1,0.0,0.8,0.4,6.0,False,6,600.0,USA,Defense
+1968-08-16 21:30:00,1968-F07,P,AVL-802 Grid Sphere 7-2,0.0,0.8,0.4,4.0,False,6,600.0,USA,Defense
+1968-08-16 21:30:00,1968-F07,P,AVL-802 Mylar Sphere,0.0,0.8,0.4,1.0,False,6,600.0,USA,Defense
+1968-08-16 21:30:00,1968-F07,P,AVL-802 Rigid Sphere,0.0,0.8,0.4,2.0,False,6,600.0,USA,Defense
+1968-08-16 21:30:00,1968-F07,P,EGRS 11,0.0,0.8,0.4,18.0,False,6,600.0,USA,Defense
+1968-08-16 21:30:00,1968-F07,P,EGRS 12,0.0,0.8,0.4,18.0,False,6,600.0,USA,Defense
+1968-08-16 21:30:00,1968-F07,P,LCS 3,0.0,0.8,0.4,38.0,False,6,600.0,USA,Defense
+1968-08-16 21:30:00,1968-F07,P,LIDOS,0.0,0.8,0.4,62.0,False,6,600.0,USA,Defense
+1968-08-16 21:30:00,1968-F07,P,ORBIS CAL 1,0.0,0.8,0.4,53.0,False,6,600.0,USA,Defense
+1968-08-16 21:30:00,1968-F07,P,OV5-8,0.0,0.8,0.4,12.0,False,6,600.0,USA,Defense
+1968-08-16 21:30:00,1968-F07,P,RM-18,0.0,0.8,0.4,41.0,False,6,600.0,USA,Defense
+1968-08-16 21:30:00,1968-F07,P,Radcat,0.0,0.8,0.4,179.0,False,6,600.0,USA,Defense
+1968-08-16 21:30:00,1968-F07,P,UVR,0.0,0.8,0.4,18.0,False,6,600.0,USA,Defense
 1968-08-16 21:30:00,1968-F07,S2,Burner II No. 14,65.0,0.65,0.7,0.0,False,6,600.0,USA,Defense
 1968-08-16 22:30:00,1968-064A,S3,Agena D 4765,3000.0,0.65,0.7,0.0,False,6,427.0,USA,Defense
 1968-08-17 00:00:00,1968-028B,S2,Kosmos-2 (N23) Stage 2,840.0,0.65,0.7,0.0,False,6,1332.0,USSR/Russia,Defense
@@ -5474,7 +5474,7 @@ Date,COSPAR_ID,Category,Object_Name,Ablatable_Mass,Ablation_Degree,Percent_Alumi
 1968-11-29 23:12:02,1968-F09,S1,Blue Streak F-7,6800.0,0.3,0.7,0.0,False,6,200.0,Europe,Government
 1968-11-29 23:12:02,1968-F09,S2,Coralie F-7,2400.0,0.65,0.7,0.0,False,6,250.0,Europe,Government
 1968-11-29 23:27:00,1968-F09,S3,Europa I F-7 Stage 3,800.0,0.65,0.7,2800.0,False,6,350.0,Europe,Government
-1968-11-29 23:28:00,1968-F09,P,ELDO F-7 STV,250.0,0.8,0.4,0.0,False,1,350.0,Europe,Government
+1968-11-29 23:28:00,1968-F09,P,ELDO F-7 STV,0.0,0.8,0.4,250.0,False,1,350.0,Europe,Government
 1968-11-30 12:00:01,1968-106,C,Kosmos-3M Fairing,878.0,0.3,0.7,0.0,False,6,100.0,USSR/Russia,Defense
 1968-11-30 12:00:01,1968-106,C,Kosmos-3M Fairing,878.0,0.3,0.7,0.0,False,6,100.0,USSR/Russia,Defense
 1968-11-30 12:00:01,1968-106,S1,R-14 11K65MA,5300.0,0.3,0.7,0.0,False,2,100.0,USSR/Russia,Defense
@@ -5643,7 +5643,7 @@ Date,COSPAR_ID,Category,Object_Name,Ablatable_Mass,Ablation_Degree,Percent_Alumi
 1969-01-25 11:38:00,1969-U03,C,Reactor DU,50.0,0.8,0.4,0.0,False,6,245.0,USSR/Russia,Defense
 1969-01-25 11:38:00,1969-U03,C,US-A DU,1650.0,0.8,0.4,0.0,False,6,245.0,USSR/Russia,Defense
 1969-01-25 11:38:00,1969-U03,C,[Kosmos] radar,200.0,0.8,0.4,0.0,False,6,245.0,USSR/Russia,Defense
-1969-01-25 11:38:00,1969-U03,P,[Kosmos],1150.0,0.8,0.4,0.0,False,6,245.0,USSR/Russia,Defense
+1969-01-25 11:38:00,1969-U03,P,[Kosmos],0.0,0.8,0.4,1150.0,False,6,245.0,USSR/Russia,Defense
 1969-01-25 11:38:00,1969-U03,S2,Tsiklon-2A No. 12L Stage 2,3700.0,0.65,0.7,0.0,False,6,250.0,USSR/Russia,Defense
 1969-01-26 00:00:00,1969-007B,C,OPS 7585 sensor cover?,0.0,0.8,0.4,0.0,False,6,694.0,USA,Defense
 1969-01-30 00:00:00,1969-008B,S2,Voskhod (N83) Blok-I,2350.0,0.65,0.7,0.0,False,6,280.0,USSR/Russia,Defense
@@ -5653,7 +5653,7 @@ Date,COSPAR_ID,Category,Object_Name,Ablatable_Mass,Ablation_Degree,Percent_Alumi
 1969-01-30 07:08:00,1969-009,S2,Delta 65,785.0,0.65,0.7,0.0,False,6,578.0,USA,Government
 1969-02-01 12:11:00,1969-F03,C,Meteor Fairing,878.0,0.3,0.7,0.0,False,6,120.0,USSR/Russia,Defense
 1969-02-01 12:11:00,1969-F03,C,Meteor Fairing,878.0,0.3,0.7,0.0,False,6,120.0,USSR/Russia,Defense
-1969-02-01 12:11:00,1969-F03,P,[Meteor],1250.0,0.8,0.4,0.0,False,6,150.0,USSR/Russia,Defense
+1969-02-01 12:11:00,1969-F03,P,[Meteor],0.0,0.8,0.4,1250.0,False,6,150.0,USSR/Russia,Defense
 1969-02-01 12:11:00,1969-F03,S0,8K74B,850.0,0.3,0.7,0.0,False,2,60.0,USSR/Russia,Defense
 1969-02-01 12:11:00,1969-F03,S0,8K74D,850.0,0.3,0.7,0.0,False,2,60.0,USSR/Russia,Defense
 1969-02-01 12:11:00,1969-F03,S0,8K74G,850.0,0.3,0.7,0.0,False,2,60.0,USSR/Russia,Defense
@@ -5817,7 +5817,7 @@ Date,COSPAR_ID,Category,Object_Name,Ablatable_Mass,Ablation_Degree,Percent_Alumi
 1969-03-27 10:48:00,1969-F06,S2,8S811,11750.0,0.65,0.7,0.0,False,6,130.0,USSR/Russia,Defense
 1969-03-27 10:55:00,1969-F06,C,D-521L SOZ-1,60.0,0.8,0.4,0.0,False,6,180.0,USSR/Russia,Defense
 1969-03-27 10:55:00,1969-F06,C,D-521L SOZ-2,60.0,0.8,0.4,0.0,False,6,180.0,USSR/Russia,Defense
-1969-03-27 10:55:00,1969-F06,P,[Mars-2],3500.0,0.8,0.4,0.0,False,6,180.0,USSR/Russia,Government
+1969-03-27 10:55:00,1969-F06,P,[Mars-2],0.0,0.8,0.4,3500.0,False,6,180.0,USSR/Russia,Government
 1969-03-27 10:55:00,1969-F06,S3,Proton-K 240-01 Stage 3,4185.0,0.65,0.7,46415.0,False,6,180.0,USSR/Russia,Defense
 1969-03-27 10:55:00,1969-F06,S4,Blok D No. 521L,1800.0,0.65,0.7,11600.0,False,6,180.0,USSR/Russia,Defense
 1969-03-27 22:22:01,1969-030,C,AC Short PLF,878.0,0.3,0.7,0.0,False,6,200.0,USA,Government
@@ -5994,8 +5994,8 @@ Date,COSPAR_ID,Category,Object_Name,Ablatable_Mass,Ablation_Degree,Percent_Alumi
 1969-06-14 04:25:00,1969-F08,C,E-8-5 VS,176.0,0.8,0.4,0.0,False,6,200.0,USSR/Russia,Government
 1969-06-14 04:25:00,1969-F08,C,Sbrasivaemiy otsek,200.0,0.8,0.4,0.0,False,6,200.0,USSR/Russia,Government
 1969-06-14 04:25:00,1969-F08,C,Sbrasivaemiy otsek,200.0,0.8,0.4,0.0,False,6,200.0,USSR/Russia,Government
-1969-06-14 04:25:00,1969-F08,P,[Luna-15],1360.0,0.8,0.4,1820.0,False,6,200.0,USSR/Russia,Government
-1969-06-14 04:25:00,1969-F08,P,[VA],39.0,0.8,0.4,0.0,False,6,200.0,USSR/Russia,Government
+1969-06-14 04:25:00,1969-F08,P,[Luna-15],0.0,0.8,0.4,3180.0,False,6,200.0,USSR/Russia,Government
+1969-06-14 04:25:00,1969-F08,P,[VA],0.0,0.8,0.4,39.0,False,6,200.0,USSR/Russia,Government
 1969-06-14 04:25:00,1969-F08,S4,Blok D No. 401L,1800.0,0.65,0.7,11600.0,False,1,200.0,USSR/Russia,Defense
 1969-06-14 19:36:00,1969-050A,S3,Agena D 4773?,3000.0,0.65,0.7,0.0,False,6,432.0,USA,Defense
 1969-06-15 08:59:01,1969-052,C,11S512 Fairing,878.0,0.3,0.7,0.0,False,6,120.0,USSR/Russia,Defense
@@ -6040,7 +6040,7 @@ Date,COSPAR_ID,Category,Object_Name,Ablatable_Mass,Ablation_Degree,Percent_Alumi
 1969-07-02 22:55:00,1969-F09,C,Europa I fairing,878.0,0.3,0.7,0.0,False,6,200.0,Europe,Government
 1969-07-02 22:55:00,1969-F09,S1,Blue Streak F-8,6800.0,0.3,0.7,0.0,False,6,200.0,Europe,Government
 1969-07-02 22:55:00,1969-F09,S2,Coralie,2400.0,0.65,0.7,0.0,False,6,250.0,Europe,Government
-1969-07-02 23:11:00,1969-F09,P,ELDO F-8 Instrument Package,170.0,0.8,0.4,0.0,False,6,500.0,Europe,Government
+1969-07-02 23:11:00,1969-F09,P,ELDO F-8 Instrument Package,0.0,0.8,0.4,170.0,False,6,500.0,Europe,Government
 1969-07-02 23:11:00,1969-F09,P,ELDO F-8 STV,185.0,0.8,0.4,0.0,False,1,500.0,Europe,Government
 1969-07-02 23:11:00,1969-F09,S3,Europa I F-8 Stage 3,800.0,0.65,0.7,2800.0,False,6,500.0,Europe,Government
 1969-07-04 00:00:00,1963-014CC,C,West Ford dipoles,0.0,0.8,0.4,0.0,False,6,6215.0,USA,Defense
@@ -6096,7 +6096,7 @@ Date,COSPAR_ID,Category,Object_Name,Ablatable_Mass,Ablation_Degree,Percent_Alumi
 1969-07-23 09:00:00,1969-F11,C,11K63 Fairing,878.0,0.3,0.7,0.0,False,6,100.0,USSR/Russia,Defense
 1969-07-23 09:00:00,1969-F11,C,11K63 Fairing,878.0,0.3,0.7,0.0,False,6,100.0,USSR/Russia,Defense
 1969-07-23 09:00:00,1969-F11,S1,R-12,4810.0,0.3,0.7,0.0,False,2,100.0,USSR/Russia,Defense
-1969-07-23 09:04:00,1969-F11,P,Kosmos,200.0,0.8,0.4,0.0,False,6,270.0,USSR/Russia,Defense
+1969-07-23 09:04:00,1969-F11,P,Kosmos,0.0,0.8,0.4,200.0,False,6,270.0,USSR/Russia,Defense
 1969-07-23 09:04:00,1969-F11,S2,Kosmos-2 (N43) Stage 2,840.0,0.65,0.7,7760.0,False,6,270.0,USSR/Russia,Defense
 1969-07-24 00:00:00,1968-103A,P,Proton-4,17000.0,0.8,0.4,0.0,False,6,447.0,USSR/Russia,Government
 1969-07-24 01:30:58,1969-063,S1,LT Thor DSV-2L-1A 545,3715.0,0.3,0.7,0.0,False,6,150.0,USA,Defense
@@ -6228,7 +6228,7 @@ Date,COSPAR_ID,Category,Object_Name,Ablatable_Mass,Ablation_Degree,Percent_Alumi
 1969-09-22 02:10:00,1969-F13,S1,L735 L-4S-4,2145.55,0.3,0.7,0.0,False,2,50.0,Japan,Government
 1969-09-22 02:10:00,1969-F13,S2,L735(1/3),1562.5,0.65,0.7,0.0,False,6,300.0,Japan,Government
 1969-09-22 02:10:00,1969-F13,S3,L500,394.9,0.65,0.7,547.5,False,6,525.0,Japan,Government
-1969-09-22 02:27:00,1969-F13,P,L-4S-4,9.0,0.8,0.4,0.0,False,6,656.0,Japan,Government
+1969-09-22 02:27:00,1969-F13,P,L-4S-4,0.0,0.8,0.4,9.0,False,6,656.0,Japan,Government
 1969-09-22 02:27:00,1969-F13,S4,L480S,23.05,0.65,0.7,87.95,False,6,656.0,Japan,Government
 1969-09-22 07:57:00,1969-078,C,Priborniy otsek,3050.0,0.8,0.4,0.0,False,6,233.0,USSR/Russia,Defense
 1969-09-22 08:12:00,1969-078A,P,Kosmos-299,2200.0,0.0,0.4,0.0,False,6,282.0,USSR/Russia,Defense
@@ -6431,7 +6431,7 @@ Date,COSPAR_ID,Category,Object_Name,Ablatable_Mass,Ablation_Degree,Percent_Alumi
 1969-11-28 09:16:00,1969-F14,C,D-25 SOZ-2,60.0,0.8,0.4,0.0,False,6,180.0,USSR/Russia,Defense
 1969-11-28 09:16:00,1969-F14,C,L-1e PAO,3500.0,0.8,0.4,0.0,False,6,180.0,USSR/Russia,Defense
 1969-11-28 09:16:00,1969-F14,C,Perekhodnik,800.0,0.8,0.4,0.0,False,6,180.0,USSR/Russia,Defense
-1969-11-28 09:16:00,1969-F14,P,[Kosmos-313],2800.0,0.8,0.4,0.0,False,6,180.0,USSR/Russia,Defense
+1969-11-28 09:16:00,1969-F14,P,[Kosmos-313],0.0,0.8,0.4,2800.0,False,6,180.0,USSR/Russia,Defense
 1969-11-28 09:16:00,1969-F14,S3,Proton-K 245-01 Stage 3,4185.0,0.65,0.7,46415.0,False,6,180.0,USSR/Russia,Defense
 1969-11-28 09:16:00,1969-F14,S4,Blok D No. 25,1800.0,0.65,0.7,11600.0,False,6,180.0,USSR/Russia,Defense
 1969-11-30 00:00:00,1969-098E,P,Kapsula Kosmosa-309,600.0,0.8,0.4,0.0,False,6,334.0,USSR/Russia,Government
@@ -6479,7 +6479,7 @@ Date,COSPAR_ID,Category,Object_Name,Ablatable_Mass,Ablation_Degree,Percent_Alumi
 1969-12-25 09:59:51,1969-110,S1,R-12,4810.0,0.3,0.7,0.0,False,2,100.0,USSR/Russia,Defense
 1969-12-27 14:20:00,1969-F15,C,Kosmos-3M Fairing,878.0,0.3,0.7,0.0,False,6,100.0,USSR/Russia,Defense
 1969-12-27 14:20:00,1969-F15,C,Kosmos-3M Fairing,878.0,0.3,0.7,0.0,False,6,100.0,USSR/Russia,Defense
-1969-12-27 14:20:00,1969-F15,P,Kosmos,800.0,0.8,0.4,0.0,False,6,1000.0,USSR/Russia,Government
+1969-12-27 14:20:00,1969-F15,P,Kosmos,0.0,0.8,0.4,800.0,False,6,1000.0,USSR/Russia,Government
 1969-12-27 14:20:00,1969-F15,S1,R-14 11K65MA,5300.0,0.3,0.7,0.0,False,2,100.0,USSR/Russia,Defense
 1969-12-27 14:20:00,1969-F15,S2,Kosmos-3M Yu226-12U Stage 2,1435.0,0.65,0.7,18665.0,False,6,1000.0,USSR/Russia,Defense
 1969-12-28 00:00:00,1969-109B,S2,Voskhod (N113) Blok-I,2350.0,0.65,0.7,0.0,False,6,238.0,USSR/Russia,Defense
@@ -6556,7 +6556,7 @@ Date,COSPAR_ID,Category,Object_Name,Ablatable_Mass,Ablation_Degree,Percent_Alumi
 1970-01-30 00:00:00,1967-020C,C,X-258 yo weight?,0.0,0.8,0.4,0.0,False,6,534.0,USA,Government
 1970-01-30 15:40:01,1970-F01,C,11K63 Fairing,878.0,0.3,0.7,0.0,False,6,100.0,USSR/Russia,Defense
 1970-01-30 15:40:01,1970-F01,C,11K63 Fairing,878.0,0.3,0.7,0.0,False,6,100.0,USSR/Russia,Defense
-1970-01-30 15:40:01,1970-F01,P,Kosmos,200.0,0.8,0.4,0.0,False,6,100.0,USSR/Russia,Government
+1970-01-30 15:40:01,1970-F01,P,Kosmos,0.0,0.8,0.4,200.0,False,6,100.0,USSR/Russia,Government
 1970-01-30 15:40:01,1970-F01,S1,R-12,4810.0,0.3,0.7,0.0,False,2,100.0,USSR/Russia,Defense
 1970-01-30 15:40:01,1970-F01,S2,Kosmos-2 (N55) Stage 2,840.0,0.65,0.7,7760.0,False,6,100.0,USSR/Russia,Defense
 1970-02-01 00:33:00,1970-002A,S3,Agena D 4776,3150.0,0.65,0.7,0.0,False,6,381.0,USA,Defense
@@ -6573,8 +6573,8 @@ Date,COSPAR_ID,Category,Object_Name,Ablatable_Mass,Ablation_Degree,Percent_Alumi
 1970-02-06 04:19:00,1970-F02,C,Sbrasivaemiy otsek,200.0,0.8,0.4,0.0,False,6,50.0,USSR/Russia,Government
 1970-02-06 04:19:00,1970-F02,C,Sbrasivaemiy otsek,200.0,0.8,0.4,0.0,False,6,50.0,USSR/Russia,Government
 1970-02-06 04:19:00,1970-F02,C,VS,176.0,0.8,0.4,0.0,False,6,50.0,USSR/Russia,Government
-1970-02-06 04:19:00,1970-F02,P,VA,39.0,0.8,0.4,0.0,False,6,50.0,USSR/Russia,Government
-1970-02-06 04:19:00,1970-F02,P,[Luna-16],1360.0,0.8,0.4,1820.0,False,6,50.0,USSR/Russia,Government
+1970-02-06 04:19:00,1970-F02,P,VA,0.0,0.8,0.4,39.0,False,6,50.0,USSR/Russia,Government
+1970-02-06 04:19:00,1970-F02,P,[Luna-16],0.0,0.8,0.4,3180.0,False,6,50.0,USSR/Russia,Government
 1970-02-06 04:19:00,1970-F02,S2,8S811,11750.0,0.65,0.7,156050.0,False,6,50.0,USSR/Russia,Defense
 1970-02-06 04:19:00,1970-F02,S3,Proton-K 247-01 Stage 3,4185.0,0.65,0.7,46415.0,False,6,50.0,USSR/Russia,Defense
 1970-02-06 04:19:00,1970-F02,S4,Blok D No. 405L?,1800.0,0.65,0.7,11600.0,False,6,50.0,USSR/Russia,Defense
@@ -6832,7 +6832,7 @@ Date,COSPAR_ID,Category,Object_Name,Ablatable_Mass,Ablation_Degree,Percent_Alumi
 1970-06-12 01:10:32,1970-U02,C,Europa I fairing,878.0,0.3,0.7,0.0,False,6,200.0,Europe,Government
 1970-06-12 01:10:32,1970-U02,S1,Blue Streak F-9,6800.0,0.3,0.7,0.0,False,6,200.0,Europe,Government
 1970-06-12 01:10:32,1970-U02,S2,Coralie,2400.0,0.65,0.7,0.0,False,6,250.0,Europe,Government
-1970-06-12 01:50:00,1970-U02,P,ELDO F-9 STV,215.0,0.8,0.4,0.0,False,1,673.0,Europe,Government
+1970-06-12 01:50:00,1970-U02,P,ELDO F-9 STV,0.0,0.8,0.4,215.0,False,1,673.0,Europe,Government
 1970-06-12 01:50:00,1970-U02,S3,Europa I F-9 Stage 3,800.0,0.65,0.7,0.0,False,6,673.0,Europe,Government
 1970-06-12 09:30:02,1970-043,C,11K63 Fairing,878.0,0.3,0.7,0.0,False,6,100.0,USSR/Russia,Defense
 1970-06-12 09:30:02,1970-043,C,11K63 Fairing,878.0,0.3,0.7,0.0,False,6,100.0,USSR/Russia,Defense
@@ -6924,7 +6924,7 @@ Date,COSPAR_ID,Category,Object_Name,Ablatable_Mass,Ablation_Degree,Percent_Alumi
 1970-07-21 12:30:01,1970-F06,C,11S512 Fairing,878.0,0.3,0.7,0.0,False,6,50.0,USSR/Russia,Defense
 1970-07-21 12:30:01,1970-F06,C,11S512 Fairing,878.0,0.3,0.7,0.0,False,6,50.0,USSR/Russia,Defense
 1970-07-21 12:30:01,1970-F06,C,Priborniy otsek,3450.0,0.8,0.4,0.0,False,6,50.0,USSR/Russia,Defense
-1970-07-21 12:30:01,1970-F06,P,[Kosmos],2200.0,0.8,0.4,0.0,False,6,50.0,USSR/Russia,Defense
+1970-07-21 12:30:01,1970-F06,P,[Kosmos],0.0,0.8,0.4,2200.0,False,6,50.0,USSR/Russia,Defense
 1970-07-21 12:30:01,1970-F06,S0,8K74B,850.0,0.3,0.7,0.0,False,2,60.0,USSR/Russia,Defense
 1970-07-21 12:30:01,1970-F06,S0,8K74D,850.0,0.3,0.7,0.0,False,2,60.0,USSR/Russia,Defense
 1970-07-21 12:30:01,1970-F06,S0,8K74G,850.0,0.3,0.7,0.0,False,2,60.0,USSR/Russia,Defense
@@ -7029,7 +7029,7 @@ Date,COSPAR_ID,Category,Object_Name,Ablatable_Mass,Ablation_Degree,Percent_Alumi
 1970-09-02 00:34:05,1970-F07,S2,Black Arrow Stage 2,535.0,0.65,0.7,0.0,False,6,550.0,Europe,Defense
 1970-09-02 00:50:00,1970-F07,C,X-2 aerial,1.0,0.8,0.4,0.0,False,6,370.0,Europe,Defense
 1970-09-02 00:50:00,1970-F07,P,Orba,13.0,0.8,0.4,0.0,False,6,370.0,Europe,Defense
-1970-09-02 00:50:00,1970-F07,P,X-2,68.0,0.8,0.4,0.0,False,6,370.0,Europe,Defense
+1970-09-02 00:50:00,1970-F07,P,X-2,0.0,0.8,0.4,68.0,False,6,370.0,Europe,Defense
 1970-09-02 00:50:00,1970-F07,S3,Waxwing R-2,39.0,0.65,0.7,261.0,False,6,370.0,Europe,Defense
 1970-09-03 08:39:45,1970-070,C,Burner 2 Fairing,878.0,0.3,0.7,0.0,False,6,800.0,USA,Defense
 1970-09-03 08:39:45,1970-070,C,Burner 2 Fairing,878.0,0.3,0.7,0.0,False,6,800.0,USA,Defense
@@ -7513,7 +7513,7 @@ Date,COSPAR_ID,Category,Object_Name,Ablatable_Mass,Ablation_Degree,Percent_Alumi
 1971-03-05 08:15:02,1971-F02,C,11K63 Fairing,878.0,0.3,0.7,0.0,False,6,80.0,USSR/Russia,Defense
 1971-03-05 08:15:02,1971-F02,C,11K63 Fairing,878.0,0.3,0.7,0.0,False,6,80.0,USSR/Russia,Defense
 1971-03-05 08:15:02,1971-F02,S1,R-12,4810.0,0.3,0.7,0.0,False,2,80.0,USSR/Russia,Defense
-1971-03-05 08:17:00,1971-F02,P,Kosmos,200.0,0.8,0.4,0.0,False,6,90.0,USSR/Russia,Defense
+1971-03-05 08:17:00,1971-F02,P,Kosmos,0.0,0.8,0.4,200.0,False,6,90.0,USSR/Russia,Defense
 1971-03-05 08:17:00,1971-F02,S2,Kosmos-2 (N74) Stage 2,840.0,0.65,0.7,7760.0,False,6,90.0,USSR/Russia,Defense
 1971-03-08 00:00:00,1971-014E,C,KDU,140.0,0.8,0.4,0.0,False,6,270.0,USSR/Russia,Defense
 1971-03-08 00:00:00,1971-017B,S2,Voskhod (N147) Blok-I,2350.0,0.65,0.7,0.0,False,6,252.0,USSR/Russia,Defense
@@ -7844,7 +7844,7 @@ Date,COSPAR_ID,Category,Object_Name,Ablatable_Mass,Ablation_Degree,Percent_Alumi
 1971-07-22 13:45:00,1971-F07,C,Kosmos-3M Fairing,878.0,0.3,0.7,0.0,False,6,100.0,USSR/Russia,Defense
 1971-07-22 13:45:00,1971-F07,C,Kosmos-3M Fairing,878.0,0.3,0.7,0.0,False,6,100.0,USSR/Russia,Defense
 1971-07-22 13:45:00,1971-F07,S1,R-14 11K65MA,5300.0,0.3,0.7,0.0,False,2,100.0,USSR/Russia,Defense
-1971-07-22 14:30:00,1971-F07,P,Kosmos,434.0,0.8,0.4,0.0,False,6,540.0,USSR/Russia,Defense
+1971-07-22 14:30:00,1971-F07,P,Kosmos,0.0,0.8,0.4,434.0,False,6,540.0,USSR/Russia,Defense
 1971-07-22 14:30:00,1971-F07,S2,Kosmos-3M V149-32LM Stage 2,1435.0,0.65,0.7,18665.0,False,6,540.0,USSR/Russia,Defense
 1971-07-23 00:00:00,1971-061B,S2,Voskhod (N158) Blok-I,2350.0,0.65,0.7,0.0,False,6,218.0,USSR/Russia,Defense
 1971-07-23 11:00:09,1971-062,C,11S513 Fairing,878.0,0.3,0.7,0.0,False,6,120.0,USSR/Russia,Defense
@@ -7887,7 +7887,7 @@ Date,COSPAR_ID,Category,Object_Name,Ablatable_Mass,Ablation_Degree,Percent_Alumi
 1971-08-03 11:00:00,1971-F08,C,11K63 Fairing,878.0,0.3,0.7,0.0,False,6,100.0,USSR/Russia,Defense
 1971-08-03 11:00:00,1971-F08,C,11K63 Fairing,878.0,0.3,0.7,0.0,False,6,100.0,USSR/Russia,Defense
 1971-08-03 11:00:00,1971-F08,S1,R-12,4810.0,0.3,0.7,0.0,False,2,100.0,USSR/Russia,Defense
-1971-08-03 11:03:00,1971-F08,P,Kosmos,200.0,0.8,0.4,0.0,False,6,270.0,USSR/Russia,Defense
+1971-08-03 11:03:00,1971-F08,P,Kosmos,0.0,0.8,0.4,200.0,False,6,270.0,USSR/Russia,Defense
 1971-08-03 11:03:00,1971-F08,S2,Kosmos-2 (N78) Stage 2,840.0,0.65,0.7,7760.0,False,6,270.0,USSR/Russia,Defense
 1971-08-04 00:00:00,1971-061D,C,KDU,140.0,0.8,0.4,0.0,False,6,254.0,USSR/Russia,Defense
 1971-08-04 00:00:00,1971-061E,C,PTDU cover?,0.0,0.8,0.4,0.0,False,6,305.0,USSR/Russia,Defense
@@ -8205,7 +8205,7 @@ Date,COSPAR_ID,Category,Object_Name,Ablatable_Mass,Ablation_Degree,Percent_Alumi
 1971-12-05 16:20:00,1971-F14,C,Diamant Fairing,878.0,0.3,0.7,0.0,False,6,100.0,Europe,Government
 1971-12-05 16:20:00,1971-F14,S1,Amethyste,1969.0,0.3,0.7,0.0,False,2,100.0,Europe,Government
 1971-12-05 16:20:00,1971-F14,S2,Topaze,670.0,0.65,0.7,2230.0,False,6,100.0,Europe,Government
-1971-12-05 16:25:00,1971-F14,P,D-2A Polaire,96.0,0.8,0.4,0.0,False,6,300.0,Europe,Government
+1971-12-05 16:25:00,1971-F14,P,D-2A Polaire,0.0,0.8,0.4,96.0,False,6,300.0,Europe,Government
 1971-12-05 16:25:00,1971-F14,S3,Diamant B No. 4 Stage 3,62.0,0.65,0.7,700.0,False,6,300.0,Europe,Government
 1971-12-06 00:00:00,1969-026B,P,TIVOLI II,145.0,0.8,0.4,0.0,False,6,506.0,USA,Defense
 1971-12-06 00:00:00,1971-098F,C,Blenda?,20.0,0.8,0.4,0.0,False,6,321.0,USSR/Russia,Defense
@@ -8390,7 +8390,7 @@ Date,COSPAR_ID,Category,Object_Name,Ablatable_Mass,Ablation_Degree,Percent_Alumi
 1972-02-16 09:59:00,1972-F01,C,Titan 34B Fairing?,878.0,0.3,0.7,0.0,False,6,130.0,USA,Defense
 1972-02-16 09:59:00,1972-F01,S1,Titan 3B-37 Stage 1,5500.0,0.3,0.7,0.0,False,2,90.0,USA,Defense
 1972-02-16 09:59:00,1972-F01,S2,Titan 3B-37 Stage 2,2650.0,0.65,0.7,26550.0,False,6,130.0,USA,Defense
-1972-02-16 10:10:00,1972-F01,P,OPS 1844,1000.0,0.8,0.4,0.0,False,6,400.0,USA,Defense
+1972-02-16 10:10:00,1972-F01,P,OPS 1844,0.0,0.8,0.4,1000.0,False,6,400.0,USA,Defense
 1972-02-16 10:10:00,1972-F01,S3,Agena D,750.0,0.65,0.7,6250.0,False,6,400.0,USA,Defense
 1972-02-17 00:00:00,1971-113B,S2,Kosmos-2 (N85) Stage 2,840.0,0.65,0.7,0.0,False,6,403.0,USSR/Russia,Defense
 1972-02-17 00:00:00,1972-007C,C,D-0801L SOZ-1,60.0,0.8,0.4,0.0,False,6,210.0,USSR/Russia,Defense
@@ -8587,7 +8587,7 @@ Date,COSPAR_ID,Category,Object_Name,Ablatable_Mass,Ablation_Degree,Percent_Alumi
 1972-04-25 11:29:59,1972-F02,C,11K63 Fairing,878.0,0.3,0.7,0.0,False,6,100.0,USSR/Russia,Defense
 1972-04-25 11:29:59,1972-F02,C,11K63 Fairing,878.0,0.3,0.7,0.0,False,6,100.0,USSR/Russia,Defense
 1972-04-25 11:29:59,1972-F02,S1,R-12,4810.0,0.3,0.7,0.0,False,2,100.0,USSR/Russia,Defense
-1972-04-25 11:36:00,1972-F02,P,Kosmos,200.0,0.8,0.4,0.0,False,6,270.0,USSR/Russia,Defense
+1972-04-25 11:36:00,1972-F02,P,Kosmos,0.0,0.8,0.4,200.0,False,6,270.0,USSR/Russia,Defense
 1972-04-25 11:36:00,1972-F02,S2,Kosmos-2 (N90) Stage 2,840.0,0.65,0.7,7760.0,False,6,270.0,USSR/Russia,Defense
 1972-04-26 00:00:00,1963-014CV,C,West Ford dipoles,0.0,0.8,0.4,0.0,False,6,1553.0,USA,Defense
 1972-04-26 00:00:00,1972-030E,C,Blenda?,20.0,0.8,0.4,0.0,False,6,216.0,USSR/Russia,Defense
@@ -8647,9 +8647,9 @@ Date,COSPAR_ID,Category,Object_Name,Ablatable_Mass,Ablation_Degree,Percent_Alumi
 1972-05-20 16:43:00,1972-F03,C,KH-8 SRV adapter,50.0,0.8,0.4,0.0,False,6,197.0,USA,Defense
 1972-05-20 16:43:00,1972-F03,C,Star 12,10.0,0.8,0.4,0.0,False,6,197.0,USA,Defense
 1972-05-20 16:43:00,1972-F03,C,Star 12,10.0,0.8,0.4,0.0,False,6,197.0,USA,Defense
-1972-05-20 16:43:00,1972-F03,P,OPS 6574,2400.0,0.8,0.4,0.0,False,3,197.0,USA,Defense
-1972-05-20 16:43:00,1972-F03,P,SRV Mission 4335-1,167.0,0.8,0.4,0.0,False,6,197.0,USA,Defense
-1972-05-20 16:43:00,1972-F03,P,SRV Mission 4335-2,167.0,0.8,0.4,0.0,False,6,197.0,USA,Defense
+1972-05-20 16:43:00,1972-F03,P,OPS 6574,0.0,0.8,0.4,2400.0,False,3,197.0,USA,Defense
+1972-05-20 16:43:00,1972-F03,P,SRV Mission 4335-1,0.0,0.8,0.4,167.0,False,6,197.0,USA,Defense
+1972-05-20 16:43:00,1972-F03,P,SRV Mission 4335-2,0.0,0.8,0.4,167.0,False,6,197.0,USA,Defense
 1972-05-20 16:43:00,1972-F03,S3,Agena D 4785,750.0,0.65,0.7,6250.0,False,6,197.0,USA,Defense
 1972-05-23 00:00:00,1972-034E,C,KDU,140.0,0.8,0.4,0.0,False,6,337.0,USSR/Russia,Defense
 1972-05-23 00:00:00,1972-036B,S2,Voskhod (N185) Blok-I,2350.0,0.65,0.7,0.0,False,6,265.0,USSR/Russia,Defense
@@ -8831,7 +8831,7 @@ Date,COSPAR_ID,Category,Object_Name,Ablatable_Mass,Ablation_Degree,Percent_Alumi
 1972-07-29 03:20:57,1972-F04,C,Salyut Fairing,878.0,0.3,0.7,0.0,False,6,120.0,USSR/Russia,Defense
 1972-07-29 03:20:57,1972-F04,S1,8S810 no. 260,31000.0,0.3,0.7,0.0,False,2,60.0,USSR/Russia,Defense
 1972-07-29 03:20:57,1972-F04,S2,8S811,11750.0,0.65,0.7,156050.0,False,6,140.0,USSR/Russia,Defense
-1972-07-29 03:25:00,1972-F04,P,[Salyut-2],18500.0,0.8,0.4,400.0,False,6,90.0,USSR/Russia,Defense
+1972-07-29 03:25:00,1972-F04,P,[Salyut-2],0.0,0.8,0.4,18900.0,False,6,90.0,USSR/Russia,Defense
 1972-07-29 03:25:00,1972-F04,S3,Proton-K 260-01 Stage 3,4185.0,0.65,0.7,46415.0,False,6,90.0,USSR/Russia,Defense
 1972-07-29 20:42:00,1972-052,C,SVM-3,30.0,0.8,0.4,0.0,False,6,295.0,USA,Defense
 1972-07-29 21:00:00,1972-052,P,SRV Mission 1203-2,596.0,0.0,0.4,0.0,False,4,242.0,USA,Defense
@@ -8912,7 +8912,7 @@ Date,COSPAR_ID,Category,Object_Name,Ablatable_Mass,Ablation_Degree,Percent_Alumi
 1972-09-02 10:49:59,1972-F05,C,11S513 Fairing,878.0,0.3,0.7,0.0,False,6,50.0,USSR/Russia,Defense
 1972-09-02 10:49:59,1972-F05,C,KDU,430.0,0.8,0.4,0.0,False,6,50.0,USSR/Russia,Defense
 1972-09-02 10:49:59,1972-F05,C,Priborniy otsek,3350.0,0.8,0.4,0.0,False,6,50.0,USSR/Russia,Defense
-1972-09-02 10:49:59,1972-F05,P,[Kosmos],2200.0,0.8,0.4,0.0,False,6,50.0,USSR/Russia,Defense
+1972-09-02 10:49:59,1972-F05,P,[Kosmos],0.0,0.8,0.4,2200.0,False,6,50.0,USSR/Russia,Defense
 1972-09-02 10:49:59,1972-F05,S0,8K74B,850.0,0.3,0.7,0.0,False,2,50.0,USSR/Russia,Defense
 1972-09-02 10:49:59,1972-F05,S0,8K74D,850.0,0.3,0.7,0.0,False,2,50.0,USSR/Russia,Defense
 1972-09-02 10:49:59,1972-F05,S0,8K74G,850.0,0.3,0.7,0.0,False,2,50.0,USSR/Russia,Defense
@@ -9029,7 +9029,7 @@ Date,COSPAR_ID,Category,Object_Name,Ablatable_Mass,Ablation_Degree,Percent_Alumi
 1972-10-17 06:56:00,1972-077A,P,Kosmos-522,2200.0,0.0,0.4,0.0,False,6,314.0,USSR/Russia,Defense
 1972-10-17 19:59:01,1972-F06,C,Kosmos-3M Fairing,878.0,0.3,0.7,0.0,False,6,100.0,USSR/Russia,Defense
 1972-10-17 19:59:01,1972-F06,C,Kosmos-3M Fairing,878.0,0.3,0.7,0.0,False,6,100.0,USSR/Russia,Defense
-1972-10-17 19:59:01,1972-F06,P,Kosmos,800.0,0.8,0.4,0.0,False,6,800.0,USSR/Russia,Defense
+1972-10-17 19:59:01,1972-F06,P,Kosmos,0.0,0.8,0.4,800.0,False,6,800.0,USSR/Russia,Defense
 1972-10-17 19:59:01,1972-F06,S1,R-14 11K65MA,5300.0,0.3,0.7,0.0,False,2,100.0,USSR/Russia,Defense
 1972-10-17 19:59:01,1972-F06,S2,Kosmos-3M Yu149-40 Stage 2,1435.0,0.65,0.7,18665.0,False,6,800.0,USSR/Russia,Defense
 1972-10-18 11:59:59,1972-083,C,11S512 Fairing,878.0,0.3,0.7,0.0,False,6,120.0,USSR/Russia,Defense
@@ -9416,7 +9416,7 @@ Date,COSPAR_ID,Category,Object_Name,Ablatable_Mass,Ablation_Degree,Percent_Alumi
 1973-04-25 09:35:00,1973-U01,C,US-A radar,200.0,0.8,0.4,0.0,False,6,250.0,USSR/Russia,Defense
 1973-04-25 09:35:00,1973-U01,C,US-A reactor DU,50.0,0.8,0.4,0.0,False,6,250.0,USSR/Russia,Defense
 1973-04-25 09:35:00,1973-U01,C,US-A reactor DU,50.0,0.8,0.4,0.0,False,6,250.0,USSR/Russia,Defense
-1973-04-25 09:35:00,1973-U01,P,[Kosmos],1150.0,0.8,0.4,0.0,False,6,250.0,USSR/Russia,Defense
+1973-04-25 09:35:00,1973-U01,P,[Kosmos],0.0,0.8,0.4,1150.0,False,6,250.0,USSR/Russia,Defense
 1973-04-25 10:45:00,1973-024,C,11S512 Fairing,878.0,0.3,0.7,0.0,False,6,120.0,USSR/Russia,Defense
 1973-04-25 10:45:00,1973-024,C,11S512 Fairing,878.0,0.3,0.7,0.0,False,6,120.0,USSR/Russia,Defense
 1973-04-25 10:45:00,1973-024,S0,8K74B,850.0,0.3,0.7,0.0,False,2,60.0,USSR/Russia,Defense
@@ -9604,9 +9604,9 @@ Date,COSPAR_ID,Category,Object_Name,Ablatable_Mass,Ablation_Degree,Percent_Alumi
 1973-06-26 17:00:00,1973-F04,S2,Titan 3B-43 Stage 2,2650.0,0.65,0.7,26550.0,False,6,130.0,USA,Defense
 1973-06-26 17:05:00,1973-F04,C,Star 12,10.0,0.8,0.4,0.0,False,6,130.0,USA,Defense
 1973-06-26 17:05:00,1973-F04,C,Star 12,10.0,0.8,0.4,0.0,False,6,130.0,USA,Defense
-1973-06-26 17:05:00,1973-F04,P,OPS 4018,2400.0,0.8,0.4,0.0,False,6,130.0,USA,Defense
-1973-06-26 17:05:00,1973-F04,P,SRV Mission 4339-1,167.0,0.8,0.4,0.0,False,6,130.0,USA,Defense
-1973-06-26 17:05:00,1973-F04,P,SRV Mission 4339-2,167.0,0.8,0.4,0.0,False,6,130.0,USA,Defense
+1973-06-26 17:05:00,1973-F04,P,OPS 4018,0.0,0.8,0.4,2400.0,False,6,130.0,USA,Defense
+1973-06-26 17:05:00,1973-F04,P,SRV Mission 4339-1,0.0,0.8,0.4,167.0,False,6,130.0,USA,Defense
+1973-06-26 17:05:00,1973-F04,P,SRV Mission 4339-2,0.0,0.8,0.4,167.0,False,6,130.0,USA,Defense
 1973-06-26 17:05:00,1973-F04,S3,Agena D,750.0,0.65,0.7,6250.0,False,6,130.0,USA,Defense
 1973-06-27 00:00:00,1973-043B,S2,Voskhod 19-176 Blok-I,2350.0,0.65,0.7,0.0,False,6,256.0,USSR/Russia,Defense
 1973-06-27 11:50:01,1973-044,C,11S514 Fairing,878.0,0.3,0.7,0.0,False,6,150.0,USSR/Russia,Defense
@@ -9654,7 +9654,7 @@ Date,COSPAR_ID,Category,Object_Name,Ablatable_Mass,Ablation_Degree,Percent_Alumi
 1973-07-16 17:10:21,1973-F06,C,Improved Delta PLF,878.0,0.3,0.7,0.0,False,6,170.0,Japan,Government
 1973-07-16 17:10:21,1973-F06,C,Improved Delta PLF,878.0,0.3,0.7,0.0,False,6,170.0,Japan,Government
 1973-07-16 17:10:21,1973-F06,S1,LT Thor DSV-2L-1C 578,3715.0,0.3,0.7,0.0,False,6,150.0,USA,Government
-1973-07-16 17:29:00,1973-F06,P,ITOS E,340.0,0.8,0.4,0.0,False,6,200.0,USA,Government
+1973-07-16 17:29:00,1973-F06,P,ITOS E,0.0,0.8,0.4,340.0,False,6,200.0,USA,Government
 1973-07-16 17:29:00,1973-F06,S2,Delta 96,784.0,0.65,0.7,4816.0,False,6,200.0,USA,Government
 1973-07-21 19:30:59,1973-047,C,Proton Fairing,878.0,0.3,0.7,0.0,False,6,140.0,USSR/Russia,Defense
 1973-07-21 19:30:59,1973-047,C,Proton Fairing,878.0,0.3,0.7,0.0,False,6,140.0,USSR/Russia,Defense
@@ -10260,8 +10260,8 @@ Date,COSPAR_ID,Category,Object_Name,Ablatable_Mass,Ablation_Degree,Percent_Alumi
 1974-02-11 13:48:02,1974-F01,S0,UA1205 SRM-20,33800.0,0.3,0.7,0.0,False,2,50.0,USA,Government
 1974-02-11 13:48:02,1974-F01,S1,Titan 23E-1 Stage 1,5500.0,0.3,0.7,0.0,False,6,120.0,USA,Government
 1974-02-11 13:48:02,1974-F01,S2,Titan 23E-1 Stage 2,2650.0,0.65,0.7,0.0,False,6,180.0,USA,Government
-1974-02-11 14:00:00,1974-F01,P,Sphinx,95.0,0.8,0.4,0.0,False,6,180.0,USA,Government
-1974-02-11 14:00:00,1974-F01,P,Viking Dynamic Simulator,3516.0,0.8,0.4,0.0,False,6,180.0,USA,Government
+1974-02-11 14:00:00,1974-F01,P,Sphinx,0.0,0.8,0.4,95.0,False,6,180.0,USA,Government
+1974-02-11 14:00:00,1974-F01,P,Viking Dynamic Simulator,0.0,0.8,0.4,3516.0,False,6,180.0,USA,Government
 1974-02-11 14:00:00,1974-F01,S3,Centaur D-1T Proof Test,2630.0,0.65,0.7,13670.0,False,6,180.0,USA,Government
 1974-02-12 08:56:00,1974-006,C,11S513 Fairing,878.0,0.3,0.7,0.0,False,6,120.0,USSR/Russia,Defense
 1974-02-12 08:56:00,1974-006,C,11S513 Fairing,878.0,0.3,0.7,0.0,False,6,120.0,USSR/Russia,Defense
@@ -10407,7 +10407,7 @@ Date,COSPAR_ID,Category,Object_Name,Ablatable_Mass,Ablation_Degree,Percent_Alumi
 1974-04-12 08:04:00,1974-F02,C,Blenda,25.0,0.8,0.4,0.0,False,6,170.0,USSR/Russia,Defense
 1974-04-12 08:04:00,1974-F02,C,KDU,140.0,0.8,0.4,0.0,False,6,170.0,USSR/Russia,Defense
 1974-04-12 08:04:00,1974-F02,C,Priborniy otsek,3200.0,0.8,0.4,0.0,False,6,170.0,USSR/Russia,Defense
-1974-04-12 08:04:00,1974-F02,P,[Kosmos],2310.0,0.8,0.4,0.0,False,6,170.0,USSR/Russia,Defense
+1974-04-12 08:04:00,1974-F02,P,[Kosmos],0.0,0.8,0.4,2310.0,False,6,170.0,USSR/Russia,Defense
 1974-04-12 08:04:00,1974-F02,S2,Voskhod 29-757 Blok-I,2350.0,0.65,0.7,0.0,False,6,170.0,USSR/Russia,Defense
 1974-04-13 04:42:00,1974-018,C,Kosmos-638 BO,1250.0,0.8,0.4,0.0,False,6,234.0,USSR/Russia,Defense
 1974-04-13 04:42:00,1974-018,C,Kosmos-638 PAO,2200.0,0.8,0.4,0.0,False,6,234.0,USSR/Russia,Defense
@@ -10523,7 +10523,7 @@ Date,COSPAR_ID,Category,Object_Name,Ablatable_Mass,Ablation_Degree,Percent_Alumi
 1974-05-23 12:16:51,1974-F03,S0,11S59V,3915.0,0.3,0.7,0.0,False,2,75.0,USSR/Russia,Defense
 1974-05-23 12:16:51,1974-F03,S1,11S59A,6875.0,0.3,0.7,0.0,False,6,175.0,USSR/Russia,Defense
 1974-05-23 12:24:00,1974-F03,C,Agregatniy otsek,820.0,0.8,0.4,0.0,False,6,170.0,USSR/Russia,Defense
-1974-05-23 12:24:00,1974-F03,P,[Kosmos],4360.0,0.8,0.4,0.0,False,6,170.0,USSR/Russia,Defense
+1974-05-23 12:24:00,1974-F03,P,[Kosmos],0.0,0.8,0.4,4360.0,False,6,170.0,USSR/Russia,Defense
 1974-05-23 12:24:00,1974-F03,S2,Soyuz-U No. 005 Blok-I,2410.0,0.65,0.7,22790.0,False,6,170.0,USSR/Russia,Defense
 1974-05-25 00:00:00,1974-022B,S2,Delta 101,845.0,0.65,0.7,0.0,False,6,446.0,USA,Government
 1974-05-25 00:00:00,1974-030D,C,Blenda,25.0,0.8,0.4,0.0,False,6,285.0,USSR/Russia,Defense
@@ -10849,8 +10849,8 @@ Date,COSPAR_ID,Category,Object_Name,Ablatable_Mass,Ablation_Degree,Percent_Alumi
 1974-08-30 09:00:01,1974-F06,C,FEU-170 adapter,20.0,0.8,0.4,0.0,False,6,200.0,USSR/Russia,Defense
 1974-08-30 09:00:01,1974-F06,C,FEU-170 motor,10.0,0.8,0.4,0.0,False,6,200.0,USSR/Russia,Defense
 1974-08-30 09:00:01,1974-F06,C,Priborniy otsek,3200.0,0.8,0.4,0.0,False,6,200.0,USSR/Russia,Defense
-1974-08-30 09:00:01,1974-F06,P,[Kapsula],200.0,0.8,0.4,0.0,False,6,200.0,USSR/Russia,Defense
-1974-08-30 09:00:01,1974-F06,P,[Kosmos],2200.0,0.8,0.4,0.0,False,6,200.0,USSR/Russia,Defense
+1974-08-30 09:00:01,1974-F06,P,[Kapsula],0.0,0.8,0.4,200.0,False,6,200.0,USSR/Russia,Defense
+1974-08-30 09:00:01,1974-F06,P,[Kosmos],0.0,0.8,0.4,2200.0,False,6,200.0,USSR/Russia,Defense
 1974-08-30 09:00:01,1974-F06,S0,8K74B,850.0,0.3,0.7,0.0,False,2,60.0,USSR/Russia,Defense
 1974-08-30 09:00:01,1974-F06,S0,8K74D,850.0,0.3,0.7,0.0,False,2,60.0,USSR/Russia,Defense
 1974-08-30 09:00:01,1974-F06,S0,8K74G,850.0,0.3,0.7,0.0,False,2,60.0,USSR/Russia,Defense
@@ -11285,7 +11285,7 @@ Date,COSPAR_ID,Category,Object_Name,Ablatable_Mass,Ablation_Degree,Percent_Alumi
 1975-02-20 23:35:00,1975-F01,S0,Atlas Booster,3200.0,0.3,0.7,0.0,False,2,100.0,USA,Government
 1975-02-20 23:35:00,1975-F01,S1,Atlas SLV-3D 5015D,4000.0,0.3,0.7,0.0,False,6,250.0,USA,Government
 1975-02-20 23:42:00,1975-F01,C,SVM-4A,56.0,0.8,0.4,0.0,False,6,200.0,INTELSAT,Government
-1975-02-20 23:42:00,1975-F01,P,INTELSAT IV F6,531.0,0.8,0.4,135.0,False,6,200.0,INTELSAT,Government
+1975-02-20 23:42:00,1975-F01,P,INTELSAT IV F6,0.0,0.8,0.4,666.0,False,6,200.0,INTELSAT,Government
 1975-02-20 23:42:00,1975-F01,S2,Centaur D-1A  AC-33,2630.0,0.65,0.7,13670.0,False,6,200.0,USA,Government
 1975-02-21 00:00:00,1974-058A,P,Kosmos-668,200.0,0.8,0.4,0.0,False,6,475.0,USSR/Russia,Defense
 1975-02-24 05:25:00,1975-014,C,M-3C Fairing,878.0,0.3,0.7,0.0,False,6,290.0,Japan,Government
@@ -12068,8 +12068,8 @@ Date,COSPAR_ID,Category,Object_Name,Ablatable_Mass,Ablation_Degree,Percent_Alumi
 1975-10-16 04:26:00,1975-F05,C,Sbrasivaemiy otsek,200.0,0.8,0.4,0.0,False,6,190.0,USSR/Russia,Government
 1975-10-16 04:26:00,1975-F05,C,Sbrasivaemiy otsek,200.0,0.8,0.4,0.0,False,6,190.0,USSR/Russia,Government
 1975-10-16 04:26:00,1975-F05,C,[Luna-24] VS,176.0,0.8,0.4,0.0,False,6,190.0,USSR/Russia,Government
-1975-10-16 04:26:00,1975-F05,P,[Luna-24] KT,1360.0,0.8,0.4,1820.0,False,6,190.0,USSR/Russia,Government
-1975-10-16 04:26:00,1975-F05,P,[Luna-24] VA,39.0,0.8,0.4,0.0,False,6,190.0,USSR/Russia,Government
+1975-10-16 04:26:00,1975-F05,P,[Luna-24] KT,0.0,0.8,0.4,3180.0,False,6,190.0,USSR/Russia,Government
+1975-10-16 04:26:00,1975-F05,P,[Luna-24] VA,0.0,0.8,0.4,39.0,False,6,190.0,USSR/Russia,Government
 1975-10-16 04:26:00,1975-F05,S3,Proton-K 287-02 Stage 3,4185.0,0.65,0.7,0.0,False,6,210.0,USSR/Russia,Defense
 1975-10-16 04:26:00,1975-F05,S4,Blok D No. 1401?,2400.0,0.65,0.7,14900.0,False,6,190.0,USSR/Russia,Defense
 1975-10-16 22:40:00,1975-100,C,8' PLF,878.0,0.3,0.7,0.0,False,6,170.0,USA,Government
@@ -12207,8 +12207,8 @@ Date,COSPAR_ID,Category,Object_Name,Ablatable_Mass,Ablation_Degree,Percent_Alumi
 1975-12-06 03:35:01,1975-F06,S3,Antares IIB HIB-406,130.0,0.65,0.7,1170.0,False,6,350.0,USA,Government
 1975-12-06 03:40:00,1975-F06,C,DAD-B Canister,6.0,0.8,0.4,0.0,False,6,100.0,USA,Government
 1975-12-06 03:40:00,1975-F06,C,Velocity Package,61.0,0.8,0.4,0.0,False,6,100.0,USA,Government
-1975-12-06 03:40:00,1975-F06,P,DAD-A,35.0,0.8,0.4,0.0,False,6,100.0,USA,Government
-1975-12-06 03:40:00,1975-F06,P,DAD-B,36.0,0.8,0.4,0.0,False,6,100.0,USA,Government
+1975-12-06 03:40:00,1975-F06,P,DAD-A,0.0,0.8,0.4,35.0,False,6,100.0,USA,Government
+1975-12-06 03:40:00,1975-F06,P,DAD-B,0.0,0.8,0.4,36.0,False,6,100.0,USA,Government
 1975-12-06 03:40:00,1975-F06,S4,Scout S196C Stage 4,26.0,0.65,0.7,274.0,False,6,100.0,USA,Government
 1975-12-07 00:00:00,1975-113B,S2,Voskhod 41-201 Blok-I,2350.0,0.65,0.7,0.0,False,6,206.0,USSR/Russia,Defense
 1975-12-08 00:00:00,1975-113D,C,Sensor cover,0.0,0.8,0.4,0.0,False,6,253.0,USSR/Russia,Defense
@@ -12265,7 +12265,7 @@ Date,COSPAR_ID,Category,Object_Name,Ablatable_Mass,Ablation_Degree,Percent_Alumi
 1975-12-19 00:00:00,1975-118B,S2,Titan 23C-11 Stage 2,2650.0,0.65,0.7,0.0,False,6,312.0,USA,Defense
 1975-12-19 14:00:00,1975-F07,C,Kosmos-3M Fairing,878.0,0.3,0.7,0.0,False,6,100.0,USSR/Russia,Defense
 1975-12-19 14:00:00,1975-F07,C,Kosmos-3M Fairing,878.0,0.3,0.7,0.0,False,6,100.0,USSR/Russia,Defense
-1975-12-19 14:00:00,1975-F07,P,Kosmos,650.0,0.8,0.4,0.0,False,6,550.0,USSR/Russia,Defense
+1975-12-19 14:00:00,1975-F07,P,Kosmos,0.0,0.8,0.4,650.0,False,6,550.0,USSR/Russia,Defense
 1975-12-19 14:00:00,1975-F07,S1,R-14 11K65MA,5300.0,0.3,0.7,0.0,False,2,100.0,USSR/Russia,Defense
 1975-12-19 14:00:00,1975-F07,S2,Kosmos-3M 21-263 Stage 2,1435.0,0.65,0.7,18665.0,False,6,550.0,USSR/Russia,Defense
 1975-12-20 00:00:00,1975-113F,C,Nauka part,0.0,0.8,0.4,0.0,False,6,217.0,USSR/Russia,Defense
@@ -12396,7 +12396,7 @@ Date,COSPAR_ID,Category,Object_Name,Ablatable_Mass,Ablation_Degree,Percent_Alumi
 1976-02-04 06:00:00,1976-F01,C,M-3C Fairing,878.0,0.3,0.7,0.0,False,6,290.0,Japan,Government
 1976-02-04 06:00:00,1976-F01,C,M-3C Fairing,878.0,0.3,0.7,0.0,False,6,290.0,Japan,Government
 1976-02-04 06:00:00,1976-F01,S1,M-10 M-3C-3,5907.0,0.3,0.7,0.0,False,2,94.0,Japan,Government
-1976-02-04 06:02:00,1976-F01,P,CORSA,85.0,0.8,0.4,0.0,False,6,84.0,Japan,Government
+1976-02-04 06:02:00,1976-F01,P,CORSA,0.0,0.8,0.4,85.0,False,6,84.0,Japan,Government
 1976-02-04 06:02:00,1976-F01,S3,M-3C-3 Stage 3,130.0,0.65,0.7,970.0,False,6,84.0,Japan,Government
 1976-02-04 06:03:00,1976-F01,S2,M-22TVC,2607.0,0.65,0.7,7193.0,False,6,84.0,Japan,Government
 1976-02-05 00:00:00,1975-116C,C,Kosmos-785 DU,1650.0,0.8,0.4,0.0,False,6,258.0,USSR/Russia,Defense
@@ -13211,7 +13211,7 @@ Date,COSPAR_ID,Category,Object_Name,Ablatable_Mass,Ablation_Degree,Percent_Alumi
 1976-11-10 00:00:00,1976-109F,C,Sensor cover,0.0,0.8,0.4,0.0,False,6,291.0,USSR/Russia,Defense
 1976-11-10 09:05:00,1976-F03,C,FB-1 Fairing,878.0,0.3,0.7,0.0,False,6,100.0,China,Government
 1976-11-10 09:05:00,1976-F03,C,FB-1 Fairing,878.0,0.3,0.7,0.0,False,6,100.0,China,Government
-1976-11-10 09:05:00,1976-F03,P,JSSW 6,1208.0,0.8,0.4,0.0,False,6,185.0,China,Government
+1976-11-10 09:05:00,1976-F03,P,JSSW 6,0.0,0.8,0.4,1208.0,False,6,185.0,China,Government
 1976-11-10 09:05:00,1976-F03,S1,FB-1 Stage 1,9000.0,0.3,0.7,0.0,False,2,100.0,China,Government
 1976-11-10 09:05:00,1976-F03,S2,FB-1 701-08 Stage 2,4000.0,0.65,0.7,35000.0,False,6,185.0,China,Government
 1976-11-11 00:00:00,1976-106E,C,KDU,140.0,0.8,0.4,0.0,False,6,320.0,USSR/Russia,Defense
@@ -14279,7 +14279,7 @@ Date,COSPAR_ID,Category,Object_Name,Ablatable_Mass,Ablation_Degree,Percent_Alumi
 1977-11-29 00:00:00,1976-124F,P,Kosmos-885 SS 4,5.0,0.8,0.4,0.0,False,6,508.0,USSR/Russia,Defense
 1977-11-29 07:05:00,1977-F06,C,Kosmos-3M Fairing,878.0,0.3,0.7,0.0,False,6,100.0,USSR/Russia,Defense
 1977-11-29 07:05:00,1977-F06,C,Kosmos-3M Fairing,878.0,0.3,0.7,0.0,False,6,100.0,USSR/Russia,Defense
-1977-11-29 07:05:00,1977-F06,P,-,870.0,0.8,0.4,0.0,False,6,85.0,USSR/Russia,Defense
+1977-11-29 07:05:00,1977-F06,P,-,0.0,0.8,0.4,870.0,False,6,85.0,USSR/Russia,Defense
 1977-11-29 07:05:00,1977-F06,S1,R-14 11K65MA,5300.0,0.3,0.7,0.0,False,2,100.0,USSR/Russia,Defense
 1977-11-29 07:05:00,1977-F06,S2,Kosmos-3M 21-265 Stage 2,1435.0,0.65,0.7,18665.0,False,6,85.0,USSR/Russia,Defense
 1977-11-30 00:00:00,1977-101A,P,Kosmos-959,925.0,0.8,0.4,0.0,False,6,811.0,USSR/Russia,Defense
@@ -14680,8 +14680,8 @@ Date,COSPAR_ID,Category,Object_Name,Ablatable_Mass,Ablation_Degree,Percent_Alumi
 1978-03-25 18:09:00,1978-F01,S0,UA1205 71,33800.0,0.3,0.7,0.0,False,2,55.0,USA,Defense
 1978-03-25 18:09:00,1978-F01,S0,UA1205 72,33800.0,0.3,0.7,0.0,False,2,55.0,USA,Defense
 1978-03-25 18:09:00,1978-F01,S1,Titan 23C-17 Stage 1,5500.0,0.3,0.7,0.0,False,6,120.0,USA,Defense
-1978-03-25 18:27:00,1978-F01,P,DSCS II F-10,550.0,0.8,0.4,50.0,False,6,150.0,USA,Defense
-1978-03-25 18:27:00,1978-F01,P,DSCS II F-9,550.0,0.8,0.4,50.0,False,6,150.0,USA,Defense
+1978-03-25 18:27:00,1978-F01,P,DSCS II F-10,0.0,0.8,0.4,600.0,False,6,150.0,USA,Defense
+1978-03-25 18:27:00,1978-F01,P,DSCS II F-9,0.0,0.8,0.4,600.0,False,6,150.0,USA,Defense
 1978-03-25 18:27:00,1978-F01,S2,Titan 23C-17 Stage 2,2650.0,0.65,0.7,26550.0,False,6,150.0,USA,Defense
 1978-03-25 18:27:00,1978-F01,S3,Transtage 35,2000.0,0.65,0.7,10500.0,False,6,150.0,USA,Defense
 1978-03-27 00:00:00,1977-042X,P,Kosmos-913 SS 20,5.0,0.8,0.4,0.0,False,6,514.0,USSR/Russia,Defense
@@ -15115,7 +15115,7 @@ Date,COSPAR_ID,Category,Object_Name,Ablatable_Mass,Ablation_Degree,Percent_Alumi
 1978-08-17 20:04:00,1978-F03,C,DM-14L SOZ-1,60.0,0.8,0.4,0.0,False,6,100.0,USSR/Russia,Defense
 1978-08-17 20:04:00,1978-F03,C,DM-14L SOZ-2,60.0,0.8,0.4,0.0,False,6,100.0,USSR/Russia,Defense
 1978-08-17 20:04:00,1978-F03,C,Perekhodnik,800.0,0.8,0.4,0.0,False,6,100.0,USSR/Russia,Defense
-1978-08-17 20:04:00,1978-F03,P,Ekran,2000.0,0.8,0.4,0.0,False,6,100.0,USSR/Russia,Government
+1978-08-17 20:04:00,1978-F03,P,Ekran,0.0,0.8,0.4,2000.0,False,6,100.0,USSR/Russia,Government
 1978-08-17 20:04:00,1978-F03,S3,Proton-K 297-02 Stage 3,4185.0,0.65,0.7,46415.0,False,6,100.0,USSR/Russia,Defense
 1978-08-17 20:04:00,1978-F03,S4,Blok DM No. 14L,2440.0,0.65,0.7,15060.0,False,6,100.0,USSR/Russia,Defense
 1978-08-22 23:47:00,1978-080,C,Molniya Fairing,878.0,0.3,0.7,0.0,False,6,250.0,USSR/Russia,Defense
@@ -15295,7 +15295,7 @@ Date,COSPAR_ID,Category,Object_Name,Ablatable_Mass,Ablation_Degree,Percent_Alumi
 1978-10-17 16:06:00,1978-F04,C,DM-12L SOZ-1,60.0,0.8,0.4,0.0,False,6,100.0,USSR/Russia,Defense
 1978-10-17 16:06:00,1978-F04,C,DM-12L SOZ-2,60.0,0.8,0.4,0.0,False,6,100.0,USSR/Russia,Defense
 1978-10-17 16:06:00,1978-F04,C,Perekhodnik,800.0,0.8,0.4,0.0,False,6,100.0,USSR/Russia,Defense
-1978-10-17 16:06:00,1978-F04,P,Ekran,2000.0,0.8,0.4,0.0,False,6,100.0,USSR/Russia,Government
+1978-10-17 16:06:00,1978-F04,P,Ekran,0.0,0.8,0.4,2000.0,False,6,100.0,USSR/Russia,Government
 1978-10-17 16:06:00,1978-F04,S3,Proton-K 298-01 Stage 3,4185.0,0.65,0.7,46415.0,False,6,100.0,USSR/Russia,Defense
 1978-10-17 16:06:00,1978-F04,S4,Blok DM No. 12L,2440.0,0.65,0.7,15060.0,False,6,100.0,USSR/Russia,Defense
 1978-10-19 00:00:00,1977-077A,P,Kosmos-937,3000.0,0.8,0.4,0.0,False,6,444.0,USSR/Russia,Defense
@@ -15654,8 +15654,8 @@ Date,COSPAR_ID,Category,Object_Name,Ablatable_Mass,Ablation_Degree,Percent_Alumi
 1979-02-16 15:00:00,1979-F01,S0,11S59V,3915.0,0.3,0.7,0.0,False,2,75.0,USSR/Russia,Defense
 1979-02-16 15:00:00,1979-F01,S1,11S59A,6875.0,0.3,0.7,0.0,False,6,175.0,USSR/Russia,Defense
 1979-02-16 15:04:00,1979-F01,C,Priborniy otsek,3200.0,0.8,0.4,0.0,False,6,200.0,USSR/Russia,Defense
-1979-02-16 15:04:00,1979-F01,P,[Kosmos],2100.0,0.8,0.4,0.0,False,6,200.0,USSR/Russia,Defense
-1979-02-16 15:04:00,1979-F01,P,[Nauka],630.0,0.8,0.4,0.0,False,6,200.0,USSR/Russia,Defense
+1979-02-16 15:04:00,1979-F01,P,[Kosmos],0.0,0.8,0.4,2100.0,False,6,200.0,USSR/Russia,Defense
+1979-02-16 15:04:00,1979-F01,P,[Nauka],0.0,0.8,0.4,630.0,False,6,200.0,USSR/Russia,Defense
 1979-02-16 15:04:00,1979-F01,S2,Soyuz-U 25-131 Blok-I,2410.0,0.65,0.7,0.0,False,6,200.0,USSR/Russia,Defense
 1979-02-18 00:00:00,1975-039B,P,Castor,76.0,0.8,0.4,0.0,False,6,1263.0,Europe,Government
 1979-02-18 16:18:00,1979-013,C,Altair Fairing 42-45 A-513,878.0,0.3,0.7,0.0,False,6,280.0,USA,Government
@@ -16422,7 +16422,7 @@ Date,COSPAR_ID,Category,Object_Name,Ablatable_Mass,Ablation_Degree,Percent_Alumi
 1979-10-12 12:38:00,1979-U01,C,Blenda,25.0,0.8,0.4,0.0,False,6,200.0,USSR/Russia,Defense
 1979-10-12 12:38:00,1979-U01,C,KDU,140.0,0.8,0.4,0.0,False,6,200.0,USSR/Russia,Defense
 1979-10-12 12:38:00,1979-U01,C,Priborniy otsek,3200.0,0.8,0.4,0.0,False,6,200.0,USSR/Russia,Defense
-1979-10-12 12:38:00,1979-U01,P,[Kosmos],2655.0,0.8,0.4,0.0,False,6,200.0,USSR/Russia,Defense
+1979-10-12 12:38:00,1979-U01,P,[Kosmos],0.0,0.8,0.4,2655.0,False,6,200.0,USSR/Russia,Defense
 1979-10-12 12:38:00,1979-U01,S2,Soyuz-U 25-419 Blok-I,2410.0,0.65,0.7,0.0,False,6,200.0,USSR/Russia,Defense
 1979-10-13 00:00:00,1979-085D,C,KDU part,0.0,0.8,0.4,0.0,False,6,393.0,USSR/Russia,Defense
 1979-10-14 00:00:00,1976-124A,P,Kosmos-885,965.0,0.8,0.4,0.0,False,6,512.0,USSR/Russia,Defense
@@ -17797,7 +17797,7 @@ Date,COSPAR_ID,Category,Object_Name,Ablatable_Mass,Ablation_Degree,Percent_Alumi
 1981-01-23 11:20:00,1981-F01,C,Tsiklon-3 Fairing,878.0,0.3,0.7,0.0,False,6,70.0,USSR/Russia,Defense
 1981-01-23 11:20:00,1981-F01,S1,11S691,8300.0,0.3,0.7,0.0,False,2,70.0,USSR/Russia,Defense
 1981-01-23 11:20:00,1981-F01,S2,Tsiklon-3 83-621 Stage 2,4800.0,0.65,0.7,48500.0,False,6,200.0,USSR/Russia,Defense
-1981-01-23 11:24:00,1981-F01,P,[Kosmos],1530.0,0.8,0.4,0.0,False,6,200.0,USSR/Russia,Government
+1981-01-23 11:24:00,1981-F01,P,[Kosmos],0.0,0.8,0.4,1530.0,False,6,200.0,USSR/Russia,Government
 1981-01-23 11:24:00,1981-F01,S3,Tsiklon-3 83-621 Stage 3,1600.0,0.65,0.7,3000.0,False,6,200.0,USSR/Russia,Defense
 1981-01-24 00:00:00,1981-005B,S2,Soyuz-U 23-975 Blok-I,2410.0,0.65,0.7,0.0,False,6,355.0,USSR/Russia,Defense
 1981-01-24 14:18:02,1981-007,C,Progress Fairing,878.0,0.3,0.7,0.0,False,6,150.0,USSR/Russia,Government
@@ -19698,7 +19698,7 @@ Date,COSPAR_ID,Category,Object_Name,Ablatable_Mass,Ablation_Degree,Percent_Alumi
 1982-08-30 19:55:00,1982-F05,C,Kosmos-3M Fairing,878.0,0.3,0.7,0.0,False,6,100.0,USSR/Russia,Defense
 1982-08-30 19:55:00,1982-F05,C,Kosmos-3M Fairing,878.0,0.3,0.7,0.0,False,6,100.0,USSR/Russia,Defense
 1982-08-30 19:55:00,1982-F05,S1,R-14 11K65MA,5300.0,0.3,0.7,0.0,False,2,100.0,USSR/Russia,Defense
-1982-08-30 20:24:00,1982-F05,P,Kosmos,800.0,0.8,0.4,0.0,False,6,800.0,USSR/Russia,Defense
+1982-08-30 20:24:00,1982-F05,P,Kosmos,0.0,0.8,0.4,800.0,False,6,800.0,USSR/Russia,Defense
 1982-08-30 20:24:00,1982-F05,S2,Kosmos-3M 47-236 Stage 2,1435.0,0.65,0.7,18665.0,False,6,800.0,USSR/Russia,Defense
 1982-09-01 09:00:00,1982-085,C,11S514 Fairing,878.0,0.3,0.7,0.0,False,6,150.0,USSR/Russia,Defense
 1982-09-01 09:00:00,1982-085,C,11S514 Fairing,878.0,0.3,0.7,0.0,False,6,150.0,USSR/Russia,Defense
@@ -19757,8 +19757,8 @@ Date,COSPAR_ID,Category,Object_Name,Ablatable_Mass,Ablation_Degree,Percent_Alumi
 1982-09-10 02:25:00,1982-F06,C,SNIA-BPD ABM,22.0,0.8,0.4,0.0,False,4,220.0,Europe,Government
 1982-09-10 02:25:00,1982-F06,C,Star 30B S/N 004-9,33.0,0.8,0.4,0.0,False,4,220.0,Europe,Government
 1982-09-10 02:25:00,1982-F06,C,Sylda 3900 No. 1,150.0,0.8,0.4,0.0,False,4,220.0,Europe,"Arianespace, Inc."
-1982-09-10 02:25:00,1982-F06,P,Marecs B,430.0,0.8,0.4,85.0,False,4,220.0,Europe,Government
-1982-09-10 02:25:00,1982-F06,P,Sirio 2,188.0,0.8,0.4,32.0,False,4,220.0,Europe,Government
+1982-09-10 02:25:00,1982-F06,P,Marecs B,0.0,0.8,0.4,515.0,False,4,220.0,Europe,Government
+1982-09-10 02:25:00,1982-F06,P,Sirio 2,0.0,0.8,0.4,220.0,False,4,220.0,Europe,Government
 1982-09-10 02:25:00,1982-F06,S3,Ariane H8 L5,1450.0,0.65,0.7,8250.0,False,4,220.0,Europe,"Arianespace, Inc."
 1982-09-11 00:00:00,1982-089B,S2,Soyuz-U 24-082 Blok-I,2410.0,0.65,0.7,0.0,False,6,189.0,USSR/Russia,Defense
 1982-09-11 00:00:00,1982-090C,C,CZ-2C sep motor cover?,1.0,0.8,0.4,0.0,False,6,860.0,China,Government
@@ -20068,7 +20068,7 @@ Date,COSPAR_ID,Category,Object_Name,Ablatable_Mass,Ablation_Degree,Percent_Alumi
 1982-12-24 12:06:00,1982-F08,C,DM-33L SOZ-1,60.0,0.8,0.4,0.0,False,6,60.0,USSR/Russia,Defense
 1982-12-24 12:06:00,1982-F08,C,DM-33L SOZ-2,60.0,0.8,0.4,0.0,False,6,60.0,USSR/Russia,Defense
 1982-12-24 12:06:00,1982-F08,C,Perekhodnik,800.0,0.8,0.4,0.0,False,6,60.0,USSR/Russia,Defense
-1982-12-24 12:06:00,1982-F08,P,Raduga,1965.0,0.8,0.4,0.0,False,6,60.0,USSR/Russia,Defense
+1982-12-24 12:06:00,1982-F08,P,Raduga,0.0,0.8,0.4,1965.0,False,6,60.0,USSR/Russia,Defense
 1982-12-24 12:06:00,1982-F08,S3,Proton-K 314-01 Stage 3,4185.0,0.65,0.7,46415.0,False,6,60.0,USSR/Russia,Defense
 1982-12-24 12:06:00,1982-F08,S4,Blok DM No. 33L,2440.0,0.65,0.7,15060.0,False,6,60.0,USSR/Russia,Defense
 1982-12-27 00:00:00,1982-111B,S2,Titan 23D-23 Stage 2,2650.0,0.65,0.7,0.0,False,6,484.0,USA,Defense
@@ -22807,7 +22807,7 @@ Date,COSPAR_ID,Category,Object_Name,Ablatable_Mass,Ablation_Degree,Percent_Alumi
 1985-04-13 08:06:00,1985-F01,C,Sep Motor Cover,1.0,0.8,0.4,0.0,False,6,200.0,USSR/Russia,Defense
 1985-04-13 08:06:00,1985-F01,C,Sep Motor Cover,1.0,0.8,0.4,0.0,False,6,200.0,USSR/Russia,Defense
 1985-04-13 08:06:00,1985-F01,C,Sep Motor Cover,1.0,0.8,0.4,0.0,False,6,200.0,USSR/Russia,Defense
-1985-04-13 08:06:00,1985-F01,P,Tselina-2 GVM,3200.0,0.8,0.4,0.0,False,6,200.0,USSR/Russia,Government
+1985-04-13 08:06:00,1985-F01,P,Tselina-2 GVM,0.0,0.8,0.4,3200.0,False,6,200.0,USSR/Russia,Government
 1985-04-13 08:06:00,1985-F01,S2,Zenit-2 86-101 Stage 2,9300.0,0.65,0.7,80700.0,False,6,200.0,USSR/Russia,Defense
 1985-04-15 00:00:00,1979-014A,P,Hakucho,95.0,0.8,0.4,0.0,False,6,569.0,Japan,Government
 1985-04-16 17:15:00,1985-029,C,11S518 Fairing,878.0,0.3,0.7,0.0,False,6,150.0,USSR/Russia,Defense
@@ -23307,8 +23307,8 @@ Date,COSPAR_ID,Category,Object_Name,Ablatable_Mass,Ablation_Degree,Percent_Alumi
 1985-09-12 23:35:00,1985-F03,C,Mage 2,38.0,0.8,0.4,0.0,False,6,220.0,Europe,Government
 1985-09-12 23:35:00,1985-F03,C,Star 30BP,32.0,0.8,0.4,0.0,False,6,220.0,USA,GTE Spacenet Corp
 1985-09-12 23:35:00,1985-F03,C,Sylda 4400 No. 5,150.0,0.8,0.4,0.0,False,6,220.0,Europe,"Arianespace, Inc."
-1985-09-12 23:35:00,1985-F03,P,Eutelsat I F-3,400.0,0.8,0.4,113.0,False,6,220.0,Europe,Government
-1985-09-12 23:35:00,1985-F03,P,Spacenet F3,500.0,0.8,0.4,170.0,False,6,220.0,USA,GTE Spacenet Corp
+1985-09-12 23:35:00,1985-F03,P,Eutelsat I F-3,0.0,0.8,0.4,513.0,False,6,220.0,Europe,Government
+1985-09-12 23:35:00,1985-F03,P,Spacenet F3,0.0,0.8,0.4,670.0,False,6,220.0,USA,GTE Spacenet Corp
 1985-09-12 23:35:00,1985-F03,S3,Ariane H10 V15,1740.0,0.65,0.7,10760.0,False,6,220.0,Europe,"Arianespace, Inc."
 1985-09-14 00:00:00,1985-077G,C,KDU part,0.0,0.8,0.4,0.0,False,6,265.0,USSR/Russia,Defense
 1985-09-14 00:00:00,1985-077H,C,KDU part,0.0,0.8,0.4,0.0,False,6,265.0,USSR/Russia,Defense
@@ -24071,7 +24071,7 @@ Date,COSPAR_ID,Category,Object_Name,Ablatable_Mass,Ablation_Degree,Percent_Alumi
 1986-05-31 00:53:03,1986-F05,C,Ariane 1 Fairing,878.0,0.3,0.7,0.0,False,6,130.0,Europe,"Arianespace, Inc."
 1986-05-31 00:53:03,1986-F05,C,Ariane 1 Fairing,878.0,0.3,0.7,0.0,False,6,130.0,Europe,"Arianespace, Inc."
 1986-05-31 00:53:03,1986-F05,C,Intelsat V AKM,67.0,0.8,0.4,0.0,False,6,250.0,INTELSAT,Government
-1986-05-31 00:53:03,1986-F05,P,INTELSAT 514,951.0,0.8,0.4,170.0,False,6,250.0,INTELSAT,Government
+1986-05-31 00:53:03,1986-F05,P,INTELSAT 514,0.0,0.8,0.4,1121.0,False,6,250.0,INTELSAT,Government
 1986-05-31 00:53:03,1986-F05,S1,Ariane L144 V18,13750.0,0.3,0.7,0.0,False,2,75.0,Europe,"Arianespace, Inc."
 1986-05-31 00:53:03,1986-F05,S2,Ariane L33,3500.0,0.65,0.7,0.0,False,6,160.0,Europe,"Arianespace, Inc."
 1986-05-31 00:53:03,1986-F05,S3,Ariane H10 V18,1740.0,0.65,0.7,10760.0,False,6,250.0,Europe,"Arianespace, Inc."
@@ -25082,7 +25082,7 @@ Date,COSPAR_ID,Category,Object_Name,Ablatable_Mass,Ablation_Degree,Percent_Alumi
 1987-05-15 18:00:00,1987-U01,S1,Energiya Blok Ts,80000.0,0.3,0.7,0.0,False,6,155.0,USSR/Russia,Defense
 1987-05-15 18:22:00,1987-U01,C,Donniy Obtekatel',100.0,0.8,0.4,0.0,False,6,155.0,USSR/Russia,Defense
 1987-05-15 18:22:00,1987-U01,C,FSB,10000.0,0.8,0.4,0.0,False,6,155.0,USSR/Russia,Defense
-1987-05-15 18:22:00,1987-U01,P,Polyus,70000.0,0.8,0.4,0.0,False,6,155.0,USSR/Russia,Defense
+1987-05-15 18:22:00,1987-U01,P,Polyus,0.0,0.8,0.4,70000.0,False,6,155.0,USSR/Russia,Defense
 1987-05-18 00:00:00,1987-035C,C,KDU,140.0,0.8,0.4,0.0,False,6,243.0,USSR/Russia,Defense
 1987-05-19 00:00:00,1986-072F,C,KDU part,0.0,0.8,0.4,0.0,False,6,571.0,USSR/Russia,Defense
 1987-05-19 00:35:00,1987-032,C,SpK TDU,10.0,0.8,0.4,0.0,False,6,265.0,USSR/Russia,Defense
@@ -25760,7 +25760,7 @@ Date,COSPAR_ID,Category,Object_Name,Ablatable_Mass,Ablation_Degree,Percent_Alumi
 1988-01-18 10:03:00,1988-F01,C,DM2-21L SOZ-1,60.0,0.8,0.4,0.0,False,6,200.0,USSR/Russia,Defense
 1988-01-18 10:03:00,1988-F01,C,DM2-21L SOZ-2,60.0,0.8,0.4,0.0,False,6,200.0,USSR/Russia,Defense
 1988-01-18 10:03:00,1988-F01,C,Perekhodnik,800.0,0.8,0.4,0.0,False,6,200.0,USSR/Russia,Defense
-1988-01-18 10:03:00,1988-F01,P,Gorizont,2000.0,0.8,0.4,120.0,False,6,200.0,USSR/Russia,Government
+1988-01-18 10:03:00,1988-F01,P,Gorizont,0.0,0.8,0.4,2120.0,False,6,200.0,USSR/Russia,Government
 1988-01-18 10:03:00,1988-F01,S3,Proton-K 341-02 Stage 3,4185.0,0.65,0.7,46415.0,False,6,200.0,USSR/Russia,Defense
 1988-01-18 10:03:00,1988-F01,S4,Blok DM-2 No. 21L,2440.0,0.65,0.7,15060.0,False,6,200.0,USSR/Russia,Defense
 1988-01-20 22:51:54,1988-003,C,Progress Fairing,878.0,0.3,0.7,0.0,False,6,150.0,USSR/Russia,Government
@@ -26760,7 +26760,7 @@ Date,COSPAR_ID,Category,Object_Name,Ablatable_Mass,Ablation_Degree,Percent_Alumi
 1988-11-11 10:30:00,1988-F05,S0,11S59V,3915.0,0.3,0.7,0.0,False,2,75.0,USSR/Russia,Defense
 1988-11-11 10:30:00,1988-F05,S1,11S59A,6875.0,0.3,0.7,0.0,False,6,175.0,USSR/Russia,Defense
 1988-11-11 10:37:00,1988-F05,C,Agregatniy otsek,820.0,0.8,0.4,0.0,False,6,170.0,USSR/Russia,Defense
-1988-11-11 10:37:00,1988-F05,P,[Kosmos],5000.0,0.8,0.4,0.0,False,6,170.0,USSR/Russia,Defense
+1988-11-11 10:37:00,1988-F05,P,[Kosmos],0.0,0.8,0.4,5000.0,False,6,170.0,USSR/Russia,Defense
 1988-11-11 10:37:00,1988-F05,S2,Soyuz-U 35-713 Blok-I,2410.0,0.65,0.7,0.0,False,6,170.0,USSR/Russia,Defense
 1988-11-12 00:00:00,1988-094D,C,Blenda,20.0,0.8,0.4,0.0,False,6,403.0,USSR/Russia,Defense
 1988-11-12 00:00:00,1988-097C,C,KDU part,0.0,0.8,0.4,0.0,False,6,234.0,USSR/Russia,Defense
@@ -27417,7 +27417,7 @@ Date,COSPAR_ID,Category,Object_Name,Ablatable_Mass,Ablation_Degree,Percent_Alumi
 1989-06-08 17:09:59,1989-043,S1,11S59A,6875.0,0.3,0.7,0.0,False,6,200.0,USSR/Russia,Defense
 1989-06-09 10:10:00,1989-F01,C,Tsiklon-3 Fairing,878.0,0.3,0.7,0.0,False,6,70.0,USSR/Russia,Defense
 1989-06-09 10:10:00,1989-F01,C,Tsiklon-3 Fairing,878.0,0.3,0.7,0.0,False,6,70.0,USSR/Russia,Defense
-1989-06-09 10:10:00,1989-F01,P,Okean,1896.0,0.8,0.4,0.0,False,6,650.0,USSR/Russia,Government
+1989-06-09 10:10:00,1989-F01,P,Okean,0.0,0.8,0.4,1896.0,False,6,650.0,USSR/Russia,Government
 1989-06-09 10:10:00,1989-F01,S1,11S691,8300.0,0.3,0.7,0.0,False,2,70.0,USSR/Russia,Defense
 1989-06-09 10:10:00,1989-F01,S2,Tsiklon-3 19-210 Stage 2,4800.0,0.65,0.7,0.0,False,6,200.0,USSR/Russia,Defense
 1989-06-09 10:10:00,1989-F01,S3,Tsiklon-3 19-210 Stage 3,1600.0,0.65,0.7,3000.0,False,6,650.0,USSR/Russia,Defense
@@ -28299,9 +28299,9 @@ Date,COSPAR_ID,Category,Object_Name,Ablatable_Mass,Ablation_Degree,Percent_Alumi
 1990-04-03 18:00:00,1990-F02,C,Agregatniy otsek,820.0,0.8,0.4,0.0,False,6,195.0,USSR/Russia,Defense
 1990-04-03 18:00:00,1990-F02,C,SpK TDU,10.0,0.8,0.4,0.0,False,6,195.0,USSR/Russia,Defense
 1990-04-03 18:00:00,1990-F02,C,SpK TDU,10.0,0.8,0.4,0.0,False,6,195.0,USSR/Russia,Defense
-1990-04-03 18:00:00,1990-F02,P,Spuskaemaya Kapsula,200.0,0.8,0.4,0.0,False,6,195.0,USSR/Russia,Defense
-1990-04-03 18:00:00,1990-F02,P,Spuskaemaya Kapsula,200.0,0.8,0.4,0.0,False,6,195.0,USSR/Russia,Defense
-1990-04-03 18:00:00,1990-F02,P,[Kosmos],4360.0,0.8,0.4,0.0,False,6,195.0,USSR/Russia,Defense
+1990-04-03 18:00:00,1990-F02,P,Spuskaemaya Kapsula,0.0,0.8,0.4,200.0,False,6,195.0,USSR/Russia,Defense
+1990-04-03 18:00:00,1990-F02,P,Spuskaemaya Kapsula,0.0,0.8,0.4,200.0,False,6,195.0,USSR/Russia,Defense
+1990-04-03 18:00:00,1990-F02,P,[Kosmos],0.0,0.8,0.4,4360.0,False,6,195.0,USSR/Russia,Defense
 1990-04-03 18:00:00,1990-F02,S0,11S59B,3915.0,0.3,0.7,0.0,False,2,75.0,USSR/Russia,Defense
 1990-04-03 18:00:00,1990-F02,S0,11S59D,3915.0,0.3,0.7,0.0,False,2,75.0,USSR/Russia,Defense
 1990-04-03 18:00:00,1990-F02,S0,11S59G,3915.0,0.3,0.7,0.0,False,2,75.0,USSR/Russia,Defense
@@ -28585,9 +28585,9 @@ Date,COSPAR_ID,Category,Object_Name,Ablatable_Mass,Ablation_Degree,Percent_Alumi
 1990-07-03 19:21:00,1990-F03,C,Agregatniy otsek,820.0,0.8,0.4,0.0,False,6,70.0,USSR/Russia,Defense
 1990-07-03 19:21:00,1990-F03,C,SpK TDU,10.0,0.8,0.4,0.0,False,6,70.0,USSR/Russia,Defense
 1990-07-03 19:21:00,1990-F03,C,SpK TDU,10.0,0.8,0.4,0.0,False,6,70.0,USSR/Russia,Defense
-1990-07-03 19:21:00,1990-F03,P,Spuskaemaya Kapsula,200.0,0.8,0.4,0.0,False,6,70.0,USSR/Russia,Defense
-1990-07-03 19:21:00,1990-F03,P,Spuskaemaya Kapsula,200.0,0.8,0.4,0.0,False,6,70.0,USSR/Russia,Defense
-1990-07-03 19:21:00,1990-F03,P,[Kosmos],4360.0,0.8,0.4,0.0,False,6,70.0,USSR/Russia,Defense
+1990-07-03 19:21:00,1990-F03,P,Spuskaemaya Kapsula,0.0,0.8,0.4,200.0,False,6,70.0,USSR/Russia,Defense
+1990-07-03 19:21:00,1990-F03,P,Spuskaemaya Kapsula,0.0,0.8,0.4,200.0,False,6,70.0,USSR/Russia,Defense
+1990-07-03 19:21:00,1990-F03,P,[Kosmos],0.0,0.8,0.4,4360.0,False,6,70.0,USSR/Russia,Defense
 1990-07-03 19:21:00,1990-F03,S2,Soyuz-U 15-874 Blok-I,2410.0,0.65,0.7,22790.0,False,6,70.0,USSR/Russia,Defense
 1990-07-04 00:00:00,1990-038C,C,Dispenser cover,0.0,0.8,0.4,0.0,False,6,462.0,USSR/Russia,Defense
 1990-07-04 18:10:00,1990-042,C,Agregatniy otsek,2310.0,0.8,0.4,0.0,False,6,239.0,USSR/Russia,Defense
@@ -28724,7 +28724,7 @@ Date,COSPAR_ID,Category,Object_Name,Ablatable_Mass,Ablation_Degree,Percent_Alumi
 1990-08-09 20:21:00,1990-F04,C,DM2-44L SOZ-1,60.0,0.8,0.4,0.0,False,6,58.0,USSR/Russia,Defense
 1990-08-09 20:21:00,1990-F04,C,DM2-44L SOZ-2,60.0,0.8,0.4,0.0,False,6,58.0,USSR/Russia,Defense
 1990-08-09 20:21:00,1990-F04,C,Perekhodnik,800.0,0.8,0.4,0.0,False,6,58.0,USSR/Russia,Defense
-1990-08-09 20:21:00,1990-F04,P,Ekran-M,1900.0,0.8,0.4,200.0,False,6,58.0,USSR/Russia,Government
+1990-08-09 20:21:00,1990-F04,P,Ekran-M,0.0,0.8,0.4,2100.0,False,6,58.0,USSR/Russia,Government
 1990-08-09 20:21:00,1990-F04,S3,Proton-K 345-02 Stage 3,4185.0,0.65,0.7,46415.0,False,6,58.0,USSR/Russia,Defense
 1990-08-09 20:21:00,1990-F04,S4,Blok DM-2 No. 44L,2440.0,0.65,0.7,15060.0,False,6,58.0,USSR/Russia,Defense
 1990-08-10 20:18:58,1990-071,C,Molniya Fairing,878.0,0.3,0.7,0.0,False,6,250.0,USSR/Russia,Defense
@@ -29548,31 +29548,31 @@ Date,COSPAR_ID,Category,Object_Name,Ablatable_Mass,Ablation_Degree,Percent_Alumi
 1991-06-23 00:00:00,1991-035E,C,Solnechnaya Batareya,129.0,0.8,0.4,0.0,False,6,191.0,USSR/Russia,Defense
 1991-06-25 13:20:00,1991-F02,C,Kosmos-3M Fairing,878.0,0.3,0.7,0.0,False,6,100.0,USSR/Russia,Defense
 1991-06-25 13:20:00,1991-F02,C,Kosmos-3M Fairing,878.0,0.3,0.7,0.0,False,6,100.0,USSR/Russia,Defense
-1991-06-25 13:20:00,1991-F02,P,Kosmos,800.0,0.8,0.4,0.0,False,6,100.0,USSR/Russia,Defense
-1991-06-25 13:20:00,1991-F02,P,Taifun-2A No. 22L SS 1,10.0,0.8,0.4,0.0,False,6,100.0,USSR/Russia,Defense
-1991-06-25 13:20:00,1991-F02,P,Taifun-2A No. 22L SS 10,10.0,0.8,0.4,0.0,False,6,100.0,USSR/Russia,Defense
-1991-06-25 13:20:00,1991-F02,P,Taifun-2A No. 22L SS 11,10.0,0.8,0.4,0.0,False,6,100.0,USSR/Russia,Defense
-1991-06-25 13:20:00,1991-F02,P,Taifun-2A No. 22L SS 12,10.0,0.8,0.4,0.0,False,6,100.0,USSR/Russia,Defense
-1991-06-25 13:20:00,1991-F02,P,Taifun-2A No. 22L SS 13,10.0,0.8,0.4,0.0,False,6,100.0,USSR/Russia,Defense
-1991-06-25 13:20:00,1991-F02,P,Taifun-2A No. 22L SS 14,10.0,0.8,0.4,0.0,False,6,100.0,USSR/Russia,Defense
-1991-06-25 13:20:00,1991-F02,P,Taifun-2A No. 22L SS 15,10.0,0.8,0.4,0.0,False,6,100.0,USSR/Russia,Defense
-1991-06-25 13:20:00,1991-F02,P,Taifun-2A No. 22L SS 16,10.0,0.8,0.4,0.0,False,6,100.0,USSR/Russia,Defense
-1991-06-25 13:20:00,1991-F02,P,Taifun-2A No. 22L SS 17,10.0,0.8,0.4,0.0,False,6,100.0,USSR/Russia,Defense
-1991-06-25 13:20:00,1991-F02,P,Taifun-2A No. 22L SS 18,10.0,0.8,0.4,0.0,False,6,100.0,USSR/Russia,Defense
-1991-06-25 13:20:00,1991-F02,P,Taifun-2A No. 22L SS 19,10.0,0.8,0.4,0.0,False,6,100.0,USSR/Russia,Defense
-1991-06-25 13:20:00,1991-F02,P,Taifun-2A No. 22L SS 2,10.0,0.8,0.4,0.0,False,6,100.0,USSR/Russia,Defense
-1991-06-25 13:20:00,1991-F02,P,Taifun-2A No. 22L SS 20,10.0,0.8,0.4,0.0,False,6,100.0,USSR/Russia,Defense
-1991-06-25 13:20:00,1991-F02,P,Taifun-2A No. 22L SS 21,10.0,0.8,0.4,0.0,False,6,100.0,USSR/Russia,Defense
-1991-06-25 13:20:00,1991-F02,P,Taifun-2A No. 22L SS 22,10.0,0.8,0.4,0.0,False,6,100.0,USSR/Russia,Defense
-1991-06-25 13:20:00,1991-F02,P,Taifun-2A No. 22L SS 23,10.0,0.8,0.4,0.0,False,6,100.0,USSR/Russia,Defense
-1991-06-25 13:20:00,1991-F02,P,Taifun-2A No. 22L SS 24,10.0,0.8,0.4,0.0,False,6,100.0,USSR/Russia,Defense
-1991-06-25 13:20:00,1991-F02,P,Taifun-2A No. 22L SS 3,10.0,0.8,0.4,0.0,False,6,100.0,USSR/Russia,Defense
-1991-06-25 13:20:00,1991-F02,P,Taifun-2A No. 22L SS 4,10.0,0.8,0.4,0.0,False,6,100.0,USSR/Russia,Defense
-1991-06-25 13:20:00,1991-F02,P,Taifun-2A No. 22L SS 5,10.0,0.8,0.4,0.0,False,6,100.0,USSR/Russia,Defense
-1991-06-25 13:20:00,1991-F02,P,Taifun-2A No. 22L SS 6,10.0,0.8,0.4,0.0,False,6,100.0,USSR/Russia,Defense
-1991-06-25 13:20:00,1991-F02,P,Taifun-2A No. 22L SS 7,10.0,0.8,0.4,0.0,False,6,100.0,USSR/Russia,Defense
-1991-06-25 13:20:00,1991-F02,P,Taifun-2A No. 22L SS 8,10.0,0.8,0.4,0.0,False,6,100.0,USSR/Russia,Defense
-1991-06-25 13:20:00,1991-F02,P,Taifun-2A No. 22L SS 9,10.0,0.8,0.4,0.0,False,6,100.0,USSR/Russia,Defense
+1991-06-25 13:20:00,1991-F02,P,Kosmos,0.0,0.8,0.4,800.0,False,6,100.0,USSR/Russia,Defense
+1991-06-25 13:20:00,1991-F02,P,Taifun-2A No. 22L SS 1,0.0,0.8,0.4,10.0,False,6,100.0,USSR/Russia,Defense
+1991-06-25 13:20:00,1991-F02,P,Taifun-2A No. 22L SS 10,0.0,0.8,0.4,10.0,False,6,100.0,USSR/Russia,Defense
+1991-06-25 13:20:00,1991-F02,P,Taifun-2A No. 22L SS 11,0.0,0.8,0.4,10.0,False,6,100.0,USSR/Russia,Defense
+1991-06-25 13:20:00,1991-F02,P,Taifun-2A No. 22L SS 12,0.0,0.8,0.4,10.0,False,6,100.0,USSR/Russia,Defense
+1991-06-25 13:20:00,1991-F02,P,Taifun-2A No. 22L SS 13,0.0,0.8,0.4,10.0,False,6,100.0,USSR/Russia,Defense
+1991-06-25 13:20:00,1991-F02,P,Taifun-2A No. 22L SS 14,0.0,0.8,0.4,10.0,False,6,100.0,USSR/Russia,Defense
+1991-06-25 13:20:00,1991-F02,P,Taifun-2A No. 22L SS 15,0.0,0.8,0.4,10.0,False,6,100.0,USSR/Russia,Defense
+1991-06-25 13:20:00,1991-F02,P,Taifun-2A No. 22L SS 16,0.0,0.8,0.4,10.0,False,6,100.0,USSR/Russia,Defense
+1991-06-25 13:20:00,1991-F02,P,Taifun-2A No. 22L SS 17,0.0,0.8,0.4,10.0,False,6,100.0,USSR/Russia,Defense
+1991-06-25 13:20:00,1991-F02,P,Taifun-2A No. 22L SS 18,0.0,0.8,0.4,10.0,False,6,100.0,USSR/Russia,Defense
+1991-06-25 13:20:00,1991-F02,P,Taifun-2A No. 22L SS 19,0.0,0.8,0.4,10.0,False,6,100.0,USSR/Russia,Defense
+1991-06-25 13:20:00,1991-F02,P,Taifun-2A No. 22L SS 2,0.0,0.8,0.4,10.0,False,6,100.0,USSR/Russia,Defense
+1991-06-25 13:20:00,1991-F02,P,Taifun-2A No. 22L SS 20,0.0,0.8,0.4,10.0,False,6,100.0,USSR/Russia,Defense
+1991-06-25 13:20:00,1991-F02,P,Taifun-2A No. 22L SS 21,0.0,0.8,0.4,10.0,False,6,100.0,USSR/Russia,Defense
+1991-06-25 13:20:00,1991-F02,P,Taifun-2A No. 22L SS 22,0.0,0.8,0.4,10.0,False,6,100.0,USSR/Russia,Defense
+1991-06-25 13:20:00,1991-F02,P,Taifun-2A No. 22L SS 23,0.0,0.8,0.4,10.0,False,6,100.0,USSR/Russia,Defense
+1991-06-25 13:20:00,1991-F02,P,Taifun-2A No. 22L SS 24,0.0,0.8,0.4,10.0,False,6,100.0,USSR/Russia,Defense
+1991-06-25 13:20:00,1991-F02,P,Taifun-2A No. 22L SS 3,0.0,0.8,0.4,10.0,False,6,100.0,USSR/Russia,Defense
+1991-06-25 13:20:00,1991-F02,P,Taifun-2A No. 22L SS 4,0.0,0.8,0.4,10.0,False,6,100.0,USSR/Russia,Defense
+1991-06-25 13:20:00,1991-F02,P,Taifun-2A No. 22L SS 5,0.0,0.8,0.4,10.0,False,6,100.0,USSR/Russia,Defense
+1991-06-25 13:20:00,1991-F02,P,Taifun-2A No. 22L SS 6,0.0,0.8,0.4,10.0,False,6,100.0,USSR/Russia,Defense
+1991-06-25 13:20:00,1991-F02,P,Taifun-2A No. 22L SS 7,0.0,0.8,0.4,10.0,False,6,100.0,USSR/Russia,Defense
+1991-06-25 13:20:00,1991-F02,P,Taifun-2A No. 22L SS 8,0.0,0.8,0.4,10.0,False,6,100.0,USSR/Russia,Defense
+1991-06-25 13:20:00,1991-F02,P,Taifun-2A No. 22L SS 9,0.0,0.8,0.4,10.0,False,6,100.0,USSR/Russia,Defense
 1991-06-25 13:20:00,1991-F02,S1,R-14 11K65MA,5300.0,0.3,0.7,0.0,False,2,100.0,USSR/Russia,Defense
 1991-06-25 13:20:00,1991-F02,S2,Kosmos-3M 61-262 Stage 2,1435.0,0.65,0.7,18665.0,False,6,100.0,USSR/Russia,Defense
 1991-06-27 00:00:00,1991-043C,C,BOZ,328.0,0.8,0.4,0.0,False,6,304.0,USSR/Russia,Defense
@@ -29787,7 +29787,7 @@ Date,COSPAR_ID,Category,Object_Name,Ablatable_Mass,Ablation_Degree,Percent_Alumi
 1991-08-30 08:58:01,1991-F03,C,Sep Motor Cover,1.0,0.8,0.4,0.0,False,6,150.0,USSR/Russia,Defense
 1991-08-30 08:58:01,1991-F03,C,Zenit fairing,878.0,0.3,0.7,0.0,False,6,200.0,USSR/Russia,Defense
 1991-08-30 08:58:01,1991-F03,C,Zenit fairing,878.0,0.3,0.7,0.0,False,6,200.0,USSR/Russia,Defense
-1991-08-30 08:58:01,1991-F03,P,-,3200.0,0.8,0.4,0.0,False,6,150.0,USSR/Russia,Defense
+1991-08-30 08:58:01,1991-F03,P,-,0.0,0.8,0.4,3200.0,False,6,150.0,USSR/Russia,Defense
 1991-08-30 08:58:01,1991-F03,S1,11S771,33900.0,0.3,0.7,0.0,False,6,150.0,USSR/Russia,Defense
 1991-08-30 08:58:01,1991-F03,S2,Zenit-2 No. 16L Stage 2,9300.0,0.65,0.7,80700.0,False,6,150.0,USSR/Russia,Defense
 1991-09-01 00:00:00,1990-022A,P,Kosmos-2060,3000.0,0.8,0.4,0.0,False,6,417.0,USSR/Russia,Defense
@@ -30101,7 +30101,7 @@ Date,COSPAR_ID,Category,Object_Name,Ablatable_Mass,Ablation_Degree,Percent_Alumi
 1992-02-05 18:14:00,1992-F01,C,Sep Motor Cover,1.0,0.8,0.4,0.0,False,6,150.0,USSR/Russia,Defense
 1992-02-05 18:14:00,1992-F01,C,Zenit fairing,878.0,0.3,0.7,0.0,False,6,200.0,USSR/Russia,Defense
 1992-02-05 18:14:00,1992-F01,C,Zenit fairing,878.0,0.3,0.7,0.0,False,6,200.0,USSR/Russia,Defense
-1992-02-05 18:14:00,1992-F01,P,-,3200.0,0.8,0.4,0.0,False,6,150.0,USSR/Russia,Defense
+1992-02-05 18:14:00,1992-F01,P,-,0.0,0.8,0.4,3200.0,False,6,150.0,USSR/Russia,Defense
 1992-02-05 18:14:00,1992-F01,S1,11S771,33900.0,0.3,0.7,0.0,False,6,150.0,USSR/Russia,Defense
 1992-02-05 18:14:00,1992-F01,S2,Zenit-2 No. 17L Stage 2,9300.0,0.65,0.7,80700.0,False,6,150.0,USSR/Russia,Defense
 1992-02-06 00:00:00,1990-038M,P,Kosmos-2075 SS 9,5.0,0.8,0.4,0.0,False,6,281.0,USSR/Russia,Defense
@@ -30568,7 +30568,7 @@ Date,COSPAR_ID,Category,Object_Name,Ablatable_Mass,Ablation_Degree,Percent_Alumi
 1992-08-22 22:40:00,1992-F02,C,11' PLF,878.0,0.3,0.7,0.0,False,6,150.0,USA,Lockheed Martin Astronautics
 1992-08-22 22:40:00,1992-F02,C,11' PLF,878.0,0.3,0.7,0.0,False,6,150.0,USA,Lockheed Martin Astronautics
 1992-08-22 22:40:00,1992-F02,C,Star 30C S/N 023,33.0,0.8,0.4,0.0,False,6,170.0,USA,Hughes Communications Inc.
-1992-08-22 22:40:00,1992-F02,P,Galaxy 1R,600.0,0.8,0.4,182.0,False,6,170.0,USA,Hughes Communications Inc.
+1992-08-22 22:40:00,1992-F02,P,Galaxy 1R,0.0,0.8,0.4,782.0,False,6,170.0,USA,Hughes Communications Inc.
 1992-08-22 22:40:00,1992-F02,S0,Atlas Booster,3200.0,0.3,0.7,0.0,False,2,100.0,USA,General Dynamics Astronautics
 1992-08-22 22:40:00,1992-F02,S1,Atlas I 5051,4240.0,0.3,0.7,0.0,False,6,150.0,USA,General Dynamics Astronautics
 1992-08-22 22:47:00,1992-F02,S2,Centaur AC-71,1700.0,0.65,0.7,13300.0,False,6,170.0,USA,General Dynamics Space Systems Division
@@ -31205,7 +31205,7 @@ Date,COSPAR_ID,Category,Object_Name,Ablatable_Mass,Ablation_Degree,Percent_Alumi
 1993-05-27 01:43:00,1993-F01,C,DM2-69L SOZ-1,60.0,0.8,0.4,0.0,False,6,150.0,USSR/Russia,Defense
 1993-05-27 01:43:00,1993-F01,C,DM2-69L SOZ-2,60.0,0.8,0.4,0.0,False,6,150.0,USSR/Russia,Defense
 1993-05-27 01:43:00,1993-F01,C,Perekhodnik,800.0,0.8,0.4,0.0,False,6,150.0,USSR/Russia,Defense
-1993-05-27 01:43:00,1993-F01,P,Gorizont,2000.0,0.8,0.4,120.0,False,6,150.0,USSR/Russia,Government
+1993-05-27 01:43:00,1993-F01,P,Gorizont,0.0,0.8,0.4,2120.0,False,6,150.0,USSR/Russia,Government
 1993-05-27 01:43:00,1993-F01,S3,Proton-K 364-02 Stage 3,4185.0,0.65,0.7,46415.0,False,6,150.0,USSR/Russia,Defense
 1993-05-27 01:43:00,1993-F01,S4,Blok DM-2 No. 69L,2440.0,0.65,0.7,15060.0,False,6,150.0,USSR/Russia,Defense
 1993-05-30 00:00:00,1993-025B,S2,Molniya-M 32-646 Blok-I,2410.0,0.65,0.7,0.0,False,6,518.0,USSR/Russia,Defense
@@ -31614,8 +31614,8 @@ Date,COSPAR_ID,Category,Object_Name,Ablatable_Mass,Ablation_Degree,Percent_Alumi
 1994-01-24 21:37:00,1994-F01,C,Fairing 01?,878.0,0.3,0.7,0.0,False,6,140.0,Europe,"Arianespace, Inc."
 1994-01-24 21:37:00,1994-F01,C,Fairing 01?,878.0,0.3,0.7,0.0,False,6,140.0,Europe,"Arianespace, Inc."
 1994-01-24 21:37:00,1994-F01,C,Spelda 10 S/N UV19,200.0,0.8,0.4,0.0,False,6,220.0,Europe,"Arianespace, Inc."
-1994-01-24 21:37:00,1994-F01,P,Eutelsat II F-5,920.0,0.8,0.4,960.0,False,6,220.0,Europe,Government
-1994-01-24 21:37:00,1994-F01,P,Turksat 1A,827.0,0.8,0.4,956.0,False,6,220.0,Europe,Government
+1994-01-24 21:37:00,1994-F01,P,Eutelsat II F-5,0.0,0.8,0.4,1880.0,False,6,220.0,Europe,Government
+1994-01-24 21:37:00,1994-F01,P,Turksat 1A,0.0,0.8,0.4,1783.0,False,6,220.0,Europe,Government
 1994-01-24 21:37:00,1994-F01,S1,Ariane L220-4LP V63,17900.0,0.3,0.7,0.0,False,2,100.0,Europe,"Arianespace, Inc."
 1994-01-24 21:37:00,1994-F01,S2,Ariane L33,3500.0,0.65,0.7,0.0,False,6,200.0,Europe,"Arianespace, Inc."
 1994-01-24 21:37:00,1994-F01,S3,Ariane H10+ V63,1740.0,0.65,0.7,11060.0,False,6,220.0,Europe,"Arianespace, Inc."
@@ -31817,7 +31817,7 @@ Date,COSPAR_ID,Category,Object_Name,Ablatable_Mass,Ablation_Degree,Percent_Alumi
 1994-05-24 00:00:00,1994-031B,S2,Soyuz-U2 24-355 Blok-I,2410.0,0.65,0.7,0.0,False,6,180.0,USSR/Russia,Defense
 1994-05-25 10:15:00,1994-F02,C,Tsiklon-3 Fairing,878.0,0.3,0.7,0.0,False,6,70.0,USSR/Russia,Defense
 1994-05-25 10:15:00,1994-F02,C,Tsiklon-3 Fairing,878.0,0.3,0.7,0.0,False,6,70.0,USSR/Russia,Defense
-1994-05-25 10:15:00,1994-F02,P,[Kosmos],1750.0,0.8,0.4,0.0,False,6,221.0,USSR/Russia,Defense
+1994-05-25 10:15:00,1994-F02,P,[Kosmos],0.0,0.8,0.4,1750.0,False,6,221.0,USSR/Russia,Defense
 1994-05-25 10:15:00,1994-F02,S1,11S691,8300.0,0.3,0.7,0.0,False,2,70.0,USSR/Russia,Defense
 1994-05-25 10:15:00,1994-F02,S2,Tsiklon-3 82-802 Stage 2,4800.0,0.65,0.7,48500.0,False,6,200.0,USSR/Russia,Defense
 1994-05-25 10:15:00,1994-F02,S3,Tsiklon-3 82-802 Stage 3,1600.0,0.65,0.7,3000.0,False,6,221.0,USSR/Russia,Defense
@@ -32411,9 +32411,9 @@ Date,COSPAR_ID,Category,Object_Name,Ablatable_Mass,Ablation_Degree,Percent_Alumi
 1995-03-27 19:21:00,1994-053,P,Spuskaemaya Kapsula,300.0,0.0,0.4,0.0,False,6,369.0,USSR/Russia,Defense
 1995-03-28 06:00:00,1982-074,C,Blok-L fragment,0.0,0.8,0.4,0.0,False,6,6500.0,USSR/Russia,Defense
 1995-03-28 10:00:00,1995-F02,C,Start Fairing,1756.0,0.3,0.7,0.0,False,6,600.0,USSR/Russia,Defense
-1995-03-28 10:00:00,1995-F02,P,EKA-2,202.0,0.8,0.4,0.0,False,6,670.0,USSR/Russia,Defense
-1995-03-28 10:00:00,1995-F02,P,ENB,10.0,0.8,0.4,0.0,False,6,670.0,Mexico,"Academic, amateur and non-profit"
-1995-03-28 10:00:00,1995-F02,P,Gurwin-1,48.0,0.8,0.4,0.0,False,6,670.0,Israel,"Academic, amateur and non-profit"
+1995-03-28 10:00:00,1995-F02,P,EKA-2,0.0,0.8,0.4,202.0,False,6,670.0,USSR/Russia,Defense
+1995-03-28 10:00:00,1995-F02,P,ENB,0.0,0.8,0.4,10.0,False,6,670.0,Mexico,"Academic, amateur and non-profit"
+1995-03-28 10:00:00,1995-F02,P,Gurwin-1,0.0,0.8,0.4,48.0,False,6,670.0,Israel,"Academic, amateur and non-profit"
 1995-03-28 10:00:00,1995-F02,S1,15Zh58A,3000.0,0.3,0.7,0.0,False,2,50.0,USSR/Russia,Defense
 1995-03-28 10:00:00,1995-F02,S2,15Zh58B,1500.0,0.65,0.7,0.0,False,6,100.0,USSR/Russia,Defense
 1995-03-28 10:00:00,1995-F02,S3,15Zh58B,1500.0,0.65,0.7,0.0,False,6,150.0,USSR/Russia,Defense
@@ -33063,7 +33063,7 @@ Date,COSPAR_ID,Category,Object_Name,Ablatable_Mass,Ablation_Degree,Percent_Alumi
 1996-05-14 08:58:00,1996-F02,C,Agregatniy otsek,2310.0,0.8,0.4,0.0,False,6,70.0,USSR/Russia,Defense
 1996-05-14 08:58:00,1996-F02,C,Blenda,25.0,0.8,0.4,0.0,False,6,70.0,USSR/Russia,Defense
 1996-05-14 08:58:00,1996-F02,C,Solnechnaya Batareya,370.0,0.8,0.4,0.0,False,6,70.0,USSR/Russia,Defense
-1996-05-14 08:58:00,1996-F02,P,Kometa,2720.0,0.8,0.4,0.0,False,6,70.0,USSR/Russia,Defense
+1996-05-14 08:58:00,1996-F02,P,Kometa,0.0,0.8,0.4,2720.0,False,6,70.0,USSR/Russia,Defense
 1996-05-14 08:58:00,1996-F02,S2,Soyuz-U 51-368 Blok-I,2410.0,0.65,0.7,0.0,False,6,70.0,USSR/Russia,Defense
 1996-05-15 00:00:00,1963-014DX,C,West Ford dipoles,0.0,0.8,0.4,0.0,False,6,5283.0,USA,Defense
 1996-05-16 01:56:29,1996-030,C,Fairing 02,878.0,0.3,0.7,0.0,False,6,140.0,Europe,"Arianespace, Inc."
@@ -34076,7 +34076,7 @@ Date,COSPAR_ID,Category,Object_Name,Ablatable_Mass,Ablation_Degree,Percent_Alumi
 1998-01-22 12:56:00,1998-F01,C,Shaviyt Fairing,28.5,0.3,0.7,0.0,False,6,250.0,Israel,Government
 1998-01-22 12:56:00,1998-F01,S1,Shaviyt 1,1240.0,0.3,0.7,0.0,False,2,100.0,Israel,Government
 1998-01-22 12:56:00,1998-F01,S2,Shaviyt,1288.0,0.65,0.7,9100.0,False,6,250.0,Israel,Government
-1998-01-22 13:02:00,1998-F01,P,'Ofeq-4,250.0,0.8,0.4,0.0,False,6,150.0,Israel,Government
+1998-01-22 13:02:00,1998-F01,P,'Ofeq-4,0.0,0.8,0.4,250.0,False,6,150.0,Israel,Government
 1998-01-22 13:02:00,1998-F01,S3,Shavit (4) Stage 3,684.0,0.65,0.7,1890.0,False,6,150.0,Israel,Government
 1998-01-23 02:48:15,1998-003,S0,SRM,88000.0,0.0,0.7,0.0,False,2,65.0,USA,Government
 1998-01-23 02:48:15,1998-003,S0,SRM,88000.0,0.0,0.7,0.0,False,2,65.0,USA,Government
@@ -34453,7 +34453,7 @@ Date,COSPAR_ID,Category,Object_Name,Ablatable_Mass,Ablation_Degree,Percent_Alumi
 1998-08-31 03:07:00,1998-F04,C,TD-1 Fairing,878.0,0.3,0.7,0.0,False,6,220.0,North Korea,Government
 1998-08-31 03:07:00,1998-F04,S1,Taepo Dong 1,3700.0,0.3,0.7,0.0,False,2,70.0,North Korea,Government
 1998-08-31 03:07:00,1998-F04,S2,Taepo Dong 1 Stage 2,1500.0,0.65,0.7,0.0,False,6,220.0,North Korea,Government
-1998-08-31 03:12:00,1998-F04,P,Kwangmyongsong 1,50.0,0.8,0.4,0.0,False,6,219.0,North Korea,Government
+1998-08-31 03:12:00,1998-F04,P,Kwangmyongsong 1,0.0,0.8,0.4,50.0,False,6,219.0,North Korea,Government
 1998-08-31 03:12:00,1998-F04,S3,Taepo Dong 1 Stage 3,50.0,0.65,0.7,150.0,False,6,219.0,North Korea,Government
 1998-09-01 00:00:00,1982-006D,C,SRV-1 thermal cover?,0.0,0.8,0.4,0.0,False,6,645.0,USA,Defense
 1998-09-01 00:00:00,1998-050B,S3,Proton-K 383-01 Stage 3,4185.0,0.65,0.7,0.0,False,6,184.0,USSR/Russia,Defense
@@ -34481,18 +34481,18 @@ Date,COSPAR_ID,Category,Object_Name,Ablatable_Mass,Ablation_Degree,Percent_Alumi
 1998-09-09 20:29:00,1998-F05,C,Sep Motor Cover,1.0,0.8,0.4,0.0,False,6,200.0,USSR/Russia,Defense
 1998-09-09 20:29:00,1998-F05,C,Zenit 11K77.05 fairing,878.0,0.3,0.7,0.0,False,6,200.0,USSR/Russia,Defense
 1998-09-09 20:29:00,1998-F05,C,Zenit 11K77.05 fairing,878.0,0.3,0.7,0.0,False,6,200.0,USSR/Russia,Defense
-1998-09-09 20:29:00,1998-F05,P,Globalstar M005,380.0,0.8,0.4,70.0,False,6,200.0,USA,Globalstar Inc.
-1998-09-09 20:29:00,1998-F05,P,Globalstar M007,380.0,0.8,0.4,70.0,False,6,200.0,USA,Globalstar Inc.
-1998-09-09 20:29:00,1998-F05,P,Globalstar M009,380.0,0.8,0.4,70.0,False,6,200.0,USA,Globalstar Inc.
-1998-09-09 20:29:00,1998-F05,P,Globalstar M010,380.0,0.8,0.4,70.0,False,6,200.0,USA,Globalstar Inc.
-1998-09-09 20:29:00,1998-F05,P,Globalstar M011,380.0,0.8,0.4,70.0,False,6,200.0,USA,Globalstar Inc.
-1998-09-09 20:29:00,1998-F05,P,Globalstar M012,380.0,0.8,0.4,70.0,False,6,200.0,USA,Globalstar Inc.
-1998-09-09 20:29:00,1998-F05,P,Globalstar M013,380.0,0.8,0.4,70.0,False,6,200.0,USA,Globalstar Inc.
-1998-09-09 20:29:00,1998-F05,P,Globalstar M016,380.0,0.8,0.4,70.0,False,6,200.0,USA,Globalstar Inc.
-1998-09-09 20:29:00,1998-F05,P,Globalstar M017,380.0,0.8,0.4,70.0,False,6,200.0,USA,Globalstar Inc.
-1998-09-09 20:29:00,1998-F05,P,Globalstar M018,380.0,0.8,0.4,70.0,False,6,200.0,USA,Globalstar Inc.
-1998-09-09 20:29:00,1998-F05,P,Globalstar M020,380.0,0.8,0.4,70.0,False,6,200.0,USA,Globalstar Inc.
-1998-09-09 20:29:00,1998-F05,P,Globalstar M021,380.0,0.8,0.4,70.0,False,6,200.0,USA,Globalstar Inc.
+1998-09-09 20:29:00,1998-F05,P,Globalstar M005,0.0,0.8,0.4,450.0,False,6,200.0,USA,Globalstar Inc.
+1998-09-09 20:29:00,1998-F05,P,Globalstar M007,0.0,0.8,0.4,450.0,False,6,200.0,USA,Globalstar Inc.
+1998-09-09 20:29:00,1998-F05,P,Globalstar M009,0.0,0.8,0.4,450.0,False,6,200.0,USA,Globalstar Inc.
+1998-09-09 20:29:00,1998-F05,P,Globalstar M010,0.0,0.8,0.4,450.0,False,6,200.0,USA,Globalstar Inc.
+1998-09-09 20:29:00,1998-F05,P,Globalstar M011,0.0,0.8,0.4,450.0,False,6,200.0,USA,Globalstar Inc.
+1998-09-09 20:29:00,1998-F05,P,Globalstar M012,0.0,0.8,0.4,450.0,False,6,200.0,USA,Globalstar Inc.
+1998-09-09 20:29:00,1998-F05,P,Globalstar M013,0.0,0.8,0.4,450.0,False,6,200.0,USA,Globalstar Inc.
+1998-09-09 20:29:00,1998-F05,P,Globalstar M016,0.0,0.8,0.4,450.0,False,6,200.0,USA,Globalstar Inc.
+1998-09-09 20:29:00,1998-F05,P,Globalstar M017,0.0,0.8,0.4,450.0,False,6,200.0,USA,Globalstar Inc.
+1998-09-09 20:29:00,1998-F05,P,Globalstar M018,0.0,0.8,0.4,450.0,False,6,200.0,USA,Globalstar Inc.
+1998-09-09 20:29:00,1998-F05,P,Globalstar M020,0.0,0.8,0.4,450.0,False,6,200.0,USA,Globalstar Inc.
+1998-09-09 20:29:00,1998-F05,P,Globalstar M021,0.0,0.8,0.4,450.0,False,6,200.0,USA,Globalstar Inc.
 1998-09-09 20:29:00,1998-F05,S1,11S771,33900.0,0.3,0.7,0.0,False,2,100.0,USSR/Russia,Defense
 1998-09-09 20:29:00,1998-F05,S2,Zenit-2 No. 22L Stage 2,9300.0,0.65,0.7,80700.0,False,6,200.0,USSR/Russia,Defense
 1998-09-15 00:00:00,1971-067M,C,AVL-802-1 Canister part?,15.0,0.8,0.4,0.0,False,6,915.0,USA,Defense
@@ -34859,7 +34859,7 @@ Date,COSPAR_ID,Category,Object_Name,Ablatable_Mass,Ablation_Degree,Percent_Alumi
 1999-04-27 18:22:01,1999-F01,C,Model 92 Fairing,878.0,0.3,0.7,0.0,False,6,180.0,USA,Lockheed Martin Astronautics
 1999-04-27 18:22:01,1999-F01,C,Model 92 Fairing,878.0,0.3,0.7,0.0,False,6,180.0,USA,Lockheed Martin Astronautics
 1999-04-27 18:22:01,1999-F01,S2,Castor 120,4450.0,0.65,0.7,0.0,False,6,180.0,USA,Lockheed Martin Astronautics
-1999-04-27 18:42:00,1999-F01,P,Ikonos 1,688.0,0.8,0.4,38.0,False,6,200.0,USA,Space Imaging Inc
+1999-04-27 18:42:00,1999-F01,P,Ikonos 1,0.0,0.8,0.4,726.0,False,6,200.0,USA,Space Imaging Inc
 1999-04-27 18:42:00,1999-F01,S3,Athena-2 LM-005 Stage 3,1030.0,0.65,0.7,0.0,False,6,200.0,USA,Lockheed Martin Astronautics
 1999-04-27 18:42:00,1999-F01,S4,Athena-2 LM-005 OAM,360.0,0.65,0.7,0.0,False,6,200.0,USA,Lockheed Martin Astronautics
 1999-04-28 20:30:00,1999-022,C,Kosmos-3M Fairing,878.0,0.3,0.7,0.0,False,6,100.0,USSR/Russia,Defense
@@ -34964,7 +34964,7 @@ Date,COSPAR_ID,Category,Object_Name,Ablatable_Mass,Ablation_Degree,Percent_Alumi
 1999-07-05 13:32:00,1999-F02,S1,8S810,31000.0,0.3,0.7,0.0,False,2,60.0,USSR/Russia,Defense
 1999-07-05 13:32:00,1999-F02,S2,8S811,11750.0,0.65,0.7,156050.0,False,6,130.0,USSR/Russia,Defense
 1999-07-05 13:37:00,1999-F02,C,Briz-M DTB,0.0,0.8,0.4,0.0,False,6,120.0,USSR/Russia,Defense
-1999-07-05 13:37:00,1999-F02,P,Raduga,1850.0,0.8,0.4,82.0,False,6,120.0,USSR/Russia,Defense
+1999-07-05 13:37:00,1999-F02,P,Raduga,0.0,0.8,0.4,1932.0,False,6,120.0,USSR/Russia,Defense
 1999-07-05 13:37:00,1999-F02,S3,Proton-K 389-01 Stage 3,4185.0,0.65,0.7,46415.0,False,6,120.0,USSR/Russia,Defense
 1999-07-05 13:37:00,1999-F02,S4,Briz-M No. 88501,2370.0,0.65,0.7,19730.0,False,6,120.0,USSR/Russia,Defense
 1999-07-08 08:45:06,1999-036,C,Molniya Fairing,878.0,0.3,0.7,0.0,False,6,250.0,USSR/Russia,Defense
@@ -35164,7 +35164,7 @@ Date,COSPAR_ID,Category,Object_Name,Ablatable_Mass,Ablation_Degree,Percent_Alumi
 1999-10-27 16:22:00,1999-F03,C,DM2-102L SOZ-1,56.0,0.8,0.4,0.0,False,6,120.0,USSR/Russia,Defense
 1999-10-27 16:22:00,1999-F03,C,DM2-102L SOZ-2,56.0,0.8,0.4,0.0,False,6,120.0,USSR/Russia,Defense
 1999-10-27 16:22:00,1999-F03,C,Perekhodnik,800.0,0.8,0.4,0.0,False,6,120.0,USSR/Russia,Defense
-1999-10-27 16:22:00,1999-F03,P,Ekspress-A1,2000.0,0.8,0.4,300.0,False,6,120.0,USSR/Russia,Government
+1999-10-27 16:22:00,1999-F03,P,Ekspress-A1,0.0,0.8,0.4,2300.0,False,6,120.0,USSR/Russia,Government
 1999-10-27 16:22:00,1999-F03,S3,Proton-K 386-02 Stage 3,4185.0,0.65,0.7,46415.0,False,6,120.0,USSR/Russia,Defense
 1999-10-27 16:22:00,1999-F03,S4,Blok DM-2 No. 102L,2440.0,0.65,0.7,15060.0,False,6,120.0,USSR/Russia,Defense
 1999-10-31 00:00:00,1999-054E,C,KDU,140.0,0.8,0.4,0.0,False,6,237.0,USSR/Russia,Government
@@ -35236,7 +35236,7 @@ Date,COSPAR_ID,Category,Object_Name,Ablatable_Mass,Ablation_Degree,Percent_Alumi
 1999-12-11 18:25:00,1999-F05,C,VLS Fairing,878.0,0.3,0.7,0.0,False,6,150.0,Brazil,Defense
 1999-12-11 18:25:00,1999-F05,S1,VLS Stage 1,1250.0,0.3,0.7,0.0,False,6,120.0,Brazil,Defense
 1999-12-11 18:25:00,1999-F05,S2,VLS Stage 2,1190.0,0.65,0.7,4210.0,False,6,150.0,Brazil,Defense
-1999-12-11 18:28:00,1999-F05,P,SACI-2,60.0,0.8,0.4,0.0,False,6,150.0,Brazil,Government
+1999-12-11 18:28:00,1999-F05,P,SACI-2,0.0,0.8,0.4,60.0,False,6,150.0,Brazil,Government
 1999-12-11 18:28:00,1999-F05,S3,VLS Stage 3,127.0,0.65,0.7,873.0,False,6,150.0,Brazil,Defense
 1999-12-12 17:38:01,1999-067,C,Titan 23G PLF,878.0,0.3,0.7,0.0,False,6,140.0,USA,Defense
 1999-12-12 17:38:01,1999-067,C,Titan 23G PLF,878.0,0.3,0.7,0.0,False,6,140.0,USA,Defense
@@ -35389,7 +35389,7 @@ Date,COSPAR_ID,Category,Object_Name,Ablatable_Mass,Ablation_Degree,Percent_Alumi
 2000-03-12 14:49:15,2000-F02,C,Zenit-3SL fairing,878.0,0.3,0.7,0.0,False,6,140.0,USSR/Russia,Defense
 2000-03-12 14:49:15,2000-F02,S1,11S771,33900.0,0.3,0.7,0.0,False,2,100.0,Cayman Is.,Sea Launch Limited Partnership
 2000-03-12 14:49:15,2000-F02,S2,Zenit-2S No. 2L Stage 2,9300.0,0.65,0.7,80700.0,False,6,200.0,Cayman Is.,Sea Launch Limited Partnership
-2000-03-12 15:02:00,2000-F02,P,ICO F1,2000.0,0.8,0.4,750.0,False,6,200.0,USA,ICO Global Communications
+2000-03-12 15:02:00,2000-F02,P,ICO F1,0.0,0.8,0.4,2750.0,False,6,200.0,USA,ICO Global Communications
 2000-03-12 15:02:00,2000-F02,S3,Blok DM-SL No. 2L,2720.0,0.65,0.7,14580.0,False,6,200.0,Cayman Is.,Sea Launch Limited Partnership
 2000-03-13 00:00:00,2000-013C,C,Perekhodnik,800.0,0.8,0.4,0.0,False,6,160.0,USSR/Russia,Government
 2000-03-14 00:00:00,2000-013B,S3,Proton-K 399-01 Stage 3,4185.0,0.65,0.7,0.0,False,6,159.0,USSR/Russia,Government
@@ -35929,12 +35929,12 @@ Date,COSPAR_ID,Category,Object_Name,Ablatable_Mass,Ablation_Degree,Percent_Alumi
 2000-12-20 16:20:00,2000-082,S2,CZ-3A Stage 2,4000.0,0.65,0.7,0.0,False,6,170.0,China,Government
 2000-12-27 09:56:31,2000-F03,C,Tsiklon-3 Fairing,878.0,0.3,0.7,0.0,False,6,70.0,USSR/Russia,Defense
 2000-12-27 09:56:31,2000-F03,C,Tsiklon-3 Fairing,878.0,0.3,0.7,0.0,False,6,70.0,USSR/Russia,Defense
-2000-12-27 09:56:31,2000-F03,P,Gonets-D1 No. 19L,225.0,0.8,0.4,0.0,False,6,200.0,USSR/Russia,Government
-2000-12-27 09:56:31,2000-F03,P,Gonets-D1 No. 20L,225.0,0.8,0.4,0.0,False,6,200.0,USSR/Russia,Government
-2000-12-27 09:56:31,2000-F03,P,Gonets-D1 No. 21L,225.0,0.8,0.4,0.0,False,6,200.0,USSR/Russia,Government
-2000-12-27 09:56:31,2000-F03,P,Strela-3,225.0,0.8,0.4,0.0,False,6,200.0,USSR/Russia,Defense
-2000-12-27 09:56:31,2000-F03,P,Strela-3,225.0,0.8,0.4,0.0,False,6,200.0,USSR/Russia,Defense
-2000-12-27 09:56:31,2000-F03,P,Strela-3,225.0,0.8,0.4,0.0,False,6,200.0,USSR/Russia,Defense
+2000-12-27 09:56:31,2000-F03,P,Gonets-D1 No. 19L,0.0,0.8,0.4,225.0,False,6,200.0,USSR/Russia,Government
+2000-12-27 09:56:31,2000-F03,P,Gonets-D1 No. 20L,0.0,0.8,0.4,225.0,False,6,200.0,USSR/Russia,Government
+2000-12-27 09:56:31,2000-F03,P,Gonets-D1 No. 21L,0.0,0.8,0.4,225.0,False,6,200.0,USSR/Russia,Government
+2000-12-27 09:56:31,2000-F03,P,Strela-3,0.0,0.8,0.4,225.0,False,6,200.0,USSR/Russia,Defense
+2000-12-27 09:56:31,2000-F03,P,Strela-3,0.0,0.8,0.4,225.0,False,6,200.0,USSR/Russia,Defense
+2000-12-27 09:56:31,2000-F03,P,Strela-3,0.0,0.8,0.4,225.0,False,6,200.0,USSR/Russia,Defense
 2000-12-27 09:56:31,2000-F03,S1,11S691,8300.0,0.3,0.7,0.0,False,2,70.0,USSR/Russia,Defense
 2000-12-27 09:56:31,2000-F03,S2,Tsiklon-3 34-503 Stage 2,4800.0,0.65,0.7,0.0,False,6,200.0,USSR/Russia,Defense
 2000-12-27 09:56:31,2000-F03,S3,Tsiklon-3 34-503 Stage 3,1600.0,0.65,0.7,3000.0,False,6,200.0,USSR/Russia,Defense
@@ -36336,10 +36336,10 @@ Date,COSPAR_ID,Category,Object_Name,Ablatable_Mass,Ablation_Degree,Percent_Alumi
 2001-09-21 18:49:30,2001-U01,S2,Orion 50S-G,345.0,0.65,0.7,3055.0,False,6,180.0,USA,Orbital Sciences Corp./Chandler
 2001-09-21 18:49:30,2001-U01,S3,Orion 50,345.0,0.65,0.7,3055.0,False,6,740.0,USA,Orbital Sciences Corp./Chandler
 2001-09-21 19:39:00,2001-U01,C,APC,35.0,0.8,0.4,0.0,False,4,427.0,USA,Orbital Sciences Corp./Chandler
-2001-09-21 19:39:00,2001-U01,P,Celestis-05,1.0,0.8,0.4,0.0,False,4,427.0,USA,"Academic, amateur and non-profit"
+2001-09-21 19:39:00,2001-U01,P,Celestis-05,0.0,0.8,0.4,1.0,False,4,427.0,USA,"Academic, amateur and non-profit"
 2001-09-21 19:39:00,2001-U01,P,OrbView-4,350.0,0.8,0.4,18.0,False,4,427.0,USA,OSC Germantown
 2001-09-21 19:39:00,2001-U01,P,QuikTOMS,100.0,0.8,0.4,68.0,False,4,427.0,USA,Government
-2001-09-21 19:39:00,2001-U01,P,SBD,73.0,0.8,0.4,0.0,False,4,427.0,USA,OSC Germantown
+2001-09-21 19:39:00,2001-U01,P,SBD,0.0,0.8,0.4,73.0,False,4,427.0,USA,OSC Germantown
 2001-09-21 19:39:00,2001-U01,S4,Taurus 6 Stage 4,126.0,0.65,0.7,774.0,False,4,427.0,USA,Orbital Sciences Corp./Chandler
 2001-09-24 00:00:00,1963-014EC,C,West Ford dipoles,0.0,0.8,0.4,0.0,False,6,5462.0,USA,Defense
 2001-09-24 00:00:00,1999-011C,C,WIRE telescope cover,5.0,0.8,0.4,0.0,False,6,589.0,USA,Government
@@ -36854,7 +36854,7 @@ Date,COSPAR_ID,Category,Object_Name,Ablatable_Mass,Ablation_Degree,Percent_Alumi
 2002-09-15 10:30:00,2002-F01,S1,DF-21 St1,1660.0,0.3,0.7,0.0,False,2,50.0,China,Government
 2002-09-15 10:30:00,2002-F01,S2,DF-21 St2,870.0,0.65,0.7,7830.0,False,6,200.0,China,Government
 2002-09-15 10:30:00,2002-F01,S3,KT-1 St3,200.0,0.65,0.7,1800.0,False,6,200.0,China,Government
-2002-09-15 10:32:00,2002-F01,P,Hangtian Tsinghua 1-01,36.0,0.8,0.4,0.0,False,6,200.0,China,Government
+2002-09-15 10:32:00,2002-F01,P,Hangtian Tsinghua 1-01,0.0,0.8,0.4,36.0,False,6,200.0,China,Government
 2002-09-15 10:32:00,2002-F01,S4,KT-1 stage 4,200.0,0.65,0.7,1800.0,False,6,200.0,China,Government
 2002-09-16 00:00:00,2002-005F,S2,Delta 290,950.0,0.65,0.7,0.0,False,6,626.0,USA,Boeing Space Systems (HB)
 2002-09-18 22:04:01,2002-044,C,14' PLF?,878.0,0.3,0.7,0.0,False,6,100.0,USA,Lockheed Martin Astronautics
@@ -37438,8 +37438,8 @@ Date,COSPAR_ID,Category,Object_Name,Ablatable_Mass,Ablation_Degree,Percent_Alumi
 2003-11-29 04:43:00,2003-F02,C,4/4D-LC Adapter,100.0,0.8,0.4,0.0,False,6,422.0,Japan,Government
 2003-11-29 04:43:00,2003-F02,C,4/4D-LC Lower Fairing Half,233.33333333333334,0.3,0.7,0.0,False,6,422.0,Japan,Government
 2003-11-29 04:43:00,2003-F02,C,4/4D-LC Lower Fairing Half,233.33333333333334,0.3,0.7,0.0,False,6,422.0,Japan,Government
-2003-11-29 04:43:00,2003-F02,P,JSE kougaku-2 gouki,1000.0,0.8,0.4,500.0,False,6,422.0,Japan,Defense
-2003-11-29 04:43:00,2003-F02,P,JSE reda-2 gouki,1000.0,0.8,0.4,500.0,False,6,422.0,Japan,Defense
+2003-11-29 04:43:00,2003-F02,P,JSE kougaku-2 gouki,0.0,0.8,0.4,1500.0,False,6,422.0,Japan,Defense
+2003-11-29 04:43:00,2003-F02,P,JSE reda-2 gouki,0.0,0.8,0.4,1500.0,False,6,422.0,Japan,Defense
 2003-11-29 04:43:00,2003-F02,S2,H-2A F6 Stage 2,3100.0,0.65,0.7,16900.0,False,6,422.0,Japan,Government
 2003-11-30 00:00:00,2003-035E,P,Spuskaemaya Kapsula,90.0,0.8,0.4,0.0,False,6,295.0,USSR/Russia,Defense
 2003-12-02 10:04:00,2003-054,C,14' PLF,878.0,0.3,0.7,0.0,False,6,100.0,USA,Lockheed Martin Astronautics
@@ -37785,7 +37785,7 @@ Date,COSPAR_ID,Category,Object_Name,Ablatable_Mass,Ablation_Degree,Percent_Alumi
 2004-09-06 10:53:00,2004-F01,C,Shaviyt Fairing,28.5,0.3,0.7,0.0,False,6,250.0,Israel,Government
 2004-09-06 10:53:00,2004-F01,S1,Shaviyt 1,1240.0,0.3,0.7,0.0,False,2,100.0,Israel,Government
 2004-09-06 10:53:00,2004-F01,S2,Shaviyt,1288.0,0.65,0.7,0.0,False,6,250.0,Israel,Government
-2004-09-06 11:06:00,2004-F01,P,'Ofeq-6,300.0,0.8,0.4,0.0,False,6,260.0,Israel,Defense
+2004-09-06 11:06:00,2004-F01,P,'Ofeq-6,0.0,0.8,0.4,300.0,False,6,260.0,Israel,Defense
 2004-09-06 11:06:00,2004-F01,S3,Shavit (6) Stage 3,684.0,0.65,0.7,1890.0,False,6,260.0,Israel,Government
 2004-09-08 15:59:00,2001-034D,P,Genesis SRC,220.0,0.0,0.4,0.0,False,2,1376362.0,USA,Government
 2004-09-08 23:14:00,2004-035,C,CZ-4B Y1 3.35m Fairing,900.0,0.3,0.7,0.0,False,6,100.0,China,Government
@@ -39583,7 +39583,7 @@ Date,COSPAR_ID,Category,Object_Name,Ablatable_Mass,Ablation_Degree,Percent_Alumi
 2008-08-14 20:44:00,2008-038,S0,Ariane EAP P240,15500.0,0.3,0.7,0.0,False,2,75.0,Europe,"Arianespace, Inc."
 2008-08-14 21:01:00,2008-038,S1,Ariane 5 L542 EPC,14700.0,0.3,0.7,0.0,False,6,205.0,Europe,"Arianespace, Inc."
 2008-08-16 19:32:00,2008-F02,S1,Shahab 3,3500.0,0.3,0.7,0.0,False,6,150.0,Iran,Government
-2008-08-16 19:43:00,2008-F02,P,IRSA Test Payload,20.0,0.8,0.4,0.0,False,6,250.0,Iran,Government
+2008-08-16 19:43:00,2008-F02,P,IRSA Test Payload,0.0,0.8,0.4,20.0,False,6,250.0,Iran,Government
 2008-08-16 19:43:00,2008-F02,S2,Safir Stage 2,350.0,0.65,0.7,3050.0,False,6,250.0,Iran,Government
 2008-08-18 22:43:00,2008-039,C,Briz-M Fairing,1000.0,0.3,0.7,0.0,False,6,140.0,USSR/Russia,Government
 2008-08-18 22:43:00,2008-039,C,Briz-M Fairing,1000.0,0.3,0.7,0.0,False,6,140.0,USSR/Russia,Government
@@ -40725,9 +40725,9 @@ Date,COSPAR_ID,Category,Object_Name,Ablatable_Mass,Ablation_Degree,Percent_Alumi
 2010-12-05 10:53:00,2010-F03,C,DM-03-1L SOZ-1,56.0,0.8,0.4,0.0,False,6,169.0,USSR/Russia,Defense
 2010-12-05 10:53:00,2010-F03,C,DM-03-1L SOZ-2,56.0,0.8,0.4,0.0,False,6,169.0,USSR/Russia,Defense
 2010-12-05 10:53:00,2010-F03,C,Perekhodnik,870.0,0.8,0.4,0.0,False,6,169.0,USSR/Russia,Defense
-2010-12-05 10:53:00,2010-F03,P,Glonass-M 739,1200.0,0.8,0.4,250.0,False,6,169.0,USSR/Russia,Defense
-2010-12-05 10:53:00,2010-F03,P,Glonass-M 740,1200.0,0.8,0.4,250.0,False,6,169.0,USSR/Russia,Defense
-2010-12-05 10:53:00,2010-F03,P,Glonass-M 741,1200.0,0.8,0.4,250.0,False,6,169.0,USSR/Russia,Defense
+2010-12-05 10:53:00,2010-F03,P,Glonass-M 739,0.0,0.8,0.4,1450.0,False,6,169.0,USSR/Russia,Defense
+2010-12-05 10:53:00,2010-F03,P,Glonass-M 740,0.0,0.8,0.4,1450.0,False,6,169.0,USSR/Russia,Defense
+2010-12-05 10:53:00,2010-F03,P,Glonass-M 741,0.0,0.8,0.4,1450.0,False,6,169.0,USSR/Russia,Defense
 2010-12-05 10:53:00,2010-F03,S3,Proton-M 535-37 Stage 3,3700.0,0.65,0.7,46600.0,False,6,169.0,USSR/Russia,Defense
 2010-12-05 10:53:00,2010-F03,S4,Blok DM-03 No. 1L,2440.0,0.65,0.7,15060.0,False,6,169.0,USSR/Russia,Defense
 2010-12-06 00:00:00,1991-065D,S3,Blok-ML No. 338,999.0,0.65,0.7,0.0,False,6,40508.0,USSR/Russia,Defense
@@ -40849,7 +40849,7 @@ Date,COSPAR_ID,Category,Object_Name,Ablatable_Mass,Ablation_Degree,Percent_Alumi
 2011-03-04 10:09:43,2011-F01,S2,Orion 50SXL,1014.685304,0.65,0.7,0.0,False,6,180.0,USA,Orbital Sciences Corp./Chandler
 2011-03-04 10:09:43,2011-F01,S3,Orion 50XL,420.0,0.65,0.7,0.0,False,6,714.0,USA,Orbital Sciences Corp./Chandler
 2011-03-04 10:45:00,2011-F01,P,Explorer 1 Prime,1.0,0.8,0.4,0.0,False,6,550.0,USA,"Academic, amateur and non-profit"
-2011-03-04 10:45:00,2011-F01,P,Glory,480.0,0.8,0.4,45.0,False,6,550.0,USA,Government
+2011-03-04 10:45:00,2011-F01,P,Glory,0.0,0.8,0.4,525.0,False,6,550.0,USA,Government
 2011-03-04 10:45:00,2011-F01,P,Hermes-1,1.0,0.8,0.4,0.0,False,6,550.0,USA,"Academic, amateur and non-profit"
 2011-03-04 10:45:00,2011-F01,P,KySat,1.0,0.8,0.4,0.0,False,6,550.0,USA,"Academic, amateur and non-profit"
 2011-03-04 10:45:00,2011-F01,S4,Taurus 9 Stage 4,126.0,0.65,0.7,0.0,False,6,550.0,USA,Orbital Sciences Corp./Chandler
@@ -41106,7 +41106,7 @@ Date,COSPAR_ID,Category,Object_Name,Ablatable_Mass,Ablation_Degree,Percent_Alumi
 2011-08-18 09:33:00,2011-F02,C,CZ-2C Stage 2 motor cover,1.0,0.8,0.4,0.0,False,6,150.0,China,Government
 2011-08-18 09:33:00,2011-F02,C,CZ-2C Stage 2 motor cover,1.0,0.8,0.4,0.0,False,6,150.0,China,Government
 2011-08-18 09:33:00,2011-F02,C,CZ-2C Stage 2 motor cover,1.0,0.8,0.4,0.0,False,6,150.0,China,Government
-2011-08-18 09:33:00,2011-F02,P,Shi Jian 11-04,300.0,0.8,0.4,0.0,False,6,150.0,China,Government
+2011-08-18 09:33:00,2011-F02,P,Shi Jian 11-04,0.0,0.8,0.4,300.0,False,6,150.0,China,Government
 2011-08-18 09:33:00,2011-F02,S2,CZ-2C Y26 Stage 2,4000.0,0.65,0.7,54667.0,False,6,150.0,China,Government
 2011-08-24 13:00:08,2011-F03,C,Progress Fairing,878.0,0.3,0.7,0.0,False,6,175.0,USSR/Russia,Government
 2011-08-24 13:00:08,2011-F03,C,Progress Fairing,878.0,0.3,0.7,0.0,False,6,175.0,USSR/Russia,Government
@@ -41116,7 +41116,7 @@ Date,COSPAR_ID,Category,Object_Name,Ablatable_Mass,Ablation_Degree,Percent_Alumi
 2011-08-24 13:00:08,2011-F03,S0,11S59V,3915.0,0.3,0.7,0.0,False,2,75.0,USSR/Russia,Defense
 2011-08-24 13:00:08,2011-F03,S1,11S59A,6875.0,0.3,0.7,0.0,False,6,175.0,USSR/Russia,Defense
 2011-08-24 13:12:00,2011-F03,C,Progress M-12M Up Cargo,1204.0,0.8,0.4,0.0,False,6,190.0,USSR/Russia,Government
-2011-08-24 13:12:00,2011-F03,P,Progress M-12M,4600.0,0.8,0.4,2689.0,False,6,190.0,USSR/Russia,Government
+2011-08-24 13:12:00,2011-F03,P,Progress M-12M,0.0,0.8,0.4,7289.0,False,6,190.0,USSR/Russia,Government
 2011-08-24 13:12:00,2011-F03,S2,Soyuz-U-PVB No. 132 Blok-I,2410.0,0.65,0.7,0.0,False,6,190.0,USSR/Russia,Defense
 2011-09-01 10:21:00,2011-027A,P,Progress M-11M,4600.0,0.8,0.4,0.0,False,1,383.0,USSR/Russia,Government
 2011-09-04 00:00:00,2009-028D,P,HawkSat-1,1.0,0.8,0.4,0.0,False,6,466.0,USA,"Academic, amateur and non-profit"
@@ -41400,7 +41400,7 @@ Date,COSPAR_ID,Category,Object_Name,Ablatable_Mass,Ablation_Degree,Percent_Alumi
 2011-12-23 12:08:10,2011-F04,S0,14S53G,3784.0,0.3,0.7,0.0,False,2,75.0,USSR/Russia,Defense
 2011-12-23 12:08:10,2011-F04,S0,14S53V,3784.0,0.3,0.7,0.0,False,2,75.0,USSR/Russia,Defense
 2011-12-23 12:08:10,2011-F04,S1,14S53A,6545.0,0.3,0.7,0.0,False,6,120.0,USSR/Russia,Defense
-2011-12-23 12:20:00,2011-F04,P,Meridian No. 15L,2000.0,0.8,0.4,0.0,False,6,200.0,USSR/Russia,Government
+2011-12-23 12:20:00,2011-F04,P,Meridian No. 15L,0.0,0.8,0.4,2000.0,False,6,200.0,USSR/Russia,Government
 2011-12-23 12:20:00,2011-F04,S2,Soyuz-2-1b No. 006? Blok-I,2355.0,0.65,0.7,0.0,False,6,200.0,USSR/Russia,Defense
 2011-12-23 12:20:00,2011-F04,S3,Fregat No. 1042,1000.0,0.65,0.7,5350.0,False,6,200.0,USSR/Russia,Defense
 2011-12-24 00:00:00,2011-078B,S2,Soyuz-FG No. 039 Blok-I,2410.0,0.65,0.7,0.0,False,6,222.0,USSR/Russia,Defense
@@ -42718,7 +42718,7 @@ Date,COSPAR_ID,Category,Object_Name,Ablatable_Mass,Ablation_Degree,Percent_Alumi
 2014-05-15 21:42:00,2014-F01,S1,8S810M,30600.0,0.3,0.7,0.0,False,2,60.0,USSR/Russia,Government
 2014-05-15 21:42:00,2014-F01,S2,8S811,11000.0,0.65,0.7,0.0,False,6,130.0,USSR/Russia,Government
 2014-05-15 21:58:00,2014-F01,C,Briz-M DTB,1000.0,0.8,0.4,0.0,False,6,160.0,USSR/Russia,Government
-2014-05-15 21:58:00,2014-F01,P,Ekspress AM-4R,2500.0,0.8,0.4,3245.0,False,6,160.0,USSR/Russia,"GP Kosmicheskaya Svyaz, Moskva"
+2014-05-15 21:58:00,2014-F01,P,Ekspress AM-4R,0.0,0.8,0.4,5745.0,False,6,160.0,USSR/Russia,"GP Kosmicheskaya Svyaz, Moskva"
 2014-05-15 21:58:00,2014-F01,S3,Proton-M 935-45 Stage 3,3500.0,0.65,0.7,46600.0,False,6,160.0,USSR/Russia,Government
 2014-05-15 21:58:00,2014-F01,S4,Briz-M No. 99547,2370.0,0.65,0.7,19730.0,False,6,160.0,USSR/Russia,Government
 2014-05-17 00:03:00,2014-026,C,Delta III Fairing,878.0,0.3,0.7,0.0,False,6,200.0,USA,Boeing Space Systems (HB)
@@ -43392,7 +43392,7 @@ Date,COSPAR_ID,Category,Object_Name,Ablatable_Mass,Ablation_Degree,Percent_Alumi
 2015-05-16 05:47:39,2015-F01,S1,8S810M,30600.0,0.3,0.7,0.0,False,2,60.0,USSR/Russia,Government
 2015-05-16 05:47:39,2015-F01,S2,8S811,11000.0,0.65,0.7,0.0,False,6,130.0,USSR/Russia,Government
 2015-05-16 06:10:00,2015-F01,C,Briz-M DTB,1000.0,0.8,0.4,0.0,False,6,160.0,USSR/Russia,Government
-2015-05-16 06:10:00,2015-F01,P,Mexsat-1 Centenario,2800.0,0.8,0.4,2525.0,False,6,160.0,Mexico,Government
+2015-05-16 06:10:00,2015-F01,P,Mexsat-1 Centenario,0.0,0.8,0.4,5325.0,False,6,160.0,Mexico,Government
 2015-05-16 06:10:00,2015-F01,S3,Proton-M 935-54 Stage 3,3500.0,0.65,0.7,46600.0,False,6,160.0,USSR/Russia,Government
 2015-05-16 06:10:00,2015-F01,S4,Briz-M No. 99555,2370.0,0.65,0.7,19730.0,False,6,160.0,USSR/Russia,Government
 2015-05-16 11:00:00,1998-067GB,P,LambdaSat,1.0,0.8,0.4,0.0,False,6,405.0,USA,"Academic, amateur and non-profit"
@@ -44416,7 +44416,7 @@ Date,COSPAR_ID,Category,Object_Name,Ablatable_Mass,Ablation_Degree,Percent_Alumi
 2016-12-01 14:51:52,2016-F02,S0,11S59V,3915.0,0.3,0.7,0.0,False,2,75.0,USSR/Russia,Defense
 2016-12-01 14:51:52,2016-F02,S1,11S59A,6875.0,0.3,0.7,0.0,False,6,175.0,USSR/Russia,Defense
 2016-12-01 14:59:00,2016-F02,C,Progress MS-04 Up Cargo,1140.0,0.8,0.4,0.0,False,6,190.0,USSR/Russia,Government
-2016-12-01 14:59:00,2016-F02,P,Progress MS-04,3996.0,0.8,0.4,880.0,False,6,190.0,USSR/Russia,Government
+2016-12-01 14:59:00,2016-F02,P,Progress MS-04,0.0,0.8,0.4,4876.0,False,6,190.0,USSR/Russia,Government
 2016-12-01 14:59:00,2016-F02,S2,Soyuz-U-PVB No. 148 Blok-I,2410.0,0.65,0.7,0.0,False,6,190.0,USSR/Russia,Defense
 2016-12-05 13:51:00,2016-073,C,Vega Fairing,270.0,0.3,0.7,0.0,False,6,150.0,Europe,"Arianespace, Inc."
 2016-12-05 13:51:00,2016-073,C,Vega Fairing,270.0,0.3,0.7,0.0,False,6,150.0,Europe,"Arianespace, Inc."
@@ -44678,8 +44678,8 @@ Date,COSPAR_ID,Category,Object_Name,Ablatable_Mass,Ablation_Degree,Percent_Alumi
 2017-05-21 00:00:00,1996-056D,C,Star 48 yo weight,1.0,0.8,0.4,0.0,False,6,13083.0,USA,McDonnell Douglas Astronautics Co.
 2017-05-25 04:20:00,2017-F02,C,Electron Fairing,22.0,0.3,0.7,0.0,False,6,100.0,New Zealand,Rocket Lab Ltd.
 2017-05-25 04:20:00,2017-F02,C,Electron Fairing,22.0,0.3,0.7,0.0,False,6,100.0,New Zealand,Rocket Lab Ltd.
-2017-05-25 04:20:00,2017-F02,P,Humanity Star,20.0,0.8,0.4,0.0,False,6,224.0,New Zealand,Rocket Lab Ltd.
-2017-05-25 04:20:00,2017-F02,P,It's A Test,20.0,0.8,0.4,0.0,False,6,224.0,New Zealand,Rocket Lab Ltd.
+2017-05-25 04:20:00,2017-F02,P,Humanity Star,0.0,0.8,0.4,20.0,False,6,224.0,New Zealand,Rocket Lab Ltd.
+2017-05-25 04:20:00,2017-F02,P,It's A Test,0.0,0.8,0.4,20.0,False,6,224.0,New Zealand,Rocket Lab Ltd.
 2017-05-25 04:20:00,2017-F02,S1,Electron Stage 1,950.0,0.3,0.7,0.0,False,2,100.0,New Zealand,Rocket Lab Ltd.
 2017-05-25 04:20:00,2017-F02,S2,Electron Stage 2,250.0,0.65,0.7,0.0,False,6,224.0,New Zealand,Rocket Lab Ltd.
 2017-05-25 06:33:41,2017-027,C,14S737 Fairing?,900.0,0.3,0.7,0.0,False,6,120.0,USSR/Russia,Government
@@ -45684,7 +45684,7 @@ Date,COSPAR_ID,Category,Object_Name,Ablatable_Mass,Ablation_Degree,Percent_Alumi
 2018-10-27 08:00:00,2018-F02,C,ZQ-1 Fairing,878.0,0.3,0.7,0.0,False,6,120.0,China,Beijing lanjian kongjian keji youxian gongsi
 2018-10-27 08:00:00,2018-F02,S1,ZQ-1 Stage 1,1000.0,0.3,0.7,0.0,False,2,50.0,China,Beijing lanjian kongjian keji youxian gongsi
 2018-10-27 08:00:00,2018-F02,S2,ZQ-1 Stage 2,1000.0,0.65,0.7,0.0,False,6,200.0,China,Beijing lanjian kongjian keji youxian gongsi
-2018-10-27 08:15:00,2018-F02,P,Weilai,20.0,0.8,0.4,0.0,False,6,334.0,China,Beijing Weina xingkong keji YG
+2018-10-27 08:15:00,2018-F02,P,Weilai,0.0,0.8,0.4,20.0,False,6,334.0,China,Beijing Weina xingkong keji YG
 2018-10-27 08:15:00,2018-F02,S3,ZQ-1 Stage 3,200.0,0.65,0.7,1800.0,False,6,334.0,China,Beijing lanjian kongjian keji youxian gongsi
 2018-10-27 16:10:00,2017-067B,S2,Falcon 9-045 Stage 2,4900.0,0.65,0.7,0.0,False,4,50023.0,USA,SpaceX
 2018-10-28 22:30:00,2010-070D,C,Sylda 5A,440.0,0.8,0.4,0.0,False,6,35734.0,Europe,"Arianespace, Inc."
@@ -45914,7 +45914,7 @@ Date,COSPAR_ID,Category,Object_Name,Ablatable_Mass,Ablation_Degree,Percent_Alumi
 2019-01-15 00:30:00,2019-F01,C,Simorgh Fairing,60.0,0.3,0.7,0.0,False,6,220.0,Iran,Government
 2019-01-15 00:30:00,2019-F01,S1,Simorgh Stage 1,12700.0,0.3,0.7,0.0,False,2,70.0,Iran,Government
 2019-01-15 00:40:00,2019-F01,S2,Simorgh Stage 2,1600.0,0.65,0.7,8000.0,False,6,500.0,Iran,Government
-2019-01-15 00:50:00,2019-F01,P,Payam,90.0,0.8,0.4,0.0,False,6,500.0,Iran,Government
+2019-01-15 00:50:00,2019-F01,P,Payam,0.0,0.8,0.4,90.0,False,6,500.0,Iran,Government
 2019-01-15 00:50:00,2019-F01,S3,Simorgh Stage 3,230.0,0.65,0.7,185.0,False,6,500.0,Iran,Government
 2019-01-16 11:44:00,1977-093A,P,Prognoz-6,910.0,0.8,0.4,0.0,False,1,196379.0,USSR/Russia,Government
 2019-01-17 00:00:00,2018-004U,S4,PSLV-C40 PS4,670.0,0.65,0.7,0.0,False,6,371.0,India,Government
@@ -46268,7 +46268,7 @@ Date,COSPAR_ID,Category,Object_Name,Ablatable_Mass,Ablation_Degree,Percent_Alumi
 2019-05-22 23:16:00,2019-F04,C,CZ-4C Sep motor cover,1.0,0.8,0.4,0.0,False,6,620.0,China,Government
 2019-05-22 23:16:00,2019-F04,C,CZ-4C Sep motor cover,1.0,0.8,0.4,0.0,False,6,620.0,China,Government
 2019-05-22 23:16:00,2019-F04,C,CZ-4C Sep motor cover,1.0,0.8,0.4,0.0,False,6,620.0,China,Government
-2019-05-22 23:16:00,2019-F04,P,Yaogan 33,1040.0,0.8,0.4,0.0,False,6,620.0,China,Defense
+2019-05-22 23:16:00,2019-F04,P,Yaogan 33,0.0,0.8,0.4,1040.0,False,6,620.0,China,Defense
 2019-05-22 23:16:00,2019-F04,S3,CZ-4C Y23 Stage 3,2000.0,0.65,0.7,14000.0,False,6,620.0,China,Government
 2019-05-24 02:30:00,2019-029,C,Falcon 9 Fairing F9-073,937.5,0.0,0.7,0.0,True,5,125.0,USA,SpaceX
 2019-05-24 02:30:00,2019-029,C,Falcon 9 Fairing F9-073,937.5,0.0,0.7,0.0,True,5,125.0,USA,SpaceX
@@ -46348,7 +46348,7 @@ Date,COSPAR_ID,Category,Object_Name,Ablatable_Mass,Ablation_Degree,Percent_Alumi
 2019-07-11 01:53:03,2019-F05,C,Vega Fairing,270.0,0.3,0.7,0.0,False,6,75.0,Europe,"Arianespace, Inc."
 2019-07-11 01:53:03,2019-F05,S1,Vega P80FW,8533.0,0.3,0.7,0.0,False,2,50.0,Europe,"Arianespace, Inc."
 2019-07-11 01:53:03,2019-F05,S2,Zefiro 23,2486.0,0.65,0.7,23814.0,False,6,75.0,Europe,"Arianespace, Inc."
-2019-07-11 01:58:00,2019-F05,P,FalconEye 1,900.0,0.8,0.4,297.0,False,6,75.0,UAE,Defense
+2019-07-11 01:58:00,2019-F05,P,FalconEye 1,0.0,0.8,0.4,1197.0,False,6,75.0,UAE,Defense
 2019-07-11 01:58:00,2019-F05,S3,Zefiro 9A,1433.0,0.65,0.7,10567.0,False,6,75.0,Europe,Government
 2019-07-11 01:58:00,2019-F05,S4,Vega AVUM VV15,688.0,0.65,0.7,577.0,False,6,75.0,Europe,Arianespace SAS
 2019-07-13 12:30:57,2019-040,C,DM Fairing,1000.0,0.3,0.7,0.0,False,6,140.0,USSR/Russia,Government
@@ -46805,7 +46805,7 @@ Date,COSPAR_ID,Category,Object_Name,Ablatable_Mass,Ablation_Degree,Percent_Alumi
 2020-02-09 01:34:00,2020-009,S0,H-IIA SRB-A,10500.0,0.3,0.7,0.0,False,2,100.0,Japan,Government
 2020-02-09 01:34:00,2020-009,S0,H-IIA SRB-A,10500.0,0.3,0.7,0.0,False,2,100.0,Japan,Government
 2020-02-09 01:34:00,2020-009,S1,H-IIA Stage 1,12900.0,0.3,0.7,0.0,False,6,330.0,Japan,Government
-2020-02-09 05:24:00,2020-F01,P,Zafar,90.0,0.8,0.4,0.0,False,6,500.0,Iran,Government
+2020-02-09 05:24:00,2020-F01,P,Zafar,0.0,0.8,0.4,90.0,False,6,500.0,Iran,Government
 2020-02-09 05:24:00,2020-F01,S2,Simorgh Stage 2,1600.0,0.65,0.7,0.0,False,6,500.0,Iran,Government
 2020-02-09 05:24:00,2020-F01,S3,Simorgh Stage 3,230.0,0.65,0.7,0.0,False,6,500.0,Iran,Government
 2020-02-09 15:48:14,2020-F01,C,Simorgh Fairing,60.0,0.3,0.7,0.0,False,6,220.0,Iran,Government
@@ -46876,7 +46876,7 @@ Date,COSPAR_ID,Category,Object_Name,Ablatable_Mass,Ablation_Degree,Percent_Alumi
 2020-03-16 13:34:00,2020-F02,S0,CZ-7 Booster,6000.0,0.3,0.7,0.0,False,6,120.0,China,Government
 2020-03-16 13:34:00,2020-F02,S1,CZ-7 Stage 1,12250.0,0.3,0.7,0.0,False,6,120.0,China,Government
 2020-03-16 13:34:00,2020-F02,S2,CZ-7A Y1 Stage 2,5750.0,0.65,0.7,65000.0,False,6,200.0,China,Government
-2020-03-16 13:50:00,2020-F02,P,Xinjishu Yanzheng 6,3000.0,0.8,0.4,2000.0,False,6,200.0,China,Government
+2020-03-16 13:50:00,2020-F02,P,Xinjishu Yanzheng 6,0.0,0.8,0.4,5000.0,False,6,200.0,China,Government
 2020-03-16 13:50:00,2020-F02,S3,CZ-7A Y1 Stage 3,2770.0,0.65,0.7,18196.5,False,6,200.0,China,Government
 2020-03-16 18:28:10,2020-018,C,14S737 Fairing?,900.0,0.3,0.7,0.0,False,6,120.0,USSR/Russia,Government
 2020-03-16 18:28:10,2020-018,C,14S737 Fairing?,900.0,0.3,0.7,0.0,False,6,120.0,USSR/Russia,Government
@@ -46945,7 +46945,7 @@ Date,COSPAR_ID,Category,Object_Name,Ablatable_Mass,Ablation_Degree,Percent_Alumi
 2020-04-09 11:46:00,2020-F03,S0,CZ Booster,3550.0,0.3,0.7,0.0,False,6,105.0,China,Government
 2020-04-09 11:46:00,2020-F03,S1,CZ-3B Stage 1,11200.0,0.3,0.7,0.0,False,6,135.0,China,Government
 2020-04-09 11:46:00,2020-F03,S2,CZ-3B Stage 2,3924.0,0.65,0.7,0.0,False,6,200.0,China,Government
-2020-04-09 12:01:00,2020-F03,P,Nusantara Dua,2500.0,0.8,0.4,3050.0,False,6,210.0,Indonesia,Palapa Satelit Nusantara Sejahtera
+2020-04-09 12:01:00,2020-F03,P,Nusantara Dua,0.0,0.8,0.4,5550.0,False,6,210.0,Indonesia,Palapa Satelit Nusantara Sejahtera
 2020-04-09 12:01:00,2020-F03,S3,CZ-3B Y71 Stage 3,2770.0,0.65,0.7,18193.0,False,6,210.0,China,Government
 2020-04-12 22:40:00,2020-023B,S2,Soyuz-2-1a No. 042 Blok-I,2410.0,0.65,0.7,0.0,False,1,218.0,USSR/Russia,Defense
 2020-04-13 00:00:00,2020-019BP,C,Starlink deployment rail,100.0,1.0,0.4,0.0,True,6,339.0,USA,SpaceX (Seattle)
@@ -47075,13 +47075,13 @@ Date,COSPAR_ID,Category,Object_Name,Ablatable_Mass,Ablation_Degree,Percent_Alumi
 2020-07-04 21:19:36,2020-F05,C,Electron Fairing,22.0,0.3,0.7,0.0,False,6,100.0,New Zealand,Rocket Lab Ltd.
 2020-07-04 21:19:36,2020-F05,C,Electron Fairing,22.0,0.3,0.7,0.0,False,6,100.0,New Zealand,Rocket Lab Ltd.
 2020-07-04 21:19:36,2020-F05,S1,Electron Stage 1,950.0,0.3,0.7,0.0,False,2,100.0,New Zealand,Rocket Lab Ltd.
-2020-07-04 21:29:00,2020-F05,P,CE-SAT-I,65.0,0.8,0.4,0.0,False,6,195.0,Japan,Kiyanondenshi
-2020-07-04 21:29:00,2020-F05,P,Faraday-1,10.0,0.8,0.4,0.0,False,6,195.0,Europe,In-Space Missions
-2020-07-04 21:29:00,2020-F05,P,Flock 4e-1,5.7,0.8,0.4,0.0,False,6,195.0,USA,"Planet Labs, Inc"
-2020-07-04 21:29:00,2020-F05,P,Flock 4e-2,5.7,0.8,0.4,0.0,False,6,195.0,USA,"Planet Labs, Inc"
-2020-07-04 21:29:00,2020-F05,P,Flock 4e-3,5.7,0.8,0.4,0.0,False,6,195.0,USA,"Planet Labs, Inc"
-2020-07-04 21:29:00,2020-F05,P,Flock 4e-4,5.7,0.8,0.4,0.0,False,6,195.0,USA,"Planet Labs, Inc"
-2020-07-04 21:29:00,2020-F05,P,Flock 4e-5,5.7,0.8,0.4,0.0,False,6,195.0,USA,"Planet Labs, Inc"
+2020-07-04 21:29:00,2020-F05,P,CE-SAT-I,0.0,0.8,0.4,65.0,False,6,195.0,Japan,Kiyanondenshi
+2020-07-04 21:29:00,2020-F05,P,Faraday-1,0.0,0.8,0.4,10.0,False,6,195.0,Europe,In-Space Missions
+2020-07-04 21:29:00,2020-F05,P,Flock 4e-1,0.0,0.8,0.4,5.7,False,6,195.0,USA,"Planet Labs, Inc"
+2020-07-04 21:29:00,2020-F05,P,Flock 4e-2,0.0,0.8,0.4,5.7,False,6,195.0,USA,"Planet Labs, Inc"
+2020-07-04 21:29:00,2020-F05,P,Flock 4e-3,0.0,0.8,0.4,5.7,False,6,195.0,USA,"Planet Labs, Inc"
+2020-07-04 21:29:00,2020-F05,P,Flock 4e-4,0.0,0.8,0.4,5.7,False,6,195.0,USA,"Planet Labs, Inc"
+2020-07-04 21:29:00,2020-F05,P,Flock 4e-5,0.0,0.8,0.4,5.7,False,6,195.0,USA,"Planet Labs, Inc"
 2020-07-04 21:29:00,2020-F05,S2,Electron 13 Stage 2,250.0,0.65,0.7,2100.0,False,1,195.0,New Zealand,Rocket Lab Ltd.
 2020-07-04 21:29:00,2020-F05,S3,Electron 13 Kick Stage,40.0,0.65,0.7,245.0,False,6,195.0,New Zealand,Rocket Lab Ltd.
 2020-07-04 23:44:04,2020-043,C,Fairing,375.0,0.3,0.7,0.0,False,6,120.0,China,Government
@@ -47108,8 +47108,8 @@ Date,COSPAR_ID,Category,Object_Name,Ablatable_Mass,Ablation_Degree,Percent_Alumi
 2020-07-09 12:11:04,2020-045,S2,CZ-3B Stage 2,3924.0,0.65,0.7,0.0,False,6,200.0,China,Government
 2020-07-10 04:17:00,2020-F06,C,KZ-11 Fairing,878.0,0.3,0.7,0.0,False,6,170.0,China,Government
 2020-07-10 04:17:00,2020-F06,C,KZ-11 Fairing,878.0,0.3,0.7,0.0,False,6,170.0,China,Government
-2020-07-10 04:17:00,2020-F06,P,Jilin-1 Gaofen 02E,230.0,0.8,0.4,0.0,False,6,700.0,China,Changguang weixing jishu youxian gongsi
-2020-07-10 04:17:00,2020-F06,P,Xiangrikui 2,97.0,0.8,0.4,0.0,False,6,700.0,China,Beijing weilai daohang keji YG
+2020-07-10 04:17:00,2020-F06,P,Jilin-1 Gaofen 02E,0.0,0.8,0.4,230.0,False,6,700.0,China,Changguang weixing jishu youxian gongsi
+2020-07-10 04:17:00,2020-F06,P,Xiangrikui 2,0.0,0.8,0.4,97.0,False,6,700.0,China,Beijing weilai daohang keji YG
 2020-07-10 04:17:00,2020-F06,S2,KZ-11-2,1000.0,0.65,0.7,0.0,False,6,100.0,China,Government
 2020-07-10 04:17:00,2020-F06,S3,KZ-11-3,200.0,0.65,0.7,1800.0,False,6,700.0,China,Hangtian kegong huojian jishu youxiangongsi
 2020-07-12 00:00:00,2020-035BN,C,Starlink deployment rail,100.0,1.0,0.4,0.0,True,6,351.0,USA,SpaceX (Seattle)
@@ -47248,7 +47248,7 @@ Date,COSPAR_ID,Category,Object_Name,Ablatable_Mass,Ablation_Degree,Percent_Alumi
 2020-09-12 04:00:00,2017-044C,C,VESPA Upper Part,100.0,0.8,0.4,0.0,False,6,450.0,Europe,Government
 2020-09-12 05:02:00,2020-F08,C,KZ-1 Fairing,878.0,0.3,0.7,0.0,False,6,200.0,China,Government
 2020-09-12 05:02:00,2020-F08,C,KZ-1 Fairing,878.0,0.3,0.7,0.0,False,6,200.0,China,Government
-2020-09-12 05:02:00,2020-F08,P,Neimonggol 1,230.0,0.8,0.4,0.0,False,6,500.0,China,Changguang weixing jishu youxian gongsi
+2020-09-12 05:02:00,2020-F08,P,Neimonggol 1,0.0,0.8,0.4,230.0,False,6,500.0,China,Changguang weixing jishu youxian gongsi
 2020-09-12 05:02:00,2020-F08,S1,KZ-1 St1?,1660.0,0.3,0.7,0.0,False,2,50.0,China,Government
 2020-09-12 05:02:00,2020-F08,S2,KZ-1 St2?,870.0,0.65,0.7,0.0,False,6,200.0,China,Government
 2020-09-12 05:02:00,2020-F08,S3,KZ-1 St3?,320.0,0.65,0.7,0.0,False,6,200.0,China,Government
@@ -47443,8 +47443,8 @@ Date,COSPAR_ID,Category,Object_Name,Ablatable_Mass,Ablation_Degree,Percent_Alumi
 2020-11-17 01:52:20,2020-U01,S1,Vega P80FW,8533.0,0.3,0.7,0.0,False,2,50.0,Europe,"Arianespace, Inc."
 2020-11-17 01:52:20,2020-U01,S2,Zefiro 23,2486.0,0.65,0.7,0.0,False,6,150.0,Europe,"Arianespace, Inc."
 2020-11-17 02:10:00,2020-U01,S3,Zefiro 9A,1433.0,0.65,0.7,0.0,False,4,220.0,Europe,"Arianespace, Inc."
-2020-11-17 02:45:00,2020-U01,P,SEOSat-Ingenio,600.0,0.8,0.4,150.0,False,6,250.0,Europe,Government
-2020-11-17 02:45:00,2020-U01,P,Taranis,171.0,0.8,0.4,4.0,False,6,250.0,Europe,Government
+2020-11-17 02:45:00,2020-U01,P,SEOSat-Ingenio,0.0,0.8,0.4,750.0,False,6,250.0,Europe,Government
+2020-11-17 02:45:00,2020-U01,P,Taranis,0.0,0.8,0.4,175.0,False,6,250.0,Europe,Government
 2020-11-17 02:45:00,2020-U01,S4,Vega AVUM VV17,688.0,0.65,0.7,577.0,False,6,250.0,Europe,"Arianespace, Inc."
 2020-11-18 00:00:00,1998-067PF,P,Bhutan-1,1.0,0.8,0.4,0.0,False,6,408.0,Bhutan,Government
 2020-11-19 18:20:00,2020-019AB,P,Starlink 1268,248.0,1.0,0.4,0.0,True,6,348.0,USA,SpaceX (Seattle)
@@ -47549,7 +47549,7 @@ Date,COSPAR_ID,Category,Object_Name,Ablatable_Mass,Ablation_Degree,Percent_Alumi
 2020-12-15 20:55:00,2020-F09,C,Astra Fairing,50.0,0.3,0.7,0.0,False,6,100.0,USA,Astra Space
 2020-12-15 20:55:00,2020-F09,C,Astra Fairing,50.0,0.3,0.7,0.0,False,6,100.0,USA,Astra Space
 2020-12-15 20:55:00,2020-F09,S1,Astra Stage 1,800.0,0.3,0.7,0.0,False,2,100.0,USA,Astra Space
-2020-12-15 21:05:00,2020-F09,P,Astra Test Payload,5.0,0.8,0.4,0.0,False,6,390.0,USA,Astra Space
+2020-12-15 21:05:00,2020-F09,P,Astra Test Payload,0.0,0.8,0.4,5.0,False,6,390.0,USA,Astra Space
 2020-12-15 21:05:00,2020-F09,S2,Astra LV0005 Stage 2,100.0,0.65,0.7,0.0,False,6,390.0,USA,Astra Space
 2020-12-16 17:59:00,2020-087,P,Chang'e-5 Fanhui Qi,335.0,0.0,0.4,0.0,False,1,365018.0,China,Government
 2020-12-17 10:11:00,2020-099,C,PSLV Fairing,562.5,0.3,0.7,0.0,False,6,140.0,India,Government
@@ -47930,8 +47930,8 @@ Date,COSPAR_ID,Category,Object_Name,Ablatable_Mass,Ablation_Degree,Percent_Alumi
 2021-05-15 11:11:39,2021-F02,C,Hot swap battery,65.0,0.8,0.4,0.0,False,6,100.0,New Zealand,Rocket Lab Ltd.
 2021-05-15 11:11:39,2021-F02,C,Hot swap battery,65.0,0.8,0.4,0.0,False,6,100.0,New Zealand,Rocket Lab Ltd.
 2021-05-15 11:11:39,2021-F02,S1,Electron Stage 1,950.0,0.0,0.7,0.0,False,4,100.0,New Zealand,Rocket Lab Ltd.
-2021-05-15 11:17:00,2021-F02,P,Global-10,50.0,0.8,0.4,5.0,False,6,136.0,USA,BlackSky Global
-2021-05-15 11:17:00,2021-F02,P,Global-11,50.0,0.8,0.4,5.0,False,6,136.0,USA,BlackSky Global
+2021-05-15 11:17:00,2021-F02,P,Global-10,0.0,0.8,0.4,55.0,False,6,136.0,USA,BlackSky Global
+2021-05-15 11:17:00,2021-F02,P,Global-11,0.0,0.8,0.4,55.0,False,6,136.0,USA,BlackSky Global
 2021-05-15 11:17:00,2021-F02,S2,Electron 20 Stage 2,250.0,0.65,0.7,2100.0,False,6,136.0,New Zealand,Rocket Lab Ltd.
 2021-05-15 11:17:00,2021-F02,S3,Electron 20 Kick Stage,40.0,0.65,0.7,245.0,False,6,136.0,New Zealand,Rocket Lab Ltd.
 2021-05-15 22:56:00,2021-041,C,Falcon 9 Fairing F9-119,937.5,0.0,0.7,0.0,True,5,125.0,USA,SpaceX
@@ -48010,7 +48010,7 @@ Date,COSPAR_ID,Category,Object_Name,Ablatable_Mass,Ablation_Degree,Percent_Alumi
 2021-06-11 03:50:00,2021-050,S2,CZ-2D Y54 Stage 2,4000.0,0.65,0.7,0.0,False,4,502.0,China,Government
 2021-06-12 00:00:00,2021-F03,C,Simorgh Fairing,60.0,0.3,0.7,0.0,False,6,220.0,Iran,Government
 2021-06-12 00:00:00,2021-F03,C,Simorgh Fairing,60.0,0.3,0.7,0.0,False,6,220.0,Iran,Government
-2021-06-12 00:00:00,2021-F03,P,Tolou-2?,90.0,0.8,0.4,0.0,False,6,500.0,Iran,Government
+2021-06-12 00:00:00,2021-F03,P,Tolou-2?,0.0,0.8,0.4,90.0,False,6,500.0,Iran,Government
 2021-06-12 00:00:00,2021-F03,S1,Simorgh Stage 1,12700.0,0.3,0.7,0.0,False,2,70.0,Iran,Government
 2021-06-12 00:00:00,2021-F03,S2,Simorgh Stage 2,1600.0,0.65,0.7,0.0,False,6,500.0,Iran,Government
 2021-06-12 00:00:00,2021-F03,S3,Simorgh Stage 3,230.0,0.65,0.7,0.0,False,6,500.0,Iran,Government
@@ -48155,7 +48155,7 @@ Date,COSPAR_ID,Category,Object_Name,Ablatable_Mass,Ablation_Degree,Percent_Alumi
 2021-08-03 07:39:00,2021-F05,S3,Shuang Quxian 1 St3,390.0,0.65,0.7,0.0,False,6,500.0,China,Beijing xingji rongyao kongjian keji youxian gongsi
 2021-08-03 08:20:00,2021-F05,C,SQX-1 Fairing,878.0,0.3,0.7,0.0,False,6,500.0,China,Beijing xingji rongyao kongjian keji youxian gongsi
 2021-08-03 08:20:00,2021-F05,C,SQX-1 Fairing,878.0,0.3,0.7,0.0,False,6,500.0,China,Beijing xingji rongyao kongjian keji youxian gongsi
-2021-08-03 08:20:00,2021-F05,P,Jilin-1 Mofang 01A,18.0,0.8,0.4,0.0,False,4,500.0,China,Changguang weixing jishu youxian gongsi
+2021-08-03 08:20:00,2021-F05,P,Jilin-1 Mofang 01A,0.0,0.8,0.4,18.0,False,4,500.0,China,Changguang weixing jishu youxian gongsi
 2021-08-03 08:20:00,2021-F05,S4,Shuang Quxian 1 Y5 St4,100.0,0.65,0.7,0.0,False,6,500.0,China,Beijing xingji rongyao kongjian keji youxian gongsi
 2021-08-04 11:01:00,2021-070,C,Fairing,750.0,0.3,0.7,0.0,False,6,120.0,China,Government
 2021-08-04 11:01:00,2021-070,C,Fairing,750.0,0.3,0.7,0.0,False,6,120.0,China,Government
@@ -48184,7 +48184,7 @@ Date,COSPAR_ID,Category,Object_Name,Ablatable_Mass,Ablation_Degree,Percent_Alumi
 2021-08-12 00:13:00,2021-F06,S0,GSOM,5600.0,0.3,0.7,0.0,False,2,85.0,India,Government
 2021-08-12 00:13:00,2021-F06,S1,GS1,28300.0,0.3,0.7,0.0,False,2,85.0,India,Government
 2021-08-12 00:13:00,2021-F06,S2,GS2,4800.0,0.65,0.7,0.0,False,6,150.0,India,Government
-2021-08-12 00:23:00,2021-F06,P,EOS-03,1000.0,0.8,0.4,1268.0,False,1,140.0,India,Government
+2021-08-12 00:23:00,2021-F06,P,EOS-03,0.0,0.8,0.4,2268.0,False,1,140.0,India,Government
 2021-08-12 00:23:00,2021-F06,S3,GSLV CUS-11?,2601.0,0.65,0.7,14996.0,False,6,140.0,India,Government
 2021-08-16 02:54:00,2018-075B,S4,KZ-1A Y8 Stage 4,200.0,0.65,0.7,0.0,False,1,819.0,China,Hangtian kegong huojian jishu youxiangongsi
 2021-08-17 01:47:06,2021-073,C,Vega Fairing,270.0,0.3,0.7,0.0,False,6,150.0,Europe,"Arianespace, Inc."
@@ -48599,8 +48599,8 @@ Date,COSPAR_ID,Category,Object_Name,Ablatable_Mass,Ablation_Degree,Percent_Alumi
 2021-12-15 02:00:00,2021-F10,S1,KZ-1 St1?,1660.0,0.3,0.7,0.0,False,2,50.0,China,Government
 2021-12-15 02:00:00,2021-F10,S2,KZ-1 St2?,870.0,0.65,0.7,0.0,False,6,200.0,China,Government
 2021-12-15 02:00:00,2021-F10,S3,KZ-1 St3?,320.0,0.65,0.7,2880.0,False,6,200.0,China,Government
-2021-12-15 02:11:00,2021-F10,P,GeeSat-1A,130.0,0.8,0.4,0.0,False,6,400.0,China,Zhejiang Shikong Daoyu Keji YG
-2021-12-15 02:11:00,2021-F10,P,GeeSat-1B,130.0,0.8,0.4,0.0,False,6,400.0,China,Zhejiang Shikong Daoyu Keji YG
+2021-12-15 02:11:00,2021-F10,P,GeeSat-1A,0.0,0.8,0.4,130.0,False,6,400.0,China,Zhejiang Shikong Daoyu Keji YG
+2021-12-15 02:11:00,2021-F10,P,GeeSat-1B,0.0,0.8,0.4,130.0,False,6,400.0,China,Zhejiang Shikong Daoyu Keji YG
 2021-12-15 02:11:00,2021-F10,S4,KZ-1A Y17 Stage 4,200.0,0.65,0.7,1800.0,False,6,400.0,China,Hangtian kegong huojian jishu youxiangongsi
 2021-12-15 06:05:00,2021-072A,P,S.S. Ellison Onizuka,3889.0,0.8,0.4,0.0,False,4,424.0,USA,Northrop Grumman Innovation Systems
 2021-12-16 00:00:00,2019-037F,P,SpaceBEE 9,1.0,0.8,0.4,0.0,False,6,460.0,USA,Swarm Technologies
@@ -48699,7 +48699,7 @@ Date,COSPAR_ID,Category,Object_Name,Ablatable_Mass,Ablation_Degree,Percent_Alumi
 2021-12-30 03:30:00,2021-F11,C,Simorgh Fairing,60.0,0.3,0.7,0.0,False,6,220.0,Iran,Government
 2021-12-30 03:30:00,2021-F11,S1,Simorgh Stage 1,12700.0,0.3,0.7,0.0,False,2,70.0,Iran,Government
 2021-12-30 03:30:00,2021-F11,S2,Simorgh Stage 2,1600.0,0.65,0.7,0.0,False,6,500.0,Iran,Government
-2021-12-30 03:58:00,2021-F11,P,Test payloads,90.0,0.8,0.4,0.0,False,6,470.0,Iran,Government
+2021-12-30 03:58:00,2021-F11,P,Test payloads,0.0,0.8,0.4,90.0,False,6,470.0,Iran,Government
 2021-12-30 03:58:00,2021-F11,S3,Simorgh Stage 3,230.0,0.65,0.7,0.0,False,6,470.0,Iran,Government
 2021-12-31 00:00:00,2021-125BG,C,Starlink deployment rail,100.0,1.0,0.4,0.0,True,6,327.0,USA,SpaceX (Seattle)
 2022-01-01 00:00:00,2015-025C,P,Opticube 01,4.0,0.8,0.4,0.0,False,6,700.0,USA,Defense
@@ -48864,10 +48864,10 @@ Date,COSPAR_ID,Category,Object_Name,Ablatable_Mass,Ablation_Degree,Percent_Alumi
 2022-02-10 20:00:00,2022-F01,C,Astra Fairing half,50.0,0.3,0.7,0.0,False,6,150.0,USA,Astra Space
 2022-02-10 20:00:00,2022-F01,C,Astra Fairing half,50.0,0.3,0.7,0.0,False,6,150.0,USA,Astra Space
 2022-02-10 20:00:00,2022-F01,S1,Astra Rocket 3.3 Stage 1,800.0,0.3,0.7,0.0,False,6,150.0,USA,Astra Space
-2022-02-10 20:09:00,2022-F01,P,BAMA-1,4.0,0.8,0.4,0.0,False,6,278.0,USA,"Academic, amateur and non-profit"
-2022-02-10 20:09:00,2022-F01,P,INCA,4.0,0.8,0.4,0.0,False,6,278.0,USA,"Academic, amateur and non-profit"
-2022-02-10 20:09:00,2022-F01,P,QubeSat,4.0,0.8,0.4,0.0,False,6,278.0,USA,"Academic, amateur and non-profit"
-2022-02-10 20:09:00,2022-F01,P,R5-S1,1.0,0.8,0.4,0.0,False,6,278.0,USA,Government
+2022-02-10 20:09:00,2022-F01,P,BAMA-1,0.0,0.8,0.4,4.0,False,6,278.0,USA,"Academic, amateur and non-profit"
+2022-02-10 20:09:00,2022-F01,P,INCA,0.0,0.8,0.4,4.0,False,6,278.0,USA,"Academic, amateur and non-profit"
+2022-02-10 20:09:00,2022-F01,P,QubeSat,0.0,0.8,0.4,4.0,False,6,278.0,USA,"Academic, amateur and non-profit"
+2022-02-10 20:09:00,2022-F01,P,R5-S1,0.0,0.8,0.4,1.0,False,6,278.0,USA,Government
 2022-02-10 20:09:00,2022-F01,S2,Astra LV0008 Stage 2,100.0,0.65,0.7,900.0,False,6,278.0,USA,Astra Space
 2022-02-10 23:49:04,2022-012,S3,Fregat-M No. 133-19,1460.0,0.65,0.7,0.0,True,1,447.0,USSR/Russia,Government
 2022-02-11 00:14:00,2019-074BJ,P,Starlink 1064,248.0,1.0,0.4,0.0,True,1,305.0,USA,SpaceX (Seattle)
@@ -49223,8 +49223,8 @@ Date,COSPAR_ID,Category,Object_Name,Ablatable_Mass,Ablation_Degree,Percent_Alumi
 2022-05-13 07:09:00,2022-F02,S3,Shuang Quxian 1 St3,390.0,0.65,0.7,3510.0,False,6,60.0,China,Beijing xingji rongyao kongjian keji youxian gongsi
 2022-05-13 07:13:00,2022-F02,C,SQX-1 Fairing,878.0,0.3,0.7,0.0,False,6,60.0,China,Beijing xingji rongyao kongjian keji youxian gongsi
 2022-05-13 07:13:00,2022-F02,C,SQX-1 Fairing,878.0,0.3,0.7,0.0,False,6,60.0,China,Beijing xingji rongyao kongjian keji youxian gongsi
-2022-05-13 07:13:00,2022-F02,P,Jilin-1 Mofang 01A/R,18.0,0.8,0.4,0.0,False,6,60.0,China,Changguang weixing jishu youxian gongsi
-2022-05-13 07:13:00,2022-F02,P,Jin Zijing 1-04,10.0,0.8,0.4,0.0,False,6,60.0,China,Xianggang hangtian keji jituan
+2022-05-13 07:13:00,2022-F02,P,Jilin-1 Mofang 01A/R,0.0,0.8,0.4,18.0,False,6,60.0,China,Changguang weixing jishu youxian gongsi
+2022-05-13 07:13:00,2022-F02,P,Jin Zijing 1-04,0.0,0.8,0.4,10.0,False,6,60.0,China,Xianggang hangtian keji jituan
 2022-05-13 07:13:00,2022-F02,S4,Shuang Quxian 1 Y4 St4,100.0,0.65,0.7,900.0,False,6,60.0,China,Beijing xingji rongyao kongjian keji youxian gongsi
 2022-05-13 22:07:50,2022-051,C,Falcon 9 Fairing F9-154,937.5,0.0,0.7,0.0,True,5,125.0,USA,SpaceX
 2022-05-13 22:07:50,2022-051,C,Falcon 9 Fairing F9-154,937.5,0.0,0.7,0.0,True,5,125.0,USA,SpaceX
@@ -49323,8 +49323,8 @@ Date,COSPAR_ID,Category,Object_Name,Ablatable_Mass,Ablation_Degree,Percent_Alumi
 2022-06-12 17:43:00,2022-F03,C,Astra Fairing half,50.0,0.3,0.7,0.0,False,6,150.0,USA,Astra Space
 2022-06-12 17:43:00,2022-F03,C,Astra Fairing half,50.0,0.3,0.7,0.0,False,6,150.0,USA,Astra Space
 2022-06-12 17:43:00,2022-F03,S1,Astra Rocket 3.3 Stage 1,800.0,0.3,0.7,0.0,False,6,150.0,USA,Astra Space
-2022-06-12 18:05:00,2022-F03,P,TROPICS SV02,4.0,0.8,0.4,0.0,False,6,532.0,USA,"Academic, amateur and non-profit"
-2022-06-12 18:05:00,2022-F03,P,TROPICS SV04,4.0,0.8,0.4,0.0,False,6,532.0,USA,"Academic, amateur and non-profit"
+2022-06-12 18:05:00,2022-F03,P,TROPICS SV02,0.0,0.8,0.4,4.0,False,6,532.0,USA,"Academic, amateur and non-profit"
+2022-06-12 18:05:00,2022-F03,P,TROPICS SV04,0.0,0.8,0.4,4.0,False,6,532.0,USA,"Academic, amateur and non-profit"
 2022-06-12 18:05:00,2022-F03,S2,Astra LV0010 Stage 2,100.0,0.65,0.7,214.3,False,6,532.0,USA,Astra Space
 2022-06-13 00:00:00,2017-042AU,P,Flock 2k-37,4.7,0.8,0.4,0.0,False,6,475.0,USA,"Planet Labs, Inc. (Planet)"
 2022-06-13 00:00:00,2022-045BG,C,Starlink deployment rail,50.0,1.0,0.4,0.0,True,6,313.0,USA,SpaceX (Seattle)
@@ -49858,15 +49858,15 @@ Date,COSPAR_ID,Category,Object_Name,Ablatable_Mass,Ablation_Degree,Percent_Alumi
 2022-10-12 01:02:00,2022-F04,C,E-SSOD 2,10.0,0.8,0.4,0.0,False,6,236.0,Japan,Government
 2022-10-12 01:02:00,2022-F04,C,E-SSOD 3,10.0,0.8,0.4,0.0,False,6,236.0,Japan,Government
 2022-10-12 01:02:00,2022-F04,C,ESMS,200.0,0.8,0.4,0.0,False,6,236.0,Japan,Government
-2022-10-12 01:02:00,2022-F04,P,Amateru-I,150.0,0.8,0.4,20.0,False,6,236.0,Japan,Kabushikigaisha QPS kenkyujo
-2022-10-12 01:02:00,2022-F04,P,Amateru-II,150.0,0.8,0.4,20.0,False,6,236.0,Japan,Kabushikigaisha QPS kenkyujo
-2022-10-12 01:02:00,2022-F04,P,FSI-SAT,1.4,0.8,0.4,0.0,False,6,236.0,Japan,"Academic, amateur and non-profit"
-2022-10-12 01:02:00,2022-F04,P,KOSEN-2,2.7,0.8,0.4,0.0,False,6,236.0,Japan,"Academic, amateur and non-profit"
-2022-10-12 01:02:00,2022-F04,P,MAGNARO A,3.0,0.8,0.4,0.0,False,6,236.0,Japan,"Academic, amateur and non-profit"
-2022-10-12 01:02:00,2022-F04,P,MAGNARO B,1.5,0.8,0.4,0.0,False,6,236.0,Japan,"Academic, amateur and non-profit"
-2022-10-12 01:02:00,2022-F04,P,MITSUBA,1.7,0.8,0.4,0.0,False,6,236.0,Japan,"Academic, amateur and non-profit"
-2022-10-12 01:02:00,2022-F04,P,RAISE-3,110.0,0.8,0.4,0.0,False,6,236.0,Japan,Government
-2022-10-12 01:02:00,2022-F04,P,WASEDA-SAT-ZERO,1.2,0.8,0.4,0.0,False,6,236.0,Japan,"Academic, amateur and non-profit"
+2022-10-12 01:02:00,2022-F04,P,Amateru-I,0.0,0.8,0.4,170.0,False,6,236.0,Japan,Kabushikigaisha QPS kenkyujo
+2022-10-12 01:02:00,2022-F04,P,Amateru-II,0.0,0.8,0.4,170.0,False,6,236.0,Japan,Kabushikigaisha QPS kenkyujo
+2022-10-12 01:02:00,2022-F04,P,FSI-SAT,0.0,0.8,0.4,1.4,False,6,236.0,Japan,"Academic, amateur and non-profit"
+2022-10-12 01:02:00,2022-F04,P,KOSEN-2,0.0,0.8,0.4,2.7,False,6,236.0,Japan,"Academic, amateur and non-profit"
+2022-10-12 01:02:00,2022-F04,P,MAGNARO A,0.0,0.8,0.4,3.0,False,6,236.0,Japan,"Academic, amateur and non-profit"
+2022-10-12 01:02:00,2022-F04,P,MAGNARO B,0.0,0.8,0.4,1.5,False,6,236.0,Japan,"Academic, amateur and non-profit"
+2022-10-12 01:02:00,2022-F04,P,MITSUBA,0.0,0.8,0.4,1.7,False,6,236.0,Japan,"Academic, amateur and non-profit"
+2022-10-12 01:02:00,2022-F04,P,RAISE-3,0.0,0.8,0.4,110.0,False,6,236.0,Japan,Government
+2022-10-12 01:02:00,2022-F04,P,WASEDA-SAT-ZERO,0.0,0.8,0.4,1.2,False,6,236.0,Japan,"Academic, amateur and non-profit"
 2022-10-12 01:02:00,2022-F04,S3,Epsilon 6 Stage 3,800.0,0.65,0.7,2500.0,False,6,236.0,Japan,Government
 2022-10-12 01:02:00,2022-F04,S4,Epsilon 6 PBS,155.0,0.65,0.7,145.0,False,6,236.0,Japan,Government
 2022-10-12 15:00:00,2022-131,C,Blok-DM3 Fairing,1000.0,0.3,0.7,0.0,False,6,140.0,USSR/Russia,Government
@@ -50229,17 +50229,17 @@ Date,COSPAR_ID,Category,Object_Name,Ablatable_Mass,Ablation_Degree,Percent_Alumi
 2022-12-14 08:30:25,2022-F05,C,ZQ-2 Fairing,878.0,0.3,0.7,0.0,False,6,200.0,China,Beijing lanjian kongjian keji youxian gongsi
 2022-12-14 08:30:25,2022-F05,C,ZQ-2 Fairing,878.0,0.3,0.7,0.0,False,6,200.0,China,Beijing lanjian kongjian keji youxian gongsi
 2022-12-14 08:30:25,2022-F05,S1,Zhuque-2 Y1 Stage 1,15000.0,0.3,0.7,0.0,False,6,200.0,China,Beijing lanjian kongjian keji youxian gongsi
-2022-12-14 08:44:00,2022-F05,P,Unknown payload 1,10.0,0.8,0.4,0.0,False,6,400.0,China,Unknown Chinese operator
-2022-12-14 08:44:00,2022-F05,P,Unknown payload 10,10.0,0.8,0.4,0.0,False,6,400.0,China,Unknown Chinese operator
-2022-12-14 08:44:00,2022-F05,P,Unknown payload 2,10.0,0.8,0.4,0.0,False,6,400.0,China,Unknown Chinese operator
-2022-12-14 08:44:00,2022-F05,P,Unknown payload 3,10.0,0.8,0.4,0.0,False,6,400.0,China,Unknown Chinese operator
-2022-12-14 08:44:00,2022-F05,P,Unknown payload 4,10.0,0.8,0.4,0.0,False,6,400.0,China,Unknown Chinese operator
-2022-12-14 08:44:00,2022-F05,P,Unknown payload 5,10.0,0.8,0.4,0.0,False,6,400.0,China,Unknown Chinese operator
-2022-12-14 08:44:00,2022-F05,P,Unknown payload 6,10.0,0.8,0.4,0.0,False,6,400.0,China,Unknown Chinese operator
-2022-12-14 08:44:00,2022-F05,P,Unknown payload 7,10.0,0.8,0.4,0.0,False,6,400.0,China,Unknown Chinese operator
-2022-12-14 08:44:00,2022-F05,P,Unknown payload 8,10.0,0.8,0.4,0.0,False,6,400.0,China,Unknown Chinese operator
-2022-12-14 08:44:00,2022-F05,P,Unknown payload 9,10.0,0.8,0.4,0.0,False,6,400.0,China,Unknown Chinese operator
-2022-12-14 08:44:00,2022-F05,P,Zhixing 1B,50.0,0.8,0.4,0.0,False,6,400.0,China,Beijing Zhixing Kongjian Keji YG
+2022-12-14 08:44:00,2022-F05,P,Unknown payload 1,0.0,0.8,0.4,10.0,False,6,400.0,China,Unknown Chinese operator
+2022-12-14 08:44:00,2022-F05,P,Unknown payload 10,0.0,0.8,0.4,10.0,False,6,400.0,China,Unknown Chinese operator
+2022-12-14 08:44:00,2022-F05,P,Unknown payload 2,0.0,0.8,0.4,10.0,False,6,400.0,China,Unknown Chinese operator
+2022-12-14 08:44:00,2022-F05,P,Unknown payload 3,0.0,0.8,0.4,10.0,False,6,400.0,China,Unknown Chinese operator
+2022-12-14 08:44:00,2022-F05,P,Unknown payload 4,0.0,0.8,0.4,10.0,False,6,400.0,China,Unknown Chinese operator
+2022-12-14 08:44:00,2022-F05,P,Unknown payload 5,0.0,0.8,0.4,10.0,False,6,400.0,China,Unknown Chinese operator
+2022-12-14 08:44:00,2022-F05,P,Unknown payload 6,0.0,0.8,0.4,10.0,False,6,400.0,China,Unknown Chinese operator
+2022-12-14 08:44:00,2022-F05,P,Unknown payload 7,0.0,0.8,0.4,10.0,False,6,400.0,China,Unknown Chinese operator
+2022-12-14 08:44:00,2022-F05,P,Unknown payload 8,0.0,0.8,0.4,10.0,False,6,400.0,China,Unknown Chinese operator
+2022-12-14 08:44:00,2022-F05,P,Unknown payload 9,0.0,0.8,0.4,10.0,False,6,400.0,China,Unknown Chinese operator
+2022-12-14 08:44:00,2022-F05,P,Zhixing 1B,0.0,0.8,0.4,50.0,False,6,400.0,China,Beijing Zhixing Kongjian Keji YG
 2022-12-14 08:44:00,2022-F05,S2,Zhuque-2 Y1 Stage 2,5000.0,0.65,0.7,0.0,False,6,400.0,China,Beijing lanjian kongjian keji youxian gongsi
 2022-12-14 18:25:00,2022-171,C,3.35-m Fairing,375.0,0.3,0.7,0.0,False,6,120.0,China,Government
 2022-12-14 18:25:00,2022-171,C,3.35-m Fairing,375.0,0.3,0.7,0.0,False,6,120.0,China,Government
@@ -50271,8 +50271,8 @@ Date,COSPAR_ID,Category,Object_Name,Ablatable_Mass,Ablation_Degree,Percent_Alumi
 2022-12-21 01:47:31,2022-F06,S1,Vega P120C,13393.0,0.3,0.7,0.0,False,2,50.0,Europe,"Arianespace, Inc."
 2022-12-21 01:47:31,2022-F06,S2,Zefiro 40,4238.0,0.65,0.7,12079.7,False,6,110.0,Europe,"Arianespace, Inc."
 2022-12-21 01:47:31,2022-F06,S3,Zefiro 9A,1433.0,0.65,0.7,10567.0,False,6,110.0,Europe,"Arianespace, Inc."
-2022-12-21 01:55:00,2022-F06,P,Pleiades Neo 5,895.0,0.8,0.4,27.0,False,6,110.0,Europe,Airbus Defense and Space - Intelligence
-2022-12-21 01:55:00,2022-F06,P,Pleiades Neo 6,895.0,0.8,0.4,27.0,False,6,110.0,Europe,Airbus Defense and Space - Intelligence
+2022-12-21 01:55:00,2022-F06,P,Pleiades Neo 5,0.0,0.8,0.4,922.0,False,6,110.0,Europe,Airbus Defense and Space - Intelligence
+2022-12-21 01:55:00,2022-F06,P,Pleiades Neo 6,0.0,0.8,0.4,922.0,False,6,110.0,Europe,Airbus Defense and Space - Intelligence
 2022-12-21 01:55:00,2022-F06,S4,Vega AVUM VV22,698.0,0.65,0.7,740.0,False,1,110.0,Europe,Government
 2022-12-22 00:00:00,1998-067TP,C,NRAL Trash Bag,78.0,0.8,0.4,0.0,False,6,419.0,USA,Government
 2022-12-22 00:00:00,2016-040N,P,Flock 2p-4,4.7,0.8,0.4,0.0,False,6,514.0,USA,"Planet Labs, Inc. (Planet)"
@@ -50375,15 +50375,15 @@ Date,COSPAR_ID,Category,Object_Name,Ablatable_Mass,Ablation_Degree,Percent_Alumi
 2023-01-09 23:08:59,2023-F01,C,LOne Fairing,50.0,0.3,0.7,0.0,False,6,200.0,USA,Virgin Orbit LLC
 2023-01-09 23:08:59,2023-F01,C,LOne Fairing,50.0,0.3,0.7,0.0,False,6,200.0,USA,Virgin Orbit LLC
 2023-01-09 23:08:59,2023-F01,S1,LauncherOne Stage 1,1900.0,0.3,0.7,0.0,False,6,150.0,USA,Virgin Orbit LLC
-2023-01-09 23:19:00,2023-F01,P,AMAN,5.0,0.8,0.4,0.0,False,6,183.0,Oman,Government
-2023-01-09 23:19:00,2023-F01,P,Amber,10.0,0.8,0.4,0.0,False,6,183.0,Europe,Satellite Applications Catapult
-2023-01-09 23:19:00,2023-F01,P,CIRCE 1,10.0,0.8,0.4,0.0,False,6,183.0,Europe,Defense
-2023-01-09 23:19:00,2023-F01,P,CIRCE 2,10.0,0.8,0.4,0.0,False,6,183.0,Europe,Defense
-2023-01-09 23:19:00,2023-F01,P,DOVER,5.0,0.8,0.4,0.0,False,6,183.0,Europe,RHEATech UK
-2023-01-09 23:19:00,2023-F01,P,ForgeStar-0,8.0,0.8,0.4,0.0,False,6,183.0,Europe,Space Forge
-2023-01-09 23:19:00,2023-F01,P,Prometheus-2-1,10.0,0.8,0.4,0.0,False,6,183.0,Europe,Defense
-2023-01-09 23:19:00,2023-F01,P,Prometheus-2-2,10.0,0.8,0.4,0.0,False,6,183.0,Europe,Defense
-2023-01-09 23:19:00,2023-F01,P,STORK 6,5.0,0.8,0.4,0.0,False,6,183.0,Europe,SatRevolution S.A.
+2023-01-09 23:19:00,2023-F01,P,AMAN,0.0,0.8,0.4,5.0,False,6,183.0,Oman,Government
+2023-01-09 23:19:00,2023-F01,P,Amber,0.0,0.8,0.4,10.0,False,6,183.0,Europe,Satellite Applications Catapult
+2023-01-09 23:19:00,2023-F01,P,CIRCE 1,0.0,0.8,0.4,10.0,False,6,183.0,Europe,Defense
+2023-01-09 23:19:00,2023-F01,P,CIRCE 2,0.0,0.8,0.4,10.0,False,6,183.0,Europe,Defense
+2023-01-09 23:19:00,2023-F01,P,DOVER,0.0,0.8,0.4,5.0,False,6,183.0,Europe,RHEATech UK
+2023-01-09 23:19:00,2023-F01,P,ForgeStar-0,0.0,0.8,0.4,8.0,False,6,183.0,Europe,Space Forge
+2023-01-09 23:19:00,2023-F01,P,Prometheus-2-1,0.0,0.8,0.4,10.0,False,6,183.0,Europe,Defense
+2023-01-09 23:19:00,2023-F01,P,Prometheus-2-2,0.0,0.8,0.4,10.0,False,6,183.0,Europe,Defense
+2023-01-09 23:19:00,2023-F01,P,STORK 6,0.0,0.8,0.4,5.0,False,6,183.0,Europe,SatRevolution S.A.
 2023-01-09 23:19:00,2023-F01,S2,LauncherOne R07 Stage 2,200.0,0.65,0.7,0.0,False,1,183.0,USA,Virgin Orbit LLC
 2023-01-10 00:00:00,2017-008CT,P,Flock 3p-38,4.7,0.8,0.4,0.0,False,6,504.0,USA,"Planet Labs, Inc. (Planet)"
 2023-01-10 00:00:00,2017-008S,P,Flock 3p-25,4.7,0.8,0.4,0.0,False,6,507.0,USA,"Planet Labs, Inc. (Planet)"
@@ -50674,7 +50674,7 @@ Date,COSPAR_ID,Category,Object_Name,Ablatable_Mass,Ablation_Degree,Percent_Alumi
 2023-03-07 01:37:55,2023-F03,S0,H3 SRB-3,9000.0,0.3,0.7,0.0,False,2,70.0,Japan,Government
 2023-03-07 01:37:55,2023-F03,S0,H3 SRB-3,9000.0,0.3,0.7,0.0,False,2,70.0,Japan,Government
 2023-03-07 01:37:55,2023-F03,S1,H3 Stage 1 2E,13000.0,0.3,0.7,0.0,False,6,250.0,Japan,Government
-2023-03-07 01:55:00,2023-F03,P,Daichi-3,2500.0,0.8,0.4,400.0,False,6,636.0,Japan,Government
+2023-03-07 01:55:00,2023-F03,P,Daichi-3,0.0,0.8,0.4,2900.0,False,6,636.0,Japan,Government
 2023-03-07 01:55:00,2023-F03,S2,H3 TF1 Stage 2,2500.0,0.65,0.7,24500.0,False,1,636.0,Japan,Mitsubishi Jukogyo Kabushiki-kaisha
 2023-03-07 13:31:00,2011-058A,P,Megha-Tropiques,950.0,0.8,0.4,0.0,False,1,866.0,India,Government
 2023-03-07 15:38:00,2019-024B,C,CZ-4B adapter,100.0,0.8,0.4,0.0,False,1,516.0,China,Government
@@ -50786,7 +50786,7 @@ Date,COSPAR_ID,Category,Object_Name,Ablatable_Mass,Ablation_Degree,Percent_Alumi
 2023-03-23 00:00:00,2023-013AB,P,Starlink 5083,290.0,1.0,0.4,0.0,True,6,337.0,USA,SpaceX (Seattle)
 2023-03-23 03:25:00,2023-F04,S1,Terran 1 Stage 1,6000.0,0.3,0.7,0.0,False,6,130.0,USA,Relativity Space
 2023-03-23 03:32:00,2023-F04,C,Terran 1 Nosecone,50.0,0.8,0.4,0.0,False,6,134.0,USA,Relativity Space
-2023-03-23 03:32:00,2023-F04,P,GLHF,1.0,0.8,0.4,0.0,False,6,134.0,USA,"Academic, amateur and non-profit"
+2023-03-23 03:32:00,2023-F04,P,GLHF,0.0,0.8,0.4,1.0,False,6,134.0,USA,"Academic, amateur and non-profit"
 2023-03-23 03:32:00,2023-F04,S2,Terran 1 SN1 Stage 2,2000.0,0.65,0.7,18000.0,False,1,134.0,USA,Relativity Space
 2023-03-23 06:40:11,2023-040,C,14S737 Fairing?,500.0,0.3,0.7,0.0,False,6,120.0,USSR/Russia,Government
 2023-03-23 06:40:11,2023-040,C,14S737 Fairing?,500.0,0.3,0.7,0.0,False,6,120.0,USSR/Russia,Government
@@ -51187,7 +51187,7 @@ Date,COSPAR_ID,Category,Object_Name,Ablatable_Mass,Ablation_Degree,Percent_Alumi
 2023-05-30 21:27:00,2023-F06,C,Cheonlima-1 Fairing,878.0,0.3,0.7,0.0,False,6,220.0,North Korea,Government
 2023-05-30 21:27:00,2023-F06,S1,Cheonlima 1,5000.0,0.3,0.7,0.0,False,2,70.0,North Korea,Government
 2023-05-30 21:27:00,2023-F06,S2,Cheonlima-1 Stage 2,1200.0,0.65,0.7,10800.0,False,6,220.0,North Korea,Government
-2023-05-30 21:42:00,2023-F06,P,Manligyeong-1 F1,200.0,0.8,0.4,0.0,False,6,151.0,North Korea,Government
+2023-05-30 21:42:00,2023-F06,P,Manligyeong-1 F1,0.0,0.8,0.4,200.0,False,6,151.0,North Korea,Government
 2023-05-30 21:42:00,2023-F06,S3,Cheonlima-1 Stage 3,1000.0,0.65,0.7,9000.0,False,6,151.0,North Korea,Government
 2023-05-31 00:00:00,1998-067VK,C,VKD-58 Cleaning towel bundle,0.0,0.8,0.4,0.0,False,6,400.0,USSR/Russia,Government
 2023-05-31 00:00:00,1999-067D,C,DMSP F-15 OLS Cover,5.0,0.8,0.4,0.0,False,6,848.0,USA,Defense
@@ -51603,7 +51603,7 @@ Date,COSPAR_ID,Category,Object_Name,Ablatable_Mass,Ablation_Degree,Percent_Alumi
 2023-08-23 18:50:00,2023-F07,C,Cheonlima-1 Fairing,878.0,0.3,0.7,0.0,False,6,220.0,North Korea,Government
 2023-08-23 18:50:00,2023-F07,S1,Cheonlima 1,5000.0,0.3,0.7,0.0,False,2,70.0,North Korea,Government
 2023-08-23 18:50:00,2023-F07,S2,Cheonlima-1 Stage 2,1200.0,0.65,0.7,0.0,False,6,220.0,North Korea,Government
-2023-08-23 19:05:00,2023-F07,P,Manligyeong-1 F2,200.0,0.8,0.4,0.0,False,6,500.0,North Korea,Government
+2023-08-23 19:05:00,2023-F07,P,Manligyeong-1 F2,0.0,0.8,0.4,200.0,False,6,500.0,North Korea,Government
 2023-08-23 19:05:00,2023-F07,S3,Cheonlima-1 Stage 3,1000.0,0.65,0.7,9000.0,False,6,500.0,North Korea,Government
 2023-08-23 23:45:00,2023-126,C,Electron Fairing,22.0,0.3,0.7,0.0,False,6,100.0,New Zealand,Rocket Lab Ltd.
 2023-08-23 23:45:00,2023-126,C,Electron Fairing,22.0,0.3,0.7,0.0,False,6,100.0,New Zealand,Rocket Lab Ltd.
@@ -51753,7 +51753,7 @@ Date,COSPAR_ID,Category,Object_Name,Ablatable_Mass,Ablation_Degree,Percent_Alumi
 2023-09-19 06:55:00,2023-F08,C,Hot swap battery,65.0,0.8,0.4,0.0,False,6,100.0,New Zealand,Rocket Lab Ltd.
 2023-09-19 06:55:00,2023-F08,C,Hot swap battery,65.0,0.8,0.4,0.0,False,6,100.0,New Zealand,Rocket Lab Ltd.
 2023-09-19 06:55:00,2023-F08,S1,Electron Stage 1,950.0,0.3,0.7,0.0,False,2,100.0,New Zealand,Rocket Lab Ltd.
-2023-09-19 07:02:00,2023-F08,P,Capella 12,150.0,0.8,0.4,30.0,False,1,132.0,USA,Capella Space Corp.
+2023-09-19 07:02:00,2023-F08,P,Capella 12,0.0,0.8,0.4,180.0,False,1,132.0,USA,Capella Space Corp.
 2023-09-19 07:02:00,2023-F08,S2,Electron 41 Stage 2,250.0,0.65,0.7,2100.0,False,6,132.0,New Zealand,Rocket Lab Ltd.
 2023-09-19 07:02:00,2023-F08,S3,Electron 41 Kick Stage,40.0,0.65,0.7,245.0,False,6,132.0,New Zealand,Rocket Lab Ltd.
 2023-09-20 03:38:10,2023-146,C,Falcon 9 Fairing F9-258,937.5,0.0,0.7,0.0,True,5,125.0,USA,SpaceX
