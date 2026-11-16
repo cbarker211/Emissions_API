@@ -1,5 +1,5 @@
 #Name	Manufacturer	Family	Alt_Name	Oxidizer	Fuel	Mass	MFlag	Impulse	ImpFlag	Thrust	TFlag	Isp	IspFlag	Duration	DurFlag	Chambers	Date	Usage	Group
-# Updated 2026 Nov  2 0003:29
+# Updated 2026 Nov 15 1017:02
 #
 # Solid propellant engines
 #
@@ -441,6 +441,7 @@ SCOOTER	HYPSA	-	-	-	 Solid	    1000.0 	?	-	 	-	 	-	 	-	 	  1	2026	Scooter	Solid
 Badr-1	ANSAL	-	-	-	 Solid	    1000.0 	?	-	 	-	 	-	 	-	 	  1	-	Badr-1	Solid
 28D6	KAZOKB	-	-	-	 Solid	    1000.0 	?	-	 	-	 	-	 	-	 	  1	-	Kontakt [2]	Solid
 Seliger 1	DRG	-	-	-	 Solid	    1000.0 	?	-	 	      50.00 	 	-	 	-	 	  1	1962	Seliger	Solid
+Zeus	KRAT	-	-	-	 Solid	    1000.0 	?	-	 	-	 	-	 	-	 	  1	1962	Zeus	Solid
 Safir	IR	-	-	-	 Solid	    1000.0 	?	-	 	-	 	-	 	-	 	  1	2008	Safir [3]	Solid
 Ababeel	PKNDC	-	-	-	 Solid	    1000.0 	?	-	 	-	 	-	 	-	 	  1	2016	Ababeel [3]	Solid
 X-271	HERC	-	-	-	 Solid	    1000.0 	?	-	 	-	 	-	 	-	 	  1	-	X-271	Solid
@@ -1491,6 +1492,7 @@ Weka	NASCOM	-	-	LOX	 Propane	-	 	-	 	-	 	-	 	-	 	-	2024	Weka	LOX/Propane
 # Liquid propellant engines: LOX/Hydrogen
 #
 YF-73	SLREC	YF-73	-	LOX	 LH2	-	 	-	 	      44.10 	 	425.0 	 	 800.0 	 	  4	1984	CZ-3 Stage 3	LOX/LH2
+BE-7	BLOR	-	-	LOX	 LH2	-	 	-	 	      44.50 	 	460.0 	 	2500.0 	 	  1	2027	GS3	LOX/LH2
 HM-7	SEP	-	-	LOX	 LH2	-	 	-	 	      61.70 	 	442.6 	 	 510.1 	 	  1	1979	Ariane H8	LOX/LH2
 HM-7B	SEP	-	-	LOX	 LH2	-	 	-	 	      64.80 	 	445.1 	 	 745.0 	 	  1	-	Ariane H10-3	LOX/LH2
 RL10	PWFL	RL10	-	LOX	 LH2	-	 	-	 	      66.70 	 	433.0 	 	 470.0 	 	  1	-	Centaur I	LOX/LH2
@@ -1502,11 +1504,11 @@ RL10A-3-3A	PWFL	RL10	-	LOX	 LH2	-	 	-	 	      73.40 	 	444.0 	 	 550.0 	 	  1	-	
 KVD-1M	KHMM	-	RD-56M	LOX	 LH2	-	 	-	 	      75.00 	 	460.0 	 	 675.0 	 	  1	-	GSLV GS3	LOX/LH2
 YF-75	SLREC	YF-75	-	LOX	 LH2	-	 	-	 	      78.50 	 	440.0 	 	 470.0 	 	  1	-	CZ-3A Stage 3	LOX/LH2
 YF-75D	SLREC	YF-75	-	LOX	 LH2	-	 	-	 	      88.30 	 	442.0 	 	 700.0 	 	  1	-	CZ-5 Stage 2	LOX/LH2
-YF-75H	SLREC	YF-75	-	LOX	 LH2	-	 	-	 	     100.00 	 	442.6 	 	 700.0 	 	  1	-	CZ-8A Stage 2	LOX/LH2
 RL10A-4	PWFL	RL10	-	LOX	 LH2	-	 	-	 	      92.60 	 	449.0 	 	 370.0 	 	  1	-	Centaur IIA	LOX/LH2
 RL10A-4-1	PWFL	RL10	-	LOX	 LH2	-	 	-	 	      99.20 	 	450.5 	 	 370.0 	 	  1	-	Centaur IIA/IIIA	LOX/LH2
 RL10A-4-1B	PWFL	RL10	-	LOX	 LH2	-	 	-	 	      99.20 	 	450.5 	 	 370.0 	 	  1	-	Centaur IIIA	LOX/LH2
 RL10A-4-2	PWFL	RL10	-	LOX	 LH2	-	 	-	 	      99.20 	 	451.0 	 	 370.0 	 	  1	-	Centaur	LOX/LH2
+YF-75H	SLREC	YF-75	-	LOX	 LH2	-	 	-	 	     100.00 	 	442.6 	 	 700.0 	 	  1	-	CZ-8A Stage 2	LOX/LH2
 LE-5	MHIME	LE-5	-	LOX	 LH2	-	 	-	 	     107.00 	 	448.0 	 	 370.0 	 	  1	-	H1 St2	LOX/LH2
 RL10B-2	PWFL	RL10	-	LOX	 LH2	-	 	-	 	     110.10 	 	465.5 	 	 700.0 	 	  1	1998	Delta III	LOX/LH2
 RL10C-1	PWFL	RL10	-	LOX	 LH2	-	 	-	 	     101.80 	 	449.7 	 	 700.0 	 	  1	2014	Delta IV	LOX/LH2

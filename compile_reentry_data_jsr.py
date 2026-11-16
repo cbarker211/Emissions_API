@@ -788,7 +788,7 @@ class build_reentry_list:
             "A": "Academic, amateur and non-profit",
             "B": "Commercial",
             "C": "Government",
-            "D": "Defence"
+            "D": "Defense"
         }
 
         # Now loop over the list and format into a dictionary.
@@ -867,6 +867,8 @@ class build_reentry_list:
 
                 if len(reentry_category) == 1:
                     raise ValueError(f"Unknown reentry category for {jsr_id} - {jsr_type}")
+            elif "Starship FT-" in jsr_name:
+                reentry_category = "S2"
             else:
                 reentry_category = jsr_type[0]
 

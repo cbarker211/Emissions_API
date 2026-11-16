@@ -8,6 +8,7 @@ from tqdm import tqdm
 import sys
 from io import StringIO
 from update_rocket_launch_data import update_mass_info
+from collections import Counter
 
 class import_launches:
     
@@ -116,7 +117,7 @@ class import_launches:
         df = df[~df["FailCode"].str.startswith("PE")]                       # No explosions near the pad.
         df = df[~df["#Launch_Tag"].str.contains("2021-U01", na=False)]      # Skip military launches.
 
-        df["LaunchDate"] = df["Launch_Date"].apply(lambda x: convert_date(str(x).split()))
+        df["LaunchDate"] = [convert_date(str(x).split()) for x in df["Launch_Date"]]
         df = df[df["LaunchDate"] < pd.Timestamp("2026-01-01", tz="UTC")]    # Only include launches before 2026.
         df = df.reset_index()
         print("Found",len(df),"launches from GCAT.")
@@ -146,7 +147,7 @@ class import_launches:
             "A": "Academic, amateur and non-profit",
             "B": "Commercial",
             "C": "Government",
-            "D": "Defence"
+            "D": "Defense"
         }
         
         group_map = {
@@ -359,6 +360,8 @@ class import_launches:
         df_stages   = self.scrape_jsr("https://planet4589.org/space/gcat/tsv/tables/stages.tsv",self.session)
         df_engines  = self.scrape_jsr("https://planet4589.org/space/gcat/tsv/tables/engines.tsv",self.session)
         ratio_used, total_stages = 0, 0
+        prop_stages, prop_launches = Counter(), Counter()
+        launch_counts = Counter(zip(vehicle_names, vehicle_variants))
         #Loop over all rockets, and pull the information for each.
         for i, (name, variant) in enumerate(unique_vehicle_names):
 
@@ -378,6 +381,7 @@ class import_launches:
                     f"Stage{j} Stage Mass":      0,
                 })
             ratio_stages = {}
+            rocket_oxidisers = set()
             # First find the vehicle and its stages in the vehicles databases.
             df_vehicle = df_vehicles[(df_vehicles["#LV_Name"] == name) & (df_vehicles["LV_Variant"] == variant)].reset_index()
 
@@ -433,7 +437,7 @@ class import_launches:
                     # Atlas boosters were fed propellant from the main stage, so they essentially have zero propellant mass (dry mass = launch mass in GCAT).
                     # We shall include them as a stage with zero propellant mass, as we need the dry mass for the re-entry emissions.
                     pass
-                elif row["Stage_Name"] in ["NOTS 8in","NOTS 3in Sph."]:
+                elif dry_mass is not None and row["Stage_Name"] in ["NOTS 8in","NOTS 3in Sph."]:
                     # These have a zero launch mass.
                     launch_mass = dry_mass * 10 
                 elif launch_mass == dry_mass and not (launch_mass is None or launch_mass == 0):
@@ -463,21 +467,25 @@ class import_launches:
                 df_engine = df_engines[df_engines["#Name"] == df_stage["Engine"].values[0]]
                 if len(df_engine) == 1:
                     
+                    prop_name = df_engine["Group"].values[0]
+                    prop_stages[prop_name] += 1
+                    rocket_oxidisers.add(prop_name)
+                    
                     # Assign the propellant type.
-                    if (df_engine["Group"].values[0] == "Solid") or (df_engine["Fuel"].values[0].strip() == "Polyethylene") or (df_engine["Fuel"].values[0].strip() == "Paraffin"):
+                    if (prop_name == "Solid") or (df_engine["Fuel"].values[0].strip() == "Polyethylene") or (df_engine["Fuel"].values[0].strip() == "Paraffin"):
                         # Assuming that hybrid H2O2/Polyethylene or Lox/Paraffin engines are close enough to solid fuel.
                         fuel_type = "Solid"
-                    elif df_engine["Group"].values[0] == "LOX/Methane":
+                    elif prop_name == "LOX/Methane":
                         fuel_type = "Methane"
-                    elif df_engine["Group"].values[0] == "LOX/LH2":
+                    elif prop_name == "LOX/LH2":
                         fuel_type = "Hydrogen"
-                    elif ("Kero" in df_engine["Group"].values[0]) or (df_engine["Group"].values[0] in ["NA/Turps","LOX/Propane"]): 
+                    elif ("Kero" in prop_name) or (prop_name in ["NA/Turps","LOX/Propane"]): 
                         # Assuming that nitric acid + turpentine is similar to kerosene.
                         fuel_type = "Kerosene"
-                    elif df_engine["Group"].values[0] in ["NTO/UDMH","MonoHyd","NA/UDMH","LOX/UDMH","NTO/Hyd","Green"]:
+                    elif prop_name in ["NTO/UDMH","MonoHyd","NA/UDMH","LOX/UDMH","NTO/Hyd","Green"]:
                         fuel_type = "Hypergolic"
                     else:
-                        print("Missing fuel type", df_engine["Group"].values[0],name,variant,stage_number) 
+                        print("Missing fuel type", prop_name,name,variant,stage_number) 
                         fuel_type = None
                 elif name in ["Yinli-1","Jielong-3","Lijian-1"]:
                     # These catch when the engine is not in the database but the propellant type is known from other sources.
@@ -488,6 +496,9 @@ class import_launches:
                     fuel_type = None
 
                 temp_dict[f"Stage{stage_number} Fuel Type"] = fuel_type
+            
+            for ox in rocket_oxidisers:
+                prop_launches[ox] += launch_counts[(name, variant)]
 
             # Handle any incomplete/incorrect propellant/stage mass information.
             temp_dict = update_mass_info(temp_dict, temp_dict["name"], variant)
@@ -514,6 +525,12 @@ class import_launches:
             # Update the rocket list.   
             self.unique_rocket_list.append(temp_dict) 
         print(f"Used launch/dry mass ratio for {ratio_used}/{total_stages} stages.")
+        
+        # Print the oxidisers used for kerosene.
+        print(f"{'Oxidiser':<12} {'Stages':>6} {'Launches':>8}")
+        for ox, n_stages in prop_stages.most_common():
+            print(f"{ox:<12} {n_stages:>6} {prop_launches[ox]:>8}")
+        print(f"{'Total':<12} {sum(prop_stages.values()):>6} {sum(prop_launches.values()):>8}")
         
     def rocket_info_to_netcdf(self):
         """

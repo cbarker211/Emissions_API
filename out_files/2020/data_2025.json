@@ -886,14 +886,14 @@
                 "smc": false,
                 "location": 6,
                 "ablation": 0.8,
-                "mass": 0.15,
+                "mass": 0.1545,
                 "emissions": {
-                    "NOx": 0.06,
-                    "Al2O3": 0.048,
-                    "BC": 0.00615,
-                    "Cl": 0.00225,
-                    "HCl": 0.0012,
-                    "Unablated_Mass": 0.029999999999999992
+                    "NOx": 0.0618,
+                    "Al2O3": 0.04944,
+                    "BC": 0.006334,
+                    "Cl": 0.002317,
+                    "HCl": 0.001236,
+                    "Unablated_Mass": 0.030899999999999993
                 }
             },
             {
@@ -3413,18 +3413,18 @@
                 "date": "2025-01-16T22:49:00Z",
                 "id": "2025-F01",
                 "name": "Starship FT-7",
-                "category": "P",
+                "category": "S2",
                 "smc": true,
                 "location": 1,
-                "ablation": 1.0,
+                "ablation": 0.65,
                 "mass": 139.0,
                 "emissions": {
                     "NOx": 55.6,
-                    "Al2O3": 48.0,
-                    "BC": 5.699,
-                    "Cl": 2.085,
-                    "HCl": 1.112,
-                    "Unablated_Mass": 19.0
+                    "Al2O3": 54.6,
+                    "BC": 3.48,
+                    "Cl": 1.32,
+                    "HCl": 0.6,
+                    "Unablated_Mass": 61.0
                 }
             }
         ]
@@ -13628,18 +13628,18 @@
                 "date": "2025-03-06T23:40:00Z",
                 "id": "2025-F03",
                 "name": "Starship FT-8",
-                "category": "P",
+                "category": "S2",
                 "smc": true,
                 "location": 1,
-                "ablation": 1.0,
+                "ablation": 0.65,
                 "mass": 127.60000000000001,
                 "emissions": {
                     "NOx": 51.04,
-                    "Al2O3": 48.0,
-                    "BC": 5.2316,
-                    "Cl": 1.914,
-                    "HCl": 1.0208,
-                    "Unablated_Mass": 7.6000000000000005
+                    "Al2O3": 54.6,
+                    "BC": 3.48,
+                    "Cl": 1.32,
+                    "HCl": 0.6,
+                    "Unablated_Mass": 49.6
                 }
             }
         ]
@@ -27686,14 +27686,14 @@
                 "smc": false,
                 "location": 1,
                 "ablation": 0.8,
-                "mass": 0.47500000000000003,
+                "mass": 0.495,
                 "emissions": {
-                    "NOx": 0.19,
-                    "Al2O3": 0.152,
-                    "BC": 0.019475,
-                    "Cl": 0.007125,
-                    "HCl": 0.0038,
-                    "Unablated_Mass": 0.09499999999999999
+                    "NOx": 0.198,
+                    "Al2O3": 0.1584,
+                    "BC": 0.020295,
+                    "Cl": 0.007425,
+                    "HCl": 0.00396,
+                    "Unablated_Mass": 0.09899999999999998
                 }
             },
             {
@@ -30267,9 +30267,9 @@
                 "emissions": {
                     "NOx": 3.41,
                     "Al2O3": 0.4095,
-                    "BC": 0.247225,
-                    "Cl": 0.093775,
-                    "HCl": 0.042625,
+                    "BC": 0.0261,
+                    "Cl": 0.0099,
+                    "HCl": 0.0045,
                     "Unablated_Mass": 7.94
                 }
             },
@@ -30321,9 +30321,9 @@
                 "emissions": {
                     "NOx": 1.168,
                     "Al2O3": 0.30485,
-                    "BC": 0.08468,
-                    "Cl": 0.03212,
-                    "HCl": 0.0146,
+                    "BC": 0.01943,
+                    "Cl": 0.00737,
+                    "HCl": 0.00335,
                     "Unablated_Mass": 2.4845
                 }
             },
@@ -30339,9 +30339,9 @@
                 "emissions": {
                     "NOx": 0.6784,
                     "Al2O3": 0.528,
-                    "BC": 0.069536,
-                    "Cl": 0.02544,
-                    "HCl": 0.013568,
+                    "BC": 0.06765,
+                    "Cl": 0.02475,
+                    "HCl": 0.0132,
                     "Unablated_Mass": 0.37599999999999995
                 }
             }
@@ -32577,7 +32577,7 @@
                 "date": "2025-05-28T00:23:43Z",
                 "id": "2025-U02",
                 "name": "Starship FT-9",
-                "category": "P",
+                "category": "S2",
                 "smc": true,
                 "location": 1,
                 "ablation": 0.0,
@@ -33773,14 +33773,14 @@
                 "smc": false,
                 "location": 6,
                 "ablation": 0.8,
-                "mass": 0.0027,
+                "mass": 0.0037,
                 "emissions": {
-                    "NOx": 0.00108,
-                    "Al2O3": 0.000864,
-                    "BC": 0.000111,
-                    "Cl": 4e-05,
-                    "HCl": 2.2e-05,
-                    "Unablated_Mass": 0.0005399999999999999
+                    "NOx": 0.00148,
+                    "Al2O3": 0.001184,
+                    "BC": 0.000152,
+                    "Cl": 5.6e-05,
+                    "HCl": 3e-05,
+                    "Unablated_Mass": 0.0007399999999999999
                 }
             },
             {
@@ -37865,14 +37865,14 @@
                 "smc": false,
                 "location": 6,
                 "ablation": 0.8,
-                "mass": 0.011,
+                "mass": 0.012,
                 "emissions": {
-                    "NOx": 0.0044,
-                    "Al2O3": 0.00352,
-                    "BC": 0.000451,
-                    "Cl": 0.000165,
-                    "HCl": 8.8e-05,
-                    "Unablated_Mass": 0.0021999999999999993
+                    "NOx": 0.0048,
+                    "Al2O3": 0.00384,
+                    "BC": 0.000492,
+                    "Cl": 0.00018,
+                    "HCl": 9.6e-05,
+                    "Unablated_Mass": 0.0023999999999999994
                 }
             },
             {
@@ -46820,9 +46820,9 @@
                 "emissions": {
                     "NOx": 20.0,
                     "Al2O3": 2.275,
-                    "BC": 1.45,
-                    "Cl": 0.55,
-                    "HCl": 0.25,
+                    "BC": 0.145,
+                    "Cl": 0.055,
+                    "HCl": 0.025,
                     "Unablated_Mass": 46.75
                 }
             },
@@ -49399,7 +49399,7 @@
                 "date": "2025-08-27T00:36:38Z",
                 "id": "2025-U03",
                 "name": "Starship FT-10",
-                "category": "P",
+                "category": "S2",
                 "smc": true,
                 "location": 1,
                 "ablation": 0.0,
@@ -56993,14 +56993,14 @@
                 "smc": false,
                 "location": 6,
                 "ablation": 0.8,
-                "mass": 0.15,
+                "mass": 0.29,
                 "emissions": {
-                    "NOx": 0.06,
-                    "Al2O3": 0.048,
-                    "BC": 0.00615,
-                    "Cl": 0.00225,
-                    "HCl": 0.0012,
-                    "Unablated_Mass": 0.029999999999999992
+                    "NOx": 0.116,
+                    "Al2O3": 0.0928,
+                    "BC": 0.01189,
+                    "Cl": 0.00435,
+                    "HCl": 0.00232,
+                    "Unablated_Mass": 0.05799999999999999
                 }
             }
         ]
@@ -59030,7 +59030,7 @@
                 "date": "2025-10-14T00:29:57Z",
                 "id": "2025-U04",
                 "name": "Starship FT-11",
-                "category": "P",
+                "category": "S2",
                 "smc": true,
                 "location": 1,
                 "ablation": 0.0,
@@ -65577,9 +65577,9 @@
                 "emissions": {
                     "NOx": 0.092,
                     "Al2O3": 0.064,
-                    "BC": 0.00943,
-                    "Cl": 0.00345,
-                    "HCl": 0.00184,
+                    "BC": 0.0082,
+                    "Cl": 0.003,
+                    "HCl": 0.0016,
                     "Unablated_Mass": 0.07
                 }
             },
@@ -75826,9 +75826,9 @@
                 "emissions": {
                     "NOx": 1.92,
                     "Al2O3": 0.576,
-                    "BC": 0.1968,
-                    "Cl": 0.072,
-                    "HCl": 0.0384,
+                    "BC": 0.0738,
+                    "Cl": 0.027,
+                    "HCl": 0.0144,
                     "Unablated_Mass": 3.36
                 }
             },

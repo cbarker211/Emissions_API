@@ -1,5 +1,5 @@
 #LV_Name	LV_Family	LV_Manufacturer	LV_Variant	LV_Alias	LV_Min_Stage	LV_Max_Stage	Length	LFlag	Diameter	DFlag	Launch_Mass	MFlag	LEO_Capacity	GTO_Capacity	TO_Thrust	Class	Apogee	Range	GenericName
-# Updated 2026 Nov  2 0003:29
+# Updated 2026 Nov 15 1017:02
 ?	Unknown             	-	-	-	  1	1	  0.0 	 	 0.00 	 	     0.0 	 	       0 	       0 	       0 	R	     0 	-	-
 Unknown	Unknown             	-	-	-	  1	1	  0.0 	 	 0.00 	 	     0.0 	 	       0 	       0 	       0 	R	     0 	-	-
 N-1 11A52	N-1                 	OKB1	-	-	  1	3	105.3 	 	14.00 	 	  2788.0 	 	   70000 	       0 	   45300 	O	   200 	-	N-1
@@ -42,7 +42,9 @@ Proton-M/Briz-M	Proton              	KHRU	IV	-	  1	4	 53.0 	 	 7.40 	 	   712.8 
 Neutron	Neutron	RLABU	-	-	  1	2	 42.8 	 	 7.00 	 	   480.0 	 	-	-	    6570 	O	 40000 	-	-
 New Glenn 7x2	NewGlenn	BLORCC	1	-	  1	2	 98.0 	 	 7.00 	 	  1050.0 	?	-	-	   17219 	O	   500 	-	New Glenn
 New Glenn 7x2	NewGlenn	BLORCC	2	-	  1	2	 98.0 	 	 7.00 	 	  1050.0 	?	-	-	   19928 	O	   500 	-	New Glenn
+New Glenn 7x2	NewGlenn	BLORCC	3	-	  1	3	106.0 	?	 7.00 	 	  1080.0 	?	-	-	   19928 	O	   500 	-	New Glenn
 New Glenn 9x4	NewGlenn	BLORCC	-	-	  1	2	122.0 	?	 7.00 	 	  1200.0 	?	-	-	   25622 	O	   500 	-	New Glenn
+New Glenn 9x4	NewGlenn	BLORCC	3	-	  1	3	130.0 	?	 7.00 	 	  1230.0 	?	-	-	   25622 	O	   500 	-	New Glenn
 Saturn C-1	Saturn              	MSFC	-	-	  1	3	 49.6 	 	 6.60 	 	   420.0 	 	    9000 	       0 	    5768 	O	   200 	-	Saturn 1
 Saturn I	Saturn              	MSFC	-	-	  1	3	 50.4 	 	 6.60 	 	   420.0 	 	    9000 	       0 	    5768 	O	   200 	-	Saturn 1
 Saturn I	Saturn              	MSFC	Blk2	-	  1	2	 58.0 	 	 6.53 	 	   508.0 	?	    9000 	       0 	    5768 	O	   200 	-	Saturn 1
@@ -206,6 +208,7 @@ Chang Zheng 2C/YZ-1S	DF5                 	CALT	-	-	  1	3	 41.0 	 	 3.35 	 	   21
 Chang Zheng 2C-III/SD	DF5                 	CALT	-	-	  1	3	 39.9 	 	 3.35 	 	   213.0 	 	    2800 	       0 	    2962 	O	  1000 	-	CZ-2C
 Chang Zheng 2D	DF5                 	SAST	a	-	  1	2	 38.3 	 	 3.35 	 	   232.0 	 	    3400 	       0 	    2962 	O	   500 	-	CZ-2D
 Chang Zheng 2D	DF5                 	SAST	-	-	  1	2	 38.3 	 	 3.35 	 	   232.0 	 	    3400 	       0 	    2962 	O	   500 	-	CZ-2D
+Chang Zheng 2D	DF5                 	SAST	b	-	  1	2	 38.3 	 	 3.35 	 	   232.0 	 	    3400 	       0 	    2962 	O	   500 	-	CZ-2D
 Chang Zheng 2D/YZ-3	DF5                 	SAST	-	-	  1	3	 38.3 	 	 3.35 	 	   232.0 	 	    3400 	       0 	    2962 	O	   500 	-	CZ-2D
 Chang Zheng 2E	DF5                 	CALT	-	-	  0	2	 51.2 	 	 3.35 	 	   464.0 	 	    9200 	    3500 	    5923 	O	   500 	-	CZ-2E
 Chang Zheng 2F	DF5                 	CALT	-	-	  0	2	 51.2 	 	 3.35 	 	   464.0 	 	    9200 	    3500 	    5923 	O	   500 	-	CZ-2F
@@ -1044,6 +1047,7 @@ R-11A-MV	R-11                	OKB1	-	-	  1	1	 10.0 	?	 0.88 	 	     5.0 	?	     
 Wasserfall	Hermes              	WEHR	-	-	  1	1	  7.8 	 	 0.88 	 	     3.5 	 	       0 	       0 	      80 	A	    18 	    29 	-
 CHGB Booster	CHGB	USN/LM	-	-	  1	2	 10.2 	 	 0.88 	 	     7.4 	 	       0 	       0 	-	M	   100 	-	-
 Hermes A-1	Hermes              	GEMTS	-	-	  1	1	  7.8 	 	 0.86 	 	     3.0 	 	       0 	       0 	      71 	A	    24 	    60 	-
+Zeus-1/Zeus-2	Zeus	KRAT	-	-	  1	2	  7.0 	?	 0.83 	 	     4.0 	?	       0 	       0 	-	M	   100 	-	-
 Viking	Viking              	NRL	-	-	  1	1	 14.9 	 	 0.81 	 	     4.5 	 	       0 	       0 	      93 	R	   200 	-	-
 Topaze VE111	Agate               	SEREB	-	-	  1	1	  7.1 	 	 0.80 	 	     2.8 	 	       0 	       0 	     120 	V	    80 	-	-
 Topaze VE111L	Agate               	SEREB	-	-	  1	1	  7.9 	 	 0.80 	 	     3.4 	 	       0 	       0 	     147 	V	   110 	-	-

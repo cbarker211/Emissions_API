@@ -1133,7 +1133,7 @@ class OutputEmis:
             if row.Category in ["P","C","S2","S3","S4"]:
                 
                 for i, key in enumerate(["reentry_bc","reentry_cl","reentry_hcl"]):
-                    t_reentry = (row.Ablatable_Mass + row.Other_Mass) * reentry_ei[i+2] / 1000
+                    t_reentry = (row.Ablatable_Mass) * reentry_ei[i+2] / 1000
                     self.emis_in_grid[i+11] += t_reentry
                     reentry_details["emissions"][key] += t_reentry
                     if SAVE_GC:

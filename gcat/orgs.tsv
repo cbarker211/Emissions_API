@@ -1,5 +1,5 @@
 #Code	UCode	StateCode	Type	Class	TStart	TStop	ShortName	Name	Location	Longitude	Latitude	Error	Parent	ShortEName	EName	UName
-# Updated 2026 Nov  2 0003:29
+# Updated 2026 Nov 15 1017:02
 EARTH	EARTH	EARTH	AP	C	-	-	Earth	Earth	Earth	-	-	0.0200 	-	Earth (Terra)	Earth	Earth
 LUNA	LUNA	LUNA	AP	C	-	-	Luna	Luna	Luna	-	-	0.0200 	-	Moon	Moon	Luna
 SSYS	SSYS	SSYS	AP	C	-	-	Solar System	Solar System natural celestial objects	Sol	-	-	0.0200 	-	Solar System	Solar System natural celestial objects	Solar System
@@ -566,7 +566,7 @@ APEX	APEX	US	O/PL	B	2022	-	Apex Space	Apex Space	Los Angeles:Culver City, Califo
 APGC	APGC	US	O/LA/PL/S	D	1957 Dec	1968 Aug  1	APGC	US Air Force Air Proving Ground Center, Eglin AFB	Eglin AFB, Florida	    -86.5400 	   30.4900 	0.0200 	USAF	-	-	US Air Force Air Proving Ground Center, Eglin AFB
 APL	APL	US	O/LA/LV/PL/LS/S	C	1953	-	APL	JHU-Applied Physics Lab	Laurel, Maryland	    -76.9000 	   39.1700 	0.0200 	-	-	-	JHU-Applied Physics Lab
 APLS	APLS	US	PL	D	1942	1977	APL	JHU-Applied Physics Lab (Silver Spring)	DC:Silver Spring, Maryland	    -77.0300 	   39.0000 	0.0200 	-	-	-	JHU-Applied Physics Lab (Silver Spring)
-APMT	APMT	CN	O	C	1998 Mar	2016	Zhongguo yatai	Zhongguo Yatai yidongtongxing weixing youxianzerengognsi	Beijing	    116.3800 	   39.9200 	0.0200 	CALT	APMT	China Asia Pacific Mobile Telecom. Satellite Co. (APMT)	中国亚太移动通信卫星有限责任公司
+APMT	CZHJ	CN	O	C	1998 Mar	2016	Zhongguo yatai	Zhongguo Yatai yidongtongxing weixing youxianzerengognsi	Beijing	    116.3800 	   39.9200 	0.0200 	CALT	APMT	China Asia Pacific Mobile Telecom. Satellite Co. (APMT)	中国亚太移动通信卫星有限责任公司
 APN	APN	NP	O/PL	A	2024?	-	Antarikchya	Antarikchya Pratisthan Nepal	Kathmandu	     85.3200 	   27.6500 	0.0200 	-	-	Space Academy Nepal	अन्तरिक्ष प्रतिष्ठान नेपाल (एपीएन)
 APOGEO	GPAP	I	PL	B	2023	-	Apogeo Space	Apogeo Space	Gussago, Brescia	     10.1500 	   45.6000 	0.0200 	-	-	-	Apogeo Space
 APOLNK	APOLNK	US	O/PL	B	2024	-	Apolink	Apolink	Palo Alto, California	   -122.1400 	   37.4300 	0.0200 	-	-	-	Apolink
@@ -1097,7 +1097,7 @@ CUMT	CUMT	CN	O	A	1909	-	CUMT	Zhongguo kuangye daxue guojia zhongdian shiyan shi	
 CUNYME	CUNYME	US	O/PL	A	1970	-	CUNY	Medgar Evers College, City University of New York	New York:Brooklyn, New York	    -73.9600 	   40.6700 	0.0200 	-	-	-	Medgar Evers College, City University of New York
 CURTIN	CURTIN	AU	O/PL	A	1986	-	Curtin U	Curtin University	Perth:Bentley, W Australia	    115.8900 	  -32.0000 	0.0200 	-	-	-	Curtin University
 CVC	CVC	CZ	PL	B	2024?	-	CVC Electronic	CVC Electronic sro	Praha	     14.4200 	   50.0800 	0.0200 	-	-	-	ČVC Electronic s.r.o.
-CZHJ	APMT	CN	O/LA/LV/PL	C	2016	-	Changzheng H.	Zhongguo Changzheng Houjian YG	Beijing	    116.3900 	   39.7800 	0.0200 	CASC	-	China Long March Rocket Co. Ltd.	中国长征火箭有限公司
+CZHJ	CZHJ	CN	O/LA/LV/PL	C	2016	-	Changzheng H.	Zhongguo Changzheng Houjian YG	Beijing	    116.3900 	   39.7800 	0.0200 	CASC	-	China Long March Rocket Co. Ltd.	中国长征火箭有限公司
 DAAFAR	DAAFAR	CU	O	D	1959	-	DAAFAR	Defensa Anti-Aerea y Fuerza Aerea Revolucionaria	Havana	    -82.3800 	   23.1300 	0.0200 	-	Cuban AF	Cuban Revolutionary Air and Air Defense Force	Defensa Anti-Aérea y Fuerza Aérea Revolucionaria
 DAC	DAC	US	LV/PL/E/S	B	1921 Jul	1967 Apr 28	DAC	Douglas Aircraft Corp.	Santa Monica, California	   -118.4800 	   34.0200 	0.0200 	-	-	-	Douglas Aircraft Corp.
 DACC	DACC	US	LV	B	1956	1967 May	DAC Charlotte	Douglas Aircraft Corp. Charlotte Ordnance Missile Plant (COMP)	Charlotte, North Carolina	    -80.8400 	   35.2300 	0.0200 	DAC	-	-	Douglas Aircraft Corp. Charlotte Ordnance Missile Plant (COMP)
@@ -2067,6 +2067,7 @@ LANL	LASL	US	O/PL/S	D	1980?	-	LANL	Los Alamos National Laboratory	Los Alamos, Ne
 LANT	FORDA	US	PL	B	2025 Oct	-	Lanteris	Lanteris	Palo Alto, California	   -122.1400 	   37.4300 	0.0200 	-	-	-	Lanteris
 LANTSJ	MAXSJ	US	PL	B	2025 Oct	-	Lanteris SJ	Lanteris/San Jose	San Jose, California	   -121.9000 	   37.3300 	0.0200 	LANT	-	-	Lanteris/San Jose
 LAOJV	LAOJV	LA	-	B	2015	-	LaoSat JVC	Lao Satellite Joint Venture Company	Vientiane	    102.6000 	   17.9700 	0.0200 	LANAST	-	-	Lao Satellite Joint Venture Co.
+LAOSH	LAOSH	CN	O	A	2022 Aug	-	Laoshan	Laoshan Shiyan Shi	Qingdao, Shandong	    120.4000 	   36.1000 	0.1000 	-	-	Laoshan Laboratory	崂山实验室
 LAPAN	LAPAN	ID	O/LA/LV/PL/E/LS/S	C	1964 Nov 27	2021 Sep  1	LAPAN	Lembaga Penerbangan dan Antariksa Nasional/LAPAN	Jakarta	    106.8200 	   -6.2000 	0.0200 	-	-	-	Lembaga Penerbangan dan Antariksa Nasional/LAPAN
 LAPANR	LAPANR	ID	-	C	-	-	LAPAN RML	LAPAN Rocket Motor Lab	Tarogong, W Java	    107.8900 	   -7.2100 	0.0200 	-	-	-	LAPAN Rocket Motor Lab
 LARC	LARC	US	O/LA/LV/PL/E/S	C	1917	1958 Oct  1	NACA LaRC	NACA Langley Research Center	Langley Field, Hampton, Virginia	    -76.3800 	   37.0900 	0.0200 	NACA	-	-	NACA Langley Research Center
@@ -2204,6 +2205,7 @@ MAI	MAI	CN	O/LA	C	1982 Apr	1988 Jul	MAI	Hangtian gongye bu	Beijing	    116.3800 
 MAI2	MAI	CN	LA	C	1988 Jul	1993 Jun	MAI	Hangkong hangtian gongye bu	Beijing	    116.3800 	   39.9200 	0.0200 	-	-	Ministry of Aerospace Industry	航空航天工业部
 MAIMD	MAIMD	US	PL	B	2004	-	MD Aero	Maryland Aerospace	Crofton, Maryland	    -76.6800 	   39.0000 	0.0200 	-	-	-	Maryland Aerospace
 MAIO	MAIO	SU	O/PL	A	1933	-	MAI Moskva	Moskovskiy aviatsionniy institut im. S. Ordzhonikidze - SKB Iskra	Moskva	     37.6200 	   55.7500 	0.0200 	-	-	Moscow Aviation Institute, Student KB Iskra	Московский авиационный институт им. Серго Орджоникидзе, СКБ «Искра»
+MAIYA	MAIYA	CN	O	B	-	-	Maiya Keji	Beijing Maiya Keji YG	Beijing	    116.3800 	   39.9200 	0.0200 	-	-	Maiya Tech Co Ltd.	北京劢亚科技有限公司
 MAK	SKB385	RU	O/LA/LV/PL/E	C	1993	-	Makeev	FGUP GRTs Makeev KB (SKB-385)	Miass, Chelyabinsk	     60.1000 	   55.0000 	0.0200 	-	-	Makeev Design Bureau	Государственный ракетный центр имени академика В.П. Макеева
 MALEK	MALEK	IR	O/PL	A	1984	-	Malek Ashtar U	Daneshgah-e San'atiye Malek Asht'ar	Tehran	     51.5500 	   32.8800 	0.0200 	-	-	Malek-Ashtar Univ. of Technology	دانشگاه صنعتی مالکاشتر
 MANU	MANU	UK	O/PL	A	2004	-	U Man	University of Manchester	Manchester	     -2.2400 	   53.4600 	0.0200 	-	-	-	University of Manchester
@@ -2405,6 +2407,7 @@ MSVYAZ	KS	SU	O	C	1968	1992	MSvyaz	MinSvyazi SSR Soyuzniy Uzel Radioveshchaniya i
 MTCIT	MTCIT	OM	O	C	2019 Oct	-	MTCIT Oman	Ministry of Transport, Communications and Information Technology	Muscat	     58.5500 	   23.6000 	0.0200 	-	-	-	Ministry of Transport, Communications and Information Technology
 MTF	MTF	US	-	C	1962 Nov	1988	NASA MTF	NASA Mississippi Test Facility	Pearl River, Mississippi	    -89.6000 	   30.6200 	0.0200 	NASA	-	-	NASA Mississippi Test Facility
 MTHK	THK	US	-	B	1982	1989 Jul  1	MTI	Morton Thiokol Inc.	Chicago, Illinois	    -87.6800 	   41.8400 	0.0200 	-	-	-	Morton Thiokol Inc.
+MTLAB	MTLAB	RU	O	B	-	-	MT Lab	MT Lab	Moskva	     37.6200 	   55.7500 	0.0200 	-	-	-	МТ-ЛАБ
 MTU	MTU	US	O/PL	A	-	-	MTU AE	Michigan Technological University Aerospace Enterprise	Houghton, Michigan	    -88.5500 	   47.1200 	0.0200 	-	-	-	Michigan Tech Aerospace Enterprise
 MTUSI	MTUSI	RU	O	A	1918	-	MTUSI	Moskovskiy teknichesky universitet cvyazi i informatiki	Mosvka	     37.7000 	   55.7500 	0.0200 	-	-	Moscow Tech. Univ. of Communications and Informatics	Московский технический университет связи и информатики
 MUI	MUI	HU	O	C	1992 Jan	-	MUI	Magyar Urkutatasi Iroda	Budapest	     19.0500 	   47.4900 	0.0200 	-	HSO	Hungarian Space Research Office	Magyar Űrkutatási Iroda
@@ -4040,6 +4043,7 @@ XIDO	XIDO	CN	LA/LV	B	2015?	-	Xinghe Dongli	Xinghe Dongli (Beijing) kongjian keji
 XINAN	XINAN	CN	O	B	-	-	Xinanxian	Xinanxian (Beijing) keji jituan YG	Beijing	    116.3800 	   39.9200 	0.0200 	-	Nufront	Nufront Technology Group Co. Ltd.	新岸线（北京）科技集团有限公司
 XINGH	XINGH	CN	O	B	2013	-	Xinghuan Keji	Xinghuan Keji	Shanghai	    121.5000 	   31.2500 	0.1000 	-	-	Transwarp Technology (Shanghai) Co. Ltd.	星环科技
 XINGMU	XINGMU	CN	O/PL	B	2024 Feb	-	Xingmu Tanyu	Zhejiang Xingmu Tanyu Keji YG	Zhuji, Zhejiang	    120.2200 	   29.7200 	0.0200 	-	-	Xingmu Tanyu Tech Co.	浙江星目探宇科技有限公司
+XINGTU	XINGTU	CN	O/PL	B	2016 Dec	-	Xingtu	Zhongke Xingtu Cekong Jishu Gufen YG	Hefei:Zhong'an, Anhui	    117.1300 	   31.8400 	0.0200 	-	-	Xingtu Measurement and Control	中科星图测控技术股份有限公司
 XINWEI	XINWEI	CN	-	B	-	-	Xinwei Telecom	Xinwei tongxin jishu gufen youxian gongsi	Beijing	    116.3800 	   39.9200 	0.0200 	-	-	-	信威通信技术股份有限公司
 XIOPM	XIOPM	CN	-	C	-	-	XIOPM	Xi'an guangxe jingmi jixie yanjiu suo	Xi'an, Shaanxi	    108.9500 	   34.2700 	0.0200 	-	-	Xian Institute of Optics and Precision Mechanics	西安光学精密机械研究所
 XIYW	TIANMU	CN	O/PL	B	2020?	2023	Xiyong Weidian	Xiyong Weidian Yuan, CASIC	Xiyong, Chongqing	    106.3500 	   29.6200 	0.0200 	CASIC	-	CASIC, Xiyong Microelectronics Park	西永微电园

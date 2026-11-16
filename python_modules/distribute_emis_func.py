@@ -150,8 +150,8 @@ def get_failed_launch_dict(id, fail_code):
     
     failed_launch_dict = {
         # Launches which did full burns of all stages.
-        '2017-F02': {"full_burn": True}, #                                                (AD)  https://rocketlabcorp.com/missions/launches/its-a-test/
-        '2020-F01': {"full_burn": True}, # Didn't quite reach orbital velocity.           (S2U?)
+        '2017-F02': {"full_burn": True}, #                                                (AD)   https://rocketlabcorp.com/missions/launches/its-a-test/
+        '2020-F01': {"full_burn": True}, # Didn't quite reach orbital velocity.           (S2U?) https://www.space.com/iran-satellite-launch-failure-zafar-1.html
         '2020-F09': {"full_burn": True}, # Early shutdown                                 (S2P)
         '2021-F03': {"full_burn": True}, # Underperformance                               (U)
         '2021-F05': {"full_burn": True}, # Fairing separation issue                       (FF)

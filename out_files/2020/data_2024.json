@@ -11311,18 +11311,18 @@
                 "date": "2024-03-14T14:14:35Z",
                 "id": "2024-U01",
                 "name": "Starship FT-3",
-                "category": "P",
+                "category": "S2",
                 "smc": false,
                 "location": 1,
-                "ablation": 0.8,
+                "ablation": 0.65,
                 "mass": 120.0,
                 "emissions": {
                     "NOx": 48.0,
-                    "Al2O3": 38.4,
-                    "BC": 4.92,
-                    "Cl": 1.8,
-                    "HCl": 0.96,
-                    "Unablated_Mass": 23.999999999999996
+                    "Al2O3": 54.6,
+                    "BC": 3.48,
+                    "Cl": 1.32,
+                    "HCl": 0.6,
+                    "Unablated_Mass": 42.0
                 }
             },
             {
@@ -21303,14 +21303,14 @@
                 "smc": false,
                 "location": 6,
                 "ablation": 0.65,
-                "mass": 0.20800000000000002,
+                "mass": 0.258,
                 "emissions": {
-                    "NOx": 0.0832,
-                    "Al2O3": 0.09464,
-                    "BC": 0.006032,
-                    "Cl": 0.002288,
-                    "HCl": 0.00104,
-                    "Unablated_Mass": 0.0728
+                    "NOx": 0.1032,
+                    "Al2O3": 0.11739,
+                    "BC": 0.007482,
+                    "Cl": 0.002838,
+                    "HCl": 0.00129,
+                    "Unablated_Mass": 0.0903
                 }
             },
             {
@@ -26602,7 +26602,7 @@
                 "date": "2024-06-06T13:56:00Z",
                 "id": "2024-U03",
                 "name": "Starship FT-4",
-                "category": "P",
+                "category": "S2",
                 "smc": false,
                 "location": 1,
                 "ablation": 0.0,
@@ -30257,14 +30257,14 @@
                 "smc": false,
                 "location": 6,
                 "ablation": 0.8,
-                "mass": 0.001,
+                "mass": 0.002,
                 "emissions": {
-                    "NOx": 0.0004,
-                    "Al2O3": 0.00032,
-                    "BC": 4.1e-05,
-                    "Cl": 1.5e-05,
-                    "HCl": 8e-06,
-                    "Unablated_Mass": 0.00019999999999999996
+                    "NOx": 0.0008,
+                    "Al2O3": 0.00064,
+                    "BC": 8.2e-05,
+                    "Cl": 3e-05,
+                    "HCl": 1.6e-05,
+                    "Unablated_Mass": 0.0003999999999999999
                 }
             },
             {
@@ -31135,13 +31135,13 @@
                 "smc": true,
                 "location": 6,
                 "ablation": 1.0,
-                "mass": 0.23500000000000001,
+                "mass": 0.253,
                 "emissions": {
-                    "NOx": 0.094,
-                    "Al2O3": 0.094,
-                    "BC": 0.009635,
-                    "Cl": 0.003525,
-                    "HCl": 0.00188,
+                    "NOx": 0.1012,
+                    "Al2O3": 0.1012,
+                    "BC": 0.010373,
+                    "Cl": 0.003795,
+                    "HCl": 0.002024,
                     "Unablated_Mass": 0.0
                 }
             }
@@ -48586,7 +48586,7 @@
                 "date": "2024-10-13T13:30:42Z",
                 "id": "2024-U04",
                 "name": "Starship FT-5",
-                "category": "P",
+                "category": "S2",
                 "smc": false,
                 "location": 1,
                 "ablation": 0.0,
@@ -56346,7 +56346,7 @@
                 "date": "2024-11-19T23:06:00Z",
                 "id": "2024-U06",
                 "name": "Starship FT-6",
-                "category": "P",
+                "category": "S2",
                 "smc": false,
                 "location": 1,
                 "ablation": 0.0,
@@ -57443,6 +57443,24 @@
             }
         ],
         "reentries": [
+            {
+                "date": "2024-11-25T00:00:00Z",
+                "id": "2024-208B",
+                "name": "CZ-4B sep motor cover",
+                "category": "C",
+                "smc": false,
+                "location": 6,
+                "ablation": 0.8,
+                "mass": 0.001,
+                "emissions": {
+                    "NOx": 0.0004,
+                    "Al2O3": 0.00032,
+                    "BC": 4.1e-05,
+                    "Cl": 1.5e-05,
+                    "HCl": 8e-06,
+                    "Unablated_Mass": 0.00019999999999999996
+                }
+            },
             {
                 "date": "2024-11-25T12:19:00Z",
                 "id": "2024-220",
@@ -65550,9 +65568,9 @@
                 "emissions": {
                     "NOx": 14.0,
                     "Al2O3": 1.5925,
-                    "BC": 1.015,
-                    "Cl": 0.385,
-                    "HCl": 0.175,
+                    "BC": 0.1015,
+                    "Cl": 0.0385,
+                    "HCl": 0.0175,
                     "Unablated_Mass": 32.725
                 }
             },
@@ -65604,9 +65622,9 @@
                 "emissions": {
                     "NOx": 4.39788,
                     "Al2O3": 0.907588,
-                    "BC": 0.318846,
-                    "Cl": 0.120942,
-                    "HCl": 0.054974,
+                    "BC": 0.057846,
+                    "Cl": 0.021942,
+                    "HCl": 0.009974,
                     "Unablated_Mass": 9.698145
                 }
             }

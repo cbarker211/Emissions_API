@@ -1,5 +1,5 @@
 #Stage_Name	Stage_Family	Stage_Manufacturer	Stage_Alt_Name	Length	Length_Flag	Diameter	Diameter_Flag	Launch_Mass	Launch_Mass_Flag	Dry_Mass	Dry_Mass_Flag	Thrust	Thrust_Flag	ThrustSL	ThrustSL_Flag	Duration	Engine	NEng	Class
-# Updated 2026 Nov  2 0003:29
+# Updated 2026 Nov 15 1017:02
 -	Unknown             	-	Dummy	-	 	-	 	-	 	-	 	-	 	-	 	   0.0 	-	 0	-
 ?	Unknown             	-	-	-	 	-	 	-	 	-	 	-	 	-	 	-	-	-	-
 N-1 Blok-A	N-1                 	OKB1	N-1 Blok A	 30.0	 	14.00	 	1870.0	 	  130000	 	   45300.0	 	-	 	 110.0 	NK-15	30	O
@@ -27,6 +27,7 @@ New Glenn GS1-9	NewGlenn	BLORCC	-	 57.5	 	 7.00	 	 900.0	?	  110000	?	   19228.0
 New Glenn GS2-2	NewGlenn	BLORCC	-	 23.4	 	 7.00	 	 150.0	?	   28000	?	    1423.0	 	-	 	-	BE-3U	 2	O
 New Glenn GS2-2A	NewGlenn	BLORCC	-	 23.4	 	 7.00	 	 150.0	?	   28000	?	    1779.0	 	-	 	-	BE-3U v2	 2	O
 New Glenn GS2-4	NewGlenn	BLORCC	-	 23.4	 	 7.00	 	 150.0	?	   28000	?	    1779.0	 	-	 	-	BE-3U v2	 4	O
+New Glenn GS3	NewGlenn	BLORCC	-	  7.0	?	 7.00	 	  25.0	?	    2500	?	      44.5	 	-	 	-	BE-7	 1	O
 Saturn S-IVB	SaturnIVB           	DACHB	S-IVB	 18.7	 	 6.60	 	 120.0	 	   13300	 	     890.0	 	-	 	 500.0 	J-2	 1	U
 Saturn S-IB	Saturn              	CHRMI	-	 24.4	 	 6.53	 	 448.7	 	   41594	 	    8240.0	 	-	 	 155.0 	H-1	 8	O
 Saturn S-I	Saturn              	MSFC	-	 22.5	 	 6.53	 	 432.7	 	   45250	 	    5768.0	 	-	 	 115.0 	H-1	 8	O
@@ -169,6 +170,7 @@ CZ-2E Stage 1	DF5                 	CALT	L180-YF21B	 23.7	 	 3.35	 	 196.5	 	    
 CZ-3A Stage 1	DF5                 	SAST	L180-YF21B	 23.3	 	 3.35	 	 180.0	 	    9500	?	    2961.0	 	-	 	 145.0 	YF-21	 4	O
 CZ-3BE Stage 1	DF5                 	SAST	L180-YF21B	 24.8	 	 3.35	 	 186.2	 	    9500	?	    2961.0	 	-	 	 145.0 	YF-21	 4	O
 CZ-4 Stage 1	DF5                 	SAST	L180-YF21B	 24.7	 	 3.35	 	 192.7	 	    9500	 	    2961.0	 	-	 	 170.0 	YF-21	 4	O
+CZ-2D-b Stage 1	DF5                 	SAST	L180-YF21B	 24.7	 	 3.35	 	 192.7	 	    9500	 	    2961.0	 	-	 	 170.0 	YF-21	 4	O
 CZ6-C	DF5                 	SAST	-	 15.0	?	 3.35	 	  84.0	?	    4100	?	    1224.0	?	-	 	-	YF-100	 1	O
 CZ6A-C	DF5                 	SAST	-	 20.0	?	 3.35	 	 120.0	?	    6000	?	    2448.0	?	-	 	-	YF-100	 2	O
 CZ-7 Stage 1	DF5                 	CALT	K3-1	 26.0	?	 3.35	 	 186.0	 	   12000	 	    2400.0	 	-	 	 215.0 	YF-100	 2	O
@@ -186,6 +188,7 @@ CZ-3A Stage 2	CZ.St2              	SAST	L35-YF24B	  9.9	 	 3.35	 	  33.6	 	    4
 CZ-3B Stage 2	CZ.St2              	SAST	L35-YF24B	  9.9	?	 3.35	 	  44.0	 	    4000	?	     742.0	 	-	 	 180.0 	YF-22	 1	S
 CZ-4 Stage 2	CZ.St2              	SAST	L35-YF24B	 10.4	 	 3.35	 	  39.6	 	    4000	 	     742.0	 	-	 	 127.0 	YF-22B	 1	S
 CZ-4 Stage 2j	CZ.St2              	SAST	L35-YF24B	 10.4	 	 3.35	 	  39.6	 	    4000	 	     742.0	 	-	 	 127.0 	YF-22B	 1	S
+CZ-2D-b Stage 2	CZ.St2              	SAST	L35-YF24B	 10.4	 	 3.35	 	  39.6	 	    4000	 	     742.0	 	-	 	 127.0 	YF-22B	 1	S
 CZ-4B Stage 2	CZ.St2              	SAST	L35-YF24B	 10.4	 	 3.35	 	  39.6	 	    4000	 	     742.0	 	-	 	 127.0 	YF-22B'	 1	S
 CZ-2E Stage 2	CZ.St2              	CALT	L90-YF24B	 15.5	 	 3.35	 	  91.5	 	    5500	 	     742.0	 	-	 	 295.0 	YF-22	 1	S
 CZ-6A Stage 2	CZ.St2              	SAST	-	 11.5	?	 3.35	 	  71.0	 	    6000	 	     176.0	 	-	 	-	YF-115	 1	O
@@ -943,6 +946,8 @@ Hermes A-1	Hermes              	GEMTS	-	  7.8	 	 0.86	 	   5.0	?	-	 	      71.0	
 M-30	M-30                	NISST	-	  4.0	 	 0.86	 	   2.8	 	     773	 	     128.0	 	-	 	  42.0 	M-30	 1	S
 Trident C-4 Stage 3	Trident.St3         	UTC	-	  3.3	 	 0.86	?	   1.9	 	     150	?	-	 	-	 	  40.0 	Trident St 3	 1	S
 Trident D-5 Stage 3	Trident.St3         	UTC	-	  3.3	 	 0.86	 	   2.2	 	     159	 	-	 	-	 	  40.0 	Trident St 3	 1	S
+Zeus 1	Zeus	KRAT	-	  3.0	?	 0.83	 	   1.5	?	-	 	-	 	-	 	-	Zeus	 1	B
+Zeus 2	Zeus	KRAT	-	  3.0	?	 0.83	 	   1.5	?	-	 	-	 	-	 	-	Zeus	 1	B
 X-271	X-271               	ABL?	Sprint X271	  5.0	?	 0.82	?	-	 	-	 	-	 	-	 	-	X-271	 1	S
 Viking	Viking              	MARTB	-	 14.9	 	 0.81	 	   4.5	 	     800	?	      93.0	 	-	 	  70.0 	NRL Viking	 1	R
 AJ10	Able                	AJGC	Able	  5.0	 	 0.81	 	   1.9	 	     429	 	      33.0	 	-	 	 122.0 	AJ10	 1	S
